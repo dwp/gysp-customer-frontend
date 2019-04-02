@@ -1,6 +1,6 @@
 {
   "name": "customer-frontend",
-  "version": "7.3.0-RELEASE",
+  "version": "7.3.0",
   "dependencies": {
     "body-parser": "1.18.3",
     "bunyan": "1.8.12",
