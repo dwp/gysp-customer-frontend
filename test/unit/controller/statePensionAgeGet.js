@@ -5,9 +5,9 @@ const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
 const noUserDOB = { session: { customerDetails: { statePensionDate: -1631145600000 }, userDateOfBirthInfo: {} }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
-const userDOB = { session: { customerDetails: { statePensionDate: -1531145600000 }, userDateOfBirthInfo: { newStatePensionDate: -1631145600321 } }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
+const userDOB = { session: { customerDetails: { statePensionDate: -1531145600000 }, userDateOfBirthInfo: { newStatePensionDate: -1631102401000 } }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
 const noUserDOBOverseas = { session: { customerDetails: { statePensionDate: -1631145600000 }, userDateOfBirthInfo: {}, isOverseas: true }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
-const userDOBOverseas = { session: { customerDetails: { statePensionDate: -1531145600000 }, userDateOfBirthInfo: { newStatePensionDate: -1631145600321 }, isOverseas: true }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
+const userDOBOverseas = { session: { customerDetails: { statePensionDate: -1531145600000 }, userDateOfBirthInfo: { newStatePensionDate: -1631102401000 }, isOverseas: true }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
 
 
 describe('State Pension Age controller ', () => {
