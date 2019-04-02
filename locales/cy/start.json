@@ -1,0 +1,41 @@
+{
+  "header":"Cael eich Pensiwn y Wladwriaeth",
+  "p1": "Dylech ond defnyddio'r gwasanaeth hwn os ydych am gael unrhyw Bensiwn y Wladwriaeth mae gennych hawl iddo wedi'i dalu i chi cyn gynted â phosibl.",
+  "p2": "Byddwch angen:",
+  "li1": "eich cod gwahoddiad unigryw (ar eich llythyr Cael eich Pensiwn y Wladwriaeth)",
+  "li2": "dyddiad eich priodas, partneriaeth sifil neu ysgariad mwyaf diweddar",
+  "li3": "dyddiadau o amser a dreuliwyd yn byw neu weithio dramor",
+  "li4": "manylion eich cyfrif banc neu gymdeithas adeiladu personol neu ar y cyd",
+  "p3": "Os nad ydych eisiau cael eich Pensiwn y Wladwriaeth nawr, dwech yn ôl pan fyddwch yn barod.",
+  "changeLanguage":{
+  "p3": "mae'r gwasanaeth hwn hefyd ar gael yn",
+  "language":"Saesneg (English)"
+  },
+  "button": "Dechrau nawr",
+  "help": {
+    "h2": "Ffyrdd eraill o gael eich Pensiwn y Wladwriaeth",
+    "h3": "Dros y ffôn",
+    "phone": {
+      "label": "Ffôn:",
+      "number": "0800 731 7936"
+    },
+    "textphone": {
+      "label": "Ffôn testun:",
+      "number": "0800 731 7013"
+    },
+    "p1": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+    "northernIreland": {
+      "summaryText": "Mae yna rif gwahanol ar gyfer Gogledd Iwerddon",
+      "h3": "Dros y ffôn:",
+      "phone": {
+        "label": "Gogledd Iwerddon:",
+        "number": "0808 100 2658"
+      },
+      "textphone": {
+        "label": "Ffôn testun:",
+        "number": "0808 100 2198"
+      },
+      "p1": "Dydd Llun i ddydd Gwener, 9am i 5pm"
+    }
+  }
+}

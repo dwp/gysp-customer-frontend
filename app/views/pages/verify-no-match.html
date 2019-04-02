@@ -1,0 +1,32 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("verify-no-match:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("verify-no-match:header") }}</h1>
+
+    <p class="govuk-body">{{ t("verify-no-match:p1") }}</p>
+
+    <p class="govuk-body">{{ t("verify-no-match:p2") }}</p>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{ t("verify-no-match:uk.header") }}</h2>
+    <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("verify-no-match:uk.telephone_label") }}</span> {{ t("verify-no-match:uk.telephone_text") }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("verify-no-match:uk.textphone_label") }}</span> {{ t("verify-no-match:uk.textphone_text") }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-0">{{ t("verify-no-match:uk.p1") }}</p>
+    <p class="govuk-body">{{ t("verify-no-match:uk.p2") }}</p>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{{ t("verify-no-match:ni.header") }}</h2>
+    <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("verify-no-match:ni.telephone_label") }}</span> {{ t("verify-no-match:ni.telephone_text") }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("verify-no-match:ni.textphone_label") }}</span> {{ t("verify-no-match:ni.textphone_text") }}</p>
+    <p class="govuk-body govuk-!-margin-bottom-0">{{ t("verify-no-match:ni.p1") }}</p>
+    <p class="govuk-body">{{ t("verify-no-match:ni.p2") }}</p>
+
+  </div>
+
+</div>
+
+
+{% endblock %}

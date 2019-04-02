@@ -1,0 +1,25 @@
+                <p class="govuk-heading-m">{{ t("dob-proof:p1") }}</p>
+
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>{{ t("dob-proof:list.li1") }}</li>
+                  <li>{{ t("dob-proof:list.li2") }}</li>
+                  <li>{{ t("dob-proof:list.li3") }}</li>
+                  <li>{{ t("dob-proof:list.li4") }}</li>
+                  <li>{{ t("dob-proof:list.li5") }}</li>
+                </ul>
+
+                <p class="govuk-heading-m">{{ t("dob-proof:p2") }}</p>
+
+                <ul class="govuk-list">
+                {% if isNorthernIreland %}
+                  <li>{{ t("dob-proof:address.line1.ni") }}</li>
+                  <li>{{ t("dob-proof:address.line2.ni") }}</li>
+                  <li>{{ t("dob-proof:address.line3.ni") }}</li>
+                  <li>{{ t("dob-proof:address.line4.ni") }}</li>
+                {% else %}
+                  <li>{{ t("dob-proof:address.line1.gb") }}</li>
+                  <li>{{ t("dob-proof:address.line2.gb") }}</li>
+                  <li>{{ t("dob-proof:address.line3.gb") }}</li>
+                  <li>{{ t("dob-proof:address.line4.gb") }}</li>
+                {% endif %}
+                </ul>

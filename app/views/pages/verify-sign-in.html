@@ -1,0 +1,39 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("verify-sign-in:header") }}{% endblock %}
+
+{% block languageSelect %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <p class="language-select govuk-body">
+          {% if htmlLang == 'cy-GB' %}
+            <a lang="cy" hreflang="cy" href="/verify/you-can-now-sign-in-with-govuk-verify/en" class="language-select__item language-select__item--border-right">English</a>
+            <span class="language-select__item">Cymraeg</span>
+          {% else %}
+            <span class="language-select__item language-select__item--border-right">English</span>
+            <a lang="en" hreflang="en" href="/verify/you-can-now-sign-in-with-govuk-verify/cy" class="language-select__item">Cymraeg</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/verify/you-can-now-sign-in-with-govuk-verify" autocomplete="off">
+        <h1 class="govuk-heading-xl">{{ t("verify-sign-in:header") }}</h1>
+
+        <p class="govuk-body">{{ t("verify-sign-in:p") }}</p>
+
+        {{ govukButton({
+            text: t("app:button.continue"),
+            attributes: {
+              id: 'form-submit'
+            }
+          }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

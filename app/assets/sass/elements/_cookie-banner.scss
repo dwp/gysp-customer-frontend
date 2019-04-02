@@ -1,0 +1,24 @@
+$light-blue: #d5e8f3;
+
+.js-enabled {
+    .cookie-banner {
+        display: none;
+    }
+}
+
+.cookie-banner {
+    width: 100%;
+    background-color: $light-blue;
+    @include govuk-responsive-padding(3, 'top');
+    @include govuk-responsive-padding(3, 'bottom');
+
+
+    &__message {
+        @extend %govuk-body-s;
+        margin: 0;
+    }
+
+     &__link {
+        @extend %govuk-link;
+     }
+}

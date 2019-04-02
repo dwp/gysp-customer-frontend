@@ -1,0 +1,56 @@
+{
+    "before": {
+        "header": "Ffoniwch ni i gael eich Pensiwn y Wladwriaeth",
+        "h1": "Ffoniwch ni i gael eich Pensiwn y Wladwriaeth",
+        "p1": "Yn ôl y wybodaeth rydych wedi'i roi i ni rydych wedi cyrraedd oedran Pensiwn y Wladwriaeth cyn 6 Ebrill 2016. Mae'r gwasanaeth hwn ar gyfer pobl sy'n cyrraedd eu hoedran Pensiwn y Wladwriaeth ar neu ar ôl 6 Ebrill 2016.",
+        "p2": {
+            "gb": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+            "ni": "Dydd Llun i ddydd Gwener, 9am i 5pm"
+        },
+        "p3": "Byddwch angen eich rhif Yswiriant Gwladol.",
+        "contact": {
+            "telephone": {
+                "label": "Ffôn:",
+                "value": {
+                    "gb": "0800 731 7936",
+                    "ni": "0808 100 2658"
+                }
+            },
+            "textphone": {
+                "label": "Ffôn testun:",
+                "value": {
+                    "gb": "0800 731 7013",
+                    "ni": "0808 100 2198"
+                }
+            }
+        }
+    },
+    "early": {
+        "header": "Rydych yn rhy gynnar i gael eich Pensiwn y Wladwriaeth",
+        "h1": "Rydych yn rhy gynnar i gael eich Pensiwn y Wladwriaeth",
+        "p1": "Yn ôl y wybodaeth rydych wedi'i roi i ni, rydych yn rhy gynnar i gael eich Pensiwn y Wladwriaeth.",
+        "p2": "Gallwch wneud cais am eich Pensiwn y Wladwriaeth bedwar mis cyn y byddwch yn cyrraedd eich oedran Pensiwn y Wladwriaeth.",
+        "p2-part2": "Byddwch yn cyrraedd oedran Pensiwn y Wladwriaeth ar",
+        "p3": {
+            "gb": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+            "ni": "Dydd Llun i ddydd Gwener, 9am i 5pm"
+        },
+        "contact": {
+            "header": "Dros y ffôn",
+            "telephone": {
+                "label": "Ffôn:",
+                "value": {
+                    "gb": "0800 731 7936",
+                    "ni": "0808 100 2658"
+                }
+            },
+            "textphone": {
+                "label": "Ffôn testun:",
+                "value": {
+                    "gb": "0800 731 7013",
+                    "ni": "0808 100 2198"
+                }
+            }
+        }
+    }
+}

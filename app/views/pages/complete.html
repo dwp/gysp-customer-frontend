@@ -1,0 +1,138 @@
+{% extends '../helpers/layout.html' %}
+{% from "panel/macro.njk" import govukPanel %}
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{% block pageTitle %}
+  {% if showAddtionalDiscliamer %}{{ t("complete:header-sent") }}{% else %}{{ t("complete:header") }}{% endif %}
+{% endblock %}
+
+{% block gaTagExtra %}
+  {% if showClaimFromDateBefore9WeekV or showClaimFromDateBefore9WeekNV or showClaimFromDateAfter9WeekV or showClaimFromDateAfter9WeekNV %}
+    ga('send', 'pageview', '{{ t("google-analytics:pages.complete.callback") }}');
+  {% endif %}
+  {% if isOverseas %}
+    ga('send', 'pageview', '{{ t("google-analytics:pages.complete.overseas") }}');
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if redirected %}
+          <h2 class="govuk-heading-l">{{ t("complete:addtional.header") }}</h2>
+          <p class="govuk-body">{{ t("complete:addtional.p") }}</p>
+      {% endif %}
+
+      {% set panelTitleText %}
+        {% if showAddtionalDiscliamer %}
+          {{ t("complete:header-sent") | safe }}
+        {% elif isOverseas == true %}
+          {{ t("complete:header-sent") | safe }}
+        {% else %}
+          {{ t("complete:header") | safe }}
+        {% endif %}
+      {% endset -%}
+
+      {% set panelHtml %}
+        {% if isOverseas == true %}
+          {{ t("complete:header-overseas") }}
+        {% else %}
+          {{ date }}
+        {% endif %}
+        <br />
+        {{ t("complete:header-ref-text") }}
+        <br />
+        <strong>
+          {% if showAddtionalDiscliamer %}
+            {{ t("complete:header-ref-unverified-dob") }}
+          {% else %}
+            {{ t("complete:header-ref") }}
+          {% endif %}
+        </strong>
+      {% endset -%}
+
+      {{ govukPanel({
+        headingLevel: 1,
+        titleText: panelTitleText,
+        html: panelHtml
+      }) }}
+
+      {% if showAddtionalDiscliamer and whatHappensNext !== false %}
+        <p class="govuk-body">{{ whatHappensNext }}</p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">{{ t("complete:section-1-h2") }}</h2>
+
+      {% if showAddtionalDiscliamer %}
+        {{ govukWarningText({
+          text: t("dob-proof:warning-end"),
+          iconFallbackText: t("dob-proof:warning-icon-fallback-text")
+        }) }}
+
+        {% if isOverseas %}
+          {% include '../includes/dob-warning-overseas.html' %}
+        {% else %}
+          {% include '../includes/dob-warning.html' %}
+        {% endif %}
+
+      {% else %}
+        <p class="govuk-body">{{ whatHappensNext }}</p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">{{ t("complete:section-2-h2") }}</h2>
+      <p class="govuk-body">{{ t("complete:p2") }}</p>
+
+      {% if isOverseas == true %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ t("complete:overseas.p2-l1") }}</li>
+          <li>{{ t("complete:overseas.p2-l2") }}</li>
+          <li>{{ t("complete:overseas.p2-l3") }}</li>
+          <li>{{ t("complete:overseas.p2-l4") }}</li>
+        </ul>
+      {% else %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{{ t("complete:p2-l1") }}</li>
+          <li>{{ t("complete:p2-l2") }}</li>
+          <li>{{ t("complete:p2-l3") }}</li>
+        </ul>
+      {% endif %}
+
+      {% if isOverseas == true %}
+        <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("complete:overseas.telephone.label") }}</span> {{ t("complete:overseas.telephone.number") }}</p>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">{{ t("complete:overseas.textphone.label") }}</span> {{ t("complete:overseas.textphone.number") }}</p>
+        <p class="govuk-body govuk-!-margin-bottom-1">{{ t("complete:overseas.hours.line1") }}</p>
+        <p class="govuk-body govuk-!-margin-bottom-1">{{ t("complete:overseas.hours.line2") }}</p>
+        <p class="govuk-body">{{ t("complete:overseas.hours.line3") }}</p>
+      {% elif isNorthernIreland %}
+        <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("complete:telephone-label") }}</span> {{ t("complete:telephone-number.ni") }}</p>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">{{ t("complete:textphone-label") }}</span> {{ t("complete:textphone-number.ni") }}</p>
+      {% else %}
+        <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">{{ t("complete:telephone-label") }}</span> {{ t("complete:telephone-number.gb") }}</p>
+        <p class="govuk-body"><span class="govuk-!-font-weight-bold">{{ t("complete:textphone-label") }}</span> {{ t("complete:textphone-number.gb") }}</p>
+      {% endif %}
+
+      <div>
+        {% if showAddtionalDiscliamer %}
+          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print-dob") }}" class="govuk-link govuk-heading-m">
+        {% else %}
+          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print") }}" class="govuk-link govuk-heading-m">
+        {% endif %}
+          <div class="icon-panel icon icon-print">
+          </div>
+          {{ t("complete:print-this-page") }}
+        </a>
+      </div>
+      <br />
+      <p class="govuk-body">
+        {% if isNorthernIreland %}
+          <a href="https://www.gov.uk/done/get-state-pension-ni" id="feedback-link" class="govuk-link" target="_new">{{ t("complete:feedback-link-text") }}</a>
+        {% elif isOverseas %}
+          <a href="https://www.gov.uk/done/get-state-pension-overseas" id="feedback-link"  class="govuk-link" target="_new">{{ t("complete:feedback-link-text") }}</a>
+        {% else %}
+          <a href="https://www.gov.uk/done/get-state-pension" id="feedback-link" class="govuk-link" target="_new">{{ t("complete:feedback-link-text") }}</a>
+        {% endif %}
+      </p>
+    </div>
+</div>
+{% endblock %}

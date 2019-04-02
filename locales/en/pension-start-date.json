@@ -1,0 +1,52 @@
+{
+  "header":"When do you want your State Pension?",
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem or problems."
+  },
+  "h1": "When do you want your State Pension",
+  "beforeSpa": {
+    "p1": {
+      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
+      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+    },
+    "fields": {
+      "claimFromDate": {
+        "date": {
+            "day": "Day",
+            "month": "Month",
+            "year": "Year"
+        },
+        "legend": "What date do you want to get your State Pension?",
+        "hint": "You can only make a claim up to 4 months in advance.",
+        "errors": {
+          "empty": "Enter a date",
+          "format": "Enter a valid date",
+          "before": "Date cannot be before your State Pension date"
+        }
+      }
+    }
+  },
+  "afterSpa": {
+    "p1": {
+      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
+      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+    },
+    "fields": {
+      "claimFromDate": {
+        "date": {
+            "day": "Day",
+            "month": "Month",
+            "year": "Year"
+        },
+        "legend": "What date do you want to get your State Pension from?",
+        "hint": "",
+        "errors": {
+          "empty": "Enter a date",
+          "format": "Enter a valid date",
+          "before": "Date cannot be before your State Pension date"
+        }
+      }
+    }
+  }
+}

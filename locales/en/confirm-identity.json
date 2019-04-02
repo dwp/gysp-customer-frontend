@@ -1,0 +1,25 @@
+{
+  "header": "How would you like to confirm your identity?",
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem"
+  },
+  "fields": {
+      "authType": {
+        "label": "How would you like to confirm your identity?",
+        "options": {
+          "invite": {
+            "header": "I have an invitation letter",
+            "info": "If you’ve been sent a letter, your unique invitation code will be included in this letter."
+          },
+          "verify": {
+            "header": "I haven't got an invitation letter",
+            "info": "You can use the government’s identity verification service GOV.UK Verify instead."
+          }
+        },
+        "errors": {
+          "required": "You must complete this section"
+        }
+      }
+    }
+}

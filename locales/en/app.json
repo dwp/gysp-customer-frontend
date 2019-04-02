@@ -1,0 +1,105 @@
+{
+  "service_name": "Get your State Pension",
+  "title": {
+    "error": "Error:"
+  },
+  "button": {
+    "continue": "Continue"
+  },
+  "pdf": {
+    "userDOB": "User entered date of birth",
+    "userVerficationStatus": "Updated date of birth verification status",
+    "verficationStatus": "Date of birth verification status",
+    "statePensionAge": "Recalculated State Pension age date"
+  },
+  "link": {
+    "back": "Back"
+  },
+  "feedback": "This is a new service – your <a href='__URL__' target='_new'>feedback</a> will help us to improve it.",
+  "navigation": {
+     "general": "to",
+     "auth": "Your details",
+     "cookies": "Cookies",
+     "privacy": "Privacy",
+     "northernIreland" : {
+       "privacy": "Northern Ireland Privacy"
+     }
+  },
+  "help": {
+    "bank": {
+        "h2": "Safe and secure",
+        "details": "This is a safe site. Your personal information is protected."
+    },
+    "h2": "Get help",
+    "telephone": {
+      "label": "Telephone:",
+      "number": "0800 169 0154"
+    },
+    "textphone": {
+      "label": "Textphone:",
+      "number": "0800 169 0254"
+    },
+    "hours": {
+      "line1": "Monday to Friday, 8am to 6pm",
+      "line2": "Closed public holidays"
+    },
+    "outside": {
+      "start": "How to claim is different if you claim from",
+      "url_text": "Northern Ireland"
+    },
+    "northernIreland": {
+      "summaryText" : "There's a different number for Northern Ireland",
+      "telephone": {
+        "label": "Telephone:",
+        "number": "0800 587 0892"
+      },
+      "textphone": {
+        "label": "Textphone:",
+        "number": "0808 100 2198"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 9am to 5pm",
+        "line2": "Closed public holidays"
+      }
+    },
+    "overseas": {
+      "telephone": {
+        "label": "Telephone:",
+        "number": "+44 (0) 191 216 2516"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 8am to 6pm UK time",
+        "line2": "Closed UK public holidays"
+      }
+    }
+  },
+  "error": {
+    "404": {
+      "heading": "Page not found",
+      "p1": "If you entered a web address please check it was correct.",
+      "p2": ""
+    },
+    "403": {
+      "heading": "Something’s gone wrong",
+      "p1": "You can’t use this service just now. The problem will be fixed as soon as possible ",
+      "p2": "Please try again later."
+    },
+    "500": {
+      "heading": "Something’s gone wrong",
+      "p1": "You can’t use this service just now. The problem will be fixed as soon as possible ",
+      "p2": "Please try again later."
+    },
+    "generic": {
+      "heading": "Something’s gone wrong",
+      "p1": "You can’t use this service just now. The problem will be fixed as soon as possible ",
+      "p2": "Please try again later."
+    }
+  },
+  "cookie": {
+    "p": "This service uses cookies",
+    "url_text": "Find out more"
+  },
+  "footer": {
+      "copyright": "Crown copyright"
+  }
+}

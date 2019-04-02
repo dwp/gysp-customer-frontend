@@ -1,0 +1,61 @@
+{
+  "header":"Your contact details",
+  "p": "We’ll only contact you if we need further information. This is to make sure you get all of the State Pension you’re entitled to.",
+  "overseas": {
+    "p": "We’ll call you to confirm some of the details you’ve given us before we process your application."
+  },
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem or problems."
+  },
+  "fields": {
+    "checkbox": {
+      "legend": "How should we contact you?",
+      "hint": "Provide at least one phone number",
+      "options": {
+        "home": "Home phone",
+        "mobile": "Mobile phone",
+        "work": "Work phone"
+      },
+      "errors": {
+        "required": "Provide at least one telephone number"
+      }
+    },
+    "homeTelephoneNumber": {
+      "label": "Home phone number",
+      "label-display": "Home phone number",
+      "errors": {
+        "required": "Enter a home phone number",
+        "format": "Enter only numbers and spaces",
+        "length": "Maximum length is 70"
+      }
+    },
+    "mobileTelephoneNumber": {
+      "label": "Mobile phone number",
+      "label-display": "Mobile phone number",
+      "errors": {
+        "required": "Enter a mobile phone number",
+        "format": "Enter only numbers and spaces",
+        "length": "Maximum length is 70"
+      }
+    },
+    "workTelephoneNumber": {
+      "label": "Work phone number",
+      "label-display": "Work phone number",
+      "errors": {
+        "required": "Enter a work phone number",
+        "format": "Enter only numbers and spaces",
+        "length": "Maximum length is 70"
+      }
+    },
+    "email": {
+      "label": "Email address",
+      "label-display": "Email address",
+      "errors": {
+        "required": "Enter your email address",
+        "format": "Enter a valid email",
+        "length": "Maximum length is 100"
+      }
+    }
+  }
+}

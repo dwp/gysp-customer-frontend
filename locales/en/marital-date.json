@@ -1,0 +1,26 @@
+{
+  "header": {
+    "married": "What date did you get married?",
+    "civil": "What date was your civil partnership registered?",
+    "divorced": "What date did you get divorced?",
+    "dissolved": "What date was your civil partnership dissolved?",
+    "widowed": "What date were you widowed?"
+  },
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem"
+  },
+  "fields": {
+      "date": {
+        "hint": "For example, 31 3 1980",
+        "day": "Day",
+        "month": "Month",
+        "year": "Year",
+        "errors": {
+          "empty": "Enter a date",
+          "format": "Please enter a valid date.",
+          "future": "Date cannot be in the future."
+        }
+      }
+    }
+}

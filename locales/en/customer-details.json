@@ -1,0 +1,54 @@
+{
+  "field_names":
+  {
+    "title": "Title",
+    "firstname": "First Name",
+    "surname": "Surname",
+    "nino": "National Insurance number",
+    "dob": "Date of birth",
+    "dobV": "Date of birth verification status",
+    "gender": "Gender",
+    "state_pension_date": "State Pension age",
+    "address_title": "Address",
+    "address_details": {
+      "options": {
+        "option_uk": "UK",
+        "option_overseas": "Overseas"
+      },
+      "uk": {
+        "residential_address": {
+          "address_title": "Residential Address",
+          "sub_building_name": "Flat number",
+          "building_name": "Building name",
+          "building_number": "Building number",
+          "dependent_thoroughfare_name": "Sub street name",
+          "thoroughfare_name": "Main street name",
+          "dependent_locality": "Village",
+          "post_town": "Town",
+          "postcode": "Post code"
+        },
+        "correspondence_address": {
+          "address_title": "Correspondence Address",
+          "sub_building_name": "Flat number",
+          "building_name": "Building name",
+          "building_number": "Building number",
+          "dependent_thoroughfare_name": "Sub street name",
+          "thoroughfare_name": "Main street name",
+          "dependent_locality": "Village",
+          "post_town": "Town",
+          "postcode": "Post code"
+        }
+      },
+      "overseas": {
+        "address_line_1": "Address Line 1",
+        "address_line_2": "Address Line 2",
+        "address_line_3": "Address Line 3",
+        "address_line_4": "Address Line 4",
+        "address_line_5": "Address Line 5",
+        "address_line_6": "Address Line 6",
+        "address_line_7": "Address Line 7",
+        "country": "Country"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "lived": {
+    "header": "Ym mha wledydd ydych chi wedi byw ynddynt?",
+    "errors": {
+      "header": "Methu anfon y ffurflen.",
+      "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+    }
+  },
+  "worked": {
+    "header": "Ym mha wledydd ydych chi wedi gweithio ynddynt?",
+    "errors": {
+      "header": "Methu anfon y ffurflen.",
+      "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+    }
+  },
+  "fields": {
+    "country": {
+      "label": "Enw'r wlad (yn Saesneg)",
+      "errors": {
+        "valid": "Rhowch enw gwlad dilys",
+        "required": "Rhowch neu dewiswch wlad",
+        "format": "Rhowch neu dewiswch wlad dilys",
+        "duplicate": "Dylech ond rhoi neu ddewis gwlad unwaith"
+      }
+    }
+  },
+  "js-error": {
+    "duplicate": {
+      "header": "Enw'r wlad (yn Saesneg)",
+      "message": "Dylech ond rhoi neu ddewis gwlad unwaith"
+    },
+    "empty": {
+      "header": "Enw'r wlad (yn Saesneg)",
+      "message": "Rhowch neu dewiswch wlad"
+    }
+  },
+  "link": {
+      "add": "Ychwanegu gwlad arall",
+      "remove": "Dileu"
+  }
+}

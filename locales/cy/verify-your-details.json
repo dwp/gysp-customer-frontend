@@ -1,0 +1,19 @@
+{
+  "header": "Eich manylion",
+  "p1": "Rydym wedi derbyn eich enw, dyddiad geni a chyfeiriad gan GOV.UK Verify.",
+  "heading1": "Eich dyddiad geni",
+  "p2": "Byddwn yn defnyddio hwn i gadarnhau eich bod yn gymwys i gael eich Pensiwn y Wladwriaeth",
+  "heading2": "Eich cyfeiriad",
+  "fields": {
+    "address": {
+      "legend": "Ai dyma eich cyfeiriad presennol?",
+      "options": {
+        "yes": "Ie",
+        "no": "Na"
+      },
+      "errors": {
+        "required": "Rhaid i chi lenwi'r adran hon"
+      }
+    }
+  }
+}

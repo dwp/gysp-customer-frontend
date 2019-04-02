@@ -1,0 +1,111 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from 'input/macro.njk' import govukInput %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("auth:header") }}{% endblock %}
+
+{% block gaTagExtra %}
+  {% if language ==='Language-welsh' %}
+    ga('set', 'dimension6', 'welsh');
+  {% else %}
+    ga('set', 'dimension6', 'english');
+  {% endif %}
+  {% if isOverseas %}
+    ga('set', 'dimension12', 'overseas');
+    ga('send', 'pageview', '{{ t("google-analytics:pages.auth-overseas.pageview") }}');
+  {% else %}
+    ga('set', 'dimension12', 'United Kingdom');
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: t("auth:errors.header"),
+    descriptionText: t("auth:errors.p1"),
+    errorList: errors.errorSummary
+  }) }}
+{% endif %}
+
+{% if matchError %}
+  {{ govukErrorSummary({
+    titleText: t("auth:errors.header"),
+    descriptionText: t("auth:errors.p2"),
+    attributes: {
+      "data-journey": t("google-analytics:pages.auth"+ pageSuffix +".error.invite-key")
+    }
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-row" {% if clear %} onload="document.getElementById("auth").reset();" {% endif %}>
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("auth:header") }}</h1>
+
+    <form method="post" action="auth" id="auth" autocomplete="off">
+      {{ govukInput({
+        label: {
+          text: t("auth:fields.inviteKey"+ pageSuffix +".label"),
+          classes: "govuk-label--s"
+        },
+        hint: {
+          html: t("auth:fields.inviteKey"+ pageSuffix +".hint", {URL: "/verify", TAG: t("google-analytics:pages.auth.havent-got-letter") })
+        },
+        id: "inviteKey",
+        name: "inviteKey",
+        classes: "govuk-!-width-one-half",
+        attributes: {
+          "data-journey-click": t("google-analytics:pages.auth"+ pageSuffix +".invite")
+        },
+        value: details.inviteKey,
+        errorMessage: errors.inviteKey
+      }) }}
+
+      {{ govukRadios({
+        errorMessage: errors.address,
+        classes: "govuk-radios--inline",
+        name: "address",
+        fieldset: {
+          legend: {
+            text: t("auth:fields.address"+ pageSuffix +".legend"),
+            isPageHeading: false,
+            classes: "govuk-label--s"
+          },
+          attributes: {
+            id: "address"
+          }
+        },
+        items: [{
+          id: "address-yes",
+          value: "yes",
+          text: t("auth:fields.address.options.yes"),
+          attributes: {
+            "data-dimension-click": t("google-analytics:pages.auth"+ pageSuffix +".address", {VALUE: "yes"})
+          },
+          checked: true if details.address == 'yes' else false
+        }, {
+          id: "address-no",
+          value: "no",
+          text: t("auth:fields.address.options.no"),
+          attributes: {
+            "data-journey-click": t("google-analytics:pages.auth"+ pageSuffix +".address", {VALUE: "no"})
+          },
+          checked: true if details.address == 'no' else false
+        }]
+      }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+  </div>
+
+  {{ help.sideBar(t, 'neither', isOverseas) }}
+
+</div>
+{% endblock %}

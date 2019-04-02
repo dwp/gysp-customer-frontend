@@ -1,0 +1,144 @@
+{% extends 'template.njk' %}
+{% from "phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "header/macro.njk" import govukHeader %}
+{% from "footer/macro.njk" import govukFooter %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block head %}
+    <meta name="robots" content="noindex, nofollow">
+    <!--[if lt IE 9]><script src="{{ assetPath }}/javascripts/vendor/html5shiv/html5shiv.min.js"></script><![endif]-->
+    <!--[if !IE 8]><!--><link href="{{ assetPath }}/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+    <!--[if IE 8]><link href="{{ assetPath }}/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    {% block pageCSS %}{% endblock %}
+    <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-57523228-31', 'auto');
+     ga('set', 'anonymizeIp', true);
+     {% if inviteKeyHash %}
+       ga('set', 'userId', '{{ inviteKeyHash }}');
+     {% endif %}
+     {% block gaTagExtra %}{% endblock %}
+     ga('send', 'pageview');
+     ga('set', 'nonInteraction', true);
+
+    </script>
+{% endblock %}
+
+{% block bodyEnd %}
+    <script src="{{ assetPath }}/javascripts/vendor/jquery-1.11.3.min.js"></script>
+    <script src="{{ assetPath }}/javascripts/vendor/stageprompt.js"></script>
+    <script src="{{ assetPath }}/javascripts/vendor/govuk-cookie.js"></script>
+    <script src="{{ assetPath }}/javascripts/application.js"></script>
+    <script src="{{ assetPath }}/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+    {% block pageScript %}{% endblock %}
+{% endblock %}
+
+{% set globalHeaderText = 'GOV.UK' %}
+{% set homepageUrl = 'https://www.gov.uk'  %}
+{% set logoLinkTitle = 'Go to the GOV.UK homepage'  %}
+{% set skipLinkMessage = 'Skip to main content' %}
+{% set pageTitle = 'GOV.UK - The best place to find government services and information'  %}
+{% set cookieMessage = 'GOV.UK uses cookies to make the site simpler. <a href="cookie-policy" target="_blank" class="cookie-banner__link">Find out more about cookies</a>'  %}
+{% set licenceMessage = '<p class="govuk-body">All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>' %}
+{% set crownCopyrightMessage = '© Crown copyright' %}
+
+
+{% set headerClass="with-proposition" %}
+
+{% block header %}
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <p class="cookie-banner__message">{{ cookieMessage | safe }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ govukHeader({
+    homepageUrl: homepageUrl,
+    serviceName: t("app:service_name"),
+    serviceUrl: serviceURL
+  }) }}
+{% endblock %}
+
+{% block main %}
+  <div class="govuk-width-container">
+    {{ govukPhaseBanner({
+      tag: {
+        text: "beta"
+      }
+    }) }}
+    {% block languageSelect %}{% endblock %}
+    {% block backLink %}{% endblock %}
+    <main id="content" class="govuk-main-wrapper" role="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+{% endblock %}
+
+{% block footer %}
+
+  {% set footerMetaItems = [{
+    href: "cookie-policy",
+    text: t("app:navigation.cookies"),
+    attributes: {
+      target: "_blank"
+    }
+  }] %}
+
+  {% if isNorthernIreland === false %}
+    {% set footerMetaItems = (footerMetaItems.push({
+      href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
+      text: t("app:navigation.privacy"),
+      attributes: {
+        target: "_blank",
+        id: "privacy-policy",
+        rel: "external",
+        'data-journey-click': t("google-analytics:footer.privacy")
+      }
+    }), footerMetaItems) %}
+  {% elif isNorthernIreland === true %}
+    {% set footerMetaItems = (footerMetaItems.push({
+      href: "https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf",
+      text: t("app:navigation.northernIreland.privacy"),
+      attributes: {
+        target: "_blank",
+        id: "privacy-policy--northern-ireland",
+        rel: "external",
+        'data-journey-click': t("google-analytics:footer.ni-privacy")
+      }
+    }), footerMetaItems) %}
+  {% else %}
+    {% set footerMetaItems = (footerMetaItems.push({
+      href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
+      text: t("app:navigation.privacy"),
+      attributes: {
+        target: "_blank",
+        id: "privacy-policy",
+        rel: "external",
+        'data-journey-click': t("google-analytics:footer.privacy")
+      }
+    }, {
+      href: "https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf",
+      text: t("app:navigation.northernIreland.privacy"),
+      attributes: {
+        target: "_blank",
+        id: "privacy-policy--northern-ireland",
+        rel: "external",
+        'data-journey-click': t("google-analytics:footer.ni-privacy")
+      }
+    }), footerMetaItems) %}
+  {% endif %}
+
+  {{ govukFooter({
+    meta: {
+      items: footerMetaItems
+    }
+  }) }}
+{% endblock %}

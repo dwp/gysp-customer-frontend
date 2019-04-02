@@ -1,0 +1,72 @@
+{
+  "header":"Polisi Cwcis",
+  "p1": "Mae'r gwasanaeth Cael eich Pensiwn y Wladwriaeth yn gosod ffeiliau bychan (a elwir yn 'cwcis') ar eich cyfrifiadur.",
+  "p2": "Defnyddir y cwcis hyn i:",
+  "p2-l1": "deall sut rydych yn defnyddio'r gwasanaeth i wneud gwelliannau",
+  "p2-l2": "cofio unrhyw hysbysiadau rydych wedi'u gweld fel nad ydynt yn casel eu dangos i chi fwy nag unwaith",
+  "p2-l3": "cadw eich gwybodaeth yn ddiogel fel rydych yn symud trwy'r gwasanaeth",
+  "p3": "Mae'n rhaid bod cwcis wedi'u galluogi ar eich cyfrifiadur i ddefnyddio'r gwasanaeth Cael eich Pensiwn y Wladwriaeth.",
+  "h2-1": "Os nad yw eich cwcis ymlaen",
+  "p4": "Byddwch yn gweld neges o wall pan fyddwch yn ceisio defnyddio'r gwasanaeth os nad yw eich cwcis wedi'u galluogi.",
+  "p5": "Mae sut i roi cwcis ymlaen yn dibynnu ar y <a href='__URL__'>porwr rydych yn ei ddefnyddio</a> a pha mor ddiweddar ydyw.",
+  "p6": "Darganfyddwch sut i newid eich gosodiadau ar gyfer y porwyr mwyaf poblogaidd, yn cynnwys:",
+  "p6-l1": "<a href='__URL__'>Internet Explorer</a>",
+  "p6-l2": "<a href='__URL__'>Mozilla Firefox</a>",
+  "p6-l3": "<a href='__URL__'>Google Chrome</a>",
+  "p6-l4": "<a href='__URL__'>Safari</a>, sy'n cael ei ddefnyddio'n aml ar iPad, iPhone a chyfrifiaduron eraill Apple",
+  "p7": "Darganfyddwch <a href='__URL__'>sut i reoli cwcis</a> ar gyfer porwyr eraill.",
+  "h2-2": "Cwcis a ddefnyddir gan y gwasanaeth Cael eich Pensiwn y Wladwriaeth",
+  "h3-1": "Google analytics",
+  "p8": "Mae Google Analytics yn casglu gwybodaeth am sut rydych yn defnyddio'r gwasanaeth. Defnyddir y wybodaeth yma i wella'r gwasanaeth.",
+  "p9": "Mae cwcis Google analytics yn casglu a storio gwybodaeth am:",
+  "p9-l1": "y dudalen rydych yn ymweld â hi - beth rydych yn ei glicio arno wrth ddefnyddio'r gwasanaeth",
+  "p9-l2": "faint o amser rydych yn ei dreulio ar bob tudalen",
+  "p9-l3": "sut wnaethoch chi gyrraedd y gwasanaeth",
+  "h3-2": "Google analytics",
+  "cookies-table": {
+    "row-1": {
+      "header": "Enw",
+      "col-1": "_ga",
+      "col-2": "_gat"
+    },
+    "row-2": {
+      "header": "Diben",
+      "col-1": "Cyfri faint o bobl faint o bobl sy’n ymweld â'r gwasanaeth drwy olrhain os ydych wedi ymweld o’r blaen.",
+      "col-2": "Defnyddir i gyfri faint o dudalennau yr edrychir arnynt a pha mor aml."
+    },
+    "row-3": {
+      "header": "Dirwyn i ben",
+      "col-1": "30 munud neu pan fyddwch yn can eich porwr",
+      "col-2": "10 munud"
+    }
+  },
+  "p10": "Ni fydd Google yn defnyddio na rhannu data dadansoddol gydag unrhyw un, ond fe allwch <a href='__URL__'>eithrio alla o Google Analytics</a>.",
+  "h3-3": "Cwcis sesiwn a diogelwch",
+  "p11": "Mae cwcis sesiwn yn cadw eich gwybodaeth yn ddiogel fel rydych yn symud yn ôl ac ymlaen drwy'r gwasanaeth.",
+  "p12": "Mae'r cwcis hyn yn cael eu dileu'n awtomatig o'ch cyfrifiadur pan fyddwch yn cwblhau eich cais neu os:",
+  "p12-l1": "na fyddwch yn gwneud unrhyw beth am 30 munud",
+  "p12-l2": "rydych yn cau eich porwr",
+  "p12-l3": "rydych yn troi eich cyfrifiadur i ffwrdd",
+  "h3-4": "Cwci neges gyflwyno",
+  "p13": "Efallai y byddwch yn gweld neges 'croeso' yn ymddangos pan fyddwch yn defnyddio'r gwasanaeth am y tro cyntaf. Mae cwci yn sicrhau y byddwch ond yn gweld y neges yma unwaith y mis.",
+  "p14": "Mae'r cwci hwn yn cael ei ddileu o'ch cyfrifiadur ar ôl mis.",
+  "h2-3": "Cwcis",
+  "h3-6": "Cwcis gwasanaeth",
+  "service-table": {
+    "row-1": {
+      "header": "Enw",
+      "col-1": "seen_cookie_message",
+      "col-2": "sessionID"
+    },
+    "row-2": {
+      "header": "Diben",
+      "col-1": "Mae hwn yn cofnodi os ydych wedi gweld y neges cwcis ar frig y wefan pan rydych yn ymweld am y tro cyntaf, fel nad ydych yn ei weld ar bob ymweliad.",
+      "col-2": "I gofio ble rydych chi yn y cais a'ch atebion blaenorol fel y gallwch symud yn ôl ac ymlaen drwy'r gwasanaeth."
+    },
+    "row-3": {
+      "header": "Dirwyn i ben",
+      "col-1": "1 mis",
+      "col-2": "30 munud neu pan fyddwch yn cau eich porwr"
+    }
+  }
+}

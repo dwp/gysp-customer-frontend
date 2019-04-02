@@ -1,0 +1,1270 @@
+[ {
+    "insurance": false, "name": "Afghanistan", "residence": false, "tokens": ["afghanistan"], "value": "afghanistan"
+}
+
+,
+{
+    "insurance": false, "name": "Albania", "residence": false, "tokens": ["albania"], "value": "albania"
+}
+
+,
+{
+    "insurance": false, "name": "Alderney", "residence": false, "tokens": ["alderney"], "value": "alderney"
+}
+
+,
+{
+    "insurance": false, "name": "Algeria", "residence": false, "tokens": ["algeria"], "value": "algeria"
+}
+
+,
+{
+    "insurance": false, "name": "American Samoa", "residence": false, "tokens": ["american samoa"], "value": "american samoa"
+}
+
+,
+{
+    "insurance": false, "name": "Andorra", "residence": false, "tokens": ["andorra"], "value": "andorra"
+}
+
+,
+{
+    "insurance": false, "name": "Angola", "residence": false, "tokens": ["angola"], "value": "angola"
+}
+
+,
+{
+    "insurance": false, "name": "Anguilla", "residence": false, "tokens": ["anguilla"], "value": "anguilla"
+}
+
+,
+{
+    "insurance": false, "name": "Antartic Territories (British)", "residence": false, "tokens": ["antartic territories british"], "value": "antartic territories (british)"
+}
+
+,
+{
+    "insurance": false, "name": "Antigua and Barbuda", "residence": false, "tokens": ["antigua and barbuda", "barbuda"], "value": "antigua and barbuda"
+}
+
+,
+{
+    "insurance": false, "name": "Argentina", "residence": false, "tokens": ["argentina", "argentine nation", "argentine confederation", "united provinces of the rio de la plata"], "value": "argentina"
+}
+
+,
+{
+    "insurance": false, "name": "Armenia", "residence": false, "tokens": ["armenia", "hayastan"], "value": "armenia"
+}
+
+,
+{
+    "insurance": false, "name": "Aruba", "residence": false, "tokens": ["aruba"], "value": "aruba"
+}
+
+,
+{
+    "insurance": false, "name": "Ascension Island", "residence": false, "tokens": ["ascension island"], "value": "ascension island"
+}
+
+,
+{
+    "insurance": false, "name": "Australia", "residence": true, "tokens": ["commonwealth of australia"], "value": "australia"
+}
+
+,
+{
+    "insurance": true, "name": "Austria", "residence": false, "tokens": ["austria"], "value": "austria"
+}
+
+,
+{
+    "insurance": false, "name": "Azerbaijan", "residence": false, "tokens": ["azerbaijan"], "value": "azerbaijan"
+}
+
+,
+{
+    "insurance": false, "name": "Bahrain", "residence": false, "tokens": ["bahrain"], "value": "bahrain"
+}
+
+,
+{
+    "insurance": false, "name": "Bangladesh", "residence": false, "tokens": ["bangladesh", "bengal"], "value": "bangladesh"
+}
+
+,
+{
+    "insurance": true, "name": "Barbados", "residence": false, "tokens": ["barbados"], "value": "barbados"
+}
+
+,
+{
+    "insurance": false, "name": "Belarus", "residence": false, "tokens": ["belarus", "byelorussia"], "value": "belarus"
+}
+
+,
+{
+    "insurance": true, "name": "Belgium", "residence": false, "tokens": ["belgium"], "value": "belgium"
+}
+
+,
+{
+    "insurance": false, "name": "Belize", "residence": false, "tokens": ["belize", "british honduras"], "value": "belize"
+}
+
+,
+{
+    "insurance": false, "name": "Benin", "residence": false, "tokens": ["benin", "dahomey"], "value": "benin"
+}
+
+,
+{
+    "insurance": true, "name": "Bermuda", "residence": false, "tokens": ["bermuda"], "value": "bermuda"
+}
+
+,
+{
+    "insurance": false, "name": "Bhutan", "residence": false, "tokens": ["bhutan"], "value": "bhutan"
+}
+
+,
+{
+    "insurance": false, "name": "Bissau", "residence": false, "tokens": ["bissau"], "value": "bissau"
+}
+
+,
+{
+    "insurance": false, "name": "Bolivia", "residence": false, "tokens": ["bolivia"], "value": "bolivia"
+}
+
+,
+{
+    "insurance": false, "name": "Bonaire / St Eustatius / Saba", "residence": false, "tokens": ["bonaire/st eustatius/saba"], "value": "bonaire/st eustatius/saba"
+}
+
+,
+{
+    "insurance": true, "name": "Bosnia and Herzegovina", "residence": false, "tokens": ["bosnia and herzegovina"], "value": "bosnia and herzegovina"
+}
+
+,
+{
+    "insurance": false, "name": "Botswana", "residence": false, "tokens": ["botswana", "bechuanaland"], "value": "botswana"
+}
+
+,
+{
+    "insurance": false, "name": "Brazil", "residence": false, "tokens": ["brazil", "brasil"], "value": "brazil"
+}
+
+,
+{
+    "insurance": false, "name": "British Indian Ocean Territory", "residence": false, "tokens": ["british indian ocean territory"], "value": "british indian ocean territory"
+}
+
+,
+{
+    "insurance": false, "name": "Brunei", "residence": false, "tokens": ["brunei"], "value": "brunei"
+}
+
+,
+{
+    "insurance": false, "name": "Bulgaria", "residence": false, "tokens": ["bulgaria"], "value": "bulgaria"
+}
+
+,
+{
+    "insurance": false, "name": "Burkina Faso", "residence": false, "tokens": ["burkina faso, upper volta"], "value": "burkina faso"
+}
+
+,
+{
+    "insurance": false, "name": "Burma", "residence": false, "tokens": ["burma", "Myanmar"], "value": "burma"
+}
+
+,
+{
+    "insurance": false, "name": "Burundi", "residence": false, "tokens": ["burundi"], "value": "burundi"
+}
+
+,
+{
+    "insurance": false, "name": "Cambodia", "residence": false, "tokens": ["cambodia", "khmer republic", "democratic kampuchea"], "value": "cambodia"
+}
+
+,
+{
+    "insurance": false, "name": "Cameroon", "residence": false, "tokens": ["cameroon"], "value": "cameroon"
+}
+
+,
+{
+    "insurance": false, "name": "Canada", "residence": true, "tokens": ["canada"], "value": "canada"
+}
+
+,
+{
+    "insurance": false, "name": "Cape Verde", "residence": false, "tokens": ["cape verde"], "value": "cape verde"
+}
+
+,
+{
+    "insurance": false, "name": "Cayman Islands", "residence": false, "tokens": ["cayman islands"], "value": "cayman islands"
+}
+
+,
+{
+    "insurance": false, "name": "Central African Republic", "residence": false, "tokens": ["central african republic"], "value": "central african republic"
+}
+
+,
+{
+    "insurance": false, "name": "Chad", "residence": false, "tokens": ["chad"], "value": "chad"
+}
+
+,
+{
+    "insurance": false, "name": "Chile", "residence": false, "tokens": ["chile"], "value": "chile"
+}
+
+,
+{
+    "insurance": false, "name": "China", "residence": false, "tokens": ["peoples republic of china"], "value": "china"
+}
+
+,
+{
+    "insurance": false, "name": "Colombia", "residence": false, "tokens": ["colombia"], "value": "colombia"
+}
+
+,
+{
+    "insurance": false, "name": "Comoros", "residence": false, "tokens": ["comoros"], "value": "comoros"
+}
+
+,
+{
+    "insurance": false, "name": "Cook Islands", "residence": false, "tokens": ["cook islands"], "value": "cook islands"
+}
+
+,
+{
+    "insurance": false, "name": "Costa Rica", "residence": false, "tokens": ["costa rica"], "value": "costa rica"
+}
+
+,
+{
+    "insurance": false, "name": "Cote d'Ivoire", "residence": false, "tokens": ["cote d’ivoire, the ivory coast", "ivory coast"], "value": "cote d'ivoire"
+}
+
+,
+{
+    "insurance": true, "name": "Croatia", "residence": false, "tokens": ["croatia", "hrvatska"], "value": "croatia"
+}
+
+,
+{
+    "insurance": false, "name": "Cuba", "residence": false, "tokens": ["cuba"], "value": "cuba"
+}
+
+,
+{
+    "insurance": false, "name": "Curaçao", "residence": false, "tokens": ["curaçao, curacao"], "value": "curaçao"
+}
+
+,
+{
+    "insurance": true, "name": "Cyprus", "residence": false, "tokens": ["cyprus"], "value": "cyprus"
+}
+
+,
+{
+    "insurance": true, "name": "Czech Republic", "residence": false, "tokens": ["czech republic", "czechia"], "value": "czech republic"
+}
+
+,
+{
+    "insurance": false, "name": "Czechoslovakia", "residence": false, "tokens": ["czechoslovakia"], "value": "czechoslovakia"
+}
+
+,
+{
+    "insurance": false, "name": "Democratic Republic of Congo", "residence": false, "tokens": ["democratic republic of congo, zaire"], "value": "democratic republic of congo"
+}
+
+,
+{
+    "insurance": true, "name": "Denmark", "residence": false, "tokens": ["denmark"], "value": "denmark"
+}
+
+,
+{
+    "insurance": false, "name": "Djibouti", "residence": false, "tokens": ["djibouti"], "value": "djibouti"
+}
+
+,
+{
+    "insurance": false, "name": "Dominica", "residence": false, "tokens": ["dominica", "commonwealth of dominica"], "value": "dominica"
+}
+
+,
+{
+    "insurance": false, "name": "Dominican Republic", "residence": false, "tokens": ["dominican republic"], "value": "dominican republic"
+}
+
+,
+{
+    "insurance": false, "name": "East Timor", "residence": false, "tokens": ["East timor"], "value": "east timor"
+}
+
+,
+{
+    "insurance": false, "name": "Ecuador", "residence": false, "tokens": ["ecuador"], "value": "ecuador"
+}
+
+,
+{
+    "insurance": false, "name": "Egypt", "residence": false, "tokens": ["egypt"], "value": "egypt"
+}
+
+,
+{
+    "insurance": false, "name": "Eire (Irish Republic)", "residence": false, "tokens": ["eire irish republic"], "value": "eire (irish republic)"
+}
+
+,
+{
+    "insurance": false, "name": "El Salvador", "residence": false, "tokens": ["el salvador"], "value": "el salvador"
+}
+
+,
+{
+    "insurance": false, "name": "Equatorial Guinea", "residence": false, "tokens": ["equatorial guinea"], "value": "equatorial guinea"
+}
+
+,
+{
+    "insurance": false, "name": "Eritrea", "residence": false, "tokens": ["eritrea"], "value": "eritrea"
+}
+
+,
+{
+    "insurance": true, "name": "Estonia", "residence": false, "tokens": ["estonia"], "value": "estonia"
+}
+
+,
+{
+    "insurance": false, "name": "Ethiopia", "residence": false, "tokens": ["ethiopia", "abyssinia"], "value": "ethiopia"
+}
+
+,
+{
+    "insurance": false, "name": "Falkland Islands", "residence": false, "tokens": ["falkland islands"], "value": "falkland islands"
+}
+
+,
+{
+    "insurance": false, "name": "Faroe Islands", "residence": false, "tokens": ["faroe islands"], "value": "faroe islands"
+}
+
+,
+{
+    "insurance": false, "name": "Fiji", "residence": false, "tokens": ["fiji"], "value": "fiji"
+}
+
+,
+{
+    "insurance": true, "name": "Finland", "residence": false, "tokens": ["finland"], "value": "finland"
+}
+
+,
+{
+    "insurance": true, "name": "France", "residence": false, "tokens": ["france"], "value": "france"
+}
+
+,
+{
+    "insurance": false, "name": "French Guiana", "residence": false, "tokens": ["french guiana"], "value": "french guiana"
+}
+
+,
+{
+    "insurance": false, "name": "French Polynesia", "residence": false, "tokens": ["french polynesia"], "value": "french polynesia"
+}
+
+,
+{
+    "insurance": false, "name": "Gabon", "residence": false, "tokens": ["gabon"], "value": "gabon"
+}
+
+,
+{
+    "insurance": false, "name": "Georgia", "residence": false, "tokens": ["georgia"], "value": "georgia"
+}
+
+,
+{
+    "insurance": true, "name": "Germany", "residence": false, "tokens": ["germany", "East Germany"], "value": "germany"
+}
+
+,
+{
+    "insurance": false, "name": "Ghana", "residence": false, "tokens": ["ghana", "gold coast"], "value": "ghana"
+}
+
+,
+{
+    "insurance": true, "name": "Gibraltar", "residence": false, "tokens": ["gibraltar"], "value": "gibraltar"
+}
+
+,
+{
+    "insurance": true, "name": "Greece", "residence": false, "tokens": ["greece", "hellas"], "value": "greece"
+}
+
+,
+{
+    "insurance": false, "name": "Greenland", "residence": false, "tokens": ["greenland"], "value": "greenland"
+}
+
+,
+{
+    "insurance": false, "name": "Grenada", "residence": false, "tokens": ["grenada"], "value": "grenada"
+}
+
+,
+{
+    "insurance": false, "name": "Guadeloupe", "residence": false, "tokens": ["guadeloupe"], "value": "guadeloupe"
+}
+
+,
+{
+    "insurance": false, "name": "Guam", "residence": false, "tokens": ["guam"], "value": "guam"
+}
+
+,
+{
+    "insurance": false, "name": "Guatemala", "residence": false, "tokens": ["guatemala"], "value": "guatemala"
+}
+
+,
+{
+    "insurance": true, "name": "Guernsey", "residence": false, "tokens": ["guernsey"], "value": "guernsey"
+}
+
+,
+{
+    "insurance": false, "name": "Guinea", "residence": false, "tokens": ["guinea"], "value": "guinea"
+}
+
+,
+{
+    "insurance": false, "name": "Guinea-Bissau", "residence": false, "tokens": ["guinea-bissau"], "value": "guinea-bissau"
+}
+
+,
+{
+    "insurance": false, "name": "Guyana", "residence": false, "tokens": ["guyana"], "value": "guyana"
+}
+
+,
+{
+    "insurance": false, "name": "Haiti", "residence": false, "tokens": ["haiti"], "value": "haiti"
+}
+
+,
+{
+    "insurance": false, "name": "Honduras", "residence": false, "tokens": ["honduras"], "value": "honduras"
+}
+
+,
+{
+    "insurance": false, "name": "Hong Kong", "residence": false, "tokens": ["hong kong"], "value": "hong kong"
+}
+
+,
+{
+    "insurance": true, "name": "Hungary", "residence": false, "tokens": ["hungary"], "value": "hungary"
+}
+
+,
+{
+    "insurance": true, "name": "Iceland", "residence": false, "tokens": ["iceland"], "value": "iceland"
+}
+
+,
+{
+    "insurance": false, "name": "India", "residence": false, "tokens": ["india"], "value": "india"
+}
+
+,
+{
+    "insurance": false, "name": "Indonesia", "residence": false, "tokens": ["indonesia"], "value": "indonesia"
+}
+
+,
+{
+    "insurance": false, "name": "Iran", "residence": false, "tokens": ["iran"], "value": "iran"
+}
+
+,
+{
+    "insurance": false, "name": "Iraq", "residence": false, "tokens": ["iraq", "mesopotamia"], "value": "iraq"
+}
+
+,
+{
+    "insurance": true, "name": "Ireland", "residence": false, "tokens": ["ireland"], "value": "ireland"
+}
+
+,
+{
+    "insurance": true, "name": "Isle of Man", "residence": false, "tokens": ["isle of man"], "value": "isle of man"
+}
+
+,
+{
+    "insurance": true, "name": "Israel", "residence": false, "tokens": ["israel"], "value": "israel"
+}
+
+,
+{
+    "insurance": true, "name": "Italy", "residence": false, "tokens": ["italy"], "value": "italy"
+}
+
+,
+{
+    "insurance": true, "name": "Jamaica", "residence": false, "tokens": ["jamaica"], "value": "jamaica"
+}
+
+,
+{
+    "insurance": false, "name": "Japan", "residence": false, "tokens": ["japan"], "value": "japan"
+}
+
+,
+{
+    "insurance": true, "name": "Jersey", "residence": false, "tokens": ["jersey"], "value": "jersey"
+}
+
+,
+{
+    "insurance": false, "name": "Jordan", "residence": false, "tokens": ["jordan"], "value": "jordan"
+}
+
+,
+{
+    "insurance": false, "name": "Kampuchea", "residence": false, "tokens": ["kampuchea"], "value": "kampuchea"
+}
+
+,
+{
+    "insurance": false, "name": "Kazakhstan", "residence": false, "tokens": ["kazakhstan"], "value": "kazakhstan"
+}
+
+,
+{
+    "insurance": false, "name": "Kenya", "residence": false, "tokens": ["kenya"], "value": "kenya"
+}
+
+,
+{
+    "insurance": false, "name": "Kiribati", "residence": false, "tokens": ["kiribati"], "value": "kiribati"
+}
+
+,
+{
+    "insurance": false, "name": "Kosovo", "residence": false, "tokens": ["kosovo"], "value": "kosovo"
+}
+
+,
+{
+    "insurance": false, "name": "Kuwait", "residence": false, "tokens": ["kuwait"], "value": "kuwait"
+}
+
+,
+{
+    "insurance": false, "name": "Kyrgyzstan", "residence": false, "tokens": ["kyrgyzstan"], "value": "kyrgyzstan"
+}
+
+,
+{
+    "insurance": false, "name": "Laos", "residence": false, "tokens": ["laos"], "value": "laos"
+}
+
+,
+{
+    "insurance": true, "name": "Latvia", "residence": false, "tokens": ["latvia"], "value": "latvia"
+}
+
+,
+{
+    "insurance": false, "name": "Lebanon", "residence": false, "tokens": ["lebanon"], "value": "lebanon"
+}
+
+,
+{
+    "insurance": false, "name": "Lesotho", "residence": false, "tokens": ["lesotho", "basutoland"], "value": "lesotho"
+}
+
+,
+{
+    "insurance": false, "name": "Liberia", "residence": false, "tokens": ["liberia"], "value": "liberia"
+}
+
+,
+{
+    "insurance": false, "name": "Libya", "residence": false, "tokens": ["libya"], "value": "libya"
+}
+
+,
+{
+    "insurance": true, "name": "Liechtenstein", "residence": false, "tokens": ["liechtenstein"], "value": "liechtenstein"
+}
+
+,
+{
+    "insurance": true, "name": "Lithuania", "residence": false, "tokens": ["lithuania"], "value": "lithuania"
+}
+
+,
+{
+    "insurance": true, "name": "Luxembourg", "residence": false, "tokens": ["luxembourg"], "value": "luxembourg"
+}
+
+,
+{
+    "insurance": false, "name": "Macao", "residence": false, "tokens": ["macao"], "value": "macao"
+}
+
+,
+{
+    "insurance": true, "name": "Macedonia (FYROM)", "residence": false, "tokens": ["former yugoslav republic of macedonia", "former yug rep of macedonia", "macedonia"], "value": "former yug rep of macedonia"
+}
+
+,
+{
+    "insurance": false, "name": "Madagascar", "residence": false, "tokens": ["madagascar"], "value": "madagascar"
+}
+
+,
+{
+    "insurance": false, "name": "Malagasy Republic", "residence": false, "tokens": ["malagasy republic"], "value": "malagasy republic"
+}
+
+,
+{
+    "insurance": false, "name": "Malawi", "residence": false, "tokens": ["malawi", "nyasaland"], "value": "malawi"
+}
+
+,
+{
+    "insurance": false, "name": "Malaysia", "residence": false, "tokens": ["malaysia", "sabah and sarawak"], "value": "malaysia"
+}
+
+,
+{
+    "insurance": false, "name": "Maldives", "residence": false, "tokens": ["maldives"], "value": "maldives"
+}
+
+,
+{
+    "insurance": false, "name": "Mali", "residence": false, "tokens": ["mali"], "value": "mali"
+}
+
+,
+{
+    "insurance": true, "name": "Malta", "residence": false, "tokens": ["malta"], "value": "malta"
+}
+
+,
+{
+    "insurance": false, "name": "Marshall Islands", "residence": false, "tokens": ["marshall islands"], "value": "marshall islands"
+}
+
+,
+{
+    "insurance": false, "name": "Martinique", "residence": false, "tokens": ["martinique"], "value": "martinique"
+}
+
+,
+{
+    "insurance": false, "name": "Mauritania", "residence": false, "tokens": ["mauritania"], "value": "mauritania"
+}
+
+,
+{
+    "insurance": true, "name": "Mauritius", "residence": false, "tokens": ["mauritius"], "value": "mauritius"
+}
+
+,
+{
+    "insurance": false, "name": "Mayotte", "residence": false, "tokens": ["mayotte"], "value": "mayotte"
+}
+
+,
+{
+    "insurance": false, "name": "Mexico", "residence": false, "tokens": ["mexico"], "value": "mexico"
+}
+
+,
+{
+    "insurance": false, "name": "Micronesia", "residence": false, "tokens": ["micronesia", "Federated States of Micronesia"], "value": "micronesia"
+}
+
+,
+{
+    "insurance": false, "name": "Moldova", "residence": false, "tokens": ["moldova"], "value": "moldova"
+}
+
+,
+{
+    "insurance": false, "name": "Monaco", "residence": false, "tokens": ["monaco"], "value": "monaco"
+}
+
+,
+{
+    "insurance": false, "name": "Mongolia", "residence": false, "tokens": ["mongolia"], "value": "mongolia"
+}
+
+,
+{
+    "insurance": true, "name": "Montenegro", "residence": false, "tokens": ["montenegro"], "value": "montenegro"
+}
+
+,
+{
+    "insurance": false, "name": "Montserrat", "residence": false, "tokens": ["montserrat"], "value": "montserrat"
+}
+
+,
+{
+    "insurance": false, "name": "Morocco", "residence": false, "tokens": ["morocco"], "value": "morocco"
+}
+
+,
+{
+    "insurance": false, "name": "Mozambique", "residence": false, "tokens": ["mozambique"], "value": "mozambique"
+}
+
+,
+{
+    "insurance": false, "name": "Namibia", "residence": false, "tokens": ["namibia"], "value": "namibia"
+}
+
+,
+{
+    "insurance": false, "name": "Nauru", "residence": false, "tokens": ["nauru"], "value": "nauru"
+}
+
+,
+{
+    "insurance": false, "name": "Nepal", "residence": false, "tokens": ["nepal"], "value": "nepal"
+}
+
+,
+{
+    "insurance": true, "name": "Netherlands", "residence": false, "tokens": ["netherlands", "the netherlands, holland"], "value": "netherlands"
+}
+
+,
+{
+    "insurance": false, "name": "Netherlands Antilles", "residence": false, "tokens": ["netherlands", "antilles"], "value": "netherlands antilles"
+}
+
+,
+{
+    "insurance": false, "name": "New Caledonia", "residence": false, "tokens": ["new caledonia"], "value": "new caledonia"
+}
+
+,
+{
+    "insurance": false, "name": "New Zealand", "residence": true, "tokens": ["new zealand"], "value": "new zealand"
+}
+
+,
+{
+    "insurance": false, "name": "Nicaragua", "residence": false, "tokens": ["nicaragua"], "value": "nicaragua"
+}
+
+,
+{
+    "insurance": false, "name": "Niger", "residence": false, "tokens": ["niger"], "value": "niger"
+}
+
+,
+{
+    "insurance": false, "name": "Nigeria", "residence": false, "tokens": ["nigeria"], "value": "nigeria"
+}
+
+,
+{
+    "insurance": false, "name": "Norfolk Island", "residence": false, "tokens": ["norfolk island"], "value": "norfolk island"
+}
+
+,
+{
+    "insurance": false, "name": "North Korea", "residence": false, "tokens": ["north korea"], "value": "north korea"
+}
+
+,
+{
+    "insurance": true, "name": "Norway", "residence": false, "tokens": ["norway"], "value": "norway"
+}
+
+,
+{
+    "insurance": false, "name": "Oman", "residence": false, "tokens": ["oman"], "value": "oman"
+}
+
+,
+{
+    "insurance": false, "name": "Pakistan", "residence": false, "tokens": ["pakistan"], "value": "pakistan"
+}
+
+,
+{
+    "insurance": false, "name": "Palau", "residence": false, "tokens": ["palau"], "value": "palau"
+}
+
+,
+{
+    "insurance": false, "name": "Panama", "residence": false, "tokens": ["panama"], "value": "panama"
+}
+
+,
+{
+    "insurance": false, "name": "Papua New Guinea", "residence": false, "tokens": ["papua new guinea"], "value": "papua new guinea"
+}
+
+,
+{
+    "insurance": false, "name": "Paraguay", "residence": false, "tokens": ["paraguay"], "value": "paraguay"
+}
+
+,
+{
+    "insurance": false, "name": "Peru", "residence": false, "tokens": ["peru"], "value": "peru"
+}
+
+,
+{
+    "insurance": true, "name": "Philippines", "residence": false, "tokens": ["philippines"], "value": "philippines"
+}
+
+,
+{
+    "insurance": false, "name": "Pitcairn Islands", "residence": false, "tokens": ["pitcairn island"], "value": "pitcairn island"
+}
+
+,
+{
+    "insurance": true, "name": "Poland", "residence": false, "tokens": ["poland"], "value": "poland"
+}
+
+,
+{
+    "insurance": true, "name": "Portugal", "residence": false, "tokens": ["portugal"], "value": "portugal"
+}
+
+,
+{
+    "insurance": false, "name": "Qatar", "residence": false, "tokens": ["qatar"], "value": "qatar"
+}
+
+,
+{
+    "insurance": false, "name": "Republic of the congo", "residence": false, "tokens": ["congo"], "value": "congo"
+}
+
+,
+{
+    "insurance": false, "name": "Romania", "residence": false, "tokens": ["romania"], "value": "romania"
+}
+
+,
+{
+    "insurance": false, "name": "Russia", "residence": false, "tokens": ["russia", "Russian Federation"], "value": "russia"
+}
+
+,
+{
+    "insurance": false, "name": "Rwanda", "residence": false, "tokens": ["rwanda"], "value": "rwanda"
+}
+
+,
+{
+    "insurance": false, "name": "Réunion", "residence": false, "tokens": ["réunion, reunion"], "value": "réunion"
+}
+
+,
+{
+    "insurance": false, "name": "Sabah", "residence": false, "tokens": ["sabah"], "value": "sabah"
+}
+
+,
+{
+    "insurance": false, "name": "Saint Martin", "residence": false, "tokens": ["saint martin"], "value": "saint martin"
+}
+
+,
+{
+    "insurance": false, "name": "Samoa", "residence": false, "tokens": ["samoa"], "value": "samoa"
+}
+
+,
+{
+    "insurance": false, "name": "San Marino", "residence": false, "tokens": ["san marino"], "value": "san marino"
+}
+
+,
+{
+    "insurance": false, "name": "Sao Tome and Principe", "residence": false, "tokens": ["sao tome and principe, sao tome and principe"], "value": "sao tome and principe"
+}
+
+,
+{
+    "insurance": false, "name": "Sarawak", "residence": false, "tokens": ["sarawak"], "value": "sarawak"
+}
+
+,
+{
+    "insurance": false, "name": "Sark", "residence": false, "tokens": ["sark"], "value": "sark"
+}
+
+,
+{
+    "insurance": false, "name": "Saudi Arabia", "residence": false, "tokens": ["saudi arabia"], "value": "saudi arabia"
+}
+
+,
+{
+    "insurance": false, "name": "Senegal", "residence": false, "tokens": ["senegal"], "value": "senegal"
+}
+
+,
+{
+    "insurance": true, "name": "Serbia", "residence": false, "tokens": ["serbia"], "value": "serbia"
+}
+
+,
+{
+    "insurance": false, "name": "Seychelles", "residence": false, "tokens": ["seychelles"], "value": "seychelles"
+}
+
+,
+{
+    "insurance": false, "name": "Sharjah", "residence": false, "tokens": ["sharjah"], "value": "sharjah"
+}
+
+,
+{
+    "insurance": false, "name": "Sierra Leone", "residence": false, "tokens": ["sierra leone"], "value": "sierra leone"
+}
+
+,
+{
+    "insurance": false, "name": "Singapore", "residence": false, "tokens": ["singapore"], "value": "singapore"
+}
+
+,
+{
+    "insurance": false, "name": "Sint Maarten", "residence": false, "tokens": ["st maarten", "sint maarten"], "value": "sint maarten"
+}
+
+,
+{
+    "insurance": true, "name": "Slovakia", "residence": false, "tokens": ["slovakia"], "value": "slovakia"
+}
+
+,
+{
+    "insurance": true, "name": "Slovenia", "residence": false, "tokens": ["slovenia"], "value": "slovenia"
+}
+
+,
+{
+    "insurance": false, "name": "Solomon Islands", "residence": false, "tokens": ["solomon islands"], "value": "solomon islands"
+}
+
+,
+{
+    "insurance": false, "name": "Somalia", "residence": false, "tokens": ["somalia"], "value": "somalia"
+}
+
+,
+{
+    "insurance": false, "name": "South Africa", "residence": false, "tokens": ["south africa"], "value": "south africa"
+}
+
+,
+{
+    "insurance": false, "name": "South Georgia", "residence": false, "tokens": ["south georgia and the south sandwich islands"], "value": "south georgia and the south sandwich islands"
+}
+
+,
+{
+    "insurance": false, "name": "South Korea", "residence": false, "tokens": ["south korea"], "value": "south korea"
+}
+
+,
+{
+    "insurance": false, "name": "South Sudan", "residence": false, "tokens": ["south sudan"], "value": "south sudan"
+}
+
+,
+{
+    "insurance": true, "name": "Spain", "residence": false, "tokens": ["spain"], "value": "spain"
+}
+
+,
+{
+    "insurance": false, "name": "Sri Lanka", "residence": false, "tokens": ["sri lanka, ceylon"], "value": "sri lanka"
+}
+
+,
+{
+    "insurance": false, "name": "St Helena", "residence": false, "tokens": ["st helena"], "value": "st helena"
+}
+
+,
+{
+    "insurance": false, "name": "St Kitts and Nevis", "residence": false, "tokens": ["st kitts and nevis"], "value": "st kitts and nevis"
+}
+
+,
+{
+    "insurance": false, "name": "St Lucia", "residence": false, "tokens": ["st lucia"], "value": "st lucia"
+}
+
+,
+{
+    "insurance": false, "name": "St Pierre and Miquelon", "residence": false, "tokens": ["st pierre and miquelon, st pierre and miquelon"], "value": "st pierre & miquelon"
+}
+
+,
+{
+    "insurance": false, "name": "St Vincent and the Grenadines", "residence": false, "tokens": ["st vincent and the grenadines"], "value": "st vincent and the grenadines"
+}
+
+,
+{
+    "insurance": false, "name": "Sudan", "residence": false, "tokens": ["sudan"], "value": "sudan"
+}
+
+,
+{
+    "insurance": false, "name": "Suriname", "residence": false, "tokens": ["suriname", "dutch guiana"], "value": "suriname"
+}
+
+,
+{
+    "insurance": false, "name": "Swaziland", "residence": false, "tokens": ["swaziland"], "value": "swaziland"
+}
+
+,
+{
+    "insurance": true, "name": "Sweden", "residence": false, "tokens": ["sweden"], "value": "sweden"
+}
+
+,
+{
+    "insurance": true, "name": "Switzerland", "residence": false, "tokens": ["switzerland"], "value": "switzerland"
+}
+
+,
+{
+    "insurance": false, "name": "Syria", "residence": false, "tokens": ["syria"], "value": "syria"
+}
+
+,
+{
+    "insurance": false, "name": "Tahiti", "residence": false, "tokens": ["tahiti"], "value": "tahiti"
+}
+
+,
+{
+    "insurance": false, "name": "Taiwan", "residence": false, "tokens": ["taiwan", "formosa"], "value": "taiwan"
+}
+
+,
+{
+    "insurance": false, "name": "Tajikistan", "residence": false, "tokens": ["tajikistan"], "value": "tajikistan"
+}
+
+,
+{
+    "insurance": false, "name": "Tanzania", "residence": false, "tokens": ["tanzania"], "value": "tanzania"
+}
+
+,
+{
+    "insurance": false, "name": "Thailand", "residence": false, "tokens": ["thailand"], "value": "thailand"
+}
+
+,
+{
+    "insurance": false, "name": "The Bahamas", "residence": false, "tokens": ["bahamas"], "value": "the bahamas"
+}
+
+,
+{
+    "insurance": false, "name": "The Gambia", "residence": false, "tokens": ["gambia"], "value": "the gambia"
+}
+
+,
+{
+    "insurance": false, "name": "The occupied Palestinian Territories", "residence": false, "tokens": ["the occupied palestinian territories"], "value": "the occupied palestinian territories"
+}
+
+,
+{
+    "insurance": false, "name": "Timor Leste", "residence": false, "tokens": ["timor leste"], "value": "timor leste"
+}
+
+,
+{
+    "insurance": false, "name": "Togo", "residence": false, "tokens": ["togo"], "value": "togo"
+}
+
+,
+{
+    "insurance": false, "name": "Tonga", "residence": false, "tokens": ["tonga"], "value": "tonga"
+}
+
+,
+{
+    "insurance": false, "name": "Trinidad and Tobago", "residence": false, "tokens": ["trinidad and tobago"], "value": "trinidad and tobago"
+}
+
+,
+{
+    "insurance": false, "name": "Tristan da Cunha", "residence": false, "tokens": ["tristan da cuhna"], "value": "tristan da cuhna"
+}
+
+,
+{
+    "insurance": false, "name": "Tunisia", "residence": false, "tokens": ["tunisia"], "value": "tunisia"
+}
+
+,
+{
+    "insurance": true, "name": "Turkey", "residence": false, "tokens": ["turkey", "ottoman empire"], "value": "turkey"
+}
+
+,
+{
+    "insurance": false, "name": "Turkmenistan", "residence": false, "tokens": ["turkmenistan"], "value": "turkmenistan"
+}
+
+,
+{
+    "insurance": false, "name": "Turks and Caicos Islands", "residence": false, "tokens": ["turks and caicos islands"], "value": "turks and caicos islands"
+}
+
+,
+{
+    "insurance": false, "name": "Tuvalu", "residence": false, "tokens": ["tuvalu"], "value": "tuvalu"
+}
+
+,
+{
+    "insurance": false, "name": "USSR", "residence": false, "tokens": ["ussr"], "value": "ussr"
+}
+
+,
+{
+    "insurance": false, "name": "Uganda", "residence": false, "tokens": ["uganda"], "value": "uganda"
+}
+
+,
+{
+    "insurance": false, "name": "Ukraine", "residence": false, "tokens": ["ukraine", "the ukraine"], "value": "ukraine"
+}
+
+,
+{
+    "insurance": false, "name": "United Arab Emirates", "residence": false, "tokens": ["united arab emirates", "uae"], "value": "united arab emirates"
+}
+
+,
+{
+    "insurance": true, "name": "United States of America", "residence": false, "tokens": ["united states of america", "usa", "u.s.a"], "value": "united states of america"
+}
+
+,
+{
+    "insurance": false, "name": "Uruguay", "residence": false, "tokens": ["uruguay"], "value": "uruguay"
+}
+
+,
+{
+    "insurance": false, "name": "Uzbekistan", "residence": false, "tokens": ["uzbekistan"], "value": "uzbekistan"
+}
+
+,
+{
+    "insurance": false, "name": "Vanuatu", "residence": false, "tokens": ["vanuatu"], "value": "vanuatu"
+}
+
+,
+{
+    "insurance": false, "name": "Vatican City", "residence": false, "tokens": ["vatican city state"], "value": "vatican city"
+}
+
+,
+{
+    "insurance": false, "name": "Venezuela", "residence": false, "tokens": ["venezuela"], "value": "venezuela"
+}
+
+,
+{
+    "insurance": false, "name": "Vietnam", "residence": false, "tokens": ["vietnam"], "value": "vietnam"
+}
+
+,
+{
+    "insurance": false, "name": "Virgin Islands (British)", "residence": false, "tokens": ["british virgin islands"], "value": "virgin islands (british)"
+}
+
+,
+{
+    "insurance": false, "name": "Virgin Islands (USA)", "residence": false, "tokens": ["virgin islands"], "value": "virgin islands (usa)"
+}
+
+,
+{
+    "insurance": false, "name": "Wallis and Futuna", "residence": false, "tokens": ["wallis and futuna"], "value": "wallis and futuna"
+}
+
+,
+{
+    "insurance": false, "name": "Western Sahara", "residence": false, "tokens": ["western sahara"], "value": "western sahara"
+}
+
+,
+{
+    "insurance": false, "name": "Yemen", "residence": false, "tokens": ["yemen arab republic"], "value": "yemen"
+}
+
+,
+{
+    "insurance": false, "name": "Yugoslavia", "residence": false, "tokens": ["federal republic of yugoslavia"], "value": "yugoslavia"
+}
+
+,
+{
+    "insurance": false, "name": "Zaire", "residence": false, "tokens": ["republic of zaire"], "value": "zaire"
+}
+
+,
+{
+    "insurance": false, "name": "Zambia", "residence": false, "tokens": ["zambia", "rhodesia"], "value": "zambia"
+}
+
+,
+{
+    "insurance": false, "name": "Zimbabwe", "residence": false, "tokens": ["zimbabwe", "rhodesia"], "value": "zimbabwe"
+}
+
+]

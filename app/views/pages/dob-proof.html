@@ -1,0 +1,34 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{% block pageTitle %} {{ t("dob-proof:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("dob-proof:h1") }}</h1>
+
+    {% if isOverseas %}
+      {% include '../includes/dob-warning-overseas.html' %}
+    {% else %}
+      {% include '../includes/dob-warning.html' %}
+    {% endif %}
+
+    {{ govukWarningText({
+      text: t("dob-proof:warning"),
+      iconFallbackText: "Warning"
+    }) }}
+
+    {{ govukButton({
+      text: t("dob-proof:button"),
+      href: "/check-your-details"
+    }) }}
+  </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+</div>
+
+
+{% endblock %}

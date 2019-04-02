@@ -1,0 +1,36 @@
+{
+  "header":"Cais wedi'i gwblhau",
+  "header-sent": "Cais wedi'i anfon",
+  "header-ref-text": "Eich rhif cyfeirnod yw",
+  "header-ref": "GYSP257F",
+  "header-ref-unverified-dob": "eich rhif Yswiriant Gwladol",
+  "addtional": {
+    "header": "Mae eich cais wedi cael ei anfon",
+    "p": "Mae eich cais am Bensiwn y Wladwriaeth wedi cael ei anfon ac nid oes angen i chi wneud unrhyw beth arall."
+  },
+  "section-1-h2": "Beth sy'n digwydd nesaf",
+  "p1": {
+    "default": "Byddwch yn derbyn manylion am eich Pensiwn y Wladwriaeth hyd at 14 diwrnod cyn eich dyddiad Pensiwn y Wladwriaeth. Efallai y byddwn hefyd yn cysylltu â chi os byddwn angen mwy o wybodaeth.",
+    "start-date-from": {
+      "less-than-9-weeks": "Byddwn yn eich ffonio i gadarnhau rhywfaint o'r manylion rydych wedi'u rhoi cyn i ni brosesu eich cais.",
+      "more-than-9-weeks": "Byddwch naill ai yn derbyn manylion am eich Pensiwn y Wladwriaeth neu byddwn yn cysylltu â chi i ddarparu mwy o wybodaeth."
+    }
+  },
+  "section-2-h2": "Os bydd eich amgylchiadau'n newid",
+  "p2": "Mae'n rhaid i chi ddweud am y newidiadau canlynol yn syth:",
+  "p2-l1": "newid cyfeiriad (yn cynnwys mynd i'r ysbyty, i gartref gofal neu adael y DU yn barhaol)",
+  "p2-l2": "manylion banc",
+  "p2-l3": "marwolaeth priod neu bartner sifil",
+  "telephone-label": "Ffôn:",
+  "telephone-number": {
+    "gb": "0800 731 0453",
+    "ni": "0800 587 0892"
+  },
+  "textphone-label": "Ffôn testun",
+  "textphone-number": {
+    "gb": "0800 731 0456",
+    "ni": "0808 100 2198"
+  },
+  "print-this-page": "Argraffu'r dudalen hon",
+  "feedback-link-text": "Beth oedd eich barn am y gwasanaeth hwn?"
+}

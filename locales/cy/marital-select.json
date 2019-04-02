@@ -1,0 +1,23 @@
+{
+  "header":"Beth yw eich statws priodasol presennol?",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem canlynol"
+  },
+  "fields": {
+    "maritalStatus": {
+      "label": "Beth yw eich statws priodasol presennol?",
+      "errors": {
+        "required": "Dylech gwblhau."
+      },
+      "options": {
+        "single": "Erioed wedi bod yn briod",
+        "married": "Priod",
+        "civil": "Partneriaeth sifil",
+        "widowed": "Gweddw",
+        "divorced": "Wedi ysgaru",
+        "dissolved": "Partneriaeth sifil wedi'i ddiddymu"
+      }
+  }
+  }
+}

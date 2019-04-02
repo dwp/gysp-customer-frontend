@@ -1,0 +1,23 @@
+{
+  "header":"Your date of birth",
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem or problems."
+  },
+  "fields": {
+    "dob": {
+      "date": {
+          "day": "Day",
+          "month": "Month",
+          "year": "Year"
+      },
+      "hint": "For example, 31 3 1980",
+      "label": "Your date of birth",
+      "errors": {
+        "empty": "Enter a date",
+        "format": "Please enter a valid date.",
+        "future": "Date cannot be in the future."
+      }
+    }
+  }
+}

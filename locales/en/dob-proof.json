@@ -1,0 +1,35 @@
+{
+  "header":"You need to send proof of your date of birth",
+  "h1":"You need to send proof of your date of birth",
+  "p1": "You must send 1 of these original documents:",
+  "list": {
+    "li1": "Birth certificate",
+    "li2": "Certificate of registration of birth",
+    "li3": "Adoption order",
+    "li4": "Certificate of adoption issued by the Registrar General",
+    "li5": "Identity card"
+  },
+  "p2": "Include your National Insurance number and send it to:",
+  "address": {
+    "line1": {
+      "gb": "The Pension Service 4",
+      "ni": "Northern Ireland Pension Centre"
+    },
+    "line2": {
+      "gb": "Mail Handling Site A",
+      "ni": "PO Box 42"
+    },
+    "line3": {
+      "gb": "Wolverhampton",
+      "ni": "Limavady"
+    },
+    "line4": {
+      "gb": "WV98 1AG",
+      "ni": "BT49 4AN"
+    }
+  },
+  "warning": "You can continue with your application, but it can't be processed until you send proof of your date of birth.",
+  "warning-end": "You need to send proof of your date of birth before your application can be processed.",
+  "warning-icon-fallback-text": "Warning",
+  "button": "Continue"
+}

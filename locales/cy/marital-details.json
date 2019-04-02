@@ -1,0 +1,55 @@
+{
+  "header": {
+    "married": "Am eich priod",
+    "civil": "Am eich partner sifil",
+    "divorced": "Am eich cyn briod",
+    "dissolved": "Am eich cyn bartner",
+    "widowed": "Am eich diweddar briod"
+  },
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem canlynol"
+  },
+  "fields": {
+    "firstName": {
+        "label": "Eu henw cyntaf",
+        "label-display": "Eu henw cyntaf",
+        "errors": {
+          "required": "Rhowch eu henw cyntaf",
+          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
+          "length": "Mwyafswm hyd yw 70."
+        }
+    },
+    "surname": {
+        "label": "Eu cyfenw",
+        "label-display": "Eu cyfenw",
+        "errors": {
+          "required": "Rhowch eu cyfenw",
+          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
+          "length": "Mwyafswm hyd yw 70."
+        }
+    },
+    "otherName": {
+        "label": "Pob enw arall maent wedi gael eu hadnabod fel",
+        "label-display": "Enwau eraill",
+        "hint": "Dylech gynnwys enw bedydd, cyn enw priodasol neu newidiadau i enw teuluol.",
+        "errors": {
+          "required": "Dylech gwblhau.",
+          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
+          "length": "Mwyafswm hyd yw 70."
+        }
+    },
+      "dob": {
+        "legend": "Eu dyddiad geni (dewisol)",
+        "label-display": "Eu Dyddiad geni",
+        "hint": "Er enghraifft, 31 3 1980",
+        "day": "Diwrnod",
+        "month": "Mis",
+        "year": "Blwyddyn",
+        "errors": {
+          "format": "Dylech roi dyddiad dilys.",
+          "future": "Ni all y dyddiad fod yn y dyfodol."
+        }
+      }
+    }
+}

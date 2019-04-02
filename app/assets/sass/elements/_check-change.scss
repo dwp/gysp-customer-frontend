@@ -1,0 +1,17 @@
+.check-change {
+  &__table {
+    margin: 1em 0 2em;
+  }
+
+  &__caption {
+    @include govuk-responsive-margin(4, 'bottom');
+  }
+
+  &__row {
+    border-top: 1px solid $govuk-border-colour;
+  }
+
+  &__cell {
+    vertical-align: top;
+  }
+}

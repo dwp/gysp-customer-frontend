@@ -1,0 +1,77 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("lived-abroad:header") }}{% endblock %}
+
+{% block gaTagExtra %}
+  {% if numberOfDaysBetweenSpaAndClaimFromDate %}
+    ga('set', 'metric2', {{ numberOfDaysBetweenSpaAndClaimFromDate }});
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("lived-abroad:errors.header"),
+      descriptionText: t("lived-abroad:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="have-you-ever-lived-outside-of-the-uk" autocomplete="off">
+        {% if isOverseas === false %}
+          {% set livedAbroadHint = {text: t("lived-abroad:p1")} %}
+        {% endif %}
+
+        {{ govukRadios({
+          errorMessage: errors.livedAbroad,
+          classes: "govuk-radios--inline",
+          name: "livedAbroad",
+          fieldset: {
+            legend: {
+              text: t("lived-abroad:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            },
+            attributes: {
+              id: "livedAbroad"
+            }
+          },
+          hint: livedAbroadHint,
+          items: [{
+            id: "livedAbroad-yes",
+            value: "yes",
+            text: t("lived-abroad:fields.livedAbroad.options.yes"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.lived-abroad.lived-outside", {VALUE: "yes"})
+            },
+            checked: true if details.livedAbroad == 'yes' else false
+          }, {
+            id: "livedAbroad-no",
+            value: "no",
+            text: t("lived-abroad:fields.livedAbroad.options.no"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.lived-abroad.lived-outside", {VALUE: "no"})
+            },
+            checked: true if details.livedAbroad == 'no' else false
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}

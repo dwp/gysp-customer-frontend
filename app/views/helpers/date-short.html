@@ -1,0 +1,26 @@
+{% macro inputTextDateShort(name, id, label, value, error, fieldErrors, cssOptions, dataJourneyClick) %}
+
+<div id="{{id}}-form" class="form-group{% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %}">
+      <fieldset>
+        <div class="form-date">
+
+          {% if label.legend %}<legend class="form-label form-label-bold">{{ label.legend }}</legend> {% endif %}
+
+
+          {% if label.hint %}<p class="form-hint">{{label.hint}}</p>{% endif %}
+          {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+
+          <div class="form-group form-group-month">
+            <label for="{{name}}-month">{{ label.month }}</label>
+            <input class="form-control{%if fieldErrors.month %} {% else %} no-error {% endif %}" id="{{id}}-month" name="{{name}}Month" value="{{value.month}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} month"{% endif %} />
+          </div>
+
+          <div class="form-group form-group-year">
+            <label for="{{name}}-year">{{ label.year }}</label>
+            <input class="form-control{%if fieldErrors.year %} {% else %} no-error {% endif %}" id="{{id}}-year" name="{{name}}Year" value="{{value.year}}" type="text" maxlength="4" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} year"{% endif %} />
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+{% endmacro %}

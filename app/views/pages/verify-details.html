@@ -1,0 +1,90 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("verify-your-details:header") }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("personal-data:errors.header"),
+      descriptionText: t("personal-data:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-heading-xl--margin-top">{{ t("verify-your-details:header") }}</h1>
+
+      <p class="govuk-body">{{ t("verify-your-details:p1") }}</p>
+
+      <h3 class="govuk-heading-m">{{ t("verify-your-details:heading1") }}</h3>
+
+      {{ govukInsetText({
+        text: user.dob
+      }) }}
+
+      <p class="govuk-body">{{ t("verify-your-details:p2") }}</p>
+
+      <h3 class="govuk-heading-m">{{ t("verify-your-details:heading2") }}</h3>
+
+      {% set addressHtml %}
+        {{ user.name }}<br />
+        {% for line in user.addressLines %}
+          {{ line }}<br />
+        {% endfor %}
+      {% endset -%}
+
+      {{ govukInsetText({
+        html: addressHtml
+      }) }}
+
+      <form method="post" action="/verify/your-details" autocomplete="off" id="verify-your-details">
+
+        {{ govukRadios({
+          errorMessage: errors.address,
+          classes: "govuk-radios--inline",
+          name: "address",
+          fieldset: {
+            legend: {
+              text: t("verify-your-details:fields.address.legend"),
+              isPageHeading: false,
+              classes: "govuk-label--s"
+            },
+            attributes: {
+              id: "address"
+            }
+          },
+          items: [{
+            id: "address-yes",
+            value: "yes",
+            text: t("verify-your-details:fields.address.options.yes"),
+            attributes: {
+              "data-dimension-click": t("google-analytics:pages.verify-your-details.status", {VALUE: "yes"})
+            },
+            checked: true if address == 'yes' else false
+          }, {
+            id: "address-no",
+            value: "no",
+            text: t("verify-your-details:fields.address.options.no"),
+            attributes: {
+              "data-dimension-click": t("google-analytics:pages.verify-your-details.status", {VALUE: "no"})
+            },
+            checked: true if address == 'no' else false
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit',
+            'data-ga-check': 'check-if-personal-data-page'
+          }
+        }) }}
+      </form>
+    </div>
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

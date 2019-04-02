@@ -1,0 +1,7 @@
+{
+  "header":"Your claim date",
+  "h1": "Your claim date",
+  "p1": "To make a claim now, you must choose a date within the next 4 months.",
+  "p2": "If you don’t want your State Pension within the next 4 months, come back when you’re ready. You may get more money if you put off claiming your State Pension.",
+  "p3": "<a href=\"__startPensionDatePage__\" class='govuk-link'>I want to get my State Pension sooner</a>"
+}

@@ -1,0 +1,23 @@
+{
+  "header": "Nid yw rhywfaint o'ch manylion wedi cael ei adnabod",
+  "p1": "Rydych wedi dilysu pwy ydych chi'n llwyddiannus gyda chwmni ardystiedig, ond mae'r Adran Gwaith a Phensiynau yn methu â pharu eich manylion. Nid oes angen i chi ddilysu gyda chwmni ardystiedig arall.",
+  "p2": "I gael eich Pensiwn y Wladwriaeth mae angen i chi ein ffonio i gadarnhau rhywfaint o fanylion personol. Byddwch angen eich rhif Yswiriant Gwladol.",
+  "uk":{
+      "header": "Cymru, yr Alban a Lloegr",
+      "telephone_label": "Ffôn:",
+      "telephone_text": "0800 731 7936",
+      "textphone_label": "Ffôn testun: ",
+      "textphone_text": "0800 731 7013",
+      "p1": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+      "p2": "Ar gau ar wyliau cyhoeddus"
+  },
+  "ni":{
+    "header": "Gogledd Iwerddon",
+    "telephone_label": "Ffôn:",
+    "telephone_text": "0808 100 2658",
+    "textphone_label": "Ffôn testun: ",
+    "textphone_text": "0808 100 2198",
+    "p1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
+    "p2": "Ar gau ar wyliau cyhoeddus"
+}
+}

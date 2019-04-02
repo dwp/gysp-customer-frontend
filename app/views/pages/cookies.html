@@ -1,0 +1,105 @@
+{% extends '../helpers/layout.html' %}
+{% from "table/macro.njk" import govukTable %}
+
+{% block pageTitle %}{{ t("cookies:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-xl">{{ t('cookies:header') }}</h1>
+			<p class="govuk-body">{{ t('cookies:p1') }}</p>
+			<p class="govuk-body">{{ t('cookies:p2') }}</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>{{ t('cookies:p2-l1') }}</li>
+				<li>{{ t('cookies:p2-l2') }}</li>
+				<li>{{ t('cookies:p2-l3') }}</li>
+			</ul>
+			<p class="govuk-body">{{ t('cookies:p3') }}</p>
+
+			<h2 class="govuk-heading-m">{{ t('cookies:h2-1') }}</h3>
+			<p class="govuk-body">{{ t('cookies:p4') }}</p>
+			<p class="govuk-body">{{ t('cookies:p5', {URL: 'https://whatbrowser.org/'}) | safe }}</p>
+			<p class="govuk-body">{{ t('cookies:p6') }}</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>{{ t('cookies:p6-l1', {URL: 'https://support.microsoft.com/en-us/products/windows?os=windows-10'}) | safe }}</li>
+				<li>{{ t('cookies:p6-l2', {URL: 'https://www.mozilla.org/en-US/?v=a'}) | safe }}</li>
+				<li>{{ t('cookies:p6-l3', {URL: 'https://support.google.com/accounts/answer/61416?hl=en'}) | safe }}</li>
+				<li>{{ t('cookies:p6-l4', {URL: 'https://www.apple.com'}) | safe }}</li>
+			</ul>
+			<p class="govuk-body">{{ t('cookies:p7', {URL: 'http://www.aboutcookies.org/Default.aspx?page=1'}) | safe }}</p>
+
+			<h2 class="govuk-heading-m">{{ t('cookies:h2-2') }}</h3>
+			<h3 class="govuk-heading-s">{{ t('cookies:h3-1') }}</h3>
+			<p class="govuk-body">{{ t('cookies:p8') }}</p>
+			<p class="govuk-body">{{ t('cookies:p9') }}</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>{{ t('cookies:p9-l1') }}</li>
+				<li>{{ t('cookies:p9-l2') }}</li>
+				<li>{{ t('cookies:p9-l3') }}</li>
+			</ul>
+
+			{{ govukTable({
+				caption: t('cookies:h3-2'),
+				firstCellIsHeader: false,
+				head: [{
+					text: t('cookies:cookies-table.row-1.header')
+				}, {
+					text: t('cookies:cookies-table.row-2.header')
+				}, {
+					text: t('cookies:cookies-table.row-3.header')
+				}],
+				rows: [
+					[
+						{text: t('cookies:cookies-table.row-1.col-1')},
+						{text: t('cookies:cookies-table.row-2.col-1')},
+						{text: t('cookies:cookies-table.row-3.col-1')}
+					], [
+						{text: t('cookies:cookies-table.row-1.col-2')},
+						{text: t('cookies:cookies-table.row-2.col-2')},
+						{text: t('cookies:cookies-table.row-3.col-2')}
+					]
+				]
+			}) }}
+
+			<p class="govuk-body">{{ t('cookies:p10', {URL: 'https://tools.google.com/dlpage/gaoptout'}) | safe }}</p>
+
+			<h3 class="govuk-heading-s">{{ t('cookies:h3-3') }}</h3>
+			<p class="govuk-body">{{ t('cookies:p11') }}</p>
+			<p class="govuk-body">{{ t('cookies:p12') }}</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>{{ t('cookies:p12-l1') }}</li>
+				<li>{{ t('cookies:p12-l2') }}</li>
+				<li>{{ t('cookies:p12-l3') }}</li>
+			</ul>
+
+			<h3 class="govuk-heading-s">{{ t('cookies:h3-4') }}</h3>
+			<p class="govuk-body">{{ t('cookies:p13') }}</p>
+			<p class="govuk-body">{{ t('cookies:p14') }}</p>
+
+			<h2 class="govuk-heading-m">{{ t('cookies:h2-3') }}</h2>
+
+			{{ govukTable({
+				caption: t('cookies:h3-6'),
+				firstCellIsHeader: false,
+				head: [{
+					text: t('cookies:service-table.row-1.header')
+				}, {
+					text: t('cookies:service-table.row-2.header')
+				}, {
+					text: t('cookies:service-table.row-3.header')
+				}],
+				rows: [
+					[
+						{text: t('cookies:service-table.row-1.col-1')},
+						{text: t('cookies:service-table.row-2.col-1')},
+						{text: t('cookies:service-table.row-3.col-1')}
+					], [
+						{text: t('cookies:service-table.row-1.col-2')},
+						{text: t('cookies:service-table.row-2.col-2')},
+						{text: t('cookies:service-table.row-3.col-2')}
+					]
+				]
+			}) }}
+		</div>
+	</div>
+{% endblock %}

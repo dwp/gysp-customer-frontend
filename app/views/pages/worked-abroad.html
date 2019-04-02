@@ -1,0 +1,78 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("worked-abroad:header") }}{% endblock %}
+
+{% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: t("worked-abroad:errors.header"),
+    descriptionText: t("worked-abroad:errors.p1"),
+    errorList: errors.errorSummary
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="have-you-worked-outside-of-the-uk" autocomplete="off">
+      {% if isOverseas === false %}
+        {% set workedAbroadHint = {text: t("worked-abroad:p1")} %}
+      {% endif %}
+
+      {% if details.workedAbroad == 'yes' %}
+        {% set workedAbroadCheckedYes = true %}
+      {% endif %}
+      {% if details.workedAbroad == 'no' %}
+        {% set workedAbroadCheckedNo = true %}
+      {% endif %}
+
+      {{ govukRadios({
+        errorMessage: errors.workedAbroad,
+        classes: "govuk-radios--inline",
+        name: "workedAbroad",
+        fieldset: {
+          legend: {
+            text: t("worked-abroad:header"),
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          },
+          attributes: {
+            id: "workedAbroad"
+          }
+        },
+        hint: workedAbroadHint,
+        items: [{
+          id: "workedAbroad-yes",
+          value: "yes",
+          text: t("worked-abroad:fields.workedAbroad.options.yes"),
+          attributes: {
+            "data-journey-click": t("google-analytics:pages.worked-abroad.lived-outside", {VALUE: "yes"})
+          },
+          checked: workedAbroadCheckedYes
+        }, {
+          id: "workedAbroad-no",
+          value: "no",
+          text: t("worked-abroad:fields.workedAbroad.options.no"),
+          attributes: {
+            "data-journey-click": t("google-analytics:pages.worked-abroad.lived-outside", {VALUE: "no"})
+          },
+          checked: workedAbroadCheckedNo
+        }]
+      }) }}
+
+      {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+    </form>
+  </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+{% endblock %}

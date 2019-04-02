@@ -1,0 +1,52 @@
+{
+  "header":"Pryd ydych chi eisiau eich Pensiwn y Wladwriaeth?",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+  },
+  "h1": "Pryd ydych chi eisiau eich Pensiwn y Wladwriaeth?",
+  "beforeSpa": {
+    "p1": {
+      "system": "Y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+    },
+    "fields": {
+      "claimFromDate": {
+        "date": {
+          "day": "Diwrnod",
+          "month": "Mis",
+          "year": "Blwyddyn"
+        },
+        "legend": "O ba ddyddiad ydych chi eisiau cael eich Pensiwn y Wladwriaeth?",
+        "hint": "Gallwch ond gwneud cais hyd at 4 mis ymlaen llaw.",
+        "errors": {
+          "empty": "Rhowch ddyddiad",
+          "format": "Rhowch ddyddiad dilys",
+          "before": "Ni all y dyddiad fod cyn dyddiad eich Pensiwn y Wladwriaeth"
+        }
+      }
+    }
+  },
+  "afterSpa": {
+    "p1": {
+      "system": "Dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+    },
+    "fields": {
+      "claimFromDate": {
+        "date": {
+          "day": "Diwrnod",
+          "month": "Mis",
+          "year": "Blwyddyn"
+        },
+        "legend": "O ba ddyddiad ydych chi eisiau cael eich Pensiwn y Wladwriaeth?",
+        "hint": "",
+        "errors": {
+          "empty": "Rhowch ddyddiad",
+          "format": "Rhowch ddyddiad dilys",
+          "before": "Ni all y dyddiad fod cyn dyddiad eich Pensiwn y Wladwriaeth"
+        }
+      }
+    }
+  }
+}

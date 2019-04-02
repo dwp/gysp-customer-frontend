@@ -1,0 +1,19 @@
+{
+  "header": "Ydych chi'n cael unrhyw fudd-daliadau?",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Gwiriwch y broblem ganlynol"
+  },
+  "fields": {
+      "receivingBenefits": {
+        "legend": "Ydych chi'n cael unrhyw fudd-daliadau?",
+        "options": {
+          "yes": "Ydw",
+          "no": "Na"
+        },
+        "errors": {
+          "required": "Rhaid i chi lenwi'r adran hon"
+        }
+      }
+    }
+}

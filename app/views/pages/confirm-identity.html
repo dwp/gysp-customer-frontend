@@ -1,0 +1,75 @@
+{% extends '../helpers/layout.html' %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("confirm-identity:header") }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ govukErrorSummary({
+          titleText: t("confirm-identity:errors.header"),
+          descriptionText: t("confirm-identity:errors.p1"),
+          errorList: errors.errorSummary
+        }) }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="confirm-identity" autocomplete="off">
+        {{ govukRadios({
+          name: "authType",
+          errorMessage: errors.authType,
+          fieldset: {
+            legend: {
+              text: t("confirm-identity:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-9"
+            },
+            attributes: {
+              id: "authType"
+            }
+          },
+          items: [{
+            id: "authType-invite",
+            value: "invite",
+            text: t("confirm-identity:fields.authType.options.invite.header"),
+            label: {
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: t("confirm-identity:fields.authType.options.invite.info")
+            },
+            attributes: {
+              "data-dimension-click": t("google-analytics:pages.confirm-identity.invite")
+            }
+          }, {
+              id: "authType-verify",
+              value: "verify",
+              text: t("confirm-identity:fields.authType.options.verify.header"),
+              label: {
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: t("confirm-identity:fields.authType.options.verify.info")
+              },
+              attributes: {
+                "data-dimension-click": t("google-analytics:pages.confirm-identity.verify")
+              }
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

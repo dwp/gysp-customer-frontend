@@ -1,0 +1,38 @@
+{
+  "header":"Mae angen i chi anfon prawf o'ch dyddiad geni",
+  "h1":"Mae angen i chi anfon prawf o'ch dyddiad geni",
+  "p1": "Mae'n rhaid i chi anfon 1 o'r dogfennau gwreiddiol hyn:",
+  "list": {
+    "li1": "Tystysgrif geni",
+    "li2": "Tystysgrif o gofrestru genedigaeth",
+    "li3": "Gorchymyn mabwysiadu",
+    "li4": "Tystysgrif mabwysiadu wedi'i gyhoeddi gan y Cofrestrydd Cyffredinol",
+    "li5": "Cerdyn adnabod"
+  },
+  "p2": "Dylech gynnwys eich rhif Yswiriant Gwladol a'i anfon i:",
+  "address": {
+    "line1": {
+      "gb": "The Pension Service 4",
+      "ni": "The Northern Ireland Pension Centre"
+    },
+    "line2": {
+      "gb": "Mail Handling Site A",
+      "ni": "Mail Opening Unit"
+    },
+    "line3": {
+      "gb": "Wolverhampton",
+      "ni": "PO Box 42"
+    },
+    "line4": {
+      "gb": "WV98 1AG",
+      "ni": "Limavady"
+    },
+    "line5": {
+      "ni": "BT49 4AN"
+    }
+  },
+  "warning": "Gallwch barhau gyda'ch cais, ond ni ellir ei brosesu hyd nes y byddwch wedi anfon prawf o'ch dyddiad geni.",
+  "warning-end": "Mae angen i chi anfon prawf o'ch dyddiad geni cyn y gellir prosesu eich cais.",
+  "warning-icon-fallback-text": "Rhybudd",
+  "button": "Parhau"
+}
