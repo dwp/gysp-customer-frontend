@@ -1,0 +1,47 @@
+{
+  "header":"Get your State Pension",
+  "p1": "Only use this service if you want to start being paid any State Pension you're entitled to as soon as possible.",
+  "p2": "You'll need:",
+  "li1": "your unique invitation code (on your Get your State Pension letter)",
+  "li2": "the date of your most recent marriage, civil partnership or divorce",
+  "li3": "dates of time spent living or working abroad",
+  "li4": "your personal or joint bank or building society details",
+  "p3": "If you don't want to get your State Pension now, come back when you're ready.",
+  "verify": {
+    "p3": "You don't have to do anything if you don't want to get your State Pension yet. You may get extra money if you put off claiming your State Pension.",
+    "li1": "the date of your most recent marriage, civil partnership or divorce",
+    "li2": "dates of time spent living or working abroad",
+    "li3": "your personal or joint bank or building society details"
+  },
+  "changeLanguage": {
+    "p3": "This service is also available in",
+    "language":"Welsh (Cymraeg)"
+  },
+  "button": "Start now",
+  "help": {
+    "h2": "Other ways to get your State Pension",
+    "h3": "By phone",
+    "phone": {
+      "label": "Telephone:",
+      "number": "0800 731 7898"
+    },
+    "textphone": {
+      "label": "Textphone:",
+      "number": "0800 731 7339"
+    },
+    "p1": "Monday to Friday, 8am to 6pm",
+    "northernIreland": {
+      "summaryText": "There's a different number for Northern Ireland",
+      "h3": "By phone:",
+      "phone": {
+        "label": "Northern Ireland:",
+        "number": "0808 100 2658"
+      },
+      "textphone": {
+        "label": "Textphone:",
+        "number": "0808 100 2198"
+      },
+      "p1": "Monday to Friday, 9am to 5pm"
+    }
+  }
+}

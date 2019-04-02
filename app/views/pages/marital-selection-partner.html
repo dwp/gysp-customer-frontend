@@ -1,0 +1,132 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from 'input/macro.njk' import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("marital-details:header." + maritalStatus ) }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("marital-details:errors.header"),
+      descriptionText: t("marital-details:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="{{ formURL }}" autocomplete="off">
+
+        <legend><h1 class="govuk-heading-xl no-margin-top">{{ t("marital-details:header." + maritalStatus) }}</h1></legend>
+
+        {{ govukInput({
+            label: {
+              text: t("marital-details:fields.firstName.label"),
+              classes: "govuk-label--s"
+            },
+            id: "firstName",
+            name: "firstName",
+            classes: "govuk-!-width-one-half",
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.martial-details.first-name", {URL: formURL})
+            },
+            value: details.firstName,
+            errorMessage: errors.firstName
+          }) }}
+
+        {{ govukInput({
+            label: {
+              text: t("marital-details:fields.surname.label"),
+              classes: "govuk-label--s"
+            },
+            id: "surname",
+            name: "surname",
+            classes: "govuk-!-width-one-half",
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.martial-details.last-name", {URL: formURL})
+            },
+            value: details.surname,
+            errorMessage: errors.surname
+          }) }}
+
+        {{ govukInput({
+            label: {
+              text: t("marital-details:fields.otherName.label"),
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: t("marital-details:fields.otherName.hint")
+            },
+            id: "otherName",
+            name: "otherName",
+            classes: "govuk-!-width-one-half",
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.martial-details.other-name", {URL: formURL})
+            },
+            value: details.otherName,
+            errorMessage: errors.otherName
+          }) }}
+
+        {{ govukDateInput({
+          id: "dob",
+          fieldset: {
+            legend: {
+              text: t("marital-details:fields.dob.legend"),
+              isPageHeading: false,
+              classes: "govuk-label--s"
+            }
+          },
+          hint: {
+            text: t("marital-details:fields.dob.hint")
+          },
+          items: [{
+            label: t("marital-details:fields.dob.day"),
+            id: "dob-day",
+            name: "dobDay",
+            value: details.dobDay,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dob),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' day'
+            }
+          }, {
+            label: t("marital-details:fields.dob.month"),
+            id: "dob-month",
+            name: "dobMonth",
+            value: details.dobMonth,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dob),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' month'
+            }
+          }, {
+            label: t("marital-details:fields.dob.year"),
+            id: "dob-year",
+            name: "dobYear",
+            value: details.dobYear,
+            classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dob),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' year'
+            }
+          }
+          ],
+          errorMessage: errors.dob
+        }) }}
+
+        {{ govukButton({
+            text: t("app:button.continue"),
+            attributes: {
+              id: 'form-submit'
+            }
+          }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{
+  "header": "Eich data personol",
+  "p": "Yr unig ddata bydd GOV.UK Verify yn ei rannu gyda'r Adran Gwaith a Phensiynau yw:",
+  "li1": "eich enw",
+  "li2": "eich dyddiad geni",
+  "li3": "eich cyfeiriad",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Gwiriwch y broblem ganlynol"
+  },
+  "fields": {
+      "personalDataPermission": {
+        "legend": "A allwn ni ddefnyddio'r wybodaeth yma pan fyddwch yn gwneud cais am Bensiwn y Wladwriaeth?",
+        "options": {
+          "yes": "Gallwn",
+          "no": "Na"
+        },
+        "errors": {
+          "required": "Rhaid i chi lenwi'r adran hon"
+        }
+      }
+    }
+}

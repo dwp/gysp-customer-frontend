@@ -1,0 +1,115 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% import 'helpers/date-short.html' as helper %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t('lived-abroad-country:header.title' + pageSuffix, {COUNTRY: country.name}) }}{% endblock %}
+
+{% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: t("lived-abroad:errors.header"),
+    descriptionText: t("lived-abroad:errors.p1"),
+    errorList: errors.errorSummary
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ t('lived-abroad-country:header.country', {CURRENT: location.current, TOTAL: location.total}) }}</span>
+      <span>{{ country.name }}</span>
+    </h1>
+
+    <form method="post" action="/when-did-you-live-in-{{ country.url }}" autocomplete="off">
+
+    <legend class="govuk-heading-m{% if isOverseas %} compound__xs-bottom{% endif %}">{{ t('lived-abroad-country:header.title' + pageSuffix, {COUNTRY: country.name}) }}</legend>
+    {% if isOverseas %}
+      <p class="govuk-hint">{{ t('lived-abroad-country:overseas-info') }}</p>
+    {% endif %}
+
+    {{ govukDateInput({
+      id: "dateFrom",
+      fieldset: {
+        legend: {
+          text: t("lived-abroad-country:fields.dateFrom.legend"),
+          isPageHeading: false,
+          classes: "govuk-label--s"
+        }
+      },
+      items: [{
+        label: t("lived-abroad-country:fields.dateFrom.label-month"),
+        id: "dateFrom-month",
+        name: "dateFromMonth",
+        value: details.dateFromMonth,
+        classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateFrom),
+        pattern: "[0-9]*",
+        attributes: {
+          'data-journey-click': t("google-analytics:pages.country-details.date-from", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
+        }
+      }, {
+        label: t("lived-abroad-country:fields.dateFrom.label-year"),
+        id: "dateFrom-year",
+        name: "dateFromYear",
+        value: details.dateFromYear,
+        classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dateFrom),
+        pattern: "[0-9]*",
+        attributes: {
+          'data-journey-click': t("google-analytics:pages.country-details.date-from", {URL: "/when-did-you-live-in-" + country.url}) + ' year'
+        }
+      }
+      ],
+      errorMessage: errors.dateFrom
+    }) }}
+
+    {{ govukDateInput({
+      id: "dateTo",
+      fieldset: {
+        legend: {
+          text: t("lived-abroad-country:fields.dateTo.legend"),
+          isPageHeading: false,
+          classes: "govuk-label--s"
+        }
+      },
+      items: [{
+        label: t("lived-abroad-country:fields.dateTo.label-month"),
+        id: "dateTo-month",
+        name: "dateToMonth",
+        value: details.dateToMonth,
+        classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
+        pattern: "[0-9]*",
+        attributes: {
+          'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
+        }
+      }, {
+        label: t("lived-abroad-country:fields.dateTo.label-year"),
+        id: "dateTo-year",
+        name: "dateToYear",
+        value: details.dateToYear,
+        classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
+        pattern: "[0-9]*",
+        attributes: {
+          'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
+        }
+      }
+      ],
+      errorMessage: errors.dateTo
+    }) }}
+
+    {{ govukButton({
+      text: t("app:button.continue"),
+      attributes: {
+        id: 'form-submit'
+      }
+    }) }}
+  </form>
+
+  </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+{% endblock %}

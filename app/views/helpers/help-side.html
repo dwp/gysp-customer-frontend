@@ -1,0 +1,42 @@
+{% macro sideBar(t, isNorthernIreland = 'neither', isOverseas = false, bankHelp = false) %}
+    <div class="govuk-grid-column-one-third">
+    {% if bankHelp %}
+        <section class="font-xsmall" id="bank-details">
+            <h2 class="govuk-heading-m" id="bank-details-content">{{ t("help.bank.h2") }}</h2>
+            <p class="govuk-body compound">{{ t("help.bank.details") }}</p>
+        </section>
+    {% endif %}
+
+    <section class="font-xsmall" id="help">
+        <h2 class="govuk-heading-m" id="helpcontent">{{ t("help.h2") }}</h2>
+
+        {% if isOverseas == true %}
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("help.overseas.telephone.label") }} {{ t("help.overseas.telephone.number") }}</h3>
+            <p class="govuk-body govuk-!-margin-bottom-0">{{ t("help.overseas.hours.line1") }}</p>
+            <p class="govuk-body">{{ t("help.overseas.hours.line2") }}</p>
+        {% else %}
+            {% if isNorthernIreland == true %}
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("help.northernIreland.telephone.label") }} {{ t("help.northernIreland.telephone.number") }}</h3>
+                <h3 class="govuk-heading-s">{{ t("help.northernIreland.textphone.label") }} {{ t("help.northernIreland.textphone.number") }}</h3>
+
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ t("help.northernIreland.hours.line1") }}</p>
+                <p class="govuk-body">{{ t("help.northernIreland.hours.line2") }}</p>
+            {% else %}
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("help.telephone.label") }} {{ t("help.telephone.number") }}</h3>
+                <h3 class="govuk-heading-s">{{ t("help.textphone.label") }} {{ t("help.textphone.number") }}</h3>
+
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ t("help.hours.line1") }}</p>
+                <p class="govuk-body">{{ t("help.hours.line2") }}</p>
+            {% endif %}
+
+            {% if isNorthernIreland === 'neither' %}
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("start:help.northernIreland.phone.label") }} {{ t("help.northernIreland.telephone.number") }}</h3>
+                <h3 class="govuk-heading-s">{{ t("help.textphone.label") }} {{ t("help.northernIreland.textphone.number") }}</h3>
+
+                <p class="govuk-body govuk-!-margin-bottom-0">{{ t("start:help.northernIreland.p1") }}</p>
+                <p class="govuk-body">{{ t("help.hours.line2") }}</p>
+            {% endif %}
+        {% endif %}
+    </section>
+</div>
+{% endmacro %}

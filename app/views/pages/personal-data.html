@@ -1,0 +1,73 @@
+{% extends '../helpers/layout.html' %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("personal-data:header") }}{% endblock %}
+
+{% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: t("personal-data:errors.header"),
+    descriptionText: t("personal-data:errors.p1"),
+    errorList: errors.errorSummary
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ t("personal-data:header") }}</h1>
+
+    <p class="govuk-body">{{ t("personal-data:p") }}</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>{{ t("personal-data:li1") }}</li>
+      <li>{{ t("personal-data:li2") }}</li>
+      <li>{{ t("personal-data:li3") }}</li>
+    </ul>
+
+    <form method="post" action="personal-data" autocomplete="off">
+
+      {{ govukRadios({
+        errorMessage: errors.personalDataPermission,
+        classes: "govuk-radios--inline",
+        name: "personalDataPermission",
+        fieldset: {
+          legend: {
+            text: t("personal-data:fields.personalDataPermission.legend"),
+            isPageHeading: false,
+            classes: "govuk-label--s"
+          },
+          attributes: {
+            id: "personalDataPermission"
+          }
+        },
+        items: [{
+          value: "yes",
+          text: t("personal-data:fields.personalDataPermission.options.yes"),
+          attributes: {
+            "data-dimension-click": t("google-analytics:pages.personal-data.status", {VALUE: "yes"})
+          },
+          checked: checked(details.personalDataPermission, 'yes')
+        }, {
+          value: "no",
+          text: t("personal-data:fields.personalDataPermission.options.no"),
+          attributes: {
+            "data-dimension-click": t("google-analytics:pages.personal-data.status", {VALUE: "no"})
+          },
+          checked: checked(details.personalDataPermission, 'no')
+        }]
+      }) }}
+
+      {{ govukButton({
+        text: t("app:button.continue"),
+        attributes: {
+          id: 'form-submit',
+          'data-ga-check': 'check-if-personal-data-page'
+        }
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

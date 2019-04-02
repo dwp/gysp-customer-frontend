@@ -1,0 +1,117 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "select/macro.njk" import govukSelect %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t('countries:' + type + '.header' + pageSuffix) }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t('countries:' + type +  '.errors.header'),
+      descriptionText: t('countries:' + type +  '.errors.p1'),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="js-error"></div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl no-margin-top">{{ t('countries:' + type + '.header' + pageSuffix) }}</h1>
+
+    <form method="post" action="{{ formURL }}" autocomplete="off"
+      data-link-text-remove="{{ t("countries:link.remove") }}"
+      data-error-title='{{ t("countries:" + type +  ".errors.header") }}'
+      data-error-description='{{ t("countries:" + type +  ".errors.p1") }}'
+      data-empty-error-messages='["{{ t("countries:js-error.empty.header") }}", "{{ t("countries:js-error.empty.message") }}"]'
+      data-duplicate-error-messages='["{{ t("countries:js-error.duplicate.header") }}", "{{ t("countries:js-error.duplicate.message") }}"]'
+      data-overseas="{{ isOverseas }}">
+
+      {% if isOverseas and type == 'lived' %}
+        <p class="govuk-hint">{{ t('countries:' + type + '.overseas-info') }}</p>
+      {% endif %}
+
+      <div id="country-name[0]-wrapper" data-index=0 class='country-wrapper'>
+        {{ govukSelect({
+          id: "country-name[0]",
+          name: "country-name[0]",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: '<span class="govuk-visually-hidden">First </span>'+ t('countries:fields.country.label'),
+            classes: 'govuk-label--s'
+          },
+          items: countriesListFormatter(countriesList, details['country-name[0]']),
+          errorMessage: errors['country-name[0]']
+        }) }}
+      </div>
+
+      <div id="country-name[1]-wrapper" data-index=1 class='country-wrapper{% if not details['country-name[1]'] %} js-hidden{% endif %}'>
+        {{ govukSelect({
+          id: "country-name[1]",
+          name: "country-name[1]",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: '<span class="govuk-visually-hidden">Second </span>'+ t('countries:fields.country.label'),
+            classes: 'govuk-label--s'
+          },
+          items: countriesListFormatter(countriesList, details['country-name[1]']),
+          errorMessage: errors['country-name[1]']
+        }) }}
+      </div>
+
+      <div id="country-name[2]-wrapper" data-index=2 class="country-wrapper{% if not details['country-name[2]'] %} js-hidden{% endif %}">
+        {{ govukSelect({
+          id: "country-name[2]",
+          name: "country-name[2]",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: '<span class="govuk-visually-hidden">Third </span>'+ t('countries:fields.country.label'),
+            classes: 'govuk-label--s'
+          },
+          items: countriesListFormatter(countriesList, details['country-name[2]']),
+          errorMessage: errors['country-name[2]']
+        }) }}
+      </div>
+
+      <div id="country-name[3]-wrapper" data-index=3 class="country-wrapper{% if not details['country-name[3]'] %} js-hidden{% endif %}">
+        {{ govukSelect({
+          id: "country-name[3]",
+          name: "country-name[3]",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: '<span class="govuk-visually-hidden">Forth </span>'+ t('countries:fields.country.label'),
+            classes: 'govuk-label--s'
+          },
+          items: countriesListFormatter(countriesList, details['country-name[3]']),
+          errorMessage: errors['country-name[3]']
+        }) }}
+      </div>
+
+      <div class="govuk-form-group" id="add-country" data-link-text="{{ t("countries:link.add") }}"></div>
+
+      {{ govukButton({
+        text: t("app:button.continue"),
+        attributes: {
+          id: "form-submit"
+        }
+      }) }}
+    </form>
+
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}
+
+{% block pageCSS %}
+  <link href="{{ assetPath }}/stylesheets/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block pageScript %}
+  <script src="{{assetPath}}/javascripts/vendor/selectToAutocomplete/jquery-ui.min.js"></script>
+  <script src="{{assetPath}}/javascripts/vendor/selectToAutocomplete/jquery.select-to-autocomplete.js"></script>
+  <script src="{{assetPath}}/javascripts/countrySelect.js"></script>
+{% endblock %}

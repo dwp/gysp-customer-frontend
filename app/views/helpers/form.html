@@ -1,0 +1,171 @@
+{% macro errors(errorTitle, errorText, errorList) %}
+
+<div class="error error-summary" id="error-summary" role="alert" tabindex="-1" aria-labelledby="error-summary-heading">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="heading-medium error-summary-heading" id="error-summary-heading">{{ errorTitle }}</h1>
+    {% if errorText %} <p class="govuk-body">{{ errorText }}</p> {% endif %}
+      <ul class="error-summary-list">
+        {% for error in errorList %}
+          <li><a href="#{{error.link}}-form"{% if error.dataJourney %} data-journey-events="{{error.dataJourney}}"{% endif %}>{{ error.text }}</a></li>
+         {% endfor %}
+        </ul>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro csrfTokenInput(csrfToken) %}
+  <input type="hidden" name="_csrf" value="{{csrfToken}}">
+{% endmacro %}
+
+{% macro inputText(name, id, label, hint, value, error, cssOptions, compound, compoundError, dataJourneyClick) %}
+    <div id="{{id}}-form" class="form-group {{cssOptions.fromGroup}} {% if not cssOptions.formErrorDisabled %} {% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %} {% endif %}">
+        <label class="{% if cssOptions.labelClass %}{{cssOptions.labelClass}}{% else %}form-label-bold{% endif %}" for="{{ id }}">{{ label }}
+          {% if hint %}<span class="form-hint">{{hint}}</span>{% endif %}
+        </label>
+        {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}}"{% endif %} />
+    </div>
+{% endmacro %}
+
+{% macro inputTextHintLink(name, id, label, hint, hintLink, value, error, cssOptions, compound, compoundError, dataJourneyClick) %}
+    <div id="{{id}}-form" class="form-group {{cssOptions.fromGroup}} {% if not cssOptions.formErrorDisabled %} {% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %} {% endif %}">
+        <label class="{% if cssOptions.labelClass %}{{cssOptions.labelClass}}{% else %}form-label-bold{% endif %}" for="{{ id }}">{{ label }}
+          {% if hint %}<span class="form-hint">{{hint}}</span>{% endif %}
+          {% if hintLink %}<span class="form-hint"><a href="{{ hintLink.url }}" {% if hintLink.dataJourneyClick %} data-journey-click="{{ hintLink.dataJourneyClick }}"{% endif %}>{{ hintLink.text }}</a></span>{% endif %}
+        </label>
+        {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}}"{% endif %} />
+    </div>
+{% endmacro %}
+
+{% macro inputTextDate(name, id, label, value, error, fieldErrors, cssOptions, dataJourneyClick) %}
+
+<div id="{{id}}-form" class="form-group{% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %}">
+      <fieldset>
+        <div class="form-date">
+
+          {% if label.legend %}<legend class="form-label form-label-bold">{{ label.legend }}</legend> {% endif %}
+
+
+          {% if label.hint %}<p class="form-hint">{{label.hint}}</p>{% endif %}
+          {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+
+          <div class="form-group form-group-day">
+            <label for="{{name}}-day">{{ label.day }}</label>
+            <input class="form-control{%if fieldErrors.day %} {% else %} no-error {% endif %}" id="{{id}}-day" name="{{name}}Day" value="{{value.day}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} day"{% endif %} />
+          </div>
+
+          <div class="form-group form-group-month">
+            <label for="{{name}}-month">{{ label.month }}</label>
+            <input class="form-control{%if fieldErrors.month %} {% else %} no-error {% endif %}" id="{{id}}-month" name="{{name}}Month" value="{{value.month}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} month"{% endif %} />
+          </div>
+
+          <div class="form-group form-group-year">
+            <label for="{{name}}-year">{{ label.year }}</label>
+            <input class="form-control{%if fieldErrors.year %} {% else %} no-error {% endif %}" id="{{id}}-year" name="{{name}}Year" value="{{value.year}}" type="text" maxlength="4" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} year"{% endif %} />
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+{% endmacro %}
+
+
+{% macro inputTextArea(name, id, label, hint, value, error, cssOptions, rows) %}
+    <div id="{{id}}-form" class="form-group{% if error %} form-group-error{% endif %}">
+        <label class="{% if cssOptions.labelClass %}{{cssOptions.labelClass}}{% else %}form-label-bold{% endif %}" for="{{name}}">{{ label }}
+          {% if hint %}<span class="form-hint">{{hint}}</span>{% endif %}
+        </label>
+
+        {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+        <textarea class="form-control form-control-3-4" rows="{%if rows %}{{ rows }}{% else %}5{% endif %}" id="{{id}}" name="{{name}}">{{value}}</textarea>
+    </div>
+{% endmacro %}
+
+{% macro fieldCheck(currentValue,selectedValue) %}{% if currentValue != selectedValue %}js-hidden {% endif %}{% endmacro %}
+
+{% macro radioButtons(id, name, legend, hint, radioButtons, value, error, cssOptions) %}
+    <div class="{{cssOptions.formGroupClass}} form-group {% if error %} form-group-error{% endif %}" id="{{id}}-form">
+      <fieldset {% if cssOptions.inline %} class="inline"{% endif %}>
+          {% if legend %}<legend class="{% if cssOptions.legend %} {{ cssOptions.legend }}{% else %}form-label-bold{% endif %}" for="{{id}}-form">{% endif %}
+            {% if legend %}
+              {% if legend.tag %}
+                <{{legend.tag}} class="{{legend.cssClass}}">{{ legend.text }}</{{legend.tag}}>
+              {% else %}
+                {{ legend }}
+              {% endif %}
+          {% endif %}
+          {% if legend %}</legend>{% endif %}
+          {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+          {% if hint %}<p class="form-hint">{{hint}}</p>{% endif %}
+                        {% for radio in radioButtons %}
+                          <div class="multiple-choice"{% if radio.dataTarget %} data-target="{{radio.dataTarget}}"{% endif %}{% if radio.dataJourneyClick %} data-journey-click="{{radio.dataJourneyClick}}"{% endif %}{% if radio.dataDimensionClick %} data-dimension-click="{{radio.dataDimensionClick}}"{% endif %}>
+                            <input id="{{id}}-{{radio.id}}" type="radio" name="{{name}}" value="{{radio.value}}" {% if value == radio.value %} checked{% endif %} />
+                            <label for="{{id}}-{{radio.id}}">
+                              {% if radio.label.header %}
+                                <span class="form-label-bold">{{ radio.label.header }}</span>
+                                {{ radio.label.info }}
+                              {% else %}
+                                {{ radio.label }}
+                              {% endif %}
+                            </label>
+                          </div>
+                        {% endfor %}
+        </fieldset>
+    </div>
+{% endmacro %}
+
+
+{% macro checkBox(id, name, checked, label, dataTarget) %}
+    <div class="multiple-choice">
+      <input id="{{id}}" type="checkbox" name="{{name}}" value="true" {% if checked %} checked {% endif %}/>
+      <label class="block-label" for="{{id}}"{% if dataTarget %} data-target="{{ dataTarget }}"{% endif %}>{{label}}</label>
+    </div>
+{% endmacro %}
+
+{% macro checkBoxes(name, id, legend, hint, checkBoxes, value, error,cssOptions, values) %}
+    <div class="form-group{% if error %} error{% endif %}" id="form-group-{{id}}">
+      <fieldset {% if cssOptions.inline %} class="inline"}{% endif %}>
+          {% if legend %}<legend class="form-label-bold" for="form-group-{{id}}">{% endif %}
+            {% if legend %}{{legend}}{% endif %}
+            {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+            {% if hint %}<p class="form-hint">{{hint}}</p>{% endif %}
+          {% if legend %}</legend>{% endif %}
+          <div class="form-group">
+            {% for checkBox in checkBoxes %}
+              <label class="block-label" for="{{id}}-{{checkBox.id}}" {% if checkBox.dataTarget %} data-target="{{checkBox.dataTarget}}"{% endif %}>
+              <input id="{{id}}-{{checkBox.id}}" type="checkbox" name="{{name}}" value="{{checkBox.id}}" />
+              {{checkBox.label}}
+              </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+    </div>
+{% endmacro %}
+
+{% macro select(name, id, label, hint, valuesList, value, error, cssOptions, compound, compoundError) %}
+    <div id="{{id}}-form" class="govuk-form-group {{cssOptions.fromGroup}} {% if not cssOptions.formErrorDisabled %} {% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %} {% endif %}">
+        <label class="govuk-label govuk-label--s {% if cssOptions.labelClass %}{{cssOptions.labelClass}}{% else %}form-label-bold{% endif %}" for="{{ id }}">{{ label | safe }}</label>
+        {% if hint %}<p class="form-hint">{{hint}}</p>{% endif %}
+        {% if error %}<span class="error-message">{{error}}</span> {% endif %}
+        <select class="govuk-select govuk-!-width-one-half form-control" id="{{ id }}" name="{{name}}">
+          <option value=""></option>
+          {% for option in valuesList %}
+            <option value="{{ option.name }}"
+            data-aliases="{{option.tokens}}"
+            {% if value == option.name %} selected{% endif %}>{{ option.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+{% endmacro %}
+
+{% macro backLink(url, urlText, backLinkGeneral, backLinkPageName) %}
+  <nav class="back-nav" role="navigation">
+      <a id="backButton" class="link-back" href="{{ url }}">{{ urlText }}
+      <span class="visuallyhidden">{{ backLinkGeneral }} {{ backLinkPageName }}</span></a>
+  </nav>
+{% endmacro %}

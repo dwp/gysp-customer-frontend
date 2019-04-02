@@ -1,0 +1,170 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% import 'helpers/sort-code.html' as sortcodeHelper %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("account:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("account:errors.header"),
+      descriptionText: t("account:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t("account:header") }}</h1>
+
+      <p class="govuk-body">{{ t("account:p") }}</p>
+
+      <form method="post" action="account-details" autocomplete="off">
+        {% set bankHtml %}
+          {{ govukInput({
+            id: "bankAccountHolder",
+            name: "bankAccountHolder",
+            type: "text",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: t("account:fields.accountHolder.label"),
+              classes: 'govuk-label--s'
+            },
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "bank"})
+            },
+            value: details.bankAccountHolder,
+            errorMessage: errors.bankAccountHolder
+          }) }}
+
+          {{ sortcodeHelper.sortCode(t("account:fields.sortCode.label"), {sortCodeField1: t("account:fields.sortCode.label-1"), sortCodeField2: t("account:fields.sortCode.label-2"), sortCodeField3: t("account:fields.sortCode.label-3")}, "", "bank", {sortCodeField1: details.bankSortCodeField1, sortCodeField2: details.bankSortCodeField2, sortCodeField3: details.bankSortCodeField3  }, errors.bankSortCode, "", t("google-analytics:pages.account-details.sort-code", {VALUE: "bank"})) }}
+
+          {{ govukInput({
+            id: "bankAccountNumber",
+            name: "bankAccountNumber",
+            type: "text",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: t("account:fields.accountNumber.label"),
+              classes: 'govuk-label--s'
+            },
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "bank"})
+            },
+            value: details.bankAccountNumber,
+            errorMessage: errors.bankAccountNumber
+          }) }}
+        {% endset -%}
+
+        {% set buildingHtml %}
+          {{ govukInput({
+            id: "buildingAccountHolder",
+            name: "buildingAccountHolder",
+            type: "text",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: t("account:fields.accountHolder.label"),
+              classes: 'govuk-label--s'
+            },
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "building"})
+            },
+            value: details.buildingAccountHolder,
+            errorMessage: errors.buildingAccountHolder
+          }) }}
+
+          {{ sortcodeHelper.sortCode(t("account:fields.sortCode.label"), {sortCodeField1: t("account:fields.sortCode.label-1"), sortCodeField2: t("account:fields.sortCode.label-2"), sortCodeField3: t("account:fields.sortCode.label-3")}, "", "building", {sortCodeField1: details.buildingSortCodeField1, sortCodeField2: details.buildingSortCodeField2, sortCodeField3: details.buildingSortCodeField3  }, errors.buildingSortCode, "", t("google-analytics:pages.account-details.sort-code", {VALUE: "building"})) }}
+
+          {{ govukInput({
+            id: "buildingAccountNumber",
+            name: "buildingAccountNumber",
+            type: "text",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: t("account:fields.accountNumber.label"),
+              classes: 'govuk-label--s'
+            },
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "building"})
+            },
+            value: details.buildingAccountNumber,
+            errorMessage: errors.buildingAccountNumber
+          }) }}
+
+          {{ govukInput({
+            id: "buildingRoll",
+            name: "buildingRoll",
+            type: "text",
+            classes: "govuk-!-width-two-thirds",
+            label: {
+              text: t("account:fields.buildingRoll.label"),
+              classes: 'govuk-label--s'
+            },
+            hint: {
+              text: t("account:fields.buildingRoll.hint")
+            },
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.account-details.building-society-number")
+            },
+            value: details.buildingRoll,
+            errorMessage: errors.buildingRoll
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          errorMessage: errors.paymentMethod,
+          name: "paymentMethod",
+          fieldset: {
+            legend: {
+              text: t("account:fields.paymentMethod.fieldset"),
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            },
+            attributes: {
+              id: "paymentMethod"
+            }
+          },
+          items: [{
+            value: "bank",
+            id: "paymentMethod-bank",
+            text: t("account:fields.paymentMethod.options.bank"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.account-details.status", {VALUE: "bank"})
+            },
+            conditional: {
+              html: bankHtml
+            },
+            checked: checked(details.paymentMethod, 'bank')
+          }, {
+            value: "building",
+            id: "paymentMethod-building",
+            text: t("account:fields.paymentMethod.options.building"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.account-details.status", {VALUE: "building"})
+            },
+            conditional: {
+              html: buildingHtml
+            },
+            checked: checked(details.paymentMethod, 'building')
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit',
+            'data-ga-check': 'check-if-bank-page'
+          }
+        }) }}
+      </form>
+    </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas, true) }}
+
+  </div>
+
+{% endblock %}

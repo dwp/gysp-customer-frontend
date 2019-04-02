@@ -1,0 +1,58 @@
+{
+  "header":"Application complete",
+  "header-sent": "Application sent",
+  "header-overseas": "We will call you to confirm details",
+  "header-ref-text": "Your reference number is",
+  "header-ref": "GYSP257F",
+  "header-ref-unverified-dob": "your National Insurance number",
+  "addtional": {
+    "header": "Your application has been sent",
+    "p": "Your State Pension application has been sent and you don’t need to do anything else."
+  },
+  "section-1-h2": "What happens next",
+  "p1": {
+    "default": "You will receive details about your State Pension up to 14 days before your State Pension date. We may also contact you if we need more information.",
+    "start-date-from": {
+      "less-than-9-weeks": "We'll call you to confirm some of the details you've given us before we process your application.",
+      "more-than-9-weeks": "You will either receive details about your State Pension or we will contact you to provide further information."
+    },
+    "overseas": "We will call you within the next 4 weeks to confirm some of the details you've given us before we process your application."
+  },
+  "section-2-h2": "If your circumstances change",
+  "p2": "You must report the following changes straight away:",
+  "p2-l1": "change of address (including going into hospital, a care home or permanently leaving the UK)",
+  "p2-l2": "bank details",
+  "p2-l3": "death of a spouse or civil partner",
+  "telephone-label": "Telephone:",
+  "telephone-number": {
+    "gb": "0800 731 0469",
+    "ni": "0800 587 0892",
+    "overseas": "+44 (0) 191 218 7777"
+  },
+  "textphone-label": "Textphone:",
+  "textphone-number": {
+    "gb": "0800 731 0464",
+    "ni": "0808 100 2198"
+  },
+  "overseas": {
+    "p2-l1": "address (including visits to the UK)",
+    "p2-l2": "bank details",
+    "p2-l3": "death of a spouse or civil partner",
+    "p2-l4": "divorce from a spouse or civil partner",
+    "telephone": {
+      "label": "Telephone:",
+      "number": "+44 (0) 191 218 7777"
+    },
+    "textphone": {
+      "label": "Textphone:",
+      "number": "+44 (0) 191 218 7280"
+    },
+    "hours": {
+      "line1": "Monday to Friday",
+      "line2": "8am to 6pm UK time",
+      "line3": "Closed UK public holidays"
+    }
+  },
+  "print-this-page": "Print this page",
+  "feedback-link-text": "What did you think of this service?"
+}

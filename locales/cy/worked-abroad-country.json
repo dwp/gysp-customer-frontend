@@ -1,0 +1,17 @@
+{
+  "header": {
+    "country": "Gwlad __CURRENT__ o __TOTAL__",
+    "title": "Pryd wnaethoch chi weithio yn: __COUNTRY__?"
+  },
+  "fields": {
+    "referenceNumber": {
+      "label": "Beth oedd yn cyfateb i'ch Rhif Yswiriant Gwladol yn: __COUNTRY__?",
+      "errors": {
+        "required": "Mae'n rhaid i chi gwblhau'r adran hon",
+        "toLong": "Mwyafswm hyd yw 24",
+        "space": "Ni allwch ddechrau gyda gofod",
+        "invalid": "Rhowch rif cyfeirnod dilys"
+      }
+    }
+  }
+}

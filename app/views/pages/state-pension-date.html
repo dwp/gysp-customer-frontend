@@ -1,0 +1,50 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "button/macro.njk" import govukButton %}
+
+{% block pageTitle %}{{ t('date-page:header') }}{% endblock %}
+
+{% block gaTagExtra %}
+  {% if isNorthernIreland %}
+    ga('set', 'dimension5', 'NI');
+  {% else %}
+    ga('set', 'dimension5', 'GB');
+  {% endif %}
+  {% if isInviteCodeLogin %}
+    ga('set', 'dimension7', 'invite-code');
+  {% else %}
+    ga('set', 'dimension7', 'verify');
+  {% endif %}
+  {% if isBeforeSpa %}
+    ga('set', 'dimension8', 'PRE SPA');
+  {% else %}
+    ga('set', 'dimension8', 'POST SPA');
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t('date-page:header') }}</h1>
+
+    {% if (isBeforeSpa) %}
+      <p class="govuk-body">{{ t('date-page:beforeSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+
+      <p class="govuk-body">{{ t('date-page:beforeSpa.p2', {startPensionDatePage: startPensionDatePage}) | safe }}</p>
+    {% else %}
+      <p class="govuk-body">{{ t('date-page:afterSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+
+      <p class="govuk-body">{{ t('date-page:afterSpa.p2', {startPensionDatePage: startPensionDatePage}) | safe }}</p>
+    {% endif %}
+
+    {{ govukButton({
+      text: t('date-page:button'),
+      href: nextPage
+    }) }}
+  </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+{% endblock %}

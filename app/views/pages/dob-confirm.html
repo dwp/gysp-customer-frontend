@@ -1,0 +1,97 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("dob-confirmation:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block gaTagExtra %}
+  {% if isNorthernIreland %}
+    ga('set', 'dimension5', 'NI');
+  {% else %}
+    ga('set', 'dimension5', 'GB');
+  {% endif %}
+  {% if isBeforeSpa %}
+    ga('set', 'dimension8', 'PRE SPA');
+  {% else %}
+    ga('set', 'dimension8', 'POST SPA');
+  {% endif %}
+  {% if isInviteCodeLogin %}
+    ga('set', 'dimension7', 'invite-code');
+  {% else %}
+    ga('set', 'dimension7', 'verify');
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("dob-confirmation:errors.header"),
+      descriptionText: t("dob-confirmation:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="date-of-birth" autocomplete="off">
+        {{ govukDateInput({
+          id: "date",
+          fieldset: {
+            legend: {
+              text: t("dob-confirmation:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: t("dob-confirmation:fields.dob.hint")
+          },
+          items: [{
+            label: t("dob-confirmation:fields.dob.date.day"),
+            id: "date-day",
+            name: "dateDay",
+            value: details.dateDay,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' day'
+            }
+          }, {
+            label: t("dob-confirmation:fields.dob.date.month"),
+            id: "date-month",
+            name: "dateMonth",
+            value: details.dateMonth,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' month'
+            }
+          }, {
+            label: t("dob-confirmation:fields.dob.date.year"),
+            id: "date-year",
+            name: "dateYear",
+            value: details.dateYear,
+            classes: "govuk-input--width-4" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' year'
+            }
+          }
+          ],
+          errorMessage: errors.date
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}

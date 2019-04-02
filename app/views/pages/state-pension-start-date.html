@@ -1,0 +1,84 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t('pension-start-date:header') }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("pension-start-date:errors.header"),
+      descriptionText: t("pension-start-date:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl no-margin-top">{{ t('pension-start-date:header') }}</h1>
+
+    <p class="govuk-body">{{ t('pension-start-date:' + beforeOrAfterSpa + '.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+
+    <form method="post" action="when-do-you-want-your-state-pension" autocomplete="off">
+          {{ govukDateInput({
+            id: "date",
+            fieldset: {
+              legend: {
+                text: t("pension-start-date:" + beforeOrAfterSpa + ".fields.claimFromDate.legend"),
+                isPageHeading: false,
+                classes: "govuk-label--s"
+              }
+            },
+            hint: {
+              text: t("pension-start-date:" + beforeOrAfterSpa + ".fields.claimFromDate.hint")
+            },
+            items: [{
+              label: t("pension-start-date:" + beforeOrAfterSpa + ".fields.claimFromDate.date.day"),
+              id: "date-day",
+              name: "dateDay",
+              value: details.dateDay,
+              classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+              pattern: "[0-9]*",
+              attributes: {
+                'data-journey-click': t("google-analytics:pages.pension-date-input.date") + ' day'
+              }
+            }, {
+              label: t("pension-start-date:" + beforeOrAfterSpa + ".fields.claimFromDate.date.month"),
+              id: "date-month",
+              name: "dateMonth",
+              value: details.dateMonth,
+              classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+              pattern: "[0-9]*",
+              attributes: {
+                'data-journey-click': t("google-analytics:pages.pension-date-input.date") + ' month'
+              }
+            }, {
+              label: t("pension-start-date:" + beforeOrAfterSpa + ".fields.claimFromDate.date.year"),
+              id: "date-year",
+              name: "dateYear",
+              value: details.dateYear,
+              classes: "govuk-input--width-4" + (" govuk-input--error" if errors.date),
+              pattern: "[0-9]*",
+              attributes: {
+                'data-journey-click': t("google-analytics:pages.pension-date-input.date") + ' year'
+              }
+            }
+            ],
+            errorMessage: errors.date
+          }) }}
+
+          {{ govukButton({
+            text: t("app:button.continue"),
+            attributes: {
+              id: 'form-submit'
+            }
+          }) }}
+        </form>
+  </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+{% endblock %}

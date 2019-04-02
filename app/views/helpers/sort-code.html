@@ -1,0 +1,34 @@
+{% from "input/macro.njk" import govukInput %}
+
+{% macro sortCode(legend, labels, hint, sortCodePre, value, error, fieldErrors, dataJourneyClick) %}
+  <div id="{{ sortCodePre }}SortCode-form" class="govuk-form-group{% if error %} govuk-form-group--error{% else %} {{cssOptions.errorElse}} {% endif %}">
+    <fieldset class="govuk-fieldset">
+        {% if legend %}<legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-1">{{ legend }}</legend> {% endif %}
+
+        {% if hint %}<span class="govuk-hint">{{hint}}</span> {% endif %}
+        {% if error %}<span id="{{ sortCodePre }}SortCode-error" class="govuk-error-message">{{ error.text }}</span> {% endif %}
+
+        <div class="govuk-sort-code-input">
+          <div class="govuk-sort-code-input__item">
+            <div class="govuk-form-group">
+              <label for="{{ sortCodePre }}SortCodeField1" class="govuk-visually-hidden">{{ labels.sortCodeField1 }}</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2{%if fieldErrors.sortCodeField1 %} {% elif error %} govuk-input--error{% else %} no-error {% endif %}" id="{{ sortCodePre }}SortCodeField1" name="{{ sortCodePre }}SortCodeField1" value="{{value.sortCodeField1}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} 1"{% endif %} />
+            </div>
+          </div>
+          <div class="govuk-sort-code-input__item">
+            <div class="govuk-form-group">
+              <label for="{{ sortCodePre }}SortCodeField2" class="govuk-visually-hidden">{{ labels.sortCodeField2 }}</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2{%if fieldErrors.sortCodeField2 %} {% elif error %} govuk-input--error{% else %} no-error {% endif %}" id="{{ sortCodePre }}SortCodeField2" name="{{ sortCodePre }}SortCodeField2" value="{{value.sortCodeField2}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} 2"{% endif %} />
+            </div>
+          </div>
+          <div class="govuk-sort-code-input__item">
+            <div class="govuk-form-group">
+              <label for="{{ sortCodePre }}SortCodeField3" class="govuk-visually-hidden">{{ labels.sortCodeField3 }}</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2{%if fieldErrors.sortCodeField3 %} {% elif error %} govuk-input--error{% else %} no-error {% endif %}" id="{{ sortCodePre }}SortCodeField3" name="{{ sortCodePre }}SortCodeField3" value="{{value.sortCodeField3}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} 3"{% endif %} />
+            </div>
+          </div>
+        </div>
+
+    </fieldset>
+  </div>
+{% endmacro %}

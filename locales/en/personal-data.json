@@ -1,0 +1,23 @@
+{
+  "header": "Your personal data",
+  "p": "The only data GOV.UK Verify will share with the Department for Work and Pensions is:",
+  "li1": "your name",
+  "li2": "your date of birth",
+  "li3": "your address",
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem"
+  },
+  "fields": {
+      "personalDataPermission": {
+        "legend": "Can we use this information when you claim your State Pension?",
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        },
+        "errors": {
+          "required": "You must complete this section"
+        }
+      }
+    }
+}

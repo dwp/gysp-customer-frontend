@@ -1,0 +1,54 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("pension-age:early.header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{ t("pension-age:early.h1") }}</h1>
+
+        <p class="govuk-body">{{ t("pension-age:early.p1") }}</p>
+
+        <p class="govuk-body">{{ t("pension-age:early.p2") }}
+
+        {% if statePensionDate %}
+            {{ t("pension-age:early.p2-part2") }} <span class="govuk-!-font-weight-bold">{{statePensionDate}}</span>.
+        {% endif %}
+        </p>
+
+        <h2 class="govuk-heading-s">{{ t("pension-age:early.contact.header") }}</h2>
+
+        {% if isOverseas %}
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.telephone.label") }} {{ t("pension-age:early.contact.telephone.value.overseas") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.textphone.label") }} {{ t("pension-age:early.contact.textphone.value.overseas") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.p3.overseas") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.p3.overseas2") }}</p>
+
+        {% elif isNorthernIreland %}
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.telephone.label") }} {{ t("pension-age:early.contact.telephone.value.ni") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.textphone.label") }} {{ t("pension-age:early.contact.textphone.value.ni") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.p3.ni") }}</p>
+
+        {% else %}
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.telephone.label") }} {{ t("pension-age:early.contact.telephone.value.gb") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.contact.textphone.label") }} {{ t("pension-age:early.contact.textphone.value.gb") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:early.p3.gb") }}</p>
+
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

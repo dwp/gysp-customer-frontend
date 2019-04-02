@@ -1,0 +1,37 @@
+{
+  "header": "If you don't want to use GOV.UK Verify",
+  "lead": "You can get your State Pension by calling the freephone number.",
+  "p": "You’ll need your National Insurance number and be able to confirm some personal details:",
+  "call_centres": {
+    "uk": {
+      "header": "England, Scotland and Wales",
+      "telephone": {
+        "label": "Telephone:",
+        "number": "0800 731 7898"
+      },
+      "textphone": {
+        "label": "Textphone:",
+        "number": "0800 731 7339"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 8am to 6pm",
+        "line2": "Closed public holidays"
+      }
+    },
+    "northern_ireland": {
+      "header": "Northern Ireland",
+      "telephone": {
+        "label": "Telephone:",
+        "number": "0808 100 2658"
+      },
+      "textphone": {
+        "label": "Textphone:",
+        "number": "0808 100 2198"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 9am to 5pm",
+        "line2": "Closed public holidays"
+      }
+    }
+  }
+}

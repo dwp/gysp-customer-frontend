@@ -1,0 +1,50 @@
+{
+  "field_names":
+  {
+    "title": "Teitl",
+    "firstname": "Enw Cyntaf",
+    "surname": "Cyfenw",
+    "nino": "Rhif Yswiriant Gwladol",
+    "dob": "Dyddiad geni",
+    "dobV": "Ststws dilysu dyddiad geni",
+    "gender": "Rhyw",
+    "state_pension_date": "Oedran Pensiwn y Wladwriaeth",
+    "address_details": {
+      "options": {
+        "option_uk": "DU",
+        "option_au": "Australia"
+      },
+      "uk": {
+        "residential_address": {
+          "address_title": "Cyfeiriad Preswyl",
+          "sub_building_name": "Rhif fflat",
+          "building_name": "Enw'r adeilad",
+          "building_number": "Rhif yr adeilad",
+          "dependent_thoroughfare_name": "Enw'r is stryd",
+          "thoroughfare_name": "Enw'r prif stryd",
+          "dependent_locality": "Pentref",
+          "post_town": "Tref",
+          "postcode": "Cod post"
+        },
+        "correspondence_address": {
+          "address_title": "Cyfeiriad Gohebiaeth",
+          "sub_building_name": "Rhif fflat",
+          "building_name": "Enw'r adeilad",
+          "building_number": "Rhif yr adeilad",
+          "dependent_thoroughfare_name": "Enw'r is stryd",
+          "thoroughfare_name": "Enw'r prif stryd",
+          "dependent_locality": "Pentref",
+          "post_town": "Tref",
+          "postcode": "Cod post"
+        }
+      },
+      "au": {
+        "street": "Cyfeiriad stryd / Blwch Post",
+        "locality": "Ardal",
+        "state": "Sir neu Diriogaeth",
+        "postcode": "Cod post",
+        "country": "Gwlad"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% import 'helpers/help-side.html' as help %}
+{% from "warning-text/macro.njk" import govukWarningText %}
+
+{% block pageTitle %} {{ t("declaration:header") }} {% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <form method="post" action="declaration" autocomplete="off">
+
+                <h1 class="govuk-heading-xl">{{ t("declaration:header") }}</h1>
+
+                <p class="govuk-body">{{ t("declaration:p1") }}</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>{{ t("declaration:li1") }}</li>
+                  {% if isNorthernIreland %}
+                    <li>{{ t("declaration:li2.ni") }}</li>
+                    <li>{{ t("declaration:li3.ni") }}</li>
+                  {% else %}
+                    <li>{{ t("declaration:li2.gb") }}</li>
+                    <li>{{ t("declaration:li3.gb") }}</li>
+                  {% endif %}
+                </ul>
+
+                {% if isNorthernIreland %}
+                   {{ govukWarningText({
+                    text: t("declaration:p2.ni"),
+                    iconFallbackText: "Warning"
+                  }) }}
+                {% else %}
+                  {{ govukWarningText({
+                    text: t("declaration:p2.gb"),
+                    iconFallbackText: "Warning"
+                  }) }}
+                {% endif %}
+
+                {{ govukButton({
+                  text: t("declaration:button"),
+                  attributes: {
+                    id: "form-submit"
+                  }
+                }) }}
+
+              </form>
+            </div>
+
+            {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+
+
+{% endblock %}

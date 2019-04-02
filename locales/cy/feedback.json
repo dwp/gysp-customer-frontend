@@ -1,0 +1,96 @@
+{
+  "header":"Adborth",
+  "p": "Rhowch adborth i ni i'n helpu i wella'r gwasanaeth hwn. Ni fydd yn cymryd mwy na 2 funud.",
+  "p-alt": "Peidiwch â chynnwys unrhyw wybodaeth bersonol neu ariannol, e.e. eich rhif Yswiriant Gwladol neu fanylion banc.",
+  "h2-alt": "Helpwch ni i wella Cael eich Pensiwn y Wladwriaeth.",
+  "h2": "Ydych chi eisiau ein helpu i wella'r gwasanaeth hwn?",
+  "complete": "Diolch am eich adborth",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Mae'n rhaid i chi ateb o leiaf un cwestiwn.",
+    "p1-more": "Edrychwch dros y broblem neu broblemau canlynol."
+  },
+  "fields": {
+    "whatWereYouDoing": {
+      "label": "Beth oeddech chi'n ei wneud?",
+      "label-display": "Beth oeddech chi'n ei wneud?",
+      "errors": {
+        "length": "Mwyafswm hyd yw 1200."
+      }
+    },
+    "whatWentWrong": {
+      "label": "Beth aeth o'i le?",
+      "label-display": "Beth aeth o'i le?",
+      "errors": {
+        "length": "Mwyafswm hyd yw 1200."
+      }
+    },
+    "easeOfUse": {
+      "label": "Pa mor hawdd oedd hi i ddefnyddio Cael eich Pensiwn y Wladwriaeth?",
+      "options": {
+        "veryEasy": "Hawdd iawn",
+        "easy": "Hawdd",
+        "difficult": "Anodd",
+        "veryDifficult": "Anodd iawn"
+      }
+    },
+    "helperInfo": {
+      "label": "Pan wnaethoch chi ddefnyddio'r gwasanaeth hwn, a wnaethoch chi?",
+      "options": {
+        "yourself": "Ei ddefnyddio ar eich pen eich hun",
+        "someoneElse": "Ei ddefnyddio gyda rhywun arall",
+        "onBehalf": "Cael rhywun i'w ddefnyddio ar eich rhan"
+        }
+      },
+      "serviceReceived": {
+        "label": "Ar y cyfan, beth yw eich barn am y gwasanaeth rydych wedi'i ddefnyddio heddiw?",
+        "label-display": "Ar y cyfan, beth yw eich barn am y gwasanaeth rydych wedi'i ddefnyddio heddiw?",
+        "options": {
+          "verySatisfied": "Bodlon iawn",
+          "satisfied": "Bodlon",
+          "neither": "Ddim yn fodlon nac yn anfodlon",
+          "dissatisfied": "Anfodlon",
+          "veryDissatisfied": "Anfodlon iawn"
+        },
+        "errors": {
+          "required": "Cwblhewch y maes hwn."
+        }
+      },
+      "improveThisService": {
+        "label": "Sut allwn ni wella'r gwasanaeth hwn?",
+        "label-display": "Sut allwn ni wella'r gwasanaeth hwn?",
+        "limit": "(Y trefyn yw 1200 nod)",
+        "hint": "Peidiwch â chynnwys unrhyw wybodaeth bersonol neu ariannol, e.e. eich rhif Yswiriant Gwladol neu fanylion banc.",
+        "errors": {
+          "length": "Mwyafswm hyd yw 1200."
+        }
+      },
+      "name": {
+        "label": "Enw llawn",
+        "label-display": "Enw llawn",
+        "errors": {
+          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
+          "length": "Mwyafswm hyd yw 140."
+        }
+      },
+      "telephone": {
+        "label": "Rhif ffôn",
+        "label-display": "Rhif ffôn",
+        "errors": {
+          "format": "Dylech ond rhoi rhifau a gofodau.",
+          "length": "Mwyafswm hyd yw 70."
+        }
+      },
+      "email": {
+        "label": "Cyfeiriad e-bost",
+        "label-display": "Cyfeiriad e-bost",
+        "errors": {
+          "format": "Rhowch gyfeiriad e-bost dilys.",
+          "length": "Mwyafswm hyd yw 100."
+        }
+      }
+    },
+    "button": {
+      "label": "Anfon Adborth"
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "header": "Your details",
+  "p1": "We've received your name, date of birth and address from GOV.UK Verify.",
+  "heading1": "Your date of birth",
+  "p2": "We'll use this to confirm you're eligible to get your State Pension",
+  "heading2": "Your address",
+  "fields": {
+    "address": {
+      "legend": "Is this your current address?",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "errors": {
+        "required": "You must complete this section"
+      }
+    }
+  }
+}

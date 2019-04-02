@@ -1,0 +1,50 @@
+{% from "details/macro.njk" import govukDetails %}
+
+<p class="govuk-heading-m">{{ t("dob-proof-overseas:p1") }}</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>{{ t("dob-proof-overseas:list1.li1") }}</li>
+  <li>{{ t("dob-proof-overseas:list1.li2") }}</li>
+  <li>{{ t("dob-proof-overseas:list1.li3") }}</li>
+  <li>{{ t("dob-proof-overseas:list1.li4") }}</li>
+  <li>{{ t("dob-proof-overseas:list1.li5") }}</li>
+</ul>
+
+{% set twoDocumentsHtml %}
+  <p class="govuk-body">{{ t("dob-proof-overseas:help.p") }}</p>
+
+  <ul class="govuk-list govuk-list--bullet margin--bottom">
+    <li>{{ t("dob-proof-overseas:help.list.li1") }}</li>
+    <li>{{ t("dob-proof-overseas:help.list.li2") }}</li>
+    <li>{{ t("dob-proof-overseas:help.list.li3") }}</li>
+    <li>{{ t("dob-proof-overseas:help.list.li4") }}</li>
+    <li>{{ t("dob-proof-overseas:help.list.li5") }}</li>
+  </ul>
+{% endset -%}
+
+{{ govukDetails({
+  summaryText: t("dob-proof-overseas:help.title"),
+  html: twoDocumentsHtml
+}) }}
+
+<p class="govuk-heading-m">{{ t("dob-proof-overseas:p2") }}</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>{{ t("dob-proof-overseas:list2.li1") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li2") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li3") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li4") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li5") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li6") }}</li>
+  <li>{{ t("dob-proof-overseas:list2.li7") }}</li>
+</ul>
+
+<p class="govuk-heading-m">{{ t("dob-proof-overseas:p3") }}</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>{{ t("dob-proof-overseas:address.line1") }}</li>
+  <li>{{ t("dob-proof-overseas:address.line2") }}</li>
+  <li>{{ t("dob-proof-overseas:address.line3") }}</li>
+  <li>{{ t("dob-proof-overseas:address.line4") }}</li>
+  <li>{{ t("dob-proof-overseas:address.line5") }}</li>
+</ul>

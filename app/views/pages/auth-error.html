@@ -1,0 +1,58 @@
+{% extends '../helpers/layout.html' %}
+{% from 'back-link/macro.njk' import govukBackLink %}
+
+{% block pageTitle %}{{ t("auth-exit:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: t("app:link.back") + '<span class="govuk-visually-hidden"> ' + t("navigation.general") + ' ' + t("navigation.auth") + '</span>',
+    href: page.backHref
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("auth-exit:header") }}</h1>
+
+    <p class="govuk-body">{{ t("auth-exit:p1") }}</p>
+
+
+    <p class="govuk-body">{{ t("auth-exit:p2") }}</p>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-exit:uk.header") }}</h2>
+
+    <p class="govuk-body">
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:uk.telephone_label") }}</span> {{ t("auth-exit:uk.telephone_text") }}
+      <br />
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:uk.textphone_label") }}</span> {{ t("auth-exit:uk.textphone_text") }}
+    </p>
+    <p class="govuk-body compound__no-top compound__xs-bottom">{{ t("auth-exit:uk.p1") }}</p>
+    <p class="govuk-body compound__no-top">{{ t("auth-exit:uk.p2") }}</p>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-exit:ni.header") }}</h2>
+    <p class="govuk-body compound__s-bottom">
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:ni.telephone_label") }}</span> {{ t("auth-exit:ni.telephone_text") }}
+      <br />
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:ni.textphone_label") }}</span> {{ t("auth-exit:ni.textphone_text") }}
+    </p>
+    <p class="govuk-body compound__no-top compound__xs-bottom">{{ t("auth-exit:ni.p1") }}</p>
+    <p class="govuk-body compound__no-top">{{ t("auth-exit:ni.p2") }}</p>
+
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-exit:overseas.header") }}</h2>
+    <p class="govuk-body compound__s-bottom">
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:overseas.telephone_label") }}</span> {{ t("auth-exit:overseas.telephone_text") }}
+      <br />
+      <span class="govuk-!-font-weight-bold">{{ t("auth-exit:overseas.textphone_label") }}</span> {{ t("auth-exit:overseas.textphone_text") }}
+    </p>
+    <p class="govuk-body compound__no-top compound__xs-bottom">{{ t("auth-exit:overseas.p1") }}</p>
+    <p class="govuk-body compound__no-top">{{ t("auth-exit:overseas.p2") }}</p>
+
+  </div>
+
+</div>
+
+
+{% endblock %}

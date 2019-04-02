@@ -1,0 +1,149 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("contact:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ govukErrorSummary({
+          titleText: t("contact:errors.header"),
+          descriptionText: t("contact:errors.p1"),
+          errorList: errors.errorSummary
+        }) }}
+      </div>
+    </div>
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("contact:header") }}</h1>
+
+    <p class="govuk-body">{% if isOverseas%}{{ t("contact:overseas.p") }}{% else %}{{ t("contact:p") }}{% endif %}</p>
+
+    <form method="post" action="contact-details" autocomplete="off" id="checkbox-form">
+      {% set homeTelephoneNumberHtml %}
+        {{ govukInput({
+          id: "homeTelephoneNumber",
+          name: "homeTelephoneNumber",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: t("contact:fields.homeTelephoneNumber.label")
+          },
+          value: details.homeTelephoneNumber,
+          errorMessage: errors.homeTelephoneNumber
+        }) }}
+      {% endset -%}
+
+      {% set mobileTelephoneNumberHtml %}
+        {{ govukInput({
+          id: "mobileTelephoneNumber",
+          name: "mobileTelephoneNumber",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: t("contact:fields.mobileTelephoneNumber.label")
+          },
+          value: details.mobileTelephoneNumber,
+          errorMessage: errors.mobileTelephoneNumber
+        }) }}
+      {% endset -%}
+
+      {% set workTelephoneNumberHtml %}
+        {{ govukInput({
+          id: "workTelephoneNumber",
+          name: "workTelephoneNumber",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: t("contact:fields.workTelephoneNumber.label")
+          },
+          value: details.workTelephoneNumber,
+          errorMessage: errors.workTelephoneNumber
+        }) }}
+      {% endset -%}
+
+      {{ govukCheckboxes({
+        errorMessage: errors.overAll,
+        hint: {
+          text: t("contact:fields.checkbox.hint")
+        },
+        fieldset: {
+          legend: {
+            text: t("contact:fields.checkbox.legend"),
+            isPageHeading: false,
+            classes: "govuk-label--s"
+          },
+          attributes: {
+            id: "checkbox"
+          }
+        },
+        items: [
+          {
+            name: "cbHomeTelephoneNumber",
+            id: "cbHomeTelephoneNumber",
+            value: true,
+            text: t("contact:fields.checkbox.options.home"),
+            checked: checked(details.cbHomeTelephoneNumber, 'true'),
+            errorMessage: errors.homeTelephoneNumber,
+            conditional: {
+              html: homeTelephoneNumberHtml
+            }
+          }, {
+            name: "cbMobileTelephoneNumber",
+            id: "cbMobileTelephoneNumber",
+            value: true,
+            text: t("contact:fields.checkbox.options.mobile"),
+            checked: checked(details.cbMobileTelephoneNumber, 'true'),
+            conditional: {
+              html: mobileTelephoneNumberHtml
+            }
+          }, {
+            name: "cbWorkTelephoneNumber",
+            id: "cbWorkTelephoneNumber",
+            value: true,
+            text: t("contact:fields.checkbox.options.work"),
+            checked: checked(details.cbWorkTelephoneNumber, 'true'),
+            errorMessage: errors.cbWorkTelephoneNumber,
+            conditional: {
+              html: workTelephoneNumberHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: t("contact:fields.email.label"),
+          classes: "govuk-label--s"
+        },
+        id: "email",
+        name: "email",
+        classes: "govuk-!-width-one-half",
+        attributes: {
+          "data-journey-click": t("google-analytics:pages.contact-details.email")
+        },
+        value: details.email,
+        errorMessage: errors.email
+      }) }}
+
+      {{ govukButton({
+        text: t("app:button.continue"),
+        attributes: {
+          id: "form-submit",
+          'data-ga-check': 'check-if-contact-page'
+        }
+      }) }}
+    </form>
+  </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+</div>
+{% endblock %}

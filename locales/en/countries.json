@@ -1,0 +1,43 @@
+{
+  "lived": {
+    "header": "What countries have you lived in?",
+    "header-overseas": "Where have you lived outside the UK?",
+    "overseas-info": "Include all countries you have lived in and the country you live in now.",
+    "errors": {
+      "header": "Unable to submit the form.",
+      "p1": "Please check the following problem or problems."
+    }
+  },
+  "worked": {
+    "header": "What countries have you worked in?",
+    "errors": {
+      "header": "Unable to submit the form.",
+      "p1": "Please check the following problem or problems."
+    }
+  },
+  "fields": {
+    "country": {
+      "label": "Country name",
+      "errors": {
+        "valid": "Enter a valid country",
+        "required": "Enter or select a country",
+        "format": "Enter or select a valid country",
+        "duplicate": "Only enter or select each country once"
+      }
+    }
+  },
+  "js-error": {
+    "duplicate": {
+      "header": "Country name",
+      "message": "Only enter or select each country once"
+    },
+    "empty": {
+      "header": "Country name",
+      "message": "Enter or select a country"
+    }
+  },
+  "link": {
+      "add": "Add another country",
+      "remove": "Remove"
+  }
+}

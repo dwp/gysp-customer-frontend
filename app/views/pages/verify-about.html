@@ -1,0 +1,37 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("verify-start:header") }}{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl no-margin-top">{{ t("verify-start:header") }}</h1>
+
+    <p class="govuk-body">{{ t("verify-start:p") }}</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>{{ t("verify-start:li1") }}</li>
+      <li>{{ t("verify-start:li2") }}</li>
+    </ul>
+
+    <p class="govuk-body">{{ t("verify-start:p2") }}</p>
+
+    <div class="verify-block govuk-!-margin-bottom-5">
+      <img src="{{ assetPath }}/images/govuk-verify-small-black-text.png" class="verify-logo" alt="GOV.UK Verify">
+    </div>
+
+    {{ govukButton({
+      text: t("app:button.continue"),
+      href: 'personal-data',
+      classes: 'govuk-button--start',
+      attributes: {
+        id: 'continue'
+      }
+    }) }}
+  </div>
+</div>
+
+
+{% endblock %}

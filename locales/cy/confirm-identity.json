@@ -1,0 +1,25 @@
+{
+  "header": "Sut hoffech chi gadarnhau pwy ydych chi?",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+  },
+  "fields": {
+      "authType": {
+        "label": "Sut hoffech chi gadarnhau pwy ydych chi?",
+        "options": {
+          "invite": {
+            "header": "Mae gen i lythyr gwahoddiad",
+            "info": "Os ydych wedi cael  llythyr, bydd eich cod adnabod unigryw wedi'i gynnwys yn y llythyr."
+          },
+          "verify": {
+            "header": "Nid oes gen i lythyr gwahoddiad",
+            "info": "Gallwch ddefnyddio gwasanaeth dilysu hunaniaeth y llywodraeth GOV.UK Verify yn lle hynny."
+          }
+        },
+        "errors": {
+          "required": "Rhaid i chi lenwi'r adran hon"
+        }
+      }
+    }
+}

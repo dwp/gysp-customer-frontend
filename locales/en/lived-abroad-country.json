@@ -1,0 +1,56 @@
+{
+  "header": {
+    "country": "Country __CURRENT__ of __TOTAL__",
+    "title": "When did you live in __COUNTRY__?",
+    "title-overseas": "When did you live here?"
+  },
+  "overseas-info": "If you've lived here on more than one occasion, you only need to provide dates for the most recent period of time.",
+  "fields": {
+    "dateFrom": {
+      "legend": "From",
+      "hint": "",
+      "label-month": "Month",
+      "label-year": "Year",
+      "errors": {
+        "required": "Enter a date",
+        "invalid": "Enter a valid date",
+        "future": "Date cannot be in the future"
+      }
+    },
+    "dateTo": {
+      "legend": "To",
+      "hint": "",
+      "label-month": "Month",
+      "label-year": "Year",
+      "errors": {
+        "required": "Enter a date",
+        "invalid": "Enter a valid date",
+        "after": "Date cannot be before from date",
+        "future": "Date cannot be in the future"
+      }
+    },
+    "dateFrom-overseas": {
+      "legend": "From",
+      "hint": "",
+      "label-month": "Month",
+      "label-year": "Year",
+      "errors": {
+        "required": "Enter a date",
+        "invalid": "Enter a valid date",
+        "future": "Date cannot be in the future"
+      }
+    },
+    "dateTo-overseas": {
+      "legend": "To",
+      "hint": "Put the current month and year if you live in this country.",
+      "label-month": "Month",
+      "label-year": "Year",
+      "errors": {
+        "required": "Enter a date",
+        "invalid": "Enter a valid date",
+        "after": "Date cannot be before from date",
+        "future": "Date cannot be in the future"
+      }
+    }
+  }
+}

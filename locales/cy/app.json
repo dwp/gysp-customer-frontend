@@ -1,0 +1,95 @@
+{
+  "service_name": "Cael eich Pensiwn y Wladwriaeth",
+  "title": {
+    "error": "Gwall"
+  },
+  "button": {
+    "continue": "Parhau"
+  },
+  "pdf": {
+    "userDOB": "Dyddiad geni wedi'i roi gan y defnyddiwr",
+    "userVerficationStatus": "Statws dilysu dyddiad geni wedi'i ddiweddaru",
+    "verficationStatus": "Statws dilysu dyddiad geni",
+    "statePensionAge": "Dyddiad oedran Pensiwn y Wladwriaeth wedi'i ailgyfrifo"
+  },
+  "link": {
+    "back": "Yn ôl"
+  },
+  "feedback": "Mae hwn yn wasanaeth newydd a bydd eich <a href='__URL__' target='_new'>adborth</a> yn ein helpu i'w wella.",
+  "navigation": {
+     "general": "Yn ôl i",
+     "auth": "Darparu eich manylion",
+     "cookies": "Cwcis",
+     "privacy": "Preifatrwydd",
+     "northernIreland" : {
+       "privacy": "Preifatrwydd Gogledd Iwerddon"
+     }
+  },
+  "help": {
+    "bank": {
+        "h2": "Saff a diogel",
+        "details": "Mae hwn yn safle diogel. Mae eich gwybodaeth bersonol wedi'i ddiogelu."
+    },
+    "h2": "Cael help",
+    "telephone": {
+      "label": "Ffôn:",
+      "number": "0800 169 0253"
+    },
+    "textphone": {
+      "label": "Ffôn testun:",
+      "number": "0800 169 0203"
+    },
+    "hours": {
+      "line1": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+      "line2": "Ar gau ar wyliau cyhoeddus"
+    },
+    "outside": {
+      "start": "Mae sut i wneud cais yn wahanol os ydych yn gwneud cais o",
+      "url_text": "Ogledd Iwerddon"
+    },
+    "northernIreland": {
+      "summaryText" : "Mae yna rif gwahanol ar gyfer Gogledd Iwerddon",
+      "telephone": {
+        "label": "Ffôn:",
+        "number": "0800 587 0892"
+      },
+      "textphone": {
+        "label": "Ffôn testun:",
+        "number": "0808 100 2198"
+      },
+      "hours": {
+        "line1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
+        "line2": "Ar gau ar wyliau cyhoeddus"
+      }
+    }
+  },
+  "error": {
+    "404": {
+      "heading": "Tudalen heb ei darganfod",
+      "p1": "Os ydych wedi rhoi cyfeiriad gwefan, edrychwch i weld os oedd yn gywir.",
+      "p2": ""
+    },
+    "403": {
+      "heading": "Mae rhywbeth wedi mynd o'i le",
+      "p1": "Ni allwch ddefnyddio'r gwasanaeth hwn ar hyn o bryd. Bydd y broblem yn cael ei datrys cyn gynted â phosibl ",
+      "p2": "Rhowch gynnig arall yn nes ymlaen."
+    },
+    "500": {
+      "heading": "Mae rhywbeth wedi mynd o'i le",
+      "p1": "Ni allwch ddefnyddio'r gwasanaeth hwn ar hyn o bryd. Bydd y broblem yn cael ei datrys cyn gynted â phosibl ",
+      "p2": "Rhowch gynnig arall yn nes ymlaen."
+    },
+    "generic": {
+      "heading": "Mae rhywbeth wedi mynd o'i le",
+      "p1": "Ni allwch ddefnyddio'r gwasanaeth hwn ar hyn o bryd. Bydd y broblem yn cael ei datrys cyn gynted â phosibl ",
+      "p2": "Rhowch gynnig arall yn nes ymlaen."
+    }
+  },
+  "cookie": {
+    "p": "Mae'r gwasanaeth hwn yn defnyddio cwcis",
+    "url_text": "Darganfyddwch fwy"
+  },
+  "footer": {
+      "copyright": "Hawlfraint y Goron"
+  }
+}

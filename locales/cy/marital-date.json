@@ -1,0 +1,26 @@
+{
+  "header": {
+    "married": "Pa ddyddiad wnaethoch chi briodi?",
+    "civil": "Pa ddyddiad gafodd eich partneriaeth sifil ei gofrestru?",
+    "divorced": "Pa ddyddiad gawsoch chi ysgariad?",
+    "dissolved": "Pa ddyddiad gafodd eich partneriaeth sifil ei ddiddymu?",
+    "widowed": "Pa ddyddiad gawsoch chi eich gwneud yn weddw?"
+  },
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem canlynol"
+  },
+  "fields": {
+      "date": {
+        "hint": "Er enghraifft, 31 3 1980",
+        "day": "Diwrnod",
+        "month": "Mis",
+        "year": "Blwyddyn",
+        "errors": {
+          "empty": "Rhowch ddyddiad",
+          "format": "Rhowch ddyddiad dilys.",
+          "future": "Ni all y dyddiad fod yn y dyfodol."
+        }
+      }
+    }
+}

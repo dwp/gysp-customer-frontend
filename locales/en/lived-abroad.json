@@ -1,0 +1,20 @@
+{
+  "header":"Have you ever lived outside of the UK?",
+  "p1": "You do not need to provide any details if you have served overseas with the British armed forces.",
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem"
+  },
+  "fields": {
+      "livedAbroad": {
+        "label": "Have you ever lived outside of the UK?",
+        "errors": {
+          "required": "Please complete."
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    }
+}

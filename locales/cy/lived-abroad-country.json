@@ -1,0 +1,29 @@
+{
+  "header": {
+    "country": "Gwlad __CURRENT__ o __TOTAL__",
+    "title": "Pryd wnaethoch chi fyw yn:  __COUNTRY__?"
+  },
+  "fields": {
+    "dateFrom": {
+      "legend": "O",
+      "label-month": "Mis",
+      "label-year": "Blwyddyn",
+      "errors": {
+        "required": "Rhowch ddyddiad",
+        "invalid": "Rhowch ddyddiad dilys",
+        "future": "Ni all y dyddiad fod yn y dyfodol"
+      }
+    },
+    "dateTo": {
+      "legend": "Hyd",
+      "label-month": "Mis",
+      "label-year": "Blwyddyn",
+      "errors": {
+        "required": "Rhowch ddyddiad",
+        "invalid": "Rhowch ddyddiad dilys",
+        "after": "Ni all y dyddiad fod cyn y dyddiad o",
+        "future": "Ni all y dyddiad fod yn y dyfodol"
+      }
+    }
+  }
+}

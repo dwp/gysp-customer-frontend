@@ -1,0 +1,20 @@
+{
+  "header":"Ydych chi erioed wedi byw y tu allan i'r Deyrnas Unedig?",
+  "p1": "Nid oes angen i chi ddarparu unrhyw fanylion os ydych wedi gwasanaethu dramor â lluoedd arfog Prydain.",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem canlynol"
+  },
+  "fields": {
+      "livedAbroad": {
+        "label": "Ydych chi erioed wedi byw y tu allan i'r Deyrnas Unedig?",
+        "errors": {
+          "required": "Dylech gwblhau."
+        },
+        "options": {
+          "yes": "Ydw",
+          "no": "Na"
+        }
+      }
+    }
+}

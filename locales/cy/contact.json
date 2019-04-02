@@ -1,0 +1,58 @@
+{
+  "header":"Eich manylion cyswllt",
+  "p": "Byddwn ond yn cysylltu â chi os byddwn angen mwy o wybodaeth. Mae hyn er mwyn sicrhau eich bod yn cael yr holl Bensiwn y Wladwriaeth mae gennych hawl iddo.",
+  "errors": {
+    "header": "Methu anfon y ffurflen.",
+    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+  },
+  "fields": {
+    "checkbox": {
+      "legend": "Sut ddylem ni gysylltu â chi?",
+      "hint": "Rhowch o leiaf un rhif ffôn",
+      "options": {
+        "home": "Ffôn cartref",
+        "mobile": "Ffôn symudol",
+        "work": "Ffôn gwaith"
+      },
+      "errors": {
+        "required": "Rhowch o leiaf un rhif ffôn"
+      }
+    },
+    "homeTelephoneNumber": {
+      "label": "Rhif ffôn cartref",
+      "label-display": "Rhif ffôn cartref",
+      "errors": {
+        "required": "Rhowch rif ffôn cartref",
+        "format": "Rhowch rifau a gofodau yn unig",
+        "length": "Mwyafswm hyd yw 70"
+      }
+    },
+    "mobileTelephoneNumber": {
+      "label": "Rhif ffôn symudol",
+      "label-display": "Rhif ffôn symudol",
+      "errors": {
+        "required": "Rhowch rif ffôn symudol",
+        "format": "Rhowch rifau a gofodau yn unig",
+        "length": "Mwyafswm hyd yw 70"
+      }
+    },
+    "workTelephoneNumber": {
+      "label": "Rhif ffôn gwaith",
+      "label-display": "Rhif ffôn gwaith",
+      "errors": {
+        "required": "Rhowch rif ffôn gwaith",
+        "format": "Rhowch rifau a gofodau yn unig",
+        "length": "Mwyafswm hyd yw 70"
+      }
+    },
+    "email": {
+      "label": "Cyfeiriad e-bost",
+      "label-display": "Cyfeiriad e-bost",
+      "errors": {
+        "required": "Rhowch eich cyfeiriad e-bost",
+        "format": "Rhowch gyfeiriad e-bost dilys",
+        "length": "Mwyafswm hyd yw 100"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "header": {
+    "married": "About your spouse",
+    "civil": "About your civil partner",
+    "divorced": "About your ex-spouse",
+    "dissolved": "About your ex-partner",
+    "widowed": "About your late spouse"
+  },
+  "errors": {
+    "header": "Unable to submit the form.",
+    "p1": "Please check the following problem"
+  },
+  "fields": {
+    "firstName": {
+        "label": "Their first name",
+        "label-display": "Their first name",
+        "errors": {
+          "required": "Enter their first name",
+          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
+          "length": "Maximum length is 70."
+        }
+    },
+    "surname": {
+        "label": "Their surname",
+        "label-display": "Their surname",
+        "errors": {
+          "required": "Enter their surname",
+          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
+          "length": "Maximum length is 70."
+        }
+    },
+    "otherName": {
+        "label": "All other names they have been known by",
+        "label-display": "Other names",
+        "hint": "Include maiden name, former married name and changes of family name.",
+        "errors": {
+          "required": "Please complete.",
+          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
+          "length": "Maximum length is 70."
+        }
+    },
+      "dob": {
+        "legend": "Their date of birth (optional)",
+        "label-display": "Their Date of birth",
+        "hint": "For example, 31 3 1980",
+        "day": "Day",
+        "month": "Month",
+        "year": "Year",
+        "errors": {
+          "format": "Please enter a valid date.",
+          "future": "Date cannot be in the future."
+        }
+      }
+    }
+}

@@ -1,0 +1,47 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("pension-age:before.header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{ t("pension-age:before.h1") }}</h1>
+
+        <p class="govuk-body">{{ t("pension-age:before.p1") }}</p>
+
+        {% if isOverseas %}
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.telephone.label") }}</span> {{ t("pension-age:before.contact.telephone.value.overseas") }}</p>
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.textphone.label") }}</span> {{ t("pension-age:before.contact.textphone.value.overseas") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:before.p2.overseas") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:before.p2.overseas2") }}</p>
+        {% elif isNorthernIreland %}
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.telephone.label") }}</span> {{ t("pension-age:before.contact.telephone.value.ni") }}</p>
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.textphone.label") }}</span> {{ t("pension-age:before.contact.textphone.value.ni") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:before.p2.ni") }}</p>
+
+        {% else %}
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.telephone.label") }}</span> {{ t("pension-age:before.contact.telephone.value.gb") }}</p>
+
+            <p class="govuk-body"><span class="heading-small">{{ t("pension-age:before.contact.textphone.label") }}</span> {{ t("pension-age:before.contact.textphone.value.gb") }}</p>
+
+            <p class="govuk-body">{{ t("pension-age:before.p2.gb") }}</p>
+
+        {% endif %}
+
+        <p class="govuk-body">{{ t("pension-age:before.p3") }}</p>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "date-input/macro.njk" import govukDateInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("marital-date:header." + maritalStatus ) }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("marital-date:errors.header"),
+      descriptionText: t("marital-date:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="{{ formURL }}" autocomplete="off">
+
+        {{ govukDateInput({
+          id: "date",
+          fieldset: {
+            legend: {
+              text: t("marital-date:header." + maritalStatus),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: t("marital-date:fields.date.hint")
+          },
+          items: [{
+            label: t("marital-date:fields.date.day"),
+            id: "date-day",
+            name: "dateDay",
+            value: details.dateDay,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' day'
+            }
+          }, {
+            label: t("marital-date:fields.date.month"),
+            id: "date-month",
+            name: "dateMonth",
+            value: details.dateMonth,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' month'
+            }
+          }, {
+            label: t("lived-abroad-country:fields.dateFrom.label-year"),
+            id: "date-year",
+            name: "dateYear",
+            value: details.dateYear,
+            classes: "govuk-input--width-4" + (" govuk-input--error" if errors.date),
+            pattern: "[0-9]*",
+            attributes: {
+              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' year'
+            }
+          }
+          ],
+          errorMessage: errors.date
+        }) }}
+
+        {{ govukButton({
+            text: t("app:button.continue"),
+            attributes: {
+              id: 'form-submit'
+            }
+          }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}

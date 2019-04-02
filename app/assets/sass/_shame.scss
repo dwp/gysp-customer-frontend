@@ -1,0 +1,23 @@
+.govuk-sort-code-input {
+  font-size: 0;
+
+  &__item {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+}
+
+.verify-block {
+  width: 200px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.js-enabled {
+  .js-hidden {
+    display: none;
+  }
+}

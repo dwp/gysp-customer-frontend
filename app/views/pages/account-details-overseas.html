@@ -1,0 +1,90 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+
+{% block gaTagExtra %}
+  ga('send', 'pageview', '{{ t("google-analytics:pages.account-details-overseas.pageview") }}');
+{% endblock %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("account-overseas:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("account-overseas:errors.header"),
+      descriptionText: t("account-overseas:errors.p1"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t("account-overseas:header") }}</h1>
+
+      <form method="post" action="account-details" autocomplete="off">
+
+        {{ govukInput({
+          id: "accountHolder",
+          name: "accountHolder",
+          type: "text",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: t("account-overseas:fields.accountHolder.label"),
+            classes: 'govuk-label--s'
+          },
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.account-details-overseas.account-holder")
+          },
+          value: details.accountHolder,
+          errorMessage: errors.accountHolder
+        }) }}
+
+        {{ govukInput({
+          id: "accountNumber",
+          name: "accountNumber",
+          type: "text",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: t("account-overseas:fields.accountNumber.label"),
+            classes: 'govuk-label--s'
+          },
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.account-details-overseas.account-number")
+          },
+          value: details.accountNumber,
+          errorMessage: errors.accountNumber
+        }) }}
+
+        {{ govukInput({
+          id: "accountCode",
+          name: "accountCode",
+          type: "text",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: t("account-overseas:fields.accountCode.label"),
+            classes: 'govuk-label--s'
+          },
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.account-details-overseas.account-code")
+          },
+          value: details.accountCode,
+          errorMessage: errors.accountCode
+        }) }}
+
+        {{ govukButton({
+          text: t("account-overseas:button"),
+          value: "Confirm details",
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
+    </div>
+
+  {{ help.sideBar(t, isNorthernIreland, isOverseas, true) }}
+
+  </div>
+
+{% endblock %}
