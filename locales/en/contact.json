@@ -1,6 +1,6 @@
 {
-  "header":"Your contact details",
-  "p": "We’ll only contact you if we need further information. This is to make sure you get all of the State Pension you’re entitled to.",
+  "header":"How would you like to be contacted?",
+  "p": "We may contact you if we need further information.",
   "overseas": {
     "p": "We’ll call you to confirm some of the details you’ve given us before we process your application."
   },
@@ -10,8 +10,8 @@
   },
   "fields": {
     "checkbox": {
-      "legend": "How should we contact you?",
-      "hint": "Provide at least one phone number",
+      "legend": "How would you like to be contacted?",
+      "hint": "You must provide at least one phone number.",
       "options": {
         "home": "Home phone",
         "mobile": "Mobile phone",
@@ -33,6 +33,7 @@
     "mobileTelephoneNumber": {
       "label": "Mobile phone number",
       "label-display": "Mobile phone number",
+      "hint": "We may use text messages to update you about your claim.",
       "errors": {
         "required": "Enter a mobile phone number",
         "format": "Enter only numbers and spaces",
@@ -51,6 +52,7 @@
     "email": {
       "label": "Email address",
       "label-display": "Email address",
+      "hint": "We'll use this to confirm we've received your application.",
       "errors": {
         "required": "Enter your email address",
         "format": "Enter a valid email",

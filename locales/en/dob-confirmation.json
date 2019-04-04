@@ -1,5 +1,5 @@
 {
-  "header":"Your date of birth",
+  "header":"What is your date of birth?",
   "errors": {
     "header": "Unable to submit the form.",
     "p1": "Please check the following problem or problems."

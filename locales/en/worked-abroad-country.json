@@ -7,7 +7,7 @@
   "overseas-info": "If you've worked here on more than one occasion, you only need to provide dates for the most recent period of time.",
   "fields": {
     "referenceNumber": {
-      "label": "What was the equivalent of your NI Number in __COUNTRY__?",
+      "label": "What was the equivalent of your National Insurance number here?",
       "errors": {
         "required": "You must complete this section",
         "toLong": "Maximum length is 24",

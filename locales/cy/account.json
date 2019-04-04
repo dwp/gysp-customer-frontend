@@ -1,6 +1,6 @@
 {
-  "header":"Manylion eich cyfrif",
-  "p": "Gellir ond talu eich pensiwn i'ch cyfrif banc neu gymdeithas adeiladu chi.",
+  "header":"Sut hoffech gael eich talu?",
+  "p": "Dim ond i'ch cyfrif banc neu gymdeithas adeiladu personol neu ar y cyd y gallwn dalu eich Pensiwn y Wladwriaeth.",
   "errors": {
       "header": "Methu anfon y ffurflen.",
       "p1": "Edrychwch dros y broblem neu broblemau canlynol"
@@ -29,8 +29,8 @@
         }
       },
       "accountNumber": {
-        "label": "Rhif eich cyfrif",
-        "label-display": "Rhif eich cyfrif",
+        "label": "Rhif y cyfrif",
+        "label-display": "Rhif y cyfrif",
         "errors": {
           "required": "Rhowch rif eich cyfrif",
           "length": "Yr hyd sydd ei angen yw 8.",
@@ -38,8 +38,8 @@
         }
       },
       "sortCode": {
-        "label": "Eich Cod Didoli",
-        "label-display": "Eich Cod Didoli",
+        "label": "Cod didoli",
+        "label-display": "Cod didoli",
         "label-1": "2 ddigid cyntaf",
         "label-2": "Yr ail 2 ddigid",
         "label-3": "Y 2 ddigid olaf",

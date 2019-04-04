@@ -22,10 +22,6 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">{{ t("contact:header") }}</h1>
-
-    <p class="govuk-body">{% if isOverseas%}{{ t("contact:overseas.p") }}{% else %}{{ t("contact:p") }}{% endif %}</p>
-
     <form method="post" action="contact-details" autocomplete="off" id="checkbox-form">
       {% set homeTelephoneNumberHtml %}
         {{ govukInput({
@@ -42,17 +38,35 @@
       {% endset -%}
 
       {% set mobileTelephoneNumberHtml %}
-        {{ govukInput({
-          id: "mobileTelephoneNumber",
-          name: "mobileTelephoneNumber",
-          type: "tel",
-          classes: "govuk-!-width-one-half",
-          label: {
-            text: t("contact:fields.mobileTelephoneNumber.label")
-          },
-          value: details.mobileTelephoneNumber,
-          errorMessage: errors.mobileTelephoneNumber
-        }) }}
+
+        {% if isOverseas %}
+          {{ govukInput({
+            id: "mobileTelephoneNumber",
+            name: "mobileTelephoneNumber",
+            type: "tel",
+            classes: "govuk-!-width-one-half",
+            label: {
+              text: t("contact:fields.mobileTelephoneNumber.label")
+            },
+            value: details.mobileTelephoneNumber,
+            errorMessage: errors.mobileTelephoneNumber
+          }) }}
+        {% else %}
+          {{ govukInput({
+            id: "mobileTelephoneNumber",
+            name: "mobileTelephoneNumber",
+            type: "tel",
+            classes: "govuk-!-width-one-half",
+            label: {
+              text: t("contact:fields.mobileTelephoneNumber.label")
+            },
+            hint: {
+              text: t("contact:fields.mobileTelephoneNumber.hint")
+            },
+            value: details.mobileTelephoneNumber,
+            errorMessage: errors.mobileTelephoneNumber
+          }) }}
+        {% endif %}
       {% endset -%}
 
       {% set workTelephoneNumberHtml %}
@@ -72,13 +86,13 @@
       {{ govukCheckboxes({
         errorMessage: errors.overAll,
         hint: {
-          text: t("contact:fields.checkbox.hint")
+          html: '<p class="govuk-body">' + (t("contact:overseas.p") if isOverseas else t("contact:p")) + '</p>' + t("contact:fields.checkbox.hint")
         },
         fieldset: {
           legend: {
             text: t("contact:fields.checkbox.legend"),
-            isPageHeading: false,
-            classes: "govuk-label--s"
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-8"
           },
           attributes: {
             id: "checkbox"
@@ -122,6 +136,9 @@
         label: {
           text: t("contact:fields.email.label"),
           classes: "govuk-label--s"
+        },
+        hint: {
+          text: t("contact:fields.email.hint")
         },
         id: "email",
         name: "email",

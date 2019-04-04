@@ -5,7 +5,7 @@
   },
   "fields": {
     "referenceNumber": {
-      "label": "Beth oedd yn cyfateb i'ch Rhif Yswiriant Gwladol yn: __COUNTRY__?",
+      "label": "Beth oedd yn cyfateb â'ch rhif Yswiriant Gwladol yma?",
       "errors": {
         "required": "Mae'n rhaid i chi gwblhau'r adran hon",
         "toLong": "Mwyafswm hyd yw 24",

@@ -1,6 +1,6 @@
 {
-  "header":"Your account details",
-  "p": "You can only have your pension paid into your own bank or building society account.",
+  "header":"How would you like to be paid?",
+  "p": "We can only pay your State Pension into your personal or joint bank or building society account.",
   "errors": {
       "header": "Unable to submit the form.",
       "p1": "Please check the following problem or problems"
@@ -29,8 +29,8 @@
         }
       },
       "accountNumber": {
-        "label": "Your account number",
-        "label-display": "Your account number",
+        "label": "Account number",
+        "label-display": "Account number",
         "errors": {
           "required": "Enter your account number",
           "length": "Required length is 8.",
@@ -38,8 +38,8 @@
         }
       },
       "sortCode": {
-        "label": "Sort Code",
-        "label-display": "Sort Code",
+        "label": "Sort code",
+        "label-display": "Sort code",
         "label-1": "First 2 digits",
         "label-2": "Second 2 digits",
         "label-3": "Last 2 digits",
