@@ -9,8 +9,8 @@
       "result": "Canlyniad Dilysu Banc",
       "messages": "Rhybuddion",
       "paymentMethod": {
-        "fieldset": "Sut hoffech chi gael eich talu?",
-        "label-display": "Sut hoffech chi gael eich talu?",
+        "fieldset": "Sut hoffech gael eich talu?",
+        "label-display": "Sut hoffech gael eich talu?",
         "options": {
           "bank": "Cyfrif banc",
           "building": "Cyfrif cymdeithas adeiladu"

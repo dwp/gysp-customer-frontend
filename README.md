@@ -64,7 +64,7 @@ Configuration is now done via the yaml.js file in the config folder. There is an
 
 * Node.JS 10.15.1+
 * npm v6.4.1+
-* Aws credentials setup locally 
+* Aws credentials setup locally
 
 There is a few options for testing within the application, these have been configured on jenkins. Testing uses [mocha](https://github.com/mochajs/mocha), [supertest](https://github.com/visionmedia/supertest)/[superagent](https://github.com/visionmedia/superagent), [chai](https://github.com/chaijs/chai) and [istanbul](https://gotwarlost.github.io/istanbul/).
 

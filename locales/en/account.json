@@ -9,8 +9,8 @@
       "result": "Bank Authentication result",
       "messages": "Warnings",
       "paymentMethod": {
-        "fieldset": "How would you like to get paid?",
-        "label-display": "How would you like to get paid?",
+        "fieldset": "How would you like to be paid?",
+        "label-display": "How would you like to be paid?",
         "options": {
           "bank": "Bank account",
           "building": "Building society account"

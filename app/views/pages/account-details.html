@@ -19,10 +19,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">{{ t("account:header") }}</h1>
-
-      <p class="govuk-body">{{ t("account:p") }}</p>
-
       <form method="post" action="account-details" autocomplete="off">
         {% set bankHtml %}
           {{ govukInput({
@@ -118,11 +114,14 @@
         {{ govukRadios({
           errorMessage: errors.paymentMethod,
           name: "paymentMethod",
+          hint: {
+            html: '<span class="govuk-body">' + t("account:p") + '</span>'
+          },
           fieldset: {
             legend: {
               text: t("account:fields.paymentMethod.fieldset"),
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--s"
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-8"
             },
             attributes: {
               id: "paymentMethod"
