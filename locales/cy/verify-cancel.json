@@ -1,6 +1,6 @@
 {
   "header": "Os nad ydych eisiau defnyddio GOV.UK Verify",
-  "lead": "Gallwch gael eich Pensiwn y Wladwriaeth drwy ffonio'r rhif rhadffon.",
+  "lead": "Gallwch ein ffonio i gael eich Pensiwn y Wladwriaeth.",
   "p": "Byddwch angen eich rhif Yswiriant Gwladol a gallu cadarnhau rhywfaint o fanylion personol:",
   "call_centres": {
     "uk": {
@@ -31,6 +31,21 @@
       "hours": {
         "line1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
         "line2": "Ar gau ar wyliau cyhoeddus"
+      }
+    },
+    "overseas": {
+      "header": "Tramor",
+      "telephone": {
+        "label": "Ffôn:",
+        "number": "+44 (0) 191 218 7777"
+      },
+      "textphone": {
+        "label": "Ffôn testun:",
+        "number": "+44 (0) 191 218 7280"
+      },
+      "hours": {
+        "line1": "Dydd Llun i ddydd Gwener, 8am i 6pm yn ystod oriau’r DU",
+        "line2": "Ar gau ynystod gwyliau cyhoeddus y DU"
       }
     }
   }

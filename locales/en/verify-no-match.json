@@ -19,5 +19,14 @@
     "textphone_text": "0808 100 2198",
     "p1": "Monday to Friday, 9am to 5pm",
     "p2": "Closed public holidays"
+  },
+  "overseas": {
+    "header": "Overseas",
+    "telephone_label": "Telephone:",
+    "telephone_text": "+44 (0) 191 218 7777",
+    "textphone_label": "Textphone:",
+    "textphone_text": "+44 (0) 191 218 7280",
+    "p1": "Monday to Friday, 8am to 6pm UK time",
+    "p2": "Closed UK public holidays"
   }
 }
