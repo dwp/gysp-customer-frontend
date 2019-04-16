@@ -83,6 +83,49 @@
       "heading": "Mae rhywbeth wedi mynd o'i le",
       "p1": "Ni allwch ddefnyddio'r gwasanaeth hwn ar hyn o bryd. Bydd y broblem yn cael ei datrys cyn gynted â phosibl ",
       "p2": "Rhowch gynnig arall yn nes ymlaen."
+    },
+    "call_centres": {
+      "uk": {
+        "header": "Cymru, yr Alban a Lloegr",
+        "telephone": {
+          "label": "Ffôn:",
+          "number": "0800 169 0253"
+        },
+        "textphone": {
+          "label": "Ffôn testun:",
+          "number": "0800 169 0203"
+        },
+        "hours": {
+          "line1": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+          "line2": "Ar gau ar wyliau cyhoeddus"
+        }
+      },
+      "northern_ireland": {
+        "header": "Gogledd Iwerddon",
+        "telephone": {
+          "label": "Ffôn:",
+          "number": "0808 587 0892"
+        },
+        "textphone": {
+          "label": "Ffôn testun:",
+          "number": "0808 100 2198"
+        },
+        "hours": {
+          "line1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
+          "line2": "Ar gau ar wyliau cyhoeddus"
+        }
+      },
+      "overseas": {
+        "header": "Tramor",
+        "telephone": {
+          "label": "Ffôn:",
+          "number": "+44 (0) 191 216 2516"
+        },
+        "hours": {
+          "line1": "Dydd Llun i ddydd Gwener, 8am i 6pm yn ystod oriau’r DU",
+          "line2": "Ar gau ynystod gwyliau cyhoeddus y DU"
+        }
+      }
     }
   },
   "cookie": {

@@ -93,6 +93,49 @@
       "heading": "Something’s gone wrong",
       "p1": "You can’t use this service just now. The problem will be fixed as soon as possible ",
       "p2": "Please try again later."
+    },
+    "call_centres": {
+      "uk": {
+        "header": "England, Scotland and Wales",
+        "telephone": {
+          "label": "Telephone:",
+          "number": "0800 169 0154"
+        },
+        "textphone": {
+          "label": "Textphone:",
+          "number": "0800 169 0254"
+        },
+        "hours": {
+          "line1": "Monday to Friday, 8am to 6pm",
+          "line2": "Closed public holidays"
+        }
+      },
+      "northern_ireland": {
+        "header": "Northern Ireland",
+        "telephone": {
+          "label": "Telephone:",
+          "number": "0800 587 0892"
+        },
+        "textphone": {
+          "label": "Textphone:",
+          "number": "0808 100 2198"
+        },
+        "hours": {
+          "line1": "Monday to Friday, 9am to 5pm",
+          "line2": "Closed public holidays"
+        }
+      },
+      "overseas": {
+        "header": "Overseas",
+        "telephone": {
+          "label": "Telephone:",
+          "number": "+44 (0) 191 216 2516"
+        },
+        "hours": {
+          "line1": "Monday to Friday, 8am to 6pm UK time",
+          "line2": "Closed UK public holidays"
+        }
+      }
     }
   },
   "cookie": {

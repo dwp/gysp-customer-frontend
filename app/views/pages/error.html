@@ -14,9 +14,24 @@
 
       <p class="govuk-body">{{ t("app:error."+status+".p2") }}</p>
 
-    </div>
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">{{ t("app:error.call_centres.uk.header") }}</h2>
+      <p class="govuk-body govuk-!-margin-bottom-1"><strong>{{ t("app:error.call_centres.uk.telephone.label") }}</strong> {{ t("app:error.call_centres.uk.telephone.number") }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-2"><strong>{{ t("app:error.call_centres.uk.textphone.label") }}</strong> {{ t("app:error.call_centres.uk.textphone.number") }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-1">{{ t("app:error.call_centres.uk.hours.line1") }}</p>
+      <p class="govuk-body">{{ t("app:error.call_centres.uk.hours.line2") }}</p>
 
-    {{ help.sideBar(t) }}
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">{{ t("app:error.call_centres.northern_ireland.header") }}</h2>
+      <p class="govuk-body govuk-!-margin-bottom-1"><strong class="bold-small">{{ t("app:error.call_centres.northern_ireland.telephone.label") }}</strong> {{ t("app:error.call_centres.northern_ireland.telephone.number") }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-2"><strong class="bold-small">{{ t("app:error.call_centres.northern_ireland.textphone.label") }}</strong> {{ t("app:error.call_centres.northern_ireland.textphone.number") }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-1">{{ t("app:error.call_centres.northern_ireland.hours.line1") }}</p>
+      <p class="govuk-body">{{ t("app:error.call_centres.northern_ireland.hours.line2") }}</p>
+
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-2">{{ t("app:error.call_centres.overseas.header") }}</h2>
+      <p class="govuk-body govuk-!-margin-bottom-1"><strong class="bold-small">{{ t("app:error.call_centres.overseas.telephone.label") }}</strong> {{ t("app:error.call_centres.overseas.telephone.number") }}</p>
+      <p class="govuk-body govuk-!-margin-bottom-1">{{ t("app:error.call_centres.overseas.hours.line1") }}</p>
+      <p class="govuk-body">{{ t("app:error.call_centres.overseas.hours.line2") }}</p>
+
+    </div>
   </div>
 
 {% endblock %}

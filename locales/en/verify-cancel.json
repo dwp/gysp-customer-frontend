@@ -1,6 +1,6 @@
 {
   "header": "If you don't want to use GOV.UK Verify",
-  "lead": "You can get your State Pension by calling the freephone number.",
+  "lead": "You can phone us to get your State Pension.",
   "p": "You’ll need your National Insurance number and be able to confirm some personal details:",
   "call_centres": {
     "uk": {
@@ -31,6 +31,21 @@
       "hours": {
         "line1": "Monday to Friday, 9am to 5pm",
         "line2": "Closed public holidays"
+      }
+    },
+    "overseas": {
+      "header": "Overseas",
+      "telephone": {
+        "label": "Telephone:",
+        "number": "+44 (0) 191 218 7777"
+      },
+      "textphone": {
+        "label": "Textphone:",
+        "number": "+44 (0) 191 218 7280"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 8am to 6pm UK time",
+        "line2": "Closed UK public holidays"
       }
     }
   }
