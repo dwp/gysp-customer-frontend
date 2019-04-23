@@ -1,6 +1,6 @@
 {
   "name": "customer-frontend",
-  "version": "7.4.0",
+  "version": "7.5.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:dwp/gysp-customer-frontend.git"
