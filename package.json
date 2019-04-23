@@ -1,6 +1,10 @@
 {
   "name": "customer-frontend",
   "version": "7.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dwp/gysp-customer-frontend.git"
+  },
   "dependencies": {
     "body-parser": "1.18.3",
     "bunyan": "1.8.12",
