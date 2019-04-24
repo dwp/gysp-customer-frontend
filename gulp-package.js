@@ -1,25 +1,15 @@
-const path = require('path');
 const { src, dest, series } = require('gulp');
 const tar = require('gulp-tar');
 const rename = require('gulp-rename');
 const fs = require('fs');
-const pomParser = require('pom-parser');
+
+const packageJson = require('./package.json');
 
 function renamePackage(cb) {
-  pomParser.parse({ filePath: path.join(__dirname, '/pom.xml') }, (err, result) => {
+  fs.rename('target/build.tar', `target/${packageJson.name}-${packageJson.snapshot}.tar`, (err) => {
     if (err) {
-      process.stdout.write(`\n${err}\n`);
-      process.exit(1);
+      throw err;
     }
-
-    const artifactId = result.pomObject.project.artifactid;
-    const { version } = result.pomObject.project;
-
-    fs.rename('target/build.tar', `target/${artifactId}-${version}.tar`, () => {
-      if (err) {
-        throw err;
-      }
-    });
   });
   cb();
 }
