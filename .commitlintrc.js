@@ -6,7 +6,7 @@ module.exports = {
   "parserPreset": {
     "parserOpts": {
       // Change this JIRA prefix to something that makes sense for your service
-      "issuePrefixes": [ "PROJ-" ]
+      "issuePrefixes": [ "SA-" ]
     }
   }
 };

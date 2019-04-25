@@ -88,6 +88,6 @@
     "security:audit": "npm audit || true",
     "security:outdated": "npm outdated || true",
     "compliance-tests": "npm run compliance:commits && npm run lint",
-    "compliance:commits": "commitlint --from=master --to=HEAD"
+    "compliance:commits": "commitlint --from=HEAD~1"
   }
 }
