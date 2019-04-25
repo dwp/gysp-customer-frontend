@@ -114,4 +114,4 @@ npm prune --production
 npm run package
 ```
 
-Artifact will now be available in `target/X.X.X-SNAPSHOT-customer-frontend.tar` (where X.X.X will be the version from the pom.xml)
+Artifact will now be available in the root at `customer-frontend-9.9.9-SNAPSHOT.tar`

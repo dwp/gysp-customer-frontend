@@ -6,7 +6,7 @@ const fs = require('fs');
 const packageJson = require('./package.json');
 
 function renamePackage(cb) {
-  fs.rename('target/build.tar', `target/${packageJson.name}-${packageJson.snapshot}.tar`, (err) => {
+  fs.rename('./build.tar', `./${packageJson.name}-${packageJson.snapshot}.tar`, (err) => {
     if (err) {
       throw err;
     }
@@ -37,7 +37,7 @@ function build() {
       path.dirname = `customer-frontend/${path.dirname}`; // eslint-disable-line no-param-reassign
     }))
     .pipe(tar('build.tar'))
-    .pipe(dest('target'));
+    .pipe(dest('./'));
 }
 
 exports.default = series(build, renamePackage);

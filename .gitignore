@@ -1,16 +1,14 @@
 certs/*
 coverage/*
-govuk_modules/*
 node_modules/*
 public/*
 src/*
 config/application.yaml
 npm-debug.log
 dumb.rdb
-dump.rdb
-target/**
 .project
 .idea
 .nyc_output/
 .env
 .DS_Store
+*.tar
