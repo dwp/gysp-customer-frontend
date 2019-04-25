@@ -75,7 +75,7 @@ app.disable('etag');
 app.use(helmet());
 app.use(helmet.frameguard({ action: 'deny' }));
 app.use(helmet.noCache());
-app.use(helmet.csp({
+app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ['\'self\''],
     scriptSrc: ['\'self\'', '\'unsafe-inline\'', 'www.google-analytics.com'],
