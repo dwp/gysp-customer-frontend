@@ -43,7 +43,7 @@
     "xml2js": "0.4.16"
   },
   "devDependencies": {
-    "@commitlint/cli": "7.5.2",
+    "@commitlint/cli": "7.6.1",
     "@commitlint/travis-cli": "7.5.2",
     "@dwp/commitlint-config-base": "1.0.0",
     "@dwp/eslint-config-base": "2.1.0",
