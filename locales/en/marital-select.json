@@ -8,7 +8,7 @@
     "maritalStatus": {
       "label": "What is your current marital status?",
       "errors": {
-        "required": "Please complete."
+        "required": "Select your current marital status."
       },
       "options": {
         "single": "Never been married",

@@ -9,7 +9,7 @@
       "livedAbroad": {
         "label": "Ydych chi erioed wedi byw y tu allan i'r Deyrnas Unedig?",
         "errors": {
-          "required": "Dylech gwblhau."
+          "required": "Dewiswch ydw os ydych  wedi byw y tu allan i'r DU erioed."
         },
         "options": {
           "yes": "Ydw",

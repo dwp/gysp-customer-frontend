@@ -16,7 +16,7 @@
           "no": "No"
         },
         "errors": {
-          "required": "You must complete this section"
+          "required": "Select Yes if we can use this information when you claim your State Pension."
         }
       }
     }

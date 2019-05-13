@@ -9,9 +9,9 @@
       "label-month": "Mis",
       "label-year": "Blwyddyn",
       "errors": {
-        "required": "Rhowch ddyddiad",
-        "invalid": "Rhowch ddyddiad dilys",
-        "future": "Ni all y dyddiad fod yn y dyfodol"
+        "required": "Rhowch fis a blwyddyn, fel 2 2002.",
+        "invalid": "Rhowch fis a blwyddyn, fel 2 2002.",
+        "future": "Rhowch ddyddiad 'o' yn y gorffennol."
       }
     },
     "dateTo": {
@@ -19,10 +19,10 @@
       "label-month": "Mis",
       "label-year": "Blwyddyn",
       "errors": {
-        "required": "Rhowch ddyddiad",
-        "invalid": "Rhowch ddyddiad dilys",
-        "after": "Ni all y dyddiad fod cyn y dyddiad o",
-        "future": "Ni all y dyddiad fod yn y dyfodol"
+        "required": "Rhowch fis a blwyddyn, fel 2, 2003.",
+        "invalid": "Rhowch fis a blwyddyn, fel 2, 2003.",
+        "after": "Ni all y dyddiad 'i' fod cyn y dyddiad 'o'.",
+        "future": "Rhowch ddyddiad 'i' sydd yn y gorffennol."
       }
     }
   }

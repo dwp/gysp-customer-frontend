@@ -1,5 +1,8 @@
 const { assert } = require('chai');
 const moment = require('moment');
+const i18n = require('i18next');
+
+const i18nConfig = require('../../../../../config/i18n');
 const validation = require('../../../../../lib/validations/overseasValidation');
 
 const emptyObject = {
@@ -67,123 +70,126 @@ const validReferenceNumber = {
 const referenceNumberOn = true;
 const referenceNumberOff = false;
 
-describe('Overseas country validation', () => {
+describe('country validation', () => {
+  before((done) => {
+    i18n.init(i18nConfig, done);
+  });
   it('should return full error set if to and from date is missing', () => {
-    const validationResponse = validation.countryDetials(emptyObject);
+    const validationResponse = validation.countryDetials(emptyObject, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 2);
-    assert.equal(validationResponse.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.required');
-    assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.required');
+    assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
   });
   it('should return full error set if to and from are only partly complete', () => {
-    const validationResponse = validation.countryDetials(emptyMonths);
+    const validationResponse = validation.countryDetials(emptyMonths, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 2);
-    assert.equal(validationResponse.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.required');
-    assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.required');
+    assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
-    const validationResponse2 = validation.countryDetials(emptyYears);
+    const validationResponse2 = validation.countryDetials(emptyYears, false, '', '', 'cy');
     assert.lengthOf(validationResponse2.errorSummary, 2);
-    assert.equal(validationResponse2.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.required');
-    assert.equal(validationResponse2.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.required');
+    assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse2.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
   });
 
   it('should return full error set if to and from are partially complete with bad data', () => {
-    const validationResponse = validation.countryDetials(badToDate);
+    const validationResponse = validation.countryDetials(badToDate, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 1);
     assert.isUndefined(validationResponse.dateFrom);
-    assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.invalid');
+    assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
-    const validationResponse2 = validation.countryDetials(badFromDate);
+    const validationResponse2 = validation.countryDetials(badFromDate, false, '', '', 'cy');
     assert.lengthOf(validationResponse2.errorSummary, 1);
-    assert.equal(validationResponse2.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.invalid');
+    assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
     assert.isUndefined(validationResponse2.dateTo);
   });
   it('should return no error when valid date/month is supplied', () => {
-    const validationResponse = validation.countryDetials(complete);
+    const validationResponse = validation.countryDetials(complete, false, '', '', 'cy');
     assert.isUndefined(validationResponse.errorSummary);
     assert.isUndefined(validationResponse.dateFrom);
     assert.isUndefined(validationResponse.dateTo);
   });
   describe('future date', () => {
     it('should return no error if dates are current (year + month)', () => {
-      const validationResponse = validation.countryDetials(currentDates);
+      const validationResponse = validation.countryDetials(currentDates, false, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
     });
     it('should return error if month is next month to current', () => {
-      const validationResponse = validation.countryDetials(currentDatesPlusOneMonth);
+      const validationResponse = validation.countryDetials(currentDatesPlusOneMonth, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
-      assert.equal(validationResponse.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.future');
-      assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.future');
+      assert.equal(validationResponse.dateFrom.text, 'Rhowch ddyddiad \'o\' yn y gorffennol.');
+      assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
     it('should return error if year is next year to current', () => {
-      const validationResponse = validation.countryDetials(currentPlusOneYear);
+      const validationResponse = validation.countryDetials(currentPlusOneYear, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
-      assert.equal(validationResponse.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.future');
-      assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.future');
+      assert.equal(validationResponse.dateFrom.text, 'Rhowch ddyddiad \'o\' yn y gorffennol.');
+      assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
   });
   describe('invalid date', () => {
     it('should return full error if dates are out of bounds', () => {
-      const validationResponse2 = validation.countryDetials(invalidYears);
+      const validationResponse2 = validation.countryDetials(invalidYears, false, '', '', 'cy');
       assert.lengthOf(validationResponse2.errorSummary, 2);
-      assert.equal(validationResponse2.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.invalid');
-      assert.equal(validationResponse2.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.invalid');
+      assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+      assert.equal(validationResponse2.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
-      const validationResponse = validation.countryDetials(invalidMonths);
+      const validationResponse = validation.countryDetials(invalidMonths, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
-      assert.equal(validationResponse.dateFrom.text, 'lived-abroad-country:fields.dateFrom.errors.invalid');
-      assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.invalid');
+      assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+      assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
     });
     it('should return error if dateTo is beforeFrom date', () => {
-      const validationResponse = validation.countryDetials(pastDates);
+      const validationResponse = validation.countryDetials(pastDates, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
-      assert.equal(validationResponse.dateTo.text, 'lived-abroad-country:fields.dateTo.errors.after');
+      assert.equal(validationResponse.dateTo.text, 'Ni all y dyddiad \'i\' fod cyn y dyddiad \'o\'.');
     });
   });
   describe('reference number', () => {
     it('should not valid reference number when flag set as false', () => {
-      const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOff);
+      const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOff, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
     it('should return no errors if valid reference number is supplied', () => {
-      const validationResponse = validation.countryDetials(validReferenceNumber, referenceNumberOn);
+      const validationResponse = validation.countryDetials(validReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
     it('should return no reference number error if reference number is empty', () => {
-      const validationResponse = validation.countryDetials(emptyReferenceNumber, referenceNumberOn);
+      const validationResponse = validation.countryDetials(emptyReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
     it('should return reference number error if reference number is to long (max 24)', () => {
-      const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOn);
+      const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'worked-abroad-country:fields.referenceNumber.errors.toLong');
+      assert.equal(validationResponse.referenceNumber.text, 'Mwyafswm hyd yw 24');
     });
     it('should return reference number error if reference number starts with a space', () => {
-      const validationResponse = validation.countryDetials(spaceRefenceNumber, referenceNumberOn);
+      const validationResponse = validation.countryDetials(spaceRefenceNumber, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'worked-abroad-country:fields.referenceNumber.errors.space');
+      assert.equal(validationResponse.referenceNumber.text, 'Ni allwch ddechrau gyda gofod');
     });
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
-      const validationResponse = validation.countryDetials(invalidChar, referenceNumberOn);
+      const validationResponse = validation.countryDetials(invalidChar, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'worked-abroad-country:fields.referenceNumber.errors.invalid');
+      assert.equal(validationResponse.referenceNumber.text, 'Rhowch rif cyfeirnod dilys');
     });
   });
 });

@@ -14,9 +14,9 @@
       "hint": "Er enghraifft, 31 3 1980",
       "label": "Eich dyddiad geni",
       "errors": {
-        "empty": "Rhowch ddyddiad",
-        "format": "Rhowch ddyddiad dilys.",
-        "future": "Ni all y dyddiad fod yn y dyfodol."
+        "empty": "Nodwch eich dyddiad geni.",
+        "format": "Rhowch ddyddiad geni go iawn.",
+        "future": "Rhowch ddyddiad geni sydd yn y gorffennol."
       }
     }
   }

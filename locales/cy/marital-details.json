@@ -15,18 +15,18 @@
         "label": "Eu henw cyntaf",
         "label-display": "Eu henw cyntaf",
         "errors": {
-          "required": "Rhowch eu henw cyntaf",
-          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
-          "length": "Mwyafswm hyd yw 70."
+          "required": "Rhowch eu henw cyntaf.",
+          "format": "Mae'n rhaid i'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
+          "length": "Mae'n  rhaid i'r enw cyntaf fod yn 70 nod neu lai."
         }
     },
     "surname": {
         "label": "Eu cyfenw",
         "label-display": "Eu cyfenw",
         "errors": {
-          "required": "Rhowch eu cyfenw",
-          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
-          "length": "Mwyafswm hyd yw 70."
+          "required": "Rhowch eu cyfenw.",
+          "format": "Mae'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
+          "length": "Mae'n rhaid i gyfenw fod yn 70 nod neu lai."
         }
     },
     "otherName": {
@@ -34,9 +34,8 @@
         "label-display": "Enwau eraill",
         "hint": "Dylech gynnwys enw bedydd, cyn enw priodasol neu newidiadau i enw teuluol.",
         "errors": {
-          "required": "Dylech gwblhau.",
-          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
-          "length": "Mwyafswm hyd yw 70."
+          "format": "Mae'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.",
+          "length": "Mae'n rhaid i enw arall fod yn 70 nod  neu lai."
         }
     },
       "dob": {
@@ -47,8 +46,8 @@
         "month": "Mis",
         "year": "Blwyddyn",
         "errors": {
-          "format": "Dylech roi dyddiad dilys.",
-          "future": "Ni all y dyddiad fod yn y dyfodol."
+          "format": "Rhowch ddyddiad geni go iawn.",
+          "future": "Mae'n rhaid i ddyddiad geni fod yn y gorffennol."
         }
       }
     }

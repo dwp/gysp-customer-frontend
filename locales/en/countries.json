@@ -19,10 +19,10 @@
     "country": {
       "label": "Country name",
       "errors": {
-        "valid": "Enter a valid country",
-        "required": "Enter or select a country",
-        "format": "Enter or select a valid country",
-        "duplicate": "Only enter or select each country once"
+        "valid": "Country name must start with a letter and only include letters a to z, spaces, hyphens or brackets.",
+        "required": "Enter a country name.",
+        "format": "Country name must start with a letter and only include letters a to z, spaces, hyphens or brackets.",
+        "duplicate": "Only enter each country once."
       }
     }
   },

@@ -1,5 +1,8 @@
 const { assert } = require('chai');
 const moment = require('moment');
+const i18n = require('i18next');
+
+const i18nConfig = require('../../../../config/i18n');
 
 const validation = require('../../../../lib/validations/maritalValidation.js');
 const dataObjectGenerator = require('../../../lib/dataObjectGenerator.js');
@@ -90,15 +93,18 @@ const longTextPartner = dataObjectGenerator.partnerDetail({
 });
 
 describe('Marital validation', () => {
+  before((done) => {
+    i18n.init(i18nConfig, done);
+  });
   describe('selectionValidation', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.selectionValidation(emptyObject);
-      assert.equal(validationResponse.maritalStatus.text, 'marital-select:fields.maritalStatus.errors.required');
+      assert.equal(validationResponse.maritalStatus.text, 'Select your current marital status.');
     });
 
     it('should return error if answer is something unexpected', () => {
       const validationResponse = validation.selectionValidation(unexpectedOutcome);
-      assert.equal(validationResponse.maritalStatus.text, 'marital-select:fields.maritalStatus.errors.required');
+      assert.equal(validationResponse.maritalStatus.text, 'Select your current marital status.');
     });
     it('should return no error if anwser is supplied', () => {
       const validationResponse = validation.selectionValidation(populatedValidationForm);
@@ -114,17 +120,17 @@ describe('Marital validation', () => {
   describe('dateValidator', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.dateValidator(todayDateObjectEmpy);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.empty');
+      assert.equal(validationResponse.date.text, 'Enter a date.');
     });
 
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.dateValidator(badDayFormObject);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.format');
+      assert.equal(validationResponse.date.text, 'Enter a real date.');
     });
 
     it('should return error if date is in future', () => {
       const validationResponse = validation.dateValidator(futureDateObject);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.future');
+      assert.equal(validationResponse.date.text, 'Date must be in the past.');
     });
 
     it('should return no error if date is today', () => {
@@ -139,17 +145,17 @@ describe('Marital validation', () => {
 
     it('should return error when date contains single digit year', () => {
       const validationResponse = validation.dateValidator(singleDigitYear);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.format');
+      assert.equal(validationResponse.date.text, 'Enter a real date.');
     });
 
     it('should return error when date contains double digit year', () => {
       const validationResponse = validation.dateValidator(doubleDigitYear);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.format');
+      assert.equal(validationResponse.date.text, 'Enter a real date.');
     });
 
     it('should return error when date contains tripple digit year', () => {
       const validationResponse = validation.dateValidator(trippleDigitYear);
-      assert.equal(validationResponse.date.text, 'marital-date:fields.date.errors.format');
+      assert.equal(validationResponse.date.text, 'Enter a real date.');
     });
   });
 
@@ -164,57 +170,57 @@ describe('Marital validation', () => {
 
     it('should return error if first name is empty', () => {
       const validationResponse = validation.partnerValidator(emptyPartnerDetails);
-      assert.equal(validationResponse.firstName.text, 'marital-details:fields.firstName.errors.required');
+      assert.equal(validationResponse.firstName.text, 'Enter their first name.');
     });
 
     it('should return error if first name is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner);
-      assert.equal(validationResponse.firstName.text, 'marital-details:fields.firstName.errors.length');
+      assert.equal(validationResponse.firstName.text, 'First name must be 70 characters or less.');
     });
 
     it('should return error if first name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse.firstName.text, 'marital-details:fields.firstName.errors.format');
+      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return error if first name does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaFirstNamePartner);
-      assert.equal(validationResponse.firstName.text, 'marital-details:fields.firstName.errors.format');
+      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return error if surname is empty', () => {
       const validationResponse = validation.partnerValidator(emptyPartnerDetails);
-      assert.equal(validationResponse.surname.text, 'marital-details:fields.surname.errors.required');
+      assert.equal(validationResponse.surname.text, 'Enter their surname.');
     });
 
     it('should return error if surname is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner);
-      assert.equal(validationResponse.surname.text, 'marital-details:fields.surname.errors.length');
+      assert.equal(validationResponse.surname.text, 'Surname must be 70 characters or less.');
     });
 
     it('should return error if surname name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse.surname.text, 'marital-details:fields.surname.errors.format');
+      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return error if surname does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaSurnamePartner);
-      assert.equal(validationResponse.surname.text, 'marital-details:fields.surname.errors.format');
+      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return error if other name is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner);
-      assert.equal(validationResponse.otherName.text, 'marital-details:fields.otherName.errors.length');
+      assert.equal(validationResponse.otherName.text, 'Other name must be 70 characters or less.');
     });
 
     it('should return error if other name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse.otherName.text, 'marital-details:fields.otherName.errors.format');
+      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return error if other name does not start with alpha', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaOtherNamePartner);
-      assert.equal(validationResponse.otherName.text, 'marital-details:fields.otherName.errors.format');
+      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
 
     it('should return no error if dob is empty', () => {
@@ -224,7 +230,7 @@ describe('Marital validation', () => {
 
     it('should return error if dob is invalid (day greater then 31)', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse.dob.text, 'marital-details:fields.dob.errors.format');
+      assert.equal(validationResponse.dob.text, 'Enter a real date of birth.');
     });
 
     it('should return error if dob is invalid  Year (Y, YY or YYY)', () => {
@@ -232,18 +238,18 @@ describe('Marital validation', () => {
       badFormatPartner.dobMonth = 1;
       badFormatPartner.dobYear = 1;
       const validationResponse1 = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse1.dob.text, 'marital-details:fields.dob.errors.format');
+      assert.equal(validationResponse1.dob.text, 'Enter a real date of birth.');
       badFormatPartner.dobYear = 12;
       const validationResponse2 = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse2.dob.text, 'marital-details:fields.dob.errors.format');
+      assert.equal(validationResponse2.dob.text, 'Enter a real date of birth.');
       badFormatPartner.dobYear = 123;
       const validationResponse3 = validation.partnerValidator(badFormatPartner);
-      assert.equal(validationResponse3.dob.text, 'marital-details:fields.dob.errors.format');
+      assert.equal(validationResponse3.dob.text, 'Enter a real date of birth.');
     });
 
     it('should return error if dob is future', () => {
       const validationResponse = validation.partnerValidator(futurePartnerDetails);
-      assert.equal(validationResponse.dob.text, 'marital-details:fields.dob.errors.future');
+      assert.equal(validationResponse.dob.text, 'Date of birth must be in the past.');
     });
 
     it('should return no when when date in the past is used', () => {

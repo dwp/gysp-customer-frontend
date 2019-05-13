@@ -16,25 +16,25 @@
           "building": "Cyfrif cymdeithas adeiladu"
         },
         "errors": {
-          "required": "Dylech gwblhau."
+          "required": "Dewiswch os hoffech gael eich talu i gyfrif banc neu gymdeithas adeiladu."
         }
       },
       "accountHolder": {
         "label": "Enw deilydd y cyfrif",
         "label-display": "Enw deilydd y cyfrif",
         "errors": {
-          "required": "Rhowch eich enw",
-          "format": "Dylai ddechrau gyda nod A-z, gall ond gynnwys nodau A-z, ampersand, collnodau, atalnodau llawn, cysylltnodau a gofodau.",
-          "length": "Mwyafswm hyd yw 70."
+          "required": "Rhowch enw deiliad y cyfrif.",
+          "format": "Mae'n rhaid i'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
+          "length": "Mae'n rhaid i'r enw fod yn 70 nod neu lai."
         }
       },
       "accountNumber": {
         "label": "Rhif y cyfrif",
         "label-display": "Rhif y cyfrif",
         "errors": {
-          "required": "Rhowch rif eich cyfrif",
-          "length": "Yr hyd sydd ei angen yw 8.",
-          "format": "Rhowch rifau yn unig."
+          "required": "Rhowch rif cyfrif.",
+          "length": "Mae'n rhaid i rif y cyfrif fod yn 8 rhif.",
+          "format": "Mae'n rhaid i rif y cyfrif fod yn 8 rhif."
         }
       },
       "sortCode": {
@@ -44,9 +44,9 @@
         "label-2": "Yr ail 2 ddigid",
         "label-3": "Y 2 ddigid olaf",
         "errors": {
-          "required": "Rhowch eich cod didoli",
-          "format": "Rhowch god didoli dilys.",
-          "length": "Rhowch 2 rif ym mhob maes."
+          "required": "Rhowch god didoli.",
+          "format": "Rhowch god didoli yn y fformat cywir, fel 11 22 33.",
+          "length": "Rhowch god didoli yn y fformat cywir, fel 11 22 33."
         }
       },
       "buildingRoll": {
@@ -54,8 +54,8 @@
         "label-display": "Os yw'ch cymdeithas adeiladu yn defnyddio rhif rhôl neu rif cyfeirnod, mae angen i chi ei ddarparu. Dewch o hyd iddo ar eich paslyfr.",
         "hint": "Os yw'ch cymdeithas adeiladu yn defnyddio rhif rhôl neu rif cyfeirnod, mae angen i chi ei ddarparu. Dewch o hyd iddo ar eich paslyfr.",
         "errors": {
-          "format": "Dylech nodi mai'r unig nodau dilys yw: Llythyren, Rhif, Ampersand (&), Collnod (') Asterisk (*), Comma (,), Atalnod Llawn (.), Cysylltnod (-), Cromfachau (()), Gofod ( ) a Slaes (/).",
-          "length": "Mwyafswm hyd yw 18."
+          "format": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod gynnwys rhifau 0 i 9 yn unig, llythrennau a i z, cysylltnodau, atalnodau llawn, gofodau, atalnodau, slaes, collnodau, serennau, ampersand a chromfachau.",
+          "length": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod fod yn 18 nod neu lai."
         }
       }
     }

@@ -49,7 +49,7 @@ function redirectToAuthErrorOrDisplayPage(error, req, res) {
     if (sessionHelper.checkAuthAttemptLimits(attempts)) {
       requestHelper.loggingHelper({ message: 'three attempts' }, uriPath, traceID, res.locals.logger, req.body.inviteKey);
       deleteSessionCounts(req);
-      res.redirect('auth-error');
+      res.redirect('auth-error-invitation-code');
     } else {
       requestHelper.loggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
       req.session.matchError = true;
@@ -129,7 +129,7 @@ function authPageProcess(req, res) {
   const errors = validation.authValidation(req.body);
   if (Object.keys(errors).length === 0) {
     if (req.body.address === 'no') {
-      res.redirect('auth-error');
+      res.redirect('auth-error-address');
     } else {
       const postObjectBody = auth.authFormToObject(req.body);
       const keyServiceCall = requestHelper.generateGetCall(`${res.locals.customerApiGateway}/key/${postObjectBody.inviteKey}`, {});
@@ -167,15 +167,21 @@ function authPageProcess(req, res) {
   }
 }
 
-function authError(req, res) {
+function authErrorInvitationCode(req, res) {
   const page = { backHref: 'auth' };
-  res.render('pages/auth-error', { page });
+  res.render('pages/auth-error-invitation-code', { page });
+}
+
+function authErrorAddress(req, res) {
+  const page = { backHref: 'auth' };
+  res.render('pages/auth-error-address', { page });
 }
 
 module.exports.languageGet = languageGet;
 module.exports.authPageGet = authPageGet;
 module.exports.authPageProcess = authPageProcess;
-module.exports.authError = authError;
+module.exports.authErrorInvitationCode = authErrorInvitationCode;
+module.exports.authErrorAddress = authErrorAddress;
 module.exports.redirectToAuthErrorOrDisplayPage = redirectToAuthErrorOrDisplayPage;
 module.exports.redirectToNextStep = redirectToNextStep;
 module.exports.getSessionLanguage = getSessionLanguage;

@@ -17,10 +17,10 @@
     "country": {
       "label": "Enw'r wlad (yn Saesneg)",
       "errors": {
-        "valid": "Rhowch enw gwlad dilys",
-        "required": "Rhowch neu dewiswch wlad",
-        "format": "Rhowch neu dewiswch wlad dilys",
-        "duplicate": "Dylech ond rhoi neu ddewis gwlad unwaith"
+        "valid": "Mae'n rhaid i enw gwlad ddechrau gyda llythyren a dim ond llythrennau a i z, gofodau, cysylltnodau neu gromfachau.",
+        "required": "Rhowch enw gwlad.",
+        "format": "Mae'n rhaid i enw gwlad ddechrau gyda llythyren a dim ond llythrennau a i z, gofodau, cysylltnodau neu gromfachau.",
+        "duplicate": "Rhowch bob gwlad unwaith."
       }
     }
   },

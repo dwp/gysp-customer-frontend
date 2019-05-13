@@ -1,17 +1,20 @@
 const { assert } = require('chai');
+const i18n = require('i18next');
+
+const i18nConfig = require('../../../../config/i18n');
 
 const validation = require('../../../../lib/validations/accountValidation');
 
-const errorBankSummaryResponse = [
-  { href: '#bankAccountHolder', text: 'account:fields.accountHolder.label - account:fields.accountHolder.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
-  { href: '#bankSortCode', text: 'account:fields.sortCode.label - account:fields.sortCode.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
-  { href: '#bankAccountNumber', text: 'account:fields.accountNumber.label - account:fields.accountNumber.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
+const errorBankSummaryCyResponse = [
+  { href: '#bankAccountHolder', text: 'Rhowch enw deiliad y cyfrif.', attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
+  { href: '#bankSortCode', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
+  { href: '#bankAccountNumber', text: 'Rhowch rif cyfrif.', attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
 ];
 
-const errorBuildingSummaryResponse = [
-  { href: '#buildingAccountHolder', text: 'account:fields.accountHolder.label - account:fields.accountHolder.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
-  { href: '#buildingSortCode', text: 'account:fields.sortCode.label - account:fields.sortCode.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
-  { href: '#buildingAccountNumber', text: 'account:fields.accountNumber.label - account:fields.accountNumber.errors.required', attributes: { 'data-journey': 'google-analytics:pages.account-details.error' } },
+const errorBuildingSummaryCyResponse = [
+  { href: '#buildingAccountHolder', text: 'Rhowch enw deiliad y cyfrif.', attributes: { 'data-journey': 'account-details:error:building-account-holder' } },
+  { href: '#buildingSortCode', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
+  { href: '#buildingAccountNumber', text: 'Rhowch rif cyfrif.', attributes: { 'data-journey': 'account-details:error:building-account-number' } },
 ];
 
 /* Objects */
@@ -86,17 +89,24 @@ const buildingObjects = {
   startNotAlphaName: { buildingAccountHolder: ' Space Mistake', buildingAccountNumber: '123456789', buildingRoll: '' },
 };
 
-describe('Form', () => {
-  describe('accountValidator validator', () => {
-    it('should return banking errros when called with banking as a select', () => {
-      const accountValidationResponse = validation.accountValidator(paymentMethodBankEmpty);
+describe('accountValidator - CY', () => {
+  before((done) => {
+    i18n.init(i18nConfig, done);
+  });
+  beforeEach((done) => {
+    i18n.setLng('cy', done());
+  });
+
+  describe('accountValidator summary', () => {
+    it('should return banking errors when called with banking as a select', () => {
+      const accountValidationResponse = validation.accountValidator(paymentMethodBankEmpty, 'cy');
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
-      assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBankSummaryResponse));
+      assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBankSummaryCyResponse));
     });
-    it('should return building errros when called with building as a select', () => {
-      const accountValidationResponse = validation.accountValidator(paymentMethodBuildingEmpty);
+    it('should return building errors when called with building as a select', () => {
+      const accountValidationResponse = validation.accountValidator(paymentMethodBuildingEmpty, 'cy');
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
-      assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBuildingSummaryResponse));
+      assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBuildingSummaryCyResponse));
     });
   });
 
@@ -109,162 +119,163 @@ describe('Form', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodBuilding);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
-    it('should return error when nothing is supplied ', () => {
+    it('should return error when nothing is supplied - CY', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodEmpty);
-      assert.equal(accountValidationResponse.paymentMethod.text, 'account:fields.paymentMethod.errors.required');
+      assert.equal(accountValidationResponse.paymentMethod.text, 'Dewiswch os hoffech gael eich talu i gyfrif banc neu gymdeithas adeiladu.');
     });
   });
+
   describe('bank validator', () => {
     it('should return no error when valid object supplied ', () => {
       const accountValidationResponse = validation.bankValidation(bankObjects.validObject);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
 
-    describe(' accountName ', () => {
+    describe('accountName', () => {
       it('should return error if empty ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'account:fields.accountHolder.errors.required');
+        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Rhowch enw deiliad y cyfrif.');
       });
       it('should return error if to long (greater then 70 characters) ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longTextObject);
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'account:fields.accountHolder.errors.length');
+        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Mae\'n rhaid i\'r enw fod yn 70 nod neu lai.');
       });
       it('should return error if text includes none alpha ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.nonAlphaName);
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'account:fields.accountHolder.errors.format');
+        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Mae\'n rhaid i\'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
+      });
+      it('should return error if text does not start with alpha ', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.startNotAlphaName);
+        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Mae\'n rhaid i\'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
       });
       it('should return no error if text includes a & ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.includesAnd);
         assert.equal(accountValidationResponse.bankAccountHolder, undefined);
       });
-      it('should return error if text does not start with alpha ', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.startNotAlphaName);
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'account:fields.accountHolder.errors.format');
-      });
     });
 
-    describe('account number ', () => {
+    describe('account number', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'account:fields.accountNumber.errors.required');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Rhowch rif cyfrif.');
       });
       it('should return error if less then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'account:fields.accountNumber.errors.length');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
 
       it('should return error if more then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'account:fields.accountNumber.errors.length');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
     });
 
-    describe('sort code ', () => {
+    describe('sort code', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankSortCode.text, 'account:fields.sortCode.errors.required');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli.');
       });
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
-        assert.equal(accountValidationResponse.bankSortCode.text, 'account:fields.sortCode.errors.format');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
-        assert.equal(accountValidationResponse.bankSortCode.text, 'account:fields.sortCode.errors.length');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
-        assert.equal(accountValidationResponse.bankSortCode.text, 'account:fields.sortCode.errors.length');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
     });
   });
 
   describe('building validator', () => {
-    it('should return no error when valid object supplied ', () => {
+    it('should return no error when valid object supplied', () => {
       const accountValidationResponse = validation.buildingValidation(buildingObjects.validObject);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
 
-    it('should return no error when valid object with empty roll number is supplied ', () => {
+    it('should return no error when valid object with empty roll number is supplied', () => {
       const accountValidationResponse = validation.buildingValidation(buildingObjects.validObjectNoRoll);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
 
-    describe(' accountName ', () => {
-      it('should return error if empty ', () => {
+    describe('accountName', () => {
+      it('should return error if empty', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'account:fields.accountHolder.errors.required');
+        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Rhowch enw deiliad y cyfrif.');
       });
-      it('should return error if to long (greater then 70 characters) ', () => {
+      it('should return error if to long (greater then 70 characters)', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longTextObject);
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'account:fields.accountHolder.errors.length');
+        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Mae\'n rhaid i\'r enw fod yn 70 nod neu lai.');
       });
-      it('should return error if text includes none alpha ', () => {
+      it('should return error if text includes none alpha', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.nonAlphaName);
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'account:fields.accountHolder.errors.format');
+        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Mae\'n rhaid i\'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
       });
-      it('should return no error if text includes a & ', () => {
+      it('should return no error if text includes a &', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.includesAnd);
         assert.equal(accountValidationResponse.buildingAccountHolder, undefined);
       });
-      it('should return error if text does not start with alpha ', () => {
+      it('should return error if text does not start with alpha', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.startNotAlphaName);
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'account:fields.accountHolder.errors.format');
+        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Mae\'n rhaid i\'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
       });
     });
 
-    describe('account number ', () => {
+    describe('account number', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'account:fields.accountNumber.errors.required');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Rhowch rif cyfrif.');
       });
       it('should return error if contains text', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'account:fields.accountNumber.errors.format');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
 
       it('should return error if less then 8 numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'account:fields.accountNumber.errors.length');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
 
       it('should return error if more then 8 numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'account:fields.accountNumber.errors.length');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
     });
 
-    describe('sort code ', () => {
+    describe('sort code', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'account:fields.sortCode.errors.required');
+        assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli.');
       });
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'account:fields.sortCode.errors.format');
+        assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'account:fields.sortCode.errors.length');
+        assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'account:fields.sortCode.errors.length');
+        assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
     });
 
-    describe('buildingRoll  ', () => {
+    describe('buildingRoll', () => {
       it('should return no error if roll is valid', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.validRoll);
         assert.equal(accountValidationResponse.buildingRoll, undefined);
       });
       it('should return error if contains $$', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.invalidRoll);
-        assert.equal(accountValidationResponse.buildingRoll.text, 'account:fields.buildingRoll.errors.format');
+        assert.equal(accountValidationResponse.buildingRoll.text, 'Mae\'n rhaid i\'r rif rhôl neu\'r cyfeirnod gynnwys rhifau 0 i 9 yn unig, llythrennau a i z, cysylltnodau, atalnodau llawn, gofodau, atalnodau, slaes, collnodau, serennau, ampersand a chromfachau.');
       });
       it('should return error if to long', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longRoll);
-        assert.equal(accountValidationResponse.buildingRoll.text, 'account:fields.buildingRoll.errors.length');
+        assert.equal(accountValidationResponse.buildingRoll.text, 'Mae\'n rhaid i\'r rif rhôl neu\'r cyfeirnod fod yn 18 nod neu lai.');
       });
     });
   });

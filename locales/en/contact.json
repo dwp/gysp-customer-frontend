@@ -18,16 +18,16 @@
         "work": "Work phone"
       },
       "errors": {
-        "required": "Provide at least one telephone number"
+        "required": "Select at least one phone number we can contact you on."
       }
     },
     "homeTelephoneNumber": {
       "label": "Home phone number",
       "label-display": "Home phone number",
       "errors": {
-        "required": "Enter a home phone number",
-        "format": "Enter only numbers and spaces",
-        "length": "Maximum length is 70"
+        "required": "Enter a home phone number.",
+        "format": "Home phone number must only contain numbers and spaces.",
+        "length": "Home phone number must be 70 characters or less."
       }
     },
     "mobileTelephoneNumber": {
@@ -35,18 +35,18 @@
       "label-display": "Mobile phone number",
       "hint": "We may use text messages to update you about your claim.",
       "errors": {
-        "required": "Enter a mobile phone number",
-        "format": "Enter only numbers and spaces",
-        "length": "Maximum length is 70"
+        "required": "Enter a mobile phone number.",
+        "format": "Mobile phone number must only contain numbers and spaces.",
+        "length": "Mobile phone number must be 70 characters or less."
       }
     },
     "workTelephoneNumber": {
       "label": "Work phone number",
       "label-display": "Work phone number",
       "errors": {
-        "required": "Enter a work phone number",
-        "format": "Enter only numbers and spaces",
-        "length": "Maximum length is 70"
+        "required": "Enter a work phone number.",
+        "format": "Work phone number must only contain numbers and spaces.",
+        "length": "Work phone number must be 70 characters or less."
       }
     },
     "email": {
@@ -54,9 +54,9 @@
       "label-display": "Email address",
       "hint": "We'll use this to confirm we've received your application.",
       "errors": {
-        "required": "Enter your email address",
-        "format": "Enter a valid email",
-        "length": "Maximum length is 100"
+        "required": "Enter an email address.",
+        "format": "Enter an email address in the correct format, like name@example.com.",
+        "length": "Email address must be 100 characters or less."
       }
     }
   }

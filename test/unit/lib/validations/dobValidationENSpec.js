@@ -1,5 +1,8 @@
 const { assert } = require('chai');
 const moment = require('moment');
+const i18n = require('i18next');
+
+const i18nConfig = require('../../../../config/i18n');
 
 const validation = require('../../../../lib/validations/dobValidation.js');
 
@@ -69,20 +72,23 @@ const dateOfBirthFormIncorrect = {
 
 const sessionDateOfBirth = -483235200000;
 
-describe('DOB validation', () => {
+describe('DOB validation - EN', () => {
+  before((done) => {
+    i18n.init(i18nConfig, done);
+  });
   it('should return error if date is empty', () => {
     const validationResponse = validation.dobValidator(todayDateObjectEmpy);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.empty');
+    assert.equal(validationResponse.date.text, 'Enter your date of birth.');
   });
 
   it('should return error if date is invalid (day greater then 31)', () => {
     const validationResponse = validation.dobValidator(badDayFormObject);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.format');
+    assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 
   it('should return error if date is in future', () => {
     const validationResponse = validation.dobValidator(futureDateObject);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.future');
+    assert.equal(validationResponse.date.text, 'Enter a date of birth that is in the past.');
   });
 
   it('should return no error if date is today', () => {
@@ -97,17 +103,17 @@ describe('DOB validation', () => {
 
   it('should return error when date contains single digit year', () => {
     const validationResponse = validation.dobValidator(singleDigitYear);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.format');
+    assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 
   it('should return error when date contains double digit year', () => {
     const validationResponse = validation.dobValidator(doubleDigitYear);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.format');
+    assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 
   it('should return error when date contains tripple digit year', () => {
     const validationResponse = validation.dobValidator(trippleDigitYear);
-    assert.equal(validationResponse.date.text, 'dob-confirmation:fields.dob.errors.format');
+    assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 });
 

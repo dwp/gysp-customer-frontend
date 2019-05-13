@@ -18,7 +18,7 @@
           }
         },
         "errors": {
-          "required": "You must complete this section"
+          "required": "Select whether or not you have an invitation letter."
         }
       }
     }

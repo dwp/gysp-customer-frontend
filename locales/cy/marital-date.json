@@ -17,9 +17,9 @@
         "month": "Mis",
         "year": "Blwyddyn",
         "errors": {
-          "empty": "Rhowch ddyddiad",
-          "format": "Rhowch ddyddiad dilys.",
-          "future": "Ni all y dyddiad fod yn y dyfodol."
+          "empty": "Rhowch ddyddiad.",
+          "format": "Rhowch ddyddiad go iawn.",
+          "future": "Mae'n rhaid i'r dyddiad fod yn y gorffennol."
         }
       }
     }

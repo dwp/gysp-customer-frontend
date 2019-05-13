@@ -15,16 +15,16 @@
         "work": "Ffôn gwaith"
       },
       "errors": {
-        "required": "Rhowch o leiaf un rhif ffôn"
+        "required": "Dewiswch o leiaf un rhif ffôn y gallwn gysylltu â chi arno."
       }
     },
     "homeTelephoneNumber": {
       "label": "Rhif ffôn cartref",
       "label-display": "Rhif ffôn cartref",
       "errors": {
-        "required": "Rhowch rif ffôn cartref",
-        "format": "Rhowch rifau a gofodau yn unig",
-        "length": "Mwyafswm hyd yw 70"
+        "required": "Rhowch rif ffôn cartref.",
+        "format": "Mae'n rhaid i rif ffôn cartref gynnwys rhifau a gofodau yn unig.",
+        "length": "Mae'n rhaid i rif ffôn cartref fod yn 70 nod neu lai."
       }
     },
     "mobileTelephoneNumber": {
@@ -32,18 +32,18 @@
       "label-display": "Rhif ffôn symudol",
       "hint": "Efallai y byddwn yn defnyddio negeseuon testun i'ch diweddaru am eich cais.",
       "errors": {
-        "required": "Rhowch rif ffôn symudol",
-        "format": "Rhowch rifau a gofodau yn unig",
-        "length": "Mwyafswm hyd yw 70"
+        "required": "Rhowch rif ffôn symudol.",
+        "format": "Mae'n rhaid i rif ffôn symudol gynnwys rhifau a gofodau yn unig.",
+        "length": "Mae'n rhaid i rif ffôn symudol fod yn 70 nod neu lai."
       }
     },
     "workTelephoneNumber": {
       "label": "Rhif ffôn gwaith",
       "label-display": "Rhif ffôn gwaith",
       "errors": {
-        "required": "Rhowch rif ffôn gwaith",
-        "format": "Rhowch rifau a gofodau yn unig",
-        "length": "Mwyafswm hyd yw 70"
+        "required": "Rhowch rif ffôn gwaith.",
+        "format": "Mae'n rhaid i rif ffôn gwaith gynnwys rhifau a gofodau yn unig.",
+        "length": "Mae'n rhaid i rif ffôn gwaith fod yn 70 nod neu lai."
       }
     },
     "email": {
@@ -51,9 +51,9 @@
       "label-display": "Cyfeiriad e-bost",
       "hint": "Byddwn yn defnyddio hwn i gadarnhau ein bod wedi derbyn eich cais.",
       "errors": {
-        "required": "Rhowch eich cyfeiriad e-bost",
-        "format": "Rhowch gyfeiriad e-bost dilys",
-        "length": "Mwyafswm hyd yw 100"
+        "required": "Rhowch gyfeiriad e-bost.",
+        "format": "Rhowch gyfeiriad e-bost yn y fformat cywir, fel name@example.com.",
+        "length": "Mae'n rhaid i gyfeiriad e-bost fod yn 100 nod neu lai."
       }
     }
   }
