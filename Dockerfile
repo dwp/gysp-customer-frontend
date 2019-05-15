@@ -1,4 +1,4 @@
-FROM node:10.15.1@sha256:91d4f8b1d5094d413afdcae4af37e4361686019691c441c09a021864ddeb468e
+FROM node:10.15.3@sha256:2939bbf1f233c88ed1bc5fec51d4e6ac59beeb397b6b81371c4c576e4606de19
 # Create app directory
 WORKDIR /usr/src/app
 
