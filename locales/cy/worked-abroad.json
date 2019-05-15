@@ -9,7 +9,7 @@
       "workedAbroad": {
         "label": "Ydych chi wedi gweithio y tu allan i'r Deyrnas Unedig?",
         "errors": {
-          "required": "Dylech gwblhau."
+          "required": "Dewiswch Ydw os ydych erioed wedi gweithio y tu allan i'r DU."
         },
         "options": {
           "yes": "Ydw",

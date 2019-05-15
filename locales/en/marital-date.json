@@ -17,9 +17,9 @@
         "month": "Month",
         "year": "Year",
         "errors": {
-          "empty": "Enter a date",
-          "format": "Please enter a valid date.",
-          "future": "Date cannot be in the future."
+          "empty": "Enter a date.",
+          "format": "Enter a real date.",
+          "future": "Date must be in the past."
         }
       }
     }

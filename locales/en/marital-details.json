@@ -15,18 +15,18 @@
         "label": "Their first name",
         "label-display": "Their first name",
         "errors": {
-          "required": "Enter their first name",
-          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
-          "length": "Maximum length is 70."
+          "required": "Enter their first name.",
+          "format": "First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "length": "First name must be 70 characters or less."
         }
     },
     "surname": {
         "label": "Their surname",
         "label-display": "Their surname",
         "errors": {
-          "required": "Enter their surname",
-          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
-          "length": "Maximum length is 70."
+          "required": "Enter their surname.",
+          "format": "Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "length": "Surname must be 70 characters or less."
         }
     },
     "otherName": {
@@ -34,9 +34,8 @@
         "label-display": "Other names",
         "hint": "Include maiden name, former married name and changes of family name.",
         "errors": {
-          "required": "Please complete.",
-          "format": "Should start with an A-z character, can only contain characters A-z, apostrophes, full stops, hyphens and spaces.",
-          "length": "Maximum length is 70."
+          "format": "Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "length": "Other name must be 70 characters or less."
         }
     },
       "dob": {
@@ -47,8 +46,8 @@
         "month": "Month",
         "year": "Year",
         "errors": {
-          "format": "Please enter a valid date.",
-          "future": "Date cannot be in the future."
+          "format": "Enter a real date of birth.",
+          "future": "Date of birth must be in the past."
         }
       }
     }

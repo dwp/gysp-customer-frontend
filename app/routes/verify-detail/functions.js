@@ -19,7 +19,7 @@ function postVerifyDetails(req, res) {
   } else {
     dataStore.save(req, 'verify-details', details);
     if (details.address === 'no') {
-      res.redirect('/verify/auth-error');
+      res.redirect('/verify/auth-error-address');
     } else {
       res.redirect(redirectSuccessFullURL);
     }
@@ -28,7 +28,7 @@ function postVerifyDetails(req, res) {
 
 function getVerifyAuthError(req, res) {
   const page = { backHref: '/verify/your-details' };
-  res.render('pages/auth-error', { page });
+  res.render('pages/auth-error-address', { page });
 }
 
 module.exports.getVerifyDetails = getVerifyDetails;

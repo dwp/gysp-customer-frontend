@@ -2,7 +2,8 @@ module.exports = {
   ns: {
     namespaces: ['app',
       'auth',
-      'auth-exit',
+      'auth-error-address',
+      'auth-error-invite-code',
       'account',
       'account-overseas',
       'benefits',

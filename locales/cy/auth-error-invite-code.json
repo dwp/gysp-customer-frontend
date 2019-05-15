@@ -1,0 +1,29 @@
+{
+  "header":"Mae problem gyda'ch cod gwahoddiad",
+  "p1": "I gael eich Pensiwn y Wladwriaeth mae angen i chi ein ffonio.",
+  "p2": "Bydd angen eich rhif Yswiriant Gwladol arnoch a byddwn yn gofyn i chi gadarnhau rhai manylion personol.",
+  "uk":{
+    "header": "Cymru, yr Alban a Lloegr",
+    "telephone_label": "Ffôn:",
+    "telephone_text": "0800 731 7936",
+    "textphone_label": "Ffôn testun: ",
+    "textphone_text": "0800 731 7013",
+    "p1": "Dydd Llun i Ddydd Gwener, 8am i 6pm, ac eithrio gwyliau cyhoeddus"
+  },
+  "ni":{
+    "header": "Gogledd Iwerddon",
+    "telephone_label": "Ffôn:",
+    "telephone_text": "0808 100 2658",
+    "textphone_label": "Ffôn testun: ",
+    "textphone_text": "0808 100 2198",
+    "p1": "Dydd Llun i Ddydd Gwener, 9am i 5pm, ac eithrio gwyliau cyhoeddus"
+  },
+  "overseas":{
+    "header": "Tramor",
+    "telephone_label": "Ffôn:",
+    "telephone_text": "+44 (0) 191 218 7777",
+    "textphone_label": "Ffôn testun: ",
+    "textphone_text": "+44 (0) 191 218 7280",
+    "p1": "Dydd Llun i Ddydd Gwener, 8am i 6pm Amser yn y DU, ac eithrio gwyliau cyhoeddus y DU"
+  }
+}

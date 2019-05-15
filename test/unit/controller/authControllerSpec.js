@@ -73,10 +73,17 @@ describe('Auth controller ', () => {
     assert.equal(genericResponse.address, 'date-of-birth');
   });
 
-  describe(' authError function (GET /auth-error)', () => {
+  describe(' authError function (GET /auth-error-address)', () => {
     it('should return view name when called', () => {
-      authController.authError(emptyRequest, genericResponse);
-      assert.equal(genericResponse.viewName, 'pages/auth-error');
+      authController.authErrorAddress(emptyRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/auth-error-address');
+    });
+  });
+
+  describe(' authError function (GET /auth-error-invitation-code)', () => {
+    it('should return view name when called', () => {
+      authController.authErrorInvitationCode(emptyRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/auth-error-invitation-code');
     });
   });
 
@@ -116,7 +123,7 @@ describe('Auth controller ', () => {
   describe(' authPageProcess fuction (POST /auth) ', () => {
     it('should return auth page view with view data populated by session with formError', () => {
       authController.authPageProcess(validKeyAddressCatch, genericResponse);
-      assert.equal(genericResponse.address, 'auth-error');
+      assert.equal(genericResponse.address, 'auth-error-address');
     });
 
     describe(' redirectToNextStep ', () => {
@@ -221,7 +228,7 @@ describe('Auth controller ', () => {
       it('should return redirect to error page when called with valid object that doesn\'t match but session is at the third attempt', () => {
         authController.redirectToAuthErrorOrDisplayPage(error404, validPostObjectBadKeyAttempt2, genericResponse);
         assert.equal(genericResponse.viewName, '');
-        assert.equal(genericResponse.address, 'auth-error');
+        assert.equal(genericResponse.address, 'auth-error-invitation-code');
       });
 
       it('should return error page when called with valid object that doesn\'t match but session is not the third attempt', () => {

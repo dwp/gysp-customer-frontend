@@ -9,7 +9,7 @@
       "workedAbroad": {
         "label": "Have you worked outside of the UK?",
         "errors": {
-          "required": "Please complete."
+          "required": "Select Yes if you have ever worked outside of the UK."
         },
         "options": {
           "yes": "Yes",

@@ -16,25 +16,25 @@
           "building": "Building society account"
         },
         "errors": {
-          "required": "Please complete."
+          "required": "Select whether you would like to be paid into a bank or a building society account."
         }
       },
       "accountHolder": {
         "label": "Account holder name",
         "label-display": "Account holder name",
         "errors": {
-          "required": "Enter your name",
-          "format": "Should start with an A-z character, can only contain characters A-z, ampersand, apostrophes, full stops, hyphens and spaces.",
-          "length": "Maximum length is 70."
+          "required": "Enter the account holder’s name.",
+          "format": "Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "length": "Name must be 70 characters or less."
         }
       },
       "accountNumber": {
         "label": "Account number",
         "label-display": "Account number",
         "errors": {
-          "required": "Enter your account number",
-          "length": "Required length is 8.",
-          "format": "Please enter only numbers."
+          "required": "Enter an account number.",
+          "length": "Account number must be 8 numbers.",
+          "format": "Account number must be 8 numbers."
         }
       },
       "sortCode": {
@@ -44,9 +44,9 @@
         "label-2": "Second 2 digits",
         "label-3": "Last 2 digits",
         "errors": {
-          "required": "Enter your sort code",
-          "format": "Please enter a valid sort code.",
-          "length": "Please enter 2 numbers per field."
+          "required": "Enter a sort code.",
+          "format": "Enter a sort code in the correct format, like 11 22 33.",
+          "length": "Enter a sort code in the correct format, like 11 22 33."
         }
       },
       "buildingRoll": {
@@ -54,8 +54,8 @@
         "label-display": "If your building society uses a roll or reference number, you need to provide it. You will find it on your passbook.",
         "hint": "If your building society uses a roll or reference number, you need to provide it. You will find it on your passbook.",
         "errors": {
-          "format": "Please note only valid characters are: Alpha, Numeric, Ampersand (&), Apostrophe (') Asterisk (*), Comma (,), Full Stop (.), Hyphen (-), Parentheses (()), Space ( ) and Slash (/).",
-          "length": "Maximum length is 18."
+          "format": "Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.",
+          "length": "Roll or reference number must be 18 characters or less."
         }
       }
     }

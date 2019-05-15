@@ -9,7 +9,7 @@
       "livedAbroad": {
         "label": "Have you ever lived outside of the UK?",
         "errors": {
-          "required": "Please complete."
+          "required": "Select Yes if you have ever lived outside of the UK."
         },
         "options": {
           "yes": "Yes",

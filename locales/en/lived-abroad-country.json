@@ -12,9 +12,9 @@
       "label-month": "Month",
       "label-year": "Year",
       "errors": {
-        "required": "Enter a date",
-        "invalid": "Enter a valid date",
-        "future": "Date cannot be in the future"
+        "required": "Enter a month and year, like 2 2002.",
+        "invalid": "Enter a month and year, like 2 2002.",
+        "future": "Enter a 'from' date that is in the past."
       }
     },
     "dateTo": {
@@ -23,10 +23,10 @@
       "label-month": "Month",
       "label-year": "Year",
       "errors": {
-        "required": "Enter a date",
-        "invalid": "Enter a valid date",
-        "after": "Date cannot be before from date",
-        "future": "Date cannot be in the future"
+        "required": "Enter a month and year, like 2 2003.",
+        "invalid": "Enter a month and year, like 2 2003.",
+        "after": "The 'to' date cannot be before the 'from' date.",
+        "future": "Enter a 'to' date that is in the past."
       }
     },
     "dateFrom-overseas": {

@@ -8,7 +8,7 @@
     "maritalStatus": {
       "label": "Beth yw eich statws priodasol presennol?",
       "errors": {
-        "required": "Dylech gwblhau."
+        "required": "Dewiswch eich statws priodasol presennol."
       },
       "options": {
         "single": "Erioed wedi bod yn briod",

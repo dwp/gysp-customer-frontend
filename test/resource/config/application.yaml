@@ -11,9 +11,9 @@ application:
   urls:
       host: host
       api: http://example.com/api
-      apiKey: thisIsASecret
+      apiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
       frontendapi: http://example.com/api
-      frontendapiKey: thisIsASecret
+      frontendapiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
   logs:
       level: error
       path: logs

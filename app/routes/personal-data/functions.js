@@ -9,7 +9,7 @@ function getPersonalData(req, res) {
 
 function postPersonalData(req, res) {
   const details = req.body;
-  const errors = validation.personalDataValidationValidation(req.body, req.session.lang);
+  const errors = validation.personalDataValidation(req.body, req.session.lang);
   if (Object.keys(errors).length > 0) {
     res.render('pages/personal-data', { details: req.body, errors });
   } else {

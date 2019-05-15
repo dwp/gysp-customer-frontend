@@ -1,0 +1,44 @@
+{
+  "header":"You need to send proof of your date of birth",
+  "h1":"You need to send proof of your date of birth",
+  "p1": "Send the original or a certified copy of 1 of the following documents:",
+  "list1": {
+    "li1": "birth certificate",
+    "li2": "certificate of registration of birth",
+    "li3": "adoption order",
+    "li4": "certificate of adoption issued by the Registrar General",
+    "li5": "identity card"
+  },
+  "help": {
+    "title": "I do not have any of these",
+    "p": "You can send the original or a copy of 2 of the following documents:",
+    "list": {
+      "li1": "passport",
+      "li2": "driving licence",
+      "li3": "certificate of naturalisation or citizenship",
+      "li4": "medical card",
+      "li5": "school certificate"
+    }
+  },
+  "p2": "Certified copies must be dated and signed by 1 of the following people confirming that it's a true copy of the original:",
+  "list2": {
+    "li1": "bank official (authorised to sign documents)",
+    "li2": "government official (authorised to sign documents)",
+    "li3": "doctor or surgeon (registered in the country you are applying from)",
+    "li4": "solicitor or barrister (authorised to practice in the country you are applying from)",
+    "li5": "civil servant",
+    "li6": "minister of religion",
+    "li7": "chartered accountant"
+  },
+  "p3": "Include your National Insurance number and send your document to:",
+  "address": {
+    "line1": "The Pension Service 11",
+    "line2": "Mail Handling Site A",
+    "line3": "Wolverhampton",
+    "line4": "WV98 1LW",
+    "line5": "United Kingdom"
+  },
+  "warning": "You can continue with your application, but it can't be processed until you send proof of your date of birth.",
+  "warning-end": "You need to send proof of your date of birth before your application can be processed.",
+  "button": "Continue"
+}
