@@ -175,21 +175,21 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Mwyafswm hyd yw 24');
+      assert.equal(validationResponse.referenceNumber.text, 'Rhaid i rif cyfeirnod fod yn 24 nod neu lai.');
     });
     it('should return reference number error if reference number starts with a space', () => {
       const validationResponse = validation.countryDetials(spaceRefenceNumber, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Ni allwch ddechrau gyda gofod');
+      assert.equal(validationResponse.referenceNumber.text, 'Ni all y rhif cyfeirnod ddechrau gyda gofod.');
     });
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
       const validationResponse = validation.countryDetials(invalidChar, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Rhowch rif cyfeirnod dilys');
+      assert.equal(validationResponse.referenceNumber.text, 'Rhowch rif cyfeirnod go iawn i mewn.');
     });
   });
 });

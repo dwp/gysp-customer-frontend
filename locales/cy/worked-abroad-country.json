@@ -7,10 +7,9 @@
     "referenceNumber": {
       "label": "Beth oedd yn cyfateb â'ch rhif Yswiriant Gwladol yma?",
       "errors": {
-        "required": "Mae'n rhaid i chi gwblhau'r adran hon",
-        "toLong": "Mwyafswm hyd yw 24",
-        "space": "Ni allwch ddechrau gyda gofod",
-        "invalid": "Rhowch rif cyfeirnod dilys"
+        "toLong": "Rhaid i rif cyfeirnod fod yn 24 nod neu lai.",
+        "space": "Ni all y rhif cyfeirnod ddechrau gyda gofod.",
+        "invalid": "Rhowch rif cyfeirnod go iawn i mewn."
       }
     }
   }

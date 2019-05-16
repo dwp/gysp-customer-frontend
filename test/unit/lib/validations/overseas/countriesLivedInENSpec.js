@@ -175,21 +175,21 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Maximum length is 24');
+      assert.equal(validationResponse.referenceNumber.text, 'Reference number must be 24 characters or less.');
     });
     it('should return reference number error if reference number starts with a space', () => {
       const validationResponse = validation.countryDetials(spaceRefenceNumber, referenceNumberOn);
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Cannot start with a space');
+      assert.equal(validationResponse.referenceNumber.text, 'Reference number cannot start with a space.');
     });
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
       const validationResponse = validation.countryDetials(invalidChar, referenceNumberOn);
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
-      assert.equal(validationResponse.referenceNumber.text, 'Enter a valid reference number');
+      assert.equal(validationResponse.referenceNumber.text, 'Enter a real reference number.');
     });
   });
 });

@@ -65,39 +65,78 @@
       errorMessage: errors.dateFrom
     }) }}
 
-    {{ govukDateInput({
-      id: "dateTo",
-      fieldset: {
-        legend: {
-          text: t("lived-abroad-country:fields.dateTo.legend"),
-          isPageHeading: false,
-          classes: "govuk-label--s"
+    {% if isOverseas %}
+      {{ govukDateInput({
+        id: "dateTo",
+        fieldset: {
+          legend: {
+            text: t("lived-abroad-country:fields.dateTo.legend"),
+            isPageHeading: false,
+            classes: "govuk-label--s"
+          }
+        },
+        hint: {
+          text: t("lived-abroad-country:fields.dateTo" + pageSuffix + ".hint")
+        },
+        items: [{
+          label: t("lived-abroad-country:fields.dateTo.label-month"),
+          id: "dateTo-month",
+          name: "dateToMonth",
+          value: details.dateToMonth,
+          classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
+          pattern: "[0-9]*",
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
+          }
+        }, {
+          label: t("lived-abroad-country:fields.dateTo.label-year"),
+          id: "dateTo-year",
+          name: "dateToYear",
+          value: details.dateToYear,
+          classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
+          pattern: "[0-9]*",
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
+          }
         }
-      },
-      items: [{
-        label: t("lived-abroad-country:fields.dateTo.label-month"),
-        id: "dateTo-month",
-        name: "dateToMonth",
-        value: details.dateToMonth,
-        classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
-        pattern: "[0-9]*",
-        attributes: {
-          'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
+        ],
+        errorMessage: errors.dateTo
+      }) }}
+    {% else %}
+      {{ govukDateInput({
+        id: "dateTo",
+        fieldset: {
+          legend: {
+            text: t("lived-abroad-country:fields.dateTo.legend"),
+            isPageHeading: false,
+            classes: "govuk-label--s"
+          }
+        },
+        items: [{
+          label: t("lived-abroad-country:fields.dateTo.label-month"),
+          id: "dateTo-month",
+          name: "dateToMonth",
+          value: details.dateToMonth,
+          classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
+          pattern: "[0-9]*",
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
+          }
+        }, {
+          label: t("lived-abroad-country:fields.dateTo.label-year"),
+          id: "dateTo-year",
+          name: "dateToYear",
+          value: details.dateToYear,
+          classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
+          pattern: "[0-9]*",
+          attributes: {
+            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
+          }
         }
-      }, {
-        label: t("lived-abroad-country:fields.dateTo.label-year"),
-        id: "dateTo-year",
-        name: "dateToYear",
-        value: details.dateToYear,
-        classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
-        pattern: "[0-9]*",
-        attributes: {
-          'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
-        }
-      }
-      ],
-      errorMessage: errors.dateTo
-    }) }}
+        ],
+        errorMessage: errors.dateTo
+      }) }}
+    {% endif %}
 
     {{ govukButton({
       text: t("app:button.continue"),

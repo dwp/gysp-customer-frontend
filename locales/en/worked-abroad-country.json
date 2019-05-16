@@ -9,10 +9,9 @@
     "referenceNumber": {
       "label": "What was the equivalent of your National Insurance number here?",
       "errors": {
-        "required": "You must complete this section",
-        "toLong": "Maximum length is 24",
-        "space": "Cannot start with a space",
-        "invalid": "Enter a valid reference number"
+        "toLong": "Reference number must be 24 characters or less.",
+        "space": "Reference number cannot start with a space.",
+        "invalid": "Enter a real reference number."
       }
     },
     "dateTo": {
@@ -21,10 +20,10 @@
       "label-month": "Month",
       "label-year": "Year",
       "errors": {
-        "required": "Enter a date",
-        "invalid": "Enter a valid date",
-        "after": "Date cannot be before from date",
-        "future": "Date cannot be in the future"
+        "required": "Enter a month and year, like 2 2003.",
+        "invalid": "Enter a month and year, like 2 2003.",
+        "after": "The 'to' date cannot be before the ‘from’ date.",
+        "future": "Enter a 'to' date that is in the past."
       }
     },
     "dateTo-overseas": {
@@ -33,10 +32,10 @@
       "label-month": "Month",
       "label-year": "Year",
       "errors": {
-        "required": "Enter a date",
-        "invalid": "Enter a valid date",
-        "after": "Date cannot be before from date",
-        "future": "Date cannot be in the future"
+        "required": "Enter a month and year, like 2 2003.",
+        "invalid": "Enter a month and year, like 2 2003.",
+        "after": "The 'to' date cannot be before the ‘from’ date.",
+        "future": "Enter a 'to' date that is in the past."
       }
     }
   }
