@@ -80,8 +80,7 @@
     "security:audit": "npm audit || true",
     "security:snyk": "snyk test || true",
     "security:outdated": "npm outdated || true",
-    "compliance-tests": "npm run compliance:commits && npm run lint",
-    "compliance:commits": "commitlint --from=HEAD~1"
+    "compliance-tests": "npm run lint"
   },
   "snyk": true
 }
