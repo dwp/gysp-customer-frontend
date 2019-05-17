@@ -20,7 +20,8 @@ const statusCodeConflict = 409;
 function isCheckableAccount(paymentMethod, buildingRoll) {
   if (paymentMethod === 'building' && generalHelper.isThisUndefinedOrEmtpy(buildingRoll)) {
     return true;
-  } if (paymentMethod === 'bank') {
+  }
+  if (paymentMethod === 'bank') {
     return true;
   }
   return false;

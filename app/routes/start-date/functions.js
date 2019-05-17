@@ -38,7 +38,8 @@ function textToDisplay(req) {
 function statePensionStartDateRedirect(req, editMode) {
   if (editMode) {
     return 'check-your-details';
-  } if (req.session.isOverseas) {
+  }
+  if (req.session.isOverseas) {
     return 'where-have-you-lived-outside-the-uk';
   }
   return 'have-you-ever-lived-outside-of-the-uk';
