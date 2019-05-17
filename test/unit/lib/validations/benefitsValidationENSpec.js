@@ -31,12 +31,14 @@ describe('benefits validator - EN', () => {
   describe('receivingBenefits field', () => {
     it('should return error if receivingBenefits is not provided', () => {
       const response = validation.benefitsValidation(blankObject);
+      assert.equal(response.receivingBenefits.visuallyHiddenText, 'Error');
       assert.equal(response.receivingBenefits.text, 'Select Yes if you are receiving any benefits.');
       assert.equal(response.errorSummary[0].text, 'Select Yes if you are receiving any benefits.');
     });
 
     it('should return error if receivingBenefits is supplied with invalid object', () => {
       const response = validation.benefitsValidation(invalidObject);
+      assert.equal(response.receivingBenefits.visuallyHiddenText, 'Error');
       assert.equal(response.receivingBenefits.text, 'Select Yes if you are receiving any benefits.');
       assert.equal(response.errorSummary[0].text, 'Select Yes if you are receiving any benefits.');
     });

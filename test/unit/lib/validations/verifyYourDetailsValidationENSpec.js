@@ -31,12 +31,14 @@ describe('verify your details - EN', () => {
   describe('address field', () => {
     it('should return error if address is not provided', () => {
       const response = validation.detailsValidation(blankObject);
+      assert.equal(response.address.visuallyHiddenText, 'Error');
       assert.equal(response.address.text, 'Select Yes if this is your current address.');
       assert.equal(response.errorSummary[0].text, 'Select Yes if this is your current address.');
     });
 
     it('should return error if address is supplied with invalid object', () => {
       const response = validation.detailsValidation(invalidObject);
+      assert.equal(response.address.visuallyHiddenText, 'Error');
       assert.equal(response.address.text, 'Select Yes if this is your current address.');
       assert.equal(response.errorSummary[0].text, 'Select Yes if this is your current address.');
     });

@@ -77,18 +77,24 @@ describe('country validation', () => {
   it('should return full error set if to and from date is missing', () => {
     const validationResponse = validation.countryDetials(emptyObject, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 2);
+    assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
   });
   it('should return full error set if to and from are only partly complete', () => {
     const validationResponse = validation.countryDetials(emptyMonths, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 2);
+    assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
     const validationResponse2 = validation.countryDetials(emptyYears, false, '', '', 'cy');
     assert.lengthOf(validationResponse2.errorSummary, 2);
+    assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+    assert.equal(validationResponse2.dateTo.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse2.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
   });
 
@@ -96,10 +102,12 @@ describe('country validation', () => {
     const validationResponse = validation.countryDetials(badToDate, false, '', '', 'cy');
     assert.lengthOf(validationResponse.errorSummary, 1);
     assert.isUndefined(validationResponse.dateFrom);
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
     const validationResponse2 = validation.countryDetials(badFromDate, false, '', '', 'cy');
     assert.lengthOf(validationResponse2.errorSummary, 1);
+    assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
     assert.isUndefined(validationResponse2.dateTo);
   });
@@ -119,13 +127,17 @@ describe('country validation', () => {
     it('should return error if month is next month to current', () => {
       const validationResponse = validation.countryDetials(currentDatesPlusOneMonth, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateFrom.text, 'Rhowch ddyddiad \'o\' yn y gorffennol.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
     it('should return error if year is next year to current', () => {
       const validationResponse = validation.countryDetials(currentPlusOneYear, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateFrom.text, 'Rhowch ddyddiad \'o\' yn y gorffennol.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
   });
@@ -133,18 +145,23 @@ describe('country validation', () => {
     it('should return full error if dates are out of bounds', () => {
       const validationResponse2 = validation.countryDetials(invalidYears, false, '', '', 'cy');
       assert.lengthOf(validationResponse2.errorSummary, 2);
+      assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse2.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+      assert.equal(validationResponse2.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse2.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
 
       const validationResponse = validation.countryDetials(invalidMonths, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateFrom.text, 'Rhowch fis a blwyddyn, fel 2 2002.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
     });
     it('should return error if dateTo is beforeFrom date', () => {
       const validationResponse = validation.countryDetials(pastDates, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Ni all y dyddiad \'i\' fod cyn y dyddiad \'o\'.');
     });
   });
@@ -182,6 +199,7 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
+      assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.referenceNumber.text, 'Ni all y rhif cyfeirnod ddechrau gyda gofod.');
     });
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
@@ -189,6 +207,7 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
+      assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.referenceNumber.text, 'Rhowch rif cyfeirnod go iawn i mewn.');
     });
   });

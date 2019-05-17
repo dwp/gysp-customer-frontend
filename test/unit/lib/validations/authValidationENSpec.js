@@ -20,6 +20,7 @@ describe('Form auth validator', () => {
   describe('inviteKey fields ', () => {
     it('should return error if inviteKey is not provided', () => {
       const authValidationResponse = validation.authValidation(emptyKey);
+      assert.equal(authValidationResponse.inviteKey.visuallyHiddenText, 'Error');
       assert.equal(authValidationResponse.inviteKey.text, 'Enter your invitation code.');
     });
 
@@ -32,10 +33,12 @@ describe('Form auth validator', () => {
   describe('address fields ', () => {
     it('should return error if inviteKey is not provided', () => {
       const authValidationResponse = validation.authValidation(emptyKey);
+      assert.equal(authValidationResponse.address.visuallyHiddenText, 'Error');
       assert.equal(authValidationResponse.address.text, 'Select Yes if you are living at the address we sent your invitation letter to.');
     });
     it('should return error if inviteKey is provided as something that is not yes/no', () => {
       const authValidationResponse = validation.authValidation(validKeyOther);
+      assert.equal(authValidationResponse.address.visuallyHiddenText, 'Error');
       assert.equal(authValidationResponse.address.text, 'Select Yes if you are living at the address we sent your invitation letter to.');
     });
     it('should return no error if inviteKey yes', () => {

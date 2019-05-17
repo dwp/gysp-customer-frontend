@@ -36,6 +36,7 @@ describe('Contact validation', () => {
     it('should return error global if all fields are is empty', () => {
       const validationResponse = validation.detailsValidation(emptyObject, 'cy');
       assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+      assert.equal(validationResponse.overAll.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.overAll.text, 'Dewiswch o leiaf un rhif ffôn y gallwn gysylltu â chi arno.');
     });
 
@@ -65,6 +66,7 @@ describe('Contact validation', () => {
         telephoneMessage.cbHomeTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(telephoneMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Rhowch rif ffôn cartref.');
       });
 
@@ -73,6 +75,7 @@ describe('Contact validation', () => {
         telephoneMessage.homeTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(telephoneMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn cartref gynnwys rhifau a gofodau yn unig.');
       });
 
@@ -81,6 +84,7 @@ describe('Contact validation', () => {
         telephoneMessage.homeTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(telephoneMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn cartref fod yn 70 nod neu lai.');
       });
 
@@ -103,6 +107,7 @@ describe('Contact validation', () => {
         mobileMessage.cbMobileTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(mobileMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Rhowch rif ffôn symudol.');
       });
 
@@ -111,6 +116,7 @@ describe('Contact validation', () => {
         mobileMessage.mobileTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(mobileMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn symudol gynnwys rhifau a gofodau yn unig.');
       });
 
@@ -119,6 +125,7 @@ describe('Contact validation', () => {
         mobileMessage.mobileTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(mobileMessage, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn symudol fod yn 70 nod neu lai.');
       });
 
@@ -141,6 +148,7 @@ describe('Contact validation', () => {
         workTelephone.cbWorkTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(workTelephone, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Rhowch rif ffôn gwaith.');
       });
 
@@ -149,6 +157,7 @@ describe('Contact validation', () => {
         workTelephone.workTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(workTelephone, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn gwaith gynnwys rhifau a gofodau yn unig.');
       });
 
@@ -157,6 +166,7 @@ describe('Contact validation', () => {
         workTelephone.workTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(workTelephone, 'cy');
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Gwall');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Mae\'n rhaid i rif ffôn gwaith fod yn 70 nod neu lai.');
       });
 
@@ -170,11 +180,13 @@ describe('Contact validation', () => {
 
     it('should return error if email address is not invalid', () => {
       const validationResponse = validation.detailsValidation(populatedFailedValidationForm, 'cy');
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.email.text, 'Rhowch gyfeiriad e-bost yn y fformat cywir, fel name@example.com.');
     });
 
     it('should return error if email is to long (above 100 characters)', () => {
       const validationResponse = validation.detailsValidation(populatedLongRequest, 'cy');
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.email.text, 'Mae\'n rhaid i gyfeiriad e-bost fod yn 100 nod neu lai.');
     });
   });

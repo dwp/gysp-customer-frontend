@@ -31,12 +31,14 @@ describe('personal data - CY', () => {
   describe('personalDataPermission field', () => {
     it('should return error if personalDataPermission is not provided', () => {
       const response = validation.personalDataValidation(blankObject, 'cy');
+      assert.equal(response.personalDataPermission.visuallyHiddenText, 'Gwall');
       assert.equal(response.personalDataPermission.text, 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.');
     });
 
     it('should return error if personalDataPermission is supplied with invalid object', () => {
       const response = validation.personalDataValidation(invalidObject, 'cy');
+      assert.equal(response.personalDataPermission.visuallyHiddenText, 'Gwall');
       assert.equal(response.personalDataPermission.text, 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.');
     });

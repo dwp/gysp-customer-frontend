@@ -78,16 +78,19 @@ describe('DOB validation - CY', () => {
   });
   it('should return error if date is empty', () => {
     const validationResponse = validation.dobValidator(todayDateObjectEmpy, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Nodwch eich dyddiad geni.');
   });
 
   it('should return error if date is invalid (day greater then 31)', () => {
     const validationResponse = validation.dobValidator(badDayFormObject, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Rhowch ddyddiad geni go iawn.');
   });
 
   it('should return error if date is in future', () => {
     const validationResponse = validation.dobValidator(futureDateObject, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Rhowch ddyddiad geni sydd yn y gorffennol.');
   });
 
@@ -103,16 +106,19 @@ describe('DOB validation - CY', () => {
 
   it('should return error when date contains single digit year', () => {
     const validationResponse = validation.dobValidator(singleDigitYear, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Rhowch ddyddiad geni go iawn.');
   });
 
   it('should return error when date contains double digit year', () => {
     const validationResponse = validation.dobValidator(doubleDigitYear, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Rhowch ddyddiad geni go iawn.');
   });
 
   it('should return error when date contains tripple digit year', () => {
     const validationResponse = validation.dobValidator(trippleDigitYear, 'cy');
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
     assert.equal(validationResponse.date.text, 'Rhowch ddyddiad geni go iawn.');
   });
 });

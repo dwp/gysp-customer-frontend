@@ -31,12 +31,14 @@ describe('confirm identity validator - CY', () => {
   describe('receivingBenefits field', () => {
     it('should return error if authType is not provided', () => {
       const response = validation.authTypeValidation(blankObject, 'cy');
+      assert.equal(response.authType.visuallyHiddenText, 'Gwall');
       assert.equal(response.authType.text, 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.');
     });
 
     it('should return error if authType is supplied with invalid object', () => {
       const response = validation.authTypeValidation(invalidObject, 'cy');
+      assert.equal(response.authType.visuallyHiddenText, 'Gwall');
       assert.equal(response.authType.text, 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.');
     });

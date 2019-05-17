@@ -99,11 +99,13 @@ describe('Marital validation', () => {
   describe('selectionValidation', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.selectionValidation(emptyObject, 'cy');
+      assert.equal(validationResponse.maritalStatus.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.maritalStatus.text, 'Dewiswch eich statws priodasol presennol.');
     });
 
     it('should return error if answer is something unexpected', () => {
       const validationResponse = validation.selectionValidation(unexpectedOutcome, 'cy');
+      assert.equal(validationResponse.maritalStatus.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.maritalStatus.text, 'Dewiswch eich statws priodasol presennol.');
     });
     it('should return no error if anwser is supplied', () => {
@@ -120,16 +122,19 @@ describe('Marital validation', () => {
   describe('dateValidator', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.dateValidator(todayDateObjectEmpy, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad.');
     });
 
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.dateValidator(badDayFormObject, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad go iawn.');
     });
 
     it('should return error if date is in future', () => {
       const validationResponse = validation.dateValidator(futureDateObject, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Mae\'n rhaid i\'r dyddiad fod yn y gorffennol.');
     });
 
@@ -145,16 +150,19 @@ describe('Marital validation', () => {
 
     it('should return error when date contains single digit year', () => {
       const validationResponse = validation.dateValidator(singleDigitYear, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad go iawn.');
     });
 
     it('should return error when date contains double digit year', () => {
       const validationResponse = validation.dateValidator(doubleDigitYear, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad go iawn.');
     });
 
     it('should return error when date contains tripple digit year', () => {
       const validationResponse = validation.dateValidator(trippleDigitYear, 'married', 'cy');
+      assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad go iawn.');
     });
   });
@@ -170,56 +178,67 @@ describe('Marital validation', () => {
 
     it('should return error if first name is empty', () => {
       const validationResponse = validation.partnerValidator(emptyPartnerDetails, 'married', 'cy');
+      assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.firstName.text, 'Rhowch eu henw cyntaf.');
     });
 
     it('should return error if first name is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner, 'married', 'cy');
+      assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.firstName.text, 'Mae\'n  rhaid i\'r enw cyntaf fod yn 70 nod neu lai.');
     });
 
     it('should return error if first name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
     });
 
     it('should return error if first name does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaFirstNamePartner, 'married', 'cy');
+      assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
     });
 
     it('should return error if surname is empty', () => {
       const validationResponse = validation.partnerValidator(emptyPartnerDetails, 'married', 'cy');
+      assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.surname.text, 'Rhowch eu cyfenw.');
     });
 
     it('should return error if surname is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner, 'married', 'cy');
+      assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw fod yn 70 nod neu lai.');
     });
 
     it('should return error if surname name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
     });
 
     it('should return error if surname does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaSurnamePartner, 'married', 'cy');
+      assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
     });
 
     it('should return error if other name is to long (70 characters)', () => {
       const validationResponse = validation.partnerValidator(longTextPartner, 'married', 'cy');
+      assert.equal(validationResponse.otherName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enw arall fod yn 70 nod  neu lai.');
     });
 
     it('should return error if other name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse.otherName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.');
     });
 
     it('should return error if other name does not start with alpha', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaOtherNamePartner, 'married', 'cy');
+      assert.equal(validationResponse.otherName.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.');
     });
 
@@ -230,6 +249,7 @@ describe('Marital validation', () => {
 
     it('should return error if dob is invalid (day greater then 31)', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse.dob.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dob.text, 'Rhowch ddyddiad geni go iawn.');
     });
 
@@ -238,17 +258,21 @@ describe('Marital validation', () => {
       badFormatPartner.dobMonth = 1;
       badFormatPartner.dobYear = 1;
       const validationResponse1 = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse1.dob.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse1.dob.text, 'Rhowch ddyddiad geni go iawn.');
       badFormatPartner.dobYear = 12;
       const validationResponse2 = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse2.dob.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse2.dob.text, 'Rhowch ddyddiad geni go iawn.');
       badFormatPartner.dobYear = 123;
       const validationResponse3 = validation.partnerValidator(badFormatPartner, 'married', 'cy');
+      assert.equal(validationResponse3.dob.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse3.dob.text, 'Rhowch ddyddiad geni go iawn.');
     });
 
     it('should return error if dob is future', () => {
       const validationResponse = validation.partnerValidator(futurePartnerDetails, 'married', 'cy');
+      assert.equal(validationResponse.dob.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dob.text, 'Mae\'n rhaid i ddyddiad geni fod yn y gorffennol.');
     });
 

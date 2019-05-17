@@ -31,12 +31,14 @@ describe('confirm identity validator - EN', () => {
   describe('receivingBenefits field', () => {
     it('should return error if authType is not provided', () => {
       const response = validation.authTypeValidation(blankObject);
+      assert.equal(response.authType.visuallyHiddenText, 'Error');
       assert.equal(response.authType.text, 'Select whether or not you have an invitation letter.');
       assert.equal(response.errorSummary[0].text, 'Select whether or not you have an invitation letter.');
     });
 
     it('should return error if authType is supplied with invalid object', () => {
       const response = validation.authTypeValidation(invalidObject);
+      assert.equal(response.authType.visuallyHiddenText, 'Error');
       assert.equal(response.authType.text, 'Select whether or not you have an invitation letter.');
       assert.equal(response.errorSummary[0].text, 'Select whether or not you have an invitation letter.');
     });

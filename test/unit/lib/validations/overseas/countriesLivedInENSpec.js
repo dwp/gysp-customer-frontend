@@ -77,18 +77,24 @@ describe('country validation', () => {
   it('should return full error set if to and from date is missing', () => {
     const validationResponse = validation.countryDetials(emptyObject);
     assert.lengthOf(validationResponse.errorSummary, 2);
+    assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.dateFrom.text, 'Enter a month and year, like 2 2002.');
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.dateTo.text, 'Enter a month and year, like 2 2003.');
   });
   it('should return full error set if to and from are only partly complete', () => {
     const validationResponse = validation.countryDetials(emptyMonths);
     assert.lengthOf(validationResponse.errorSummary, 2);
+    assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.dateFrom.text, 'Enter a month and year, like 2 2002.');
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.dateTo.text, 'Enter a month and year, like 2 2003.');
 
     const validationResponse2 = validation.countryDetials(emptyYears);
     assert.lengthOf(validationResponse2.errorSummary, 2);
+    assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Error');
     assert.equal(validationResponse2.dateFrom.text, 'Enter a month and year, like 2 2002.');
+    assert.equal(validationResponse2.dateTo.visuallyHiddenText, 'Error');
     assert.equal(validationResponse2.dateTo.text, 'Enter a month and year, like 2 2003.');
   });
 
@@ -96,10 +102,12 @@ describe('country validation', () => {
     const validationResponse = validation.countryDetials(badToDate);
     assert.lengthOf(validationResponse.errorSummary, 1);
     assert.isUndefined(validationResponse.dateFrom);
+    assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.dateTo.text, 'Enter a month and year, like 2 2003.');
 
     const validationResponse2 = validation.countryDetials(badFromDate);
     assert.lengthOf(validationResponse2.errorSummary, 1);
+    assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Error');
     assert.equal(validationResponse2.dateFrom.text, 'Enter a month and year, like 2 2002.');
     assert.isUndefined(validationResponse2.dateTo);
   });
@@ -119,13 +127,17 @@ describe('country validation', () => {
     it('should return error if month is next month to current', () => {
       const validationResponse = validation.countryDetials(currentDatesPlusOneMonth);
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateFrom.text, 'Enter a \'from\' date that is in the past.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateTo.text, 'Enter a \'to\' date that is in the past.');
     });
     it('should return error if year is next year to current', () => {
       const validationResponse = validation.countryDetials(currentPlusOneYear);
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateFrom.text, 'Enter a \'from\' date that is in the past.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateTo.text, 'Enter a \'to\' date that is in the past.');
     });
   });
@@ -133,18 +145,23 @@ describe('country validation', () => {
     it('should return full error if dates are out of bounds', () => {
       const validationResponse2 = validation.countryDetials(invalidYears);
       assert.lengthOf(validationResponse2.errorSummary, 2);
+      assert.equal(validationResponse2.dateFrom.visuallyHiddenText, 'Error');
       assert.equal(validationResponse2.dateFrom.text, 'Enter a month and year, like 2 2002.');
+      assert.equal(validationResponse2.dateTo.visuallyHiddenText, 'Error');
       assert.equal(validationResponse2.dateTo.text, 'Enter a month and year, like 2 2003.');
 
       const validationResponse = validation.countryDetials(invalidMonths);
       assert.lengthOf(validationResponse.errorSummary, 2);
+      assert.equal(validationResponse.dateFrom.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateFrom.text, 'Enter a month and year, like 2 2002.');
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateTo.text, 'Enter a month and year, like 2 2003.');
     });
     it('should return error if dateTo is beforeFrom date', () => {
       const validationResponse = validation.countryDetials(pastDates);
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
+      assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.dateTo.text, 'The \'to\' date cannot be before the \'from\' date.');
     });
   });
@@ -175,6 +192,7 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
+      assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.referenceNumber.text, 'Reference number must be 24 characters or less.');
     });
     it('should return reference number error if reference number starts with a space', () => {
@@ -182,6 +200,7 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
+      assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.referenceNumber.text, 'Reference number cannot start with a space.');
     });
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
@@ -189,6 +208,7 @@ describe('country validation', () => {
       assert.lengthOf(validationResponse.errorSummary, 1);
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
+      assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.referenceNumber.text, 'Enter a real reference number.');
     });
   });

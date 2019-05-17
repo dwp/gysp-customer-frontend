@@ -20,11 +20,13 @@ describe('lived/worked abroad validation - CY', () => {
   describe('livedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.livedAbroad(emptyObject, 'cy');
+      assert.equal(validationResponse.livedAbroad.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.livedAbroad.text, 'Dewiswch ydw os ydych  wedi byw y tu allan i\'r DU erioed.');
     });
 
     it('should return error if answer is set as something that is not yes or no', () => {
       const validationResponse = validation.livedAbroad(populatedValidationFormOther, 'cy');
+      assert.equal(validationResponse.livedAbroad.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.livedAbroad.text, 'Dewiswch ydw os ydych  wedi byw y tu allan i\'r DU erioed.');
     });
 
@@ -41,11 +43,13 @@ describe('lived/worked abroad validation - CY', () => {
   describe('workedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.workedAbroad(emptyObject, 'cy');
+      assert.equal(validationResponse.workedAbroad.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.workedAbroad.text, 'Dewiswch Ydw os ydych erioed wedi gweithio y tu allan i\'r DU.');
     });
 
     it('should return error if answer is set as something that is not yes or no', () => {
       const validationResponse = validation.workedAbroad(populatedValidationFormOtherWorked, 'cy');
+      assert.equal(validationResponse.workedAbroad.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.workedAbroad.text, 'Dewiswch Ydw os ydych erioed wedi gweithio y tu allan i\'r DU.');
     });
 

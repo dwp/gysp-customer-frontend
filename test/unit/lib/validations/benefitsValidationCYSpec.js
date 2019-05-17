@@ -31,12 +31,14 @@ describe('benefits validator - CY', () => {
   describe('receivingBenefits field', () => {
     it('should return error if receivingBenefits is not provided', () => {
       const response = validation.benefitsValidation(blankObject, 'cy');
+      assert.equal(response.receivingBenefits.visuallyHiddenText, 'Gwall');
       assert.equal(response.receivingBenefits.text, 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.');
     });
 
     it('should return error if receivingBenefits is supplied with invalid object', () => {
       const response = validation.benefitsValidation(invalidObject, 'cy');
+      assert.equal(response.receivingBenefits.visuallyHiddenText, 'Gwall');
       assert.equal(response.receivingBenefits.text, 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.');
     });

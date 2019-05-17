@@ -54,21 +54,25 @@ describe('overseas account validation', () => {
   describe('accountName', () => {
     it('should return error if empty ', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.emptyObject);
+      assert.equal(accountValidationResponse.accountHolder.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountHolder.text, 'Enter the account holder’s name.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter the account holder’s name.');
     });
     it('should return error if to long (greater then 70 characters) ', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountName.long);
+      assert.equal(accountValidationResponse.accountHolder.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountHolder.text, 'Name must be 70 characters or less.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must be 70 characters or less.');
     });
     it('should return error if text includes invalid characters', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountName.invalidFormat);
+      assert.equal(accountValidationResponse.accountHolder.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
     it('should return error if text does not start with alpha ', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountName.startNotAlphaName);
+      assert.equal(accountValidationResponse.accountHolder.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
     });
@@ -82,16 +86,19 @@ describe('overseas account validation', () => {
   describe('accountNumber', () => {
     it('should return error if empty', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.emptyObject);
+      assert.equal(accountValidationResponse.accountNumber.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountNumber.text, 'Enter an account number.');
       assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter an account number.');
     });
     it('should return error if contains $$', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountNumber.invalidFormat);
+      assert.equal(accountValidationResponse.accountNumber.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountNumber.text, 'Account number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
     });
     it('should return error if to long', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountNumber.long);
+      assert.equal(accountValidationResponse.accountNumber.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountNumber.text, 'Account number must be 70 characters or less.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 70 characters or less.');
     });
@@ -100,16 +107,19 @@ describe('overseas account validation', () => {
   describe('accountCode', () => {
     it('should return error if empty', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.emptyObject);
+      assert.equal(accountValidationResponse.accountCode.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountCode.text, 'Enter the bank or branch code.');
       assert.equal(accountValidationResponse.errorSummary[2].text, 'Enter the bank or branch code.');
     });
     it('should return error if contains $$', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountCode.invalidFormat);
+      assert.equal(accountValidationResponse.accountCode.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountCode.text, 'Bank or branch code must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Bank or branch code must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
     });
     it('should return error if to long', () => {
       const accountValidationResponse = validation.accountValidator(accountObjects.accountCode.long);
+      assert.equal(accountValidationResponse.accountCode.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.accountCode.text, 'Bank or branch code must be 70 characters or less.');
       assert.equal(accountValidationResponse.errorSummary[0].text, 'Bank or branch code must be 70 characters or less.');
     });

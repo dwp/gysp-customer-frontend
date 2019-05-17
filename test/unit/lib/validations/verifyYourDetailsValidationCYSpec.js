@@ -31,12 +31,14 @@ describe('verify your details - EN', () => {
   describe('address field', () => {
     it('should return error if address is not provided', () => {
       const response = validation.detailsValidation(blankObject, 'cy');
+      assert.equal(response.address.visuallyHiddenText, 'Gwall');
       assert.equal(response.address.text, 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.');
     });
 
     it('should return error if address is supplied with invalid object', () => {
       const response = validation.detailsValidation(invalidObject, 'cy');
+      assert.equal(response.address.visuallyHiddenText, 'Gwall');
       assert.equal(response.address.text, 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.');
       assert.equal(response.errorSummary[0].text, 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.');
     });

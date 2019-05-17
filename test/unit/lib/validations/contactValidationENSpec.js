@@ -65,6 +65,7 @@ describe('Contact validation', () => {
         telephoneMessage.cbHomeTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(telephoneMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Enter a home phone number.');
       });
 
@@ -73,6 +74,7 @@ describe('Contact validation', () => {
         telephoneMessage.homeTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(telephoneMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Home phone number must only contain numbers and spaces.');
       });
 
@@ -81,6 +83,7 @@ describe('Contact validation', () => {
         telephoneMessage.homeTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(telephoneMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.homeTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.homeTelephoneNumber.text, 'Home phone number must be 70 characters or less.');
       });
 
@@ -103,6 +106,7 @@ describe('Contact validation', () => {
         mobileMessage.cbMobileTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(mobileMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Enter a mobile phone number.');
       });
 
@@ -111,6 +115,7 @@ describe('Contact validation', () => {
         mobileMessage.mobileTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(mobileMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Mobile phone number must only contain numbers and spaces.');
       });
 
@@ -119,6 +124,7 @@ describe('Contact validation', () => {
         mobileMessage.mobileTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(mobileMessage);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.mobileTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.mobileTelephoneNumber.text, 'Mobile phone number must be 70 characters or less.');
       });
 
@@ -141,6 +147,7 @@ describe('Contact validation', () => {
         workTelephone.cbWorkTelephoneNumber = true;
         const validationResponse = validation.detailsValidation(workTelephone);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Enter a work phone number.');
       });
 
@@ -149,6 +156,7 @@ describe('Contact validation', () => {
         workTelephone.workTelephoneNumber = 'This is text';
         const validationResponse = validation.detailsValidation(workTelephone);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Work phone number must only contain numbers and spaces.');
       });
 
@@ -157,6 +165,7 @@ describe('Contact validation', () => {
         workTelephone.workTelephoneNumber = longTelephoneNumber;
         const validationResponse = validation.detailsValidation(workTelephone);
         assert.equal(Object.keys(validationResponse.errorSummary).length, 1);
+        assert.equal(validationResponse.workTelephoneNumber.visuallyHiddenText, 'Error');
         assert.equal(validationResponse.workTelephoneNumber.text, 'Work phone number must be 70 characters or less.');
       });
 
@@ -170,11 +179,13 @@ describe('Contact validation', () => {
 
     it('should return error if email address is not invalid', () => {
       const validationResponse = validation.detailsValidation(populatedFailedValidationForm);
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.email.text, 'Enter an email address in the correct format, like name@example.com.');
     });
 
     it('should return error if email is to long (above 100 characters)', () => {
       const validationResponse = validation.detailsValidation(populatedLongRequest);
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.email.text, 'Email address must be 100 characters or less.');
     });
   });

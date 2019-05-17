@@ -3,6 +3,9 @@
   "title": {
     "error": "Error:"
   },
+  "error-message" : {
+    "visuallyHiddenText": "Error"
+  },
   "button": {
     "continue": "Continue"
   },

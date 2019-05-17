@@ -20,11 +20,13 @@ describe('lived/worked abroad validation - EN', () => {
   describe('livedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.livedAbroad(emptyObject);
+      assert.equal(validationResponse.livedAbroad.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.livedAbroad.text, 'Select Yes if you have ever lived outside of the UK.');
     });
 
     it('should return error if answer is set as something that is not yes or no', () => {
       const validationResponse = validation.livedAbroad(populatedValidationFormOther);
+      assert.equal(validationResponse.livedAbroad.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.livedAbroad.text, 'Select Yes if you have ever lived outside of the UK.');
     });
 
@@ -41,11 +43,13 @@ describe('lived/worked abroad validation - EN', () => {
   describe('workedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.workedAbroad(emptyObject);
+      assert.equal(validationResponse.workedAbroad.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.workedAbroad.text, 'Select Yes if you have ever worked outside of the UK.');
     });
 
     it('should return error if answer is set as something that is not yes or no', () => {
       const validationResponse = validation.workedAbroad(populatedValidationFormOtherWorked);
+      assert.equal(validationResponse.workedAbroad.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.workedAbroad.text, 'Select Yes if you have ever worked outside of the UK.');
     });
 

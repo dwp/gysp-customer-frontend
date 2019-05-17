@@ -78,16 +78,19 @@ describe('DOB validation - EN', () => {
   });
   it('should return error if date is empty', () => {
     const validationResponse = validation.dobValidator(todayDateObjectEmpy);
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter your date of birth.');
   });
 
   it('should return error if date is invalid (day greater then 31)', () => {
     const validationResponse = validation.dobValidator(badDayFormObject);
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 
   it('should return error if date is in future', () => {
     const validationResponse = validation.dobValidator(futureDateObject);
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter a date of birth that is in the past.');
   });
 
@@ -108,11 +111,13 @@ describe('DOB validation - EN', () => {
 
   it('should return error when date contains double digit year', () => {
     const validationResponse = validation.dobValidator(doubleDigitYear);
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 
   it('should return error when date contains tripple digit year', () => {
     const validationResponse = validation.dobValidator(trippleDigitYear);
+    assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
 });

@@ -46,6 +46,10 @@ describe('countries validation - CY', () => {
       assert.equal(validationResponse['country-name[1]'].text, 'Mae\'n rhaid i enw gwlad ddechrau gyda llythyren a dim ond llythrennau a i z, gofodau, cysylltnodau neu gromfachau.');
       assert.equal(validationResponse['country-name[2]'].text, 'Mae\'n rhaid i enw gwlad ddechrau gyda llythyren a dim ond llythrennau a i z, gofodau, cysylltnodau neu gromfachau.');
       assert.equal(validationResponse['country-name[3]'].text, 'Mae\'n rhaid i enw gwlad ddechrau gyda llythyren a dim ond llythrennau a i z, gofodau, cysylltnodau neu gromfachau.');
+      assert.equal(validationResponse['country-name[0]'].visuallyHiddenText, 'Gwall');
+      assert.equal(validationResponse['country-name[1]'].visuallyHiddenText, 'Gwall');
+      assert.equal(validationResponse['country-name[2]'].visuallyHiddenText, 'Gwall');
+      assert.equal(validationResponse['country-name[3]'].visuallyHiddenText, 'Gwall');
     });
 
     it('should return errors if valid country supplied but appears twice', () => {
@@ -54,18 +58,24 @@ describe('countries validation - CY', () => {
       assert.equal(validationResponse['country-name[1]'].text, 'Rhowch bob gwlad unwaith.');
       assert.equal(validationResponse['country-name[2]'], undefined);
       assert.equal(validationResponse['country-name[3]'].text, 'Rhowch bob gwlad unwaith.');
+      assert.equal(validationResponse['country-name[1]'].visuallyHiddenText, 'Gwall');
+      assert.equal(validationResponse['country-name[3]'].visuallyHiddenText, 'Gwall');
 
       const validationResponse2 = validation.countries(populatedValidMutiple2, 'lived', countryList, 'cy');
       assert.equal(validationResponse2['country-name[0]'], undefined);
       assert.equal(validationResponse2['country-name[1]'], undefined);
       assert.equal(validationResponse2['country-name[2]'].text, 'Rhowch bob gwlad unwaith.');
       assert.equal(validationResponse2['country-name[3]'].text, 'Rhowch bob gwlad unwaith.');
+      assert.equal(validationResponse2['country-name[2]'].visuallyHiddenText, 'Gwall');
+      assert.equal(validationResponse2['country-name[3]'].visuallyHiddenText, 'Gwall');
+
 
       const validationResponse3 = validation.countries(populatedValidMutiple3, 'lived', countryList, 'cy');
       assert.equal(validationResponse3['country-name[0]'], undefined);
       assert.equal(validationResponse3['country-name[1]'], undefined);
       assert.equal(validationResponse3['country-name[2]'], undefined);
       assert.equal(validationResponse3['country-name[3]'].text, 'Rhowch bob gwlad unwaith.');
+      assert.equal(validationResponse3['country-name[3]'].visuallyHiddenText, 'Gwall');
     });
 
     it('should return no error if valid country supplied', () => {

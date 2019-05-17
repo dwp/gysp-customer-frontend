@@ -1,7 +1,10 @@
 {
   "service_name": "Cael eich Pensiwn y Wladwriaeth",
   "title": {
-    "error": "Gwall"
+    "error": "Gwall:"
+  },
+  "error-message" : {
+    "visuallyHiddenText": "Gwall"
   },
   "button": {
     "continue": "Parhau"

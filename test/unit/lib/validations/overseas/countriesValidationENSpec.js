@@ -46,13 +46,19 @@ describe('countries validation - EN', () => {
       assert.equal(validationResponse['country-name[1]'].text, 'Country name must start with a letter and only include letters a to z, spaces, hyphens or brackets.');
       assert.equal(validationResponse['country-name[2]'].text, 'Country name must start with a letter and only include letters a to z, spaces, hyphens or brackets.');
       assert.equal(validationResponse['country-name[3]'].text, 'Country name must start with a letter and only include letters a to z, spaces, hyphens or brackets.');
+      assert.equal(validationResponse['country-name[0]'].visuallyHiddenText, 'Error');
+      assert.equal(validationResponse['country-name[1]'].visuallyHiddenText, 'Error');
+      assert.equal(validationResponse['country-name[2]'].visuallyHiddenText, 'Error');
+      assert.equal(validationResponse['country-name[3]'].visuallyHiddenText, 'Error');
     });
 
     it('should return errors if valid country supplied but appears twice', () => {
       const validationResponse = validation.countries(populatedValidMutiple, 'lived', countryList);
       assert.equal(validationResponse['country-name[0]'], undefined);
+      assert.equal(validationResponse['country-name[1]'].visuallyHiddenText, 'Error');
       assert.equal(validationResponse['country-name[1]'].text, 'Only enter each country once.');
       assert.equal(validationResponse['country-name[2]'], undefined);
+      assert.equal(validationResponse['country-name[3]'].visuallyHiddenText, 'Error');
       assert.equal(validationResponse['country-name[3]'].text, 'Only enter each country once.');
 
       const validationResponse2 = validation.countries(populatedValidMutiple2, 'lived', countryList);
@@ -60,12 +66,15 @@ describe('countries validation - EN', () => {
       assert.equal(validationResponse2['country-name[1]'], undefined);
       assert.equal(validationResponse2['country-name[2]'].text, 'Only enter each country once.');
       assert.equal(validationResponse2['country-name[3]'].text, 'Only enter each country once.');
+      assert.equal(validationResponse2['country-name[2]'].visuallyHiddenText, 'Error');
+      assert.equal(validationResponse2['country-name[3]'].visuallyHiddenText, 'Error');
 
       const validationResponse3 = validation.countries(populatedValidMutiple3, 'lived', countryList);
       assert.equal(validationResponse3['country-name[0]'], undefined);
       assert.equal(validationResponse3['country-name[1]'], undefined);
       assert.equal(validationResponse3['country-name[2]'], undefined);
       assert.equal(validationResponse3['country-name[3]'].text, 'Only enter each country once.');
+      assert.equal(validationResponse3['country-name[3]'].visuallyHiddenText, 'Error');
     });
 
     it('should return no error if valid country supplied', () => {
