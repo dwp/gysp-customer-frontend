@@ -1,13 +1,16 @@
 const { assert } = require('chai');
 
-const accountController = require('../../../app/routes/general/functions');
+const generalController = require('../../../app/routes/general/functions');
 const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
-const emptyRequest = {
-  session: {},
-  body: {
-    paymentMethod: '', bankAccountHolder: '', bankAccountNumber: '', bankSortCodeField1: '', bankSortCodeField2: '', bankSortCodeField3: '',
+const emptyRequest = { session: {} };
+const validRequest = {
+  session: {
+    foo: 'bar',
+    destroy() {
+      delete validRequest.session;
+    },
   },
 };
 
@@ -16,9 +19,26 @@ describe('General controller ', () => {
     genericResponse = responseHelper.genericResponse();
   });
 
-  describe(' redirectToStart function (GET /)', () => {
+  describe('signOut function (GET /sign-out)', () => {
+    it('should destroy session and redirect to start page', (done) => {
+      generalController.signOut(validRequest, genericResponse);
+      assert.isUndefined(validRequest.session);
+      assert.equal(genericResponse.address, 'start-page');
+      done();
+    });
+  });
+
+  describe('cookiesPageGet function (GET /cookie-policy)', () => {
+    it('should return cookie page view', (done) => {
+      generalController.cookiesPageGet(emptyRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/cookies');
+      done();
+    });
+  });
+
+  describe('redirectToStart function (GET /)', () => {
     it('should redirect when called with any response data', (done) => {
-      accountController.redirectToStart(emptyRequest, genericResponse);
+      generalController.redirectToStart(emptyRequest, genericResponse);
       assert.equal(genericResponse.address, '/confirm-identity');
       done();
     });
