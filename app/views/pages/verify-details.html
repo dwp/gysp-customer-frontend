@@ -10,7 +10,6 @@
   {% if errors %}
     {{ govukErrorSummary({
       titleText: t("personal-data:errors.header"),
-      descriptionText: t("personal-data:errors.p1"),
       errorList: errors.errorSummary
     }) }}
   {% endif %}

@@ -2,15 +2,13 @@
   "lived": {
     "header": "Ym mha wledydd ydych chi wedi byw ynddynt?",
     "errors": {
-      "header": "Methu anfon y ffurflen.",
-      "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+      "header": "Mae yna broblem"
     }
   },
   "worked": {
     "header": "Ym mha wledydd ydych chi wedi gweithio ynddynt?",
     "errors": {
-      "header": "Methu anfon y ffurflen.",
-      "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+      "header": "Mae yna broblem"
     }
   },
   "fields": {
@@ -27,11 +25,11 @@
   "js-error": {
     "duplicate": {
       "header": "Enw'r wlad (yn Saesneg)",
-      "message": "Dylech ond rhoi neu ddewis gwlad unwaith"
+      "message": "Rhowch bob gwlad unwaith."
     },
     "empty": {
       "header": "Enw'r wlad (yn Saesneg)",
-      "message": "Rhowch neu dewiswch wlad"
+      "message": "Rhowch enw gwlad."
     }
   },
   "link": {

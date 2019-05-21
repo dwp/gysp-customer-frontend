@@ -2,8 +2,7 @@
   "header":"Ydych chi wedi gweithio y tu allan i'r Deyrnas Unedig?",
   "p1": "Nid oes angen i chi ddarparu unrhyw fanylion os ydych wedi gwasanaethu dramor â lluoedd arfog Prydain.",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem canlynol"
+    "header": "Mae yna broblem"
   },
   "fields": {
       "workedAbroad": {

@@ -2,8 +2,7 @@
   "header":"Manylion cyfrif",
   "p": "Dim ond i'ch cyfrif banc neu gymdeithas adeiladu personol neu ar y cyd y gallwn dalu eich Pensiwn y Wladwriaeth.",
   "errors": {
-      "header": "Methu anfon y ffurflen.",
-      "p1": "Edrychwch dros y broblem neu broblemau canlynol"
+      "header": "Mae yna broblem"
     },
     "fields": {
       "result": "Canlyniad Dilysu Banc",

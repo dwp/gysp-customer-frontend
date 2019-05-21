@@ -6,7 +6,7 @@
   "h2": "Ydych chi eisiau ein helpu i wella'r gwasanaeth hwn?",
   "complete": "Diolch am eich adborth",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
+    "header": "Mae yna broblem",
     "p1": "Mae'n rhaid i chi ateb o leiaf un cwestiwn.",
     "p1-more": "Edrychwch dros y broblem neu broblemau canlynol."
   },

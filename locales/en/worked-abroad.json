@@ -2,8 +2,7 @@
   "header":"Have you worked outside of the UK?",
   "p1": "You do not need to provide any details if you have served overseas with the British armed forces.",
   "errors": {
-    "header": "Unable to submit the form.",
-    "p1": "Please check the following problem"
+    "header": "There is a problem"
   },
   "fields": {
       "workedAbroad": {

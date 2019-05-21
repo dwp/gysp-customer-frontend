@@ -104,8 +104,7 @@ function validateEmpty(e) {
   var input = $('.country-wrapper:not(".js-hidden") input');
   var form = input.closest('form');
   var errorTitle = form.data('error-title');
-  var errorDescription = form.data('error-description');
-  var errorMessage = form.data('empty-error-messages');
+  var errorMessage = form.data('empty-error-message');
   var isOverseas = form.data('overseas');
   var errorSummaryMessages = [];
 
@@ -113,11 +112,11 @@ function validateEmpty(e) {
     $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group span.govuk-error-message').remove();
     if ($(this).val() === '') {
       invalid++;
-      $('<span class="govuk-error-message">' + errorMessage[1] + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
+      $('<span class="govuk-error-message">' + errorMessage + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
       $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').addClass('govuk-form-group--error');
       errorSummaryMessages.push({
         id: 'country-name[' + index + ']-input',
-        text: errorMessage[0] + ' - ' + errorMessage[1]
+        text: errorMessage
       });
     } else {
       $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').removeClass('govuk-form-group--error');
@@ -129,7 +128,7 @@ function validateEmpty(e) {
     e.preventDefault();
     var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
     GOVUK.performance.sendGoogleAnalyticsEvent(url, 'error', gaLabel);
-    var html = errorSummary(errorTitle, errorDescription, errorSummaryMessages);
+    var html = errorSummary(errorTitle, errorSummaryMessages);
     $('.js-error').html(html);
     $('.govuk-error-summary').focus();
   }
@@ -141,9 +140,7 @@ function validateDuplicates(e) {
   var input = $('.country-wrapper:not(".js-hidden") input');
   var form = input.closest('form');
   var errorTitle = form.data('error-title');
-  var errorDescription = form.data('error-description');
-  var errorMessage = form.data('duplicate-error-messages');
-  var errorMessage1 = errorMessage[1];
+  var errorMessage = form.data('duplicate-error-message');
   var isOverseas = form.data('overseas');
 
   var errorSummaryMessages = [];
@@ -152,10 +149,10 @@ function validateDuplicates(e) {
     if ($.inArray($(this).val(), countries) >= 0) {
       invalid++;
       $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').addClass('govuk-form-group--error');
-      $('<span class="govuk-error-message">' + errorMessage[1] + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
+      $('<span class="govuk-error-message">' + errorMessage + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
       errorSummaryMessages.push({
         id: 'country-name[' + index + ']-input',
-        text: errorMessage[0] + ' - ' + errorMessage[1]
+        text: errorMessage
       });
     } else {
       $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').removeClass('govuk-form-group--error');
@@ -166,8 +163,7 @@ function validateDuplicates(e) {
     e.preventDefault();
     var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
     GOVUK.performance.sendGoogleAnalyticsEvent(url, 'error', gaLabel);
-    errorMessage[1] = errorMessage1;
-    var html = errorSummary(errorTitle, errorDescription, errorSummaryMessages);
+    var html = errorSummary(errorTitle, errorSummaryMessages);
     $('.js-error').html(html)
     $('.govuk-error-summary').focus();
   }
@@ -215,11 +211,10 @@ $(window).load(function () {
   });
 });
 
-function errorSummary(title, description, messages) {
+function errorSummary(title, messages) {
   var html = '<div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">';
       html += '<h2 class="govuk-error-summary__title" id="error-summary-title">' + title + '</h2>';
       html += '<div class="govuk-error-summary__body">' +
-              '<p>' + description + '</p>' +
               '<ul class="govuk-list govuk-error-summary__list">';
               for (i = 0; i < messages.length; i++) {
                 html += '<li class="govuk-error-message"><a href="#' + messages[i].id + '">' + messages[i].text + '</a></li>';

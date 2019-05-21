@@ -1,8 +1,7 @@
 {
   "header":"Beth yw eich statws priodasol presennol?",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem canlynol"
+    "header": "Mae yna broblem"
   },
   "fields": {
     "maritalStatus": {
