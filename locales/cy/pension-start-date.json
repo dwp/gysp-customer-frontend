@@ -1,8 +1,7 @@
 {
   "header":"Pryd ydych chi eisiau eich Pensiwn y Wladwriaeth?",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+    "header": "Mae yna broblem"
   },
   "h1": "Pryd ydych chi eisiau eich Pensiwn y Wladwriaeth?",
   "beforeSpa": {
@@ -20,9 +19,9 @@
         "legend": "O ba ddyddiad ydych chi eisiau cael eich Pensiwn y Wladwriaeth?",
         "hint": "Gallwch ond gwneud cais hyd at 4 mis ymlaen llaw.",
         "errors": {
-          "empty": "Rhowch ddyddiad",
-          "format": "Rhowch ddyddiad dilys",
-          "before": "Ni all y dyddiad fod cyn dyddiad eich Pensiwn y Wladwriaeth"
+          "empty": "Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.",
+          "format": "Rhowch ddyddiad go iawn.",
+          "before": "Ni all y dyddiad fod cyn eich dyddiad Pensiwn y Wladwriaeth."
         }
       }
     }
@@ -42,9 +41,9 @@
         "legend": "O ba ddyddiad ydych chi eisiau cael eich Pensiwn y Wladwriaeth?",
         "hint": "",
         "errors": {
-          "empty": "Rhowch ddyddiad",
-          "format": "Rhowch ddyddiad dilys",
-          "before": "Ni all y dyddiad fod cyn dyddiad eich Pensiwn y Wladwriaeth"
+          "empty": "Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.",
+          "format": "Rhowch ddyddiad go iawn.",
+          "before": "Ni all y dyddiad fod cyn eich dyddiad Pensiwn y Wladwriaeth."
         }
       }
     }

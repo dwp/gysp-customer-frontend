@@ -119,6 +119,7 @@ describe('accountValidator - EN', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodEmpty);
       assert.equal(accountValidationResponse.paymentMethod.visuallyHiddenText, 'Error');
       assert.equal(accountValidationResponse.paymentMethod.text, 'Select whether you would like to be paid into a bank or a building society account.');
+      assert.equal(accountValidationResponse.errorSummary[0].text, 'Select whether you would like to be paid into a bank or a building society account.');
     });
   });
 
@@ -133,21 +134,25 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
         assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountHolder.text, 'Enter the account holder’s name.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter the account holder’s name.');
       });
       it('should return error if to long (greater then 70 characters) ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longTextObject);
         assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must be 70 characters or less.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must be 70 characters or less.');
       });
       it('should return error if text includes none alpha ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.nonAlphaName);
         assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       });
       it('should return error if text does not start with alpha ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.startNotAlphaName);
         assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       });
       it('should return no error if text includes a & ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.includesAnd);
@@ -160,23 +165,27 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Enter an account number.');
+        assert.equal(accountValidationResponse.errorSummary[2].text, 'Enter an account number.');
       });
       it('should return error if less then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
 
       it('should return error if more then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
 
       it('should return error if incorrect format', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
     });
 
@@ -185,21 +194,25 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
       });
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
     });
   });
@@ -220,16 +233,19 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
         assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Enter the account holder’s name.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter the account holder’s name.');
       });
       it('should return error if to long (greater then 70 characters) ', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longTextObject);
         assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must be 70 characters or less.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must be 70 characters or less.');
       });
       it('should return error if text includes none alpha ', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.nonAlphaName);
         assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       });
       it('should return no error if text includes a & ', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.includesAnd);
@@ -239,6 +255,7 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.startNotAlphaName);
         assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
       });
     });
 
@@ -247,23 +264,27 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Enter an account number.');
+        assert.equal(accountValidationResponse.errorSummary[2].text, 'Enter an account number.');
       });
       it('should return error if contains text', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
 
       it('should return error if less then 8 numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
 
       it('should return error if more then 8 numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
       });
     });
 
@@ -272,21 +293,25 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
       });
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
     });
 
@@ -299,11 +324,13 @@ describe('accountValidator - EN', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.invalidRoll);
         assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingRoll.text, 'Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
+        assert.equal(accountValidationResponse.errorSummary[2].text, 'Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
       });
       it('should return error if to long', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longRoll);
         assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingRoll.text, 'Roll or reference number must be 18 characters or less.');
+        assert.equal(accountValidationResponse.errorSummary[2].text, 'Roll or reference number must be 18 characters or less.');
       });
     });
   });

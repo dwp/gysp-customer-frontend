@@ -4,15 +4,14 @@
     "header-overseas": "Where have you lived outside the UK?",
     "overseas-info": "Include all countries you have lived in and the country you live in now.",
     "errors": {
-      "header": "Unable to submit the form.",
+      "header": "There is a problem",
       "p1": "Please check the following problem or problems."
     }
   },
   "worked": {
     "header": "What countries have you worked in?",
     "errors": {
-      "header": "Unable to submit the form.",
-      "p1": "Please check the following problem or problems."
+      "header": "There is a problem"
     }
   },
   "fields": {
@@ -29,11 +28,11 @@
   "js-error": {
     "duplicate": {
       "header": "Country name",
-      "message": "Only enter or select each country once"
+      "message": "Only enter each country once."
     },
     "empty": {
       "header": "Country name",
-      "message": "Enter or select a country"
+      "message": "Enter a country name."
     }
   },
   "link": {

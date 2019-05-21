@@ -2,8 +2,7 @@
   "header":"Sut hoffech i ni gysylltu â chi?",
   "p": "Efallai y byddwn yn cysylltu â chi os bydd angen rhagor o wybodaeth arnom.",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+    "header": "Mae yna broblem"
   },
   "fields": {
     "checkbox": {

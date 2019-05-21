@@ -1,8 +1,7 @@
 {
   "header": "Sut hoffech chi gadarnhau pwy ydych chi?",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem neu broblemau canlynol."
+    "header": "Mae yna broblem"
   },
   "fields": {
       "authType": {

@@ -5,8 +5,7 @@
   "li2": "eich dyddiad geni",
   "li3": "eich cyfeiriad",
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Gwiriwch y broblem ganlynol"
+    "header": "Mae yna broblem"
   },
   "fields": {
       "personalDataPermission": {

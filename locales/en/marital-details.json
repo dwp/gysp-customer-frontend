@@ -7,8 +7,7 @@
     "widowed": "About your late spouse"
   },
   "errors": {
-    "header": "Unable to submit the form.",
-    "p1": "Please check the following problem"
+    "header": "There is a problem"
   },
   "fields": {
     "firstName": {

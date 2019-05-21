@@ -7,8 +7,7 @@
     "widowed": "Am eich diweddar briod"
   },
   "errors": {
-    "header": "Methu anfon y ffurflen.",
-    "p1": "Edrychwch dros y broblem canlynol"
+    "header": "Mae yna broblem"
   },
   "fields": {
     "firstName": {

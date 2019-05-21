@@ -5,7 +5,7 @@ describe('Error Helper ', () => {
   it('generateGlobalError - should return array with correct settings when details provided', () => {
     const array = errorHelper.generateGlobalError('error-type', 'field-name', 'error text');
     assert.equal(array.href, '#field-name');
-    assert.equal(array.text, 'error-type:fields.field-name.label-display - error text');
+    assert.equal(array.text, 'error text');
   });
   it('generateGlobalErrorNoFieldLabel - should return array with correct settings when details provided', () => {
     const array = errorHelper.generateGlobalErrorNoFieldLabel('error-type', 'error-field', 'error text');

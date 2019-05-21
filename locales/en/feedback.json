@@ -6,7 +6,7 @@
   "h2": "Do you want to help us improve this service?",
   "complete": "Thank you for your feedback",
   "errors": {
-    "header": "Unable to submit the form.",
+    "header": "There is a problem",
     "p1": "You must answer at least one question.",
     "p1-more": "Please check the following problem or problems."
   },

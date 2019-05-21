@@ -1,8 +1,7 @@
 {
   "header":"Your account details",
   "errors": {
-      "header": "Unable to submit the form.",
-      "p1": "Please check the following problem or problems"
+      "header": "Unable to submit the form."
   },
   "fields": {
     "result": "Bank Authentication result",

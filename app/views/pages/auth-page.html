@@ -25,7 +25,6 @@
 {% if errors %}
   {{ govukErrorSummary({
     titleText: t("auth:errors.header"),
-    descriptionText: t("auth:errors.p1"),
     errorList: errors.errorSummary
   }) }}
 {% endif %}
