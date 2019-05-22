@@ -16,7 +16,7 @@ const validYes = { personalDataPermission: 'yes' };
 const validNo = { personalDataPermission: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#personalDataPermission', text: 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.', attributes: {} },
+  { href: '#personalDataPermission-1', text: 'Dewiswch Gallwch os gallwn ddefnyddio\'r wybodaeth hon pan fyddwch yn gwneud cais am eich Pensiwn y Wladwriaeth.', attributes: {} },
 ];
 
 describe('personal data - CY', () => {

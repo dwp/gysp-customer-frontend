@@ -16,7 +16,7 @@ const validInvite = { authType: 'invite' };
 const validVerify = { authType: 'verify' };
 
 const errorSummaryResponse = [
-  { href: '#authType', text: 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.', attributes: {} },
+  { href: '#authType-invite', text: 'Dewiswch a oes gennych lythyr gwahoddiad ai peidio.', attributes: {} },
 ];
 
 describe('confirm identity validator - CY', () => {

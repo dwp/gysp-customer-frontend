@@ -16,7 +16,7 @@ const validYes = { receivingBenefits: 'yes' };
 const validNo = { receivingBenefits: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#receivingBenefits', text: 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.', attributes: {} },
+  { href: '#receivingBenefits-yes', text: 'Dewiswch ydw os ydych yn cael unrhyw fudd-daliadau.', attributes: {} },
 ];
 
 describe('benefits validator - CY', () => {

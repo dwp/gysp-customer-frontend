@@ -16,7 +16,7 @@ const validYes = { address: 'yes' };
 const validNo = { address: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#address', text: 'Select Yes if this is your current address.', attributes: {} },
+  { href: '#address-yes', text: 'Select Yes if this is your current address.', attributes: {} },
 ];
 
 describe('verify your details - EN', () => {
