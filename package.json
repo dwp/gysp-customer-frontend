@@ -16,7 +16,7 @@
     "debug": "4.1.1",
     "express": "4.17.0",
     "express-session": "1.15.6",
-    "govuk-frontend": "2.9.0",
+    "govuk-frontend": "2.12.0",
     "gulp": "4.0.1",
     "gulp-rename": "1.4.0",
     "gulp-tar": "2.1.0",
