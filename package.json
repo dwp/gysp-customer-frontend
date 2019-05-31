@@ -46,7 +46,7 @@
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "conventional-changelog-cli": "2.0.21",
-    "del": "4.0.0",
+    "del": "4.1.1",
     "eslint": "5.10.0",
     "gulp-clean": "0.4.0",
     "gulp-clean-css": "4.2.0",
