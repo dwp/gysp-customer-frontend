@@ -44,7 +44,7 @@
     "@dwp/eslint-config-mocha": "1.0.0",
     "aws-sdk": "2.466.0",
     "chai": "4.2.0",
-    "chai-as-promised": "7.0.0",
+    "chai-as-promised": "7.1.1",
     "conventional-changelog-cli": "2.0.21",
     "del": "4.0.0",
     "eslint": "5.10.0",
