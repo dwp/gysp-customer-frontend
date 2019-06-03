@@ -16,7 +16,7 @@ const validYes = { receivingBenefits: 'yes' };
 const validNo = { receivingBenefits: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#receivingBenefits', text: 'Select Yes if you are receiving any benefits.', attributes: {} },
+  { href: '#receivingBenefits-yes', text: 'Select Yes if you are receiving any benefits.', attributes: {} },
 ];
 
 describe('benefits validator - EN', () => {

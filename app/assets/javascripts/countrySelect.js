@@ -51,6 +51,7 @@ function countryReorderList(blockID) {
       var prevIndex = (index - 1);
       $('input[id="country-name[' + prevIndex + ']-input"]').val($(this).text());
       $('div[id="country-name[' + prevIndex + ']"]-wrapper .govuk-form-group').removeClass('govuk-form-group--error');
+      $('div[id="country-name[' + prevIndex + ']"]-wrapper .govuk-select').removeClass('govuk-select--error');
       $('select[id="country-name[' + prevIndex + ']"]').val($(this).text()).change();
     }
   });
@@ -94,6 +95,7 @@ function countryCheckMax() {
 
 function resetValueLast() {
   $('div.country-wrapper:not(".js-hidden") div').removeClass('govuk-form-group--error');
+  $('div.country-wrapper:not(".js-hidden") .govuk-select').removeClass('govuk-select--error');
   $('div.country-wrapper:not(".js-hidden") .govuk-error-message').remove();
   $('div.country-wrapper:not(".js-hidden") input').last().val('');
   $('div.country-wrapper:not(".js-hidden") select option:selected').last().attr('selected', false);
@@ -110,16 +112,20 @@ function validateEmpty(e) {
 
   input.each(function (index) {
     $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group span.govuk-error-message').remove();
+    var errorGroup = $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group');
+    var errorInput = errorGroup.find('input');
     if ($(this).val() === '') {
       invalid++;
       $('<span class="govuk-error-message">' + errorMessage + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
-      $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').addClass('govuk-form-group--error');
+      errorGroup.addClass('govuk-form-group--error');
+      errorInput.addClass('govuk-select--error')
       errorSummaryMessages.push({
         id: 'country-name[' + index + ']-input',
         text: errorMessage
       });
     } else {
-      $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').removeClass('govuk-form-group--error');
+      errorGroup.removeClass('govuk-form-group--error');
+      errorInput.removeClass('govuk-select--error');
     }
   });
   if (invalid === 0) {
@@ -128,6 +134,7 @@ function validateEmpty(e) {
     e.preventDefault();
     var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
     GOVUK.performance.sendGoogleAnalyticsEvent(url, 'error', gaLabel);
+    $('.govuk-error-summary').remove();
     var html = errorSummary(errorTitle, errorSummaryMessages);
     $('.js-error').html(html);
     $('.govuk-error-summary').focus();
@@ -146,16 +153,21 @@ function validateDuplicates(e) {
   var errorSummaryMessages = [];
   input.each(function (index) {
     $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group span.govuk-error-message').remove();
+    var errorGroup = $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group');
+    var errorInput = errorGroup.find('input');
     if ($.inArray($(this).val(), countries) >= 0) {
       invalid++;
       $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').addClass('govuk-form-group--error');
       $('<span class="govuk-error-message">' + errorMessage + '</span>').insertAfter('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group label');
+      errorGroup.addClass('govuk-form-group--error');
+      errorInput.addClass('govuk-select--error')
       errorSummaryMessages.push({
         id: 'country-name[' + index + ']-input',
         text: errorMessage
       });
     } else {
-      $('div[id="country-name[' + index + ']-wrapper"] .govuk-form-group').removeClass('govuk-form-group--error');
+      errorGroup.removeClass('govuk-form-group--error');
+      errorInput.removeClass('govuk-select--error');
     }
     countries.push($(this).val());
   });

@@ -7,13 +7,13 @@ const validation = require('../../../../lib/validations/accountValidation');
 
 const errorBankSummaryResponse = [
   { href: '#bankAccountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
-  { href: '#bankSortCode', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
+  { href: '#bankSortCodeField1', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
   { href: '#bankAccountNumber', text: 'Enter an account number.', attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
 ];
 
 const errorBuildingSummaryResponse = [
   { href: '#buildingAccountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details:error:building-account-holder' } },
-  { href: '#buildingSortCode', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
+  { href: '#buildingSortCodeField1', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
   { href: '#buildingAccountNumber', text: 'Enter an account number.', attributes: { 'data-journey': 'account-details:error:building-account-number' } },
 ];
 

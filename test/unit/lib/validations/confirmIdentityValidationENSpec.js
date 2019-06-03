@@ -16,7 +16,7 @@ const validInvite = { authType: 'invite' };
 const validVerify = { authType: 'verify' };
 
 const errorSummaryResponse = [
-  { href: '#authType', text: 'Select whether or not you have an invitation letter.', attributes: {} },
+  { href: '#authType-invite', text: 'Select whether or not you have an invitation letter.', attributes: {} },
 ];
 
 describe('confirm identity validator - EN', () => {

@@ -7,13 +7,13 @@ const validation = require('../../../../lib/validations/accountValidation');
 
 const errorBankSummaryCyResponse = [
   { href: '#bankAccountHolder', text: 'Rhowch enw deiliad y cyfrif.', attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
-  { href: '#bankSortCode', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
+  { href: '#bankSortCodeField1', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
   { href: '#bankAccountNumber', text: 'Rhowch rif cyfrif.', attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
 ];
 
 const errorBuildingSummaryCyResponse = [
   { href: '#buildingAccountHolder', text: 'Rhowch enw deiliad y cyfrif.', attributes: { 'data-journey': 'account-details:error:building-account-holder' } },
-  { href: '#buildingSortCode', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
+  { href: '#buildingSortCodeField1', text: 'Rhowch god didoli.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
   { href: '#buildingAccountNumber', text: 'Rhowch rif cyfrif.', attributes: { 'data-journey': 'account-details:error:building-account-number' } },
 ];
 
