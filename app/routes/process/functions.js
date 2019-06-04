@@ -27,7 +27,6 @@ function isCheckableAccount(paymentMethod, buildingRoll) {
   return false;
 }
 
-/* istanbul ignore next */
 function verifyAccountDetails(req, res, bankDetails, customerDetails) {
   return new Promise((resolve) => {
     if (req.session.isOverseas === true) {

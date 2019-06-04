@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
+const proxyquire = require('proxyquire');
 
 chai.use(chaiAsPromised);
 
@@ -153,6 +154,11 @@ describe('process controller ', () => {
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Fail', messages: ['Test1'] });
     });
     it('should return Not checked - Resident abroad when session is overseas', () => assert.becomes(controller.verifyAccountDetails(overseasPopulatedRequest, genericResponse, accountObjectBuilding, customerDetails), { result: 'Not checked - Resident abroad' }));
+
+    it('should return disabled as bankVerification is disabled', () => {
+      const proxedController = proxyquire('../../../app/routes/process/functions', { '../../../config/yaml': { application: { feature: { bankFeature: false } } } });
+      return assert.becomes(proxedController.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Disabled' });
+    });
   });
   describe(' processClaim function ', () => {
     it('should resolve when 200 is called', () => {
