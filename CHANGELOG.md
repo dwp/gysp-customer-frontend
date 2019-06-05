@@ -1,3 +1,20 @@
+<a name="7.6.0"></a>
+# [7.6.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.5.0...v7.6.0) (2019-06-05)
+
+
+### Bug Fixes
+
+* **account:** update account title for PDF ([ab30504](https://github.com/dwp/gysp-customer-frontend/commit/ab30504))
+* **packages:** update packages to fix vulnerabilities ([197ed75](https://github.com/dwp/gysp-customer-frontend/commit/197ed75))
+
+
+### Features
+
+* **error-message:** error message visuallyHiddenText for EN and CY ([c7f861f](https://github.com/dwp/gysp-customer-frontend/commit/c7f861f))
+* **errors:** update error validation and drop out pages ([d647462](https://github.com/dwp/gysp-customer-frontend/commit/d647462))
+
+
+
 <a name="7.5.0"></a>
 # [7.5.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.4.0...v7.5.0) (2019-04-23)
 
