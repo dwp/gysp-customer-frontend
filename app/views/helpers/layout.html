@@ -68,14 +68,16 @@
 {% endblock %}
 
 {% block main %}
-    <main id="main" class="govuk-width-container" role="main">
-      {{ govukPhaseBanner({
-        tag: { text: "beta" }
-      }) }}
-      {% block languageSelect %}{% endblock %}
-      {% block backLink %}{% endblock %}
-      <div id="main-content" class="govuk-main-wrapper">
-        {% block content %}{% endblock %}
+    <main id="main" role="main">
+      <div class="govuk-width-container">
+        {{ govukPhaseBanner({
+          tag: { text: "beta" }
+        }) }}
+        {% block languageSelect %}{% endblock %}
+        {% block backLink %}{% endblock %}
+        <div id="main-content" class="govuk-main-wrapper">
+          {% block content %}{% endblock %}
+        </div>
       </div>
     </main>
 {% endblock %}

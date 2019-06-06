@@ -1,3 +1,13 @@
+<a name="7.6.1"></a>
+## [7.6.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.6.0...v7.6.1) (2019-06-06)
+
+
+### Bug Fixes
+
+* **layout:** fix layout issue in IE11 ([72c0357](https://github.com/dwp/gysp-customer-frontend/commit/72c0357))
+
+
+
 <a name="7.6.0"></a>
 # [7.6.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.5.0...v7.6.0) (2019-06-05)
 
@@ -26,7 +36,7 @@
 
 
 <a name="7.4.0"></a>
-# [7.4.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.3.0...v7.4.0) (2019-04-11)
+# [7.4.0](https://github.com/dwp/gysp-customer-frontend/compare/d8f3c39...v7.4.0) (2019-04-11)
 
 
 ### Bug Fixes
@@ -37,11 +47,6 @@
 ### Features
 
 * **content:** update EN and CY language files ([a588475](https://github.com/dwp/gysp-customer-frontend/commit/a588475))
-
-
-
-<a name="7.3.0"></a>
-# 7.3.0 (2019-04-02)
 
 
 
