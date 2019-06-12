@@ -37,12 +37,15 @@
                   }) }}
                 {% endif %}
 
-                {{ govukButton({
-                  text: t("declaration:button"),
-                  attributes: {
-                    id: "form-submit"
-                  }
-                }) }}
+                <div class="gysp-button-group">
+                  {{ govukButton({
+                    text: t("declaration:button"),
+                    attributes: {
+                      id: "form-submit",
+                      "data-double-submit-protect": true
+                    }
+                  }) }}
+                </div>
 
               </form>
             </div>
