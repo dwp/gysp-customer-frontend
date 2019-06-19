@@ -1,10 +1,12 @@
-<a name="7.6.1"></a>
-## [7.6.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.6.0...v7.6.1) (2019-06-06)
+<a name="7.7.0"></a>
+# [7.7.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.6.0...v7.7.0) (2019-06-19)
 
 
 ### Bug Fixes
 
-* **layout:** fix layout issue in IE11 ([72c0357](https://github.com/dwp/gysp-customer-frontend/commit/72c0357))
+* **cookie-page:** update what browser link and corrected link colours ([407232f](https://github.com/dwp/gysp-customer-frontend/commit/407232f))
+* **declaration:** add double submit protect ([ac4e2c4](https://github.com/dwp/gysp-customer-frontend/commit/ac4e2c4))
+* **layout:** fix layout issue in IE11 ([c3da6fa](https://github.com/dwp/gysp-customer-frontend/commit/c3da6fa))
 
 
 
@@ -36,7 +38,7 @@
 
 
 <a name="7.4.0"></a>
-# [7.4.0](https://github.com/dwp/gysp-customer-frontend/compare/d8f3c39...v7.4.0) (2019-04-11)
+# [7.4.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.3.0...v7.4.0) (2019-04-11)
 
 
 ### Bug Fixes
@@ -47,6 +49,11 @@
 ### Features
 
 * **content:** update EN and CY language files ([a588475](https://github.com/dwp/gysp-customer-frontend/commit/a588475))
+
+
+
+<a name="7.3.0"></a>
+# 7.3.0 (2019-04-02)
 
 
 
