@@ -21,3 +21,11 @@
     display: none;
   }
 }
+
+.gysp-button-group {
+  display: inline-block;
+  margin-bottom: 22px;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 32px;
+  }
+}
