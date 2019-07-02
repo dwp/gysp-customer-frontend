@@ -1,6 +1,6 @@
 {
   "name": "customer-frontend",
-  "version": "7.6.1",
+  "version": "7.7.0",
   "snapshot": "9.9.9-SNAPSHOT",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
     "@commitlint/travis-cli": "8.0.0",
-    "@dwp/commitlint-config-base": "1.0.0",
+    "@dwp/commitlint-config-base": "1.1.0",
     "@dwp/eslint-config-base": "2.1.0",
     "@dwp/eslint-config-mocha": "1.0.0",
     "aws-sdk": "2.473.0",
