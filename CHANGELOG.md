@@ -1,3 +1,8 @@
+<a name="7.7.1"></a>
+## [7.7.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.0...v7.7.1) (2019-07-03)
+
+
+
 <a name="7.7.0"></a>
 # [7.7.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.6.0...v7.7.0) (2019-06-19)
 
