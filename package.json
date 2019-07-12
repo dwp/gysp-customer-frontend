@@ -65,7 +65,7 @@
   },
   "engines": {
     "node": "10.16.0",
-    "npm": "6.9.2"
+    "npm": "6.10.1"
   },
   "private": true,
   "scripts": {
