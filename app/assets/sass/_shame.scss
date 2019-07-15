@@ -29,3 +29,8 @@
     margin-bottom: 32px;
   }
 }
+
+.gysp-table__cell--wrap {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
