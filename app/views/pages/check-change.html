@@ -15,7 +15,7 @@
           {% for item in details %}
             <tr class="govuk-table__row check-change__row">
               <td class="govuk-table__cell check-change__cell">{{ item.question }}</td>
-              <td class="govuk-table__cell check-change__cell">
+              <td class="govuk-table__cell check-change__cell gysp-table__cell--wrap">
                 {% for answer in item.answer %}
                   {{ answer }}<br />
                 {% endfor %}
