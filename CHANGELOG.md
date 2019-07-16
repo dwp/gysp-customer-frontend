@@ -1,3 +1,13 @@
+<a name="7.7.2"></a>
+## [7.7.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.1...v7.7.2) (2019-07-16)
+
+
+### Bug Fixes
+
+* **check-change:** answers in table now wrap for long strings ([06d1752](https://github.com/dwp/gysp-customer-frontend/commit/06d1752))
+
+
+
 <a name="7.7.1"></a>
 ## [7.7.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.0...v7.7.1) (2019-07-03)
 
