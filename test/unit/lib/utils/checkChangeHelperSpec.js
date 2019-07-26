@@ -309,6 +309,18 @@ const editFalseQueryRequest = { session: {}, query: { edit: 'false' } };
 const editSectionValidRequest = { session: { editSection: 'section' } };
 const editSectionInvalidRequest = { session: {} };
 
+const requestWithYesLivedAboardNoCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' } } };
+const responseWithYesLivedAboardNoCountires = { session: { 'lived-abroad': { livedAbroad: 'no' } } };
+
+const requestWithYesLivedAboardWithCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' }, 'lived-abroad-countries': {} } };
+const responseWithYesLivedAboardWithCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' }, 'lived-abroad-countries': {} } };
+
+const requestWithYesWorkedAboardNoCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' } } };
+const responseWithYesWorkedAboardNoCountires = { session: { 'worked-abroad': { workedAbroad: 'no' } } };
+
+const requestWithYesWorkedAboardWithCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' }, 'worked-abroad-countries': {} } };
+const responseWithYesWorkedAboardWithCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' }, 'worked-abroad-countries': {} } };
+
 describe('Check Change Helper ', () => {
   describe(' requestFilter ', () => {
     it('should return a blank array when empty detail supplied', () => {
@@ -513,6 +525,24 @@ describe('Check Change Helper ', () => {
     });
     it('should remove forward slash from string when a string with a multiple forward slashes are provided', () => {
       assert.equal(checkChangeHelper.analyticsTagFormatter('////this-is-a-uri//'), 'this-is-a-uri');
+    });
+  });
+  describe('cleanSessionForCheckAndChange', () => {
+    it('should remove yes from lived abroad country when there are no country names in session', () => {
+      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesLivedAboardNoCountires);
+      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesLivedAboardNoCountires));
+    });
+    it('should leave session untouched when there are lived abroad country names in session', () => {
+      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesLivedAboardWithCountires);
+      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesLivedAboardWithCountires));
+    });
+    it('should remove yes from worked abroad country when there are no country names in session', () => {
+      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesWorkedAboardNoCountires);
+      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesWorkedAboardNoCountires));
+    });
+    it('should leave session untouched when there are worked abroad country names in session', () => {
+      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesWorkedAboardWithCountires);
+      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesWorkedAboardWithCountires));
     });
   });
 });
