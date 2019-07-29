@@ -1,5 +1,5 @@
 {
-  "header":"Account details",
+  "header":"How would you like to be paid?",
   "p": "We can only pay your State Pension into your personal or joint bank or building society account.",
   "errors": {
       "header": "There is a problem"

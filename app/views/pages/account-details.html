@@ -5,7 +5,7 @@
 {% from "input/macro.njk" import govukInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
-{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("account:header") }} - {{ t("app:service_name") }}{% endblock %}
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("account:header") }}{% endblock %}
 
 {% block content %}
 
