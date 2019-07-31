@@ -1,3 +1,14 @@
+<a name="7.7.3"></a>
+## [7.7.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.2...v7.7.3) (2019-07-31)
+
+
+### Bug Fixes
+
+* **check-change:** clean up session if user clicks browser back button ([8932a65](https://github.com/dwp/gysp-customer-frontend/commit/8932a65))
+* **page-titles:** corrected incorrect page titles ([17bee53](https://github.com/dwp/gysp-customer-frontend/commit/17bee53))
+
+
+
 <a name="7.7.2"></a>
 ## [7.7.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.1...v7.7.2) (2019-07-16)
 
