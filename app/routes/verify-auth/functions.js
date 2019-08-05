@@ -57,7 +57,7 @@ function setSessionData(req, res, customerDetails, cb) {
 function authErrorPage(error, req, res) {
   const traceID = requestHelper.getTraceID(error);
   const uriPath = requestHelper.getUriPath(error);
-  requestHelper.loggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
+  requestHelper.errorLoggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
   res.status(httpStatus.OK);
   res.render('pages/error', { status: httpStatus.INTERNAL_SERVER_ERROR });
 }

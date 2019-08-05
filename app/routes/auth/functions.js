@@ -47,17 +47,17 @@ function redirectToAuthErrorOrDisplayPage(error, req, res) {
   if (error.statusCode === httpStatus.NOT_FOUND || error.statusCode === httpStatus.OK) {
     const attempts = getSessionCount(req);
     if (sessionHelper.checkAuthAttemptLimits(attempts)) {
-      requestHelper.loggingHelper({ message: 'three attempts' }, uriPath, traceID, res.locals.logger, req.body.inviteKey);
+      requestHelper.infoLoggingHelper({ message: 'three attempts' }, uriPath, traceID, res.locals.logger, req.body.inviteKey);
       deleteSessionCounts(req);
       res.redirect('auth-error-invitation-code');
     } else {
-      requestHelper.loggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
+      requestHelper.infoLoggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
       req.session.matchError = true;
       req.session.requestDetails = req.body;
       res.redirect('auth');
     }
   } else {
-    requestHelper.loggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
+    requestHelper.errorLoggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
     res.status(httpStatus.OK);
     res.render('pages/error', { status: httpStatus.INTERNAL_SERVER_ERROR });
   }

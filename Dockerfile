@@ -10,9 +10,7 @@ COPY package*.json ./
 ADD certs/* ./certs/
 
 # RUN npm install
-RUN npm install -g nodemon
-# If you are building your code for production
-# RUN npm install --only=production
+RUN npm install
 
 # Bundle app source
 COPY . .

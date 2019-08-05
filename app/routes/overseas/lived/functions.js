@@ -56,7 +56,7 @@ function whatCountriesHaveYouLivedInCountriesGetCached(req, res) {
   countries.getCountryList((err, request) => {
     if (err) {
       const traceID = requestHelper.getTraceID(err);
-      requestHelper.loggingHelper(err, '/api/customer/countries', traceID, res.locals.logger);
+      requestHelper.errorLoggingHelper(err, '/api/customer/countries', traceID, res.locals.logger);
       res.status(statusCodeErrorWrap);
       res.render('pages/error', { status: statusCode500 });
     } else {
@@ -101,7 +101,7 @@ function whatCountriesHaveYouLivedInCountriesPostCached(req, res) {
   countries.getCountryList((err, request) => {
     if (err) {
       const traceID = requestHelper.getTraceID(err);
-      requestHelper.loggingHelper(err, '/api/customer/countries', traceID, res.locals.logger);
+      requestHelper.errorLoggingHelper(err, '/api/customer/countries', traceID, res.locals.logger);
       res.status(statusCodeErrorWrap);
       res.render('pages/error', { status: statusCode500 });
     } else {

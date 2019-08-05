@@ -53,7 +53,7 @@ function getNewStatePensionDate(req, res) {
       resolve({ redirectURL: url, statePensionDate: body.spaDate });
     }).catch((err) => {
       const traceID = requestHelper.getTraceID(err);
-      requestHelper.loggingHelper(err, '/api/customer/recalculateSpaDate', traceID, res.locals.logger, req.session.inviteKey);
+      requestHelper.infoLoggingHelper(err, '/api/customer/recalculateSpaDate', traceID, res.locals.logger, req.session.inviteKey);
       reject(err);
     });
   });

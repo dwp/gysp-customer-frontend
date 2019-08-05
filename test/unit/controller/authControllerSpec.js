@@ -62,6 +62,7 @@ describe('Auth controller ', () => {
           genericResponse.locals.traceID = traceID;
           genericResponse.locals.logMessage = errorTxt;
         },
+        info() {},
       },
     };
   });
