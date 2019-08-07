@@ -12,14 +12,19 @@ const dataStore = require('../../../../lib/dataStore');
 const statusCodeErrorWrap = 200;
 const statusCode500 = 500;
 
+function checkNumberOfDaysBetweenSpaAndClaimFromDate(req) {
+  if (req.session.numberOfDaysBetweenSpaAndClaimFromDate) {
+    return req.session.numberOfDaysBetweenSpaAndClaimFromDate;
+  }
+  return false;
+}
+
 function livedAbroadGet(req, res) {
   checkChangeHelper.checkAndSetEditMode(req, 'lived-abroad');
+  const errors = checkChangeHelper.setupDataAndShowErrorsMessages(req);
   const formData = dataStore.get(req, 'lived-abroad');
-  let numberOfDaysBetweenSpaAndClaimFromDate = false;
-  if (req.session.numberOfDaysBetweenSpaAndClaimFromDate) {
-    numberOfDaysBetweenSpaAndClaimFromDate = req.session.numberOfDaysBetweenSpaAndClaimFromDate; // eslint-disable-line prefer-destructuring
-  }
-  res.render('pages/lived-abroad', { details: formData, numberOfDaysBetweenSpaAndClaimFromDate });
+  const numberOfDaysBetweenSpaAndClaimFromDate = checkNumberOfDaysBetweenSpaAndClaimFromDate(req);
+  res.render('pages/lived-abroad', { details: formData, errors, numberOfDaysBetweenSpaAndClaimFromDate });
 }
 
 function livedAbroadPost(req, res) {
@@ -30,6 +35,7 @@ function livedAbroadPost(req, res) {
   } else {
     const filteredRequest = filterRequest.requestFilter(filterRequest.livedAbroad(), req.body);
     dataStore.checkAndSave(req, 'lived-abroad', filteredRequest, editMode);
+    checkChangeHelper.checkEditSectionAndClearCheckChange(req, editMode);
     const redirectUrl = redirectHelper.redirectBasedOnLivingAbroad(req.body.livedAbroad, editMode);
     res.redirect(redirectUrl);
   }
@@ -150,6 +156,7 @@ function whenDidYouLivePost(req, res) {
     if (countryDetails[nextUrl]) {
       res.redirect(`/when-did-you-live-in-${countryDetails[nextUrl].url}`);
     } else if (editMode) {
+      checkChangeHelper.clearCheckChange(req);
       res.redirect('/check-your-details');
     } else {
       res.redirect('/have-you-worked-outside-of-the-uk');

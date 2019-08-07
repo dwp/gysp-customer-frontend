@@ -303,23 +303,16 @@ const claimFromDateAfterSpaDetailResult = [
 ];
 
 const emptyRequest = {};
+const emptySession = { session: {} };
 const editTrueQueryRequest = { session: {}, query: { edit: 'true' } };
 const editFalseQueryRequest = { session: {}, query: { edit: 'false' } };
 
 const editSectionValidRequest = { session: { editSection: 'section' } };
 const editSectionInvalidRequest = { session: {} };
 
-const requestWithYesLivedAboardNoCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' } } };
-const responseWithYesLivedAboardNoCountires = { session: { 'lived-abroad': { livedAbroad: 'no' } } };
+const sessionRequest = { session: { foo: { foo: 'bar' } } };
 
-const requestWithYesLivedAboardWithCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' }, 'lived-abroad-countries': {} } };
-const responseWithYesLivedAboardWithCountires = { session: { 'lived-abroad': { livedAbroad: 'yes' }, 'lived-abroad-countries': {} } };
-
-const requestWithYesWorkedAboardNoCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' } } };
-const responseWithYesWorkedAboardNoCountires = { session: { 'worked-abroad': { workedAbroad: 'no' } } };
-
-const requestWithYesWorkedAboardWithCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' }, 'worked-abroad-countries': {} } };
-const responseWithYesWorkedAboardWithCountires = { session: { 'worked-abroad': { workedAbroad: 'yes' }, 'worked-abroad-countries': {} } };
+const editSection = { session: { editSection: true, editSectionShowError: true } };
 
 describe('Check Change Helper ', () => {
   describe(' requestFilter ', () => {
@@ -527,22 +520,77 @@ describe('Check Change Helper ', () => {
       assert.equal(checkChangeHelper.analyticsTagFormatter('////this-is-a-uri//'), 'this-is-a-uri');
     });
   });
-  describe('cleanSessionForCheckAndChange', () => {
-    it('should remove yes from lived abroad country when there are no country names in session', () => {
-      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesLivedAboardNoCountires);
-      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesLivedAboardNoCountires));
+  describe('checkSessionHasntChanged', () => {
+    it('should return true when key is not in session', () => {
+      assert.isTrue(checkChangeHelper.checkSessionHasntChanged(emptySession, 'bob', {}));
     });
-    it('should leave session untouched when there are lived abroad country names in session', () => {
-      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesLivedAboardWithCountires);
-      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesLivedAboardWithCountires));
+    it('should return true when session data is the same as details', () => {
+      assert.isTrue(checkChangeHelper.checkSessionHasntChanged(sessionRequest, 'foo', sessionRequest.session.foo));
     });
-    it('should remove yes from worked abroad country when there are no country names in session', () => {
-      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesWorkedAboardNoCountires);
-      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesWorkedAboardNoCountires));
+    it('should return false when session data is different to details', () => {
+      assert.isFalse(checkChangeHelper.checkSessionHasntChanged(sessionRequest, 'foo', { bar: 'foo' }));
     });
-    it('should leave session untouched when there are worked abroad country names in session', () => {
-      const object = checkChangeHelper.cleanSessionForCheckAndChange(requestWithYesWorkedAboardWithCountires);
-      assert.equal(JSON.stringify(object), JSON.stringify(responseWithYesWorkedAboardWithCountires));
+  });
+  describe('clearCheckChange', () => {
+    it('should return editSection session as undefined when editSection in session', () => {
+      checkChangeHelper.clearCheckChange(editSection);
+      assert.isUndefined(editSection.session.editSection);
+    });
+  });
+  describe('processEditSectionShowError', () => {
+    it('should return editSectionShowError session as undefined when editSectionShowError in session and return true', () => {
+      const processEditSectionShowError = checkChangeHelper.processEditSectionShowError(editSection);
+      assert.isFalse(processEditSectionShowError);
+      assert.isUndefined(editSection.session.editSectionShowError);
+    });
+    it('should return false when editSectionShowError is not in session', () => {
+      assert.isFalse(checkChangeHelper.processEditSectionShowError(emptySession));
+    });
+  });
+  describe('setupDataAndShowErrorsMessages', () => {
+    it('should return false when editSectionShowError is not in session', () => {
+      assert.isFalse(checkChangeHelper.setupDataAndShowErrorsMessages(emptySession));
+    });
+    it('should return false when editSectionShowError is in session but editSection does not match', () => {
+      assert.isFalse(checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'bob', lang: 'en' } }));
+    });
+    it('should return errors when show section errors is present in session and edit section is lived-abroad', () => {
+      const response = checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'lived-abroad', lang: 'en' } });
+      assert.lengthOf(Object.keys(response), 2);
+    });
+    it('should return errors when show section errors is present in session and edit section is worked-abroad', () => {
+      const response = checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'worked-abroad', lang: 'en' } });
+      assert.lengthOf(Object.keys(response), 2);
+    });
+    it('should return errors when show section errors is present in session and edit section is marital-select', () => {
+      const response = checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'marital-select', lang: 'en' } });
+      assert.lengthOf(Object.keys(response), 2);
+    });
+  });
+  describe('checkEditSectionAndClearCheckChange', () => {
+    it('should return false when edit mode is false', () => {
+      assert.isFalse(checkChangeHelper.checkEditSectionAndClearCheckChange(emptySession, false));
+    });
+    it('should return false when edit mode is undefined', () => {
+      assert.isFalse(checkChangeHelper.checkEditSectionAndClearCheckChange(emptySession));
+    });
+    it('should return false when edit mode true but does not match session', () => {
+      assert.isFalse(checkChangeHelper.checkEditSectionAndClearCheckChange(emptySession, true));
+    });
+    it('should clear check change for section when lived-abroad request is provided', () => {
+      const request = { session: { editSection: 'lived-abroad' }, body: { livedAbroad: 'no' } };
+      checkChangeHelper.checkEditSectionAndClearCheckChange(request, true);
+      assert.isUndefined(request.editSection);
+    });
+    it('should clear check change for section when worked-abroad request is provided', () => {
+      const request = { session: { editSection: 'worked-abroad' }, body: { workedAbroad: 'no' } };
+      checkChangeHelper.checkEditSectionAndClearCheckChange(request, true);
+      assert.isUndefined(request.editSection);
+    });
+    it('should clear check change for section when marital-selectrequest is provided', () => {
+      const request = { session: { editSection: 'marital-select' }, body: { maritalStatus: 'single' } };
+      checkChangeHelper.checkEditSectionAndClearCheckChange(request, true);
+      assert.isUndefined(request.editSection);
     });
   });
 });

@@ -13,6 +13,7 @@ const connectRedis = require('connect-redis');
 const encyption = require('./lib/encryption');
 const overseas = require('./lib/middleware/overseas');
 const requestHelper = require('./lib/helpers/requestHelper');
+const checkChangeRedirect = require('./lib/middleware/checkChange');
 
 const config = require('./config/yaml');
 
@@ -175,6 +176,8 @@ if (config.application.feature.verify === true) {
     'LEVEL_1',
   ));
 }
+
+app.use(checkChangeRedirect());
 
 // Route information
 const generalRoutes = require('./app/routes/general/routes.js');

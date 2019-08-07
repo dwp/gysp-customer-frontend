@@ -13,8 +13,9 @@ function checked(data, value) {
 
 function maritalSelectGet(req, res) {
   checkChangeHelper.checkAndSetEditMode(req, 'marital-select');
+  const errors = checkChangeHelper.setupDataAndShowErrorsMessages(req);
   const formData = dataStore.get(req, 'marital-select');
-  res.render('pages/marital-selection', { details: formData, checked });
+  res.render('pages/marital-selection', { details: formData, errors, checked });
 }
 
 function maritalSelectPost(req, res) {
@@ -26,6 +27,7 @@ function maritalSelectPost(req, res) {
     const redirectUrl = redirectHelper.redirectBasedOnStatusAndEditMode(req.body.maritalStatus, req.session.isOverseas, editMode);
     const filteredRequest = filterRequest.requestFilter(filterRequest.maritalSelect(), req.body);
     dataStore.checkAndSave(req, 'marital-select', filteredRequest, editMode);
+    checkChangeHelper.checkEditSectionAndClearCheckChange(req, editMode);
     res.redirect(redirectUrl);
   }
 }
@@ -79,6 +81,7 @@ function maritalPartnerDetailsPost(req, res) {
     const filteredRequest = filterRequest.requestFilter(filterRequest.maritalStatusDetail(), req.body);
     dataStore.checkAndSave(req, `marital-partner-${maritalStatus}`, filteredRequest, editMode);
     if (editMode) {
+      checkChangeHelper.clearCheckChange(req);
       res.redirect('check-your-details');
     } else if (req.session.isOverseas) {
       res.redirect('contact-details');
