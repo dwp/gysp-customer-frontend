@@ -14,8 +14,9 @@ const withReferenceNumber = true;
 
 function workedAbroadGet(req, res) {
   checkChangeHelper.checkAndSetEditMode(req, 'worked-abroad');
+  const errors = checkChangeHelper.setupDataAndShowErrorsMessages(req);
   const formData = dataStore.get(req, 'worked-abroad');
-  res.render('pages/worked-abroad', { details: formData });
+  res.render('pages/worked-abroad', { details: formData, errors });
 }
 
 function workedAbroadPost(req, res) {
@@ -26,6 +27,7 @@ function workedAbroadPost(req, res) {
   } else {
     const filteredRequest = filterRequest.requestFilter(filterRequest.workedAbroad(), req.body);
     dataStore.checkAndSave(req, 'worked-abroad', filteredRequest, editMode);
+    checkChangeHelper.checkEditSectionAndClearCheckChange(req, editMode);
     const redirectUrl = redirectHelper.redirectBasedOnWorkedAbroad(req.body.workedAbroad, editMode);
     res.redirect(redirectUrl);
   }
@@ -143,6 +145,7 @@ function whenDidYouWorkPost(req, res) {
     if (countryDetails[nextUrl]) {
       res.redirect(`/when-did-you-work-in-${countryDetails[nextUrl].url}`);
     } else if (editMode) {
+      checkChangeHelper.clearCheckChange(req);
       res.redirect('/check-your-details');
     } else {
       res.redirect('/what-is-your-current-marital-status');
