@@ -1,7 +1,7 @@
 {% extends '../helpers/layout.html' %}
 {% import 'helpers/help-side.html' as help %}
-{% from "input/macro.njk" import govukInput %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block gaTagExtra %}
   ga('send', 'pageview', '{{ t("google-analytics:pages.account-details-overseas.pageview") }}');

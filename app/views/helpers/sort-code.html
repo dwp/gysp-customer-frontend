@@ -1,4 +1,4 @@
-{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% macro sortCode(legend, labels, hint, sortCodePre, value, error, fieldErrors, dataJourneyClick) %}
   <div id="{{ sortCodePre }}SortCode-form" class="govuk-form-group{% if error %} govuk-form-group--error{% else %} {{cssOptions.errorElse}} {% endif %}">

@@ -1,6 +1,6 @@
 {% extends '../helpers/layout.html' %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("confirm-identity:header") }}{% endblock %}
 

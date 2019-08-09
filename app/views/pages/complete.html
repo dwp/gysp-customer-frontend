@@ -1,6 +1,6 @@
 {% extends '../helpers/layout.html' %}
-{% from "panel/macro.njk" import govukPanel %}
-{% from "warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
 {% block pageTitle %}
   {% if showAddtionalDiscliamer %}{{ t("complete:header-sent") }}{% else %}{{ t("complete:header") }}{% endif %}
@@ -112,17 +112,16 @@
         <p class="govuk-body"><span class="govuk-!-font-weight-bold">{{ t("complete:textphone-label") }}</span> {{ t("complete:textphone-number.gb") }}</p>
       {% endif %}
 
-      <div>
+      <p class="govuk-body">
         {% if showAddtionalDiscliamer %}
-          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print-dob") }}" class="govuk-link govuk-heading-m">
+          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print-dob") }}" class="govuk-link gysp-print-link">
         {% else %}
-          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print") }}" class="govuk-link govuk-heading-m">
+          <a href="javascript: window.print();" data-journey-click="{{ t("google-analytics:link.complete-print") }}" class="govuk-link gysp-print-link">
         {% endif %}
-          <div class="icon-panel icon icon-print">
-          </div>
+          <span class="icon-panel icon icon-print"></span>
           {{ t("complete:print-this-page") }}
         </a>
-      </div>
+      </p>
       <br />
       <p class="govuk-body">
         {% if isNorthernIreland %}

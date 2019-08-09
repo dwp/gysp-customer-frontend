@@ -1,8 +1,8 @@
 {% extends '../helpers/layout.html' %}
 {% import 'helpers/help-side.html' as help %}
-{% from "inset-text/macro.njk" import govukInsetText %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("verify-your-details:header") }}{% endblock %}
 
