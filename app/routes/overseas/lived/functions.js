@@ -89,6 +89,7 @@ function whatCountriesHaveYouLivedInPost(req, res, countriesList) {
     if (countryDetails.length > 0) {
       res.redirect(`/when-did-you-live-in-${countryDetails[0].url}`);
     } else if (editMode) {
+      checkChangeHelper.clearCheckChange(req);
       res.redirect('/check-your-details');
     } else {
       res.redirect('/have-you-worked-outside-of-the-uk');

@@ -78,6 +78,7 @@ function whatCountriesHaveYouWorkedInPost(req, res, countriesList) {
     if (countryDetails.length > 0) {
       res.redirect(`/when-did-you-work-in-${countryDetails[0].url}`);
     } else if (editMode) {
+      checkChangeHelper.clearCheckChange(req);
       res.redirect('/check-your-details');
     } else {
       res.redirect('what-is-your-current-marital-status');
