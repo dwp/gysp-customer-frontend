@@ -47,7 +47,7 @@ function verifyAccountDetails(req, res, bankDetails, customerDetails) {
         resolve(request.body);
       }).catch((err) => {
         const traceID = requestHelper.getTraceID(err);
-        requestHelper.loggingHelper(err, '/api/bankvalidate', traceID, res.locals.logger, req.session.inviteKey);
+        requestHelper.errorLoggingHelper(err, '/api/bankvalidate', traceID, res.locals.logger, req.session.inviteKey);
         resolve({ result: bankVerification.errorReturned() });
       });
     } else {
@@ -90,7 +90,7 @@ function procecssDataToBackend(req, res) {
             redirectToEnd(req, res);
           }).catch((err) => {
             const traceID = requestHelper.getTraceID(err);
-            requestHelper.loggingHelper(err, '/api/claim', traceID, res.locals.logger, req.session.inviteKey);
+            requestHelper.errorLoggingHelper(err, '/api/claim', traceID, res.locals.logger, req.session.inviteKey);
             if (err.statusCode === statusCodeConflict) {
               redirectToEnd(req, res);
             } else {

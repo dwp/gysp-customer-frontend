@@ -301,7 +301,7 @@ app.use((req, res, next) => {
   if (domain.extract(req.headers.referer) === req.hostname || req.path === '/verify/your-details') {
     next();
   } else {
-    log.error(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
+    log.info(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
     destroySessionAndRedirect(req, res);
   }
 });
@@ -319,7 +319,7 @@ function checkInSessionAndCompletedAndNotOnCompletePage(req) {
 app.use((req, res, next) => {
   if (checkInSessionAndCompletedAndNotOnCompletePage(req)) {
     req.session.redirectComplete = true;
-    log.error('user has already completed');
+    log.info('user has already completed');
     res.redirect('/complete');
   } else {
     next();
@@ -330,7 +330,7 @@ app.use((req, res, next) => {
   if (req.session.userPassedAuth === true) {
     next();
   } else {
-    log.error(`Security redirect - not in session - ${req.method} ${req.path}`);
+    log.info(`Security redirect - not in session - ${req.method} ${req.path}`);
     res.redirect(res.locals.serviceURL);
   }
 });
