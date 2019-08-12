@@ -1,0 +1,17 @@
+version: '2'
+services:
+  base:
+    image: node:10.16.0@sha256:5f2e8ae1cda95e68b99475218786cf0f62ef8f368b4c6821518ac805438cc0fc
+    volumes:
+      - nodemodules:/usr/src/app/node_modules
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    environment:
+      NODE_EXTRA_CA_CERTS: ${NODE_EXTRA_CA_CERTS}
+  install:
+    extends:
+      service: base
+    command: npm install
+volumes:
+  nodemodules:
+    external: true

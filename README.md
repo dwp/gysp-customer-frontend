@@ -39,7 +39,7 @@ For other config options see `config` folder for various env settings.
 #### Running
 
 ```
-docker-compose up
+make up
 ```
 
 This will now be available at `http://localhost:3001`.
@@ -62,7 +62,7 @@ Configuration is now done via the yaml.js file in the config folder. There is an
 
 #### Requirements
 
-* Node.JS 10.15.1+
+* Node.JS 10.16.0+
 * npm v6.4.1+
 * Aws credentials setup locally
 

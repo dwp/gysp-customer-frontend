@@ -9,9 +9,6 @@ COPY package*.json ./
 
 ADD certs/* ./certs/
 
-# RUN npm install
-RUN npm install
-
 # Bundle app source
 COPY . .
 
