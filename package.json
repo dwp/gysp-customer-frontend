@@ -1,6 +1,6 @@
 {
   "name": "customer-frontend",
-  "version": "7.7.2",
+  "version": "7.7.3",
   "snapshot": "9.9.9-SNAPSHOT",
   "repository": {
     "type": "git",
