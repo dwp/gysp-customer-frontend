@@ -1,10 +1,11 @@
 <a name="7.7.3"></a>
-## [7.7.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.2...v7.7.3) (2019-07-31)
+## [7.7.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.2...v7.7.3) (2019-08-13)
 
 
 ### Bug Fixes
 
 * **check-change:** clean up session if user clicks browser back button ([8932a65](https://github.com/dwp/gysp-customer-frontend/commit/8932a65))
+* **check-change:** fix issues when change section has more than 1 screen ([8a9ba3a](https://github.com/dwp/gysp-customer-frontend/commit/8a9ba3a))
 * **page-titles:** corrected incorrect page titles ([17bee53](https://github.com/dwp/gysp-customer-frontend/commit/17bee53))
 
 
