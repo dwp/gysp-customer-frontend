@@ -4,7 +4,6 @@ function watchNodemon(cb) {
   let started = false;
   return nodemon({
     script: 'server.js',
-    verbose: true,
     ext: 'js, json, yaml, html',
     ignore: ['node_modules/', 'app/assets/', 'public/'],
   }).on('start', () => {

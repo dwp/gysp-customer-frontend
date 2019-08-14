@@ -1,8 +1,8 @@
 {% extends '../helpers/layout.html' %}
 {% import 'helpers/help-side.html' as help %}
-{% from "checkboxes/macro.njk" import govukCheckboxes %}
-{% from "input/macro.njk" import govukInput %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("contact:header") }} {% endblock %}
 

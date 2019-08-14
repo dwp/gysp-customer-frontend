@@ -13,9 +13,6 @@ function buildSass() {
     .pipe(sass({
       outputStyle: 'expanded',
       sourcemap: true,
-      includePaths: [
-        'node_modules/govuk_frontend_toolkit/stylesheets',
-      ],
     }))
     .pipe(cleanCSS())
     .pipe(dest('public/stylesheets/'));
