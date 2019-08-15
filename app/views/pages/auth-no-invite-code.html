@@ -1,0 +1,36 @@
+{% extends '../helpers/layout.html' %}
+{% from 'govuk/components/back-link/macro.njk' import govukBackLink %}
+
+{% block pageTitle %}{{ t("auth-no-invite-code:header") }}{% endblock %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    html: t("app:link.back") + '<span class="govuk-visually-hidden"> ' + t("navigation.general") + ' ' + t("navigation.auth") + '</span>',
+    href: page.backHref
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ t("auth-no-invite-code:header") }}</h1>
+
+    <p class="govuk-body">{{ t("auth-no-invite-code:p1") }}</p>
+
+    <p class="govuk-body">{{ t("auth-no-invite-code:p2") }}</p>
+
+    <p class="govuk-body">
+      <span class="govuk-!-font-weight-bold">{{ t("auth-no-invite-code:overseas.telephone_label") }}</span> {{ t("auth-no-invite-code:overseas.telephone_text") }}
+      <br />
+      <span class="govuk-!-font-weight-bold">{{ t("auth-no-invite-code:overseas.textphone_label") }}</span> {{ t("auth-no-invite-code:overseas.textphone_text") }}
+    </p>
+    <p class="govuk-body compound__no-top">{{ t("auth-no-invite-code:overseas.p1") | safe }}</p>
+
+  </div>
+
+</div>
+
+
+{% endblock %}

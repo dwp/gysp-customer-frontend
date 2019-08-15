@@ -253,4 +253,11 @@ describe('Auth controller ', () => {
       });
     });
   });
+
+  describe(' getNoInviteCodeDropout function (GET /you-need-to-call-us) ', () => {
+    it('should return auth no invite code page when called', () => {
+      authController.getNoInviteCodeDropout(emptyRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/auth-no-invite-code');
+    });
+  });
 });

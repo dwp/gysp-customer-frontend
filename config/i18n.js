@@ -4,6 +4,7 @@ module.exports = {
       'auth',
       'auth-error-address',
       'auth-error-invite-code',
+      'auth-no-invite-code',
       'account',
       'account-overseas',
       'benefits',
