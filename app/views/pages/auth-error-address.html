@@ -22,22 +22,24 @@
 
     <p class="govuk-body">{{ t("auth-error-address:p2") }}</p>
 
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-error-address:uk.header") }}</h2>
+    {% if not isOverseas %}
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-error-address:uk.header") }}</h2>
 
-    <p class="govuk-body">
-      <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:uk.telephone_label") }}</span> {{ t("auth-error-address:uk.telephone_text") }}
-      <br />
-      <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:uk.textphone_label") }}</span> {{ t("auth-error-address:uk.textphone_text") }}
-    </p>
-    <p class="govuk-body compound__no-top">{{ t("auth-error-address:uk.p1") }}</p>
+      <p class="govuk-body">
+        <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:uk.telephone_label") }}</span> {{ t("auth-error-address:uk.telephone_text") }}
+        <br />
+        <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:uk.textphone_label") }}</span> {{ t("auth-error-address:uk.textphone_text") }}
+      </p>
+      <p class="govuk-body compound__no-top">{{ t("auth-error-address:uk.p1") }}</p>
 
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-error-address:ni.header") }}</h2>
-    <p class="govuk-body compound__s-bottom">
-      <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:ni.telephone_label") }}</span> {{ t("auth-error-address:ni.telephone_text") }}
-      <br />
-      <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:ni.textphone_label") }}</span> {{ t("auth-error-address:ni.textphone_text") }}
-    </p>
-    <p class="govuk-body compound__no-top">{{ t("auth-error-address:ni.p1") }}</p>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-error-address:ni.header") }}</h2>
+      <p class="govuk-body compound__s-bottom">
+        <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:ni.telephone_label") }}</span> {{ t("auth-error-address:ni.telephone_text") }}
+        <br />
+        <span class="govuk-!-font-weight-bold">{{ t("auth-error-address:ni.textphone_label") }}</span> {{ t("auth-error-address:ni.textphone_text") }}
+      </p>
+      <p class="govuk-body compound__no-top">{{ t("auth-error-address:ni.p1") }}</p>
+    {% endif %}
 
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">{{ t("auth-error-address:overseas.header") }}</h2>
     <p class="govuk-body compound__s-bottom">
