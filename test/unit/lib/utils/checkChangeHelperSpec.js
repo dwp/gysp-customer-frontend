@@ -15,9 +15,9 @@ const baseDetails = {
 };
 
 const baseDetailResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadNoDetails = Object.assign({
@@ -25,10 +25,10 @@ const livedAbroadNoDetails = Object.assign({
 }, baseDetails);
 
 const livedAbroadNoResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-ever-lived-outside-of-the-uk', question: 'lived-abroad:header', answer: ['lived-abroad:fields.livedAbroad.options.no'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'lived-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'lived-abroad:fields.livedAbroad.options.no' }, actions: { items: [{ href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadYesNoCountriesDetails = Object.assign({
@@ -36,10 +36,10 @@ const livedAbroadYesNoCountriesDetails = Object.assign({
 }, baseDetails);
 
 const livedAbroadYesNoCountriesResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-ever-lived-outside-of-the-uk', question: 'lived-abroad:header', answer: ['lived-abroad:fields.livedAbroad.options.yes'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'lived-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'lived-abroad:fields.livedAbroad.options.yes' }, actions: { items: [{ href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadYesNoDetailsDetails = Object.assign({
@@ -50,10 +50,10 @@ const livedAbroadYesNoDetailsDetails = Object.assign({
 }, baseDetails);
 
 const livedAbroadYesNoDetailsResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-ever-lived-outside-of-the-uk', question: 'lived-abroad:header', answer: ['Spain', 'France'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'lived-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />France' }, actions: { items: [{ href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadYesWithDetailsDetails = Object.assign({
@@ -80,10 +80,10 @@ const livedAbroadYesWithDetailsDetails = Object.assign({
 }, baseDetails);
 
 const livedAbroadYesWithDetailsResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-ever-lived-outside-of-the-uk', question: 'lived-abroad:header', answer: ['Spain', 'Jan 2000 - Dec 2000', 'France', 'Jan 2001 - Dec 2001'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'lived-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' }, actions: { items: [{ href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadYesWithDetailsOverseasDetails = Object.assign({
@@ -110,17 +110,17 @@ const livedAbroadYesWithDetailsOverseasDetails = Object.assign({
 }, baseDetails);
 
 const livedAbroadYesWithDetailsOverseasResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-countries-have-you-lived-in', question: 'countries:lived.header-overseas', answer: ['Spain', 'Jan 2000 - Dec 2000', 'France', 'Jan 2001 - Dec 2001'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'countries:lived.header-overseas', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' }, actions: { items: [{ href: '/what-countries-have-you-lived-in?edit=true', text: 'Change', visuallyHiddenText: 'countries:lived.header-overseas' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const livedAbroadYesWithDetailsWelshResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-ever-lived-outside-of-the-uk', question: 'lived-abroad:header', answer: ['Spain', 'Ion 2000 - Rhag 2000', 'France', 'Ion 2001 - Rhag 2001'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'lived-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001' }, actions: { items: [{ href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const workedAbroadNoDetails = Object.assign({
@@ -128,10 +128,10 @@ const workedAbroadNoDetails = Object.assign({
 }, baseDetails);
 
 const workedAbroadNoResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-worked-outside-of-the-uk', question: 'worked-abroad:header', answer: ['worked-abroad:fields.workedAbroad.options.no'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'worked-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'worked-abroad:fields.workedAbroad.options.no' }, actions: { items: [{ href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const workedAbroadYesNoCountriesDetails = Object.assign({
@@ -139,10 +139,10 @@ const workedAbroadYesNoCountriesDetails = Object.assign({
 }, baseDetails);
 
 const workedAbroadYesNoCountriesResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-worked-outside-of-the-uk', question: 'worked-abroad:header', answer: ['worked-abroad:fields.workedAbroad.options.yes'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'worked-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'worked-abroad:fields.workedAbroad.options.yes' }, actions: { items: [{ href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const workedAbroadYesNoDetailsDetails = Object.assign({
@@ -153,10 +153,10 @@ const workedAbroadYesNoDetailsDetails = Object.assign({
 }, baseDetails);
 
 const workedAbroadYesNoDetailsResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-worked-outside-of-the-uk', question: 'worked-abroad:header', answer: ['Spain', 'France'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'worked-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />France' }, actions: { items: [{ href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const workedAbroadYesWithDetailsDetails = Object.assign({
@@ -183,17 +183,17 @@ const workedAbroadYesWithDetailsDetails = Object.assign({
 }, baseDetails);
 
 const workedAbroadYesWithDetailsResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-worked-outside-of-the-uk', question: 'worked-abroad:header', answer: ['Spain', 'Jan 2000 - Dec 2000', 'SPAIN1234', 'France', 'Jan 2001 - Dec 2001', 'FRANCE1234'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'worked-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234' }, actions: { items: [{ href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const workedAbroadYesWithDetailsWelshResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/have-you-worked-outside-of-the-uk', question: 'worked-abroad:header', answer: ['Spain', 'Ion 2000 - Rhag 2000', 'SPAIN1234', 'France', 'Ion 2001 - Rhag 2001', 'FRANCE1234'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'worked-abroad:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234' }, actions: { items: [{ href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusSingleDetails = Object.assign({
@@ -201,10 +201,10 @@ const maritalStatusSingleDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusSingleResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.single'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.single' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusMarriedDetails = Object.assign({
@@ -216,11 +216,11 @@ const maritalStatusMarriedDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusMarriedResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.married', '01/01/1960'] },
-  { uri: '/about-your-spouse', question: 'marital-details:header.married', answer: ['Joanne Bloggs', 'Other Name', '01/01/1940'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.married<br />01/01/1960' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'marital-details:header.married', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' }, actions: { items: [{ href: '/about-your-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.married' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusCivilDetails = Object.assign({
@@ -232,11 +232,11 @@ const maritalStatusCivilDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusCivilResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.civil', '01/01/1960'] },
-  { uri: '/about-your-civil-partner', question: 'marital-details:header.civil', answer: ['Joanne Bloggs', 'Other Name', '01/01/1940'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.civil<br />01/01/1960' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'marital-details:header.civil', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' }, actions: { items: [{ href: '/about-your-civil-partner?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.civil' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusDivorcedDetails = Object.assign({
@@ -248,11 +248,11 @@ const maritalStatusDivorcedDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusDivorcedResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.divorced', '01/01/1960'] },
-  { uri: '/about-your-ex-spouse', question: 'marital-details:header.divorced', answer: ['Joanne Bloggs', 'Other Name', '01/01/1940'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.divorced<br />01/01/1960' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'marital-details:header.divorced', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' }, actions: { items: [{ href: '/about-your-ex-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.divorced' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusDissolvedDetails = Object.assign({
@@ -264,11 +264,11 @@ const maritalStatusDissolvedDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusDissolvedResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.dissolved', '01/01/1960'] },
-  { uri: '/about-your-ex-partner', question: 'marital-details:header.dissolved', answer: ['Joanne Bloggs', 'Other Name', '01/01/1940'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.dissolved<br />01/01/1960' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'marital-details:header.dissolved', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' }, actions: { items: [{ href: '/about-your-ex-partner?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.dissolved' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const maritalStatusWidowedDetails = Object.assign({
@@ -280,11 +280,11 @@ const maritalStatusWidowedDetails = Object.assign({
 }, baseDetails);
 
 const maritalStatusWidowedResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/what-is-your-current-marital-status', question: 'marital-select:header', answer: ['marital-select:fields.maritalStatus.options.widowed', '01/01/1960'] },
-  { uri: '/about-your-late-spouse', question: 'marital-details:header.widowed', answer: ['Joanne Bloggs', 'Other Name', '01/01/1940'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'marital-select:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'marital-select:fields.maritalStatus.options.widowed<br />01/01/1960' }, actions: { items: [{ href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header' }] } },
+  { key: { text: 'marital-details:header.widowed', classes: 'govuk-!-width-two-thirds' }, value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' }, actions: { items: [{ href: '/about-your-late-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.widowed' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const claimFromDateAfterSpaDetails = {
@@ -297,9 +297,9 @@ const claimFromDateAfterSpaDetails = {
 };
 
 const claimFromDateAfterSpaDetailResult = [
-  { uri: '/date-of-birth', question: 'dob-confirmation:header', answer: ['01/01/1953'] },
-  { uri: '/when-do-you-want-your-state-pension', question: 'pension-start-date:afterSpa.fields.claimFromDate.legend', answer: ['01/01/2018'] },
-  { uri: '/contact-details', question: 'contact:header', answer: ['contact:fields.checkbox.options.home', '00000 000000', 'contact:fields.checkbox.options.mobile', '22222 222222', 'contact:fields.checkbox.options.work', '11111 111111', 'contact:fields.email.label', 'a@b.com'] },
+  { key: { text: 'dob-confirmation:header', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/1953'] }, actions: { items: [{ href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header' }] } },
+  { key: { text: 'pension-start-date:afterSpa.fields.claimFromDate.legend', classes: 'govuk-!-width-two-thirds' }, value: { text: ['01/01/2018'] }, actions: { items: [{ href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:afterSpa.fields.claimFromDate.legend' }] } },
+  { key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } },
 ];
 
 const emptyRequest = {};
@@ -338,35 +338,35 @@ describe('Check Change Helper ', () => {
       it('should return a array that contains livedAbroad as Yes when lived abroad is supplied without countires', () => {
         const result = checkChangeHelper.requestFilter(livedAbroadYesNoCountriesDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 1);
+        assert.equal(result[2].value.html, 'lived-abroad:fields.livedAbroad.options.yes');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesNoCountriesResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires when lived abroad and lived abroad is yes and countries are supplied without countires details', () => {
         const result = checkChangeHelper.requestFilter(livedAbroadYesNoDetailsDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 2);
+        assert.equal(result[2].value.html, 'Spain<br />France');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesNoDetailsResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied with english language', () => {
         const result = checkChangeHelper.requestFilter(livedAbroadYesWithDetailsDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 4);
+        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied with welsh language', () => {
         const result = checkChangeHelper.requestFilter(livedAbroadYesWithDetailsDetails, welshLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 4);
+        assert.equal(result[2].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsWelshResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied and is an overseas customer', () => {
         const result = checkChangeHelper.requestFilter(livedAbroadYesWithDetailsOverseasDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 4);
+        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsOverseasResult));
       });
     });
@@ -381,28 +381,28 @@ describe('Check Change Helper ', () => {
       it('should return a array that contains workedAbroad as Yes when worked abroad is supplied without countires', () => {
         const result = checkChangeHelper.requestFilter(workedAbroadYesNoCountriesDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 1);
+        assert.equal(result[2].value.html, 'worked-abroad:fields.workedAbroad.options.yes');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesNoCountriesResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires when worked abroad and worked abroad is yes and countries are supplied without countires details', () => {
         const result = checkChangeHelper.requestFilter(workedAbroadYesNoDetailsDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 2);
+        assert.equal(result[2].value.html, 'Spain<br />France');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesNoDetailsResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires and to and from dates when worked abroad is yes, has countries and the dates are supplied with english language', () => {
         const result = checkChangeHelper.requestFilter(workedAbroadYesWithDetailsDetails, englishLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 6);
+        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesWithDetailsResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires and to and from dates when worked abroad is yes, has countries and the dates are supplied with welsh language', () => {
         const result = checkChangeHelper.requestFilter(workedAbroadYesWithDetailsDetails, welshLangauge);
         assert.equal(result.length, 4);
-        assert.equal(result[2].answer.length, 6);
+        assert.equal(result[2].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesWithDetailsWelshResult));
       });
     });
@@ -412,7 +412,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as Single when single marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusSingleDetails, englishLangauge);
           assert.equal(result.length, 4);
-          assert.equal(result[2].answer.length, 1);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.single');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusSingleResult));
         });
       });
@@ -421,7 +421,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as Married with date when married marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusMarriedDetails, englishLangauge);
           assert.equal(result.length, 5);
-          assert.equal(result[2].answer.length, 2);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.married<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusMarriedResult));
         });
       });
@@ -430,7 +430,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as civil partnership with date when civil partnership marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusCivilDetails, englishLangauge);
           assert.equal(result.length, 5);
-          assert.equal(result[2].answer.length, 2);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.civil<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusCivilResult));
         });
       });
@@ -439,7 +439,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as divorced with date when divorced marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusDivorcedDetails, englishLangauge);
           assert.equal(result.length, 5);
-          assert.equal(result[2].answer.length, 2);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.divorced<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusDivorcedResult));
         });
       });
@@ -448,7 +448,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as dissolved with date when dissolved marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusDissolvedDetails, englishLangauge);
           assert.equal(result.length, 5);
-          assert.equal(result[2].answer.length, 2);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.dissolved<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusDissolvedResult));
         });
       });
@@ -457,7 +457,7 @@ describe('Check Change Helper ', () => {
         it('should return a array that contains maritalStatus as widowed with date when widowed marital status are supplied', () => {
           const result = checkChangeHelper.requestFilter(maritalStatusWidowedDetails, englishLangauge);
           assert.equal(result.length, 5);
-          assert.equal(result[2].answer.length, 2);
+          assert.equal(result[2].value.html, 'marital-select:fields.maritalStatus.options.widowed<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusWidowedResult));
         });
       });
