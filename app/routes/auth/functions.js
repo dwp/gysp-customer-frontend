@@ -177,6 +177,11 @@ function authErrorAddress(req, res) {
   res.render('pages/auth-error-address', { page });
 }
 
+function getNoInviteCodeDropout(req, res) {
+  const page = { backHref: 'auth' };
+  res.render('pages/auth-no-invite-code', { page });
+}
+
 module.exports.languageGet = languageGet;
 module.exports.authPageGet = authPageGet;
 module.exports.authPageProcess = authPageProcess;
@@ -185,3 +190,4 @@ module.exports.authErrorAddress = authErrorAddress;
 module.exports.redirectToAuthErrorOrDisplayPage = redirectToAuthErrorOrDisplayPage;
 module.exports.redirectToNextStep = redirectToNextStep;
 module.exports.getSessionLanguage = getSessionLanguage;
+module.exports.getNoInviteCodeDropout = getNoInviteCodeDropout;

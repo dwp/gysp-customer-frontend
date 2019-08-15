@@ -50,7 +50,7 @@
           classes: "govuk-label--s"
         },
         hint: {
-          html: t("auth:fields.inviteKey"+ pageSuffix +".hint", {URL: "/verify", TAG: t("google-analytics:pages.auth.havent-got-letter") })
+          html: t("auth:fields.inviteKey"+ pageSuffix +".hint", {URL: "/you-need-to-call-us" }) if isOverseas else t("auth:fields.inviteKey"+ pageSuffix +".hint", {URL: "/verify", TAG: t("google-analytics:pages.auth.havent-got-letter") })
         },
         id: "inviteKey",
         name: "inviteKey",
