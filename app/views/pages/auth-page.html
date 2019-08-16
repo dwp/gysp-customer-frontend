@@ -104,7 +104,8 @@
       </form>
   </div>
 
-  {{ help.sideBar(t, 'neither', isOverseas) }}
-
+  {% if not isOverseas %}
+    {{ help.sideBar(t, 'neither', isOverseas) }}
+  {% endif %}
 </div>
 {% endblock %}
