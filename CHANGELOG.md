@@ -1,3 +1,15 @@
+<a name="7.8.0"></a>
+# [7.8.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.3...v7.8.0) (2019-08-27)
+
+
+### Features
+
+* **check-change:** update to use summary list component ([3f749c1](https://github.com/dwp/gysp-customer-frontend/commit/3f749c1))
+* **overseas:** no invite code dropout screen ([440492f](https://github.com/dwp/gysp-customer-frontend/commit/440492f))
+* **overseas:** remove uk and ni details on address dropout ([06f5b6e](https://github.com/dwp/gysp-customer-frontend/commit/06f5b6e))
+
+
+
 <a name="7.7.3"></a>
 ## [7.7.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.2...v7.7.3) (2019-08-13)
 
