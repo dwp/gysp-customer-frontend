@@ -7,7 +7,15 @@ let genericResponse = {};
 const populatedSessionGet = { session: { 'contact-details': { homeTelephoneNumber: '000000000' } } };
 const emptyRequest = { session: {} };
 
-const populatedSessionRequest = [{ key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' }, value: { html: 'contact:fields.checkbox.options.home<br />000000000' }, actions: { items: [{ href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header' }] } }];
+const populatedSessionRequest = [{
+  key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' },
+  value: { html: 'contact:fields.checkbox.options.home<br />000000000' },
+  actions: {
+    items: [{
+      href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+    }],
+  },
+}];
 
 describe('Check change controller ', () => {
   beforeEach(() => {
