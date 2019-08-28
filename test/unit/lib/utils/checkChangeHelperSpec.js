@@ -20,7 +20,7 @@ const baseDetailResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -29,7 +29,7 @@ const baseDetailResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -38,7 +38,7 @@ const baseDetailResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -54,7 +54,7 @@ const livedAbroadNoResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -63,7 +63,7 @@ const livedAbroadNoResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -72,7 +72,7 @@ const livedAbroadNoResult = [
     value: { html: 'lived-abroad:fields.livedAbroad.options.no' },
     actions: {
       items: [{
-        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -81,7 +81,7 @@ const livedAbroadNoResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -97,7 +97,7 @@ const livedAbroadYesNoCountriesResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -106,7 +106,7 @@ const livedAbroadYesNoCountriesResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -115,7 +115,7 @@ const livedAbroadYesNoCountriesResult = [
     value: { html: 'lived-abroad:fields.livedAbroad.options.yes' },
     actions: {
       items: [{
-        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -124,7 +124,7 @@ const livedAbroadYesNoCountriesResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -143,7 +143,7 @@ const livedAbroadYesNoDetailsResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -152,7 +152,7 @@ const livedAbroadYesNoDetailsResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -161,7 +161,7 @@ const livedAbroadYesNoDetailsResult = [
     value: { html: 'Spain<br />France' },
     actions: {
       items: [{
-        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -170,7 +170,7 @@ const livedAbroadYesNoDetailsResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -205,7 +205,7 @@ const livedAbroadYesWithDetailsResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -214,7 +214,7 @@ const livedAbroadYesWithDetailsResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -223,7 +223,7 @@ const livedAbroadYesWithDetailsResult = [
     value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' },
     actions: {
       items: [{
-        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -232,7 +232,7 @@ const livedAbroadYesWithDetailsResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -267,7 +267,7 @@ const livedAbroadYesWithDetailsOverseasResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -276,7 +276,7 @@ const livedAbroadYesWithDetailsOverseasResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -285,7 +285,7 @@ const livedAbroadYesWithDetailsOverseasResult = [
     value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' },
     actions: {
       items: [{
-        href: '/what-countries-have-you-lived-in?edit=true', text: 'Change', visuallyHiddenText: 'countries:lived.header-overseas', attributes: { id: 'whatCountriesHaveYouLivedIn', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-countries-have-you-lived-in?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'countries:lived.header-overseas', attributes: { id: 'whatCountriesHaveYouLivedIn', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -294,7 +294,7 @@ const livedAbroadYesWithDetailsOverseasResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -306,7 +306,7 @@ const livedAbroadYesWithDetailsWelshResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -315,7 +315,7 @@ const livedAbroadYesWithDetailsWelshResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -324,7 +324,7 @@ const livedAbroadYesWithDetailsWelshResult = [
     value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001' },
     actions: {
       items: [{
-        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-ever-lived-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'lived-abroad:header', attributes: { id: 'haveYouEverLivedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -333,7 +333,7 @@ const livedAbroadYesWithDetailsWelshResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -349,7 +349,7 @@ const workedAbroadNoResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -358,7 +358,7 @@ const workedAbroadNoResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -367,7 +367,7 @@ const workedAbroadNoResult = [
     value: { html: 'worked-abroad:fields.workedAbroad.options.no' },
     actions: {
       items: [{
-        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -376,7 +376,7 @@ const workedAbroadNoResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -392,7 +392,7 @@ const workedAbroadYesNoCountriesResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -401,7 +401,7 @@ const workedAbroadYesNoCountriesResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -410,7 +410,7 @@ const workedAbroadYesNoCountriesResult = [
     value: { html: 'worked-abroad:fields.workedAbroad.options.yes' },
     actions: {
       items: [{
-        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -419,7 +419,7 @@ const workedAbroadYesNoCountriesResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -438,7 +438,7 @@ const workedAbroadYesNoDetailsResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -447,7 +447,7 @@ const workedAbroadYesNoDetailsResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -456,7 +456,7 @@ const workedAbroadYesNoDetailsResult = [
     value: { html: 'Spain<br />France' },
     actions: {
       items: [{
-        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -465,7 +465,7 @@ const workedAbroadYesNoDetailsResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -500,7 +500,7 @@ const workedAbroadYesWithDetailsResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -509,7 +509,7 @@ const workedAbroadYesWithDetailsResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -518,7 +518,7 @@ const workedAbroadYesWithDetailsResult = [
     value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234' },
     actions: {
       items: [{
-        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -527,7 +527,7 @@ const workedAbroadYesWithDetailsResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -539,7 +539,7 @@ const workedAbroadYesWithDetailsWelshResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -548,7 +548,7 @@ const workedAbroadYesWithDetailsWelshResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -557,7 +557,7 @@ const workedAbroadYesWithDetailsWelshResult = [
     value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234' },
     actions: {
       items: [{
-        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'Change', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/have-you-worked-outside-of-the-uk?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'worked-abroad:header', attributes: { id: 'haveYouWorkedOutsideOfTheUk', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -566,7 +566,7 @@ const workedAbroadYesWithDetailsWelshResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -582,7 +582,7 @@ const maritalStatusSingleResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -591,7 +591,7 @@ const maritalStatusSingleResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -600,7 +600,7 @@ const maritalStatusSingleResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.single' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -609,7 +609,7 @@ const maritalStatusSingleResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -629,7 +629,7 @@ const maritalStatusMarriedResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -638,7 +638,7 @@ const maritalStatusMarriedResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -647,7 +647,7 @@ const maritalStatusMarriedResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.married<br />01/01/1960' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -656,7 +656,7 @@ const maritalStatusMarriedResult = [
     value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
     actions: {
       items: [{
-        href: '/about-your-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.married', attributes: { id: 'aboutYourSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/about-your-spouse?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-details:header.married', attributes: { id: 'aboutYourSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -665,7 +665,7 @@ const maritalStatusMarriedResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -685,7 +685,7 @@ const maritalStatusCivilResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -694,7 +694,7 @@ const maritalStatusCivilResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -703,7 +703,7 @@ const maritalStatusCivilResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.civil<br />01/01/1960' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -712,7 +712,7 @@ const maritalStatusCivilResult = [
     value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
     actions: {
       items: [{
-        href: '/about-your-civil-partner?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.civil', attributes: { id: 'aboutYourCivilPartner', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/about-your-civil-partner?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-details:header.civil', attributes: { id: 'aboutYourCivilPartner', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -721,7 +721,7 @@ const maritalStatusCivilResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -741,7 +741,7 @@ const maritalStatusDivorcedResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -750,7 +750,7 @@ const maritalStatusDivorcedResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -759,7 +759,7 @@ const maritalStatusDivorcedResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.divorced<br />01/01/1960' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -768,7 +768,7 @@ const maritalStatusDivorcedResult = [
     value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
     actions: {
       items: [{
-        href: '/about-your-ex-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.divorced', attributes: { id: 'aboutYourExSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/about-your-ex-spouse?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-details:header.divorced', attributes: { id: 'aboutYourExSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -777,7 +777,7 @@ const maritalStatusDivorcedResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -797,7 +797,7 @@ const maritalStatusDissolvedResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -806,7 +806,7 @@ const maritalStatusDissolvedResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -815,7 +815,7 @@ const maritalStatusDissolvedResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.dissolved<br />01/01/1960' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -824,7 +824,7 @@ const maritalStatusDissolvedResult = [
     value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
     actions: {
       items: [{
-        href: '/about-your-ex-partner?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.dissolved', attributes: { id: 'aboutYourExPartner', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/about-your-ex-partner?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-details:header.dissolved', attributes: { id: 'aboutYourExPartner', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -833,7 +833,7 @@ const maritalStatusDissolvedResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -853,7 +853,7 @@ const maritalStatusWidowedResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -862,7 +862,7 @@ const maritalStatusWidowedResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:beforeSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -871,7 +871,7 @@ const maritalStatusWidowedResult = [
     value: { html: 'marital-select:fields.maritalStatus.options.widowed<br />01/01/1960' },
     actions: {
       items: [{
-        href: '/what-is-your-current-marital-status?edit=true', text: 'Change', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/what-is-your-current-marital-status?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-select:header', attributes: { id: 'whatIsYourCurrentMaritalStatus', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -880,7 +880,7 @@ const maritalStatusWidowedResult = [
     value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
     actions: {
       items: [{
-        href: '/about-your-late-spouse?edit=true', text: 'Change', visuallyHiddenText: 'marital-details:header.widowed', attributes: { id: 'aboutYourLateSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/about-your-late-spouse?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'marital-details:header.widowed', attributes: { id: 'aboutYourLateSpouse', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -889,7 +889,7 @@ const maritalStatusWidowedResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -910,7 +910,7 @@ const claimFromDateAfterSpaDetailResult = [
     value: { text: ['01/01/1953'] },
     actions: {
       items: [{
-        href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/date-of-birth?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'dob-confirmation:header', attributes: { id: 'dateOfBirth', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -919,7 +919,7 @@ const claimFromDateAfterSpaDetailResult = [
     value: { text: ['01/01/2018'] },
     actions: {
       items: [{
-        href: '/when-do-you-want-your-state-pension?edit=true', text: 'Change', visuallyHiddenText: 'pension-start-date:afterSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/when-do-you-want-your-state-pension?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'pension-start-date:afterSpa.fields.claimFromDate.legend', attributes: { id: 'whenDoYouWantYourStatePension', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },
@@ -928,7 +928,7 @@ const claimFromDateAfterSpaDetailResult = [
     value: { html: 'contact:fields.checkbox.options.home<br />00000 000000<br />contact:fields.checkbox.options.mobile<br />22222 222222<br />contact:fields.checkbox.options.work<br />11111 111111<br />contact:fields.email.label<br />a@b.com' },
     actions: {
       items: [{
-        href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+        href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
       }],
     },
   },

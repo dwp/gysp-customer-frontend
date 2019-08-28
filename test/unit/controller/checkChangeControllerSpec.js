@@ -12,7 +12,7 @@ const populatedSessionRequest = [{
   value: { html: 'contact:fields.checkbox.options.home<br />000000000' },
   actions: {
     items: [{
-      href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+      href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
     }],
   },
 }];
