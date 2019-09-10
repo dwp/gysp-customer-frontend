@@ -1,3 +1,14 @@
+<a name="7.8.1"></a>
+## [7.8.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.0...v7.8.1) (2019-09-10)
+
+
+### Bug Fixes
+
+* **check-change:** corrected change translation for welsh journey ([f9c1a74](https://github.com/dwp/gysp-customer-frontend/commit/f9c1a74))
+* **personal-data:** fixed duplicate id's for radios ([ca33a57](https://github.com/dwp/gysp-customer-frontend/commit/ca33a57))
+
+
+
 <a name="7.8.0"></a>
 # [7.8.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.3...v7.8.0) (2019-08-27)
 
