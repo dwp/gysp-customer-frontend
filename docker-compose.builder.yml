@@ -1,7 +1,7 @@
 version: '2'
 services:
   base:
-    image: node:10.16.0@sha256:2901e1fa26d1f430c93178cef3e3c024ec71c66f31c5decec45c4f6e9e164ce4
+    image: node:10.16.3@sha256:900d982334a1c4218eab398f8728e89e882311c6d457e9e512fa594ed85366c0
     volumes:
       - nodemodules:/usr/src/app/node_modules
       - .:/usr/src/app
