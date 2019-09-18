@@ -16,7 +16,7 @@ const validYes = { personalDataPermission: 'yes' };
 const validNo = { personalDataPermission: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#personalDataPermission-1', text: 'Select Yes if we can use this information when you claim your State Pension.', attributes: {} },
+  { href: '#personalDataPermission-yes', text: 'Select Yes if we can use this information when you claim your State Pension.', attributes: {} },
 ];
 
 describe('personal data - EN', () => {
