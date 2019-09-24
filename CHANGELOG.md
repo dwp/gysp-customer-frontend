@@ -1,3 +1,14 @@
+<a name="7.8.2"></a>
+## [7.8.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.1...v7.8.2) (2019-09-24)
+
+
+### Bug Fixes
+
+* **footer:** corrected cookie href ([ac0de98](https://github.com/dwp/gysp-customer-frontend/commit/ac0de98))
+* **personal-data:** error message href ([15e0424](https://github.com/dwp/gysp-customer-frontend/commit/15e0424))
+
+
+
 <a name="7.8.1"></a>
 ## [7.8.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.0...v7.8.1) (2019-09-10)
 
