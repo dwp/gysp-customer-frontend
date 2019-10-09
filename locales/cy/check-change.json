@@ -2,5 +2,16 @@
   "header":"Edrychwch dros eich manylion",
   "h2": "Eich manylion",
   "link-text": "Newid",
+  "keys": {
+    "date-of-birth": "Dyddiad Geni",
+    "date-want-state-pension": "Dyddiad rydych am gael eich Pensiwn y Wladwriaeth",
+    "date-want-state-pension-from": "Dyddiad rydych am gael eich Pensiwn y Wladwriaeth o",
+    "lived-outside-uk": "Wedi byw y tu allan i'r DU",
+    "worked-outside-uk": "Wedi gweithio y tu allan i'r DU",
+    "where-lived-outside-uk": "Lle roeddech wedi byw y tu allan i'r DU",
+    "marital-status": "Statws priodasol cyfredol",
+    "receiving-benefits": "Cael budd-daliadau",
+    "contact-details": "Manylion Cyswllt"
+  },
   "button": "Cadarnhau manylion"
 }

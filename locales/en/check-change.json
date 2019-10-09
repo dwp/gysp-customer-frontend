@@ -2,5 +2,16 @@
   "header":"Check your details",
   "h2": "Your details",
   "link-text": "Change",
+  "keys": {
+    "date-of-birth": "Date of birth",
+    "date-want-state-pension": "Date you want your State Pension",
+    "date-want-state-pension-from": "Date you want your State Pension from",
+    "lived-outside-uk": "Lived outside of the UK",
+    "worked-outside-uk": "Worked outside of the UK",
+    "where-lived-outside-uk": "Where you lived outside the UK",
+    "marital-status": "Current marital status",
+    "receiving-benefits": "Receiving benefits",
+    "contact-details": "Contact details"
+  },
   "button": "Confirm details"
 }

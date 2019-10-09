@@ -8,11 +8,11 @@ const populatedSessionGet = { session: { 'contact-details': { homeTelephoneNumbe
 const emptyRequest = { session: {} };
 
 const populatedSessionRequest = [{
-  key: { text: 'contact:header', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'check-change:keys.contact-details', classes: 'govuk-!-width-two-thirds' },
   value: { html: 'contact:fields.checkbox.options.home<br />000000000' },
   actions: {
     items: [{
-      href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'contact:header', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+      href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'check-change:keys.contact-details', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
     }],
   },
 }];
