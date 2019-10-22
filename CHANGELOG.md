@@ -1,3 +1,18 @@
+<a name="7.8.3"></a>
+## [7.8.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.2...v7.8.3) (2019-10-22)
+
+
+### Bug Fixes
+
+* **complete:** reference number update ([c0543f0](https://github.com/dwp/gysp-customer-frontend/commit/c0543f0))
+
+
+### Features
+
+* **check-answers:** update content ([fe06dbd](https://github.com/dwp/gysp-customer-frontend/commit/fe06dbd))
+
+
+
 <a name="7.8.2"></a>
 ## [7.8.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.1...v7.8.2) (2019-09-24)
 
