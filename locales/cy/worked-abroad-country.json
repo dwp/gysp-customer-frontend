@@ -11,6 +11,11 @@
         "space": "Ni all y rhif cyfeirnod ddechrau gyda gofod.",
         "invalid": "Rhowch rif cyfeirnod go iawn i mewn."
       }
+    },
+    "dateTo": {
+      "legend": "Hyd",
+      "label-month": "Mis",
+      "label-year": "Blwyddyn"
     }
   }
 }
