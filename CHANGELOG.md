@@ -1,3 +1,13 @@
+<a name="7.8.4"></a>
+## [7.8.4](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.3...v7.8.4) (2019-11-06)
+
+
+### Bug Fixes
+
+* **welsh:** add worked in To, month, year translations ([0263131](https://github.com/dwp/gysp-customer-frontend/commit/0263131))
+
+
+
 <a name="7.8.3"></a>
 ## [7.8.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.2...v7.8.3) (2019-10-22)
 
