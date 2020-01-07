@@ -11,7 +11,7 @@ const deleteSession = require('../../../lib/deleteSession');
 const bankVerification = require('../../../lib/helpers/bankVerificationStatus');
 const bank = require('../../../lib/objects/bankObject');
 
-const config = require('../../../config/yaml');
+const config = require('../../../config/application');
 
 const statusCode500 = 500;
 const statusCodeErrorWrap = 200;
@@ -60,7 +60,7 @@ function processClaim(res, customerDetails, claimData, accountStatus, language) 
   return new Promise((resolve, reject) => {
     const claimBody = claim.sessionToObject(claimData, accountStatus, language);
     claimBody.customerRequest = claim.createCustomerObject(customerDetails);
-    const calimServiceCall = requestHelper.generatePostCall(`${res.locals.customerApiGateway}/claim`, claimBody);
+    const calimServiceCall = requestHelper.generatePostCall(`${res.locals.claimServiceApiGateway}/claim`, claimBody);
     requestPromise(calimServiceCall).then(() => {
       resolve();
     }).catch((err) => {

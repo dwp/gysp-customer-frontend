@@ -1,7 +1,12 @@
 module.exports = {
   genericResponse() {
     const genericResponse = {
-      locals: { frontendApiGateway: 'http://test-url/api', customerApiGateway: 'http://test-url/api', logger: { error() {}, info() {} } },
+      locals: {
+        keyServiceApiGateway: 'http://test-url/api',
+        claimServiceApiGateway: 'http://test-url/api',
+        customerServiceApiGateway: 'http://test-url/api',
+        logger: { error() {}, info() {} },
+      },
       viewName: '',
       data: {},
       address: '',

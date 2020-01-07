@@ -40,7 +40,7 @@ function getNewStatePensionDate(req, res) {
   return new Promise((resolve, reject) => {
     const statePensionObject = statePensionDate.toObject(req.session.customerDetails.gender, req.body);
     const statePensionAgeCall = requestHelper.generatePostCall(
-      `${res.locals.customerApiGateway}/customer/recalculateSpaDate`,
+      `${res.locals.customerServiceApiGateway}/customer/recalculateSpaDate`,
       statePensionObject,
     );
     requestPromise(statePensionAgeCall).then((body) => {

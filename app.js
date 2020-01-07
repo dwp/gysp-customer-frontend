@@ -15,7 +15,7 @@ const overseas = require('./lib/middleware/overseas');
 const requestHelper = require('./lib/helpers/requestHelper');
 const checkChangeRedirect = require('./lib/middleware/checkChange');
 
-const config = require('./config/yaml');
+const config = require('./config/application');
 
 const domain = require('./lib/urlExtract');
 const log = require('./config/logging')('customer-frontend', config.application.logs);
@@ -35,7 +35,7 @@ if (process.env.VERIFY_SERVICE_PROVIDER_HOST) {
 
 
 // Template setup for nunjucks
-if (config.env !== 'local') {
+if (process.env.NODE_ENV === 'production') {
   noTemplateCache = false;
 }
 
@@ -200,7 +200,7 @@ const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const benefits = require('./app/routes/benefits/routes.js');
 
-if (config.env !== 'prod') {
+if (process.env.NODE_ENV !== 'production') {
   app.use('/', overseasStub);
 }
 // Overseas middleware
@@ -236,8 +236,12 @@ app.use((req, res, next) => {
   res.locals.assetPath = '/assets';
   res.locals.serviceURL = serviceURL;
   res.locals.serviceName = i18n.t('app:service_name');
-  res.locals.customerApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.api;
-  res.locals.frontendApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.frontendapi;
+  res.locals.keyServiceApiGateway = config.application.urls.keyServiceApiGateway;
+  res.locals.claimServiceApiGateway = config.application.urls.claimServiceApiGateway;
+  res.locals.customerServiceApiGateway = config.application.urls.customerServiceApiGateway;
+
+  // res.locals.customerApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.api;
+  // res.locals.frontendApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.frontendapi;
   res.locals.languageFeature = config.application.feature.language;
   res.locals.checked = checkDateMatches;
   next();
@@ -269,8 +273,16 @@ app.use('/', healthRoutes);
 
 app.use((req, res, next) => {
   let err = '';
-  if (config.application.urls.api === '' || config.application.urls.api === undefined) {
-    err = new Error('No backend URL supplied');
+  if (config.application.urls.keyServiceApiGateway === '' || config.application.urls.keyServiceApiGateway === undefined) {
+    err = new Error('No key service URL supplied');
+    return next(err);
+  }
+  if (config.application.urls.claimServiceApiGateway === '' || config.application.urls.claimServiceApiGateway === undefined) {
+    err = new Error('No claim service URL supplied');
+    return next(err);
+  }
+  if (config.application.urls.customerServiceApiGateway === '' || config.application.urls.customerServiceApiGateway === undefined) {
+    err = new Error('No customer service URL supplied');
     return next(err);
   }
   if (!req.session) {

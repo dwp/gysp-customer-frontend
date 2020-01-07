@@ -12,7 +12,7 @@ var encyption = require('../lib/encryption');
 
 var app = require('../app');
 
-var config = require(path.resolve('config/yaml'));
+var config = require(path.resolve('config/application'));
 
 var port = config.application.port;
 
