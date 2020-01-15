@@ -10,11 +10,11 @@ ENV SESSION_SECRET=secret
 ENV SESSION_TIMEOUT=1200000
 ENV SESSION_SECURE_COOKIES=false
 
-ENV KEY_SERVICE_API_GATEWAY=http://host.docker.internal:8082
+ENV KEY_SERVICE_API_GATEWAY=http://host.docker.internal:8082/keyservice
 ENV KEY_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
-ENV CLAIM_SERVICE_API_GATEWAY=http://host.docker.internal:8085
+ENV CLAIM_SERVICE_API_GATEWAY=http://host.docker.internal:8085/claimservice
 ENV CLAIM_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
-ENV CUSTOMER_SERVICE_API_GATEWAY=http://host.docker.internal:8083
+ENV CUSTOMER_SERVICE_API_GATEWAY=http://host.docker.internal:8083/customerservice
 ENV CUSTOMER_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
 
 ENV LOG_LEVEL=error
@@ -38,13 +38,14 @@ ENV VERIFY_SERVICE_PROVIDER_HOST=http://example.com
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
+COPY . ${WORKDIR}
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 # ADD certs/* ./certs/
 
 # Bundle app source
-COPY . .
+# COPY . ${WORKDIR}
 
 EXPOSE 8100
 CMD [ "node", "server.js" ]

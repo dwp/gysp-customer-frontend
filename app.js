@@ -136,7 +136,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use((req, res, next) => {
-  if (req.session.lang) {
+  if (req.session && req.session.lang) {
     req.i18n.setLng(req.session.lang);
     res.locals.htmlLang = req.session.lang;
   } else {
