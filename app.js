@@ -239,6 +239,7 @@ app.use((req, res, next) => {
   res.locals.keyServiceApiGateway = config.application.urls.keyServiceApiGateway;
   res.locals.claimServiceApiGateway = config.application.urls.claimServiceApiGateway;
   res.locals.customerServiceApiGateway = config.application.urls.customerServiceApiGateway;
+  res.locals.bankValidateServiceApiGateway = config.application.urls.bankValidateServiceApiGateway;
 
   // res.locals.customerApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.api;
   // res.locals.frontendApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.frontendapi;

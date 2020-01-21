@@ -36,7 +36,7 @@ function verifyAccountDetails(req, res, bankDetails, customerDetails) {
     } else if (config.application.feature.bankFeature === true) {
       const verifyObject = bank.bankDetailsToObjectWithCustomerDetails(bankDetails, customerDetails, req.session['dob-details']);
       const bankVerifyCall = requestHelper.generatePostCallWithFullResponse(
-        `${res.locals.frontendApiGateway}/bankvalidate`, verifyObject, 'frontend',
+        `${res.locals.bankValidateServiceApiGateway}/bankvalidate`, verifyObject, 'frontend',
       );
       requestPromise(bankVerifyCall).then((request) => {
         if (request.statusCode === httpStatus.BAD_REQUEST) {

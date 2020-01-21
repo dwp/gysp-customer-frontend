@@ -29,7 +29,7 @@ let validUnrecognisedLangaugeRequest = { params: { language: 'es' }, session: {}
 const customerSessionGB = {
   userPassedAuth: true,
   inviteKey: 'JONE12345',
-  inviteKeyHash: 'cbe57b459a3b13a0af99995e1d1e764d914849cc0490e1841fe206d216425d8b',
+  inviteKeyHash: '4b5d41060b6ae1f43f5b10336af535d6281676d1165831a8cae969988c0b3519',
   customerDetails: {
     inviteKey: 'JONE12345', firstName: 'Tom', lastName: 'Jones', residentialAddress: { postCode: 'NE1 1YS' },
   },
@@ -40,7 +40,7 @@ const customerSessionGB = {
 const customerSessionNI = {
   userPassedAuth: true,
   inviteKey: 'NEES12345',
-  inviteKeyHash: 'c3c5e694e19950d56b1259c4426316bc0b2c4f510a865b9af893592f672f7f9b',
+  inviteKeyHash: '512d094f59d23ba0d2f37b1daca2143c17cfe140c4d1e383908f6d755c841375',
   customerDetails: {
     inviteKey: 'NEES12345', firstName: 'Liam', lastName: 'Neeson', residentialAddress: { postCode: 'BT1 2TY' },
   },

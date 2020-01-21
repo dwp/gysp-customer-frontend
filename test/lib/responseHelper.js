@@ -5,6 +5,7 @@ module.exports = {
         keyServiceApiGateway: 'http://test-url/api',
         claimServiceApiGateway: 'http://test-url/api',
         customerServiceApiGateway: 'http://test-url/api',
+        bankValidateServiceApiGateway: 'http://test-url/api',
         logger: { error() {}, info() {} },
       },
       viewName: '',

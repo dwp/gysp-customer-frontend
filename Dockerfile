@@ -16,6 +16,8 @@ ENV CLAIM_SERVICE_API_GATEWAY=http://host.docker.internal:8085/claimservice
 ENV CLAIM_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
 ENV CUSTOMER_SERVICE_API_GATEWAY=http://host.docker.internal:8083/customerservice
 ENV CUSTOMER_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
+ENV BANK_VALIDATE_SERVICE_API_GATEWAY=http://host.docker.internal:8091/bankvalidation
+ENV CUSTOMER_SERVICE_API_KEY=U2FsdGVkX1/D5EN8vd/E8Cf8yArx8trlyIdFpzLGlDs=
 
 ENV LOG_LEVEL=error
 ENV LOG_PATH=logs
