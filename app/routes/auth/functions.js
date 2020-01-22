@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const request = require('request-promise');
 const httpStatus = require('http-status-codes');
 
-const config = require('../../../config/yaml');
+const config = require('../../../config/application');
 
 const validation = require('../../../lib/validations/authValidation');
 const auth = require('../../../lib/objects/authObject');
@@ -132,11 +132,11 @@ function authPageProcess(req, res) {
       res.redirect('auth-error-address');
     } else {
       const postObjectBody = auth.authFormToObject(req.body);
-      const keyServiceCall = requestHelper.generateGetCall(`${res.locals.customerApiGateway}/key/${postObjectBody.inviteKey}`, {});
+      const keyServiceCall = requestHelper.generateGetCall(`${res.locals.keyServiceApiGateway}/key/${postObjectBody.inviteKey}`, {});
       request(keyServiceCall)
         .then(() => {
           const claimServiceCall = requestHelper.generateGetCall(
-            `${res.locals.customerApiGateway}/claim/claimexists/${postObjectBody.inviteKey}`,
+            `${res.locals.claimServiceApiGateway}/claim/claimexists/${postObjectBody.inviteKey}`,
             {},
           );
           claimServiceCall.simple = false;
@@ -148,7 +148,7 @@ function authPageProcess(req, res) {
             throw claimDetails;
           }
           const customerServiceCall = requestHelper.generateGetCall(
-            `${res.locals.customerApiGateway}/customer/${postObjectBody.inviteKey}`,
+            `${res.locals.customerServiceApiGateway}/customer/${postObjectBody.inviteKey}`,
             {},
           );
           return request(customerServiceCall);

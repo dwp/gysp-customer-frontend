@@ -3,7 +3,7 @@ services:
   base:
     image: node:10.17.0@sha256:93e9a9283f0e2ead937a8f77a2c72b18f80005c10b57b4f1cfd40d2b3aa6595f
     volumes:
-      - nodemodules:/usr/src/app/node_modules
+      - customer_nodemodules:/usr/src/app/node_modules
       - .:/usr/src/app
     working_dir: /usr/src/app
     environment:
@@ -13,5 +13,5 @@ services:
       service: base
     command: npm install
 volumes:
-  nodemodules:
+  customer_nodemodules:
     external: true

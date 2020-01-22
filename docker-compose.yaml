@@ -4,22 +4,19 @@ services:
     image: redis@sha256:e73ef998c22f9a98793d9951bb2915cd945d8fa6f9ec1b324e85d19617efc2fd
     expose:
       - 6379
-  frontend:
-    build: ./
-    command: npm start
+  web:
+    build: .
+    # command: npm server
     depends_on:
       - redis
-    volumes:
-      - nodemodules:/usr/src/app/node_modules
-      - ./:/usr/src/app
+    # volumes:
+      # - customer_nodemodules:/usr/src/app/node_modules
+      # - ./:/usr/src/app
+    environment:
+      PORT: 3001
+      REDIS_HOST: "redis"
     ports:
       - 3001:3001
-    environment:
-      REDIS_HOST: redis
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-      CUSTOMERAPIGATEWAY: ${CUSTOMER_API_GATEWAY}
-      NODE_EXTRA_CA_CERTS: ${NODE_EXTRA_CA_CERTS}
-volumes:
-  nodemodules:
-    external: true
+# volumes:
+#   customer_nodemodules:
+#     external: true

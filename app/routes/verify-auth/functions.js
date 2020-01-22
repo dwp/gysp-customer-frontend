@@ -4,7 +4,7 @@ const passportVerify = require('passport-verify');
 const request = require('request-promise');
 const httpStatus = require('http-status-codes');
 
-const config = require('../../../config/yaml');
+const config = require('../../../config/application');
 
 const requestHelper = require('../../../lib/helpers/requestHelper');
 const locationHelper = require('../../../lib/helpers/locationHelper');
@@ -20,11 +20,11 @@ const maxMonthPreClaim = 4;
 function processAuth(req, res, user) {
   return new Promise(async (resolve, reject) => {
     try {
-      const customerServiceCall = requestHelper.generateGetCall(`${res.locals.customerApiGateway}/customer/hashpid/${user.pid}`);
+      const customerServiceCall = requestHelper.generateGetCall(`${res.locals.customerServiceApiGateway}/customer/hashpid/${user.pid}`);
       const customerDetails = await request(customerServiceCall);
 
       const claimServiceCall = requestHelper.generateGetCallWithFullResponse(
-        `${res.locals.customerApiGateway}/claim/claimexists/${customerDetails.inviteKey}`,
+        `${res.locals.claimServiceApiGateway}/claim/claimexists/${customerDetails.inviteKey}`,
       );
       const claimDetails = await request(claimServiceCall);
       if (claimDetails.statusCode !== 404) {
