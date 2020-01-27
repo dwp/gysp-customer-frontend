@@ -10,10 +10,14 @@ application:
       securecookies: false
   urls:
       host: host
-      api: http://example.com/api
-      apiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
-      frontendapi: http://example.com/api
-      frontendapiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
+      keyServiceApiGateway: http://example.com/api
+      keyServiceApiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
+      claimServiceApiGateway: http://example.com/api
+      claimServiceApiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
+      customerServiceApiGateway: http://example.com/api
+      customerServiceApiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
+      bankValidateServiceApiGateway: http://example.com/api
+      bankValidateServiceApiKey: U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm
   logs:
       level: error
       path: logs

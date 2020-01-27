@@ -70,7 +70,7 @@ describe('Auth controller ', () => {
     authController.redirectToNextStep(validPostObjectBadKey, genericResponse, customerDetails, validKey, serverResponseWithDate);
     assert.equal(validPostObjectBadKey.session.inviteKey, 'key');
     assert.equal(validPostObjectBadKey.session.customerDetails, customerDetails);
-    assert.equal(validPostObjectBadKey.session.inviteKeyHash, '96de09a0f8699191b28587118ac57df88bbf6c2d0c131d196dcd90f7efd68c93');
+    assert.equal(validPostObjectBadKey.session.inviteKeyHash, 'c45866dd6d90f034f2710c62e7685e11735518a36e26017f0fd1c8b0403efc19');
     assert.equal(genericResponse.address, 'date-of-birth');
   });
 
