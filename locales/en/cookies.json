@@ -15,32 +15,6 @@
   "p6-l3": "<a href='__URL__' class='govuk-link'>Google Chrome</a>",
   "p6-l4": "<a href='__URL__' class='govuk-link'>Safari</a>, commonly used on iPads, iPhones and other Apple computers",
   "p7": "Find out <a href='__URL__' class='govuk-link'>how to manage cookies</a> for other browsers.",
-  "h2-2": "Cookies used by the Get your State Pension service",
-  "h3-1": "Google analytics",
-  "p8": "Google Analytics collects information about how you use the service. This information is used to improve the service.",
-  "p9": "Google analytics cookies collect and store information about:",
-  "p9-l1": "the page you visit - what you click on when using the service",
-  "p9-l2": "how long you spend on each page",
-  "p9-l3": "how you got to the service",
-  "h3-2": "Google analytics",
-  "cookies-table": {
-    "row-1": {
-      "header": "Name",
-      "col-1": "_ga",
-      "col-2": "_gat"
-    },
-    "row-2": {
-      "header": "Purpose",
-      "col-1": "Counts how many people visit the service by tracking if you've visited before.",
-      "col-2": "Used to count how many pages are viewed and how often."
-    },
-    "row-3": {
-      "header": "Expires",
-      "col-1": "30 minutes or when you close your browser",
-      "col-2": "10 minutes"
-    }
-  },
-  "p10": "Google won't use or share analytics data with anyone, but you can <a href='__URL__' class='govuk-link'>opt out of Google Analytics</a>.",
   "h3-3": "Session and security cookies",
   "p11": "Session cookies keep your information secure as you move back and forward through the service.",
   "p12": "These cookies are automatically removed from your computer when you complete your application or if you:",

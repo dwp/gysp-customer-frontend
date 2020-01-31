@@ -27,11 +27,6 @@ function countryCheckRemoveLinks() {
 }
 
 function countryShowNext() {
-  var element = $('.country-wrapper.js-hidden:first label');
-  var form = element.closest('form');
-  var isOverseas = form.data('overseas');
-  var gaLabel = isOverseas ? 'where-have-you-lived-add-country' : 'add-country';
-  GOVUK.performance.sendGoogleAnalyticsEvent(url, 'link', gaLabel);
   addRemoveCountryLink($('.country-wrapper.js-hidden:first label'));
   $('.country-wrapper.js-hidden:first').removeClass('js-hidden');
 }
@@ -58,10 +53,6 @@ function countryReorderList(blockID) {
 }
 
 function removeCountry(element) {
-  var form = $(element).closest('form');
-  var isOverseas = form.data('overseas');
-  var gaLabel = isOverseas ? 'where-have-you-lived-remove-country' : 'remove-country';
-  GOVUK.performance.sendGoogleAnalyticsEvent(url, 'link', gaLabel);
   // if remove is last element them hide
   var blockID = $(element).parent().parent().parent().attr('id');
   var lastElementID = $('div.country-wrapper:not(".js-hidden")').last().attr('id');
@@ -107,7 +98,6 @@ function validateEmpty(e) {
   var form = input.closest('form');
   var errorTitle = form.data('error-title');
   var errorMessage = form.data('empty-error-message');
-  var isOverseas = form.data('overseas');
   var errorSummaryMessages = [];
 
   input.each(function (index) {
@@ -132,8 +122,6 @@ function validateEmpty(e) {
     validateDuplicates(e);
   } else {
     e.preventDefault();
-    var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
-    GOVUK.performance.sendGoogleAnalyticsEvent(url, 'error', gaLabel);
     $('.govuk-error-summary').remove();
     var html = errorSummary(errorTitle, errorSummaryMessages);
     $('.js-error').html(html);
@@ -148,7 +136,6 @@ function validateDuplicates(e) {
   var form = input.closest('form');
   var errorTitle = form.data('error-title');
   var errorMessage = form.data('duplicate-error-message');
-  var isOverseas = form.data('overseas');
 
   var errorSummaryMessages = [];
   input.each(function (index) {
@@ -173,18 +160,10 @@ function validateDuplicates(e) {
   });
   if (invalid !== 0) {
     e.preventDefault();
-    var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
-    GOVUK.performance.sendGoogleAnalyticsEvent(url, 'error', gaLabel);
     var html = errorSummary(errorTitle, errorSummaryMessages);
     $('.js-error').html(html)
     $('.govuk-error-summary').focus();
   }
-}
-
-function countryEvent() {
-  var isOverseas = $('form').data('overseas');
-  var gaLabel = isOverseas ? 'where-have-you-lived-country-name' : 'country-name';
-  GOVUK.performance.sendGoogleAnalyticsEvent(url, 'clicked-box', gaLabel);
 }
 
 function updateAutocompleteValue() {
@@ -228,7 +207,7 @@ function errorSummary(title, messages) {
       html += '<h2 class="govuk-error-summary__title" id="error-summary-title">' + title + '</h2>';
       html += '<div class="govuk-error-summary__body">' +
               '<ul class="govuk-list govuk-error-summary__list">';
-              for (i = 0; i < messages.length; i++) {
+              for (var i = 0; i < messages.length; i++) {
                 html += '<li class="govuk-error-message"><a href="#' + messages[i].id + '">' + messages[i].text + '</a></li>';
               }
       html += '</ul></div></div>';
