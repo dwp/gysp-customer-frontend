@@ -49,7 +49,7 @@ THE SOFTWARE.
       return $select_field.hide();
     },
     insert_text_field: function( context ) {
-      var $text_field = $( '<input type="text" onclick="countryEvent();"></input>' );
+      var $text_field = $( '<input type="text""></input>' );
       if ( settings['copy-attributes-to-text-field'] ) {
         var attrs = {};
         var raw_attrs = context.$select_field[0].attributes;
@@ -59,7 +59,7 @@ THE SOFTWARE.
           if ( key !== 'name' && key !== 'id' && typeof context.$select_field.attr(key) !== 'undefined' ) {
             attrs[key] = value;
           }
-        };
+        }
         $text_field.attr( attrs );
         $text_field.attr('id', context.$select_field[0].id + '-input');
       }
