@@ -10,6 +10,7 @@ try {
     config = yaml;
   } else {
     config = {
+      env: process.env.NODE_ENV || 'local',
       secret: process.env.SECRET || 'secret',
       application: {
         port: Number(process.env.PORT) || 8100,

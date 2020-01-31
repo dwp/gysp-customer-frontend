@@ -35,7 +35,7 @@ if (process.env.VERIFY_SERVICE_PROVIDER_HOST) {
 
 
 // Template setup for nunjucks
-if (process.env.NODE_ENV === 'production') {
+if (config.env !== 'production' && config.env !== 'prod') {
   noTemplateCache = false;
 }
 
@@ -200,7 +200,7 @@ const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const benefits = require('./app/routes/benefits/routes.js');
 
-if (process.env.NODE_ENV !== 'production') {
+if (config.env !== 'production' && config.env !== 'prod') {
   app.use('/', overseasStub);
 }
 // Overseas middleware
