@@ -1,3 +1,14 @@
+<a name="7.9.0"></a>
+# [7.9.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.4...v7.9.0) (2020-02-05)
+
+
+### Features
+
+* **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee))
+* docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51))
+
+
+
 <a name="7.8.4"></a>
 ## [7.8.4](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.3...v7.8.4) (2019-11-06)
 
