@@ -6,6 +6,6 @@ const functions = require('./functions');
 router.get('/verify/your-details', functions.getVerifyDetails);
 router.post('/verify/your-details', functions.postVerifyDetails);
 
-router.get('/verify/auth-error', functions.getVerifyAuthError);
+router.get('/verify/auth-error-address', functions.getVerifyAuthError);
 
 module.exports = router;
