@@ -1,3 +1,14 @@
+<a name="7.9.1"></a>
+## [7.9.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.0...v7.9.1) (2020-02-19)
+
+
+### Bug Fixes
+
+* **bank validation:** corrected api key ([841518a](https://github.com/dwp/gysp-customer-frontend/commit/841518a))
+* **verify:** corrected route and added unit tests ([b0438e5](https://github.com/dwp/gysp-customer-frontend/commit/b0438e5))
+
+
+
 <a name="7.9.0"></a>
 # [7.9.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.4...v7.9.0) (2020-02-05)
 
