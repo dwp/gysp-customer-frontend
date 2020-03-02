@@ -40,6 +40,27 @@ const bankObjects = {
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
   startNotAlphaName: { bankAccountHolder: ' Space Mistake', bankAccountNumber: '123456789' },
+  dashAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '-1234567',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
+  fullStopAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '.1234567',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
+  dashAndFullStopAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '-.123456',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
 };
 
 const paymentMethodBank = { paymentMethod: 'bank' };
@@ -87,6 +108,30 @@ const buildingObjects = {
   nonAlphaName: { buildingAccountHolder: '££', buildingAccountNumber: '123456789', buildingRoll: '' },
   includesAnd: { buildingAccountHolder: 'One && Two', buildingAccountNumber: '123456789', buildingRoll: '' },
   startNotAlphaName: { buildingAccountHolder: ' Space Mistake', buildingAccountNumber: '123456789', buildingRoll: '' },
+  dashAccountNumber: {
+    buildingAccountHolder: 'Mr Joe Bloggs',
+    buildingAccountNumber: '-1234567',
+    buildingSortCodeField1: '11',
+    buildingSortCodeField2: '22',
+    buildingSortCodeField3: '33',
+    buildingRoll: 'CXJ-K6 897/98X',
+  },
+  fullStopAccountNumber: {
+    buildingAccountHolder: 'Mr Joe Bloggs',
+    buildingAccountNumber: '.1234567',
+    buildingSortCodeField1: '11',
+    buildingSortCodeField2: '22',
+    buildingSortCodeField3: '33',
+    buildingRoll: 'CXJ-K6 897/98X',
+  },
+  dashAndFullStopAccountNumber: {
+    buildingAccountHolder: 'Mr Joe Bloggs',
+    buildingAccountNumber: '.-123456',
+    buildingSortCodeField1: '11',
+    buildingSortCodeField2: '22',
+    buildingSortCodeField3: '33',
+    buildingRoll: 'CXJ-K6 897/98X',
+  },
 };
 
 describe('accountValidator - EN', () => {
@@ -183,6 +228,27 @@ describe('accountValidator - EN', () => {
 
       it('should return error if incorrect format', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumber);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format full stop and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.fullStopAccountNumber);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format full stop, dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAndFullStopAccountNumber);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
         assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
@@ -285,6 +351,27 @@ describe('accountValidator - EN', () => {
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
         assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumber);
+        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format full stop and numbers', () => {
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.fullStopAccountNumber);
+        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
+      });
+
+      it('should return error if incorrect format full stop, dash and numbers', () => {
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAndFullStopAccountNumber);
+        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
       });
     });
 
