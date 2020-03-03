@@ -177,8 +177,22 @@ describe('Contact validation', () => {
       });
     });
 
-    it('should return error if email address is not invalid', () => {
+    it('should return error if email address is invalid', () => {
       const validationResponse = validation.detailsValidation(populatedFailedValidationForm);
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Error');
+      assert.equal(validationResponse.email.text, 'Enter an email address in the correct format, like name@example.com.');
+    });
+
+    it('should return error if email address contains a utf-8 special charcater (’)', () => {
+      const request = Object.assign({}, populatedFailedValidationForm, { email: '’test@test.com' });
+      const validationResponse = validation.detailsValidation(request);
+      assert.equal(validationResponse.email.visuallyHiddenText, 'Error');
+      assert.equal(validationResponse.email.text, 'Enter an email address in the correct format, like name@example.com.');
+    });
+
+    it('should return error if email address contains a utf-8 special charcater (‘)', () => {
+      const request = Object.assign({}, populatedFailedValidationForm, { email: '‘test@test.com' });
+      const validationResponse = validation.detailsValidation(request);
       assert.equal(validationResponse.email.visuallyHiddenText, 'Error');
       assert.equal(validationResponse.email.text, 'Enter an email address in the correct format, like name@example.com.');
     });
