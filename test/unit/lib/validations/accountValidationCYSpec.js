@@ -40,6 +40,27 @@ const bankObjects = {
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
   startNotAlphaName: { bankAccountHolder: ' Space Mistake', bankAccountNumber: '123456789' },
+  dashAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '-1234567',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
+  fullStopAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '.1234567',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
+  dashAndFullStopAccountNumber: {
+    bankAccountHolder: ' Space Mistake',
+    bankAccountNumber: '-.123456',
+    bankSortCodeField1: '11',
+    bankSortCodeField2: '22',
+    bankSortCodeField3: '33',
+  },
 };
 
 const paymentMethodBank = { paymentMethod: 'bank' };
@@ -262,6 +283,27 @@ describe('accountValidator - CY', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Gwall');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+      });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumber);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+      });
+
+      it('should return error if incorrect format full stop and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.fullStopAccountNumber);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+      });
+
+      it('should return error if incorrect format full stop, dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAndFullStopAccountNumber);
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
     });
 
