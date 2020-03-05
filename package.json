@@ -37,7 +37,7 @@
     "validator": "12.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.2.0",
+    "@commitlint/cli": "8.3.5",
     "@commitlint/travis-cli": "8.3.3",
     "@dwp/commitlint-config-base": "1.1.0",
     "@dwp/eslint-config-base": "3.0.0",
