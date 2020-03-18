@@ -1,3 +1,14 @@
+<a name="7.9.2"></a>
+## [7.9.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.1...v7.9.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* **account:** validation for bank account number ([9c81d9b](https://github.com/dwp/gysp-customer-frontend/commit/9c81d9b))
+* **contact:** add validation for special UTF-8 chars ([855467d](https://github.com/dwp/gysp-customer-frontend/commit/855467d))
+
+
+
 <a name="7.9.1"></a>
 ## [7.9.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.0...v7.9.1) (2020-02-19)
 
