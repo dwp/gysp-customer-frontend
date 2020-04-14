@@ -5,19 +5,14 @@ services:
     expose:
       - 6379
   web:
-    build: ./
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     command: npm start
-    # command: npm server
     depends_on:
       - redis
     volumes:
-      - customer_nodemodules:/usr/src/app/node_modules
-      - ./:/usr/src/app
-    environment:
-      PORT: 3001
-      REDIS_HOST: "redis"
+      - ./:/home/node/customer-frontend
+      - /home/node/customer-frontend/node_modules/
     ports:
       - 3001:3001
-volumes:
-  customer_nodemodules:
-    external: true

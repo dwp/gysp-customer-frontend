@@ -9,11 +9,12 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const passport = require('passport');
 const passportVerify = require('passport-verify');
-const connectRedis = require('connect-redis');
-const encyption = require('./lib/encryption');
+const httpStatus = require('http-status-codes');
 const overseas = require('./lib/middleware/overseas');
 const requestHelper = require('./lib/helpers/requestHelper');
 const checkChangeRedirect = require('./lib/middleware/checkChange');
+
+const redisClient = require('./bootstrap/redisClient');
 
 const config = require('./config/application');
 
@@ -23,22 +24,6 @@ const log = require('./config/logging')('customer-frontend', config.application.
 const app = express();
 const i18nConfig = require('./config/i18n');
 
-// Config variables
-let noTemplateCache = true;
-
-const statusCodeErrorWrap = 200;
-
-let { verifyServiceProviderHost } = config.application.verify;
-if (process.env.VERIFY_SERVICE_PROVIDER_HOST) {
-  verifyServiceProviderHost = process.env.VERIFY_SERVICE_PROVIDER_HOST;
-}
-
-
-// Template setup for nunjucks
-if (config.env !== 'production' && config.env !== 'prod') {
-  noTemplateCache = false;
-}
-
 nunjucks.configure([
   'app/views',
   'node_modules/govuk-frontend/',
@@ -47,7 +32,7 @@ nunjucks.configure([
   trimBlocks: true,
   lstripBlocks: true,
   express: app,
-  noCache: noTemplateCache,
+  noCache: config.application.noTemplateCache,
 });
 
 // Multilingual information
@@ -63,9 +48,11 @@ app.disable('x-powered-by');
 
 // Middleware to serve static assets
 app.set('view engine', 'html');
-app.use('/assets', express.static('./public'));
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')));
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), { maxage: 86400000 }));
+app.use(`${config.mountUrl}assets`, express.static('./public'));
+app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')));
+app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), {
+  maxage: 86400000,
+}));
 app.use(favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
 
 // Disable Etag for pages
@@ -87,6 +74,8 @@ app.use(helmet.contentSecurityPolicy({
   disableAndroid: false,
 }));
 
+app.set('trust proxy', 1);
+
 // Session settings
 const sessionConfig = {
   secret: config.application.session.secret,
@@ -99,35 +88,20 @@ const sessionConfig = {
   saveUninitialized: true,
 };
 
-app.set('trust proxy', 1);
-
 if (config.application.session.securecookies === true) {
   sessionConfig.cookie.secure = true;
 }
 
 if (config.application.session.store === 'redis') {
-  const { redis } = config.application;
-  redis.host = process.env.REDIS_HOST || '127.0.0.1';
-  redis.password = encyption.decrypt(redis.password, config.secret);
-  const RedisStore = connectRedis(session);
-
-  sessionConfig.store = new RedisStore(redis);
+  sessionConfig.store = redisClient(session);
 }
+app.use(session(sessionConfig));
 
 function destroySessionAndRedirect(req, res) {
   req.session.destroy(() => {
     res.redirect(res.locals.serviceURL);
   });
 }
-
-function checkDateMatches(data, value) {
-  if (data === value) {
-    return true;
-  }
-  return false;
-}
-
-app.use(session(sessionConfig));
 
 // Add post middleware
 app.use(bodyParser.json());
@@ -155,7 +129,7 @@ if (config.application.feature.verify === true) {
   passport.deserializeUser((user, done) => done(null, JSON.parse(user)));
 
   passport.use(passportVerify.createStrategy(
-    verifyServiceProviderHost,
+    config.application.verify.verifyServiceProviderHost,
     responseBody => responseBody,
     responseBody => responseBody,
     (requestId, request) => {
@@ -176,7 +150,7 @@ if (config.application.feature.verify === true) {
   ));
 }
 
-app.use(checkChangeRedirect());
+app.use(checkChangeRedirect(config.mountUrl));
 
 // Route information
 const generalRoutes = require('./app/routes/general/routes.js');
@@ -199,8 +173,8 @@ const personalData = require('./app/routes/personal-data/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 
-if (config.env !== 'production' && config.env !== 'prod') {
-  app.use('/', overseasStub);
+if (config.env !== 'production') {
+  app.use(config.mountUrl, overseasStub);
 }
 // Overseas middleware
 app.use(overseas());
@@ -234,16 +208,14 @@ app.use((req, res, next) => {
   res.locals.logger = log;
   res.locals.assetPath = '/assets';
   res.locals.serviceURL = serviceURL;
+  res.locals.mountUrl = config.mountUrl;
   res.locals.serviceName = i18n.t('app:service_name');
   res.locals.keyServiceApiGateway = config.application.urls.keyServiceApiGateway;
   res.locals.claimServiceApiGateway = config.application.urls.claimServiceApiGateway;
   res.locals.customerServiceApiGateway = config.application.urls.customerServiceApiGateway;
   res.locals.bankValidateServiceApiGateway = config.application.urls.bankValidateServiceApiGateway;
-
-  // res.locals.customerApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.api;
-  // res.locals.frontendApiGateway = process.env.CUSTOMERAPIGATEWAY ? process.env.CUSTOMERAPIGATEWAY : config.application.urls.frontendapi;
   res.locals.languageFeature = config.application.feature.language;
-  res.locals.checked = checkDateMatches;
+  res.locals.checked = (data, value) => data === value;
   next();
 });
 
@@ -269,7 +241,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', healthRoutes);
+app.use(config.mountUrl, healthRoutes);
 
 app.use((req, res, next) => {
   let err = '';
@@ -299,17 +271,17 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', generalRoutes);
+app.use(config.mountUrl, generalRoutes);
 if (config.application.feature.verify === false) {
-  app.use('/', authRoutes);
+  app.use(config.mountUrl, authRoutes);
 }
 if (config.application.feature.verify === true) {
-  app.use('/', confirmIdentity);
-  app.use('/', verifyAuthRoutes);
+  app.use(config.mountUrl, confirmIdentity);
+  app.use(config.mountUrl, verifyAuthRoutes);
 }
-app.use('/', authRoutes);
+app.use(config.mountUrl, authRoutes);
 app.use((req, res, next) => {
-  if (domain.extract(req.headers.referer) === req.hostname || req.path === '/verify/your-details') {
+  if (domain.extract(req.headers.referer) === req.hostname || req.path.includes('/verify/your-details')) {
     next();
   } else {
     log.info(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
@@ -317,11 +289,11 @@ app.use((req, res, next) => {
   }
 });
 if (config.application.feature.verify === true) {
-  app.use('/', personalData);
+  app.use(config.mountUrl, personalData);
 }
 
 function checkInSessionAndCompletedAndNotOnCompletePage(req) {
-  if (req.session.userPassedAuth === true && req.session.userHasCompleted === true && req.path !== '/complete') {
+  if (req.session.userPassedAuth === true && req.session.userHasCompleted === true && !req.path.includes('/complete')) {
     return true;
   }
   return false;
@@ -331,7 +303,7 @@ app.use((req, res, next) => {
   if (checkInSessionAndCompletedAndNotOnCompletePage(req)) {
     req.session.redirectComplete = true;
     log.info('user has already completed');
-    res.redirect('/complete');
+    res.redirect('complete');
   } else {
     next();
   }
@@ -346,30 +318,30 @@ app.use((req, res, next) => {
   }
 });
 
-app.use('/', dobRoutes);
-app.use('/', dateRoutes);
-app.use('/', startDateRoutes);
-app.use('/', overseasRoutes);
-app.use('/', maritalRoutes);
-app.use('/', processRoute);
-app.use('/', contactRoutes);
-app.use('/', completeRoute);
-app.use('/', declarationRoutes);
-app.use('/', accountRoutes);
-app.use('/', verifyDetailRoutes);
-app.use('/', checkChange);
+app.use(config.mountUrl, dobRoutes);
+app.use(config.mountUrl, dateRoutes);
+app.use(config.mountUrl, startDateRoutes);
+app.use(config.mountUrl, overseasRoutes);
+app.use(config.mountUrl, maritalRoutes);
+app.use(config.mountUrl, processRoute);
+app.use(config.mountUrl, contactRoutes);
+app.use(config.mountUrl, completeRoute);
+app.use(config.mountUrl, declarationRoutes);
+app.use(config.mountUrl, accountRoutes);
+app.use(config.mountUrl, verifyDetailRoutes);
+app.use(config.mountUrl, checkChange);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
-  err.status = 404;
+  err.status = httpStatus.NOT_FOUND;
   next(err);
 });
 
 // Error catch
 app.use((err, req, res, next) => {
-  let status = (err.status || 500);
-  res.status(statusCodeErrorWrap);
-  if (config.env !== 'prod') {
+  let status = (err.status || httpStatus.INTERNAL_SERVER_ERROR);
+  res.status(httpStatus.OK);
+  if (config.env !== 'production') {
     process.stdout.write(`\n${err.status}: ${err.message}\n\n`);
     process.stdout.write(`${err.stack}\n\n`);
   }
@@ -380,7 +352,7 @@ app.use((err, req, res, next) => {
   res.locals.serviceName = i18n.t('app:service_name');
   res.locals.assetPath = '/assets';
 
-  if (status !== 500 || status !== 403) {
+  if (status !== httpStatus.INTERNAL_SERVER_ERROR || status !== httpStatus.FORBIDDEN) {
     status = 'generic';
   }
 
