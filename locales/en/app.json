@@ -43,7 +43,7 @@
       "number": "0800 169 0254"
     },
     "hours": {
-      "line1": "Monday to Friday, 8am to 6pm",
+      "line1": "Monday to Friday",
       "line2": "Closed public holidays"
     },
     "outside": {
@@ -61,7 +61,7 @@
         "number": "0808 100 2198"
       },
       "hours": {
-        "line1": "Monday to Friday, 9am to 5pm",
+        "line1": "Monday to Friday",
         "line2": "Closed public holidays"
       }
     },
@@ -71,9 +71,12 @@
         "number": "+44 (0) 191 216 2516"
       },
       "hours": {
-        "line1": "Monday to Friday, 8am to 6pm UK time",
+        "line1": "Monday to Friday",
         "line2": "Closed UK public holidays"
       }
+    },
+    "covid-19": {
+      "p": "During the coronavirus (COVID-19) outbreak, phone lines are busier than usual and open shorter hours."
     }
   },
   "error": {
@@ -109,7 +112,7 @@
           "number": "0800 169 0254"
         },
         "hours": {
-          "line1": "Monday to Friday, 8am to 6pm",
+          "line1": "Monday to Friday",
           "line2": "Closed public holidays"
         }
       },
@@ -124,7 +127,7 @@
           "number": "0808 100 2198"
         },
         "hours": {
-          "line1": "Monday to Friday, 9am to 5pm",
+          "line1": "Monday to Friday",
           "line2": "Closed public holidays"
         }
       },
@@ -135,7 +138,7 @@
           "number": "+44 (0) 191 216 2516"
         },
         "hours": {
-          "line1": "Monday to Friday, 8am to 6pm UK time",
+          "line1": "Monday to Friday",
           "line2": "Closed UK public holidays"
         }
       }
