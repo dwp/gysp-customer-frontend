@@ -209,7 +209,7 @@ describe('Marital controller ', () => {
     it('should return redirect to benefits when called with valid post object', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDate, genericResponse);
       assert.isDefined(populatedRequestPartnerPostDate.session['marital-partner-married']);
-      assert.equal(genericResponse.address, 'are-you-receiving-any-benefits');
+      assert.equal(genericResponse.address, 'contact-details');
       done();
     });
     it('should return redirect to check and change when called with valid post object and in edit mode', (done) => {
@@ -222,7 +222,7 @@ describe('Marital controller ', () => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDateMoreFields, genericResponse);
       assert.isUndefined(populatedRequestMarriedPostDate.session['marital-date-married'].kittens);
       assert.isDefined(populatedRequestPartnerPostDate.session['marital-partner-married']);
-      assert.equal(genericResponse.address, 'are-you-receiving-any-benefits');
+      assert.equal(genericResponse.address, 'contact-details');
       done();
     });
     it('should filter out any post items that are not allowed and return a redirect for overseas', (done) => {

@@ -83,10 +83,8 @@ function maritalPartnerDetailsPost(req, res) {
     if (editMode) {
       checkChangeHelper.clearCheckChange(req);
       res.redirect('check-your-details');
-    } else if (req.session.isOverseas) {
-      res.redirect('contact-details');
     } else {
-      res.redirect('are-you-receiving-any-benefits');
+      res.redirect('contact-details');
     }
   }
 }

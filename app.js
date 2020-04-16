@@ -198,7 +198,6 @@ const confirmIdentity = require('./app/routes/confirm-identity/routes.js');
 const personalData = require('./app/routes/personal-data/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
-const benefits = require('./app/routes/benefits/routes.js');
 
 if (config.env !== 'production' && config.env !== 'prod') {
   app.use('/', overseasStub);
@@ -347,7 +346,6 @@ app.use((req, res, next) => {
   }
 });
 
-app.use('/', benefits);
 app.use('/', dobRoutes);
 app.use('/', dateRoutes);
 app.use('/', startDateRoutes);

@@ -7,7 +7,6 @@ module.exports = {
       'auth-no-invite-code',
       'account',
       'account-overseas',
-      'benefits',
       'complete',
       'cookies',
       'contact',
