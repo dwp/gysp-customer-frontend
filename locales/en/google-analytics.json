@@ -108,9 +108,6 @@
     "personal-data": {
       "status": "dimension10:personal-data:clicked-radio:__VALUE__:__VALUE__-can-we-use-information"
     },
-    "benefits": {
-      "status": "dimension13:are-you-receiving-any-benefits:clicked-radio:are-you-receiving-benefits-__VALUE__"
-    },
     "verify-your-details": {
       "status": "dimension11:verify-your-details:clicked-radio:__VALUE__-verify-current-address:__VALUE__-current-address"
     },

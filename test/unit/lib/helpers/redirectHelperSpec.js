@@ -10,7 +10,6 @@ const validStatus = {
   dissolved: 'dissolved',
 };
 const validDateUrls = {
-  benefits: 'are-you-receiving-any-benefits',
   contact: 'contact-details',
   checkChange: 'check-your-details',
   married: 'what-date-did-you-get-married',
@@ -72,9 +71,9 @@ describe('redirect helper ', () => {
       const urlReturn = redirectHelper.redirectBasedOnStatusAndEditMode(validStatus.single, true, true);
       assert.equal(urlReturn, validDateUrls.checkChange);
     });
-    it('should return benefits page when single is supplied, not in edit mode and not overseas', () => {
+    it('should return contact page when single is supplied, not in edit mode and not overseas', () => {
       const urlReturn = redirectHelper.redirectBasedOnStatusAndEditMode(validStatus.single, false, false);
-      assert.equal(urlReturn, validDateUrls.benefits);
+      assert.equal(urlReturn, validDateUrls.contact);
     });
     it('should return contact details page when single is supplied, not in edit mode and is overseas', () => {
       const urlReturn = redirectHelper.redirectBasedOnStatusAndEditMode(validStatus.single, true, false);
