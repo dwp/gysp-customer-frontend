@@ -1,3 +1,14 @@
+<a name="7.10.0"></a>
+# [7.10.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.2...v7.10.0) (2020-04-28)
+
+
+### Features
+
+* **benefits:** remove benefits screen ([22c333a](https://github.com/dwp/gysp-customer-frontend/commit/22c333a))
+* **help:** update help content for covid-19 ([b1cb145](https://github.com/dwp/gysp-customer-frontend/commit/b1cb145))
+
+
+
 <a name="7.9.2"></a>
 ## [7.9.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.1...v7.9.2) (2020-03-18)
 
