@@ -21,6 +21,7 @@ function build() {
     'config/**',
     'bin/**',
     'app/**',
+    'bootstrap/**',
     'lib/**',
     'locales/**',
     'logs',
