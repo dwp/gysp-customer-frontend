@@ -5,29 +5,45 @@ LABEL maintainer="Get your State Pension Team"
 LABEL version="[ci]"
 LABEL build_src="[ci]"
 
-RUN apk add --update --no-cache stunnel && mv "$(command -v stunnel)" /usr/local/bin/
-
-WORKDIR /opt/stunnel
-
-COPY --chown=node:node docker/stunnel.conf /opt/stunnel/stunnel.conf
+ARG APP_FOLDER=/home/node/customer-frontend/
+ARG STUNNEL_FOLDER=/opt/stunnel/
+ARG HARDEN_FOLDER=/opt/harden/
 
 RUN apk add --update --no-cache tzdata
+
+# Default ENV
 ENV TZ=Europe/London
+ENV PORT=3001
+ENV CONTEXT_PATH=/
 
-RUN mkdir -p /home/node/customer-frontend
+# Set up stunnel for use with Redis
+RUN apk add --update --no-cache stunnel && mv "$(command -v stunnel)" /usr/local/bin/
 
-RUN chown -R node:node /home/node
-RUN chown -R node:node /opt/stunnel
+WORKDIR ${STUNNEL_FOLDER}
+COPY --chown=node:node docker/stunnel.conf ${STUNNEL_FOLDER}stunnel.conf
+
+HEALTHCHECK --interval=30s --timeout=2s --start-period=30s  \
+  CMD curl -fk $(if [ "$USE_TLS" = "true" ]; then echo "https"; else echo "http"; fi)://localhost:${PORT}${CONTEXT_PATH}health || exit 1
+
+# remove root user privilidge
+RUN chown -R node:node ${STUNNEL_FOLDER}
+
+WORKDIR ${HARDEN_FOLDER}
+
+# Download and verify hardening script
+ADD https://raw.githubusercontent.com/dwp/packer-infrastructure/master/docker-builder/scripts/base/harden.sh harden.sh
+COPY docker/harden.sh.md5 .
+RUN md5sum -c harden.sh.md5
+
+RUN chmod +x ${HARDEN_FOLDER}harden.sh && sh ${HARDEN_FOLDER}harden.sh && rm ${HARDEN_FOLDER}harden.sh
 
 USER node
 
-WORKDIR /home/node/customer-frontend
+RUN mkdir -p ${APP_FOLDER}
 
+WORKDIR ${APP_FOLDER}
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node . .
-
-RUN npm ci
-RUN npm run build
 
 ENTRYPOINT ["/bin/sh", "./docker/init.sh"]
 

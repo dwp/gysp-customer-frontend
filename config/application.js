@@ -4,7 +4,7 @@ require('dotenv').config();
 module.exports = {
   env: process.env.NODE_ENV || 'local',
   secret: process.env.CUSTOMER_FRONTEND_SECRET || 'thisIsASecret',
-  mountUrl: process.env.CONTEXT_PATH || '',
+  mountUrl: process.env.CONTEXT_PATH || '/',
   application: {
     port: process.env.PORT ? parseInt(process.env.PORT, 10) : null,
     tls: {
