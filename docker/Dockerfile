@@ -25,8 +25,23 @@ COPY --chown=node:node docker/stunnel.conf ${STUNNEL_FOLDER}stunnel.conf
 HEALTHCHECK --interval=30s --timeout=2s --start-period=30s  \
   CMD curl -fk $(if [ "$USE_TLS" = "true" ]; then echo "https"; else echo "http"; fi)://localhost:${PORT}${CONTEXT_PATH}health || exit 1
 
+RUN mkdir -p ${APP_FOLDER}
+
 # remove root user privilidge
+RUN chown -R node:node ${APP_FOLDER}
 RUN chown -R node:node ${STUNNEL_FOLDER}
+
+USER node
+
+WORKDIR ${APP_FOLDER}
+COPY --chown=node:node package*.json ./
+COPY --chown=node:node . .
+
+RUN npm ci
+RUN npm run build
+RUN npm prune --production
+
+USER root
 
 WORKDIR ${HARDEN_FOLDER}
 
@@ -39,11 +54,7 @@ RUN chmod +x ${HARDEN_FOLDER}harden.sh && sh ${HARDEN_FOLDER}harden.sh && rm ${H
 
 USER node
 
-RUN mkdir -p ${APP_FOLDER}
-
 WORKDIR ${APP_FOLDER}
-COPY --chown=node:node package*.json ./
-COPY --chown=node:node . .
 
 ENTRYPOINT ["/bin/sh", "./docker/init.sh"]
 
