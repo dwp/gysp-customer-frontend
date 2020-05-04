@@ -1,3 +1,13 @@
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.10.0...v8.0.0) (2020-05-04)
+
+
+### Features
+
+* **docker:** config for deployment to ECS ([cf1851a](https://github.com/dwp/gysp-customer-frontend/commit/cf1851a))
+
+
+
 <a name="7.10.0"></a>
 # [7.10.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.2...v7.10.0) (2020-04-28)
 
@@ -37,8 +47,8 @@
 
 ### Features
 
-* **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee))
 * docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51))
+* **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee))
 
 
 
