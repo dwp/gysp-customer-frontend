@@ -70,7 +70,6 @@
   },
   "private": true,
   "scripts": {
-    "version": "./postversion.sh",
     "build": "gulp generateAssets",
     "package": "gulp --gulpfile ./gulp-package.js",
     "start": "node start | bunyan",
