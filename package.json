@@ -56,7 +56,7 @@
     "gulp-sass": "4.1.0",
     "gulp-sass-lint": "1.4.0",
     "html5shiv": "3.7.3",
-    "husky": "4.2.3",
+    "husky": "4.2.5",
     "mocha": "7.1.0",
     "mockdate": "2.0.5",
     "nock": "12.0.2",
