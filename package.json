@@ -72,6 +72,7 @@
   "scripts": {
     "build": "gulp generateAssets",
     "package": "gulp --gulpfile ./gulp-package.js",
+    "prestart": "npm ci",
     "start": "node start | bunyan",
     "lint": "eslint .",
     "test": "CONFIG_LOCATION='./test/resource/' BANK_FEATURE=false mocha test/unit --recursive",

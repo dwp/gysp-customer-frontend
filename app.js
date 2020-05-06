@@ -94,7 +94,11 @@ if (config.application.session.securecookies === true) {
 
 if (config.application.session.store === 'redis') {
   sessionConfig.store = redisClient(session);
+  sessionConfig.store.client.on('error', (err) => {
+    log.error(`Redis error: ${err}`);
+  });
 }
+
 app.use(session(sessionConfig));
 
 function destroySessionAndRedirect(req, res) {
