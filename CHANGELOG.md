@@ -1,5 +1,10 @@
+<a name="8.1.0"></a>
+# [8.1.0](https://github.com/dwp/gysp-customer-frontend/compare/8.0.0...8.1.0) (2020-05-13)
+
+
+
 <a name="8.0.0"></a>
-# [8.0.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.10.0...v8.0.0) (2020-05-04)
+# [8.0.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.10.0...8.0.0) (2020-05-04)
 
 
 ### Features
