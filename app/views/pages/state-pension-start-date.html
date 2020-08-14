@@ -18,7 +18,7 @@
 
     <h1 class="govuk-heading-xl no-margin-top">{{ t('pension-start-date:header') }}</h1>
 
-    <p class="govuk-body">{{ t('pension-start-date:' + beforeOrAfterSpa + '.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+    <p class="govuk-body">{{ t('pension-start-date:' + beforeOrAfterSpa + '.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}</p>
 
     <form method="post" action="when-do-you-want-your-state-pension" autocomplete="off">
           {{ govukDateInput({
