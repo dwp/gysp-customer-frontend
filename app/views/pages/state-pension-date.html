@@ -29,11 +29,11 @@
     <h1 class="govuk-heading-xl">{{ t('date-page:header') }}</h1>
 
     {% if (isBeforeSpa) %}
-      <p class="govuk-body">{{ t('date-page:beforeSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+      <p class="govuk-body">{{ t('date-page:beforeSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}</p>
 
       <p class="govuk-body">{{ t('date-page:beforeSpa.p2', {startPensionDatePage: startPensionDatePage}) | safe }}</p>
     {% else %}
-      <p class="govuk-body">{{ t('date-page:afterSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}
+      <p class="govuk-body">{{ t('date-page:afterSpa.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}</p>
 
       <p class="govuk-body">{{ t('date-page:afterSpa.p2', {startPensionDatePage: startPensionDatePage}) | safe }}</p>
     {% endif %}
