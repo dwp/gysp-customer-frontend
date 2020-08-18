@@ -1,3 +1,13 @@
+<a name="8.1.1"></a>
+## [8.1.1](https://github.com/dwp/gysp-customer-frontend/compare/8.1.0...8.1.1) (2020-08-18)
+
+
+### Bug Fixes
+
+* **html:** fix html mark up ([5f61d3b](https://github.com/dwp/gysp-customer-frontend/commit/5f61d3b))
+
+
+
 <a name="8.1.0"></a>
 # [8.1.0](https://github.com/dwp/gysp-customer-frontend/compare/8.0.0...8.1.0) (2020-05-13)
 
