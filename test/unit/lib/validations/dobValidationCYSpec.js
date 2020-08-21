@@ -1,8 +1,10 @@
 const { assert } = require('chai');
 const moment = require('moment');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/dobValidation.js');
 
@@ -73,8 +75,10 @@ const dateOfBirthFormIncorrect = {
 const sessionDateOfBirth = -483235200000;
 
 describe('DOB validation - CY', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
   it('should return error if date is empty', () => {
     const validationResponse = validation.dobValidator(todayDateObjectEmpy, 'cy');

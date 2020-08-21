@@ -182,17 +182,17 @@ describe('Verify controller ', () => {
 
   describe(' getSwitchLanguage function (GET /verify/you-can-now-sign-in-with-govuk-verify/:language)', () => {
     beforeEach(() => {
-      const setLng = {
+      const genericRequest = {
         lang: '',
         i18n: {
-          setLng: (lang) => {
-            setLng.lang = lang;
+          changeLanguage: (lang) => {
+            genericRequest.lang = lang;
           },
         },
       };
-      validEnglishLangaugeRequest = Object.assign(validEnglishLangaugeRequest, setLng);
-      validWelshLangaugeRequest = Object.assign(validWelshLangaugeRequest, setLng);
-      validUnrecognisedLangaugeRequest = Object.assign(validUnrecognisedLangaugeRequest, setLng);
+      validEnglishLangaugeRequest = Object.assign(validEnglishLangaugeRequest, genericRequest);
+      validWelshLangaugeRequest = Object.assign(validWelshLangaugeRequest, genericRequest);
+      validUnrecognisedLangaugeRequest = Object.assign(validUnrecognisedLangaugeRequest, genericRequest);
     });
 
     it('should set english language and return a redirect when english is requested', (done) => {

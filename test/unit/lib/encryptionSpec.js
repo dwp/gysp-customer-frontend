@@ -9,6 +9,7 @@ describe('encryption', () => {
       assert.equal(typeof encryption.encrypt('test', secret), 'string');
     });
   });
+
   describe('decrypt', () => {
     it('should return decrypt string', () => {
       const en = encryption.encrypt('test', secret);

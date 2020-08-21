@@ -1,7 +1,7 @@
 {
   "header": {
-    "country": "Country __CURRENT__ of __TOTAL__",
-    "title": "When did you work in __COUNTRY__?",
+    "country": "Country {{CURRENT}} of {{TOTAL}}",
+    "title": "When did you work in {{COUNTRY}}?",
     "title-overseas": "When did you work here?"
   },
   "overseas-info": "If you've worked here on more than one occasion, you only need to provide dates for the most recent period of time.",

@@ -27,6 +27,7 @@ describe('Contact controller ', () => {
       assert.isUndefined(genericResponse.data.details);
       done();
     });
+
     it('should return view name when called with populated response data when session is set', (done) => {
       contactController.contactDetailsGet(populatedSessionGet, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/contactdetails');

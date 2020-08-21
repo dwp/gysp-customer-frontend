@@ -1,7 +1,10 @@
 const assert = require('assert');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
+
 const validation = require('../../../../lib/validations/contactValidation');
 
 const longTelephoneNumber = '12345678901234567890123456789012345678901234567890123456789012345678901';
@@ -29,9 +32,12 @@ let mobileMessage;
 let workTelephone;
 
 describe('Contact validation', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('detailsValidation', () => {
     it('should return error global if all fields are is empty', () => {
       const validationResponse = validation.detailsValidation(emptyObject, 'cy');

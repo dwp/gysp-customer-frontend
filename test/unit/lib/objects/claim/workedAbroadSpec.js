@@ -1,23 +1,11 @@
 const assert = require('assert');
 
-const claimObject = require('../../../../../lib/objects/claimObject');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
 
-const expectedInviteKeyQ = 'auth:fields.inviteKey.label';
-const expectedConfirmedAdddressQ = 'auth:fields.address.legend';
-const expectedWorkedPeriodAbroadsQ = 'countries:worked.header';
-const expectedLivedAbroadQ = 'lived-abroad:header';
-const expectedWorkedAbroadQ = 'worked-abroad:header';
-const expectedMaritalStatusQ = 'marital-select:header';
-const expectedContactDetailQ = 'contact:header';
-const expectedHomeTelephoneNumberQ = 'contact:fields.homeTelephoneNumber.label';
-const expectedAccountDetailQ = 'account:header';
-const expectedPaymentMethodQ = 'account:fields.paymentMethod.fieldset';
-const expectedBankAccountHolderQ = 'account:fields.accountHolder.label';
-const expectedBankAccountNumberQ = 'account:fields.accountNumber.label';
-const expectedBankSortCodeQ = 'account:fields.sortCode.label';
-const expectedBankDetailQ = 'account:fields.paymentMethod.options.bank';
-const expectedDeclarationQ = 'declaration:header';
-const resultQ = 'account:fields.result';
+const i18nextConfig = require('../../../../../config/i18next');
+
+const claimObject = require('../../../../../lib/objects/claimObject');
 
 const accountObject = {
   paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
@@ -35,11 +23,6 @@ const abroadThreeCountries = {
 const abroadFourCountries = {
   'country-name[0]': 'Country 1', 'country-name[1]': 'Country 2', 'country-name[2]': 'Country 3', 'country-name[3]': 'Country 4',
 };
-
-const abroadOneCountriesJson = [{ countryQ: 'countries:fields.country.label', country: 'Country 1' }];
-const abroadTwoCountriesJson = [{ countryQ: 'countries:fields.country.label', country: 'Country 1' }, { countryQ: 'countries:fields.country.label', country: 'Country 2' }];
-const abroadTheeCountriesJson = [{ countryQ: 'countries:fields.country.label', country: 'Country 1' }, { countryQ: 'countries:fields.country.label', country: 'Country 2' }, { countryQ: 'countries:fields.country.label', country: 'Country 3' }];
-const abroadFourCountriesJson = [{ countryQ: 'countries:fields.country.label', country: 'Country 1' }, { countryQ: 'countries:fields.country.label', country: 'Country 2' }, { countryQ: 'countries:fields.country.label', country: 'Country 3' }, { countryQ: 'countries:fields.country.label', country: 'Country 4' }];
 
 const workedAbroadOneCountries = {
   'country-name[0]': 'Country 1', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
@@ -112,49 +95,37 @@ const workedAbroadFourCountriesExtended = [workedAbroadOneCountriesExtended[0], 
   },
 }];
 
-const accountDetailsBankJson = {
-  bankDetail: {
-    result: 'Fail',
-    resultQ,
-    accountHolder: 'Mr Joe Bloggs',
-    accountHolderQ: expectedBankAccountHolderQ,
-    accountNumber: '12345678',
-    accountNumberQ: expectedBankAccountNumberQ,
-    sortCode: '112233',
-    sortCodeQ: expectedBankSortCodeQ,
-  },
-  bankDetailQ: expectedBankDetailQ,
-  paymentMethodQ: expectedPaymentMethodQ,
-};
-
 const customerDetailsObject = { dobVerification: 'V' };
 
 const inviteKey = '1234567';
 
 const validJsonWorkedAbroadOne = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: abroadOneCountriesJson,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -162,28 +133,31 @@ const validJsonWorkedAbroadOne = {
 
 const validJsonWorkedAbroadTwo = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: abroadTwoCountriesJson,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, { countryQ: 'Country name', country: 'Country 2' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -191,28 +165,31 @@ const validJsonWorkedAbroadTwo = {
 
 const validJsonWorkedAbroadThree = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: abroadTheeCountriesJson,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, { countryQ: 'Country name', country: 'Country 2' }, { countryQ: 'Country name', country: 'Country 3' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -220,28 +197,31 @@ const validJsonWorkedAbroadThree = {
 
 const validJsonWorkedAbroadFour = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: abroadFourCountriesJson,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, { countryQ: 'Country name', country: 'Country 2' }, { countryQ: 'Country name', country: 'Country 3' }, { countryQ: 'Country name', country: 'Country 4' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -402,228 +382,35 @@ const formObjectWorkedAbroadFourExtendedButOnlyOneFirstCountry = {
   inviteKey,
 };
 
-const workedAbroadOneCountriesJsonExtended = [{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 1',
-  countryStatusQ: 'worked-abroad-country:header.title',
-  fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-  fromDate: {
-    month: '01',
-    year: '2010',
-  },
-  toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-  toDate: {
-    month: '02',
-    year: '2011',
-  },
-  referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-  referenceNumber: 'AA',
-}];
-
-const workedAbroadTwoCountriesJsonExtended = [workedAbroadOneCountriesJsonExtended[0],
-  {
-    countryQ: 'countries:fields.country.label',
-    country: 'Country 2',
-    countryStatusQ: 'worked-abroad-country:header.title',
-    fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-    fromDate: {
-      month: '02',
-      year: '2010',
-    },
-    toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-    toDate: {
-      month: '03',
-      year: '2011',
-    },
-    referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-    referenceNumber: 'AA',
-  }];
-
-const workedAbroadThreeCountriesJsonExtended = [workedAbroadTwoCountriesJsonExtended[0],
-  workedAbroadTwoCountriesJsonExtended[1],
-  {
-    countryQ: 'countries:fields.country.label',
-    country: 'Country 3',
-    countryStatusQ: 'worked-abroad-country:header.title',
-    fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-    fromDate: {
-      month: '03',
-      year: '2010',
-    },
-    toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-    toDate: {
-      month: '04',
-      year: '2011',
-    },
-    referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-    referenceNumber: 'AA',
-  }];
-
-const workedAbroadFourCountriesJsonExtended = [workedAbroadThreeCountriesJsonExtended[0],
-  workedAbroadThreeCountriesJsonExtended[1],
-  workedAbroadThreeCountriesJsonExtended[2],
-  {
-    countryQ: 'countries:fields.country.label',
-    country: 'Country 4',
-    countryStatusQ: 'worked-abroad-country:header.title',
-    fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-    fromDate: {
-      month: '04',
-      year: '2010',
-    },
-    toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-    toDate: {
-      month: '05',
-      year: '2011',
-    },
-    referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-    referenceNumber: 'AA',
-  }];
-
-const workedAbroadFourCountriesJsonFirstExtended = [{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 1',
-  countryStatusQ: 'worked-abroad-country:header.title',
-  fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-  fromDate: {
-    month: '04',
-    year: '2010',
-  },
-  toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-  toDate: {
-    month: '05',
-    year: '2011',
-  },
-  referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-  referenceNumber: 'AA',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 2',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 3',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 4',
-}];
-
-const workedAbroadFourCountriesJsonSecondExtended = [{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 1',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 2',
-  countryStatusQ: 'worked-abroad-country:header.title',
-  fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-  fromDate: {
-    month: '04',
-    year: '2010',
-  },
-  toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-  toDate: {
-    month: '05',
-    year: '2011',
-  },
-  referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-  referenceNumber: 'AA',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 3',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 4',
-}];
-
-const workedAbroadFourCountriesJsonThirdExtended = [{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 1',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 2',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 3',
-  countryStatusQ: 'worked-abroad-country:header.title',
-  fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-  fromDate: {
-    month: '04',
-    year: '2010',
-  },
-  toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-  toDate: {
-    month: '05',
-    year: '2011',
-  },
-  referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-  referenceNumber: 'AA',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 4',
-}];
-
-const workedAbroadFourCountriesJsonLastExtended = [{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 1',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 2',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 3',
-},
-{
-  countryQ: 'countries:fields.country.label',
-  country: 'Country 4',
-  countryStatusQ: 'worked-abroad-country:header.title',
-  fromDateQ: 'lived-abroad-country:fields.dateFrom.legend',
-  fromDate: {
-    month: '04',
-    year: '2010',
-  },
-  toDateQ: 'lived-abroad-country:fields.dateTo.legend',
-  toDate: {
-    month: '05',
-    year: '2011',
-  },
-  referenceNumberQ: 'worked-abroad-country:fields.referenceNumber.label',
-  referenceNumber: 'AA',
-}];
-
 const validJsonWorkedAbroadOneExtended = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadOneCountriesJsonExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{
+    countryQ: 'Country name', country: 'Country 1', countryStatusQ: 'When did you work in Country 1?', fromDateQ: 'From', fromDate: { month: '01', year: '2010' }, toDateQ: 'To', toDate: { month: '02', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -631,28 +418,35 @@ const validJsonWorkedAbroadOneExtended = {
 
 const validJsonWorkedAbroadTwoExtended = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadTwoCountriesJsonExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{
+    countryQ: 'Country name', country: 'Country 1', countryStatusQ: 'When did you work in Country 1?', fromDateQ: 'From', fromDate: { month: '01', year: '2010' }, toDateQ: 'To', toDate: { month: '02', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 2', countryStatusQ: 'When did you work in Country 2?', fromDateQ: 'From', fromDate: { month: '02', year: '2010' }, toDateQ: 'To', toDate: { month: '03', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -660,28 +454,37 @@ const validJsonWorkedAbroadTwoExtended = {
 
 const validJsonWorkedAbroadThreeExtended = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadThreeCountriesJsonExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{
+    countryQ: 'Country name', country: 'Country 1', countryStatusQ: 'When did you work in Country 1?', fromDateQ: 'From', fromDate: { month: '01', year: '2010' }, toDateQ: 'To', toDate: { month: '02', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 2', countryStatusQ: 'When did you work in Country 2?', fromDateQ: 'From', fromDate: { month: '02', year: '2010' }, toDateQ: 'To', toDate: { month: '03', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 3', countryStatusQ: 'When did you work in Country 3?', fromDateQ: 'From', fromDate: { month: '03', year: '2010' }, toDateQ: 'To', toDate: { month: '04', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -689,28 +492,39 @@ const validJsonWorkedAbroadThreeExtended = {
 
 const validJsonWorkedAbroadFourExtended = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadFourCountriesJsonExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{
+    countryQ: 'Country name', country: 'Country 1', countryStatusQ: 'When did you work in Country 1?', fromDateQ: 'From', fromDate: { month: '01', year: '2010' }, toDateQ: 'To', toDate: { month: '02', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 2', countryStatusQ: 'When did you work in Country 2?', fromDateQ: 'From', fromDate: { month: '02', year: '2010' }, toDateQ: 'To', toDate: { month: '03', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 3', countryStatusQ: 'When did you work in Country 3?', fromDateQ: 'From', fromDate: { month: '03', year: '2010' }, toDateQ: 'To', toDate: { month: '04', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, {
+    countryQ: 'Country name', country: 'Country 4', countryStatusQ: 'When did you work in Country 4?', fromDateQ: 'From', fromDate: { month: '04', year: '2010' }, toDateQ: 'To', toDate: { month: '05', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -718,28 +532,33 @@ const validJsonWorkedAbroadFourExtended = {
 
 const validJsonWithOnly4thCountryDetail = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadFourCountriesJsonLastExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, { countryQ: 'Country name', country: 'Country 2' }, { countryQ: 'Country name', country: 'Country 3' }, {
+    countryQ: 'Country name', country: 'Country 4', countryStatusQ: 'When did you work in Country 4?', fromDateQ: 'From', fromDate: { month: '04', year: '2010' }, toDateQ: 'To', toDate: { month: '05', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -747,28 +566,33 @@ const validJsonWithOnly4thCountryDetail = {
 
 const validJsonWithOnlyThirdCountryDetail = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadFourCountriesJsonThirdExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, { countryQ: 'Country name', country: 'Country 2' }, {
+    countryQ: 'Country name', country: 'Country 3', countryStatusQ: 'When did you work in Country 3?', fromDateQ: 'From', fromDate: { month: '04', year: '2010' }, toDateQ: 'To', toDate: { month: '05', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, { countryQ: 'Country name', country: 'Country 4' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -776,28 +600,33 @@ const validJsonWithOnlyThirdCountryDetail = {
 
 const validJsonWithOnlySecondCountryDetail = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadFourCountriesJsonSecondExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }, {
+    countryQ: 'Country name', country: 'Country 2', countryStatusQ: 'When did you work in Country 2?', fromDateQ: 'From', fromDate: { month: '04', year: '2010' }, toDateQ: 'To', toDate: { month: '05', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, { countryQ: 'Country name', country: 'Country 3' }, { countryQ: 'Country name', country: 'Country 4' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -805,28 +634,33 @@ const validJsonWithOnlySecondCountryDetail = {
 
 const validJsonWithOnlyFirstCountryDetail = {
   livedAbroad: false,
-  livedAbroadQ: expectedLivedAbroadQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
   workedAbroad: true,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  workedPeriodsAbroad: workedAbroadFourCountriesJsonFirstExtended,
-  workedPeriodsAbroadQ: expectedWorkedPeriodAbroadsQ,
-  contactDetail: {
-    homeTelephoneNumber: '1234',
-    homeTelephoneNumberQ: expectedHomeTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [{
+    countryQ: 'Country name', country: 'Country 1', countryStatusQ: 'When did you work in Country 1?', fromDateQ: 'From', fromDate: { month: '04', year: '2010' }, toDateQ: 'To', toDate: { month: '05', year: '2011' }, referenceNumberQ: 'What was the equivalent of your National Insurance number here?', referenceNumber: 'AA',
+  }, { countryQ: 'Country name', country: 'Country 2' }, { countryQ: 'Country name', country: 'Country 3' }, { countryQ: 'Country name', country: 'Country 4' }],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJson,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -835,56 +669,62 @@ const validJsonWithOnlyFirstCountryDetail = {
 const accountStatus = { result: 'Fail' };
 
 describe('Claim object ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   describe(' convertor ', () => {
     describe(' worked abroad countries  ', () => {
-      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 1', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadOne, accountStatus);
+      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 1', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadOne, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadOne));
       });
-      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 2', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadTwo, accountStatus);
+      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 2', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadTwo, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadTwo));
       });
-      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 3', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadThree, accountStatus);
+      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 3', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadThree, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadThree));
       });
-      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 4', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadFour, accountStatus);
+      it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 4', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadFour, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadFour));
       });
     });
     describe(' worked abroad countries with extended details', () => {
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadOneExtended, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadOneExtended, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadOneExtended));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 2', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadTwoExtended, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 2', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadTwoExtended, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadTwoExtended));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 3', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadThreeExtended, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 3', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadThreeExtended, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadThreeExtended));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 4', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadFourExtended, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 4', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadFourExtended, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWorkedAbroadFourExtended));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the forth position', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadFourExtendedButOnlyOneCountry, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the forth position', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadFourExtendedButOnlyOneCountry, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnly4thCountryDetail));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the third position', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadThirdExtendedButOnlyOneCountry, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the third position', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadThirdExtendedButOnlyOneCountry, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlyThirdCountryDetail));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the second position', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadSecondExtendedButOnlyOneCountry, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the second position', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadSecondExtendedButOnlyOneCountry, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlySecondCountryDetail));
       });
-      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the first position', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectWorkedAbroadFourExtendedButOnlyOneFirstCountry, accountStatus);
+      it('should convert object to valid json with workedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the first position', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectWorkedAbroadFourExtendedButOnlyOneFirstCountry, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlyFirstCountryDetail));
       });
     });
