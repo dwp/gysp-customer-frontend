@@ -16,6 +16,7 @@ describe('Request helper ', () => {
       assert.equal(postCall.headers['Content-Type'], 'application/json');
     });
   });
+
   describe('Request helper ', () => {
     describe('generateGetCall  ', () => {
       it('should return valid object when url and body is supplied', () => {

@@ -10,6 +10,11 @@ const nock = require('nock');
 
 nock.disableNetConnect();
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
+
 const responseHelper = require('../../lib/responseHelper');
 const controller = require('../../../app/routes/start-date/functions');
 
@@ -35,10 +40,17 @@ const validStatePensionStartDateErrorNVRequest = { session: { userDateOfBirthInf
 const validStatePensionStartDateErrorRequestEdit = { session: { editSection: 'claim-from-date' } };
 
 describe('Start date controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
     mockdate.set(new Date('2018-03-01'));
   });
+
   afterEach(() => {
     mockdate.reset();
   });
@@ -57,7 +69,7 @@ describe('Start date controller ', () => {
     describe('postStatePensionStartDate function (post /when-do-you-want-your-state-pension)', () => {
       it('should return view with validation errors when called with empty data', (done) => {
         controller.postStatePensionStartDate(emptyFormDataBeforeSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:beforeSpa.fields.claimFromDate.errors.empty');
+        assert.equal(genericResponse.data.errors.date.text, 'Enter a date that you want to get your State Pension.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');
@@ -66,7 +78,7 @@ describe('Start date controller ', () => {
 
       it('should return view with validation errors when called with date that is incorrectly formatted', (done) => {
         controller.postStatePensionStartDate(invalidFormatDataBeforeSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:beforeSpa.fields.claimFromDate.errors.format');
+        assert.equal(genericResponse.data.errors.date.text, 'Enter a real date.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');
@@ -75,7 +87,7 @@ describe('Start date controller ', () => {
 
       it('should return view with validation errors when called with date that is before state pension date', (done) => {
         controller.postStatePensionStartDate(invalidDateBeforeStatePensionDateBeforeSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:beforeSpa.fields.claimFromDate.errors.before');
+        assert.equal(genericResponse.data.errors.date.text, 'Date cannot be before your State Pension date.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');
@@ -116,7 +128,7 @@ describe('Start date controller ', () => {
     describe('postStatePensionStartDate function (post /when-do-you-want-your-state-pension)', () => {
       it('should return view with validation errors when called with empty data', (done) => {
         controller.postStatePensionStartDate(emptyFormDataAfterSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:afterSpa.fields.claimFromDate.errors.empty');
+        assert.equal(genericResponse.data.errors.date.text, 'Enter a date that you want to get your State Pension.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');
@@ -125,7 +137,7 @@ describe('Start date controller ', () => {
 
       it('should return view with validation errors when called with date that is incorrectly formatted', (done) => {
         controller.postStatePensionStartDate(invalidFormatDataAfterSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:afterSpa.fields.claimFromDate.errors.format');
+        assert.equal(genericResponse.data.errors.date.text, 'Enter a real date.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');
@@ -134,7 +146,7 @@ describe('Start date controller ', () => {
 
       it('should return view with validation errors when called with date that is before state pension date', (done) => {
         controller.postStatePensionStartDate(invalidDateBeforeStatePensionDateAfterSpa, genericResponse);
-        assert.equal(genericResponse.data.errors.date.text, 'pension-start-date:afterSpa.fields.claimFromDate.errors.before');
+        assert.equal(genericResponse.data.errors.date.text, 'Date cannot be before your State Pension date.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
         assert.equal(genericResponse.data.displayText, 'system');

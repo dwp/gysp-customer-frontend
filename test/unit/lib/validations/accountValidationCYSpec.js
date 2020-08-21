@@ -1,7 +1,9 @@
 const { assert } = require('chai');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/accountValidation');
 
@@ -111,11 +113,14 @@ const buildingObjects = {
 };
 
 describe('accountValidator - CY', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   beforeEach((done) => {
-    i18n.setLng('cy', done());
+    i18next.changeLanguage('cy', done());
   });
 
   describe('accountValidator summary', () => {
@@ -124,6 +129,7 @@ describe('accountValidator - CY', () => {
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
       assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBankSummaryCyResponse));
     });
+
     it('should return building errors when called with building as a select', () => {
       const accountValidationResponse = validation.accountValidator(paymentMethodBuildingEmpty, 'cy');
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
@@ -136,10 +142,12 @@ describe('accountValidator - CY', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodBank);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
+
     it('should return no error when building is supplied ', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodBuilding);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
+
     it('should return error when nothing is supplied - CY', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodEmpty);
       assert.equal(accountValidationResponse.paymentMethod.visuallyHiddenText, 'Gwall');

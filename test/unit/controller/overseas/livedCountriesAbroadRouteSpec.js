@@ -87,6 +87,7 @@ describe('Overseas controller ', () => {
       assert.isUndefined(genericResponse.data.details);
       done();
     });
+
     it('should return view name when called with view session data when session is populated', (done) => {
       overseasController.whatCountriesHaveYouLivedInGet(sessionRequest, genericResponse, countryList);
       assert.equal(genericResponse.viewName, 'pages/country-select');
@@ -170,17 +171,20 @@ describe('Overseas controller ', () => {
       assert.deepEqual(genericResponse.data.country, { country: 'France', url: 'france' });
       done();
     });
+
     it('should return redirect to have you worked outside of the uk when valid details are used', (done) => {
       overseasController.whenDidYouLivePost(countrySessionWithValidPost, genericResponse);
       assert.equal(genericResponse.address, '/have-you-worked-outside-of-the-uk');
       assert.equal(countrySessionWithValidPost.session['lived-abroad-countries-details'][0].country, 'France');
       done();
     });
+
     it('should return redirect to have you worked outside of the uk when valid second details are used', (done) => {
       overseasController.whenDidYouLivePost(countrySessionWithValidPostAndSecondCountry, genericResponse);
       assert.equal(genericResponse.address, '/when-did-you-live-in-germany');
       done();
     });
+
     it('should return redirect to check and change when valid details are used and in edit mode', (done) => {
       overseasController.whenDidYouLivePost(countrySessionWithValidPostEdit, genericResponse);
       assert.equal(genericResponse.address, '/check-your-details');

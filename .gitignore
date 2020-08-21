@@ -9,6 +9,7 @@ dumb.rdb
 .project
 .idea
 .nyc_output/
+.vscode/*
 .env
 .DS_Store
 *.tar

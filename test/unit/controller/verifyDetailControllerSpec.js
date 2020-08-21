@@ -1,12 +1,16 @@
 const { assert } = require('chai');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
 const nock = require('nock');
+
+const i18nextConfig = require('../../../config/i18next');
 
 nock.disableNetConnect();
 
 const verifyDetailController = require('../../../app/routes/verify-detail/functions');
 const responseHelper = require('../../lib/responseHelper');
-
 
 let genericResponse = {};
 const validUserRequest = {
@@ -47,12 +51,12 @@ const validNoPostRequest = Object.assign({}, JSON.parse(JSON.stringify(validUser
 
 const invalidAddressError = {
   error: {
-    text: 'verify-your-details:fields.address.errors.required',
-    visuallyHiddenText: 'app:error-message.visuallyHiddenText',
+    text: 'Select Yes if this is your current address.',
+    visuallyHiddenText: 'Error',
   },
   errorSummary: [{
     href: '#address-yes',
-    text: 'verify-your-details:fields.address.errors.required',
+    text: 'Select Yes if this is your current address.',
     attributes: {
       'data-journey': undefined,
     },
@@ -60,6 +64,12 @@ const invalidAddressError = {
 };
 
 describe('Verify detail controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
     genericResponse.locals.traceID = '';

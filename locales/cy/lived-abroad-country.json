@@ -1,7 +1,7 @@
 {
   "header": {
-    "country": "Gwlad __CURRENT__ o __TOTAL__",
-    "title": "Pryd wnaethoch chi fyw yn:  __COUNTRY__?"
+    "country": "Gwlad {{CURRENT}} o {{TOTAL}}",
+    "title": "Pryd wnaethoch chi fyw yn:  {{COUNTRY}}?"
   },
   "fields": {
     "dateFrom": {

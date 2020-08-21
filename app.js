@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
 const favicon = require('serve-favicon');
-const i18n = require('i18next');
+const i18next = require('i18next');
+const i18nextHttpMiddleware = require('i18next-http-middleware');
+const i18nextFsBackend = require('i18next-fs-backend');
 const helmet = require('helmet');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
@@ -22,7 +24,7 @@ const domain = require('./lib/urlExtract');
 const log = require('./config/logging')('customer-frontend', config.application.logs);
 
 const app = express();
-const i18nConfig = require('./config/i18n');
+const i18nextConfig = require('./config/i18next');
 
 nunjucks.configure([
   'app/views',
@@ -36,9 +38,11 @@ nunjucks.configure([
 });
 
 // Multilingual information
-i18n.init(i18nConfig);
-app.use(i18n.handle);
-i18n.registerAppHelper(app);
+i18next
+  .use(i18nextFsBackend)
+  .init(i18nextConfig);
+
+app.use(i18nextHttpMiddleware.handle(i18next, { ignoreRoutes: ['/public'] }));
 
 // Compression
 app.use(compression());
@@ -115,10 +119,10 @@ app.use(bodyParser.urlencoded({
 
 app.use((req, res, next) => {
   if (req.session && req.session.lang) {
-    req.i18n.setLng(req.session.lang);
+    req.i18n.changeLanguage(req.session.lang);
     res.locals.htmlLang = req.session.lang;
   } else {
-    res.locals.htmlLang = req.i18n.lng();
+    res.locals.htmlLang = req.i18n.language;
   }
   next();
 });
@@ -213,7 +217,7 @@ app.use((req, res, next) => {
   res.locals.assetPath = '/assets';
   res.locals.serviceURL = serviceURL;
   res.locals.mountUrl = config.mountUrl;
-  res.locals.serviceName = i18n.t('app:service_name');
+  res.locals.serviceName = i18next.t('app:service_name');
   res.locals.keyServiceApiGateway = config.application.urls.keyServiceApiGateway;
   res.locals.claimServiceApiGateway = config.application.urls.claimServiceApiGateway;
   res.locals.customerServiceApiGateway = config.application.urls.customerServiceApiGateway;
@@ -353,7 +357,7 @@ app.use((err, req, res, next) => {
 
   // Certain errors 413, locals are not set, this is to make sure they are set.
   res.locals.serviceURL = serviceURL;
-  res.locals.serviceName = i18n.t('app:service_name');
+  res.locals.serviceName = i18next.t('app:service_name');
   res.locals.assetPath = '/assets';
 
   if (status !== httpStatus.INTERNAL_SERVER_ERROR || status !== httpStatus.FORBIDDEN) {

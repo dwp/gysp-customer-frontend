@@ -1,8 +1,10 @@
 const { assert } = require('chai');
 const moment = require('moment');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/startDateValidation');
 
@@ -65,9 +67,12 @@ const beforeSpaKey = 'beforeSpa';
 const afterSpaKey = 'afterSpa';
 
 describe('start date validation - CY', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('before spa', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.claimFromDateValidation(blankObject, beforeSpaDate, beforeSpaKey, 'cy');
@@ -75,6 +80,7 @@ describe('start date validation - CY', () => {
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.');
       assert.equal(validationResponse.errorSummary[0].text, 'Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.');
     });
+
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.claimFromDateValidation(badDayFormObject, beforeSpaDate, beforeSpaKey, 'cy');
       assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
@@ -122,6 +128,7 @@ describe('start date validation - CY', () => {
       assert.isUndefined(validationResponse.errorSummary);
     });
   });
+
   describe('after spa', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.claimFromDateValidation(blankObject, afterSpaDate, afterSpaKey, 'cy');
@@ -129,6 +136,7 @@ describe('start date validation - CY', () => {
       assert.equal(validationResponse.date.text, 'Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.');
       assert.equal(validationResponse.errorSummary[0].text, 'Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.');
     });
+
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.claimFromDateValidation(badDayFormObject, afterSpaDate, afterSpaKey, 'cy');
       assert.equal(validationResponse.date.visuallyHiddenText, 'Gwall');
