@@ -58,7 +58,7 @@
     "html5shiv": "3.7.3",
     "husky": "4.2.5",
     "mocha": "8.1.1",
-    "mockdate": "2.0.5",
+    "mockdate": "3.0.2",
     "nock": "13.0.4",
     "nyc": "15.1.0",
     "proxyquire": "2.1.3",
