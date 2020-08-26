@@ -115,7 +115,7 @@ describe('accountValidator - CY', () => {
     i18n.init(i18nConfig, done);
   });
   beforeEach((done) => {
-    i18n.setLng('cy', done());
+    i18n.changeLanguage('cy', done());
   });
 
   describe('accountValidator summary', () => {
