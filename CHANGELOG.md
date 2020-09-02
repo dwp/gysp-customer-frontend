@@ -1,213 +1,197 @@
-<a name="8.1.1"></a>
+## [8.1.2](https://github.com/dwp/gysp-customer-frontend/compare/8.1.1...8.1.2) (2020-09-02)
+
+
+
 ## [8.1.1](https://github.com/dwp/gysp-customer-frontend/compare/8.1.0...8.1.1) (2020-08-18)
 
 
 ### Bug Fixes
 
-* **html:** fix html mark up ([5f61d3b](https://github.com/dwp/gysp-customer-frontend/commit/5f61d3b))
+* **html:** fix html mark up ([5f61d3b](https://github.com/dwp/gysp-customer-frontend/commit/5f61d3be6084d17e3502f5f7bacb82c7fecb4ea8))
 
 
 
-<a name="8.1.0"></a>
 # [8.1.0](https://github.com/dwp/gysp-customer-frontend/compare/8.0.0...8.1.0) (2020-05-13)
 
 
 
-<a name="8.0.0"></a>
 # [8.0.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.10.0...8.0.0) (2020-05-04)
 
 
 ### Features
 
-* **docker:** config for deployment to ECS ([cf1851a](https://github.com/dwp/gysp-customer-frontend/commit/cf1851a))
+* **docker:** config for deployment to ECS ([cf1851a](https://github.com/dwp/gysp-customer-frontend/commit/cf1851a5ad0995de9a760792d3ef1ecdf9dafb4b))
 
 
 
-<a name="7.10.0"></a>
 # [7.10.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.2...v7.10.0) (2020-04-28)
 
 
 ### Features
 
-* **benefits:** remove benefits screen ([22c333a](https://github.com/dwp/gysp-customer-frontend/commit/22c333a))
-* **help:** update help content for covid-19 ([b1cb145](https://github.com/dwp/gysp-customer-frontend/commit/b1cb145))
+* **benefits:** remove benefits screen ([22c333a](https://github.com/dwp/gysp-customer-frontend/commit/22c333a4a640f431d0f47e34c2ad255c6f54bfba))
+* **help:** update help content for covid-19 ([b1cb145](https://github.com/dwp/gysp-customer-frontend/commit/b1cb14561849b8c186d4e56c37ffd9188d31f640))
 
 
 
-<a name="7.9.2"></a>
 ## [7.9.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.1...v7.9.2) (2020-03-18)
 
 
 ### Bug Fixes
 
-* **account:** validation for bank account number ([9c81d9b](https://github.com/dwp/gysp-customer-frontend/commit/9c81d9b))
-* **contact:** add validation for special UTF-8 chars ([855467d](https://github.com/dwp/gysp-customer-frontend/commit/855467d))
+* **account:** validation for bank account number ([9c81d9b](https://github.com/dwp/gysp-customer-frontend/commit/9c81d9bf99659aa2bb78473f53a86679251600f4))
+* **contact:** add validation for special UTF-8 chars ([855467d](https://github.com/dwp/gysp-customer-frontend/commit/855467dd3d04c26aa0eaa5b1c7b86d530f11aeac))
 
 
 
-<a name="7.9.1"></a>
 ## [7.9.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.9.0...v7.9.1) (2020-02-19)
 
 
 ### Bug Fixes
 
-* **bank validation:** corrected api key ([841518a](https://github.com/dwp/gysp-customer-frontend/commit/841518a))
-* **verify:** corrected route and added unit tests ([b0438e5](https://github.com/dwp/gysp-customer-frontend/commit/b0438e5))
+* **bank validation:** corrected api key ([841518a](https://github.com/dwp/gysp-customer-frontend/commit/841518adcaf2e629dc8f383bc923d90f88a6b873))
+* **verify:** corrected route and added unit tests ([b0438e5](https://github.com/dwp/gysp-customer-frontend/commit/b0438e50d51ab54f0d7265f35b913c97bf961424))
 
 
 
-<a name="7.9.0"></a>
 # [7.9.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.4...v7.9.0) (2020-02-05)
 
 
 ### Features
 
-* docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51))
-* **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee))
+* docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51bb6e58d8d9bb89f59f7611a69d1626d37))
+* **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee8565b81bcf6fd27523b7dd8eddc6d4dc3))
 
 
 
-<a name="7.8.4"></a>
 ## [7.8.4](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.3...v7.8.4) (2019-11-06)
 
 
 ### Bug Fixes
 
-* **welsh:** add worked in To, month, year translations ([0263131](https://github.com/dwp/gysp-customer-frontend/commit/0263131))
+* **welsh:** add worked in To, month, year translations ([0263131](https://github.com/dwp/gysp-customer-frontend/commit/0263131b6f0b2ee9c78e4f265581e8dc41650e88))
 
 
 
-<a name="7.8.3"></a>
 ## [7.8.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.2...v7.8.3) (2019-10-22)
 
 
 ### Bug Fixes
 
-* **complete:** reference number update ([c0543f0](https://github.com/dwp/gysp-customer-frontend/commit/c0543f0))
+* **complete:** reference number update ([c0543f0](https://github.com/dwp/gysp-customer-frontend/commit/c0543f047a7e19559b062a59443d5852ae8b5a98))
 
 
 ### Features
 
-* **check-answers:** update content ([fe06dbd](https://github.com/dwp/gysp-customer-frontend/commit/fe06dbd))
+* **check-answers:** update content ([fe06dbd](https://github.com/dwp/gysp-customer-frontend/commit/fe06dbdcb3322910a34c88b0c5bd79bbe04b170e))
 
 
 
-<a name="7.8.2"></a>
 ## [7.8.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.1...v7.8.2) (2019-09-24)
 
 
 ### Bug Fixes
 
-* **footer:** corrected cookie href ([ac0de98](https://github.com/dwp/gysp-customer-frontend/commit/ac0de98))
-* **personal-data:** error message href ([15e0424](https://github.com/dwp/gysp-customer-frontend/commit/15e0424))
+* **footer:** corrected cookie href ([ac0de98](https://github.com/dwp/gysp-customer-frontend/commit/ac0de9896946d4364a5012d898d2557856377adc))
+* **personal-data:** error message href ([15e0424](https://github.com/dwp/gysp-customer-frontend/commit/15e04241ec501b9aa863899b21747d7efd5c9b13))
 
 
 
-<a name="7.8.1"></a>
 ## [7.8.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.8.0...v7.8.1) (2019-09-10)
 
 
 ### Bug Fixes
 
-* **check-change:** corrected change translation for welsh journey ([f9c1a74](https://github.com/dwp/gysp-customer-frontend/commit/f9c1a74))
-* **personal-data:** fixed duplicate id's for radios ([ca33a57](https://github.com/dwp/gysp-customer-frontend/commit/ca33a57))
+* **check-change:** corrected change translation for welsh journey ([f9c1a74](https://github.com/dwp/gysp-customer-frontend/commit/f9c1a7418402bf151b4bb29d6501e72266c4b97b))
+* **personal-data:** fixed duplicate id's for radios ([ca33a57](https://github.com/dwp/gysp-customer-frontend/commit/ca33a579c5b3dc1142bf8e6a8d5b780f925ea178))
 
 
 
-<a name="7.8.0"></a>
 # [7.8.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.3...v7.8.0) (2019-08-27)
 
 
 ### Features
 
-* **check-change:** update to use summary list component ([3f749c1](https://github.com/dwp/gysp-customer-frontend/commit/3f749c1))
-* **overseas:** no invite code dropout screen ([440492f](https://github.com/dwp/gysp-customer-frontend/commit/440492f))
-* **overseas:** remove uk and ni details on address dropout ([06f5b6e](https://github.com/dwp/gysp-customer-frontend/commit/06f5b6e))
+* **check-change:** update to use summary list component ([3f749c1](https://github.com/dwp/gysp-customer-frontend/commit/3f749c14d40f72df9a3a3810e71f8b61d5f2af79))
+* **overseas:** no invite code dropout screen ([440492f](https://github.com/dwp/gysp-customer-frontend/commit/440492fa8ad7d12e5dbbfe8e262244966cbd5162))
+* **overseas:** remove uk and ni details on address dropout ([06f5b6e](https://github.com/dwp/gysp-customer-frontend/commit/06f5b6eed4b1ce457cf0584cc45fb93c7e6f9e54))
 
 
 
-<a name="7.7.3"></a>
 ## [7.7.3](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.2...v7.7.3) (2019-08-13)
 
 
 ### Bug Fixes
 
-* **check-change:** clean up session if user clicks browser back button ([8932a65](https://github.com/dwp/gysp-customer-frontend/commit/8932a65))
-* **check-change:** fix issues when change section has more than 1 screen ([8a9ba3a](https://github.com/dwp/gysp-customer-frontend/commit/8a9ba3a))
-* **page-titles:** corrected incorrect page titles ([17bee53](https://github.com/dwp/gysp-customer-frontend/commit/17bee53))
+* **check-change:** clean up session if user clicks browser back button ([8932a65](https://github.com/dwp/gysp-customer-frontend/commit/8932a65f3b51c0b23024a0e5dd94587fda21e178))
+* **check-change:** fix issues when change section has more than 1 screen ([8a9ba3a](https://github.com/dwp/gysp-customer-frontend/commit/8a9ba3af5181cb1183636902260f25ed95bb0137))
+* **page-titles:** corrected incorrect page titles ([17bee53](https://github.com/dwp/gysp-customer-frontend/commit/17bee531def79f1cf21da64c5149ec8233a276ef))
 
 
 
-<a name="7.7.2"></a>
 ## [7.7.2](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.1...v7.7.2) (2019-07-16)
 
 
 ### Bug Fixes
 
-* **check-change:** answers in table now wrap for long strings ([06d1752](https://github.com/dwp/gysp-customer-frontend/commit/06d1752))
+* **check-change:** answers in table now wrap for long strings ([06d1752](https://github.com/dwp/gysp-customer-frontend/commit/06d17528c11ad44859057792ccbc1b0984ab967b))
 
 
 
-<a name="7.7.1"></a>
 ## [7.7.1](https://github.com/dwp/gysp-customer-frontend/compare/v7.7.0...v7.7.1) (2019-07-03)
 
 
 
-<a name="7.7.0"></a>
 # [7.7.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.6.0...v7.7.0) (2019-06-19)
 
 
 ### Bug Fixes
 
-* **cookie-page:** update what browser link and corrected link colours ([407232f](https://github.com/dwp/gysp-customer-frontend/commit/407232f))
-* **declaration:** add double submit protect ([ac4e2c4](https://github.com/dwp/gysp-customer-frontend/commit/ac4e2c4))
-* **layout:** fix layout issue in IE11 ([c3da6fa](https://github.com/dwp/gysp-customer-frontend/commit/c3da6fa))
+* **cookie-page:** update what browser link and corrected link colours ([407232f](https://github.com/dwp/gysp-customer-frontend/commit/407232fe69527f2ecc9f9adc5a9e3e45ba41c295))
+* **declaration:** add double submit protect ([ac4e2c4](https://github.com/dwp/gysp-customer-frontend/commit/ac4e2c49e79d92d76ab5e2ee34cbdbad07c9a8e1))
+* **layout:** fix layout issue in IE11 ([c3da6fa](https://github.com/dwp/gysp-customer-frontend/commit/c3da6fac251f89fba091bfb15297afcaa896827b))
 
 
 
-<a name="7.6.0"></a>
 # [7.6.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.5.0...v7.6.0) (2019-06-05)
 
 
 ### Bug Fixes
 
-* **account:** update account title for PDF ([ab30504](https://github.com/dwp/gysp-customer-frontend/commit/ab30504))
-* **packages:** update packages to fix vulnerabilities ([197ed75](https://github.com/dwp/gysp-customer-frontend/commit/197ed75))
+* **account:** update account title for PDF ([ab30504](https://github.com/dwp/gysp-customer-frontend/commit/ab30504be2fbbfd2a2452556683bd68638f2ca39))
+* **packages:** update packages to fix vulnerabilities ([197ed75](https://github.com/dwp/gysp-customer-frontend/commit/197ed75c6cea9b7f3dfe2fa9f2690129a73775f6))
 
 
 ### Features
 
-* **error-message:** error message visuallyHiddenText for EN and CY ([c7f861f](https://github.com/dwp/gysp-customer-frontend/commit/c7f861f))
-* **errors:** update error validation and drop out pages ([d647462](https://github.com/dwp/gysp-customer-frontend/commit/d647462))
+* **error-message:** error message visuallyHiddenText for EN and CY ([c7f861f](https://github.com/dwp/gysp-customer-frontend/commit/c7f861f3c625f0ab5e3d4b1b6a3a1a6a12002532))
+* **errors:** update error validation and drop out pages ([d647462](https://github.com/dwp/gysp-customer-frontend/commit/d6474623c7639400987ccff88e84040de77e9ee4))
 
 
 
-<a name="7.5.0"></a>
 # [7.5.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.4.0...v7.5.0) (2019-04-23)
 
 
 ### Features
 
-* **content:** add overseas number to verify journey ([6ac32e7](https://github.com/dwp/gysp-customer-frontend/commit/6ac32e7))
+* **content:** add overseas number to verify journey ([6ac32e7](https://github.com/dwp/gysp-customer-frontend/commit/6ac32e7331b2a30a7e150ee2587fa716808712f1))
 
 
 
-<a name="7.4.0"></a>
 # [7.4.0](https://github.com/dwp/gysp-customer-frontend/compare/v7.3.0...v7.4.0) (2019-04-11)
 
 
 ### Bug Fixes
 
-* **accessibility:** corrected main content id for skip link ([d8f3c39](https://github.com/dwp/gysp-customer-frontend/commit/d8f3c39))
+* **accessibility:** corrected main content id for skip link ([d8f3c39](https://github.com/dwp/gysp-customer-frontend/commit/d8f3c397532e4e0f6f861cfa1cff22eeacac1425))
 
 
 ### Features
 
-* **content:** update EN and CY language files ([a588475](https://github.com/dwp/gysp-customer-frontend/commit/a588475))
+* **content:** update EN and CY language files ([a588475](https://github.com/dwp/gysp-customer-frontend/commit/a5884756a829250543c10df2bc519a7817795b2b))
 
 
 
-<a name="7.3.0"></a>
 # 7.3.0 (2019-04-02)
 
 
