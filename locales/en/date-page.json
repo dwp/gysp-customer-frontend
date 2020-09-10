@@ -3,17 +3,17 @@
   "h1": "Your State Pension date",
   "beforeSpa": {
     "p1": {
-      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
-    "p2": "You will get your State Pension from this date unless<br />you <a href='__startPensionDatePage__' id='different-date' class='govuk-link'>tell us a different date.</a>"
+    "p2": "You will get your State Pension from this date unless<br />you <a href='{{startPensionDatePage}}' id='different-date' class='govuk-link'>tell us a different date.</a>"
   },
   "afterSpa": {
     "p1": {
-      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
-    "p2": "If you do not want your State Pension from this date, <a href='__startPensionDatePage__' id='different-date' class='govuk-link'>tell us a different date.</a>"
+    "p2": "If you do not want your State Pension from this date, <a href='{{startPensionDatePage}}' id='different-date' class='govuk-link'>tell us a different date.</a>"
   },
   "button": "Continue"
 }

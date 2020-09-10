@@ -11,7 +11,7 @@
     "auth": {
       "invite": "auth:clicked-box:invite-code",
       "havent-got-letter": "auth:clicked-link:i-havent-got-my-letter-with-me",
-      "address": "auth:clicked-radio:res-address-__VALUE__",
+      "address": "auth:clicked-radio:res-address-{{VALUE}}",
       "ni-contact": "auth:clicked-link:ni-contact",
       "error": {
         "invite-key": "auth:error:invite-code"
@@ -21,7 +21,7 @@
       "pageview": "/auth/overseas",
       "invite": "auth-overseas:clicked-box:invite-code",
       "havent-got-letter": "auth-overseas:clicked-link:i-havent-got-my-letter-with-me",
-      "address": "auth-overseas:clicked-radio:res-address-__VALUE__",
+      "address": "auth-overseas:clicked-radio:res-address-{{VALUE}}",
       "ni-contact": "auth-overseas:clicked-link:ni-contact",
       "error": {
         "invite-key": "auth-overseas:error:invite-code"
@@ -31,29 +31,29 @@
       "error": "dob-confirmation:error:dob"
     },
     "lived-abroad": {
-      "lived-outside": "have-you-ever-lived-outside-of-the-uk:clicked-radio:lived-outside-__VALUE__",
+      "lived-outside": "have-you-ever-lived-outside-of-the-uk:clicked-radio:lived-outside-{{VALUE}}",
       "error": "have-you-ever-lived-outside-of-the-uk:error:radio-button"
     },
     "worked-abroad": {
-      "worked-outside": "have-you-worked-outside-of-the-uk:clicked-radio:worked-outside-__VALUE__",
+      "worked-outside": "have-you-worked-outside-of-the-uk:clicked-radio:worked-outside-{{VALUE}}",
       "error": "have-you-worked-outside-of-the-uk:error:radio-button"
     },
     "country-details": {
-      "date-to": "__URL__:clicked-box:date-to",
-      "date-from": "__URL__:clicked-box:date-from",
-      "referenceNumber": "__URL__:clicked-box:reference-number",
-      "error": "__URL__:error:__FIELD__"
+      "date-to": "{{URL}}:clicked-box:date-to",
+      "date-from": "{{URL}}:clicked-box:date-from",
+      "referenceNumber": "{{URL}}:clicked-box:reference-number",
+      "error": "{{URL}}:error:{{FIELD}}"
     },
     "marital-select": {
-      "status": "what-is-your-current-marital-status:clicked-radio:marital-__VALUE__",
+      "status": "what-is-your-current-marital-status:clicked-radio:marital-{{VALUE}}",
       "error": "what-is-your-current-marital-status:error:radio-button"
     },
     "martial-details": {
-      "date": "__URL__:clicked-box:date",
-      "first-name": "__URL__:clicked-box:first-name",
-      "last-name": "__URL__:clicked-box:last-name",
-      "other-name": "__URL__:clicked-box:other-name",
-      "date-of-birth": "__URL__:clicked-box:date"
+      "date": "{{URL}}:clicked-box:date",
+      "first-name": "{{URL}}:clicked-box:first-name",
+      "last-name": "{{URL}}:clicked-box:last-name",
+      "other-name": "{{URL}}:clicked-box:other-name",
+      "date-of-birth": "{{URL}}:clicked-box:date"
     },
     "marital-date": {
       "married": "/what-date-did-you-get-married:error:relationship-date",
@@ -64,52 +64,52 @@
     },
     "marital-partner": {
       "married": {
-        "error": "/about-your-spouse:error:__FIELD__"
+        "error": "/about-your-spouse:error:{{FIELD}}"
       },
       "civil": {
-        "error": "/about-your-civil-partner:error:__FIELD__"
+        "error": "/about-your-civil-partner:error:{{FIELD}}"
       },
       "divorced": {
-        "error": "/about-your-ex-spouse:error:__FIELD__"
+        "error": "/about-your-ex-spouse:error:{{FIELD}}"
       },
       "dissolved": {
-        "error": "/about-your-ex-partner:error:__FIELD__"
+        "error": "/about-your-ex-partner:error:{{FIELD}}"
       },
       "widowed": {
-        "error": "/about-your-late-spouse:error:__FIELD__"
+        "error": "/about-your-late-spouse:error:{{FIELD}}"
       }
     },
     "contact-details": {
       "preferred-telephone": "contact-details:clicked-box:preferred-telephone",
       "additional-telephone": "contact-details:clicked-box:additional-telephone",
       "email": "contact-details:clicked-box:email",
-      "error": "contact-details:error:__FIELD__"
+      "error": "contact-details:error:{{FIELD}}"
     },
     "account-details": {
-      "status": "account-details:clicked-radio:account-__VALUE__",
-      "account-holder": "account-details:clicked-box:account-name __VALUE__",
-      "account-number": "account-details:clicked-box:account-number __VALUE__",
-      "sort-code": "account-details:clicked-box:sort-code __VALUE__",
+      "status": "account-details:clicked-radio:account-{{VALUE}}",
+      "account-holder": "account-details:clicked-box:account-name {{VALUE}}",
+      "account-number": "account-details:clicked-box:account-number {{VALUE}}",
+      "sort-code": "account-details:clicked-box:sort-code {{VALUE}}",
       "building-society-number": "account-details:clicked-box:building-society-number",
-      "error": "account-details:error:__TYPE__-__FIELD__"
+      "error": "account-details:error:{{TYPE}}-{{FIELD}}"
     },
     "account-details-overseas": {
       "pageview": "/account-details/overseas",
-      "status": "account-details-overseas:clicked-radio:account-__VALUE__",
+      "status": "account-details-overseas:clicked-radio:account-{{VALUE}}",
       "account-holder": "account-details-overseas:clicked-box:account-name-overseas",
       "account-number": "account-details-overseas:clicked-box:account-number-overseas",
       "account-code": "account-details-overseas:clicked-box:bank-or-branch-overseas",
-      "error": "account-details-overseas:error:__FIELD__"
+      "error": "account-details-overseas:error:{{FIELD}}"
     },
     "confirm-identity": {
       "invite": "dimension9:confirm-identity:clicked-radio:invitation-letter-confirm-identity",
       "verify": "dimension9:confirm-identity:clicked-radio:no-invitation-letter-confirm-identity"
     },
     "personal-data": {
-      "status": "dimension10:personal-data:clicked-radio:__VALUE__:__VALUE__-can-we-use-information"
+      "status": "dimension10:personal-data:clicked-radio:{{VALUE}}:{{VALUE}}-can-we-use-information"
     },
     "verify-your-details": {
-      "status": "dimension11:verify-your-details:clicked-radio:__VALUE__-verify-current-address:__VALUE__-current-address"
+      "status": "dimension11:verify-your-details:clicked-radio:{{VALUE}}-verify-current-address:{{VALUE}}-current-address"
     },
     "complete": {
       "callback": "/complete/callback",
@@ -117,10 +117,10 @@
     },
     "pension-start-date": {
       "date-input": "when-do-you-want-your-state-pension:clicked-box:date",
-      "error": "when-do-you-want-your-state-pension:error:__VALUE__"
+      "error": "when-do-you-want-your-state-pension:error:{{VALUE}}"
     },
     "check-change": {
-      "change": "check-your-details:clicked-link:change-__VALUE__"
+      "change": "check-your-details:clicked-link:change-{{VALUE}}"
     }
   }
 }

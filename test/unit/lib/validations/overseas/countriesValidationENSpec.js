@@ -1,7 +1,10 @@
 const assert = require('assert');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../../config/i18next');
+
 const validation = require('../../../../../lib/validations/overseasValidation');
 
 const emptyObject = {
@@ -28,9 +31,12 @@ const populatedValidMutiple3 = {
 const countryList = [{ name: 'Afghanistan' }, { name: 'Albania' }, { name: 'Aruba' }, { name: 'France' }, { name: 'Germany' }];
 
 describe('countries validation - EN', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('country', () => {
     it('should return error if list is empty', () => {
       const validationResponse = validation.countries(emptyObject, 'lived', countryList);

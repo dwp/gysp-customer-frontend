@@ -1,7 +1,9 @@
 const { assert } = require('chai');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/confirmIdentityValidation');
 
@@ -20,14 +22,17 @@ const errorSummaryResponse = [
 ];
 
 describe('confirm identity validator - EN', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
   it('should return errors if empty object is not provided', () => {
     const response = validation.authTypeValidation(emptyObject);
     assert.lengthOf(Object.keys(response), 2);
     assert.equal(JSON.stringify(response.errorSummary), JSON.stringify(errorSummaryResponse));
   });
+
   describe('receivingBenefits field', () => {
     it('should return error if authType is not provided', () => {
       const response = validation.authTypeValidation(blankObject);

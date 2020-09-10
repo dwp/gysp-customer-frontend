@@ -1,8 +1,11 @@
 const { assert } = require('chai');
 const moment = require('moment');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../../config/i18next');
+
 const validation = require('../../../../../lib/validations/overseasValidation');
 
 const emptyObject = {
@@ -71,8 +74,10 @@ const referenceNumberOn = true;
 const referenceNumberOff = false;
 
 describe('country validation', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
   it('should return full error set if to and from date is missing', () => {
     const validationResponse = validation.countryDetials(emptyObject, false, '', '', 'cy');
@@ -117,6 +122,7 @@ describe('country validation', () => {
     assert.isUndefined(validationResponse.dateFrom);
     assert.isUndefined(validationResponse.dateTo);
   });
+
   describe('future date', () => {
     it('should return no error if dates are current (year + month)', () => {
       const validationResponse = validation.countryDetials(currentDates, false, '', '', 'cy');
@@ -124,6 +130,7 @@ describe('country validation', () => {
       assert.isUndefined(validationResponse.dateFrom);
       assert.isUndefined(validationResponse.dateTo);
     });
+
     it('should return error if month is next month to current', () => {
       const validationResponse = validation.countryDetials(currentDatesPlusOneMonth, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
@@ -132,6 +139,7 @@ describe('country validation', () => {
       assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
+
     it('should return error if year is next year to current', () => {
       const validationResponse = validation.countryDetials(currentPlusOneYear, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 2);
@@ -141,6 +149,7 @@ describe('country validation', () => {
       assert.equal(validationResponse.dateTo.text, 'Rhowch ddyddiad \'i\' sydd yn y gorffennol.');
     });
   });
+
   describe('invalid date', () => {
     it('should return full error if dates are out of bounds', () => {
       const validationResponse2 = validation.countryDetials(invalidYears, false, '', '', 'cy');
@@ -157,6 +166,7 @@ describe('country validation', () => {
       assert.equal(validationResponse.dateTo.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.dateTo.text, 'Rhowch fis a blwyddyn, fel 2, 2003.');
     });
+
     it('should return error if dateTo is beforeFrom date', () => {
       const validationResponse = validation.countryDetials(pastDates, false, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
@@ -165,6 +175,7 @@ describe('country validation', () => {
       assert.equal(validationResponse.dateTo.text, 'Ni all y dyddiad \'i\' fod cyn y dyddiad \'o\'.');
     });
   });
+
   describe('reference number', () => {
     it('should not valid reference number when flag set as false', () => {
       const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOff, '', '', 'cy');
@@ -173,6 +184,7 @@ describe('country validation', () => {
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
+
     it('should return no errors if valid reference number is supplied', () => {
       const validationResponse = validation.countryDetials(validReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
@@ -180,6 +192,7 @@ describe('country validation', () => {
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
+
     it('should return no reference number error if reference number is empty', () => {
       const validationResponse = validation.countryDetials(emptyReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.isUndefined(validationResponse.errorSummary);
@@ -187,6 +200,7 @@ describe('country validation', () => {
       assert.isUndefined(validationResponse.dateTo);
       assert.isUndefined(validationResponse.referenceNumber);
     });
+
     it('should return reference number error if reference number is to long (max 24)', () => {
       const validationResponse = validation.countryDetials(longReferenceNumber, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
@@ -194,6 +208,7 @@ describe('country validation', () => {
       assert.isUndefined(validationResponse.dateTo);
       assert.equal(validationResponse.referenceNumber.text, 'Rhaid i rif cyfeirnod fod yn 24 nod neu lai.');
     });
+
     it('should return reference number error if reference number starts with a space', () => {
       const validationResponse = validation.countryDetials(spaceRefenceNumber, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);
@@ -202,6 +217,7 @@ describe('country validation', () => {
       assert.equal(validationResponse.referenceNumber.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.referenceNumber.text, 'Ni all y rhif cyfeirnod ddechrau gyda gofod.');
     });
+
     it('should return reference number error if reference number contains invalid character (none ASCII character code 32-127)', () => {
       const validationResponse = validation.countryDetials(invalidChar, referenceNumberOn, '', '', 'cy');
       assert.lengthOf(validationResponse.errorSummary, 1);

@@ -6,6 +6,11 @@ chai.use(chaiAsPromised);
 
 const nock = require('nock');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
+
 nock.disableNetConnect();
 
 const authController = require('../../../app/routes/auth/functions');
@@ -52,6 +57,12 @@ function returnRequest() {
 }
 
 describe('Auth controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
     genericResponse.locals = {
@@ -66,6 +77,7 @@ describe('Auth controller ', () => {
       },
     };
   });
+
   it('should return view name when called', () => {
     authController.redirectToNextStep(validPostObjectBadKey, genericResponse, customerDetails, validKey, serverResponseWithDate);
     assert.equal(validPostObjectBadKey.session.inviteKey, 'key');
@@ -116,7 +128,7 @@ describe('Auth controller ', () => {
       authController.authPageGet(populatedPreSessionForm, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/auth-page');
       assert.equal(genericResponse.data.details, emptyPost);
-      assert.equal(genericResponse.data.errors.inviteKey.text, 'auth:fields.inviteKey.errors.required');
+      assert.equal(genericResponse.data.errors.inviteKey.text, 'Enter your invitation code.');
       assert.equal(genericResponse.data.clear, true);
     });
   });

@@ -1,5 +1,10 @@
 const { assert } = require('chai');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
+
 const checkChangeController = require('../../../app/routes/check-change/functions');
 const responseHelper = require('../../lib/responseHelper');
 
@@ -8,33 +13,37 @@ const populatedSessionGet = { session: { 'contact-details': { homeTelephoneNumbe
 const emptyRequest = { session: {} };
 
 const populatedSessionRequest = [{
-  key: { text: 'check-change:keys.contact-details', classes: 'govuk-!-width-two-thirds' },
-  value: { html: 'contact:fields.checkbox.options.home<br />000000000' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  value: { html: 'Home phone<br />000000000' },
   actions: {
     items: [{
-      href: '/contact-details?edit=true', text: 'check-change:link-text', visuallyHiddenText: 'check-change:keys.contact-details', attributes: { id: 'contactDetails', 'data-journey-click': 'google-analytics:pages.check-change.change' },
+      href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'Contact details', attributes: { id: 'contactDetails', 'data-journey-click': 'check-your-details:clicked-link:change-contact-details' },
     }],
   },
 }];
 
 describe('Check change controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
   });
 
   describe(' getCheckChange function (GET /check-your-details)', () => {
-    it('should return view name when called with unpopulated response data when session is not populated', (done) => {
-      checkChangeController.getCheckChange(emptyRequest, genericResponse);
+    it('should return view name when called with unpopulated response data when session is not populated', async () => {
+      await checkChangeController.getCheckChange(emptyRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/check-change');
       assert.equal(JSON.stringify(genericResponse.data.details), '[]');
-      done();
     });
 
-    it('should return view name when called with populated response data when session is set', (done) => {
-      checkChangeController.getCheckChange(populatedSessionGet, genericResponse);
+    it('should return view name when called with populated response data when session is set', async () => {
+      await checkChangeController.getCheckChange(populatedSessionGet, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/check-change');
       assert.equal(JSON.stringify(genericResponse.data.details), JSON.stringify(populatedSessionRequest));
-      done();
     });
   });
 });

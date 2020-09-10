@@ -1,5 +1,10 @@
 const assert = require('assert');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../../config/i18next');
+
 const claimObject = require('../../../../../lib/objects/claimObject');
 
 const accountObjectValid = {
@@ -28,34 +33,42 @@ const formObjectValidBank = {
 const accountStatus = { result: 'Fail' };
 
 describe('Claim object ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   describe(' dob-details ', () => {
-    it('should give userAssertedDob when dob-details is set', () => {
-      const claimObjectValue = claimObject.sessionToObject(formObjectValidBank, accountStatus);
+    it('should give userAssertedDob when dob-details is set', async () => {
+      const claimObjectValue = await claimObject.sessionToObject(formObjectValidBank, accountStatus);
       assert.equal(claimObjectValue.userAssertedDob, '2000-09-09T00:00:00.000Z');
-      assert.equal(claimObjectValue.userAssertedDobQ, 'app:pdf.userDOB');
+      assert.equal(claimObjectValue.userAssertedDobQ, 'User entered date of birth');
       assert.equal(claimObjectValue.dobVerification, 'NV');
-      assert.equal(claimObjectValue.dobVerificationQ, 'app:pdf.verficationStatus');
+      assert.equal(claimObjectValue.dobVerificationQ, 'Date of birth verification status');
       assert.equal(claimObjectValue.reculatedStatePensionDate, undefined);
     });
-    it('should give userAssertedDob when dob-details is set and verficiation status if set', () => {
+
+    it('should give userAssertedDob when dob-details is set and verficiation status if set', async () => {
       formObjectValidBank.userDateOfBirthInfo.newDobVerification = 'V';
-      const claimObjectValue = claimObject.sessionToObject(formObjectValidBank, accountStatus);
+      const claimObjectValue = await claimObject.sessionToObject(formObjectValidBank, accountStatus);
       assert.equal(claimObjectValue.userAssertedDob, '2000-09-09T00:00:00.000Z');
-      assert.equal(claimObjectValue.userAssertedDobQ, 'app:pdf.userDOB');
+      assert.equal(claimObjectValue.userAssertedDobQ, 'User entered date of birth');
       assert.equal(claimObjectValue.dobVerification, 'V');
-      assert.equal(claimObjectValue.dobVerificationQ, 'app:pdf.userVerficationStatus');
+      assert.equal(claimObjectValue.dobVerificationQ, 'Updated date of birth verification status');
       assert.equal(claimObjectValue.reculatedStatePensionDate, undefined);
     });
-    it('should give userAssertedDob when dob-details is set and reculatedStatePensionDate status if set and use old status', () => {
+
+    it('should give userAssertedDob when dob-details is set and reculatedStatePensionDate status if set and use old status', async () => {
       delete formObjectValidBank.userDateOfBirthInfo.newDobVerification;
       formObjectValidBank.userDateOfBirthInfo.newStatePensionDate = '102838383838';
-      const claimObjectValue = claimObject.sessionToObject(formObjectValidBank, accountStatus);
+      const claimObjectValue = await claimObject.sessionToObject(formObjectValidBank, accountStatus);
       assert.equal(claimObjectValue.userAssertedDob, '2000-09-09T00:00:00.000Z');
-      assert.equal(claimObjectValue.userAssertedDobQ, 'app:pdf.userDOB');
+      assert.equal(claimObjectValue.userAssertedDobQ, 'User entered date of birth');
       assert.equal(claimObjectValue.dobVerification, 'NV');
-      assert.equal(claimObjectValue.dobVerificationQ, 'app:pdf.verficationStatus');
+      assert.equal(claimObjectValue.dobVerificationQ, 'Date of birth verification status');
       assert.equal(claimObjectValue.reCalculatedSpaDate, '102838383838');
-      assert.equal(claimObjectValue.reCalculatedSpaDateQ, 'app:pdf.statePensionAge');
+      assert.equal(claimObjectValue.reCalculatedSpaDateQ, 'Recalculated State Pension age date');
     });
   });
 });

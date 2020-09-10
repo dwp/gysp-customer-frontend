@@ -9,7 +9,6 @@ const userDOB = { session: { customerDetails: { statePensionDate: -1531145600000
 const noUserDOBOverseas = { session: { customerDetails: { statePensionDate: -1631145600000 }, userDateOfBirthInfo: {}, isOverseas: true }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
 const userDOBOverseas = { session: { customerDetails: { statePensionDate: -1531145600000 }, userDateOfBirthInfo: { newStatePensionDate: -1631102401000 }, isOverseas: true }, body: { preferredTelephoneNumber: '', additionalTelephoneNumber: '', email: '' } };
 
-
 describe('State Pension Age controller ', () => {
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();

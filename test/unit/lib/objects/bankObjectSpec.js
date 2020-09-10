@@ -36,10 +36,12 @@ describe('Bank object ', () => {
       const bank = bankDetails.bankDetailsToObjectWithCustomerDetails(bankObject, customerDetails);
       assert.equal(JSON.stringify(validJson), JSON.stringify(bank));
     });
+
     it('should use user asserted date of birth when supplied', () => {
       const bank = bankDetails.bankDetailsToObjectWithCustomerDetails(bankObject, customerDetails, userAssertedDOB);
       assert.equal(bank.dob, '2003-2-1T00:00:00.000Z');
     });
+
     it('should convert object to valid json and when none of the optional inputs are supplied', () => {
       const bank = bankDetails.bankDetailsToObjectWithCustomerDetails(bankObject, customerDetailsWithoutOptionalInputs);
       assert.equal(JSON.stringify(validJsonWithoutOptionalInputs), JSON.stringify(bank));

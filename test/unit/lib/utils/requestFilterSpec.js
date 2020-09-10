@@ -12,12 +12,14 @@ describe('Request Helper ', () => {
       assert.ok(object.fields1);
     });
   });
+
   describe(' forms fields', () => {
     it('calling livedAbroadFields() should return only 1 field with valid value', () => {
       const livedAbroadFields = requestHelper.livedAbroad();
       assert.ok(livedAbroadFields.length, 1);
       assert.include(livedAbroadFields, 'livedAbroad');
     });
+
     it('calling livedAbroadCountries() should return only 4 field with valid value', () => {
       const livedAbroadFieldsDetails = requestHelper.livedAbroadCountries();
       assert.ok(livedAbroadFieldsDetails.length, 4);
@@ -26,6 +28,7 @@ describe('Request Helper ', () => {
       assert.include(livedAbroadFieldsDetails, 'dateToYear');
       assert.include(livedAbroadFieldsDetails, 'dateToMonth');
     });
+
     it('calling countries() should return only 4 field with valid value', () => {
       const countriesSelect = requestHelper.countries();
       assert.include(countriesSelect, 'country-name[0]');
@@ -33,11 +36,13 @@ describe('Request Helper ', () => {
       assert.include(countriesSelect, 'country-name[2]');
       assert.include(countriesSelect, 'country-name[3]');
     });
+
     it('calling workedAbroadFields() should return only 1 field with valid value', () => {
       const workedAbroadFields = requestHelper.workedAbroad();
       assert.ok(workedAbroadFields.length, 1);
       assert.include(workedAbroadFields, 'workedAbroad');
     });
+
     it('calling workedAbroadCountries() should return only 5 field with valid value', () => {
       const workedAbroadCountries = requestHelper.workedAbroadCountries();
       assert.ok(workedAbroadCountries.length, 5);
@@ -47,11 +52,13 @@ describe('Request Helper ', () => {
       assert.include(workedAbroadCountries, 'dateToMonth');
       assert.include(workedAbroadCountries, 'referenceNumber');
     });
+
     it('calling maritalSelect() should return only 1 field with valid value', () => {
       const maritalSelect = requestHelper.maritalSelect();
       assert.ok(maritalSelect.length, 1);
       assert.include(maritalSelect, 'maritalStatus');
     });
+
     it('calling maritalDate() should return only 3 field with valid value', () => {
       const maritalDate = requestHelper.maritalDate();
       assert.ok(maritalDate.length, 3);
@@ -59,6 +66,7 @@ describe('Request Helper ', () => {
       assert.include(maritalDate, 'dateMonth');
       assert.include(maritalDate, 'dateYear');
     });
+
     it('calling contactDetails() should return only 7 field with valid value', () => {
       const contactDetails = requestHelper.contactDetails();
       assert.ok(contactDetails.length, 7);
@@ -67,6 +75,7 @@ describe('Request Helper ', () => {
       assert.include(contactDetails, 'cbWorkTelephoneNumber');
       assert.include(contactDetails, 'email');
     });
+
     it('calling paymentDetails() should return only 6 field with valid value', () => {
       const paymentDetails = requestHelper.paymentDetails();
       assert.ok(paymentDetails.length, 13);

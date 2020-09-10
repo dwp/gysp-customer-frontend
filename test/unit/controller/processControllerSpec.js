@@ -127,32 +127,39 @@ describe('process controller ', () => {
       done();
     });
   });
+
   describe(' verifyAccountDetails function ', () => {
     it('should return Not checked when account type is building and roll number is supplied', () => assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObjectBuildingWithRoll, customerDetails), { result: 'Not checked - Building Society' }));
     it('should return status when account type is building with no roll number', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(200, { result: 'Fail', messages: ['Test1'] });
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObjectBuilding, customerDetails), { result: 'Fail', messages: ['Test1'] });
     });
+
     it('should return status when account type is building with blank roll number', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(200, { result: 'Fail', messages: ['Test1'] });
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObjectBuildingWithBlankRoll, customerDetails), { result: 'Fail', messages: ['Test1'] });
     });
+
     it('should return Unavailable when status code is bad', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(500, {});
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Unavailable' });
     });
+
     it('should return Unavailable when status code is timeout', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(504, {});
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Unavailable' });
     });
+
     it('should return Fail when status code is Bad Request', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(400, {});
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Fail' });
     });
+
     it('should return status when account type is banking', () => {
       nock('http://test-url').post('/api/bankvalidate').reply(200, { result: 'Fail', messages: ['Test1'] });
       return assert.becomes(controller.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Fail', messages: ['Test1'] });
     });
+
     it('should return Not checked - Resident abroad when session is overseas', () => assert.becomes(controller.verifyAccountDetails(overseasPopulatedRequest, genericResponse, accountObjectBuilding, customerDetails), { result: 'Not checked - Resident abroad' }));
 
     it('should return disabled as bankVerification is disabled', () => {
@@ -160,11 +167,13 @@ describe('process controller ', () => {
       return assert.becomes(proxedController.verifyAccountDetails(populatedRequest, genericResponse, accountObject, customerDetails), { result: 'Disabled' });
     });
   });
+
   describe(' processClaim function ', () => {
     it('should resolve when 200 is called', () => {
       nock('http://test-url').post('/api/claim').reply(200, {});
       return assert.isFulfilled(controller.processClaim(genericResponse, customerDetails, formObjectLivedAbroad, accountResults, englishLangauge));
     });
+
     it('should reject when 500 is called', () => {
       nock('http://test-url').post('/api/claim').reply(500, {});
       return assert.isRejected(controller.processClaim(genericResponse, customerDetails, formObjectLivedAbroad, accountResults, englishLangauge));

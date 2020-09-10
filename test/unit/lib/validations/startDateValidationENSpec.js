@@ -1,8 +1,10 @@
 const { assert } = require('chai');
 const moment = require('moment');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/startDateValidation');
 
@@ -65,9 +67,12 @@ const beforeSpaKey = 'beforeSpa';
 const afterSpaKey = 'afterSpa';
 
 describe('start date validation - EN', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('before spa', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.claimFromDateValidation(blankObject, beforeSpaDate, beforeSpaKey, 'en');
@@ -75,6 +80,7 @@ describe('start date validation - EN', () => {
       assert.equal(validationResponse.date.text, 'Enter a date that you want to get your State Pension.');
       assert.equal(validationResponse.errorSummary[0].text, 'Enter a date that you want to get your State Pension.');
     });
+
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.claimFromDateValidation(badDayFormObject, beforeSpaDate, beforeSpaKey, 'en');
       assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
@@ -122,6 +128,7 @@ describe('start date validation - EN', () => {
       assert.isUndefined(validationResponse.errorSummary);
     });
   });
+
   describe('after spa', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.claimFromDateValidation(blankObject, afterSpaDate, afterSpaKey, 'en');
@@ -129,6 +136,7 @@ describe('start date validation - EN', () => {
       assert.equal(validationResponse.date.text, 'Enter a date that you want to get your State Pension.');
       assert.equal(validationResponse.errorSummary[0].text, 'Enter a date that you want to get your State Pension.');
     });
+
     it('should return error if date is invalid (day greater then 31)', () => {
       const validationResponse = validation.claimFromDateValidation(badDayFormObject, afterSpaDate, afterSpaKey, 'en');
       assert.equal(validationResponse.date.visuallyHiddenText, 'Error');

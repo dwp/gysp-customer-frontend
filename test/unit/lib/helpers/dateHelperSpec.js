@@ -59,6 +59,7 @@ describe('date helper ', () => {
     afterEach(() => {
       mockdate.reset();
     });
+
     it(`should return 4 when date is 4 months in the future from todays date (${todayDate})`, () => {
       const numberOfMonthsFromNow = dateHelper.numberOfMonthsInFuture(fourMonthAfterNow);
       assert.equal(numberOfMonthsFromNow, 4);

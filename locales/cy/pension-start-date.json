@@ -6,8 +6,8 @@
   "h1": "Pryd ydych chi eisiau eich Pensiwn y Wladwriaeth?",
   "beforeSpa": {
     "p1": {
-      "system": "Y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {
@@ -28,8 +28,8 @@
   },
   "afterSpa": {
     "p1": {
-      "system": "Dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {

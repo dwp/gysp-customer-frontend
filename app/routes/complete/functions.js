@@ -13,7 +13,7 @@ function claimFromDateCheckAndNumberOfWeeks(claimFromDate, statePensionDateToUse
 }
 
 function whatHappensNextText(req) {
-  i18n.setLng(req.session.lang);
+  i18n.changeLanguage(req.session.lang);
 
   let verifiedDOB = true;
   let statePensionDateToUse = moment(req.session.customerDetails.statePensionDate, 'x').startOf('day');

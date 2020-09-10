@@ -24,6 +24,7 @@ describe('Overseas controller ', () => {
       assert.isUndefined(genericResponse.data.details);
       done();
     });
+
     it('should return view name when called with view session data when session is populated', (done) => {
       overseasController.livedAbroadGet(sessionRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/lived-abroad');

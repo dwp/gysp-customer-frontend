@@ -1,7 +1,9 @@
 const { assert } = require('chai');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/accountValidation');
 
@@ -135,15 +137,19 @@ const buildingObjects = {
 };
 
 describe('accountValidator - EN', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('accountValidator summary', () => {
     it('should return banking errors when called with banking as a select', () => {
       const accountValidationResponse = validation.accountValidator(paymentMethodBankEmpty, 'en');
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
       assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBankSummaryResponse));
     });
+
     it('should return building errors when called with building as a select', () => {
       const accountValidationResponse = validation.accountValidator(paymentMethodBuildingEmpty, 'en');
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
@@ -156,10 +162,12 @@ describe('accountValidator - EN', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodBank);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
+
     it('should return no error when building is supplied ', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodBuilding);
       assert.lengthOf(Object.keys(accountValidationResponse), 0);
     });
+
     it('should return error when nothing is supplied', () => {
       const accountValidationResponse = validation.paymentValidator(paymentMethodEmpty);
       assert.equal(accountValidationResponse.paymentMethod.visuallyHiddenText, 'Error');

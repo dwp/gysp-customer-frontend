@@ -28,6 +28,7 @@ describe('Health controller ', () => {
       },
     };
   });
+
   describe('endPoint function (GET /health)', () => {
     it('should return json', (done) => {
       const response = controller.endPoint(emptyRequest, genericResponse);

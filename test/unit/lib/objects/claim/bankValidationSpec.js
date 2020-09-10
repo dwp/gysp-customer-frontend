@@ -1,24 +1,11 @@
 const assert = require('assert');
 
-const claimObject = require('../../../../../lib/objects/claimObject');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
 
-const expectedInviteKeyQ = 'auth:fields.inviteKey.label';
-const expectedConfirmedAdddressQ = 'auth:fields.address.legend';
-const expectedLivedAbroadQ = 'lived-abroad:header';
-const expectedPeriodAbroadsQ = 'countries:lived.header';
-const expectedWorkedAbroadQ = 'worked-abroad:header';
-const expectedMaritalStatusQ = 'marital-select:header';
-const expectedContactDetailQ = 'contact:header';
-const expectedMobileTelephoneNumberQ = 'contact:fields.mobileTelephoneNumber.label';
-const expectedAccountDetailQ = 'account:header';
-const expectedPaymentMethodQ = 'account:fields.paymentMethod.fieldset';
-const expectedBankDetailQ = 'account:fields.paymentMethod.options.bank';
-const expectedBankAccountHolderQ = 'account:fields.accountHolder.label';
-const expectedBankAccountNumberQ = 'account:fields.accountNumber.label';
-const expectedBankSortCodeQ = 'account:fields.sortCode.label';
-const expectedDeclarationQ = 'declaration:header';
-const resultQ = 'account:fields.result';
-const messagesQ = 'account:fields.messages';
+const i18nextConfig = require('../../../../../config/i18next');
+
+const claimObject = require('../../../../../lib/objects/claimObject');
 
 const accountObjectValid = {
   paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
@@ -28,69 +15,39 @@ const accountObjectVerifiedInvalid = {
 };
 const customerDetailsObject = { dobVerification: 'V' };
 
-const accountDetailsBankJsonValid = {
-  bankDetail: {
-    result: 'Fail',
-    resultQ,
-    accountHolder: 'Mr Joe Bloggs',
-    accountHolderQ: expectedBankAccountHolderQ,
-    accountNumber: '12345678',
-    accountNumberQ: expectedBankAccountNumberQ,
-    sortCode: '112233',
-    sortCodeQ: expectedBankSortCodeQ,
-  },
-  bankDetailQ: expectedBankDetailQ,
-  paymentMethodQ: expectedPaymentMethodQ,
-};
-
-const accountDetailsBankJsonVerifiedInvalid = {
-  bankDetail: {
-    result: 'Fail',
-    resultQ,
-    messages: ['Error 1', 'Error 2'],
-    messagesQ,
-    accountHolder: 'Mr Joe Bloggs',
-    accountHolderQ: expectedBankAccountHolderQ,
-    accountNumber: '12345678',
-    accountNumberQ: expectedBankAccountNumberQ,
-    sortCode: '112233',
-    sortCodeQ: expectedBankSortCodeQ,
-  },
-  bankDetailQ: expectedBankDetailQ,
-  paymentMethodQ: expectedPaymentMethodQ,
-};
-
 const livedAbroadOneCountries = {
   'country-name[0]': 'Country 1', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
 };
-const livedAbroadOneCountriesJson = [{ countryQ: 'countries:fields.country.label', country: 'Country 1' }];
 
 const inviteKey = '1234567';
 
 const validBankJson = {
   livedAbroad: true,
-  livedAbroadQ: expectedLivedAbroadQ,
-  livedPeriodsAbroad: livedAbroadOneCountriesJson,
-  livedPeriodsAbroadQ: expectedPeriodAbroadsQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
+  livedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }],
+  livedPeriodsAbroadQ: 'What countries have you lived in?',
   workedAbroad: false,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  contactDetail: {
-    mobileTelephoneNumber: '1234',
-    mobileTelephoneNumberQ: expectedMobileTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  contactDetail: { mobileTelephoneNumber: '1234', mobileTelephoneNumberQ: 'Mobile phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJsonValid,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -110,28 +67,31 @@ const formObjectValidBank = {
 
 const invalidBankJson = {
   livedAbroad: true,
-  livedAbroadQ: expectedLivedAbroadQ,
-  livedPeriodsAbroad: livedAbroadOneCountriesJson,
-  livedPeriodsAbroadQ: expectedPeriodAbroadsQ,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
+  livedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }],
+  livedPeriodsAbroadQ: 'What countries have you lived in?',
   workedAbroad: false,
-  workedAbroadQ: expectedWorkedAbroadQ,
-  contactDetail: {
-    mobileTelephoneNumber: '1234',
-    mobileTelephoneNumberQ: expectedMobileTelephoneNumberQ,
-  },
-  contactDetailQ: expectedContactDetailQ,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  contactDetail: { mobileTelephoneNumber: '1234', mobileTelephoneNumberQ: 'Mobile phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
   maritalStatus: 'Single',
-  maritalStatusQ: expectedMaritalStatusQ,
-  accountDetail: accountDetailsBankJsonVerifiedInvalid,
-  accountDetailQ: expectedAccountDetailQ,
-  inviteKey,
-  inviteKeyQ: expectedInviteKeyQ,
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', messages: ['Error 1', 'Error 2'], messagesQ: 'Warnings', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
   confirmedAddress: true,
-  confirmedAddressQ: expectedConfirmedAdddressQ,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
   declaration: true,
-  declarationQ: expectedDeclarationQ,
+  declarationQ: 'Declaration',
   dobVerification: 'V',
-  dobVerificationQ: 'app:pdf.verficationStatus',
+  dobVerificationQ: 'Date of birth verification status',
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
@@ -153,15 +113,21 @@ const accountStatus = { result: 'Fail' };
 const accountStatusWithErrors = { result: 'Fail', messages: ['Error 1', 'Error 2'] };
 
 describe('Claim object ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   describe(' convertor ', () => {
     describe(' bank verification ', () => {
-      it('should give validated/verfication object as Valid', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectValidBank, accountStatus);
-        assert.equal(JSON.stringify(validBankJson), JSON.stringify(claimObjectValue));
+      it('should give validated/verfication object as Valid', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectValidBank, accountStatus);
+        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validBankJson));
       });
-      it('should give validated as valid verfication as invalid with errors', () => {
-        const claimObjectValue = claimObject.sessionToObject(formObjectInvalidBank, accountStatusWithErrors);
-        assert.equal(JSON.stringify(invalidBankJson), JSON.stringify(claimObjectValue));
+      it('should give validated as valid verfication as invalid with errors', async () => {
+        const claimObjectValue = await claimObject.sessionToObject(formObjectInvalidBank, accountStatusWithErrors);
+        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(invalidBankJson));
       });
     });
   });

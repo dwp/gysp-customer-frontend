@@ -1,5 +1,10 @@
 const { assert } = require('chai');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
+
 const confirmIdentityController = require('../../../app/routes/confirm-identity/functions');
 const responseHelper = require('../../lib/responseHelper');
 
@@ -11,6 +16,12 @@ const populatedVerifyRequest = { session: { customerDetails: {} }, body: { authT
 const populatedInviteRequest = { session: { customerDetails: {} }, body: { authType: 'invite' } };
 
 describe('Confirm Identity controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
   });
@@ -22,6 +33,7 @@ describe('Confirm Identity controller ', () => {
       assert.isUndefined(genericResponse.data);
       done();
     });
+
     it('should return view name when called with populated response data when session is set', (done) => {
       confirmIdentityController.getConfirmIdentity(populatedSessionGet, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/confirm-identity');
@@ -34,7 +46,7 @@ describe('Confirm Identity controller ', () => {
     it('should return default view name with errors when called with empty object', (done) => {
       confirmIdentityController.postConfirmIdentity(emptyRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/confirm-identity');
-      assert.equal(genericResponse.data.errors.authType.text, 'confirm-identity:fields.authType.errors.required');
+      assert.equal(genericResponse.data.errors.authType.text, 'Select whether or not you have an invitation letter.');
       assert.equal(genericResponse.data.errors.errorSummary.length, 1);
       done();
     });
@@ -42,7 +54,7 @@ describe('Confirm Identity controller ', () => {
     it('should return default view name with errors when called with invalid object', (done) => {
       confirmIdentityController.postConfirmIdentity(invalidRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/confirm-identity');
-      assert.equal(genericResponse.data.errors.authType.text, 'confirm-identity:fields.authType.errors.required');
+      assert.equal(genericResponse.data.errors.authType.text, 'Select whether or not you have an invitation letter.');
       assert.equal(genericResponse.data.errors.errorSummary.length, 1);
       done();
     });

@@ -22,6 +22,7 @@ describe('Data store filter ', () => {
         bankSortCodeField3: true,
       };
     });
+
     it('should delete building details when bank is supplied', () => {
       const dataSet = dataStore.filterAccountDetails(data);
       assert.isUndefined(dataSet.buildingAccountHolder);
@@ -31,6 +32,7 @@ describe('Data store filter ', () => {
       assert.isUndefined(dataSet.buildingSortCodeField3);
       assert.isUndefined(dataSet.buildingRoll);
     });
+
     it('should delete banking details when bank is supplied', () => {
       data.paymentMethod = 'building';
       const dataSet = dataStore.filterAccountDetails(data);
@@ -53,6 +55,7 @@ describe('Data store filter ', () => {
         workTelephoneNumber: '123456',
       };
     });
+
     it('should delete home telephone number when cbHomeTelephoneNumber is set as anything other then true', () => {
       dataContact.cbHomeTelephoneNumber = 'cats';
       const dataSet = dataStore.filterContactDetails(dataContact);
@@ -61,6 +64,7 @@ describe('Data store filter ', () => {
       assert.equal(dataSet.mobileTelephoneNumber, '12345');
       assert.equal(dataSet.workTelephoneNumber, '123456');
     });
+
     it('should delete home telephone number when cbHomeTelephoneNumber is not true', () => {
       delete dataContact.cbHomeTelephoneNumber;
       const dataSet = dataStore.filterContactDetails(dataContact);
@@ -68,6 +72,7 @@ describe('Data store filter ', () => {
       assert.equal(dataSet.mobileTelephoneNumber, '12345');
       assert.equal(dataSet.workTelephoneNumber, '123456');
     });
+
     it('should delete home telephone number when cbMobileTelephoneNumber is set as anything other then true', () => {
       dataContact.cbMobileTelephoneNumber = 'cats';
       const dataSet = dataStore.filterContactDetails(dataContact);
@@ -76,6 +81,7 @@ describe('Data store filter ', () => {
       assert.equal(dataSet.homeTelephoneNumber, '1234');
       assert.equal(dataSet.workTelephoneNumber, '123456');
     });
+
     it('should delete mobile telephone number when cbMobileTelephoneNumber is not true', () => {
       delete dataContact.cbMobileTelephoneNumber;
       const dataSet = dataStore.filterContactDetails(dataContact);
@@ -83,6 +89,7 @@ describe('Data store filter ', () => {
       assert.isUndefined(dataSet.mobileTelephoneNumber);
       assert.equal(dataSet.workTelephoneNumber, '123456');
     });
+
     it('should delete home telephone number when cbWorkTelephoneNumber is set as anything other then true', () => {
       dataContact.cbWorkTelephoneNumber = 'cats';
       const dataSet = dataStore.filterContactDetails(dataContact);
@@ -91,6 +98,7 @@ describe('Data store filter ', () => {
       assert.equal(dataSet.homeTelephoneNumber, '1234');
       assert.equal(dataSet.mobileTelephoneNumber, '12345');
     });
+
     it('should delete home telephone number when cbWorkTelephoneNumber is not true', () => {
       delete dataContact.cbWorkTelephoneNumber;
       const dataSet = dataStore.filterContactDetails(dataContact);

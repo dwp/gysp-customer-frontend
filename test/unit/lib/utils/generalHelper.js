@@ -28,6 +28,7 @@ describe('General Helper ', () => {
   beforeEach(() => {
     days = 1;
   });
+
   describe(' validEaseofUse ', () => {
     validEaseofUse.forEach((value) => {
       it(`should return true when ${value} is passed`, () => {
@@ -35,6 +36,7 @@ describe('General Helper ', () => {
       });
     });
   });
+
   describe(' helperInfoValidator ', () => {
     validHelperReg.forEach((value) => {
       it(`should return true when ${value} is passed`, () => {
@@ -42,6 +44,7 @@ describe('General Helper ', () => {
       });
     });
   });
+
   describe(' serviceReceivedValidator ', () => {
     validStatus.forEach((value) => {
       it(`should return true when ${value} is passed`, () => {
@@ -49,6 +52,7 @@ describe('General Helper ', () => {
       });
     });
   });
+
   describe(' isValidDate ', () => {
     it('should return errors when Year is Y, YY or YYY format', () => {
       assert.notOk(generalHelper.isDateValid('01', '01', '1'));
@@ -68,6 +72,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 28 days in February and month is 2', () => {
       while (days <= januaryDays) {
         assert.ok(generalHelper.isDateValid(days, '1', '2000'));
@@ -81,6 +86,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 28 days in February and month is 1', () => {
       while (days <= februaryDays) {
         assert.ok(generalHelper.isDateValid(days, '2', '2000'));
@@ -94,6 +100,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 31 days in March and month is 3', () => {
       while (days <= marchDays) {
         assert.ok(generalHelper.isDateValid(days, '3', '2000'));
@@ -107,6 +114,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 30 days in April and month is 4', () => {
       while (days <= aprilDays) {
         assert.ok(generalHelper.isDateValid(days, '4', '2000'));
@@ -120,6 +128,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 31 days in May and month is 5', () => {
       while (days <= mayDays) {
         assert.ok(generalHelper.isDateValid(days, '5', '2000'));
@@ -133,6 +142,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 30 days in June and month is 6', () => {
       while (days <= juneDays) {
         assert.ok(generalHelper.isDateValid(days, '6', '2000'));
@@ -146,6 +156,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 30 days in June and month is 7', () => {
       while (days <= juneDays) {
         assert.ok(generalHelper.isDateValid(days, '7', '2000'));
@@ -159,6 +170,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 31 days in July and month is 8', () => {
       while (days <= julyDays) {
         assert.ok(generalHelper.isDateValid(days, '7', '2000'));
@@ -172,6 +184,7 @@ describe('General Helper ', () => {
         days++;
       }
     });
+
     it('should return true for all 30 days in September and month is 9', () => {
       while (days <= septemberDays) {
         assert.ok(generalHelper.isDateValid(days, '9', '2000'));
@@ -208,43 +221,52 @@ describe('General Helper ', () => {
       assert.notOk(generalHelper.isDateValid('29', '02', '2011'));
     });
   });
+
   describe(' isDateAfterToday ', () => {
     it('should return true for day + 1 years', () => {
       assert.isTrue(generalHelper.isDateAfterToday('5', '5', currentYear + 1));
     });
+
     it('should return false as date is before today', () => {
       mockdate.set(new Date('2018-03-15'));
       assert.isFalse(generalHelper.isDateAfterToday('14', '3', '2018'));
       mockdate.reset();
     });
+
     it('should return false as date is equel to today', () => {
       mockdate.set(new Date('2018-03-15'));
       assert.isFalse(generalHelper.isDateAfterToday('15', '3', '2018'));
       mockdate.reset();
     });
+
     it('should return true as date is after today', () => {
       mockdate.set(new Date('2018-03-15'));
       assert.isTrue(generalHelper.isDateAfterToday('16', '3', '2018'));
       mockdate.reset();
     });
   });
+
   describe(' isThisUndefinedOrEmtpy ', () => {
     it('should return true when undefined is passed', () => {
       assert.ok(generalHelper.isThisUndefinedOrEmtpy(undefined));
     });
   });
+
   describe(' isThisDefined ', () => {
     it('should return false when undefined is passed', () => {
       assert.notOk(generalHelper.isThisDefined(undefined));
     });
+
     it('should return true when string is passed', () => {
       assert.ok(generalHelper.isThisDefined('string'));
     });
   });
+
   describe(' checkInviteKeyCharacters ', () => {
     it('should return false when invalid characters supplied', () => {
       assert.isFalse(generalHelper.checkInviteKeyCharacters('INVITECODE!!!!'));
     });
+
     it('should return true when valid characters supplied', () => {
       assert.isTrue(generalHelper.checkInviteKeyCharacters('INVITECODE'));
     });

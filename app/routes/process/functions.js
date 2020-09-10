@@ -57,8 +57,8 @@ function verifyAccountDetails(req, res, bankDetails, customerDetails) {
 }
 
 function processClaim(res, customerDetails, claimData, accountStatus, language) {
-  return new Promise((resolve, reject) => {
-    const claimBody = claim.sessionToObject(claimData, accountStatus, language);
+  return new Promise(async (resolve, reject) => {
+    const claimBody = await claim.sessionToObject(claimData, accountStatus, language);
     claimBody.customerRequest = claim.createCustomerObject(customerDetails);
     const calimServiceCall = requestHelper.generatePostCall(`${res.locals.claimServiceApiGateway}/claim`, claimBody);
     requestPromise(calimServiceCall).then(() => {

@@ -6,8 +6,8 @@
   "h1": "When do you want your State Pension",
   "beforeSpa": {
     "p1": {
-      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {
@@ -28,8 +28,8 @@
   },
   "afterSpa": {
     "p1": {
-      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {

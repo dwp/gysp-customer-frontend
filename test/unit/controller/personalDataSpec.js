@@ -1,5 +1,10 @@
 const { assert } = require('chai');
 
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
+
 const personalDataController = require('../../../app/routes/personal-data/functions');
 const responseHelper = require('../../lib/responseHelper');
 
@@ -11,6 +16,12 @@ const populatedYesRequest = { session: {}, body: { personalDataPermission: 'yes'
 const populatedNoRequest = { session: {}, body: { personalDataPermission: 'no' } };
 
 describe('Personal Data controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
   });
@@ -22,6 +33,7 @@ describe('Personal Data controller ', () => {
       assert.isUndefined(genericResponse.data.details);
       done();
     });
+
     it('should return view name when called with populated response data when session is set', (done) => {
       personalDataController.getPersonalData(populatedSessionGet, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/personal-data');
@@ -34,7 +46,7 @@ describe('Personal Data controller ', () => {
     it('should return default view name with errors when called with empty object', (done) => {
       personalDataController.postPersonalData(emptyRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/personal-data');
-      assert.equal(genericResponse.data.errors.personalDataPermission.text, 'personal-data:fields.personalDataPermission.errors.required');
+      assert.equal(genericResponse.data.errors.personalDataPermission.text, 'Select Yes if we can use this information when you claim your State Pension.');
       assert.equal(genericResponse.data.errors.errorSummary.length, 1);
       done();
     });
@@ -42,7 +54,7 @@ describe('Personal Data controller ', () => {
     it('should return default view name with errors when called with invalid object', (done) => {
       personalDataController.postPersonalData(invalidRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/personal-data');
-      assert.equal(genericResponse.data.errors.personalDataPermission.text, 'personal-data:fields.personalDataPermission.errors.required');
+      assert.equal(genericResponse.data.errors.personalDataPermission.text, 'Select Yes if we can use this information when you claim your State Pension.');
       assert.equal(genericResponse.data.errors.errorSummary.length, 1);
       done();
     });

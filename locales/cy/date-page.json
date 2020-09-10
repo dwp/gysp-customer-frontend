@@ -3,17 +3,17 @@
   "h1": "Dyddiad eich Pensiwn y Wladwriaeth",
   "beforeSpa": {
     "p1": {
-      "system": "Byddwch yn cyrraedd oedran Pensiwn y Wladwriaeth ar <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Byddwch yn cyrraedd oedran Pensiwn y Wladwriaeth ar <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, y dyddiad cynharaf y gallech gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
-    "p2": "Byddwch yn cael eich Pensiwn y Wladwriaeth o'r dyddiad yma oni bai eich bod yn rhoi <a href='__startPensionDatePage__' id='different-date' class='govuk-link'>dyddiad gwahanol i ni.</a>"
+    "p2": "Byddwch yn cael eich Pensiwn y Wladwriaeth o'r dyddiad yma oni bai eich bod yn rhoi <a href='{{startPensionDatePage}}' id='different-date' class='govuk-link'>dyddiad gwahanol i ni.</a>"
   },
   "afterSpa": {
     "p1": {
-      "system": "Byddwch yn cyrraedd oedran Pensiwn y Wladwriaeth ar <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>.",
-      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>__statePensionDate__</strong>."
+      "system": "Byddwch yn cyrraedd oedran Pensiwn y Wladwriaeth ar <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
-    "p2": "Os nad ydych eisiau eich Pensiwn y Wladwriaeth o’r dyddiad hwn, <a href='__startPensionDatePage__' id='different-date' class='govuk-link'>dywedwch wrthym ddyddiad gwahanol.</a>"
+    "p2": "Os nad ydych eisiau eich Pensiwn y Wladwriaeth o’r dyddiad hwn, <a href='{{startPensionDatePage}}' id='different-date' class='govuk-link'>dywedwch wrthym ddyddiad gwahanol.</a>"
   },
   "button": "Parhau"
 }
