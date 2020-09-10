@@ -1,6 +1,7 @@
 module.exports = {
   ns: {
     namespaces: ['app',
+      'accessibility-statement',
       'auth',
       'auth-error-address',
       'auth-error-invite-code',

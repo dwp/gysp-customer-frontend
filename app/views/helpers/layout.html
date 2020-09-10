@@ -1,8 +1,8 @@
 {% extends 'govuk/template.njk' %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
-{% from "govuk/components/footer/macro.njk" import govukFooter %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
+{% from 'govuk/components/header/macro.njk' import govukHeader %}
+{% from 'govuk/components/footer/macro.njk' import govukFooter %}
+{% from 'govuk/components/button/macro.njk' import govukButton %}
 
 {% block head %}
     <meta name="robots" content="noindex, nofollow">
@@ -32,7 +32,7 @@
 {% set crownCopyrightMessage = '© Crown copyright' %}
 
 
-{% set headerClass="with-proposition" %}
+{% set headerClass='with-proposition' %}
 
 {% block header %}
   <div id="cookie-banner" class="cookie-banner">
@@ -46,7 +46,7 @@
   </div>
   {{ govukHeader({
     homepageUrl: homepageUrl,
-    serviceName: t("app:service_name"),
+    serviceName: t('app:service_name'),
     serviceUrl: serviceURL
   }) }}
 {% endblock %}
@@ -55,7 +55,7 @@
     <main id="main" role="main">
       <div class="govuk-width-container">
         {{ govukPhaseBanner({
-          tag: { text: "beta" }
+          tag: { text: 'beta' }
         }) }}
         {% block languageSelect %}{% endblock %}
         {% block backLink %}{% endblock %}
@@ -68,54 +68,63 @@
 
 {% block footer %}
 
-  {% set footerMetaItems = [{
-    href: "/cookie-policy",
-    text: t("app:navigation.cookies"),
-    attributes: {
-      target: "_blank"
+  {% set footerMetaItems = [
+    {
+      href: '/accessibility-statement',
+      text: t('app:navigation.accessibilityStatement'),
+      attributes: {
+        target: '_blank'
+      }
+    },
+    {
+      href: '/cookie-policy',
+      text: t('app:navigation.cookies'),
+      attributes: {
+        target: '_blank'
+      }
     }
-  }] %}
+  ] %}
 
   {% if isNorthernIreland === false %}
     {% set footerMetaItems = (footerMetaItems.push({
-      href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
-      text: t("app:navigation.privacy"),
+      href: 'https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter',
+      text: t('app:navigation.privacy'),
       attributes: {
-        target: "_blank",
-        id: "privacy-policy",
-        rel: "external",
-        'data-journey-click': t("google-analytics:footer.privacy")
+        target: '_blank',
+        id: 'privacy-policy',
+        rel: 'external',
+        'data-journey-click': t('google-analytics:footer.privacy')
       }
     }), footerMetaItems) %}
   {% elif isNorthernIreland === true %}
     {% set footerMetaItems = (footerMetaItems.push({
-      href: "https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf",
-      text: t("app:navigation.northernIreland.privacy"),
+      href: 'https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf',
+      text: t('app:navigation.northernIreland.privacy'),
       attributes: {
-        target: "_blank",
-        id: "privacy-policy--northern-ireland",
-        rel: "external",
-        'data-journey-click': t("google-analytics:footer.ni-privacy")
+        target: '_blank',
+        id: 'privacy-policy--northern-ireland',
+        rel: 'external',
+        'data-journey-click': t('google-analytics:footer.ni-privacy')
       }
     }), footerMetaItems) %}
   {% else %}
     {% set footerMetaItems = (footerMetaItems.push({
-      href: "https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter",
-      text: t("app:navigation.privacy"),
+      href: 'https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter',
+      text: t('app:navigation.privacy'),
       attributes: {
-        target: "_blank",
-        id: "privacy-policy",
-        rel: "external",
-        'data-journey-click': t("google-analytics:footer.privacy")
+        target: '_blank',
+        id: 'privacy-policy',
+        rel: 'external',
+        'data-journey-click': t('google-analytics:footer.privacy')
       }
     }, {
-      href: "https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf",
-      text: t("app:navigation.northernIreland.privacy"),
+      href: 'https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf',
+      text: t('app:navigation.northernIreland.privacy'),
       attributes: {
-        target: "_blank",
-        id: "privacy-policy--northern-ireland",
-        rel: "external",
-        'data-journey-click': t("google-analytics:footer.ni-privacy")
+        target: '_blank',
+        id: 'privacy-policy--northern-ireland',
+        rel: 'external',
+        'data-journey-click': t('google-analytics:footer.ni-privacy')
       }
     }), footerMetaItems) %}
   {% endif %}

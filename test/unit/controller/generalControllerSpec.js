@@ -43,4 +43,12 @@ describe('General controller ', () => {
       done();
     });
   });
+
+  describe('accessibilityStatement function (GET /accessibility-statement)', () => {
+    it('should return accessibility statement page view', (done) => {
+      generalController.accessibilityStatement(emptyRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/accessibility-statement');
+      done();
+    });
+  });
 });

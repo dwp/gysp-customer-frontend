@@ -22,6 +22,7 @@
   "navigation": {
      "general": "to",
      "auth": "Your details",
+     "accessibilityStatement": "Accessibility statement",
      "cookies": "Cookies",
      "privacy": "Privacy",
      "northernIreland" : {
