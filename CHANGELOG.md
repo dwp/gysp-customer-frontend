@@ -1,3 +1,12 @@
+# [8.2.0](https://github.com/dwp/gysp-customer-frontend/compare/8.1.2...8.2.0) (2020-09-14)
+
+
+### Features
+
+* **content:** created accessibility-statement page ([902468a](https://github.com/dwp/gysp-customer-frontend/commit/902468a442061738b51251ad57a324175a2c4ed8))
+
+
+
 ## [8.1.2](https://github.com/dwp/gysp-customer-frontend/compare/8.1.1...8.1.2) (2020-09-02)
 
 
