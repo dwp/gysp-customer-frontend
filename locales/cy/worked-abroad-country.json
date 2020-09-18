@@ -1,7 +1,7 @@
 {
   "header": {
-    "country": "Gwlad __CURRENT__ o __TOTAL__",
-    "title": "Pryd wnaethoch chi weithio yn: __COUNTRY__?"
+    "country": "Gwlad {{CURRENT}} o {{TOTAL}}",
+    "title": "Pryd wnaethoch chi weithio yn: {{COUNTRY}}?"
   },
   "fields": {
     "referenceNumber": {

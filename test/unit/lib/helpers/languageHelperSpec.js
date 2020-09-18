@@ -12,7 +12,7 @@ describe('Language helper ', () => {
         session: {},
         lang: '',
         i18n: {
-          setLng: (lang) => {
+          changeLanguage: (lang) => {
             genericRequest.lang = lang;
           },
         },

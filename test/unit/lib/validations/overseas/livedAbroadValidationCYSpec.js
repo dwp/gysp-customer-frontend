@@ -1,7 +1,10 @@
 const assert = require('assert');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../../config/i18next');
+
 const validation = require('../../../../../lib/validations/overseasValidation');
 
 const emptyObject = {};
@@ -14,9 +17,12 @@ const populatedValidationFormNoWorked = { workedAbroad: 'no' };
 const populatedValidationFormOtherWorked = { workedAbroad: 'other' };
 
 describe('lived/worked abroad validation - CY', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('livedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.livedAbroad(emptyObject, 'cy');
@@ -40,6 +46,7 @@ describe('lived/worked abroad validation - CY', () => {
       assert.equal(validationResponse.livedAbroad, undefined);
     });
   });
+
   describe('workedAbroad', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.workedAbroad(emptyObject, 'cy');

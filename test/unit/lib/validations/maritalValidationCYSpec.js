@@ -1,8 +1,10 @@
 const { assert } = require('chai');
 const moment = require('moment');
-const i18n = require('i18next');
 
-const i18nConfig = require('../../../../config/i18n');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/maritalValidation.js');
 const dataObjectGenerator = require('../../../lib/dataObjectGenerator.js');
@@ -93,9 +95,12 @@ const longTextPartner = dataObjectGenerator.partnerDetail({
 });
 
 describe('Marital validation', () => {
-  before((done) => {
-    i18n.init(i18nConfig, done);
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
   });
+
   describe('selectionValidation', () => {
     it('should return error if answer is empty', () => {
       const validationResponse = validation.selectionValidation(emptyObject, 'cy');
@@ -108,6 +113,7 @@ describe('Marital validation', () => {
       assert.equal(validationResponse.maritalStatus.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.maritalStatus.text, 'Dewiswch eich statws priodasol presennol.');
     });
+
     it('should return no error if anwser is supplied', () => {
       const validationResponse = validation.selectionValidation(populatedValidationForm, 'cy');
       assert.equal(validationResponse.maritalStatus, undefined);
@@ -119,6 +125,7 @@ describe('Marital validation', () => {
       });
     });
   });
+
   describe('dateValidator', () => {
     it('should return error if date is empty', () => {
       const validationResponse = validation.dateValidator(todayDateObjectEmpy, 'married', 'cy');

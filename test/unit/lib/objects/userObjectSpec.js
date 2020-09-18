@@ -75,7 +75,6 @@ const claimNoAddressResponse = {
   addressLines: [],
 };
 
-
 describe('User object ', () => {
   describe(' verifyUserObject ', () => {
     it('should convert object to valid json with full address array present', () => {

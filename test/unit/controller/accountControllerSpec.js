@@ -60,6 +60,7 @@ describe('Account controller ', () => {
         assert.isUndefined(genericResponse.data.details);
         done();
       });
+
       it('should return view name when called with populated response data when session is set', (done) => {
         accountController.accountPageGet(populatedSessionGet, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details');
@@ -117,6 +118,7 @@ describe('Account controller ', () => {
         assert.isUndefined(genericResponse.data.details);
         done();
       });
+
       it('should return view name when called with populated response data when session is set', (done) => {
         accountController.accountPageGet(populatedOverseasSessionGet, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details-overseas');

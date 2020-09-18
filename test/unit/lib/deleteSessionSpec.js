@@ -20,6 +20,7 @@ describe('Data session', () => {
         'account-details': true,
       };
     });
+
     it('should delete all marital dates', () => {
       deleteSession.afterKey(req, 'all');
       assert.isUndefined(req.session['lived-abroad']);
@@ -35,6 +36,7 @@ describe('Data session', () => {
       assert.isUndefined(req.session['contact-details']);
       assert.isUndefined(req.session['account-details']);
     });
+
     it('calling deleteCustomerFormData should also delete all form data', () => {
       deleteSession.deleteCustomerFormData(req);
       assert.isUndefined(req.session['lived-abroad']);
@@ -51,6 +53,7 @@ describe('Data session', () => {
       assert.isUndefined(req.session['account-details']);
     });
   });
+
   describe(' deletePartnerDate ', () => {
     beforeEach(() => {
       req.session = {
@@ -70,11 +73,13 @@ describe('Data session', () => {
       assert.isUndefined(req.session['marital-date-divorced']);
       assert.isUndefined(req.session['marital-date-dissolved']);
     });
+
     it('should return empty session', () => {
       deleteSession.deletePartnerDate(reqEmpty);
       assert.equal(Object.keys(reqEmpty.session).length, 0);
     });
   });
+
   describe(' deletePartnerDetails ', () => {
     beforeEach(() => {
       req.session = {
@@ -94,17 +99,20 @@ describe('Data session', () => {
       assert.isUndefined(req.session['marital-partner-divorced']);
       assert.isUndefined(req.session['marital-partner-dissolved']);
     });
+
     it('should return empty session', () => {
       deleteSession.deletePartnerDetails(reqEmpty);
       assert.equal(Object.keys(reqEmpty.session).length, 0);
     });
   });
+
   describe(' deletePartnerStatus ', () => {
     it('should return empty session', () => {
       deleteSession.deletePartnerStatus(reqEmpty);
       assert.equal(Object.keys(reqEmpty.session).length, 0);
     });
   });
+
   describe(' deleteContact ', () => {
     it('should return empty session', () => {
       deleteSession.deleteContact(reqEmpty);

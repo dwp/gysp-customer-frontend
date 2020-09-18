@@ -86,6 +86,7 @@ describe('Marital controller ', () => {
       assert.equal(genericResponse.data.details, undefined);
       done();
     });
+
     it('should return view name when called with session data when session is populated', (done) => {
       maritalController.maritalSelectGet(sessionRequestSelect, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/marital-selection');
@@ -144,6 +145,7 @@ describe('Marital controller ', () => {
       assert.isUndefined(genericResponse.data.details);
       done();
     });
+
     it('should return view name when called with session data when some has been supplied', (done) => {
       maritalController.maritalStatusDateGet(populatedDateRequestWithSessionData, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/marital-selection-date');
@@ -186,6 +188,7 @@ describe('Marital controller ', () => {
       assert.isUndefined(genericResponse.data.details, undefined);
       done();
     });
+
     it('should return view name with detail when called', (done) => {
       maritalController.maritalPartnerDetailsGet(populatedPartnerRequestWithSession, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/marital-selection-partner');
@@ -200,24 +203,28 @@ describe('Marital controller ', () => {
       assert.equal(genericResponse.viewName, 'pages/marital-selection-partner');
       done();
     });
+
     it('should return redirect to contact when called with valid overseas post object', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDateOverseas, genericResponse);
       assert.isDefined(populatedRequestPartnerPostDateOverseas.session['marital-partner-married']);
       assert.equal(genericResponse.address, 'contact-details');
       done();
     });
+
     it('should return redirect to benefits when called with valid post object', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDate, genericResponse);
       assert.isDefined(populatedRequestPartnerPostDate.session['marital-partner-married']);
       assert.equal(genericResponse.address, 'contact-details');
       done();
     });
+
     it('should return redirect to check and change when called with valid post object and in edit mode', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDateEdit, genericResponse);
       assert.isDefined(populatedRequestPartnerPostDate.session['marital-partner-married']);
       assert.equal(genericResponse.address, 'check-your-details');
       done();
     });
+
     it('should filter out any post items that are not allowed and return a redirect', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDateMoreFields, genericResponse);
       assert.isUndefined(populatedRequestMarriedPostDate.session['marital-date-married'].kittens);
@@ -225,6 +232,7 @@ describe('Marital controller ', () => {
       assert.equal(genericResponse.address, 'contact-details');
       done();
     });
+
     it('should filter out any post items that are not allowed and return a redirect for overseas', (done) => {
       maritalController.maritalPartnerDetailsPost(populatedRequestPartnerPostDateMoreFieldsOverseas, genericResponse);
       assert.isUndefined(populatedRequestMarriedPostDate.session['marital-date-married'].kittens);

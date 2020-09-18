@@ -18,7 +18,7 @@
   "link": {
     "back": "Yn ôl"
   },
-  "feedback": "Mae hwn yn wasanaeth newydd a bydd eich <a href='__URL__' target='_new'>adborth</a> yn ein helpu i'w wella.",
+  "feedback": "Mae hwn yn wasanaeth newydd a bydd eich <a href='{{URL}}' target='_new'>adborth</a> yn ein helpu i'w wella.",
   "navigation": {
      "general": "Yn ôl i",
      "auth": "Darparu eich manylion",

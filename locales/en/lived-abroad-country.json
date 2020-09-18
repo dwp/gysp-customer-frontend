@@ -1,7 +1,7 @@
 {
   "header": {
-    "country": "Country __CURRENT__ of __TOTAL__",
-    "title": "When did you live in __COUNTRY__?",
+    "country": "Country {{CURRENT}} of {{TOTAL}}",
+    "title": "When did you live in {{COUNTRY}}?",
     "title-overseas": "When did you live here?"
   },
   "overseas-info": "If you've lived here on more than one occasion, you only need to provide dates for the most recent period of time.",
