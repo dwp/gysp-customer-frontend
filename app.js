@@ -86,15 +86,13 @@ const sessionConfig = {
   name: config.application.session.name,
   cookie: {
     maxAge: config.application.session.timeout,
+    secure: config.application.session.cookies.secure,
+    sameSite: config.application.session.cookies.sameSite,
   },
   resave: true,
   rolling: true,
   saveUninitialized: true,
 };
-
-if (config.application.session.securecookies === true) {
-  sessionConfig.cookie.secure = true;
-}
 
 if (config.application.session.store === 'redis') {
   sessionConfig.store = redisClient(session);
