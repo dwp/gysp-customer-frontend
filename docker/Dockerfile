@@ -9,7 +9,7 @@ ARG APP_FOLDER=/home/node/customer-frontend/
 ARG STUNNEL_FOLDER=/opt/stunnel/
 ARG HARDEN_FOLDER=/opt/harden/
 
-RUN apk add --update --no-cache tzdata
+RUN apk add --no-cache tzdata=2020a-r0 curl=7.67.0-r1
 
 # Default ENV
 ENV TZ=Europe/London
