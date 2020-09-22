@@ -116,7 +116,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use((req, res, next) => {
-  if (req.session && req.session.lang) {
+  if (req.session) {
+    req.session.lang = req.session.lang || 'en-GB';
     req.i18n.changeLanguage(req.session.lang);
     res.locals.htmlLang = req.session.lang;
   } else {
