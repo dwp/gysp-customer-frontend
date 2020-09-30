@@ -1,3 +1,27 @@
+## [8.2.1](https://github.com/dwp/gysp-customer-frontend/compare/8.2.0...8.2.1) (2020-09-30)
+
+
+* chore!: upgrade node to 12.8.4 ([f3dda38](https://github.com/dwp/gysp-customer-frontend/commit/f3dda3839aff33b7cbbf312e41d93b2370753c10))
+
+
+### Bug Fixes
+
+* **verify:** add sameSite to session cookie ([216325f](https://github.com/dwp/gysp-customer-frontend/commit/216325fff6473ba31563c3a8ebdcb0456d1cc3ae))
+
+
+### BREAKING CHANGES
+
+* * Drop support for node < 12.0.0
+* Update alpine Docker image
+* Delete .node-version file as Travis now can use .nvmrc
+* Update Travis config
+
+Jira SA-3112
+
+Signed-off-by: Malcolm Hire <malcolm.hire@engineering.digital.dwp.gov.uk>
+
+
+
 # [8.2.0](https://github.com/dwp/gysp-customer-frontend/compare/8.1.2...8.2.0) (2020-09-14)
 
 
