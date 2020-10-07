@@ -30,7 +30,7 @@
     "itemid": "1.1.0",
     "js-yaml": "3.14.0",
     "lodash": "4.17.20",
-    "moment": "2.29.0",
+    "moment": "2.29.1",
     "nunjucks": "3.2.2",
     "passport": "0.4.1",
     "passport-verify": "1.1.0",
