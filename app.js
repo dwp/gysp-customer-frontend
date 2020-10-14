@@ -7,6 +7,7 @@ const i18next = require('i18next');
 const i18nextHttpMiddleware = require('i18next-http-middleware');
 const i18nextFsBackend = require('i18next-fs-backend');
 const helmet = require('helmet');
+const noCache = require('nocache');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
 const passport = require('passport');
@@ -65,7 +66,6 @@ app.disable('etag');
 // Use helmet to set XSS security headers, Content-Security-Policy, etc.
 app.use(helmet());
 app.use(helmet.frameguard({ action: 'deny' }));
-app.use(helmet.noCache());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ['\'self\''],
@@ -77,6 +77,7 @@ app.use(helmet.contentSecurityPolicy({
   setAllHeaders: true,
   disableAndroid: false,
 }));
+app.use(noCache());
 
 app.set('trust proxy', 1);
 
