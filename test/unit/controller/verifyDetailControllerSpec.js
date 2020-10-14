@@ -44,10 +44,10 @@ const formattedUser = {
   ],
 };
 
-const invalidPostRequest = Object.assign({}, JSON.parse(JSON.stringify(validUserRequest)), { body: { address: 'test' } });
-const emptyPostRequest = Object.assign({}, JSON.parse(JSON.stringify(validUserRequest)), { body: { } });
-const validYesPostRequest = Object.assign({}, JSON.parse(JSON.stringify(validUserRequest)), { body: { address: 'yes' } });
-const validNoPostRequest = Object.assign({}, JSON.parse(JSON.stringify(validUserRequest)), { body: { address: 'no' } });
+const invalidPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'test' } };
+const emptyPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { } };
+const validYesPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'yes' } };
+const validNoPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'no' } };
 
 const invalidAddressError = {
   error: {

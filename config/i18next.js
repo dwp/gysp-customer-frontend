@@ -3,10 +3,10 @@ const fs = require('fs');
 const getNamespaces = (subFolders) => {
   const folder = './locales/';
   const namespaces = subFolders
-    .map(subFolder => fs.readdirSync(folder + subFolder))
+    .map((subFolder) => fs.readdirSync(folder + subFolder))
     .flat()
-    .filter(file => file.endsWith('.json'))
-    .map(file => file.slice(0, -5));
+    .filter((file) => file.endsWith('.json'))
+    .map((file) => file.slice(0, -5));
 
   return [...new Set(namespaces)];
 };

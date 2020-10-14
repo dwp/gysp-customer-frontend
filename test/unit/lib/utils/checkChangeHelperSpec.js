@@ -46,9 +46,7 @@ const baseDetailResult = [{
   },
 }];
 
-const livedAbroadNoDetails = Object.assign({
-  'lived-abroad': { livedAbroad: 'no' },
-}, baseDetails);
+const livedAbroadNoDetails = { 'lived-abroad': { livedAbroad: 'no' }, ...baseDetails };
 
 const livedAbroadNoResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -84,9 +82,7 @@ const livedAbroadNoResult = [{
   },
 }];
 
-const livedAbroadYesNoCountriesDetails = Object.assign({
-  'lived-abroad': { livedAbroad: 'yes' },
-}, baseDetails);
+const livedAbroadYesNoCountriesDetails = { 'lived-abroad': { livedAbroad: 'yes' }, ...baseDetails };
 
 const livedAbroadYesNoCountriesResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -122,12 +118,13 @@ const livedAbroadYesNoCountriesResult = [{
   },
 }];
 
-const livedAbroadYesNoDetailsDetails = Object.assign({
+const livedAbroadYesNoDetailsDetails = {
   'lived-abroad': { livedAbroad: 'yes' },
   'lived-abroad-countries': {
     'country-name[0]': 'Spain', 'country-name[1]': 'France', 'country-name[2]': '', 'country-name[3]': '',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const livedAbroadYesNoDetailsResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -163,7 +160,7 @@ const livedAbroadYesNoDetailsResult = [{
   },
 }];
 
-const livedAbroadYesWithDetailsDetails = Object.assign({
+const livedAbroadYesWithDetailsDetails = {
   'lived-abroad': { livedAbroad: 'yes' },
   'lived-abroad-countries': {
     'country-name[0]': 'Spain', 'country-name[1]': 'France', 'country-name[2]': '', 'country-name[3]': '',
@@ -184,7 +181,8 @@ const livedAbroadYesWithDetailsDetails = Object.assign({
       },
     },
   ],
-}, baseDetails);
+  ...baseDetails,
+};
 
 const livedAbroadYesWithDetailsResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -220,7 +218,7 @@ const livedAbroadYesWithDetailsResult = [{
   },
 }];
 
-const livedAbroadYesWithDetailsOverseasDetails = Object.assign({
+const livedAbroadYesWithDetailsOverseasDetails = {
   'lived-abroad-countries': {
     'country-name[0]': 'Spain', 'country-name[1]': 'France', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -241,7 +239,8 @@ const livedAbroadYesWithDetailsOverseasDetails = Object.assign({
     },
   ],
   isOverseas: true,
-}, baseDetails);
+  ...baseDetails,
+};
 
 const livedAbroadYesWithDetailsOverseasResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -311,9 +310,7 @@ const livedAbroadYesWithDetailsWelshResult = [{
   },
 }];
 
-const workedAbroadNoDetails = Object.assign({
-  'worked-abroad': { workedAbroad: 'no' },
-}, baseDetails);
+const workedAbroadNoDetails = { 'worked-abroad': { workedAbroad: 'no' }, ...baseDetails };
 
 const workedAbroadNoResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -349,9 +346,7 @@ const workedAbroadNoResult = [{
   },
 }];
 
-const workedAbroadYesNoCountriesDetails = Object.assign({
-  'worked-abroad': { workedAbroad: 'yes' },
-}, baseDetails);
+const workedAbroadYesNoCountriesDetails = { 'worked-abroad': { workedAbroad: 'yes' }, ...baseDetails };
 
 const workedAbroadYesNoCountriesResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -387,12 +382,13 @@ const workedAbroadYesNoCountriesResult = [{
   },
 }];
 
-const workedAbroadYesNoDetailsDetails = Object.assign({
+const workedAbroadYesNoDetailsDetails = {
   'worked-abroad': { workedAbroad: 'yes' },
   'worked-abroad-countries': {
     'country-name[0]': 'Spain', 'country-name[1]': 'France', 'country-name[2]': '', 'country-name[3]': '',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const workedAbroadYesNoDetailsResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -428,7 +424,7 @@ const workedAbroadYesNoDetailsResult = [{
   },
 }];
 
-const workedAbroadYesWithDetailsDetails = Object.assign({
+const workedAbroadYesWithDetailsDetails = {
   'worked-abroad': { workedAbroad: 'yes' },
   'worked-abroad-countries': {
     'country-name[0]': 'Spain', 'country-name[1]': 'France', 'country-name[2]': '', 'country-name[3]': '',
@@ -449,7 +445,8 @@ const workedAbroadYesWithDetailsDetails = Object.assign({
       },
     },
   ],
-}, baseDetails);
+  ...baseDetails,
+};
 
 const workedAbroadYesWithDetailsResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -519,9 +516,7 @@ const workedAbroadYesWithDetailsWelshResult = [{
   },
 }];
 
-const maritalStatusSingleDetails = Object.assign({
-  'marital-select': { maritalStatus: 'single' },
-}, baseDetails);
+const maritalStatusSingleDetails = { 'marital-select': { maritalStatus: 'single' }, ...baseDetails };
 
 const maritalStatusSingleResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -557,13 +552,14 @@ const maritalStatusSingleResult = [{
   },
 }];
 
-const maritalStatusMarriedDetails = Object.assign({
+const maritalStatusMarriedDetails = {
   'marital-select': { maritalStatus: 'married' },
   'marital-date-married': { dateYear: '1960', dateMonth: '01', dateDay: '01' },
   'marital-partner-married': {
     firstName: 'Joanne', surname: 'Bloggs', otherName: 'Other Name', dobYear: '1940', dobMonth: '01', dobDay: '01',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const maritalStatusMarriedResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -607,13 +603,14 @@ const maritalStatusMarriedResult = [{
   },
 }];
 
-const maritalStatusCivilDetails = Object.assign({
+const maritalStatusCivilDetails = {
   'marital-select': { maritalStatus: 'civil' },
   'marital-date-civil': { dateYear: '1960', dateMonth: '01', dateDay: '01' },
   'marital-partner-civil': {
     firstName: 'Joanne', surname: 'Bloggs', otherName: 'Other Name', dobYear: '1940', dobMonth: '01', dobDay: '01',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const maritalStatusCivilResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -657,13 +654,14 @@ const maritalStatusCivilResult = [{
   },
 }];
 
-const maritalStatusDivorcedDetails = Object.assign({
+const maritalStatusDivorcedDetails = {
   'marital-select': { maritalStatus: 'divorced' },
   'marital-date-divorced': { dateYear: '1960', dateMonth: '01', dateDay: '01' },
   'marital-partner-divorced': {
     firstName: 'Joanne', surname: 'Bloggs', otherName: 'Other Name', dobYear: '1940', dobMonth: '01', dobDay: '01',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const maritalStatusDivorcedResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -707,13 +705,14 @@ const maritalStatusDivorcedResult = [{
   },
 }];
 
-const maritalStatusDissolvedDetails = Object.assign({
+const maritalStatusDissolvedDetails = {
   'marital-select': { maritalStatus: 'dissolved' },
   'marital-date-dissolved': { dateYear: '1960', dateMonth: '01', dateDay: '01' },
   'marital-partner-dissolved': {
     firstName: 'Joanne', surname: 'Bloggs', otherName: 'Other Name', dobYear: '1940', dobMonth: '01', dobDay: '01',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const maritalStatusDissolvedResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
@@ -757,13 +756,14 @@ const maritalStatusDissolvedResult = [{
   },
 }];
 
-const maritalStatusWidowedDetails = Object.assign({
+const maritalStatusWidowedDetails = {
   'marital-select': { maritalStatus: 'widowed' },
   'marital-date-widowed': { dateYear: '1960', dateMonth: '01', dateDay: '01' },
   'marital-partner-widowed': {
     firstName: 'Joanne', surname: 'Bloggs', otherName: 'Other Name', dobYear: '1940', dobMonth: '01', dobDay: '01',
   },
-}, baseDetails);
+  ...baseDetails,
+};
 
 const maritalStatusWidowedResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },

@@ -44,7 +44,7 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/travis-cli": "11.0.0",
     "@dwp/commitlint-config-base": "1.1.0",
-    "@dwp/eslint-config-base": "3.0.0",
+    "@dwp/eslint-config-base": "4.1.0",
     "@dwp/eslint-config-mocha": "1.1.0",
     "aws-sdk": "2.771.0",
     "chai": "4.2.0",

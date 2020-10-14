@@ -138,8 +138,8 @@ if (config.application.feature.verify === true) {
 
   passport.use(passportVerify.createStrategy(
     config.application.verify.verifyServiceProviderHost,
-    responseBody => responseBody,
-    responseBody => responseBody,
+    (responseBody) => responseBody,
+    (responseBody) => responseBody,
     (requestId, request) => {
       const traceId = requestHelper.getTraceID(request);
       const uriPath = requestHelper.getUriPath(request);
@@ -202,13 +202,15 @@ app.use((req, res, next) => {
       const split = text.split(',');
       const msgKey = split.shift().trim();
 
-      const i18nVars = Object.assign({}, split.filter((value, key) => {
-        const vars = {};
-        if (key !== undefined) {
-          vars[key] = split[key];
-        }
-        return vars;
-      }));
+      const i18nVars = {
+        ...split.filter((value, key) => {
+          const vars = {};
+          if (key !== undefined) {
+            vars[key] = split[key];
+          }
+          return vars;
+        }),
+      };
       return req.t(msgKey, i18nVars);
     };
   };

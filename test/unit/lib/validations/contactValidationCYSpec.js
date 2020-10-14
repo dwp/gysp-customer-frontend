@@ -191,14 +191,14 @@ describe('Contact validation', () => {
     });
 
     it('should return error if email address contains a utf-8 special charcater (’)', () => {
-      const request = Object.assign({}, populatedFailedValidationForm, { email: '’test@test.com' });
+      const request = { ...populatedFailedValidationForm, email: '’test@test.com' };
       const validationResponse = validation.detailsValidation(request, 'cy');
       assert.equal(validationResponse.email.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.email.text, 'Rhowch gyfeiriad e-bost yn y fformat cywir, fel name@example.com.');
     });
 
     it('should return error if email address contains a utf-8 special charcater (‘)', () => {
-      const request = Object.assign({}, populatedFailedValidationForm, { email: '‘test@test.com' });
+      const request = { ...populatedFailedValidationForm, email: '‘test@test.com' };
       const validationResponse = validation.detailsValidation(request, 'cy');
       assert.equal(validationResponse.email.visuallyHiddenText, 'Gwall');
       assert.equal(validationResponse.email.text, 'Rhowch gyfeiriad e-bost yn y fformat cywir, fel name@example.com.');

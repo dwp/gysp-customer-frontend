@@ -17,24 +17,23 @@ const redirectTooEarly = '/verify/you-are-too-early-to-get-your-state-pension';
 const redirectSessionUndefined = '/verify/you-can-now-sign-in-with-govuk-verify';
 const maxMonthPreClaim = 4;
 
-function processAuth(req, res, user) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const customerServiceCall = requestHelper.generateGetCall(`${res.locals.customerServiceApiGateway}/customer/hashpid/${user.pid}`);
-      const customerDetails = await request(customerServiceCall);
+async function processAuth(req, res, user) {
+  try {
+    const { customerServiceApiGateway, claimServiceApiGateway } = res.locals;
+    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/hashpid/${user.pid}`);
+    const customerDetails = await request(customerServiceCall);
 
-      const claimServiceCall = requestHelper.generateGetCallWithFullResponse(
-        `${res.locals.claimServiceApiGateway}/claim/claimexists/${customerDetails.inviteKey}`,
-      );
-      const claimDetails = await request(claimServiceCall);
-      if (claimDetails.statusCode !== 404) {
-        throw new Error(claimDetails);
-      }
-      resolve(customerDetails);
-    } catch (err) {
-      reject(err);
+    const claimServiceCall = requestHelper.generateGetCallWithFullResponse(
+      `${claimServiceApiGateway}/claim/claimexists/${customerDetails.inviteKey}`,
+    );
+    const claimDetails = await request(claimServiceCall);
+    if (claimDetails.statusCode !== 404) {
+      throw new Error(claimDetails);
     }
-  });
+    return customerDetails;
+  } catch (err) {
+    return err;
+  }
 }
 
 function setSessionData(req, res, customerDetails, cb) {

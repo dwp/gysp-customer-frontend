@@ -55,7 +55,7 @@ const customerDetails = {
   title: 'C',
 };
 
-const customerDetailsClone = Object.assign({}, customerDetails);
+const customerDetailsClone = { ...customerDetails };
 
 const customerDetailsOverseas = {
   overseasAddress: {
