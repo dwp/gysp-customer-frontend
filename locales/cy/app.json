@@ -44,7 +44,7 @@
       "number": "0800 169 0203"
     },
     "hours": {
-      "line1": "Dydd Llun i ddydd Gwener, 8am i 6pm",
+      "line1": "Dydd Llun i ddydd Gwener",
       "line2": "Ar gau ar wyliau cyhoeddus"
     },
     "outside": {
@@ -65,6 +65,9 @@
         "line1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
         "line2": "Ar gau ar wyliau cyhoeddus"
       }
+    },
+    "covid-19": {
+      "p": "Yn ystod argyfwng coronafeirws (COVID-19), mae llinellau ffôn yn brysurach na'r arfer ac ar agor llai o oriau."
     }
   },
   "error": {
