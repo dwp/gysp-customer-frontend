@@ -24,7 +24,7 @@
     </h1>
 
 
-  <form method="post" action="/when-did-you-work-in-{{ country.url }}" autocomplete="off">
+  <form method="post" action="/when-did-you-work-in-{{ country.url }}" autocomplete="off" novalidate>
 
     <legend class="govuk-heading-m{% if isOverseas %} compound__xs-bottom{% endif %}">{{ t('worked-abroad-country:header.title' + pageSuffix, {COUNTRY: country.name}) }}</legend>
     {% if isOverseas %}

@@ -17,7 +17,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form method="post" action="what-is-your-current-marital-status" autocomplete="off">
+    <form method="post" action="what-is-your-current-marital-status" autocomplete="off" novalidate>
       {{ govukRadios({
           errorMessage: errors.maritalStatus,
           name: "maritalStatus",

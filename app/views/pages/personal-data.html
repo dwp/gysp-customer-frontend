@@ -26,7 +26,7 @@
       <li>{{ t("personal-data:li3") }}</li>
     </ul>
 
-    <form method="post" action="personal-data" autocomplete="off">
+    <form method="post" action="personal-data" autocomplete="off" novalidate>
 
       {{ govukRadios({
         errorMessage: errors.personalDataPermission,

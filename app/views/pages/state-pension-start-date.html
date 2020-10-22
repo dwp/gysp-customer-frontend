@@ -20,7 +20,7 @@
 
     <p class="govuk-body">{{ t('pension-start-date:' + beforeOrAfterSpa + '.p1.' + displayText, {statePensionDate: statePensionDate}) | safe }}</p>
 
-    <form method="post" action="when-do-you-want-your-state-pension" autocomplete="off">
+    <form method="post" action="when-do-you-want-your-state-pension" autocomplete="off" novalidate>
           {{ govukDateInput({
             id: "date",
             fieldset: {

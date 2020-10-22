@@ -43,7 +43,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">{{ t("auth:header") }}</h1>
 
-    <form method="post" action="auth" id="auth" autocomplete="off">
+    <form method="post" action="auth" id="auth" autocomplete="off" novalidate>
       {{ govukInput({
         label: {
           text: t("auth:fields.inviteKey"+ pageSuffix +".label"),

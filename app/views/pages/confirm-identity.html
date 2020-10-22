@@ -19,7 +19,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="confirm-identity" autocomplete="off">
+      <form method="post" action="confirm-identity" autocomplete="off" novalidate>
         {{ govukRadios({
           name: "authType",
           errorMessage: errors.authType,

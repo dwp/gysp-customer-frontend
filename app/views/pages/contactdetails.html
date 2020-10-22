@@ -21,7 +21,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form method="post" action="contact-details" autocomplete="off" id="checkbox-form">
+    <form method="post" action="contact-details" autocomplete="off" id="checkbox-form" novalidate>
       {% set homeTelephoneNumberHtml %}
         {{ govukInput({
           id: "homeTelephoneNumber",

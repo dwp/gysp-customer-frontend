@@ -40,7 +40,7 @@
         html: addressHtml
       }) }}
 
-      <form method="post" action="/verify/your-details" autocomplete="off" id="verify-your-details">
+      <form method="post" action="/verify/your-details" autocomplete="off" id="verify-your-details" novalidate>
 
         {{ govukRadios({
           errorMessage: errors.address,
