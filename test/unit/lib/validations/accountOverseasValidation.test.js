@@ -3,9 +3,9 @@ const { assert } = require('chai');
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
-const i18nextConfig = require('../../../../../config/i18next');
+const i18nextConfig = require('../../../../config/i18next');
 
-const validation = require('../../../../../lib/validations/accountOverseasValidation');
+const validation = require('../../../../lib/validations/accountOverseasValidation');
 
 const errorEmptySummaryResponse = [
   { href: '#accountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details-overseas:error:account-name-overseas' } },

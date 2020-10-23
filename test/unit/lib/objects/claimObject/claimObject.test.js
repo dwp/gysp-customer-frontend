@@ -3,9 +3,9 @@ const assert = require('assert');
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
-const i18nextConfig = require('../../../../config/i18next');
+const i18nextConfig = require('../../../../../config/i18next');
 
-const claimObject = require('../../../../lib/objects/claimObject');
+const claimObject = require('../../../../../lib/objects/claimObject');
 
 const dateForm = { dateDay: '01', dateMonth: '01', dateYear: '1990' };
 const validDateJson = '1990-01-01T00:00:00.000Z';

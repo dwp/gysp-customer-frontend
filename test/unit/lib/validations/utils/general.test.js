@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 const mockdate = require('mockdate');
-const generalHelper = require('../../../../lib/validations/utils/general');
+const generalHelper = require('../../../../../lib/validations/utils/general');
 
 const januaryDays = 31;
 const februaryDays = 28;
@@ -23,6 +23,8 @@ const invalidDates = [{ day: 9, month: 13, year: 2000 },
 const validEaseofUse = ['veryEasy', 'easy', 'difficult', 'veryDifficult'];
 const validHelperReg = ['yourself', 'someoneElse', 'onBehalf'];
 const validStatus = ['verySatisfied', 'satisfied', 'neither', 'dissatisfied', 'veryDissatisfied'];
+
+const basicText = 'BASIC';
 
 describe('General Helper ', () => {
   beforeEach(() => {
@@ -269,6 +271,66 @@ describe('General Helper ', () => {
 
     it('should return true when valid characters supplied', () => {
       assert.isTrue(generalHelper.checkInviteKeyCharacters('INVITECODE'));
+    });
+  });
+
+  describe('checkIfValidAsciiCode32to127', () => {
+    const tests = '\\!"#$%&\'()*+,-./@[]^_`{|}~:;<=>?';
+    const testArray = tests.split('');
+    testArray.forEach((test) => {
+      it(`should return true for ${test} args`, () => {
+        assert.isTrue(generalHelper.checkIfValidAsciiCode32to127(basicText + test));
+      });
+    });
+  });
+
+  describe('Roll Number validation', () => {
+    const tests = {
+      valid: [
+        { args: '/' },
+        { args: '.' },
+        { args: ',' },
+        { args: '45454' },
+        { args: '-' },
+        { args: '\'' },
+        { args: '(' },
+        { args: ')' },
+        { args: '*' },
+        { args: ' ' },
+        { args: '&' },
+      ],
+      invalid: [
+        { args: '|' },
+        { args: '#' },
+        { args: '\\' },
+        { args: '{' },
+        { args: '}' },
+        { args: '~' },
+        { args: '$' },
+        { args: ';' },
+        { args: ':' },
+        { args: '?' },
+        { args: '!' },
+        { args: '@' },
+        { args: '%' },
+        { args: '^' },
+        { args: '"' },
+        { args: '£' },
+        { args: '\n' },
+        { args: '\r' },
+      ],
+    };
+
+    tests.valid.forEach((test) => {
+      it(`should return true for ${test.args} args`, () => {
+        assert.isTrue(generalHelper.checkIfValidRollNumber(basicText + test.args));
+      });
+    });
+
+    tests.invalid.forEach((test) => {
+      it(`should return true for ${test.args} args`, () => {
+        assert.isFalse(generalHelper.checkIfValidRollNumber(basicText + test.args));
+      });
     });
   });
 });
