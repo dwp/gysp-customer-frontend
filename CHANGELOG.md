@@ -1,3 +1,7 @@
+## [8.2.3](https://github.com/dwp/gysp-customer-frontend/compare/8.2.2...8.2.3) (2020-10-27)
+
+
+
 ## [8.2.2](https://github.com/dwp/gysp-customer-frontend/compare/8.2.1...8.2.2) (2020-10-13)
 
 
