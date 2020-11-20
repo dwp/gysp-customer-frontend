@@ -175,7 +175,7 @@ const contactRoutes = require('./app/routes/contact/routes.js');
 const completeRoute = require('./app/routes/complete/routes.js');
 const declarationRoutes = require('./app/routes/declaration/routes.js');
 const accountRoutes = require('./app/routes/account/routes.js');
-const healthRoutes = require('./app/routes/health/routes.js');
+const actuatorRoutes = require('./app/routes/actuator/routes.js');
 const confirmIdentity = require('./app/routes/confirm-identity/routes.js');
 const personalData = require('./app/routes/personal-data/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
@@ -251,7 +251,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(config.mountUrl, healthRoutes);
+app.use(`${config.mountUrl}actuator`, actuatorRoutes);
 
 app.use((req, res, next) => {
   let err = '';

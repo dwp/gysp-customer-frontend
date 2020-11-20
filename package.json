@@ -1,6 +1,7 @@
 {
   "name": "customer-frontend",
   "version": "8.2.4",
+  "description": "Citizen frontend for Get your State Pension",
   "snapshot": "9.9.9-SNAPSHOT",
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "nunjucks": "3.2.2",
     "passport": "0.4.1",
     "passport-verify": "2.0.1",
+    "prom-client": "12.0.0",
     "request-promise": "4.2.6",
+    "response-time": "2.3.2",
     "serve-favicon": "2.5.0",
     "speakingurl": "14.0.1",
     "validator": "13.1.17"

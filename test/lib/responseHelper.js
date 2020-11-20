@@ -12,6 +12,9 @@ module.exports = {
       data: {},
       address: '',
       statusCode: '',
+      headers: {},
+      jsonResponse: '',
+      body: '',
       redirect(url) {
         this.address = url;
       },
@@ -21,6 +24,18 @@ module.exports = {
       },
       status(status) {
         this.statusCode = status;
+        return this;
+      },
+      json(data) {
+        this.jsonResponse = data;
+      },
+      set(name, value) {
+        this.headers[name] = value;
+        return this;
+      },
+      send(body) {
+        this.body = body;
+        return this;
       },
     };
     return genericResponse;
