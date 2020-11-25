@@ -1,6 +1,6 @@
 {
   "name": "customer-frontend",
-  "version": "8.2.4",
+  "version": "9.0.0",
   "description": "Citizen frontend for Get your State Pension",
   "snapshot": "9.9.9-SNAPSHOT",
   "repository": {
