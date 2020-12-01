@@ -41,7 +41,7 @@
     "response-time": "2.3.2",
     "serve-favicon": "2.5.0",
     "speakingurl": "14.0.1",
-    "validator": "13.1.17"
+    "validator": "13.5.1"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
