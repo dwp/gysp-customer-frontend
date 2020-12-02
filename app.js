@@ -58,7 +58,7 @@ app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_m
 app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), {
   maxage: 86400000,
 }));
-app.use(favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
+app.use(config.mountUrl, favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
 
 // Disable Etag for pages
 app.disable('etag');
