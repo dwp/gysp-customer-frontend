@@ -265,12 +265,44 @@ describe('General Helper ', () => {
   });
 
   describe(' checkInviteKeyCharacters ', () => {
+    it('should return false when a single space is supplied', () => {
+      assert.isFalse(generalHelper.checkInviteKeyCharacters(' '));
+    });
+
+    it('should return false when multiple spaces are supplied', () => {
+      assert.isFalse(generalHelper.checkInviteKeyCharacters('     '));
+    });
+
     it('should return false when invalid characters supplied', () => {
       assert.isFalse(generalHelper.checkInviteKeyCharacters('INVITECODE!!!!'));
     });
 
-    it('should return true when valid characters supplied', () => {
+    it('should return true when valid upper case characters supplied', () => {
       assert.isTrue(generalHelper.checkInviteKeyCharacters('INVITECODE'));
+    });
+
+    it('should return true when valid lower case characters supplied', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('invitecode'));
+    });
+
+    it('should return true when valid characters supplied with spaces at start', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('  INVITECODE'));
+    });
+
+    it('should return true when valid characters supplied with spaces at end', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('INVITECODE   '));
+    });
+
+    it('should return true when valid characters supplied with spaces in middle', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('INV  ITE'));
+    });
+
+    it('should return true when valid characters supplied with spaces at start and end', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('   INVITECODE   '));
+    });
+
+    it('should return true when valid characters supplied with spaces extreme ', () => {
+      assert.isTrue(generalHelper.checkInviteKeyCharacters('   I   N   V I T E  C  O  D         E   '));
     });
   });
 
