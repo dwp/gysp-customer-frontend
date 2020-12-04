@@ -28,7 +28,6 @@ function build() {
     '*.js',
     '!gulpfile.js/**',
     '!start.js',
-    '!awsPrivateIp.js',
     '!gulpfile.js',
     '!gulp-package.js',
     '!config/application.yaml',
