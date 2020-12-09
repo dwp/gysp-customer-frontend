@@ -13,19 +13,18 @@ const nunjucks = require('nunjucks');
 const passport = require('passport');
 const passportVerify = require('passport-verify');
 const httpStatus = require('http-status-codes');
-const overseas = require('./lib/middleware/overseas');
-const requestHelper = require('./lib/helpers/requestHelper');
-const checkChangeRedirect = require('./lib/middleware/checkChange');
 
+const checkChangeRedirect = require('./lib/middleware/checkChange');
+const domain = require('./lib/urlExtract');
+const overseas = require('./lib/middleware/overseas');
 const redisClient = require('./bootstrap/redisClient');
+const requestHelper = require('./lib/helpers/requestHelper');
 
 const config = require('./config/application');
-
-const domain = require('./lib/urlExtract');
+const i18nextConfig = require('./config/i18next');
 const log = require('./config/logging')('customer-frontend', config.application.logs);
 
 const app = express();
-const i18nextConfig = require('./config/i18next');
 
 nunjucks.configure([
   'app/views',
@@ -37,13 +36,6 @@ nunjucks.configure([
   express: app,
   noCache: config.application.noTemplateCache,
 });
-
-// Multilingual information
-i18next
-  .use(i18nextFsBackend)
-  .init(i18nextConfig);
-
-app.use(i18nextHttpMiddleware.handle(i18next, { ignoreRoutes: ['/public'] }));
 
 // Compression
 app.use(compression());
@@ -103,6 +95,13 @@ if (config.application.session.store === 'redis') {
 }
 
 app.use(session(sessionConfig));
+
+// Multilingual information
+i18next
+  .use(i18nextFsBackend)
+  .init(i18nextConfig);
+
+app.use(i18nextHttpMiddleware.handle(i18next, { ignoreRoutes: ['/assets'] }));
 
 function destroySessionAndRedirect(req, res) {
   req.session.destroy(() => {
