@@ -51,5 +51,5 @@ npm run test
 
 Code coverage:
 ```
-npm run test-coverage
+npm run quality
 ```
