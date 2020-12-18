@@ -18,7 +18,6 @@
   "link": {
     "back": "Back"
   },
-  "feedback": "This is a new service – your <a href='{{URL}}' target='_new'>feedback</a> will help us to improve it.",
   "navigation": {
      "general": "to",
      "auth": "Your details",

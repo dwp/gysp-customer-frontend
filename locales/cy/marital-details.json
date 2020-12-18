@@ -15,7 +15,7 @@
         "label-display": "Eu henw cyntaf",
         "errors": {
           "required": "Rhowch eu henw cyntaf.",
-          "format": "Mae'n rhaid i'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
+          "format": "Mae'n rhaid i'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.",
           "length": "Mae'n  rhaid i'r enw cyntaf fod yn 70 nod neu lai."
         }
     },
@@ -24,7 +24,7 @@
         "label-display": "Eu cyfenw",
         "errors": {
           "required": "Rhowch eu cyfenw.",
-          "format": "Mae'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
+          "format": "Mae'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.",
           "length": "Mae'n rhaid i gyfenw fod yn 70 nod neu lai."
         }
     },
@@ -33,7 +33,7 @@
         "label-display": "Enwau eraill",
         "hint": "Dylech gynnwys enw bedydd, cyn enw priodasol neu newidiadau i enw teuluol.",
         "errors": {
-          "format": "Mae'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.",
+          "format": "Mae'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.",
           "length": "Mae'n rhaid i enw arall fod yn 70 nod  neu lai."
         }
     },

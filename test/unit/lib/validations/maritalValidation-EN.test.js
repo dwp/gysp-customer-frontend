@@ -198,13 +198,13 @@ describe('Marital validation', () => {
     it('should return error if first name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
       assert.equal(validationResponse.firstName.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return error if first name does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaFirstNamePartner);
       assert.equal(validationResponse.firstName.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.firstName.text, 'First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return error if surname is empty', () => {
@@ -222,13 +222,13 @@ describe('Marital validation', () => {
     it('should return error if surname name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
       assert.equal(validationResponse.surname.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return error if surname does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaSurnamePartner);
       assert.equal(validationResponse.surname.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.surname.text, 'Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return error if other name is to long (70 characters)', () => {
@@ -240,13 +240,13 @@ describe('Marital validation', () => {
     it('should return error if other name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner);
       assert.equal(validationResponse.otherName.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return error if other name does not start with alpha', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaOtherNamePartner);
       assert.equal(validationResponse.otherName.visuallyHiddenText, 'Error');
-      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+      assert.equal(validationResponse.otherName.text, 'Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.');
     });
 
     it('should return no error if dob is empty', () => {

@@ -198,13 +198,13 @@ describe('Marital validation', () => {
     it('should return error if first name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
       assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
+      assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return error if first name does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaFirstNamePartner, 'married', 'cy');
       assert.equal(validationResponse.firstName.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
+      assert.equal(validationResponse.firstName.text, 'Mae\'n rhaid i\'r enw cyntaf ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return error if surname is empty', () => {
@@ -222,13 +222,13 @@ describe('Marital validation', () => {
     it('should return error if surname name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
       assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
+      assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return error if surname does not start with alpha ', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaSurnamePartner, 'married', 'cy');
       assert.equal(validationResponse.surname.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.');
+      assert.equal(validationResponse.surname.text, 'Mae\'n rhaid i gyfenw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return error if other name is to long (70 characters)', () => {
@@ -240,13 +240,13 @@ describe('Marital validation', () => {
     it('should return error if other name includes none characters', () => {
       const validationResponse = validation.partnerValidator(badFormatPartner, 'married', 'cy');
       assert.equal(validationResponse.otherName.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.');
+      assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return error if other name does not start with alpha', () => {
       const validationResponse = validation.partnerValidator(badFormatNonAlphaOtherNamePartner, 'married', 'cy');
       assert.equal(validationResponse.otherName.visuallyHiddenText, 'Gwall');
-      assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampsersand.');
+      assert.equal(validationResponse.otherName.text, 'Mae\'n rhaid i enwau eraill ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn a gofodau.');
     });
 
     it('should return no error if dob is empty', () => {

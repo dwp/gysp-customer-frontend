@@ -15,7 +15,7 @@
         "label-display": "Their first name",
         "errors": {
           "required": "Enter their first name.",
-          "format": "First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "format": "First name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.",
           "length": "First name must be 70 characters or less."
         }
     },
@@ -24,7 +24,7 @@
         "label-display": "Their surname",
         "errors": {
           "required": "Enter their surname.",
-          "format": "Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "format": "Surname must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.",
           "length": "Surname must be 70 characters or less."
         }
     },
@@ -33,7 +33,7 @@
         "label-display": "Other names",
         "hint": "Include maiden name, former married name and changes of family name.",
         "errors": {
-          "format": "Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
+          "format": "Other names must start with a letter and only include letters a to z, hyphens, apostrophes, full stops and spaces.",
           "length": "Other name must be 70 characters or less."
         }
     },
