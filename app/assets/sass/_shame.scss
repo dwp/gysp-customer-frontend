@@ -1,43 +1,43 @@
 .govuk-sort-code-input {
-  font-size: 0;
+    font-size: 0;
 
-  &__item {
-    display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 0;
-  }
+    &__item {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
 }
 
 .verify-block {
-  width: 200px;
+    width: 200px;
 
-  img {
-    width: 100%;
-  }
+    img {
+        width: 100%;
+    }
 }
 
 .js-enabled {
-  .js-hidden {
-    display: none;
-  }
+    .js-hidden {
+        display: none;
+    }
 }
 
 .gysp-button-group {
-  display: inline-block;
-  margin-bottom: 22px;
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: 32px;
-  }
+    display: inline-block;
+    margin-bottom: 22px;
+    @include govuk-media-query($from: tablet) {
+        margin-bottom: 32px;
+    }
 }
 
 .gysp-table__cell--wrap {
-  word-break: break-word;
-  overflow-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .gysp-print-link {
-  @include govuk-text-colour;
-  @include govuk-font($size: 24, $weight: bold);
-  margin-top: 0;
-  @include govuk-responsive-margin(4, 'bottom');
+    @include govuk-text-colour;
+    @include govuk-font($size: 24, $weight: bold);
+    margin-top: 0;
+    @include govuk-responsive-margin(4, 'bottom');
 }

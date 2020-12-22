@@ -1,34 +1,36 @@
 $hoverstate: #0097cf;
 
 .ui-autocomplete {
-  @include govuk-media-query($from: tablet) {
+    @include govuk-media-query($from: tablet) {
+        width: 80%;
+    }
     width: 80%;
-  }
-  width: 80%;
-  max-height: 350px;
-  padding: 0;
-  overflow-x: hidden;
-  border: 2px solid govuk-colour('dark-grey');
-  background-color: govuk-colour('white');
-  list-style: none;
+    max-height: 350px;
+    padding: 0;
+    overflow-x: hidden;
+    border: 2px solid govuk-colour('dark-grey');
+    background-color: govuk-colour('white');
+    list-style: none;
 
-  .ui-menu-item {
-     @include govuk-font(19, $weight: bold);
-      display: block;
-      padding: 8px !important;
-      border-top: 2px solid $govuk-border-colour;
-      color: $govuk-text-colour;
-      cursor: pointer;
+    .ui-menu-item {
+        @include govuk-font(19, $weight: bold);
+        display: block;
+        padding: 8px !important;
+        border-top: 2px solid $govuk-border-colour;
+        color: $govuk-text-colour;
+        cursor: pointer;
 
-      &:first-child {
-        border-top: 0;
-      }
+        &:first-child {
+            border-top: 0;
+        }
 
-      &.ui-state-focus {
-        background-color: $hoverstate;
-        color: govuk-colour('white');
-      }
+        &.ui-state-focus {
+            background-color: $hoverstate;
+            color: govuk-colour('white');
+        }
     }
 }
 
-.ui-widget-content { width: 500px;}
+.ui-widget-content {
+    width: 500px;
+}

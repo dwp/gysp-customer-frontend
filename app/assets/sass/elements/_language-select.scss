@@ -4,15 +4,15 @@
     float: right;
 
     &__item {
-      display: inline-block;
-      height: 22px;
-      margin: 3px 0 2px;
-      padding: 0;
+        display: inline-block;
+        height: 22px;
+        margin: 3px 0 2px;
+        padding: 0;
 
-      &--border-right {
-        margin-right: 8px;
-        padding-right: 8px;
-        border-right: 1px solid govuk-colour('mid-grey');
-      }
+        &--border-right {
+            margin-right: 8px;
+            padding-right: 8px;
+            border-right: 1px solid govuk-colour('mid-grey');
+        }
     }
-  }
+}
