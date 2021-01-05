@@ -224,6 +224,50 @@ describe('General Helper ', () => {
     });
   });
 
+  describe(' isFutureMonthYear ', () => {
+    it('should return true when + 1 year', () => {
+      mockdate.set(new Date('2020-01-01'));
+      assert.isTrue(generalHelper.isFutureMonthYear('01', '2021'));
+      mockdate.reset();
+    });
+
+    it('should return true when + 1 month', () => {
+      mockdate.set(new Date('2020-01-01'));
+      assert.isTrue(generalHelper.isFutureMonthYear('02', '2020'));
+      mockdate.reset();
+    });
+
+    it('should return true when + 1 year and + 1 month and is across 2 years', () => {
+      mockdate.set(new Date('2020-12-31'));
+      assert.isTrue(generalHelper.isFutureMonthYear('01', '2021'));
+      mockdate.reset();
+    });
+
+    it('should return false when same month and year', () => {
+      mockdate.set(new Date('2020-01-01'));
+      assert.isFalse(generalHelper.isFutureMonthYear('01', '2020'));
+      mockdate.reset();
+    });
+
+    it('should return false when - 1 month', () => {
+      mockdate.set(new Date('2020-02-01'));
+      assert.isFalse(generalHelper.isFutureMonthYear('01', '2020'));
+      mockdate.reset();
+    });
+
+    it('should return false when - 1 year', () => {
+      mockdate.set(new Date('2020-02-01'));
+      assert.isFalse(generalHelper.isFutureMonthYear('01', '2019'));
+      mockdate.reset();
+    });
+
+    it('should return false when - 1 year and - 1 month and is across 2 years', () => {
+      mockdate.set(new Date('2021-01-01'));
+      assert.isFalse(generalHelper.isFutureMonthYear('12', '2020'));
+      mockdate.reset();
+    });
+  });
+
   describe(' isDateAfterToday ', () => {
     it('should return true for day + 1 years', () => {
       assert.isTrue(generalHelper.isDateAfterToday('5', '5', currentYear + 1));
