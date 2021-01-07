@@ -198,7 +198,7 @@ integration-tests:
   extends: .rbac-pipeline-trigger
   variables:
     PROJECT_PATH: "rbac-gysp/customer-frontend-tests"
-    PAT: ${CUSTOMER_IT_TESTS_TOKEN}
+    PAT: ${GITLAB_ACCESS_TOKEN}
     WAIT_TTL: 300
   needs:
     - meta
