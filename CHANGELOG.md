@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/dwp/gysp-customer-frontend/compare/9.0.0...10.0.0) (2021-01-08)
+
+
+### Bug Fixes
+
+* add mount url for favicon ([ee7f9ad](https://github.com/dwp/gysp-customer-frontend/commit/ee7f9adb7a762c0c7ad334c734407e9bd1c1f3d5))
+* **auth:** regex to disallow only spaces in invite key ([c10e18f](https://github.com/dwp/gysp-customer-frontend/commit/c10e18f85d71328f8ee9d249c314be9295782e14))
+* **i18next-middleware:** ignore route /assets, not /public ([a8b35f4](https://github.com/dwp/gysp-customer-frontend/commit/a8b35f4338ea89e29113ee3ed9582bb8766fcb5b))
+* **validation:** corrected current year format ([d376b9e](https://github.com/dwp/gysp-customer-frontend/commit/d376b9ea7487545a4e8b1fd52207a2da3fef5c8b))
+
+
+
 # [9.0.0](https://github.com/dwp/gysp-customer-frontend/compare/8.2.4...9.0.0) (2020-11-25)
 
 
