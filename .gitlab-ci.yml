@@ -177,6 +177,7 @@ image-push:
     - image-package
   only:
     - master
+    - tags
 
 container-deploy:
   stage: deploy
