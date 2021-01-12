@@ -1,6 +1,6 @@
 const { assert } = require('chai');
-const overseas = require('../../../../lib/middleware/overseasAuth');
-const responseHelper = require('../../../lib/responseHelper');
+const overseas = require('../../../middleware/overseasAuth');
+const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
 const emptyRequest = { session: {} };

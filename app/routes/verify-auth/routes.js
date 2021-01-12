@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const overseasAuth = require('../../../lib/middleware/overseasAuth');
+const overseasAuth = require('../../../middleware/overseasAuth');
 
 const router = new express.Router();
 const functions = require('./functions');

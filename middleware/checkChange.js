@@ -1,4 +1,4 @@
-const redirectHelper = require('../helpers/redirectHelper');
+const redirectHelper = require('../lib/helpers/redirectHelper');
 
 function allowedPaths(key, path, mountUrl) {
   const pathRegx = new RegExp(mountUrl, 'g');

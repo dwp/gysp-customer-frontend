@@ -1,4 +1,4 @@
-const locationHelper = require('../helpers/locationHelper');
+const locationHelper = require('../lib/helpers/locationHelper');
 
 module.exports = () => (req, res, next) => {
   if (req.session.customerDetails && req.session.customerDetails.overseasAddress) {

@@ -1,6 +1,6 @@
 const { assert } = require('chai');
-const checkChange = require('../../../../lib/middleware/checkChange');
-const responseHelper = require('../../../lib/responseHelper');
+const checkChange = require('../../../middleware/checkChange');
+const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
 const emptyRequest = { session: {} };

@@ -10,7 +10,7 @@ Frontend service for Get your State Pension.
 
 #### Config
 
-Use to provided `.env.example` file and create your own `.env` file and complete the config.
+Use the provided `.env.example` file to create your own `.env` file and complete the config.
 
 ### Running Locally
 
@@ -20,7 +20,7 @@ Use to provided `.env.example` file and create your own `.env` file and complete
 make up
 ```
 
-This will now be available at at your configered URL, default is: `http://localhost:3001`.
+This will now be available at your configured URL, default is: `http://localhost:3001`.
 
 #### Stopping
 
@@ -37,7 +37,7 @@ There are various system variables that need to be set for the application to ru
 * Node.JS v12.0.0+
 * npm v6.9.0+
 
-There is a few options for testing within the application, these have been configured on jenkins. Testing uses [mocha](https://github.com/mochajs/mocha), [supertest](https://github.com/visionmedia/supertest)/[superagent](https://github.com/visionmedia/superagent), [chai](https://github.com/chaijs/chai) and [istanbul](https://gotwarlost.github.io/istanbul/).
+There is a few options for testing within the application, these have been configured on GitLab CI. Testing uses [mocha](https://github.com/mochajs/mocha), [supertest](https://github.com/visionmedia/supertest)/[superagent](https://github.com/visionmedia/superagent), [chai](https://github.com/chaijs/chai) and [istanbul](https://gotwarlost.github.io/istanbul/).
 
 Setup:
 ```

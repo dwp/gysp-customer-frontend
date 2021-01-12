@@ -1,160 +1,56 @@
 const path = require('path');
-const bodyParser = require('body-parser');
-const compression = require('compression');
 const express = require('express');
 const favicon = require('serve-favicon');
-const i18next = require('i18next');
-const i18nextHttpMiddleware = require('i18next-http-middleware');
-const i18nextFsBackend = require('i18next-fs-backend');
-const helmet = require('helmet');
-const noCache = require('nocache');
-const session = require('express-session');
-const nunjucks = require('nunjucks');
-const passport = require('passport');
-const passportVerify = require('passport-verify');
 const httpStatus = require('http-status-codes');
 
-const checkChangeRedirect = require('./lib/middleware/checkChange');
 const domain = require('./lib/urlExtract');
-const overseas = require('./lib/middleware/overseas');
-const redisClient = require('./bootstrap/redisClient');
-const requestHelper = require('./lib/helpers/requestHelper');
+const sessionHelper = require('./lib/helpers/sessionHelper');
 
+// Middleware
+const headersMiddleware = require('./middleware/headers/index');
+const staticMiddleware = require('./middleware/static/index');
+const nunjucksMiddleware = require('./middleware/nunjucks/index');
+const sessionMiddleware = require('./middleware/session/index');
+const i18nextMiddleware = require('./middleware/i18n/index');
+const verifyMiddleware = require('./middleware/verify/index');
+const pageMiddleware = require('./middleware/page/index');
+
+const checkChangeRedirect = require('./middleware/checkChange');
+const overseas = require('./middleware/overseas');
+
+// Config
 const config = require('./config/application');
 const i18nextConfig = require('./config/i18next');
 const log = require('./config/logging')('customer-frontend', config.application.logs);
 
 const app = express();
 
-nunjucks.configure([
-  'app/views',
-  'node_modules/govuk-frontend/',
-], {
-  autoescape: true,
-  trimBlocks: true,
-  lstripBlocks: true,
-  express: app,
-  noCache: config.application.noTemplateCache,
-});
-
-// Compression
-app.use(compression());
-
-// Disable x-powered-by header
-app.disable('x-powered-by');
-
-// Middleware to serve static assets
-app.set('view engine', 'html');
-app.use(`${config.mountUrl}assets`, express.static('./public'));
-app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk')));
-app.use(`${config.mountUrl}assets`, express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets'), {
-  maxage: 86400000,
-}));
+// Serve default, implicit favicon
 app.use(config.mountUrl, favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
 
-// Disable Etag for pages
-app.disable('etag');
+// Mount all the required middleware
+headersMiddleware(app);
 
-// Use helmet to set XSS security headers, Content-Security-Policy, etc.
-app.use(helmet({
-  referrerPolicy: false,
-  frameguard: { action: 'deny' },
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ['\'self\''],
-      scriptSrc: ['\'self\'', '\'unsafe-inline\'', 'www.google-analytics.com'],
-      imgSrc: ['\'self\'', 'www.google-analytics.com'],
-      fontSrc: ['\'self\'', 'data: blob:'],
-    },
-    reportOnly: false,
-  },
-}));
-app.use(noCache());
-
-app.set('trust proxy', 1);
-
-// Session settings
-const sessionConfig = {
-  secret: config.application.session.secret,
-  name: config.application.session.name,
-  cookie: {
-    maxAge: config.application.session.timeout,
-    secure: config.application.session.cookies.secure,
-    sameSite: config.application.session.cookies.sameSite,
-  },
-  resave: true,
-  rolling: true,
-  saveUninitialized: true,
-};
-
-if (config.application.session.store === 'redis') {
-  sessionConfig.store = redisClient(session);
-  sessionConfig.store.client.on('error', (err) => {
-    log.error(`Redis error: ${err}`);
-  });
-}
-
-app.use(session(sessionConfig));
-
-// Multilingual information
-i18next
-  .use(i18nextFsBackend)
-  .init(i18nextConfig);
-
-app.use(i18nextHttpMiddleware.handle(i18next, { ignoreRoutes: ['/assets'] }));
-
-function destroySessionAndRedirect(req, res) {
-  req.session.destroy(() => {
-    res.redirect(res.locals.serviceURL);
-  });
-}
-
-// Add post middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false,
-}));
-
-app.use((req, res, next) => {
-  if (req.session) {
-    req.session.lang = req.session.lang || 'en-GB';
-    req.i18n.changeLanguage(req.session.lang);
-    res.locals.htmlLang = req.session.lang;
-  } else {
-    res.locals.htmlLang = req.i18n.language;
-  }
-  next();
+staticMiddleware({
+  app,
+  npmGovukFrontend: path.join(__dirname, '/node_modules/govuk-frontend'),
 });
+
+nunjucksMiddleware(app, [
+  'app/views',
+  'node_modules/govuk-frontend/',
+]);
+
+sessionMiddleware(app, log, config.application);
+
+pageMiddleware(app);
+
+const i18next = i18nextMiddleware(app, i18nextConfig);
 
 let serviceURL = '/auth';
 if (config.application.feature.verify === true) {
   serviceURL = '/confirm-identity';
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  passport.serializeUser((user, done) => done(null, JSON.stringify(user)));
-  passport.deserializeUser((user, done) => done(null, JSON.parse(user)));
-
-  passport.use(passportVerify.createStrategy(
-    config.application.verify.verifyServiceProviderHost,
-    (responseBody) => responseBody,
-    (responseBody) => responseBody,
-    (requestId, request) => {
-      const traceId = requestHelper.getTraceID(request);
-      const uriPath = requestHelper.getUriPath(request);
-      log.info({ traceId }, `verify saveRequestId: ${requestId} - Requested on ${uriPath}`);
-      request.session.requestId = requestId;
-    },
-    (request) => {
-      const traceId = requestHelper.getTraceID(request);
-      const uriPath = requestHelper.getUriPath(request);
-      log.info({ traceId }, `verify loadRequestId: ${request.session.requestId} - Requested on ${uriPath}`);
-      return request.session.requestId;
-    },
-    null,
-    null,
-    'LEVEL_1',
-  ));
+  verifyMiddleware(app, log, config.application.verify);
 }
 
 app.use(checkChangeRedirect(config.mountUrl));
@@ -213,7 +109,7 @@ app.use((req, res, next) => {
       return req.t(msgKey, i18nVars);
     };
   };
-  /* eslint-enable arrow-body-style  */
+
   res.locals.logger = log;
   res.locals.assetPath = '/assets';
   res.locals.serviceURL = serviceURL;
@@ -294,7 +190,7 @@ app.use((req, res, next) => {
     next();
   } else {
     log.info(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
-    destroySessionAndRedirect(req, res);
+    sessionHelper.destroySessionAndRedirect(req, res);
   }
 });
 if (config.application.feature.verify === true) {

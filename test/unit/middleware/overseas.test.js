@@ -1,6 +1,6 @@
 const { assert } = require('chai');
-const overseas = require('../../../../lib/middleware/overseas');
-const responseHelper = require('../../../lib/responseHelper');
+const overseas = require('../../../middleware/overseas');
+const responseHelper = require('../../lib/responseHelper');
 
 const gbLocation = 'georegion=263,country_code=GB,region_code=MA,city=CAMBRIDGE,dma=50 6,pmsa=1120,areacode=617,county=MIDDLESEX,fips=25017,lat=42.3933,long=-71.1333,timezone=EST,zip=02138-02142+02238-02239,continent=NA ,throughput=vhigh,asnum=21399';
 const auLocation = 'georegion=263,country_code=AU,region_code=MA,city=CAMBRIDGE,dma=50 6,pmsa=1120,areacode=617,county=MIDDLESEX,fips=25017,lat=42.3933,long=-71.1333,timezone=EST,zip=02138-02142+02238-02239,continent=NA ,throughput=vhigh,asnum=21399';
