@@ -1,14 +1,26 @@
+const redis = require('redis');
 const connectRedis = require('connect-redis');
 
-module.exports = (session, config) => {
+function redisConfigIngest(config) {
   const redisHostUrl = new URL(`dummy://${config.hosts}`);
-  const redisHost = { host: redisHostUrl.hostname, port: redisHostUrl.port };
+  const redisClientConfig = { host: redisHostUrl.hostname, port: redisHostUrl.port };
   if (redisHostUrl.username) {
-    redisHost.password = redisHostUrl.username;
+    redisClientConfig.password = redisHostUrl.username;
   }
   if (config.prefix) {
-    redisHost.prefix = config.prefix;
+    redisClientConfig.prefix = config.prefix;
   }
+  return redisClientConfig;
+}
+
+function redisCreateClient(config) {
+  const client = redis.createClient(redisConfigIngest(config));
+  client.unref();
+  return client;
+}
+
+module.exports = (session, config) => {
+  const redisClient = redisCreateClient(config);
   const RedisStore = connectRedis(session);
-  return new RedisStore(redisHost);
+  return new RedisStore({ client: redisClient });
 };
