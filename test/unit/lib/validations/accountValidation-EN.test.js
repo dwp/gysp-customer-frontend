@@ -42,12 +42,12 @@ const bankObjects = {
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
   startNotAlphaName: { bankAccountHolder: ' Space Mistake', bankAccountNumber: '123456789' },
-  dashAccountNumber: {
+  dashAccountNumberAndSortCode: {
     bankAccountHolder: ' Space Mistake',
     bankAccountNumber: '-1234567',
-    bankSortCodeField1: '11',
-    bankSortCodeField2: '22',
-    bankSortCodeField3: '33',
+    bankSortCodeField1: '-1',
+    bankSortCodeField2: '-2',
+    bankSortCodeField3: '-3',
   },
   fullStopAccountNumber: {
     bankAccountHolder: ' Space Mistake',
@@ -110,7 +110,7 @@ const buildingObjects = {
   nonAlphaName: { buildingAccountHolder: '££', buildingAccountNumber: '123456789', buildingRoll: '' },
   includesAnd: { buildingAccountHolder: 'One && Two', buildingAccountNumber: '123456789', buildingRoll: '' },
   startNotAlphaName: { buildingAccountHolder: ' Space Mistake', buildingAccountNumber: '123456789', buildingRoll: '' },
-  dashAccountNumber: {
+  dashAccountNumberAndSortCode: {
     buildingAccountHolder: 'Mr Joe Bloggs',
     buildingAccountNumber: '-1234567',
     buildingSortCodeField1: '11',
@@ -242,10 +242,10 @@ describe('accountValidator - EN', () => {
       });
 
       it('should return error if incorrect format dash and numbers', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumber);
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
         assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.errorSummary[2].text, 'Account number must be 8 numbers.');
       });
 
       it('should return error if incorrect format full stop and numbers', () => {
@@ -270,18 +270,28 @@ describe('accountValidator - EN', () => {
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code.');
         assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
       });
+
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
         assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
+
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
         assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code in the correct format, like 11 22 33.');
+      });
+
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
@@ -362,7 +372,7 @@ describe('accountValidator - EN', () => {
       });
 
       it('should return error if incorrect format dash and numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumber);
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumberAndSortCode);
         assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
         assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
@@ -390,18 +400,28 @@ describe('accountValidator - EN', () => {
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code.');
         assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
       });
+
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
         assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code in the correct format, like 11 22 33.');
+      });
+
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
         assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
       });
+
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');

@@ -42,12 +42,12 @@ const bankObjects = {
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
   startNotAlphaName: { bankAccountHolder: ' Space Mistake', bankAccountNumber: '123456789' },
-  dashAccountNumber: {
+  dashAccountNumberAndSortCode: {
     bankAccountHolder: ' Space Mistake',
     bankAccountNumber: '-1234567',
-    bankSortCodeField1: '11',
-    bankSortCodeField2: '22',
-    bankSortCodeField3: '33',
+    bankSortCodeField1: '-1',
+    bankSortCodeField2: '-2',
+    bankSortCodeField3: '-3',
   },
   fullStopAccountNumber: {
     bankAccountHolder: ' Space Mistake',
@@ -110,6 +110,14 @@ const buildingObjects = {
   nonAlphaName: { buildingAccountHolder: '££', buildingAccountNumber: '123456789', buildingRoll: '' },
   includesAnd: { buildingAccountHolder: 'One && Two', buildingAccountNumber: '123456789', buildingRoll: '' },
   startNotAlphaName: { buildingAccountHolder: ' Space Mistake', buildingAccountNumber: '123456789', buildingRoll: '' },
+  dashAccountNumberAndSortCode: {
+    buildingAccountHolder: 'Mr Joe Bloggs',
+    buildingAccountNumber: '-1234567',
+    buildingSortCodeField1: '-1',
+    buildingSortCodeField2: '-2',
+    buildingSortCodeField3: '-3',
+    buildingRoll: 'CXJ-K6 897/98X',
+  },
 };
 
 describe('accountValidator - CY', () => {
@@ -218,6 +226,11 @@ describe('accountValidator - CY', () => {
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Gwall');
         assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.bankSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
+      });
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Gwall');
@@ -294,9 +307,9 @@ describe('accountValidator - CY', () => {
       });
 
       it('should return error if incorrect format dash and numbers', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumber);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Gwall');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumberAndSortCode);
+        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
         assert.equal(accountValidationResponse.errorSummary[1].text, 'Mae\'n rhaid i rif y cyfrif fod yn 8 rhif.');
       });
 
@@ -321,16 +334,25 @@ describe('accountValidator - CY', () => {
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Gwall');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli.');
       });
+
       it('should return error if not numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Gwall');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
+
+      it('should return error if incorrect format dash and numbers', () => {
+        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumberAndSortCode);
+        assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Gwall');
+        assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
+      });
+
       it('should return error if one numbers', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Gwall');
         assert.equal(accountValidationResponse.buildingSortCode.text, 'Rhowch god didoli yn y fformat cywir, fel 11 22 33.');
       });
+
       it('should return error if length greater then 2', () => {
         const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
         assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Gwall');
