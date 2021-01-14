@@ -34,6 +34,7 @@ headersMiddleware(app);
 staticMiddleware({
   app,
   npmGovukFrontend: path.join(__dirname, '/node_modules/govuk-frontend'),
+  mountUrl: config.mountUrl,
 });
 
 nunjucksMiddleware(app, [
