@@ -29,13 +29,13 @@ const app = express();
 app.use(config.mountUrl, favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
 
 // Mount all the required middleware
-headersMiddleware(app);
-
 staticMiddleware({
   app,
   npmGovukFrontend: path.join(__dirname, '/node_modules/govuk-frontend'),
   mountUrl: config.mountUrl,
 });
+
+headersMiddleware(app);
 
 nunjucksMiddleware(app, [
   'app/views',
