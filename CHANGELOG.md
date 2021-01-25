@@ -1,3 +1,12 @@
+## [10.0.1](https://github.com/dwp/gysp-customer-frontend/compare/10.0.0...10.0.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **account:** dash in sort code fails validation ([c9533e5](https://github.com/dwp/gysp-customer-frontend/commit/c9533e539484364d5e01477a424bff95dcf316b1))
+
+
+
 # [10.0.0](https://github.com/dwp/gysp-customer-frontend/compare/9.0.0...10.0.0) (2021-01-08)
 
 
