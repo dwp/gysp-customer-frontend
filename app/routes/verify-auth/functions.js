@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 const passport = require('passport');
 const passportVerify = require('passport-verify');
-const request = require('request-promise');
-const httpStatus = require('http-status-codes');
+const got = require('got');
+const { StatusCodes } = require('http-status-codes');
 
 const config = require('../../../config/application');
 
@@ -17,19 +17,39 @@ const redirectTooEarly = '/verify/you-are-too-early-to-get-your-state-pension';
 const redirectSessionUndefined = '/verify/you-can-now-sign-in-with-govuk-verify';
 const maxMonthPreClaim = 4;
 
+
+function getCustomerByHashPidServiceRequest(req, res, user) {
+  return new Promise((resolve, reject) => {
+    const { customerServiceApiGateway } = res.locals;
+    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/hashpid/${user.pid}`);
+    got(customerServiceCall).then((response) => {
+      resolve(response.body);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+function getClaimExistsServiceRequest(req, res, customer) {
+  return new Promise((resolve, reject) => {
+    const { claimServiceApiGateway } = res.locals;
+    const claimServiceCall = requestHelper.generateGetCall(`${claimServiceApiGateway}/claim/claimexists/${customer.inviteKey}`);
+    got(claimServiceCall).then((response) => {
+      const error = { message: 'Claim already exists', response };
+      reject(error);
+    }).catch((err) => {
+      if (err.response.stateCode !== StatusCodes.NOT_FOUND) {
+        resolve(true);
+      }
+      reject(err);
+    });
+  });
+}
+
 async function processAuth(req, res, user) {
   try {
-    const { customerServiceApiGateway, claimServiceApiGateway } = res.locals;
-    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/hashpid/${user.pid}`);
-    const customerDetails = await request(customerServiceCall);
-
-    const claimServiceCall = requestHelper.generateGetCallWithFullResponse(
-      `${claimServiceApiGateway}/claim/claimexists/${customerDetails.inviteKey}`,
-    );
-    const claimDetails = await request(claimServiceCall);
-    if (claimDetails.statusCode !== 404) {
-      throw new Error(claimDetails);
-    }
+    const customerDetails = await getCustomerByHashPidServiceRequest(req, res, user);
+    getClaimExistsServiceRequest(req, res, customerDetails);
     return customerDetails;
   } catch (err) {
     return err;
@@ -57,8 +77,8 @@ function authErrorPage(error, req, res) {
   const traceID = requestHelper.getTraceID(error);
   const uriPath = requestHelper.getUriPath(error);
   requestHelper.errorLoggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
-  res.status(httpStatus.OK);
-  res.render('pages/error', { status: httpStatus.INTERNAL_SERVER_ERROR });
+  res.status(StatusCodes.OK);
+  res.render('pages/error', { status: StatusCodes.INTERNAL_SERVER_ERROR });
 }
 
 function getVerifyAbout(req, res) {

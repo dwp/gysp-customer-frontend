@@ -7,9 +7,9 @@ describe('Request helper ', () => {
     it('should return valid object when url and body is supplied', () => {
       const postCall = requestHelper.generatePostCall('http://url.com/', { value1: 1 });
       assert.equal(postCall.url, 'http://url.com/');
-      assert.equal(postCall.json, true);
+      assert.equal(postCall.responseType, 'json');
       assert.equal(postCall.method, 'POST');
-      assert.equal(postCall.body.value1, 1);
+      assert.equal(postCall.json.value1, 1);
       assert.isString(postCall.headers['X-B3-TraceId']);
       assert.isString(postCall.headers['X-B3-SpanId']);
       assert.equal(postCall.headers['User-Agent'], 'customer-frontend');
@@ -22,9 +22,9 @@ describe('Request helper ', () => {
       it('should return valid object when url and body is supplied', () => {
         const getCall = requestHelper.generateGetCall('http://url.com/', { value1: 1 });
         assert.equal(getCall.url, 'http://url.com/');
-        assert.equal(getCall.json, true);
-        assert.equal(getCall.method, undefined);
-        assert.equal(getCall.body.value1, 1);
+        assert.equal(getCall.responseType, 'json');
+        assert.equal(getCall.method, 'GET');
+        assert.equal(getCall.json.value1, 1);
         assert.isString(getCall.headers['X-B3-TraceId']);
         assert.isString(getCall.headers['X-B3-SpanId']);
         assert.equal(getCall.headers['User-Agent'], 'customer-frontend');
@@ -38,7 +38,7 @@ describe('Request helper ', () => {
         assert.equal(headers['Content-Type'], 'application/json');
         assert.isString(headers['X-B3-TraceId']);
         assert.isString(headers['X-B3-SpanId']);
-        assert.equal(headers.rejectUnauthorized, false);
+        assert.equal(headers.https.rejectUnauthorized, false);
       });
     });
   });

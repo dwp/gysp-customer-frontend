@@ -1,5 +1,5 @@
-const requestPromise = require('request-promise');
-const httpStatus = require('http-status-codes');
+const got = require('got');
+const { StatusCodes } = require('http-status-codes');
 const generalHelper = require('../../../lib/validations/utils/general.js');
 
 const dataStore = require('../../../lib/dataStore');
@@ -35,20 +35,19 @@ function verifyAccountDetails(req, res, bankDetails, customerDetails) {
       resolve({ result: bankVerification.featureNotChecked() });
     } else if (config.application.feature.bankFeature === true) {
       const verifyObject = bank.bankDetailsToObjectWithCustomerDetails(bankDetails, customerDetails, req.session['dob-details']);
-      const bankVerifyCall = requestHelper.generatePostCallWithFullResponse(
+      const bankVerifyCall = requestHelper.generatePostCall(
         `${res.locals.bankValidateServiceApiGateway}/bankvalidate`, verifyObject, 'frontend',
       );
-      requestPromise(bankVerifyCall).then((request) => {
-        if (request.statusCode === httpStatus.BAD_REQUEST) {
-          resolve({ result: bankVerification.badRequest() });
-        } else if (request.statusCode !== httpStatus.OK) {
-          throw request;
-        }
-        resolve(request.body);
+      got(bankVerifyCall).then(({ body }) => {
+        resolve(body);
       }).catch((err) => {
         const traceID = requestHelper.getTraceID(err);
         requestHelper.errorLoggingHelper(err, '/api/bankvalidate', traceID, res.locals.logger, req.session.inviteKey);
-        resolve({ result: bankVerification.errorReturned() });
+        if (err.response.statusCode === StatusCodes.BAD_REQUEST) {
+          resolve({ result: bankVerification.badRequest() });
+        } else {
+          resolve({ result: bankVerification.errorReturned() });
+        }
       });
     } else {
       resolve({ result: bankVerification.featureDisabled() });
@@ -61,7 +60,7 @@ async function processClaim(res, customerDetails, claimData, accountStatus, lang
   return new Promise((resolve, reject) => {
     claimBody.customerRequest = claim.createCustomerObject(customerDetails);
     const calimServiceCall = requestHelper.generatePostCall(`${res.locals.claimServiceApiGateway}/claim`, claimBody);
-    requestPromise(calimServiceCall).then(() => {
+    got(calimServiceCall).then(() => {
       resolve();
     }).catch((err) => {
       reject(err);

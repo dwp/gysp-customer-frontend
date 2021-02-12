@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const favicon = require('serve-favicon');
-const httpStatus = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 
 const domain = require('./lib/urlExtract');
 const sessionHelper = require('./lib/helpers/sessionHelper');
@@ -239,14 +239,14 @@ app.use(config.mountUrl, checkChange);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
-  err.status = httpStatus.NOT_FOUND;
+  err.status = StatusCodes.NOT_FOUND;
   next(err);
 });
 
 // Error catch
 app.use((err, req, res, next) => {
-  let status = (err.status || httpStatus.INTERNAL_SERVER_ERROR);
-  res.status(httpStatus.OK);
+  let status = (err.status || StatusCodes.INTERNAL_SERVER_ERROR);
+  res.status(StatusCodes.OK);
   if (config.env !== 'production') {
     process.stdout.write(`\n${err.status}: ${err.message}\n\n`);
     process.stdout.write(`${err.stack}\n\n`);
@@ -258,7 +258,7 @@ app.use((err, req, res, next) => {
   res.locals.serviceName = i18next.t('app:service_name');
   res.locals.assetPath = '/assets';
 
-  if (status !== httpStatus.INTERNAL_SERVER_ERROR || status !== httpStatus.FORBIDDEN) {
+  if (status !== StatusCodes.INTERNAL_SERVER_ERROR || status !== StatusCodes.FORBIDDEN) {
     status = 'generic';
   }
 

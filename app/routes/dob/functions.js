@@ -1,5 +1,5 @@
-const requestPromise = require('request-promise');
-const httpStatus = require('http-status-codes');
+const got = require('got');
+const { StatusCodes } = require('http-status-codes');
 
 const dateFormatter = require('../../../lib/helpers/dateFormatter');
 const requestHelper = require('../../../lib/helpers/requestHelper');
@@ -43,7 +43,7 @@ function getNewStatePensionDate(req, res) {
       `${res.locals.customerServiceApiGateway}/customer/recalculateSpaDate`,
       statePensionObject,
     );
-    requestPromise(statePensionAgeCall).then((body) => {
+    got(statePensionAgeCall).then(({ body }) => {
       let url = revisedStatePensionURL;
       if (body.message === claimStatus.NSP_CLAIM) {
         url = redirectBefore;
@@ -69,7 +69,7 @@ function dobConfirm(req, res) {
   }
 }
 
-function dobConfirmRedirect(req, res) {
+async function dobConfirmRedirect(req, res) {
   const errors = validation.dobValidator(req.body, req.session.lang);
   if (Object.keys(errors).length > 0) {
     res.render('pages/dob-confirm', { errors, details: req.body });
@@ -90,19 +90,20 @@ function dobConfirmRedirect(req, res) {
         };
         res.redirect(revisedStatePensionURL);
       } else {
-        getNewStatePensionDate(req, res).then((response) => {
-          if (response.statePensionDate !== null) {
-            req.session.userDateOfBirthInfo = { newStatePensionDate: response.statePensionDate };
+        try {
+          const nspDateResponse = await getNewStatePensionDate(req, res);
+          if (nspDateResponse.statePensionDate !== null) {
+            req.session.userDateOfBirthInfo = { newStatePensionDate: nspDateResponse.statePensionDate };
             req.session.isBeforeSpa = true;
-            if (dateHelper.isDateBeforeToday(response.statePensionDate)) {
+            if (dateHelper.isDateBeforeToday(nspDateResponse.statePensionDate)) {
               req.session.isBeforeSpa = false;
             }
           }
-          res.redirect(response.redirectURL);
-        }).catch(() => {
-          res.status(httpStatus.INTERNAL_SERVER_ERROR);
-          res.render('pages/error', { status: httpStatus.INTERNAL_SERVER_ERROR });
-        });
+          res.redirect(nspDateResponse.redirectURL);
+        } catch (err) {
+          res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+          res.render('pages/error', { status: StatusCodes.INTERNAL_SERVER_ERROR });
+        }
       }
     }
   }

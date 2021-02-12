@@ -51,7 +51,13 @@ const customerSessionNI = {
 const validUser = { pid: 'pid' };
 
 const error = {
-  statusCode: 404, inviteKey: 'TEST12345', message: 'Test error message', options: { headers: { 'X-B3-TraceId': 123456 } }, req: { path: 'test/test' },
+  response: { statusCode: 404 },
+  inviteKey: 'TEST12345',
+  message: 'Test error message',
+  options: {
+    headers: { 'X-B3-TraceId': 123456 },
+    url: { pathname: 'test/test' },
+  },
 };
 const logMessage = '404 - Test error message - Requested on test/test';
 

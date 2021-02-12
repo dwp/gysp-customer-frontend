@@ -14,7 +14,6 @@ const controller = require('../../../app/routes/process/functions');
 const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
-let testPromise;
 const emptyRequest = { session: {}, body: {} };
 const overseasRequest = { session: { isOverseas: true }, body: {} };
 
@@ -107,11 +106,6 @@ const englishLangauge = 'en-GB';
 describe('process controller ', () => {
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
-    testPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 200);
-    });
   });
 
   describe(' procecssDataToBackend function ', () => {
@@ -181,16 +175,12 @@ describe('process controller ', () => {
 
     it('should not mutate the customer session data when called', () => {
       nock('http://test-url').post('/api/claim').reply(200, {});
-      return testPromise.then(() => {
-        assert.equal(JSON.stringify(customerDetailsClone), JSON.stringify(customerDetails));
-      });
+      assert.equal(JSON.stringify(customerDetailsClone), JSON.stringify(customerDetails));
     });
 
     it('should not mutate the customer session data when called a second time', () => {
       nock('http://test-url').post('/api/claim').reply(200, {});
-      return testPromise.then(() => {
-        assert.equal(JSON.stringify(customerDetailsClone), JSON.stringify(customerDetails));
-      });
+      assert.equal(JSON.stringify(customerDetailsClone), JSON.stringify(customerDetails));
     });
   });
 });

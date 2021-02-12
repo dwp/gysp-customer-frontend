@@ -6,7 +6,18 @@ module.exports = {
         claimServiceApiGateway: 'http://test-url/api',
         customerServiceApiGateway: 'http://test-url/api',
         bankValidateServiceApiGateway: 'http://test-url/api',
-        logger: { error() {}, info() {} },
+        traceID: '',
+        logMessage: '',
+        logger: {
+          error(traceID, errorTxt) {
+            genericResponse.locals.traceID = traceID;
+            genericResponse.locals.logMessage = errorTxt;
+          },
+          info(traceID, errorTxt) {
+            genericResponse.locals.traceID = traceID;
+            genericResponse.locals.logMessage = errorTxt;
+          },
+        },
       },
       viewName: '',
       data: {},

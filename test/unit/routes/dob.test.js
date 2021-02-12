@@ -18,7 +18,6 @@ const responseHelper = require('../../lib/responseHelper');
 const controller = require('../../../app/routes/dob/functions');
 
 let genericResponse = {};
-let testPromise;
 
 const statePensionAPI = '/api/customer/recalculateSpaDate';
 
@@ -42,11 +41,6 @@ describe('DOB controller ', () => {
   beforeEach(() => {
     sessonStore = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 2000, dateMonth: 9, dateDay: 9 } };
     genericResponse = responseHelper.genericResponse();
-    testPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 200);
-    });
   });
 
   describe(' dobConfirmRedirect function (post /date-of-birth)', () => {
@@ -102,43 +96,35 @@ describe('DOB controller ', () => {
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
 
-    it('should set new state pension date session object and redirect when user input has a state pension date and httpStatus is OK', () => {
+    it('should set new state pension date session object and redirect when user input has a state pension date and status code is OK', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: -483235200000 });
-      controller.dobConfirmRedirect(sessonStore, genericResponse);
-      return testPromise.then(() => {
-        assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, -483235200000);
-        assert.equal(genericResponse.address, 'revised-your-state-pension-date');
-      });
+      await controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, -483235200000);
+      assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
 
-    it('should set new state pension date session object and redirect to too early when user input has a state pension date and message is too early', () => {
+    it('should set new state pension date session object and redirect to too early when user input has a state pension date and message is too early', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.PRE_MATURE_CLAIM, spaDate: -483235200000 });
-      controller.dobConfirmRedirect(sessonStore, genericResponse);
-      return testPromise.then(() => {
-        assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, -483235200000);
-        assert.equal(genericResponse.address, 'you-are-too-early-to-get-your-state-pension');
-      });
+      await controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, -483235200000);
+      assert.equal(genericResponse.address, 'you-are-too-early-to-get-your-state-pension');
     });
 
-    it('should redirect to call us screen when no user input state and state pension date isn\'t supplied', () => {
+    it('should redirect to call us screen when no user input state and state pension date isn\'t supplied', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.NSP_CLAIM });
-      controller.dobConfirmRedirect(sessonStore, genericResponse);
-      return testPromise.then(() => {
-        assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, undefined);
-        assert.equal(genericResponse.address, 'call-us-to-get-your-state-pension');
-      });
+      await controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, undefined);
+      assert.equal(genericResponse.address, 'call-us-to-get-your-state-pension');
     });
 
-    it('should show error screen when and an internal error occurred ', () => {
+    it('should show error screen when and an internal error occurred ', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(404, {});
-      controller.dobConfirmRedirect(sessonStore, genericResponse);
-      return testPromise.then(() => {
-        assert.equal(genericResponse.viewName, 'pages/error');
-      });
+      await controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/error');
     });
 
     it('should render date of birth confirm with errors when an error is encountered', () => {
@@ -153,14 +139,12 @@ describe('DOB controller ', () => {
       assert.equal(genericResponse.address, 'check-your-details');
     });
 
-    it('should redirect to state pension date when in edit mode and data has changed and new date is a mature date', () => {
+    it('should redirect to state pension date when in edit mode and data has changed and new date is a mature date', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: -483235200000 });
       sessonStoreEdit.session['dob-details'] = { dateYear: 2000, dateMonth: 9, dateDay: 10 };
-      controller.dobConfirmRedirect(sessonStoreEdit, genericResponse);
-      return testPromise.then(() => {
-        assert.equal(genericResponse.address, 'revised-your-state-pension-date');
-      });
+      await controller.dobConfirmRedirect(sessonStoreEdit, genericResponse);
+      assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
   });
 

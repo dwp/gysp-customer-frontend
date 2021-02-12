@@ -1,6 +1,6 @@
 const crypto = require('crypto');
-const request = require('request-promise');
-const httpStatus = require('http-status-codes');
+const got = require('got');
+const { StatusCodes } = require('http-status-codes');
 
 const config = require('../../../config/application');
 
@@ -44,7 +44,7 @@ function deleteSessionCounts(req) {
 function redirectToAuthErrorOrDisplayPage(error, req, res) {
   const traceID = requestHelper.getTraceID(error);
   const uriPath = requestHelper.getUriPath(error);
-  if (error.statusCode === httpStatus.NOT_FOUND || error.statusCode === httpStatus.OK) {
+  if (error.response && (error.response.statusCode === StatusCodes.NOT_FOUND || error.response.statusCode === StatusCodes.OK)) {
     const attempts = getSessionCount(req);
     if (sessionHelper.checkAuthAttemptLimits(attempts)) {
       requestHelper.infoLoggingHelper({ message: 'three attempts' }, uriPath, traceID, res.locals.logger, req.body.inviteKey);
@@ -58,8 +58,8 @@ function redirectToAuthErrorOrDisplayPage(error, req, res) {
     }
   } else {
     requestHelper.errorLoggingHelper(error, uriPath, traceID, res.locals.logger, req.body.inviteKey);
-    res.status(httpStatus.OK);
-    res.render('pages/error', { status: httpStatus.INTERNAL_SERVER_ERROR });
+    res.status(StatusCodes.OK);
+    res.render('pages/error', { status: StatusCodes.INTERNAL_SERVER_ERROR });
   }
 }
 
@@ -125,40 +125,63 @@ function authPageGet(req, res) {
   }
 }
 
-function authPageProcess(req, res) {
+function keyServiceRequest(req, res, postObjectBody) {
+  return new Promise((resolve, reject) => {
+    const { keyServiceApiGateway } = res.locals;
+    const keyServiceCall = requestHelper.generateGetCall(`${keyServiceApiGateway}/key/${postObjectBody.inviteKey}`);
+    got(keyServiceCall).then(() => {
+      resolve(true);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+function claimServiceRequest(req, res, postObjectBody) {
+  return new Promise((resolve, reject) => {
+    const { claimServiceApiGateway } = res.locals;
+    const claimServiceCall = requestHelper.generateGetCall(`${claimServiceApiGateway}/claim/claimexists/${postObjectBody.inviteKey}`);
+    got(claimServiceCall).then((response) => {
+      const error = { message: 'Claim already exists', response };
+      reject(error);
+    }).catch((err) => {
+      if (err.response.stateCode !== StatusCodes.NOT_FOUND) {
+        resolve(true);
+      }
+      reject(err);
+    });
+  });
+}
+
+function customerServiceRequest(req, res, postObjectBody) {
+  return new Promise((resolve, reject) => {
+    const { customerServiceApiGateway } = res.locals;
+    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/${postObjectBody.inviteKey}`);
+    got(customerServiceCall).then((response) => {
+      resolve(response);
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
+async function authPageProcess(req, res) {
   const errors = validation.authValidation(req.body);
   if (Object.keys(errors).length === 0) {
     if (req.body.address === 'no') {
       res.redirect('auth-error-address');
     } else {
       const postObjectBody = auth.authFormToObject(req.body);
-      const keyServiceCall = requestHelper.generateGetCall(`${res.locals.keyServiceApiGateway}/key/${postObjectBody.inviteKey}`, {});
-      request(keyServiceCall)
-        .then(() => {
-          const claimServiceCall = requestHelper.generateGetCall(
-            `${res.locals.claimServiceApiGateway}/claim/claimexists/${postObjectBody.inviteKey}`,
-            {},
-          );
-          claimServiceCall.simple = false;
-          claimServiceCall.resolveWithFullResponse = true;
-          return request(claimServiceCall);
-        })
-        .then((claimDetails) => {
-          if (claimDetails.statusCode !== 404) {
-            throw claimDetails;
-          }
-          const customerServiceCall = requestHelper.generateGetCall(
-            `${res.locals.customerServiceApiGateway}/customer/${postObjectBody.inviteKey}`,
-            {},
-          );
-          return request(customerServiceCall);
-        })
-        .then((customerDetails) => {
-          redirectToNextStep(req, res, customerDetails, postObjectBody);
-        })
-        .catch((err) => {
-          redirectToAuthErrorOrDisplayPage(err, req, res);
-        });
+      try {
+        const customerDetails = await Promise.all([
+          keyServiceRequest(req, res, postObjectBody),
+          claimServiceRequest(req, res, postObjectBody),
+          customerServiceRequest(req, res, postObjectBody),
+        ]);
+        redirectToNextStep(req, res, customerDetails[2].body, postObjectBody);
+      } catch (err) {
+        redirectToAuthErrorOrDisplayPage(err, req, res);
+      }
     }
   } else {
     req.session.formErrors = true;
