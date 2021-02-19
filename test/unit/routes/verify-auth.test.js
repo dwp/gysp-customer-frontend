@@ -8,7 +8,6 @@ const verifyAuthController = require('../../../app/routes/verify-auth/functions'
 const responseHelper = require('../../lib/responseHelper');
 
 const customerAPI = '/api/customer/hashpid';
-const claimAPI = '/api/claim/claimexists';
 
 let genericResponse = {};
 const emptyRequest = { session: {}, body: {} };
@@ -100,19 +99,17 @@ describe('Verify controller ', () => {
     });
   });
 
-  describe(' processAuth function', () => {
+  describe('getCustomerByHashPidServiceRequest function', () => {
     it('should call api and return customer object when customer is found and claim doesn\'t exists', async () => {
       nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
-      nock('http://test-url').get(`${claimAPI}/${customerDetailsGB.inviteKey}`).reply(404, {});
-      const processAuth = await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
-      assert.equal(JSON.stringify(processAuth), JSON.stringify(customerDetailsGB));
+      const customer = await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
+      assert.deepEqual(customer, customerDetailsGB);
     });
 
     it('should call api and return an error when customer is found and claim does exists', async () => {
       nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
-      nock('http://test-url').get(`${claimAPI}/${customerDetailsGB.inviteKey}`).reply(200, {});
       try {
-        await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+        await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
       } catch (err) {
         assert.instanceOf(err, Error);
       }
@@ -120,9 +117,8 @@ describe('Verify controller ', () => {
 
     it('should call api and return an error when customer is not found', async () => {
       nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(404, {});
-      nock('http://test-url').get(`${claimAPI}/${customerDetailsGB.inviteKey}`).reply(404, {});
       try {
-        await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+        await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
       } catch (err) {
         assert.instanceOf(err, Error);
       }

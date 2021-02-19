@@ -137,22 +137,6 @@ function keyServiceRequest(req, res, postObjectBody) {
   });
 }
 
-function claimServiceRequest(req, res, postObjectBody) {
-  return new Promise((resolve, reject) => {
-    const { claimServiceApiGateway } = res.locals;
-    const claimServiceCall = requestHelper.generateGetCall(`${claimServiceApiGateway}/claim/claimexists/${postObjectBody.inviteKey}`);
-    got(claimServiceCall).then((response) => {
-      const error = { message: 'Claim already exists', response };
-      reject(error);
-    }).catch((err) => {
-      if (err.response.stateCode !== StatusCodes.NOT_FOUND) {
-        resolve(true);
-      }
-      reject(err);
-    });
-  });
-}
-
 function customerServiceRequest(req, res, postObjectBody) {
   return new Promise((resolve, reject) => {
     const { customerServiceApiGateway } = res.locals;
@@ -175,10 +159,9 @@ async function authPageProcess(req, res) {
       try {
         const customerDetails = await Promise.all([
           keyServiceRequest(req, res, postObjectBody),
-          claimServiceRequest(req, res, postObjectBody),
           customerServiceRequest(req, res, postObjectBody),
         ]);
-        redirectToNextStep(req, res, customerDetails[2].body, postObjectBody);
+        redirectToNextStep(req, res, customerDetails[1].body, postObjectBody);
       } catch (err) {
         redirectToAuthErrorOrDisplayPage(err, req, res);
       }

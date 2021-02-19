@@ -32,7 +32,6 @@ const populatedPreSessionForm = { session: { requestDetails: emptyPost, formErro
 let validPostObjectBadKey = { session: {}, body: { inviteKey: '12345678' } };
 
 const validPostObject = { session: {}, body: { inviteKey: 'FOO2277336', address: 'yes' } };
-const validPostClaimExistsObject = { session: {}, body: { inviteKey: 'FOO2277336', address: 'yes' } };
 
 const serverResponseWithDate = { statePensionDate: 1631145600000 };
 
@@ -50,7 +49,6 @@ let validPostObjectBadKeyAttempt2 = '';
 
 const keyAPI = '/api/key';
 const customerAPI = '/api/customer';
-const claimAPI = '/api/claim/claimexists';
 
 function returnRequest() {
   return { session: { invalidMatch: 2 }, body: { inviteKey: '' } };
@@ -138,7 +136,6 @@ describe('Auth controller ', () => {
         genericResponse = responseHelper.genericResponse();
         nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
         nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, { residentialAddress: { postCode: 'test' } });
-        nock('http://test-url').get(`${claimAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
         await authController.authPageProcess(validPostObject, genericResponse);
         assert.equal(genericResponse.viewName, '');
         assert.equal(genericResponse.address, 'date-of-birth');
@@ -149,7 +146,6 @@ describe('Auth controller ', () => {
         genericResponse = responseHelper.genericResponse();
         nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
         nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, { residentialAddress: { postCode: 'BT1 123' } });
-        nock('http://test-url').get(`${claimAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
         await authController.authPageProcess(validPostObject, genericResponse);
         assert.equal(genericResponse.viewName, '');
         assert.equal(genericResponse.address, 'date-of-birth');
@@ -159,7 +155,6 @@ describe('Auth controller ', () => {
       it('should redirect to error page when key is not found', async () => {
         genericResponse = responseHelper.genericResponse();
         nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
-        nock('http://test-url').get(`${claimAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
         nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
         await authController.authPageProcess(validPostObject, genericResponse);
         assert.equal(genericResponse.viewName, '');
@@ -171,23 +166,10 @@ describe('Auth controller ', () => {
       it('should redirect to error page when customer is not found', async () => {
         genericResponse = responseHelper.genericResponse();
         nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
-        nock('http://test-url').get(`${claimAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
         nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(404, {});
         await authController.authPageProcess(validPostObject, genericResponse);
         assert.equal(genericResponse.viewName, '');
         assert.equal(genericResponse.locals.logMessage, `404 - Response code 404 (Not Found) - Requested on /api/customer/${validPostObject.body.inviteKey}`);
-        assert.equal(genericResponse.address, 'auth');
-        assert.equal(validPostObject.session.matchError, true);
-      });
-
-      it('should return auth page view when invite key has already been used', async () => {
-        genericResponse = responseHelper.genericResponse();
-        nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
-        nock('http://test-url').get(`${claimAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
-        nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
-        await authController.authPageProcess(validPostClaimExistsObject, genericResponse);
-        assert.equal(genericResponse.viewName, '');
-        assert.equal(genericResponse.locals.logMessage, `200 - Claim already exists - Requested on ${claimAPI}/${validPostObject.body.inviteKey}`);
         assert.equal(genericResponse.address, 'auth');
         assert.equal(validPostObject.session.matchError, true);
       });

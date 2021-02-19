@@ -30,32 +30,6 @@ function getCustomerByHashPidServiceRequest(req, res, user) {
   });
 }
 
-function getClaimExistsServiceRequest(req, res, customer) {
-  return new Promise((resolve, reject) => {
-    const { claimServiceApiGateway } = res.locals;
-    const claimServiceCall = requestHelper.generateGetCall(`${claimServiceApiGateway}/claim/claimexists/${customer.inviteKey}`);
-    got(claimServiceCall).then((response) => {
-      const error = { message: 'Claim already exists', response };
-      reject(error);
-    }).catch((err) => {
-      if (err.response.stateCode !== StatusCodes.NOT_FOUND) {
-        resolve(true);
-      }
-      reject(err);
-    });
-  });
-}
-
-async function processAuth(req, res, user) {
-  try {
-    const customerDetails = await getCustomerByHashPidServiceRequest(req, res, user);
-    getClaimExistsServiceRequest(req, res, customerDetails);
-    return customerDetails;
-  } catch (err) {
-    return err;
-  }
-}
-
 function setSessionData(req, res, customerDetails, cb) {
   req.session.userPassedAuth = true;
   req.session.inviteKey = customerDetails.inviteKey;
@@ -90,7 +64,7 @@ function postVerifyResponse(req, res, next) {
   const authMiddleware = passport.authenticate('verify', passportVerify.createResponseHandler({
     onMatch: async (user) => {
       try {
-        const customerDetails = await processAuth(req, res, user);
+        const customerDetails = await getCustomerByHashPidServiceRequest(req, res, user);
         setSessionData(req, res, customerDetails, () => {
           if (dateHelper.numberOfMonthsInFuture(customerDetails.statePensionDate) > maxMonthPreClaim) {
             return res.redirect(redirectTooEarly);
@@ -152,7 +126,7 @@ module.exports.getVerifyAbout = getVerifyAbout;
 module.exports.postVerifyResponse = postVerifyResponse;
 module.exports.getNoMatch = getNoMatch;
 module.exports.getCancel = getCancel;
-module.exports.processAuth = processAuth;
+module.exports.getCustomerByHashPidServiceRequest = getCustomerByHashPidServiceRequest;
 module.exports.setSessionData = setSessionData;
 module.exports.authErrorPage = authErrorPage;
 module.exports.getTooEarlyForPension = getTooEarlyForPension;
