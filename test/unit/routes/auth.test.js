@@ -32,6 +32,7 @@ const populatedPreSessionForm = { session: { requestDetails: emptyPost, formErro
 let validPostObjectBadKey = { session: {}, body: { inviteKey: '12345678' } };
 
 const validPostObject = { session: {}, body: { inviteKey: 'FOO2277336', address: 'yes' } };
+const validPostKeyObject = { session: {}, body: { inviteKey: 'FOO2277336', address: 'yes' } };
 
 const serverResponseWithDate = { statePensionDate: 1631145600000 };
 
@@ -159,6 +160,28 @@ describe('Auth controller ', () => {
         await authController.authPageProcess(validPostObject, genericResponse);
         assert.equal(genericResponse.viewName, '');
         assert.equal(genericResponse.locals.logMessage, `404 - Response code 404 (Not Found) - Requested on /api/key/${validPostObject.body.inviteKey}`);
+        assert.equal(genericResponse.address, 'auth');
+        assert.equal(validPostObject.session.matchError, true);
+      });
+
+      it('should redirect to error page when customer and key is found but key is used', async () => {
+        genericResponse = responseHelper.genericResponse();
+        nock('http://test-url').get(`${keyAPI}/${validPostKeyObject.body.inviteKey}`).reply(200, { inviteKey: validPostKeyObject.body.inviteKey, status: 'USED' });
+        nock('http://test-url').get(`${customerAPI}/${validPostKeyObject.body.inviteKey}`).reply(200, {});
+        await authController.authPageProcess(validPostKeyObject, genericResponse);
+        assert.equal(genericResponse.viewName, '');
+        assert.equal(genericResponse.locals.logMessage, `200 - Invite key used - Requested on /api/key/${validPostObject.body.inviteKey}`);
+        assert.equal(genericResponse.address, 'auth');
+        assert.equal(validPostObject.session.matchError, true);
+      });
+
+      it('should redirect to error page when customer is not found and key is found but key is used', async () => {
+        genericResponse = responseHelper.genericResponse();
+        nock('http://test-url').get(`${keyAPI}/${validPostKeyObject.body.inviteKey}`).reply(200, { inviteKey: validPostKeyObject.body.inviteKey, status: 'USED' });
+        nock('http://test-url').get(`${customerAPI}/${validPostKeyObject.body.inviteKey}`).reply(404, {});
+        await authController.authPageProcess(validPostKeyObject, genericResponse);
+        assert.equal(genericResponse.viewName, '');
+        assert.equal(genericResponse.locals.logMessage, `200 - Invite key used - Requested on /api/key/${validPostObject.body.inviteKey}`);
         assert.equal(genericResponse.address, 'auth');
         assert.equal(validPostObject.session.matchError, true);
       });

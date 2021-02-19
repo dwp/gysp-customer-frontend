@@ -1,4 +1,5 @@
 const { assert } = require('chai');
+const { HTTPError } = require('got/dist/source');
 
 const nock = require('nock');
 
@@ -8,6 +9,7 @@ const verifyAuthController = require('../../../app/routes/verify-auth/functions'
 const responseHelper = require('../../lib/responseHelper');
 
 const customerAPI = '/api/customer/hashpid';
+const keyAPI = '/api/key';
 
 let genericResponse = {};
 const emptyRequest = { session: {}, body: {} };
@@ -99,29 +101,34 @@ describe('Verify controller ', () => {
     });
   });
 
-  describe('getCustomerByHashPidServiceRequest function', () => {
-    it('should call api and return customer object when customer is found and claim doesn\'t exists', async () => {
+  describe('processAuth function', () => {
+    it('should call api and return customer object when customer is found and key status is null', async () => {
       nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
-      const customer = await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
-      assert.deepEqual(customer, customerDetailsGB);
-    });
-
-    it('should call api and return an error when customer is found and claim does exists', async () => {
-      nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
-      try {
-        await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
-      } catch (err) {
-        assert.instanceOf(err, Error);
-      }
+      nock('http://test-url').get(`${keyAPI}/${customerDetailsGB.inviteKey}`).reply(200, { inviteKey: customerDetailsGB.inviteKey, status: null });
+      const auth = await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+      assert.deepEqual(auth, customerDetailsGB);
     });
 
     it('should call api and return an error when customer is not found', async () => {
       nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(404, {});
-      try {
-        await verifyAuthController.getCustomerByHashPidServiceRequest(emptyRequest, genericResponse, validUser);
-      } catch (err) {
-        assert.instanceOf(err, Error);
-      }
+      const auth = await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+      assert.instanceOf(auth, HTTPError);
+      assert.equal(auth.message, 'Response code 404 (Not Found)');
+    });
+
+    it('should call api and return an error when customer is found but key is not found', async () => {
+      nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
+      nock('http://test-url').get(`${keyAPI}/${customerDetailsGB.inviteKey}`).reply(404, {});
+      const auth = await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+      assert.instanceOf(auth, HTTPError);
+      assert.equal(auth.message, 'Response code 404 (Not Found)');
+    });
+
+    it('should call api and return an error when customer is found but key is used', async () => {
+      nock('http://test-url').get(`${customerAPI}/${validUser.pid}`).reply(200, customerDetailsGB);
+      nock('http://test-url').get(`${keyAPI}/${customerDetailsGB.inviteKey}`).reply(200, { inviteKey: customerDetailsGB.inviteKey, status: 'USED' });
+      const auth = await verifyAuthController.processAuth(emptyRequest, genericResponse, validUser);
+      assert.equal(auth.message, 'Invite key used');
     });
   });
 

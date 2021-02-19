@@ -13,6 +13,8 @@ const languageHelper = require('../../../lib/helpers/languageHelper');
 const dateHelper = require('../../../lib/helpers/dateHelper');
 const deleteSession = require('../../../lib/deleteSession.js');
 
+const { getInviteKeyRequest } = require('../../../lib/helpers/keyServiceHelper');
+
 let redirectSuccessFullURL = 'your-state-pension-date';
 
 try {
@@ -125,22 +127,10 @@ function authPageGet(req, res) {
   }
 }
 
-function keyServiceRequest(req, res, postObjectBody) {
-  return new Promise((resolve, reject) => {
-    const { keyServiceApiGateway } = res.locals;
-    const keyServiceCall = requestHelper.generateGetCall(`${keyServiceApiGateway}/key/${postObjectBody.inviteKey}`);
-    got(keyServiceCall).then(() => {
-      resolve(true);
-    }).catch((err) => {
-      reject(err);
-    });
-  });
-}
-
-function customerServiceRequest(req, res, postObjectBody) {
+function customerServiceRequest(res, inviteKey) {
   return new Promise((resolve, reject) => {
     const { customerServiceApiGateway } = res.locals;
-    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/${postObjectBody.inviteKey}`);
+    const customerServiceCall = requestHelper.generateGetCall(`${customerServiceApiGateway}/customer/${inviteKey}`);
     got(customerServiceCall).then((response) => {
       resolve(response);
     }).catch((err) => {
@@ -158,8 +148,8 @@ async function authPageProcess(req, res) {
       const postObjectBody = auth.authFormToObject(req.body);
       try {
         const customerDetails = await Promise.all([
-          keyServiceRequest(req, res, postObjectBody),
-          customerServiceRequest(req, res, postObjectBody),
+          getInviteKeyRequest(res, postObjectBody.inviteKey),
+          customerServiceRequest(res, postObjectBody.inviteKey),
         ]);
         redirectToNextStep(req, res, customerDetails[1].body, postObjectBody);
       } catch (err) {

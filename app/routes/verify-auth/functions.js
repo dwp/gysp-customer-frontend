@@ -12,6 +12,7 @@ const dateHelper = require('../../../lib/helpers/dateHelper');
 const dateFormatter = require('../../../lib/helpers/dateFormatter');
 const languageHelper = require('../../../lib/helpers/languageHelper');
 const dataStore = require('../../../lib/dataStore');
+const { getInviteKeyRequest } = require('../../../lib/helpers/keyServiceHelper');
 
 const redirectTooEarly = '/verify/you-are-too-early-to-get-your-state-pension';
 const redirectSessionUndefined = '/verify/you-can-now-sign-in-with-govuk-verify';
@@ -29,6 +30,17 @@ function getCustomerByHashPidServiceRequest(req, res, user) {
     });
   });
 }
+
+async function processAuth(req, res, user) {
+  try {
+    const customerDetails = await getCustomerByHashPidServiceRequest(req, res, user);
+    await getInviteKeyRequest(res, customerDetails.inviteKey);
+    return customerDetails;
+  } catch (err) {
+    return err;
+  }
+}
+
 
 function setSessionData(req, res, customerDetails, cb) {
   req.session.userPassedAuth = true;
@@ -64,7 +76,7 @@ function postVerifyResponse(req, res, next) {
   const authMiddleware = passport.authenticate('verify', passportVerify.createResponseHandler({
     onMatch: async (user) => {
       try {
-        const customerDetails = await getCustomerByHashPidServiceRequest(req, res, user);
+        const customerDetails = await processAuth(req, res, user);
         setSessionData(req, res, customerDetails, () => {
           if (dateHelper.numberOfMonthsInFuture(customerDetails.statePensionDate) > maxMonthPreClaim) {
             return res.redirect(redirectTooEarly);
@@ -126,7 +138,7 @@ module.exports.getVerifyAbout = getVerifyAbout;
 module.exports.postVerifyResponse = postVerifyResponse;
 module.exports.getNoMatch = getNoMatch;
 module.exports.getCancel = getCancel;
-module.exports.getCustomerByHashPidServiceRequest = getCustomerByHashPidServiceRequest;
+module.exports.processAuth = processAuth;
 module.exports.setSessionData = setSessionData;
 module.exports.authErrorPage = authErrorPage;
 module.exports.getTooEarlyForPension = getTooEarlyForPension;
