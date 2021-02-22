@@ -1,3 +1,13 @@
+## [10.0.3](https://github.com/dwp/gysp-customer-frontend/compare/10.0.2...10.0.3) (2021-02-22)
+
+
+### Bug Fixes
+
+* **html5-shiv:** fix missing file ([de7a469](https://github.com/dwp/gysp-customer-frontend/commit/de7a469e704db75037d3ff6ed9884e52de80e15e))
+* **i18n:** mock changeLanguage on requests were i18n has not been registered ([fbe5519](https://github.com/dwp/gysp-customer-frontend/commit/fbe55198d7f1d8d46a7809dfe096897742744c47))
+
+
+
 ## [10.0.2](https://github.com/dwp/gysp-customer-frontend/compare/10.0.1...10.0.2) (2021-02-08)
 
 
