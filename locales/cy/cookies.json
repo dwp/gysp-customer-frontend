@@ -60,13 +60,29 @@
     },
     "row-2": {
       "header": "Diben",
-      "col-1": "Mae hwn yn cofnodi os ydych wedi gweld y neges cwcis ar frig y wefan pan rydych yn ymweld am y tro cyntaf, fel nad ydych yn ei weld ar bob ymweliad.",
+      "col-1": "Arbed eich gosodiadau caniatâd cwcis",
       "col-2": "I gofio ble rydych chi yn y cais a'ch atebion blaenorol fel y gallwch symud yn ôl ac ymlaen drwy'r gwasanaeth."
     },
     "row-3": {
       "header": "Dirwyn i ben",
-      "col-1": "1 mis",
+      "col-1": "1 blwyddyn",
       "col-2": "30 munud neu pan fyddwch yn cau eich porwr"
     }
+  },
+  "h3-7": "Gosodiadau cwcis dewisol",
+  "fields": {
+    "cookieConsent": {
+      "legend": "A allwn ni ddefnyddio cwcis i'n helpu i wella'r gwasanaeth?",
+      "options": {
+        "accept": "Gallwch",
+        "reject": "Na"
+      },
+      "errors": {
+        "required": "Dewiswch gallwch os gallwn ddefnyddio cwcis i'n helpu i wella'r gwasanaeth."
+      }
+    }
+  },
+  "button": {
+    "save": "Arbed a pharhau"
   }
 }

@@ -24,6 +24,8 @@ module.exports = {
       address: '',
       statusCode: '',
       headers: {},
+      cookieData: {},
+      clearCookieData: [],
       jsonResponse: '',
       body: '',
       redirect(url) {
@@ -47,6 +49,15 @@ module.exports = {
       send(body) {
         this.body = body;
         return this;
+      },
+      cookie(name, value, options) {
+        this.cookieData.name = name;
+        this.cookieData.value = value;
+        this.cookieData.options = options;
+        return this;
+      },
+      clearCookie(name, options) {
+        this.clearCookieData.push({ name, options });
       },
     };
     return genericResponse;

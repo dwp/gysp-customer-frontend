@@ -5,7 +5,6 @@ const router = new express.Router();
 
 router.all('/', functions.redirectToStart);
 router.get('/sign-out', functions.signOut);
-router.get('/cookie-policy', functions.cookiesPageGet);
 router.get('/accessibility-statement', functions.accessibilityStatement);
 
 module.exports = router;

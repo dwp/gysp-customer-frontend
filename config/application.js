@@ -5,6 +5,9 @@ module.exports = {
   env: process.env.NODE_ENV || 'local',
   secret: process.env.CUSTOMER_FRONTEND_SECRET || 'thisIsASecret',
   mountUrl: process.env.CONTEXT_PATH || '/',
+  cookieConcentName: process.env.COOKIE_CONCENT_NAME || 'seen_cookie_message',
+  gaTrackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || null,
+  gaDomain: process.env.GOOGLE_ANALYTICS_DOMAIN || 'localhost',
   application: {
     port: process.env.PORT ? parseInt(process.env.PORT, 10) : null,
     tls: {

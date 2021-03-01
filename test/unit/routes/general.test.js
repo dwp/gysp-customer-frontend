@@ -28,14 +28,6 @@ describe('General controller ', () => {
     });
   });
 
-  describe('cookiesPageGet function (GET /cookie-policy)', () => {
-    it('should return cookie page view', (done) => {
-      generalController.cookiesPageGet(emptyRequest, genericResponse);
-      assert.equal(genericResponse.viewName, 'pages/cookies');
-      done();
-    });
-  });
-
   describe('redirectToStart function (GET /)', () => {
     it('should redirect when called with any response data', (done) => {
       generalController.redirectToStart(emptyRequest, genericResponse);

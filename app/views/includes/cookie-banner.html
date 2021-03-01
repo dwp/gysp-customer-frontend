@@ -1,0 +1,72 @@
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% set html %}
+  <p>{{ t('app:cookies.canWeUseCookies.p1') }}</p>
+  <p>{{ t('app:cookies.canWeUseCookies.p2') }}</p>
+{% endset %}
+
+{% set acceptHtml %}
+  <p>{{ t('app:cookies.acceptCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
+{% endset %}
+
+{% set rejectHtml %}
+  <p>{{ t('app:cookies.rejectCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
+{% endset %}
+
+{{ govukCookieBanner({
+    ariaLabel: t('app:cookies.heading', { serviceName: t('app:service_name') }),
+    attributes: {
+      "data-consent-cookie-name": consentCookieName,
+      "data-ga-id": gaTrackingId
+    },
+    hidden: true,
+    messages: [{
+      headingText: t('app:cookies.heading', { serviceName: t('app:service_name') }),
+      html: html,
+      hidden: true if cookieChoiceMade,
+      actions: [{
+        text: t('app:cookies.canWeUseCookies.actions.accept'),
+        type: "button",
+        classes: "cookie-banner__button--accept"
+      }, {
+        text: t('app:cookies.canWeUseCookies.actions.reject'),
+        type: "button",
+        classes: "cookie-banner__button--reject"
+      }, {
+        text: t('app:cookies.canWeUseCookies.actions.viewCookies'),
+        href: "/cookie-policy"
+      }]
+    }, {
+      html: acceptHtml,
+      role: "alert",
+      hidden: true if consentCookieValue !== 'yes',
+      classes: "cookie-banner__message--yes",
+      attributes: { tabindex: "-1" },
+      actions: [{
+        text: t('app:cookies.acceptCookies.actions.hide'),
+        type: "button",
+        classes: "cookie-banner__button--hide"
+      }]
+    }, {
+      html: rejectHtml,
+      role: "alert",
+      hidden: true if consentCookieValue !== 'no',
+      classes: "cookie-banner__message--no",
+      attributes: { tabindex: "-1" },
+      actions: [{
+        text: t('app:cookies.rejectCookies.actions.hide'),
+        type: "button",
+        classes: "cookie-banner__button--hide"
+      }]
+    }]
+  }) }}
+
+<noscript>
+  {{ govukCookieBanner({
+    ariaLabel: t('app:cookies.heading', { serviceName: t('app:service_name') }),
+    messages: [{
+      headingText: t('app:cookies.heading', { serviceName: t('app:service_name') }),
+      text: t('app:cookies.noscript.p')
+    }]
+}) }}
+</noscript>

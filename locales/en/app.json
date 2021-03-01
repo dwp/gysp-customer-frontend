@@ -144,9 +144,32 @@
       }
     }
   },
-  "cookie": {
-    "p": "This service uses cookies",
-    "url_text": "Find out more"
+  "cookies": {
+    "heading": "Cookies on {{serviceName}}",
+    "canWeUseCookies": {
+      "p1": "We use some essential cookies to make this service work.",
+      "p2": "We’d also like to use analytics cookies so we can understand how you use the service and make improvements.",
+      "actions": {
+        "accept": "Accept analytics cookies",
+        "reject": "Reject analytics cookies",
+        "viewCookies": "View cookies"
+      }
+    },
+    "acceptCookies": {
+      "p": "You’ve accepted analytics cookies. You can <a href=\"{{cookieSettingUrl}}\">change your cookie settings</a> at any time.",
+      "actions": {
+        "hide": "Hide this message"
+      }
+    },
+    "rejectCookies": {
+      "p": "You’ve rejected analytics cookies. You can <a href=\"{{cookieSettingUrl}}\">change your cookie settings</a> at any time.",
+      "actions": {
+        "hide": "Hide this message"
+      }
+    },
+    "noscript": {
+      "p": "We use cookies to make this service work and collect analytics information. To accept or reject cookies, turn on JavaScript in your browser settings or reload this page."
+    }
   },
   "footer": {
       "copyright": "Crown copyright"

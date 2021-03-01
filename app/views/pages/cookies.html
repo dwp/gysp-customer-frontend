@@ -1,9 +1,23 @@
 {% extends '../helpers/layout.html' %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}{{ t("cookies:header") }} - {{ t("app:service_name") }}{% endblock %}
 
 {% block content %}
+
+	{% if errors %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {{ govukErrorSummary({
+          titleText: t("contact:errors.header"),
+          errorList: errors.errorSummary
+        }) }}
+      </div>
+    </div>
+{% endif %}
+
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-two-thirds">
 			<h1 class="govuk-heading-xl">{{ t('cookies:header') }}</h1>
@@ -28,6 +42,9 @@
 			</ul>
 			<p class="govuk-body">{{ t('cookies:p7', {URL: 'http://www.aboutcookies.org/Default.aspx?page=1'}) | safe }}</p>
 
+			<h2 class="govuk-heading-m">{{ t('cookies:h2-2') }}</h3>
+
+
 			<h3 class="govuk-heading-s">{{ t('cookies:h3-3') }}</h3>
 			<p class="govuk-body">{{ t('cookies:p11') }}</p>
 			<p class="govuk-body">{{ t('cookies:p12') }}</p>
@@ -36,10 +53,6 @@
 				<li>{{ t('cookies:p12-l2') }}</li>
 				<li>{{ t('cookies:p12-l3') }}</li>
 			</ul>
-
-			<h3 class="govuk-heading-s">{{ t('cookies:h3-4') }}</h3>
-			<p class="govuk-body">{{ t('cookies:p13') }}</p>
-			<p class="govuk-body">{{ t('cookies:p14') }}</p>
 
 			<h2 class="govuk-heading-m">{{ t('cookies:h2-3') }}</h2>
 
@@ -65,6 +78,69 @@
 					]
 				]
 			}) }}
+
+			<h2 class="govuk-heading-m">{{ t('cookies:h3-7') }}</h3>
+
+			<h3 class="govuk-heading-s">{{ t('cookies:h3-1') }}</h3>
+			<p class="govuk-body">{{ t('cookies:p8') }}</p>
+			<p class="govuk-body">{{ t('cookies:p9') }}</p>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>{{ t('cookies:p9-l1') }}</li>
+				<li>{{ t('cookies:p9-l2') }}</li>
+				<li>{{ t('cookies:p9-l3') }}</li>
+			</ul>
+
+			{{ govukTable({
+				caption: t('cookies:h3-2'),
+				firstCellIsHeader: false,
+				head: [{
+					text: t('cookies:cookies-table.row-1.header')
+				}, {
+					text: t('cookies:cookies-table.row-2.header')
+				}, {
+					text: t('cookies:cookies-table.row-3.header')
+				}],
+				rows: [
+					[
+						{text: t('cookies:cookies-table.row-1.col-1')},
+						{text: t('cookies:cookies-table.row-2.col-1')},
+						{text: t('cookies:cookies-table.row-3.col-1')}
+					], [
+						{text: t('cookies:cookies-table.row-1.col-2')},
+						{text: t('cookies:cookies-table.row-2.col-2')},
+						{text: t('cookies:cookies-table.row-3.col-2')}
+					]
+				]
+			}) }}
+
+			<form method="post" action="cookie-policy" autocomplete="off" novalidate>
+				{{ govukRadios({
+					name: "cookieConsent",
+					classes: "govuk-radios--inline",
+					fieldset: {
+						legend: {
+							text: t("cookies:fields.cookieConsent.legend"),
+							classes: "govuk-fieldset__legend--s"
+						}
+					},
+					items: [{
+						value: "yes",
+						text: t("cookies:fields.cookieConsent.options.accept"),
+						checked: true if details.cookieConsent == 'yes' else false
+					}, {
+						value: "no",
+						text: t("cookies:fields.cookieConsent.options.reject"),
+						checked: true if details.cookieConsent == 'no' else false
+					}]
+				}) }}
+
+				{{ govukButton({
+					text: t("cookies:button.save"),
+					attributes: {
+						id: "save"
+					}
+				}) }}
+			</form>
 		</div>
 	</div>
 {% endblock %}

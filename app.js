@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const { StatusCodes } = require('http-status-codes');
 
@@ -14,6 +15,7 @@ const sessionMiddleware = require('./middleware/session/index');
 const i18nextMiddleware = require('./middleware/i18n/index');
 const verifyMiddleware = require('./middleware/verify/index');
 const pageMiddleware = require('./middleware/page/index');
+const cookieMiddleware = require('./middleware/cookie-message/index');
 
 const checkChangeRedirect = require('./middleware/checkChange');
 const overseas = require('./middleware/overseas');
@@ -24,6 +26,9 @@ const i18nextConfig = require('./config/i18next');
 const log = require('./config/logging')('customer-frontend', config.application.logs);
 
 const app = express();
+
+// Include cookie parser
+app.use(cookieParser());
 
 // Serve default, implicit favicon
 app.use(config.mountUrl, favicon('./node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));
@@ -48,6 +53,8 @@ pageMiddleware(app);
 
 const i18next = i18nextMiddleware(app, i18nextConfig, log);
 
+cookieMiddleware(app, config.cookieConcentName, config.gaTrackingId);
+
 let serviceURL = '/auth';
 if (config.application.feature.verify === true) {
   serviceURL = '/confirm-identity';
@@ -58,6 +65,7 @@ app.use(checkChangeRedirect(config.mountUrl));
 
 // Route information
 const generalRoutes = require('./app/routes/general/routes.js');
+const cookiesRoutes = require('./app/routes/cookies/routes.js');
 const authRoutes = require('./app/routes/auth/routes.js');
 const verifyAuthRoutes = require('./app/routes/verify-auth/routes.js');
 const verifyDetailRoutes = require('./app/routes/verify-detail/routes.js');
@@ -178,6 +186,7 @@ app.use((req, res, next) => {
 });
 
 app.use(config.mountUrl, generalRoutes);
+app.use(config.mountUrl, cookiesRoutes);
 if (config.application.feature.verify === false) {
   app.use(config.mountUrl, authRoutes);
 }

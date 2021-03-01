@@ -10,12 +10,13 @@
     <!--[if !IE 8]><!--><link href="{{ assetPath }}/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
     <!--[if IE 8]><link href="{{ assetPath }}/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% block pageCSS %}{% endblock %}
+    {% include '../includes/ga-script.html' %}
 {% endblock %}
 
 {% block bodyEnd %}
     <script src="{{ assetPath }}/javascripts/vendor/jquery-1.11.3.min.js"></script>
     <script src="{{ assetPath }}/javascripts/vendor/stageprompt.js"></script>
-    <script src="{{ assetPath }}/javascripts/vendor/govuk-cookie.js"></script>
+    <script src="{{ assetPath }}/javascripts/cookieBanner.js"></script>
     <script src="{{ assetPath }}/javascripts/application.js"></script>
     <script src="{{ assetPath }}/all.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
@@ -34,16 +35,13 @@
 
 {% set headerClass='with-proposition' %}
 
+{% block bodyStart %}
+  {% if not consentCookieValue or cookieChoiceMade %}
+    {% include '../includes/cookie-banner.html' %}
+  {% endif %}
+{% endblock %}
+
 {% block header %}
-  <div id="cookie-banner" class="cookie-banner">
-    <div class="govuk-width-container">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <p class="cookie-banner__message">{{ cookieMessage | safe }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
   {{ govukHeader({
     homepageUrl: homepageUrl,
     serviceName: t('app:service_name'),
@@ -78,10 +76,7 @@
     },
     {
       href: '/cookie-policy',
-      text: t('app:navigation.cookies'),
-      attributes: {
-        target: '_blank'
-      }
+      text: t('app:navigation.cookies')
     }
   ] %}
 
