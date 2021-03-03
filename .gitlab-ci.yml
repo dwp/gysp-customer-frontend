@@ -159,7 +159,7 @@ sonarqube:
     - coverage
   script: sonar-scanner -Dsonar.projectBaseDir=$CI_PROJECT_DIR --check-quality-threshold
 
-# ---------------------------------------------------------------------- publish
+# ---------------------------------------------------------------------- publish master
 
 image-push:
   stage: publish
@@ -191,6 +191,42 @@ container-deploy:
     - image-push
   only:
     - master
+
+# ---------------------------------------------------------------------- publish branch
+
+image-push-branch:
+  stage: publish
+  extends: .rbac-ecr-mirror-image
+  variables:
+    REMOTE_IMAGE_NAME: "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/gysp/dev/gysp-customerfrontend"
+    REMOTE_IMAGE_TAGS: "${CI_COMMIT_SHORT_SHA}"
+    SOURCE_IMAGE_NAME_TAG: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_COMMIT_SHORT_SHA}"
+  before_script:
+    - branchName="${CI_COMMIT_REF_SLUG:-master}"
+    - if [ "$branchName" == "master" ]; then REMOTE_IMAGE_TAGS="$CI_COMMIT_SHORT_SHA deploy"; fi
+    - echo "Using tags \"${REMOTE_IMAGE_TAGS}\""
+  dependencies:
+    - meta
+    - image-package
+  only:
+    - branches
+  when:
+    - manual
+
+container-deploy-branch:
+  stage: deploy
+  extends: .rbac-aws-codedeploy
+  variables:
+    APPLICATION_NAME: gysp-customerfrontend-dev
+    GROUP_NAME: dev-gysp-gysp-customerfrontend-group
+    REVISION: "revisionType=S3,s3Location={bucket=dev-ecs-cluster-codedeploy-releases,bundleType=JSON,key=gysp/dev/gysp-customerfrontend/appspec.json}"
+  dependencies:
+    - meta
+    - image-push
+  only:
+    - branches
+  when:
+    - manual
 
 # ---------------------------------------------------------------------- post deploy
 
