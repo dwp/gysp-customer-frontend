@@ -53,7 +53,7 @@ pageMiddleware(app);
 
 const i18next = i18nextMiddleware(app, i18nextConfig, log);
 
-cookieMiddleware(app, config.cookieConcentName, config.gaTrackingId);
+cookieMiddleware(app, config.cookieConcentName, config.gaTrackingId, config.gaDomain);
 
 let serviceURL = '/auth';
 if (config.application.feature.verify === true) {

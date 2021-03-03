@@ -1,4 +1,4 @@
-module.exports = (app, consentCookieName, gaTrackingId) => {
+module.exports = (app, consentCookieName, gaTrackingId, gaDomain) => {
   app.use((req, res, next) => {
     // Get cookie banner flash messages (did you accept / reject)
     if (req.session) {
@@ -8,6 +8,9 @@ module.exports = (app, consentCookieName, gaTrackingId) => {
 
     // Add Google analytics tracking id to templates
     res.locals.gaTrackingId = gaTrackingId;
+
+    // Add Google analytics domain to templates
+    res.locals.gaDomain = gaDomain;
 
     // Add consent cookie name to templates
     res.locals.consentCookieName = consentCookieName;

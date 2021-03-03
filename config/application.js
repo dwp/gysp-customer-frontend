@@ -5,7 +5,7 @@ module.exports = {
   env: process.env.NODE_ENV || 'local',
   secret: process.env.CUSTOMER_FRONTEND_SECRET || 'thisIsASecret',
   mountUrl: process.env.CONTEXT_PATH || '/',
-  cookieConcentName: process.env.COOKIE_CONCENT_NAME || 'seen_cookie_message',
+  cookieConcentName: process.env.COOKIE_CONCENT_NAME || 'seen_cookie_banner',
   gaTrackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || null,
   gaDomain: process.env.GOOGLE_ANALYTICS_DOMAIN || 'localhost',
   application: {

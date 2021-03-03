@@ -31,7 +31,8 @@ function handleConcent(consent) {
 
 function handleAcceptClick(event) {
   var googleAnalyticsTrackingID = banner.getAttribute('data-ga-id');
-  initGoogleAnalytics(googleAnalyticsTrackingID);
+  var googleAnalyticsDomain = banner.getAttribute('data-ga-domain');
+  initGoogleAnalytics(googleAnalyticsTrackingID, googleAnalyticsDomain);
   handleConcent('yes');
   event.preventDefault();
 }
@@ -46,12 +47,12 @@ function handleHideClick(event) {
   event.preventDefault();
 }
 
-function initGoogleAnalytics(gaTrackingId) {
+function initGoogleAnalytics(gaTrackingId, gaDomain) {
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', gaTrackingId, 'auto');
+  ga('create', gaTrackingId, gaDomain);
   ga('set', 'anonymizeIp', true);
   ga('send', 'pageview');
   ga('set', 'nonInteraction', true);
