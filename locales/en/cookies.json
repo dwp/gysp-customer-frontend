@@ -55,7 +55,7 @@
   "service-table": {
     "row-1": {
       "header": "Name",
-      "col-1": "seen_cookie_message",
+      "col-1": "seen_cookie_banner",
       "col-2": "sessionID"
     },
     "row-2": {

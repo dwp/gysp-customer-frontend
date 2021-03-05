@@ -134,6 +134,33 @@
       }
     }
   },
+  "cookies": {
+    "heading": "Cwcis ar {{serviceName}}",
+    "canWeUseCookies": {
+      "p1": "Rydym yn defnyddio rhai cwcis hanfodol i wneud i'r gwasanaeth hwn weithio.",
+      "p2": "Hoffem hefyd ddefnyddio cwcis dadansoddeg fel y gallwn ddeall sut rydych yn defnyddio'r gwasanaeth a gwneud gwelliannau.",
+      "actions": {
+        "accept": "Derbyn cwcis dadansoddeg",
+        "reject": "Gwrthod cwcis dadansoddeg",
+        "viewCookies": "Gweld cwcis"
+      }
+    },
+    "acceptCookies": {
+      "p": "Rydych wedi derbyn cwcis dadansoddeg. Gallwch newid eich <a href=\"{{cookieSettingUrl}}\">gosodiadau cwcis</a> ar unrhyw adeg.",
+      "actions": {
+        "hide": "Cuddio’r neges hon"
+      }
+    },
+    "rejectCookies": {
+      "p": "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch newid eich <a href=\"{{cookieSettingUrl}}\">gosodiadau cwcis</a> ar unrhyw adeg.",
+      "actions": {
+        "hide": "Cuddio’r neges hon"
+      }
+    },
+    "noscript": {
+      "p": "Rydym yn defnyddio cwcis i wneud i'r gwasanaeth hwn weithio a chasglu gwybodaeth ddadansoddeg. I dderbyn neu wrthod cwcis, trowch JavaScript ymlaen yn eich gosodiadau porwr neu ail-lwythwch y dudalen hon."
+    }
+  },
   "footer": {
       "copyright": "Hawlfraint y Goron"
   }
