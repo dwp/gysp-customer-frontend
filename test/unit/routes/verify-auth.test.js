@@ -11,6 +11,8 @@ const responseHelper = require('../../lib/responseHelper');
 const customerAPI = '/api/customer/hashpid';
 const keyAPI = '/api/key';
 
+let destroy = {};
+
 let genericResponse = {};
 const emptyRequest = { session: {}, body: {} };
 const customerDetailsGB = {
@@ -69,10 +71,24 @@ describe('Verify controller ', () => {
     genericResponse = responseHelper.genericResponse();
     genericResponse.locals.traceID = '';
     genericResponse.locals.logMessage = '';
+    genericResponse.locals.infoLogMessage = '';
+    genericResponse.locals.serviceURL = '/';
     genericResponse.locals.logger = {
       error(traceID, errorTxt) {
         genericResponse.locals.traceID = traceID;
         genericResponse.locals.logMessage = errorTxt;
+      },
+      info(traceID, infoTxt) {
+        genericResponse.locals.traceID = traceID;
+        genericResponse.locals.infoLogMessage = infoTxt;
+      },
+    };
+
+    destroy = {
+      called: false,
+      destroy(callback) {
+        destroy.called = true;
+        callback();
       },
     };
   });
@@ -157,6 +173,24 @@ describe('Verify controller ', () => {
   });
 
   describe(' getTooEarlyForPension function (GET /verify/you-are-too-early-to-get-your-state-pension)', () => {
+    it('should return a redirect and destroy session when session does not include customerDetails', (done) => {
+      const request = { method: 'GET', path: '/test', session: { ...destroy } };
+      verifyAuthController.getTooEarlyForPension(request, genericResponse);
+      assert.isTrue(destroy.called);
+      assert.equal(genericResponse.address, '/');
+      assert.equal(genericResponse.locals.infoLogMessage, 'Security redirect - statePensionDate not set in session - GET /test');
+      done();
+    });
+
+    it('should return a redirect and destroy session when session does not include statePensionDate', (done) => {
+      const request = { method: 'GET', path: '/test', session: { customerDetails: { }, ...destroy } };
+      verifyAuthController.getTooEarlyForPension(request, genericResponse);
+      assert.isTrue(destroy.called);
+      assert.equal(genericResponse.address, '/');
+      assert.equal(genericResponse.locals.infoLogMessage, 'Security redirect - statePensionDate not set in session - GET /test');
+      done();
+    });
+
     it('should return view name with correct state pension date', (done) => {
       verifyAuthController.getTooEarlyForPension(validCustomerRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/verify-state-pension-age-too-early');

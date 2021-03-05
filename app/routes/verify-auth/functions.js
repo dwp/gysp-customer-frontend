@@ -11,6 +11,7 @@ const locationHelper = require('../../../lib/helpers/locationHelper');
 const dateHelper = require('../../../lib/helpers/dateHelper');
 const dateFormatter = require('../../../lib/helpers/dateFormatter');
 const languageHelper = require('../../../lib/helpers/languageHelper');
+const sessionHelper = require('../../../lib/helpers/sessionHelper');
 const dataStore = require('../../../lib/dataStore');
 const { getInviteKeyRequest } = require('../../../lib/helpers/keyServiceHelper');
 
@@ -110,11 +111,16 @@ function getCancel(req, res) {
 }
 
 function getTooEarlyForPension(req, res) {
-  let statePensionDate = false;
-  if (req.session.customerDetails.statePensionDate) {
-    statePensionDate = dateFormatter.statePensionDate(req.session.customerDetails.statePensionDate, req.session.lang);
+  // Need check session to prevent direct access to the page as we do not have an referer
+  // when coming from verify so session will be set if user has come from verify
+  if (req.session.customerDetails && req.session.customerDetails.statePensionDate) {
+    const statePensionDate = dateFormatter.statePensionDate(req.session.customerDetails.statePensionDate, req.session.lang);
+    res.render('pages/verify-state-pension-age-too-early', { statePensionDate });
+  } else {
+    const traceId = requestHelper.getTraceID(res);
+    res.locals.logger.info({ traceId }, `Security redirect - statePensionDate not set in session - ${req.method} ${req.path}`);
+    sessionHelper.destroySessionAndRedirect(req, res);
   }
-  res.render('pages/verify-state-pension-age-too-early', { statePensionDate });
 }
 
 function getSignInWithVerify(req, res) {
