@@ -10,11 +10,16 @@ const responseHelper = require('../../lib/responseHelper');
 
 let genericResponse = {};
 
-const emptyCookieRequest = { cookies: { } };
-const cookieRequest = { cookies: { foo: 'bar' } };
+const emptyCookieRequest = { headers: { referer: undefined }, cookies: { }, session: {} };
+const cookieRequest = { headers: { referer: undefined }, cookies: { foo: 'bar' }, session: {} };
+const cookieRequestWithReferer = {
+  headers: { referer: 'http://test.com/foo' }, cookies: { foo: 'bar' }, session: {}, protocol: 'http', get: () => 'test.com',
+};
 
-const headers = { headers: { cookie: '_gat=test,_ga=test,-gid=test' } };
-const cookieEmptyPostRequest = { cookies: { foo: 'bar' }, session: {}, body: { } };
+const headers = { headers: { cookie: '_gat=test,_ga=test,-gid=test', referer: 'http://test.com/foo' } };
+const cookieEmptyPostRequest = {
+  headers: { referer: 'http://test.com/foo' }, cookies: { foo: 'bar' }, session: {}, body: { },
+};
 const cookieValidYesPostRequest = {
   ...headers,
   cookies: { foo: 'bar' },
@@ -55,6 +60,18 @@ describe('cookie controller', () => {
       assert.equal(genericResponse.data.details.cookieConsent, 'bar');
       done();
     });
+
+    it('should return cookie page with cookieBackUrl is null ', (done) => {
+      controller.getCookiePage(cookieRequest, genericResponse);
+      assert.isNull(cookieRequest.session.cookieBackUrl);
+      done();
+    });
+
+    it('should return cookie page with cookieBackUrl as /foo ', (done) => {
+      controller.getCookiePage(cookieRequestWithReferer, genericResponse);
+      assert.equal(cookieRequestWithReferer.session.cookieBackUrl, '/foo');
+      done();
+    });
   });
 
   describe('postCookiePage function (POST /cookie-policy)', () => {
@@ -70,9 +87,29 @@ describe('cookie controller', () => {
       done();
     });
 
-    it('should return redirect when called with valid object', (done) => {
+    it('should return redirect when called with valid yes object without back url', (done) => {
       controller.postCookiePage(cookieValidYesPostRequest, genericResponse);
       assert.equal(genericResponse.address, 'cookie-policy');
+      done();
+    });
+
+    it('should return redirect when called with valid no object without back url', (done) => {
+      controller.postCookiePage(cookieValidNoPostRequest, genericResponse);
+      assert.equal(genericResponse.address, 'cookie-policy');
+      done();
+    });
+
+    it('should return redirect when called with valid yes object with back url', (done) => {
+      const request = { ...JSON.parse(JSON.stringify(cookieValidYesPostRequest)), session: { cookieBackUrl: '/back-url' } };
+      controller.postCookiePage(request, genericResponse);
+      assert.equal(genericResponse.address, '/back-url');
+      done();
+    });
+
+    it('should return redirect when called with valid no object with back url', (done) => {
+      const request = { ...JSON.parse(JSON.stringify(cookieValidNoPostRequest)), session: { cookieBackUrl: '/back-url' } };
+      controller.postCookiePage(request, genericResponse);
+      assert.equal(genericResponse.address, '/back-url');
       done();
     });
 

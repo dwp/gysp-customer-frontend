@@ -1,11 +1,13 @@
 const config = require('../../../config/application');
 const dataStore = require('../../../lib/dataStore');
+const { extractPath } = require('../../../lib/urlExtract');
 const validation = require('../../../lib/validations/cookieValidation');
 
 const oneYearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
 
 function getCookiePage(req, res) {
   const cookieConsent = req.cookies[res.locals.consentCookieName];
+  dataStore.save(req, 'cookieBackUrl', extractPath(req, req.headers.referer, config.mountUrl));
   res.render('pages/cookies', {
     details: { cookieConsent },
   });
@@ -46,7 +48,10 @@ function postCookiePage(req, res) {
       res.clearCookie('_gid', options);
     }
 
-    res.redirect('cookie-policy');
+    // Back to url
+    const backTo = dataStore.get(req, 'cookieBackUrl') || 'cookie-policy';
+
+    res.redirect(backTo);
   }
 }
 
