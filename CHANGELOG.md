@@ -1,3 +1,17 @@
+# [10.1.0](https://github.com/dwp/gysp-customer-frontend/compare/10.0.3...10.1.0) (2021-03-09)
+
+
+### Bug Fixes
+
+* **verify:** add condition to check for session ([afd76ab](https://github.com/dwp/gysp-customer-frontend/commit/afd76ab5b743f8666ac8be1a1eb4ae2083bfd3f3))
+
+
+### Features
+
+* **cookies:** cookie banner and enable GA ([05eb042](https://github.com/dwp/gysp-customer-frontend/commit/05eb04240633f22870c53363671c7d87e56470b9))
+
+
+
 ## [10.0.3](https://github.com/dwp/gysp-customer-frontend/compare/10.0.2...10.0.3) (2021-02-22)
 
 
