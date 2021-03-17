@@ -18,6 +18,7 @@
   "link": {
     "back": "Yn ôl"
   },
+  "phase-banner": "Helpwch ni i wella'r gwasanaeth hwn trwy <a class=\"govuk-link\" href=\"{{URL}}\" rel=\"noreferrer noopener\" target=\"_blank\">gymryd rhan mewn ymchwil</a> (yn agor mewn tab newydd)",
   "navigation": {
      "general": "Yn ôl i",
      "auth": "Darparu eich manylion",

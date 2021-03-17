@@ -18,6 +18,7 @@
   "link": {
     "back": "Back"
   },
+  "phase-banner": "Help us improve this service by <a class=\"govuk-link\" href=\"{{URL}}\" rel=\"noreferrer noopener\" target=\"_blank\">taking part in research</a> (opens in a new tab)",
   "navigation": {
      "general": "to",
      "auth": "Your details",

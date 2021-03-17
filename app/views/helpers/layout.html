@@ -53,7 +53,8 @@
     <main id="main" role="main">
       <div class="govuk-width-container">
         {{ govukPhaseBanner({
-          tag: { text: 'beta' }
+          tag: { text: 'beta' },
+          html: t('app:phase-banner', { URL: 'https://getinvolved.dwp.gov.uk/digital/fa0f8f99' }) if not isOverseas
         }) }}
         {% block languageSelect %}{% endblock %}
         {% block backLink %}{% endblock %}
