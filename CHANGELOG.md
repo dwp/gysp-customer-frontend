@@ -1,3 +1,12 @@
+# [10.2.0](https://github.com/dwp/gysp-customer-frontend/compare/10.1.0...10.2.0) (2021-03-23)
+
+
+### Features
+
+* **layout:** add phase banner research text ([eaec5fe](https://github.com/dwp/gysp-customer-frontend/commit/eaec5feca77211a98e4e53c4ba41e8ea1b6c4de2))
+
+
+
 # [10.1.0](https://github.com/dwp/gysp-customer-frontend/compare/10.0.3...10.1.0) (2021-03-09)
 
 
@@ -40,10 +49,10 @@
 
 ### Bug Fixes
 
-* add mount url for favicon ([ee7f9ad](https://github.com/dwp/gysp-customer-frontend/commit/ee7f9adb7a762c0c7ad334c734407e9bd1c1f3d5))
 * **auth:** regex to disallow only spaces in invite key ([c10e18f](https://github.com/dwp/gysp-customer-frontend/commit/c10e18f85d71328f8ee9d249c314be9295782e14))
 * **i18next-middleware:** ignore route /assets, not /public ([a8b35f4](https://github.com/dwp/gysp-customer-frontend/commit/a8b35f4338ea89e29113ee3ed9582bb8766fcb5b))
 * **validation:** corrected current year format ([d376b9e](https://github.com/dwp/gysp-customer-frontend/commit/d376b9ea7487545a4e8b1fd52207a2da3fef5c8b))
+* add mount url for favicon ([ee7f9ad](https://github.com/dwp/gysp-customer-frontend/commit/ee7f9adb7a762c0c7ad334c734407e9bd1c1f3d5))
 
 
 
@@ -66,12 +75,12 @@
 ## [8.2.1](https://github.com/dwp/gysp-customer-frontend/compare/8.2.0...8.2.1) (2020-09-30)
 
 
-* chore!: upgrade node to 12.8.4 ([f3dda38](https://github.com/dwp/gysp-customer-frontend/commit/f3dda3839aff33b7cbbf312e41d93b2370753c10))
-
-
 ### Bug Fixes
 
 * **verify:** add sameSite to session cookie ([216325f](https://github.com/dwp/gysp-customer-frontend/commit/216325fff6473ba31563c3a8ebdcb0456d1cc3ae))
+
+
+* chore!: upgrade node to 12.8.4 ([f3dda38](https://github.com/dwp/gysp-customer-frontend/commit/f3dda3839aff33b7cbbf312e41d93b2370753c10))
 
 
 ### BREAKING CHANGES
@@ -157,8 +166,8 @@ Signed-off-by: Malcolm Hire <malcolm.hire@engineering.digital.dwp.gov.uk>
 
 ### Features
 
-* docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51bb6e58d8d9bb89f59f7611a69d1626d37))
 * **cookies:** remove GA code and text ([6b4f3ee](https://github.com/dwp/gysp-customer-frontend/commit/6b4f3ee8565b81bcf6fd27523b7dd8eddc6d4dc3))
+* docker work ([2cc2c51](https://github.com/dwp/gysp-customer-frontend/commit/2cc2c51bb6e58d8d9bb89f59f7611a69d1626d37))
 
 
 
