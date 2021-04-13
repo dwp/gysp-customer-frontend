@@ -3,6 +3,7 @@
 {% from 'govuk/components/header/macro.njk' import govukHeader %}
 {% from 'govuk/components/footer/macro.njk' import govukFooter %}
 {% from 'govuk/components/button/macro.njk' import govukButton %}
+{% from "hmrc/components/timeout-dialog/macro.njk" import hmrcTimeoutDialog %}
 
 {% block head %}
     <meta name="robots" content="noindex, nofollow">
@@ -11,11 +12,29 @@
     <!--[if IE 8]><link href="{{ assetPath }}/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% block pageCSS %}{% endblock %}
     {% include '../includes/ga-script.html' %}
+
+    {% block timeoutDialog %}
+    {# Session timeout dialog #}
+    {{ hmrcTimeoutDialog ({
+      timeout: timeoutDialog.timeout,
+      countdown: timeoutDialog.countdown,
+      keepAliveUrl: timeoutDialog.keepAliveUrl,
+      signOutUrl: timeoutDialog.signOutUrl,
+      timeoutUrl: timeoutDialog.timeoutUrl,
+      title: t("app:timeout.title"),
+      message: t("app:timeout.message"),
+      messageSuffix: t("app:timeout.message-suffix"),
+      keepAliveButtonText: t("app:timeout.buttons.primary"),
+      signOutButtonText: t("app:timeout.buttons.secondary"),
+      language: locale
+    }) }}
+  {% endblock %}
 {% endblock %}
 
 {% block bodyEnd %}
     <script src="{{ assetPath }}/javascripts/vendor/jquery-1.11.3.min.js"></script>
     <script src="{{ assetPath }}/javascripts/vendor/stageprompt.js"></script>
+    <script src="{{ assetPath }}/javascripts/vendor/hmrc-frontend/timeout-dialog.js"></script>
     <script src="{{ assetPath }}/javascripts/cookieBanner.js"></script>
     <script src="{{ assetPath }}/javascripts/application.js"></script>
     <script src="{{ assetPath }}/all.js"></script>

@@ -1,0 +1,21 @@
+{% extends '../helpers/layout.html' %}
+
+{% block pageTitle %}{{ t("session-timeout:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-xl">{{ t('session-timeout:header') }}</h1>
+
+			<p class="govuk-body">{{ t('session-timeout:p1', { TIMEOUT: sessionTimeout }) }}</p>
+
+			<p class="govuk-body">{{ t('session-timeout:p2') }}</p>
+
+			{{ govukButton({
+				text: t('session-timeout:button'),
+				href: '/'
+			}) }}
+		</div>
+	</div>
+{% endblock %}

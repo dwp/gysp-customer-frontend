@@ -38,6 +38,12 @@ function isPersonalDataSubmitClicked() {
   }
 }
 
+// HMRC Session Timeout Dialog
+var $TimeoutDialog = document.querySelector('meta[name="hmrc-timeout-dialog"]');
+if ($TimeoutDialog) {
+  new TimeoutDialog($TimeoutDialog).init();
+}
+
 $(window).load(function() {
 
   if (gaEnabled) {

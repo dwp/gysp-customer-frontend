@@ -1,0 +1,6 @@
+{
+  "header":"You will need to start again",
+  "p1": "Your session ended because you had not done anything for {{TIMEOUT}} minutes.",
+  "p2": "Any information you entered was cleared for security reasons.",
+  "button": "Start again"
+}

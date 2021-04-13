@@ -28,6 +28,7 @@ module.exports = {
       clearCookieData: [],
       jsonResponse: '',
       body: '',
+      lang: '',
       redirect(url) {
         this.address = url;
       },
@@ -58,6 +59,9 @@ module.exports = {
       },
       clearCookie(name, options) {
         this.clearCookieData.push({ name, options });
+      },
+      end() {
+        //
       },
     };
     return genericResponse;

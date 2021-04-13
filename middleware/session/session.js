@@ -6,7 +6,7 @@ module.exports = (log, config, redisConfig) => {
     secret: config.secret,
     name: config.name,
     cookie: {
-      maxAge: config.timeout,
+      maxAge: config.timeout * 1000, // convert seconds to milliseconds
       secure: config.cookies.secure,
       sameSite: config.cookies.sameSite,
     },

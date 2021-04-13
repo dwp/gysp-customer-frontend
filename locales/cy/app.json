@@ -162,6 +162,15 @@
       "p": "Rydym yn defnyddio cwcis i wneud i'r gwasanaeth hwn weithio a chasglu gwybodaeth ddadansoddeg. I dderbyn neu wrthod cwcis, trowch JavaScript ymlaen yn eich gosodiadau porwr neu ail-lwythwch y dudalen hon."
     }
   },
+  "timeout": {
+    "title": "Bydd eich cais yn dod i ben yn fuan",
+    "message": "Rydych wedi bod yn anactif am gyfnod, felly am resymau diogelwch bydd eich sesiwn yn dod i ben mewn",
+    "message-suffix": "Os na fyddwch yn parhau â'ch cais, bydd yn rhaid i chi ddechrau eich cais eto.",
+    "buttons": {
+      "primary": "Parhau â'ch cais",
+      "secondary": "Dechrau eto"
+    }
+  },
   "footer": {
       "copyright": "Hawlfraint y Goron"
   }

@@ -172,6 +172,15 @@
       "p": "We use cookies to make this service work and collect analytics information. To accept or reject cookies, turn on JavaScript in your browser settings or reload this page."
     }
   },
+  "timeout": {
+    "title": "Your application will time out soon",
+    "message": "You have been inactive for a while, so for security reasons your session will end in",
+    "message-suffix": "If you do not continue your application, you will have to start your claim again.",
+    "buttons": {
+      "primary": "Continue your application",
+      "secondary": "Start again"
+    }
+  },
   "footer": {
       "copyright": "Crown copyright"
   }

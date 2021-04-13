@@ -45,9 +45,14 @@ headersMiddleware(app);
 nunjucksMiddleware(app, [
   'app/views',
   'node_modules/govuk-frontend/',
+  'node_modules/hmrc-frontend/',
 ]);
 
-sessionMiddleware(app, log, config.application);
+sessionMiddleware(app, log, config.application, {
+  SESSION_KEEP_ALIVE: '/session-keep-alive',
+  SESSION_ENDED: '/',
+  SESSION_TIMEOUT: '/session-timeout',
+});
 
 pageMiddleware(app);
 
@@ -84,6 +89,7 @@ const confirmIdentity = require('./app/routes/confirm-identity/routes.js');
 const personalData = require('./app/routes/personal-data/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
+const sessionRoutes = require('./app/routes/session/routes.js');
 
 if (config.env !== 'production') {
   app.use(config.mountUrl, overseasStub);
@@ -187,6 +193,7 @@ app.use((req, res, next) => {
 
 app.use(config.mountUrl, generalRoutes);
 app.use(config.mountUrl, cookiesRoutes);
+app.use(config.mountUrl, sessionRoutes);
 if (config.application.feature.verify === false) {
   app.use(config.mountUrl, authRoutes);
 }
@@ -229,7 +236,7 @@ app.use((req, res, next) => {
     next();
   } else {
     log.info(`Security redirect - not in session - ${req.method} ${req.path}`);
-    res.redirect(res.locals.serviceURL);
+    res.redirect(res.locals.timeoutDialog.timeoutUrl);
   }
 });
 
