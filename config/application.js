@@ -20,7 +20,7 @@ module.exports = {
       name: process.env.SESSION_NAME || 'name',
       secret: process.env.CUSTOMER_FRONTEND_SESSION_SECRET || 'secret',
       timeout: process.env.SESSION_TIMEOUT ? parseInt(process.env.SESSION_TIMEOUT, 10) : 1800,
-      timeoutDialogCountdown: process.env.TIMEOUT_DIALOG_COUNTDOWN ? parseInt(process.env.TIMEOUT_DIALOG_COUNTDOWN, 10) : 300,
+      timeoutDialogCountdown: process.env.TIMEOUT_DIALOG_COUNTDOWN ? parseInt(process.env.TIMEOUT_DIALOG_COUNTDOWN, 10) : 1500,
       cookies: {
         secure: process.env.SESSION_SECURE_COOKIES === 'true' || false,
         sameSite: process.env.SESSION_SAMESITE_COOKIES || 'None',
