@@ -2,6 +2,9 @@
 
 {% block pageTitle %}{{ t("session-timeout:header") }} - {{ t("app:service_name") }}{% endblock %}
 
+{# Remove timeout dialog #}
+{% block timeoutDialog %}{% endblock %}
+
 {% block content %}
 
 	<div class="govuk-grid-row">

@@ -14,21 +14,21 @@
     {% include '../includes/ga-script.html' %}
 
     {% block timeoutDialog %}
-    {# Session timeout dialog #}
-    {{ hmrcTimeoutDialog ({
-      timeout: timeoutDialog.timeout,
-      countdown: timeoutDialog.countdown,
-      keepAliveUrl: timeoutDialog.keepAliveUrl,
-      signOutUrl: timeoutDialog.signOutUrl,
-      timeoutUrl: timeoutDialog.timeoutUrl,
-      title: t("app:timeout.title"),
-      message: t("app:timeout.message"),
-      messageSuffix: t("app:timeout.message-suffix"),
-      keepAliveButtonText: t("app:timeout.buttons.primary"),
-      signOutButtonText: t("app:timeout.buttons.secondary"),
-      language: locale
-    }) }}
-  {% endblock %}
+      {# Session timeout dialog #}
+      {{ hmrcTimeoutDialog ({
+        timeout: timeoutDialog.timeout,
+        countdown: timeoutDialog.countdown,
+        keepAliveUrl: timeoutDialog.keepAliveUrl,
+        signOutUrl: timeoutDialog.signOutUrl,
+        timeoutUrl: timeoutDialog.timeoutUrl,
+        title: t("app:timeout.title"),
+        message: t("app:timeout.message"),
+        messageSuffix: t("app:timeout.message-suffix"),
+        keepAliveButtonText: t("app:timeout.buttons.primary"),
+        signOutButtonText: t("app:timeout.buttons.secondary"),
+        language: locale
+      }) }}
+    {% endblock %}
 {% endblock %}
 
 {% block bodyEnd %}

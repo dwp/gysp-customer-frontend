@@ -4,6 +4,9 @@
 
 {% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("confirm-identity:header") }}{% endblock %}
 
+{# Remove timeout dialog #}
+{% block timeoutDialog %}{% endblock %}
+
 {% block content %}
 
   {% if errors %}
