@@ -1,3 +1,17 @@
+# [11.0.0](https://github.com/dwp/gysp-customer-frontend/compare/10.2.1...11.0.0) (2021-04-20)
+
+
+### Features
+
+* **session:** timeout warning and page ([9064856](https://github.com/dwp/gysp-customer-frontend/commit/90648566b8614517217cf3639e6bb9320fc4ed73))
+
+
+### BREAKING CHANGES
+
+* **session:** convert session timeout from milliseconds to seconds
+
+
+
 ## [10.2.1](https://github.com/dwp/gysp-customer-frontend/compare/10.2.0...10.2.1) (2021-04-06)
 
 
