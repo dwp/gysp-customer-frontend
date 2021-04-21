@@ -40,7 +40,7 @@
     "response-time": "2.3.2",
     "serve-favicon": "2.5.0",
     "speakingurl": "14.0.1",
-    "validator": "13.5.2"
+    "validator": "13.6.0"
   },
   "devDependencies": {
     "@babel/preset-env": "7.13.15",
