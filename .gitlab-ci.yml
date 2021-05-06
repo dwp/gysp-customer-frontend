@@ -1,7 +1,7 @@
 # Import the standard library of templates
 include:
-  - project: rbac-shared/gitlab-ci-toolbox
-    ref: master
+  - project: dwp/engineering/gitlab-ci-toolbox
+    ref: main
     file: stdlib.yml
 
 stages:
@@ -18,12 +18,14 @@ stages:
 
 default:
   image: node:12.22.1-alpine3.11@sha256:d714e8b527d784cd12b3dfc022f771c7f3531acb57f483be2c8f0997924a37df
+  tags:
+    - docker
 
 # ---------------------------------------------------------------------- prepare
 
 meta:
   stage: prepare
-  extends: .rbac-ci-vars
+  extends: .toolbox-ci-vars
 
 # ------------------------------------------------------------------------ build
 
@@ -73,7 +75,8 @@ code-lint:
 
 docker-lint:
   stage: compliance
-  extends: .rbac-docker-lint
+  extends: .toolbox-docker-lint
+  allow_failure: true
   variables:
     DOCKERFILE: docker/Dockerfile
   needs:
@@ -122,7 +125,7 @@ outdated:
 
 sensitive-data:
   stage: security
-  extends: .rbac-secrets-scan
+  extends: .toolbox-secrets-scan
   variables:
     SCAN_OPENSOURCE: "false"
     EXCLUDE_FILES: "/test/resource/countries.json"
@@ -133,7 +136,7 @@ sensitive-data:
 
 image-package:
   stage: package
-  extends: .rbac-base-image
+  extends: .toolbox-base-image
   variables:
     DOCKERFILE: docker/Dockerfile
     SAVE_IN_REGISTRY: "true"
@@ -151,9 +154,7 @@ image-package:
 
 sonarqube:
   stage: analysis
-  image: "$CI_REGISTRY/engineering-practice/sonar-scanner:3.1.0"
-  tags:
-    - transparent
+  image: "$CI_REGISTRY/dwp/engineering/sonar-scanner:latest"
   needs:
     - node-modules
     - coverage
@@ -163,46 +164,51 @@ sonarqube:
 
 image-push:
   stage: publish
-  extends: .rbac-ecr-mirror-image
+  extends: .toolbox-ecr-mirror-image
   variables:
     REMOTE_IMAGE_NAME: "${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-2.amazonaws.com/gysp/dev/gysp-customerfrontend"
     REMOTE_IMAGE_TAGS: "${CI_COMMIT_SHORT_SHA}"
     SOURCE_IMAGE_NAME_TAG: "${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_COMMIT_SHORT_SHA}"
   before_script:
-    - branchName="${CI_COMMIT_REF_SLUG:-master}"
-    - if [ "$branchName" == "master" ]; then REMOTE_IMAGE_TAGS="$CI_COMMIT_SHORT_SHA deploy"; fi
+    - branchName="${CI_COMMIT_REF_SLUG:-main}"
+    - if [ "$branchName" == "main" ]; then REMOTE_IMAGE_TAGS="$CI_COMMIT_SHORT_SHA deploy"; fi
     - echo "Using tags \"${REMOTE_IMAGE_TAGS}\""
   dependencies:
     - meta
     - image-package
   only:
-    - master
+    - main
     - tags
 
 container-deploy:
   stage: deploy
-  extends: .rbac-aws-codedeploy
+  extends: .toolbox-aws-codedeploy
   variables:
     APPLICATION_NAME: gysp-customerfrontend-dev
     GROUP_NAME: dev-gysp-gysp-customerfrontend-group
     REVISION: "revisionType=S3,s3Location={bucket=dev-ecs-cluster-codedeploy-releases,bundleType=JSON,key=gysp/dev/gysp-customerfrontend/appspec.json}"
+    DOCKER_TLS_CERTDIR: "/certs/${JOB_ID}"
   dependencies:
     - meta
     - image-push
   only:
-    - master
+    - main
+
 
 # ---------------------------------------------------------------------- post deploy
 
 integration-tests:
   stage: post deploy
-  extends: .rbac-pipeline-trigger
+  trigger:
+    project: dwp/get-your-state-pension/customer-frontend-tests
+    branch: main
+  inherit:
+    variables: false
   variables:
-    PROJECT_PATH: "rbac-gysp/customer-frontend-tests"
     PAT: ${GITLAB_ACCESS_TOKEN}
     WAIT_TTL: 300
   needs:
     - meta
     - container-deploy
   only:
-    - master
+    - main
