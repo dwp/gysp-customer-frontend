@@ -251,3 +251,7 @@ function errorSummary(title, messages) {
 
   return html;
 }
+
+export {
+  countryEvent
+};

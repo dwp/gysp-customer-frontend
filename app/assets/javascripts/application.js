@@ -1,3 +1,5 @@
+import TimeoutDialog from 'hmrc-frontend/hmrc/components/timeout-dialog/timeout-dialog';
+
 function isEmailAndTelephoneComplete() {
   if (!gaEnabled) {
     return;
