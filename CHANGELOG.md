@@ -1,3 +1,12 @@
+## [11.0.2](https://github.com/dwp/gysp-customer-frontend/compare/11.0.1...11.0.2) (2021-05-27)
+
+
+### Bug Fixes
+
+* **scripts:** fix issue with session timeout in IE11 ([fd67ecd](https://github.com/dwp/gysp-customer-frontend/commit/fd67ecd80edd50f2f6105c8a1e88a06e3f25eb84))
+
+
+
 ## [11.0.1](https://github.com/dwp/gysp-customer-frontend/compare/11.0.0...11.0.1) (2021-05-18)
 
 
