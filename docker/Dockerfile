@@ -3,16 +3,14 @@ FROM node:12.22.1-alpine3.11@sha256:9923c9efb13cf7535f67e49b03010f0977a800068e4c
 LABEL application="gysp/customer-frontend"
 LABEL maintainer="Get your State Pension Team"
 LABEL version="[ci]"
-LABEL build_src="[ci]"
 
 ARG APP_FOLDER=/home/node/customer-frontend/
 ARG STUNNEL_FOLDER=/opt/stunnel/
 ARG HARDEN_FOLDER=/opt/harden/
 
 # Need to use internal package repository for apks
-RUN sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories
-
-RUN apk add --no-cache tzdata=2021a-r0 curl=7.67.0-r3
+RUN sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories &&\
+  apk add --no-cache tzdata=2021a-r0 curl=7.67.0-r4
 
 # Default ENV
 ENV TZ=Europe/London
@@ -31,8 +29,8 @@ HEALTHCHECK --interval=30s --timeout=2s --start-period=30s  \
 RUN mkdir -p ${APP_FOLDER}
 
 # remove root user privilidge
-RUN chown -R node:node ${APP_FOLDER}
-RUN chown -R node:node ${STUNNEL_FOLDER}
+RUN chown -R node:node ${APP_FOLDER} &&\
+  chown -R node:node ${STUNNEL_FOLDER}
 
 USER node
 
@@ -40,9 +38,9 @@ WORKDIR ${APP_FOLDER}
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node . .
 
-RUN npm ci
-RUN npm run build
-RUN npm prune --production
+RUN npm ci &&\
+  npm run build &&\
+  npm prune --production
 
 USER root
 
@@ -53,6 +51,7 @@ ADD https://raw.githubusercontent.com/dwp/packer-infrastructure/master/docker-bu
 COPY docker/harden.sh.md5 .
 RUN md5sum -c harden.sh.md5
 
+# hadolint ignore=DL3059
 RUN chmod +x ${HARDEN_FOLDER}harden.sh && sh ${HARDEN_FOLDER}harden.sh && rm ${HARDEN_FOLDER}harden.sh
 
 USER node
