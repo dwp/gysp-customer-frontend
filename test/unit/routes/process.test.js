@@ -165,12 +165,24 @@ describe('process controller ', () => {
   describe(' processClaim function ', () => {
     it('should resolve when 200 is called', () => {
       nock('http://test-url').post('/api/claim').reply(200, {});
-      return assert.isFulfilled(controller.processClaim(genericResponse, customerDetails, formObjectLivedAbroad, accountResults, englishLangauge));
+      const req = {
+        session: {
+          lang: englishLangauge,
+          customerDetails,
+        },
+      };
+      return assert.isFulfilled(controller.processClaim(genericResponse, req, formObjectLivedAbroad, accountResults));
     });
 
     it('should reject when 500 is called', () => {
       nock('http://test-url').post('/api/claim').reply(500, {});
-      return assert.isRejected(controller.processClaim(genericResponse, customerDetails, formObjectLivedAbroad, accountResults, englishLangauge));
+      const req = {
+        session: {
+          lang: englishLangauge,
+          customerDetails,
+        },
+      };
+      return assert.isRejected(controller.processClaim(genericResponse, req, formObjectLivedAbroad, accountResults));
     });
 
     it('should not mutate the customer session data when called', () => {

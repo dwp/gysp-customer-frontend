@@ -191,6 +191,11 @@ app.use((req, res, next) => {
   next();
 });
 
+if (config.env === 'local') {
+  // eslint-disable-next-line global-require
+  app.use(`${config.mountUrl}audit-adapter`, require('./app/routes/audit-adapter-stub/routes'));
+}
+
 app.use(config.mountUrl, generalRoutes);
 app.use(config.mountUrl, cookiesRoutes);
 app.use(config.mountUrl, sessionRoutes);

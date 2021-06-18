@@ -55,12 +55,13 @@ function verifyAccountDetails(req, res, bankDetails, customerDetails) {
   });
 }
 
-async function processClaim(res, customerDetails, claimData, accountStatus, language) {
-  const claimBody = await claim.sessionToObject(claimData, accountStatus, language);
+async function processClaim(res, req, claimData, accountStatus) {
+  const claimBody = await claim.sessionToObject(claimData, accountStatus, req.session.lang);
   return new Promise((resolve, reject) => {
-    claimBody.customerRequest = claim.createCustomerObject(customerDetails);
+    claimBody.customerRequest = claim.createCustomerObject(req.session.customerDetails);
     const calimServiceCall = requestHelper.generatePostCall(`${res.locals.claimServiceApiGateway}/claim`, claimBody);
     got(calimServiceCall).then(() => {
+      req.session['claim-data-for-audit'] = claimBody;
       resolve();
     }).catch((err) => {
       reject(err);
@@ -84,7 +85,7 @@ function procecssDataToBackend(req, res) {
     const claimDataKey = claimData.isOverseas ? 'account-details-overseas' : 'account-details';
     verifyAccountDetails(req, res, claimData[claimDataKey], req.session.customerDetails)
       .then((accountStatus) => {
-        processClaim(res, req.session.customerDetails, claimData, accountStatus, req.session.lang)
+        processClaim(res, req, claimData, accountStatus)
           .then(() => {
             redirectToEnd(req, res);
           }).catch((err) => {

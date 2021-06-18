@@ -14,6 +14,7 @@ module.exports = {
       enabled: process.env.USE_TLS === 'true',
       key: process.env.TLS_KEY || null,
       cert: process.env.TLS_CERT || null,
+      ca: process.env.CACHAIN || null,
     },
     session: {
       store: process.env.SESSION_STORE || 'redis',
@@ -36,6 +37,7 @@ module.exports = {
       claimServiceApiKey: process.env.CLAIM_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',
       customerServiceApiKey: process.env.CUSTOMER_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',
       bankValidateServiceApiKey: process.env.BANK_VALIDATION_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',
+      auditGateway: process.env.AUDIT_GATEAWAY || 'http://localhost:3001',
     },
     logs: {
       level: process.env.LOG_LEVEL || 'info',
@@ -45,6 +47,8 @@ module.exports = {
       dateConfirmation: (process.env.FEATURE_DATE_CONFIRMATION === 'true') || true,
       verify: (process.env.FEATURE_VERIFY === 'true') || true,
       language: (process.env.FEATURE_LANGUAGE === 'true') || true,
+      auditFeature: (!process.env.NODE_ENV || process.env.FEATURE_AUDIT === 'true') || false,
+      auditLocalLogFeature: (process.env.FEATURE_AUDIT_LOCAL_LOG === 'true') || false,
     },
     redis: {
       hosts: process.env.REDIS_HOSTS || null,

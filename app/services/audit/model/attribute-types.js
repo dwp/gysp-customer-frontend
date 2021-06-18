@@ -1,0 +1,6 @@
+module.exports = {
+  BEFORE: 'BEFORE',
+  AFTER: 'AFTER',
+  REFERENCE_DATA: 'REFERENCE_DATA',
+  MESSAGE_TEXT: 'MESSAGE_TEXT',
+};

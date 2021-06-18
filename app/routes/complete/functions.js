@@ -59,6 +59,9 @@ function whatHappensNextText(req) {
 }
 
 function completePage(req, res) {
+  if (req.session['claim-data-for-audit'] !== undefined) {
+    delete req.session['claim-data-for-audit'];
+  }
   let showAddtionalDiscliamer = false;
   const date = dateFormatter.applicationDate(req.session.lang);
   const redirected = req.session.redirectComplete;
