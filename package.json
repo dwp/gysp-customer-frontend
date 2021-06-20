@@ -18,7 +18,7 @@
     "crypto-js": "4.0.0",
     "dotenv": "8.6.0",
     "express": "4.17.1",
-    "express-session": "1.17.1",
+    "express-session": "1.17.2",
     "got": "11.8.2",
     "govuk-frontend": "3.11.0",
     "gulp": "4.0.2",
