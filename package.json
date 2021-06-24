@@ -47,7 +47,7 @@
     "@babel/core": "7.14.6",
     "@babel/preset-env": "7.14.7",
     "@commitlint/cli": "12.1.4",
-    "@commitlint/travis-cli": "12.1.1",
+    "@commitlint/travis-cli": "12.1.4",
     "@dwp/commitlint-config-base": "1.2.0",
     "@dwp/eslint-config-base": "4.1.0",
     "@dwp/eslint-config-mocha": "1.1.0",
