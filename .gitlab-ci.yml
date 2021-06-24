@@ -149,6 +149,9 @@ image-package:
       cat <<EOF > .imagelabels
       ci_build_stable=${STABLE}
       EOF
+  only:
+    - main
+    - tags
 
 # --------------------------------------------------------------------- analysis
 
