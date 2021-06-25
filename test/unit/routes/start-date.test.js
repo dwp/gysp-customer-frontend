@@ -172,25 +172,25 @@ describe('Start date controller ', () => {
       });
     });
   });
-});
 
-describe('getStatePensionStartDateError', () => {
-  it('should return view when called with start pension link as your-state-pension-date', (done) => {
-    controller.getStatePensionStartDateError(validStatePensionStartDateErrorRequest, genericResponse);
-    assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
-    assert.equal(genericResponse.data.startPensionDatePage, '/your-state-pension-date');
-    done();
-  });
-  it('should return view when called with start pension link as revised-your-state-pension-date', (done) => {
-    controller.getStatePensionStartDateError(validStatePensionStartDateErrorNVRequest, genericResponse);
-    assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
-    assert.equal(genericResponse.data.startPensionDatePage, '/revised-your-state-pension-date');
-    done();
-  });
-  it('should return view when called with start pension link as when-do-you-want-your-state-pension when in edit mode', (done) => {
-    controller.getStatePensionStartDateError(validStatePensionStartDateErrorRequestEdit, genericResponse);
-    assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
-    assert.equal(genericResponse.data.startPensionDatePage, '/when-do-you-want-your-state-pension');
-    done();
+  describe('getStatePensionStartDateError', () => {
+    it('should return view when called with start pension link as your-state-pension-date', (done) => {
+      controller.getStatePensionStartDateError(validStatePensionStartDateErrorRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
+      assert.equal(genericResponse.data.startPensionDatePage, '/your-state-pension-date');
+      done();
+    });
+    it('should return view when called with start pension link as revised-your-state-pension-date', (done) => {
+      controller.getStatePensionStartDateError(validStatePensionStartDateErrorNVRequest, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
+      assert.equal(genericResponse.data.startPensionDatePage, '/revised-your-state-pension-date');
+      done();
+    });
+    it('should return view when called with start pension link as when-do-you-want-your-state-pension when in edit mode', (done) => {
+      controller.getStatePensionStartDateError(validStatePensionStartDateErrorRequestEdit, genericResponse);
+      assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
+      assert.equal(genericResponse.data.startPensionDatePage, '/when-do-you-want-your-state-pension');
+      done();
+    });
   });
 });

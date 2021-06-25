@@ -124,16 +124,16 @@ describe('DOB validation - EN', () => {
     assert.equal(validationResponse.date.visuallyHiddenText, 'Error');
     assert.equal(validationResponse.date.text, 'Enter a real date of birth.');
   });
-});
 
-describe('dobCompare', () => {
-  it('should return true when two DOB\'s match', () => {
-    const validationResponse = validation.dobCompare(dateOfBirthFormCorrect, sessionDateOfBirth);
-    assert.equal(validationResponse, true);
-  });
+  describe('dobCompare', () => {
+    it('should return true when two DOB\'s match', () => {
+      const validationResponse = validation.dobCompare(dateOfBirthFormCorrect, sessionDateOfBirth);
+      assert.equal(validationResponse, true);
+    });
 
-  it('should return false when two DOB\'s match', () => {
-    const validationResponse = validation.dobCompare(dateOfBirthFormIncorrect, sessionDateOfBirth);
-    assert.equal(validationResponse, false);
+    it('should return false when two DOB\'s match', () => {
+      const validationResponse = validation.dobCompare(dateOfBirthFormIncorrect, sessionDateOfBirth);
+      assert.equal(validationResponse, false);
+    });
   });
 });

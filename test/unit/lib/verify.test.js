@@ -16,11 +16,8 @@ describe('verify', () => {
   });
 
   describe('saveRequestId', () => {
-    beforeEach(() => {
-      requestObject = { session: {} };
-    });
-
     it('should return and object when PID is in the database', () => {
+      requestObject = { session: {} };
       verify.saveRequestId(validRequestObject.session.requestId, requestObject);
       assert.equal(JSON.stringify(requestObject), JSON.stringify(validRequestObject));
     });

@@ -874,7 +874,7 @@ describe('Check Change Helper ', () => {
       assert.equal(JSON.stringify(result), JSON.stringify(baseDetailResult));
     });
 
-    describe(' livedAbroad ', async () => {
+    describe(' livedAbroad ', () => {
       it('should return a array that contains livedAbroad as No when base details are supplied with lived abroad', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadNoDetails, englishLangauge);
         assert.equal(result.length, 4);

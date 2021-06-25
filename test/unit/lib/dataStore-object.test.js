@@ -438,11 +438,8 @@ describe('Data store object', () => {
   });
 
   describe(' checkAndSave when not populated ', () => {
-    beforeEach(() => {
-      req.session = {};
-    });
-
     it('should store session when called', () => {
+      req.session = {};
       dataStore.checkAndSave(req, 'lived-abroad', false);
       assert.isFalse(req.session['lived-abroad']);
     });
