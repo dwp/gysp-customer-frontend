@@ -32,7 +32,6 @@ function scripts() {
     .pipe(dest('public/javascripts'));
 }
 
-
 function shiv() {
   return src('node_modules/html5shiv/dist/html5shiv.js')
     .pipe(uglify())

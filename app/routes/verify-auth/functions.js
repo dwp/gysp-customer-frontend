@@ -19,7 +19,6 @@ const redirectTooEarly = '/verify/you-are-too-early-to-get-your-state-pension';
 const redirectSessionUndefined = '/verify/you-can-now-sign-in-with-govuk-verify';
 const maxMonthPreClaim = 4;
 
-
 function getCustomerByHashPidServiceRequest(req, res, user) {
   return new Promise((resolve, reject) => {
     const { customerServiceApiGateway } = res.locals;
@@ -41,7 +40,6 @@ async function processAuth(req, res, user) {
     return err;
   }
 }
-
 
 function setSessionData(req, res, customerDetails, cb) {
   req.session.userPassedAuth = true;

@@ -50,14 +50,14 @@ function allowedPaths(key, path, mountUrl) {
 
 function protectedSection(section) {
   switch (section) {
-  case 'marital-select':
-    return true;
-  case 'lived-abroad':
-    return true;
-  case 'worked-abroad':
-    return true;
-  default:
-    return false;
+    case 'marital-select':
+      return true;
+    case 'lived-abroad':
+      return true;
+    case 'worked-abroad':
+      return true;
+    default:
+      return false;
   }
 }
 

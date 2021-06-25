@@ -6,9 +6,11 @@ const api = require('../../../app/services/audit/api');
 
 const log = {
   error: (err) => {
+    // eslint-disable-next-line no-console
     console.log(err);
   },
   info: (msg) => {
+    // eslint-disable-next-line no-console
     console.log(msg);
   },
 };

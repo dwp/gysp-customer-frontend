@@ -20,7 +20,6 @@ const nextFunction = {
   },
 };
 
-
 describe('timeout middleware', () => {
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
