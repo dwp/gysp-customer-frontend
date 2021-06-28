@@ -1,3 +1,12 @@
+# [11.1.0](https://github.com/dwp/gysp-customer-frontend/compare/11.0.2...11.1.0) (2021-06-28)
+
+
+### Features
+
+* **audit:** audit event for new online claim submission ([1cae0a5](https://github.com/dwp/gysp-customer-frontend/commit/1cae0a5281472186c863ae8037c14c66da37feaf))
+
+
+
 ## [11.0.2](https://github.com/dwp/gysp-customer-frontend/compare/11.0.1...11.0.2) (2021-05-27)
 
 
