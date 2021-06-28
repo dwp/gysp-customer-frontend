@@ -8,7 +8,7 @@ const build = (outcome, req) => {
   if (!claimData) {
     throw new Error('Could not build event E0900001. Claim data not present on the session.');
   }
-  return new AuditEventE0900001(outcome, 'SELF', ip, undefined,
+  return new AuditEventE0900001(outcome, 'CITIZEN', ip, undefined,
     { sessionId: session.id, userAgent: headers['user-agent'], claimData });
 };
 

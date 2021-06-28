@@ -55,7 +55,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -112,7 +112,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -172,7 +172,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -248,7 +248,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -324,7 +324,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -388,7 +388,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -452,7 +452,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -516,7 +516,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
@@ -576,7 +576,7 @@ describe('audit-event-builder-E0900001: build', () => {
     sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
     const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
     assert.equal(auditEvent.getNino(), 'AA111134A');
-    assert.equal(auditEvent.getAgentId(), 'SELF');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
     assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
     assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
     assert.isUndefined(auditEvent.getLocationName());
