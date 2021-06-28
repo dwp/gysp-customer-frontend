@@ -17,7 +17,7 @@ stages:
   - post deploy
 
 default:
-  image: node:12.22.1-alpine3.11@sha256:c57e7cafec03cc673727fca5d7bf52874436d775ef456234f6c4f55ca40d146b
+  image: node:12.22.1-alpine3.11@sha256:be24b4fe27c92231c051a06e717b67e2a4dfc70d8edb0281285762292b854c03
   tags:
     - docker
 
