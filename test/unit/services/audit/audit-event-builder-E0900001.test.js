@@ -500,7 +500,7 @@ describe('audit-event-builder-E0900001: build', () => {
     assert.equal(accountNumber.values[0].value, '12345678');
   });
 
-  it('success - 4. Lived Abroad', async () => {
+  it('success - 4a. Lived Abroad', async () => {
     const req = httpMocks.createRequest({
       method: 'POST',
       url: URL_COMPLETE,
@@ -560,7 +560,67 @@ describe('audit-event-builder-E0900001: build', () => {
     assert.equal(accountNumber.values[0].value, '12345678');
   });
 
-  it('success - 5. Worked Abroad', async () => {
+  it('success - 4b. Lived Abroad outside EU', async () => {
+    const req = httpMocks.createRequest({
+      method: 'POST',
+      url: URL_COMPLETE,
+      headers: {
+        'user-agent': USER_AGENT,
+      },
+      session: {
+        id: SESSION_ID,
+        // eslint-disable-next-line no-use-before-define
+        'claim-data-for-audit': claimData4b,
+      },
+    });
+    sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
+    const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
+    assert.equal(auditEvent.getNino(), 'AA111134A');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
+    assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
+    assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
+    assert.isUndefined(auditEvent.getLocationName());
+    const [browserType, sessionId, inviteKey, claimFromDate, livedOutsideUk, homeTelNo, mobileTelNo, workTelNo,
+      email, accountHolder, accountSortCode, accountNumber] = auditEvent.getAttributes();
+    assert.equal(browserType.name, ATTRIB_BROWSER_TYPE);
+    assert.equal(browserType.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(browserType.values[0].value, USER_AGENT);
+    assert.equal(sessionId.name, ATTRIB_SESSION_ID);
+    assert.equal(sessionId.values[0].type, ATTRIB_TYPE_REF_DATA);
+    assert.equal(sessionId.values[0].value, SESSION_ID);
+    assert.equal(inviteKey.name, ATTRIB_INVITE_KEY);
+    assert.equal(inviteKey.values[0].type, ATTRIB_TYPE_REF_DATA);
+    assert.equal(inviteKey.values[0].value, 'FOR3P6FW6R');
+    assert.equal(claimFromDate.name, ATTRIB_CLAIM_FROM_DATE);
+    assert.equal(claimFromDate.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(claimFromDate.values[0].value, '01/08/2021');
+    assert.equal(livedOutsideUk.name, ATTRIB_LIVED_OUTSIDE_UK);
+    assert.equal(livedOutsideUk.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(livedOutsideUk.values[0].value, 'Japan | Germany 04/1990 07/1990');
+    assert.equal(homeTelNo.name, ATTRIB_HOME_TEL);
+    assert.equal(homeTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(homeTelNo.values[0].value, '0191 4890000');
+    assert.equal(mobileTelNo.name, ATTRIB_MOBILE_TEL);
+    assert.equal(mobileTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(mobileTelNo.values[0].value, '07779000000');
+    assert.equal(workTelNo.name, ATTRIB_WORK_TEL);
+    assert.equal(workTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(workTelNo.values[0].value, '0111000000');
+    assert.equal(email.name, ATTRIB_EMAIL);
+    assert.equal(email.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(email.values[0].value, EMAIL_ADDRESS);
+    assert.equal(accountHolder.name, ATTRIB_ACC_HOLDER_NAME);
+    assert.equal(accountHolder.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountHolder.values[0].value, 'Mr M Ford');
+    assert.equal(accountSortCode.name, ATTRIB_ACC_SORT_CODE);
+    assert.equal(accountSortCode.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountSortCode.values[0].value, '000000');
+    assert.equal(accountNumber.name, ATTRIB_ACC_NUMBER);
+    assert.equal(accountNumber.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountNumber.values[0].value, '12345678');
+  });
+
+  it('success - 5a. Worked Abroad', async () => {
     const req = httpMocks.createRequest({
       method: 'POST',
       url: URL_COMPLETE,
@@ -597,6 +657,66 @@ describe('audit-event-builder-E0900001: build', () => {
     assert.equal(workedOutsideUk.name, ATTRIB_WORKED_OUTSIDE_UK);
     assert.equal(workedOutsideUk.values[0].type, ATTRIB_TYPE_AFTER_DATA);
     assert.equal(workedOutsideUk.values[0].value, 'Spain 01/1999 03/1999 | Portugal 05/1999 08/1999');
+    assert.equal(homeTelNo.name, ATTRIB_HOME_TEL);
+    assert.equal(homeTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(homeTelNo.values[0].value, '0191 4890000');
+    assert.equal(mobileTelNo.name, ATTRIB_MOBILE_TEL);
+    assert.equal(mobileTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(mobileTelNo.values[0].value, '07779000000');
+    assert.equal(workTelNo.name, ATTRIB_WORK_TEL);
+    assert.equal(workTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(workTelNo.values[0].value, '0111000000');
+    assert.equal(email.name, ATTRIB_EMAIL);
+    assert.equal(email.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(email.values[0].value, EMAIL_ADDRESS);
+    assert.equal(accountHolder.name, ATTRIB_ACC_HOLDER_NAME);
+    assert.equal(accountHolder.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountHolder.values[0].value, 'Mr M Ford');
+    assert.equal(accountSortCode.name, ATTRIB_ACC_SORT_CODE);
+    assert.equal(accountSortCode.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountSortCode.values[0].value, '000000');
+    assert.equal(accountNumber.name, ATTRIB_ACC_NUMBER);
+    assert.equal(accountNumber.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(accountNumber.values[0].value, '12345678');
+  });
+
+  it('success - 5b. Worked Abroad outside EU', async () => {
+    const req = httpMocks.createRequest({
+      method: 'POST',
+      url: URL_COMPLETE,
+      headers: {
+        'user-agent': USER_AGENT,
+      },
+      session: {
+        id: SESSION_ID,
+        // eslint-disable-next-line no-use-before-define
+        'claim-data-for-audit': claimData5b,
+      },
+    });
+    sinon.stub(auditEventUtils, 'getIpFromRequest').returns('127.1.2.3');
+    const auditEvent = auditEventBuilderE0900001.build('SUCCESSFUL_EVENT', req);
+    assert.equal(auditEvent.getNino(), 'AA111134A');
+    assert.equal(auditEvent.getAgentId(), 'CITIZEN');
+    assert.equal(auditEvent.getOutcome(), 'SUCCESSFUL_EVENT');
+    assert.equal(auditEvent.getLocationAddress(), '127.1.2.3');
+    assert.isUndefined(auditEvent.getLocationName());
+    const [browserType, sessionId, inviteKey, claimFromDate, workedOutsideUk, homeTelNo, mobileTelNo, workTelNo,
+      email, accountHolder, accountSortCode, accountNumber] = auditEvent.getAttributes();
+    assert.equal(browserType.name, ATTRIB_BROWSER_TYPE);
+    assert.equal(browserType.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(browserType.values[0].value, USER_AGENT);
+    assert.equal(sessionId.name, ATTRIB_SESSION_ID);
+    assert.equal(sessionId.values[0].type, ATTRIB_TYPE_REF_DATA);
+    assert.equal(sessionId.values[0].value, SESSION_ID);
+    assert.equal(inviteKey.name, ATTRIB_INVITE_KEY);
+    assert.equal(inviteKey.values[0].type, ATTRIB_TYPE_REF_DATA);
+    assert.equal(inviteKey.values[0].value, 'FOR3P6FW6R');
+    assert.equal(claimFromDate.name, ATTRIB_CLAIM_FROM_DATE);
+    assert.equal(claimFromDate.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(claimFromDate.values[0].value, '01/08/2021');
+    assert.equal(workedOutsideUk.name, ATTRIB_WORKED_OUTSIDE_UK);
+    assert.equal(workedOutsideUk.values[0].type, ATTRIB_TYPE_AFTER_DATA);
+    assert.equal(workedOutsideUk.values[0].value, 'Spain 01/1999 03/1999 | Japan');
     assert.equal(homeTelNo.name, ATTRIB_HOME_TEL);
     assert.equal(homeTelNo.values[0].type, ATTRIB_TYPE_AFTER_DATA);
     assert.equal(homeTelNo.values[0].value, '0191 4890000');
@@ -1192,6 +1312,85 @@ const claimData4 = {
   },
 };
 
+const claimData4b = {
+  inviteKey: 'FOR3P6FW6R',
+  inviteKeyQ: 'What is your invitation code?',
+  livedAbroad: true,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
+  livedPeriodsAbroad: [
+    {
+      countryQ: 'Country name',
+      country: 'Japan',
+      countryStatusQ: 'When did you live in Spain?',
+    },
+    {
+      countryQ: 'Country name',
+      country: 'Germany',
+      countryStatusQ: 'When did you live in Germany?',
+      fromDateQ: 'From',
+      fromDate: {
+        month: '04',
+        year: '1990',
+      },
+      toDateQ: 'To',
+      toDate: {
+        month: '07',
+        year: '1990',
+      },
+    },
+  ],
+  livedPeriodsAbroadQ: 'What countries have you lived in?',
+  contactDetail: {
+    homeTelephoneNumber: '0191 4890000',
+    homeTelephoneNumberQ: 'Home phone number',
+    mobileTelephoneNumber: '07779000000',
+    mobileTelephoneNumberQ: 'Mobile phone number',
+    workTelephoneNumber: '0111000000',
+    workTelephoneNumberQ: 'Work phone number',
+    email: 'me@here.com',
+    emailQ: 'Email address',
+  },
+  contactDetailQ: 'How would you like to be contacted?',
+  accountDetail: bankAccountDetail1,
+  accountDetailQ: 'How would you like to be paid?',
+  customerRequest: {
+    residentialAddress: {
+      subBuildingName: null,
+      buildingName: null,
+      buildingNumber: '77',
+      dependentThoroughfareName: null,
+      thoroughfareName: 'Sullivan Walk',
+      dependentLocality: null,
+      postTown: 'Hebburn',
+      postCode: 'NE31 1YW',
+      uprn: null,
+      singleLine: null,
+      thoroughfareNameQ: 'Main street name',
+      postCodeQ: 'Post code',
+      buildingNumberQ: 'Building number',
+      postTownQ: 'Town',
+    },
+    correspondenceAddress: null,
+    createdDate: 1623845776579,
+    dob: -455047200000,
+    firstName: 'Mark',
+    gender: 'Male',
+    nino: 'AA111134A',
+    statePensionDate: 1627797600000,
+    surname: 'Ford',
+    title: 'Mr',
+    mqpFlag: null,
+    titleQ: 'Title',
+    firstNameQ: 'First Name',
+    surnameQ: 'Surname',
+    dobQ: 'Date of birth',
+    genderQ: 'Gender',
+    statePensionDateQ: 'State Pension age',
+    ninoQ: 'National Insurance number',
+    residentialAddressQ: 'Residential Address - UK',
+  },
+};
+
 const claimData5 = {
   inviteKey: 'FOR3P6FW6R',
   inviteKeyQ: 'What is your invitation code?',
@@ -1231,6 +1430,86 @@ const claimData5 = {
       },
       referenceNumberQ: 'What was the equivalent of your National Insurance number here?',
       referenceNumber: 'PORTUGALNI',
+    },
+  ],
+  workedPeriodsAbroadQ: 'What countries have you worked in?',
+  contactDetail: {
+    homeTelephoneNumber: '0191 4890000',
+    homeTelephoneNumberQ: 'Home phone number',
+    mobileTelephoneNumber: '07779000000',
+    mobileTelephoneNumberQ: 'Mobile phone number',
+    workTelephoneNumber: '0111000000',
+    workTelephoneNumberQ: 'Work phone number',
+    email: 'me@here.com',
+    emailQ: 'Email address',
+  },
+  contactDetailQ: 'How would you like to be contacted?',
+  accountDetail: bankAccountDetail1,
+  accountDetailQ: 'How would you like to be paid?',
+  customerRequest: {
+    residentialAddress: {
+      subBuildingName: null,
+      buildingName: null,
+      buildingNumber: '77',
+      dependentThoroughfareName: null,
+      thoroughfareName: 'Sullivan Walk',
+      dependentLocality: null,
+      postTown: 'Hebburn',
+      postCode: 'NE31 1YW',
+      uprn: null,
+      singleLine: null,
+      thoroughfareNameQ: 'Main street name',
+      postCodeQ: 'Post code',
+      buildingNumberQ: 'Building number',
+      postTownQ: 'Town',
+    },
+    correspondenceAddress: null,
+    createdDate: 1623845776579,
+    dob: -455047200000,
+    firstName: 'Mark',
+    gender: 'Male',
+    nino: 'AA111134A',
+    statePensionDate: 1627797600000,
+    surname: 'Ford',
+    title: 'Mr',
+    mqpFlag: null,
+    titleQ: 'Title',
+    firstNameQ: 'First Name',
+    surnameQ: 'Surname',
+    dobQ: 'Date of birth',
+    genderQ: 'Gender',
+    statePensionDateQ: 'State Pension age',
+    ninoQ: 'National Insurance number',
+    residentialAddressQ: 'Residential Address - UK',
+  },
+};
+
+const claimData5b = {
+  inviteKey: 'FOR3P6FW6R',
+  inviteKeyQ: 'What is your invitation code?',
+  workedAbroad: true,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  workedPeriodsAbroad: [
+    {
+      countryQ: 'Country name',
+      country: 'Spain',
+      countryStatusQ: 'When did you work in Spain?',
+      fromDateQ: 'From',
+      fromDate: {
+        month: '01',
+        year: '1999',
+      },
+      toDateQ: 'To',
+      toDate: {
+        month: '03',
+        year: '1999',
+      },
+      referenceNumberQ: 'What was the equivalent of your National Insurance number here?',
+      referenceNumber: 'ASPANISHNI',
+    },
+    {
+      countryQ: 'Country name',
+      country: 'Japan',
     },
   ],
   workedPeriodsAbroadQ: 'What countries have you worked in?',

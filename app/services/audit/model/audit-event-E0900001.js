@@ -151,7 +151,11 @@ class AuditEventE0900001 extends AuditEvent {
       const livedPeriodsAbroad = claimData[DATA_KEY_LIVED_PERIODS_ABROAD];
       let lpaValue = '';
       livedPeriodsAbroad.forEach((lpa) => {
-        lpaValue += `${lpa.country} ${lpa.fromDate.month}/${lpa.fromDate.year} ${lpa.toDate.month}/${lpa.toDate.year} | `;
+        if (lpa.fromDate && lpa.toDate) {
+          lpaValue += `${lpa.country} ${lpa.fromDate.month}/${lpa.fromDate.year} ${lpa.toDate.month}/${lpa.toDate.year} | `;
+        } else {
+          lpaValue += `${lpa.country} | `;
+        }
       });
       if (lpaValue) {
         this.attributes.push(new AuditEventAttribute(ATTRIB_LIVED_OUTSIDE_UK,
@@ -162,7 +166,11 @@ class AuditEventE0900001 extends AuditEvent {
       const workedPeriodsAbroad = claimData[DATA_KEY_WORKED_PERIODS_ABROAD];
       let wpaValue = '';
       workedPeriodsAbroad.forEach((wpa) => {
-        wpaValue += `${wpa.country} ${wpa.fromDate.month}/${wpa.fromDate.year} ${wpa.toDate.month}/${wpa.toDate.year} | `;
+        if (wpa.fromDate && wpa.toDate) {
+          wpaValue += `${wpa.country} ${wpa.fromDate.month}/${wpa.fromDate.year} ${wpa.toDate.month}/${wpa.toDate.year} | `;
+        } else {
+          wpaValue += `${wpa.country} | `;
+        }
       });
       if (wpaValue) {
         this.attributes.push(new AuditEventAttribute(ATTRIB_WORKED_OUTSIDE_UK,
