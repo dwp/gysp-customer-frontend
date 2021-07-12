@@ -18,7 +18,7 @@ const fireEvent = (eventNumber, outcome) => async (req, res, next) => {
       const event = auditEventFactory.buildAuditEvent(eventNumber, eventType, req);
       if (event) {
         if (config.application.feature.auditLocalLogFeature) {
-          log.info(`Audit event: ${event.eventNumber} - ${eventType}, ${JSON.stringify(event)}`);
+          log.error(`Audit event: ${event.eventNumber} - ${eventType}, ${JSON.stringify(event)}`);
         }
         await api.audit(event.eventNumber, event);
       }
