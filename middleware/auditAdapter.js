@@ -25,7 +25,8 @@ const fireEvent = (eventNumber, outcome) => async (req, res, next) => {
     } catch (err) {
       if (err && err.message) {
         if (err.message.includes('Invalid value will be managed by UI')
-          || err.message.includes('Claim has already been submitted')) {
+          || err.message.includes('Claim has already been submitted')
+          || err.message.includes('Claim data not present on the session')) {
           return next();
         }
       }
