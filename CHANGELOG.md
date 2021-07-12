@@ -1,3 +1,13 @@
+## [11.1.2](https://github.com/dwp/gysp-customer-frontend/compare/11.1.1...11.1.2) (2021-07-12)
+
+
+### Bug Fixes
+
+* **audit:** prevent audit event error ([abf4c00](https://github.com/dwp/gysp-customer-frontend/commit/abf4c001c0a1f3d46c32cd2f6c0343842559f324))
+* **audit:** prevent audit event on refresh ([dfb9801](https://github.com/dwp/gysp-customer-frontend/commit/dfb9801582e976871aae2845d12a1aa18f721758))
+
+
+
 ## [11.1.1](https://github.com/dwp/gysp-customer-frontend/compare/11.1.0...11.1.1) (2021-06-30)
 
 
@@ -93,10 +103,10 @@
 
 ### Bug Fixes
 
+* add mount url for favicon ([ee7f9ad](https://github.com/dwp/gysp-customer-frontend/commit/ee7f9adb7a762c0c7ad334c734407e9bd1c1f3d5))
 * **auth:** regex to disallow only spaces in invite key ([c10e18f](https://github.com/dwp/gysp-customer-frontend/commit/c10e18f85d71328f8ee9d249c314be9295782e14))
 * **i18next-middleware:** ignore route /assets, not /public ([a8b35f4](https://github.com/dwp/gysp-customer-frontend/commit/a8b35f4338ea89e29113ee3ed9582bb8766fcb5b))
 * **validation:** corrected current year format ([d376b9e](https://github.com/dwp/gysp-customer-frontend/commit/d376b9ea7487545a4e8b1fd52207a2da3fef5c8b))
-* add mount url for favicon ([ee7f9ad](https://github.com/dwp/gysp-customer-frontend/commit/ee7f9adb7a762c0c7ad334c734407e9bd1c1f3d5))
 
 
 
