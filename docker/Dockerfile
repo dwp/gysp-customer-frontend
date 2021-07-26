@@ -9,8 +9,9 @@ ARG STUNNEL_FOLDER=/opt/stunnel/
 ARG HARDEN_FOLDER=/opt/harden/
 
 # Need to use internal package repository for apks
+# hadolint ignore=DL3018
 RUN sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories &&\
-  apk add --no-cache tzdata=2021a-r0 curl=7.67.0-r4
+  apk add --no-cache tzdata curl
 
 # Default ENV
 ENV TZ=Europe/London
@@ -18,7 +19,8 @@ ENV PORT=3001
 ENV CONTEXT_PATH=/
 
 # Set up stunnel for use with Redis
-RUN apk add --update --no-cache stunnel=5.56-r1 && mv "$(command -v stunnel)" /usr/local/bin/
+# hadolint ignore=DL3018
+RUN apk add --update --no-cache stunnel && mv "$(command -v stunnel)" /usr/local/bin/
 
 WORKDIR ${STUNNEL_FOLDER}
 COPY --chown=node:node docker/stunnel.conf ${STUNNEL_FOLDER}stunnel.conf
