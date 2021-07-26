@@ -1,3 +1,7 @@
+## [11.1.3](https://github.com/dwp/gysp-customer-frontend/compare/11.1.2...11.1.3) (2021-07-26)
+
+
+
 ## [11.1.2](https://github.com/dwp/gysp-customer-frontend/compare/11.1.1...11.1.2) (2021-07-12)
 
 
