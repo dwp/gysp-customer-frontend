@@ -8,6 +8,7 @@ const i18nextConfig = require('../../../../../config/i18next');
 const claimObject = require('../../../../../lib/objects/claimObject');
 
 const dateForm = { dateDay: '01', dateMonth: '01', dateYear: '1990' };
+const dateSingleMonth = { dateDay: '01', dateMonth: '1', dateYear: '1990' };
 const validDateJson = '1990-01-01T00:00:00.000Z';
 
 const claimFromDate = { dateDay: '01', dateMonth: '03', dateYear: '2018' };
@@ -1129,6 +1130,10 @@ describe('Claim object ', () => {
 
     it('should return matching divorcedDate when divorced is supplied with date', async () => {
       const date = await claimObject.maritalStatusDate('divorced', dateForm);
+      assert.equal(date.divorcedDate, validDateJson);
+    });
+    it('should return matching divorcedDate when divorced is supplied with date with single digit month', async () => {
+      const date = await claimObject.maritalStatusDate('divorced', dateSingleMonth);
       assert.equal(date.divorcedDate, validDateJson);
     });
   });
