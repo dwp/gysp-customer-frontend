@@ -1,3 +1,12 @@
+## [11.1.4](https://github.com/dwp/gysp-customer-frontend/compare/11.1.3...11.1.4) (2021-08-10)
+
+
+### Bug Fixes
+
+* Correct date format on claim object to allow for single month entry ([66fec32](https://github.com/dwp/gysp-customer-frontend/commit/66fec3267e9edd79d281d3c49f5353718d511ff2))
+
+
+
 ## [11.1.3](https://github.com/dwp/gysp-customer-frontend/compare/11.1.2...11.1.3) (2021-07-26)
 
 
