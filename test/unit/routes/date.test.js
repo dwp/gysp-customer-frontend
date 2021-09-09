@@ -19,7 +19,7 @@ describe('State Pension Age controller ', () => {
       controller.statePensionAgeGet(noUserDOB, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/state-pension-date.html');
       assert.equal(genericResponse.data.statePensionDate, '25 April 1918');
-      assert.equal(genericResponse.data.nextPage, '/have-you-ever-lived-outside-of-the-uk');
+      assert.equal(genericResponse.data.nextPage, '/have-you-spent-any-time-in-prison');
       assert.equal(genericResponse.data.displayText, 'system');
       done();
     });
@@ -28,7 +28,7 @@ describe('State Pension Age controller ', () => {
       controller.statePensionAgeRevisedGet(userDOB, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/state-pension-date.html');
       assert.equal(genericResponse.data.statePensionDate, '25 April 1918');
-      assert.equal(genericResponse.data.nextPage, '/have-you-ever-lived-outside-of-the-uk');
+      assert.equal(genericResponse.data.nextPage, '/have-you-spent-any-time-in-prison');
       assert.equal(genericResponse.data.displayText, 'user');
       done();
     });

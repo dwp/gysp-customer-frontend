@@ -1,0 +1,18 @@
+{
+  "header":"Have you spent any time in prison since {{DATE}}?",
+  "errors": {
+    "header": "There is a problem"
+  },
+  "fields": {
+      "spentTimeInPrison": {
+        "legend": "Have you spent any time in prison since {{DATE}}?",
+        "errors": {
+          "required": "Select yes if you have spent any time in prison since {{DATE}}"
+        },
+        "options": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    }
+}

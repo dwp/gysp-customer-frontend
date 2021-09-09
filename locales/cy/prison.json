@@ -1,0 +1,18 @@
+{
+  "header":"Ydych chi wedi treulio unrhyw amser yn y carchar ers {{DATE}}?",
+  "errors": {
+    "header": "Mae yna broblem"
+  },
+  "fields": {
+      "spentTimeInPrison": {
+        "legend": "Ydych chi wedi treulio unrhyw amser yn y carchar ers {{DATE}}?",
+        "errors": {
+          "required": "Dewiswch ydw os ydych wedi treulio unrhyw amser yn y carchar ers {{DATE}}"
+        },
+        "options": {
+          "yes": "Ydw",
+          "no": "Na"
+        }
+      }
+    }
+}

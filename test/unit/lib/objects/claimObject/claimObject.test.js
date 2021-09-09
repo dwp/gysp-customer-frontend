@@ -1,4 +1,4 @@
-const assert = require('assert');
+const { assert } = require('chai');
 
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
@@ -930,6 +930,96 @@ const validJsonLivedAbroadOverseas = {
   welshIndicator: false,
 };
 
+const formObjectPrison = {
+  prison: { spentTimeInPrison: 'yes' },
+  'lived-abroad': { livedAbroad: 'no' },
+  'worked-abroad': { workedAbroad: 'no' },
+  'contact-details': { homeTelephoneNumber: '1234', workTelephoneNumber: '123', email: 'test@test.com' },
+  'marital-select': { maritalStatus: 'widowed' },
+  'marital-date-widowed': dateForm,
+  'marital-partner-widowed': martitalDetailsForm,
+  'account-details': accountObject,
+  claimFromDate: claimFromDateSameAsSPA,
+  userDateOfBirthInfo: customerDetailsObject,
+  customerDetails: customerDetailsObject,
+  inviteKey,
+  isBeforeSpa: false,
+};
+
+const validJsonPrison = {
+  prison: true,
+  prisonQ: 'Have you spent any time in prison since 1 February 2018?',
+  livedAbroad: false,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
+  workedAbroad: false,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  contactDetail: {
+    homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number', workTelephoneNumber: '123', workTelephoneNumberQ: 'Work phone number', email: 'test@test.com', emailQ: 'Email address',
+  },
+  contactDetailQ: 'How would you like to be contacted?',
+  maritalStatus: 'Widowed',
+  maritalStatusQ: 'What is your current marital status?',
+  partnerDetail: {
+    widowedDate: '1990-01-01T00:00:00.000Z', widowedDateQ: 'What date were you widowed?', aboutYourPartnerQ: 'About your late spouse', firstName: 'first', firstNameQ: 'Their first name', surname: 'last', surnameQ: 'Their surname', dob: '1990-01-01T00:00:00.000Z', dobQ: 'Their date of birth (optional)',
+  },
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code', validated: 'Invalid',
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
+  confirmedAddress: true,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
+  declaration: true,
+  declarationQ: 'Declaration',
+  dobVerification: 'V',
+  dobVerificationQ: 'Date of birth verification status',
+  claimFromDate: null,
+  claimFromDateQ: null,
+  welshIndicator: false,
+};
+
+const validJsonPrisonWelsh = {
+  prison: true,
+  prisonQ: 'Ydych chi wedi treulio unrhyw amser yn y carchar ers 1 Chwefror 2018?',
+  livedAbroad: false,
+  livedAbroadQ: "Ydych chi erioed wedi byw y tu allan i'r Deyrnas Unedig?",
+  workedAbroad: false,
+  workedAbroadQ: "Ydych chi wedi gweithio y tu allan i'r Deyrnas Unedig?",
+  contactDetail: {
+    homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Rhif ffôn cartref', workTelephoneNumber: '123', workTelephoneNumberQ: 'Rhif ffôn gwaith', email: 'test@test.com', emailQ: 'Cyfeiriad e-bost',
+  },
+  contactDetailQ: 'Sut hoffech i ni gysylltu â chi?',
+  maritalStatus: 'Widowed',
+  maritalStatusQ: 'Beth yw eich statws priodasol presennol?',
+  partnerDetail: {
+    widowedDate: '1990-01-01T00:00:00.000Z', widowedDateQ: 'Pa ddyddiad gawsoch chi eich gwneud yn weddw?', aboutYourPartnerQ: 'Am eich diweddar briod', firstName: 'first', firstNameQ: 'Eu henw cyntaf', surname: 'last', surnameQ: 'Eu cyfenw', dob: '1990-01-01T00:00:00.000Z', dobQ: 'Eu dyddiad geni (dewisol)',
+  },
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail', resultQ: 'Canlyniad Dilysu Banc', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Enw deilydd y cyfrif', accountNumber: '12345678', accountNumberQ: 'Rhif y cyfrif', sortCode: '112233', sortCodeQ: 'Cod didoli', validated: 'Invalid',
+    },
+    bankDetailQ: 'Cyfrif banc',
+    paymentMethodQ: 'Sut hoffech gael eich talu?',
+  },
+  accountDetailQ: 'Sut hoffech gael eich talu?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'Beth yw eich cod gwahoddiad?',
+  confirmedAddress: true,
+  confirmedAddressQ: "Ydych chi'n byw yn y cyfeiriad rydym wedi anfon eich llythyr gwahoddiad iddo?",
+  declaration: true,
+  declarationQ: 'Datganiad',
+  dobVerification: 'V',
+  dobVerificationQ: 'Statws dilysu dyddiad geni',
+  claimFromDate: null,
+  claimFromDateQ: null,
+  welshIndicator: true,
+};
+
 const accountStatus = { result: 'Fail' };
 const accountStatusOverseas = { result: 'Fail' };
 
@@ -972,7 +1062,7 @@ describe('Claim object ', () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectDivorced, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonDivorced));
       });
-      it('should convert with dissloved status ', async () => {
+      it('should convert with dissolved status ', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectDissolved, accountStatus);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonDissolved));
       });
@@ -1066,6 +1156,35 @@ describe('Claim object ', () => {
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadOverseas, accountStatusOverseas);
         assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadOverseas));
+      });
+    });
+
+    describe('prison', () => {
+      describe('english', () => {
+        it('should return object with prison question when prison is yes', async () => {
+          const claimObjectValue = await claimObject.sessionToObject(formObjectPrison, accountStatus, englishLangauge);
+          assert.deepEqual(claimObjectValue, validJsonPrison);
+        });
+
+        it('should object to valid json with prison question when prison is no', async () => {
+          const details = { ...JSON.parse(JSON.stringify(formObjectPrison)), prison: { spentTimeInPrison: 'no' } };
+          const json = { ...JSON.parse(JSON.stringify(validJsonPrison)), prison: false };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus);
+          assert.deepEqual(claimObjectValue, json);
+        });
+      });
+      describe('welsh', () => {
+        it('should return object with prison question when prison is yes', async () => {
+          const claimObjectValue = await claimObject.sessionToObject(formObjectPrison, accountStatus, welshLangauge);
+          assert.deepEqual(claimObjectValue, validJsonPrisonWelsh);
+        });
+
+        it('should object to valid json with prison question when prison is no', async () => {
+          const details = { ...JSON.parse(JSON.stringify(formObjectPrison)), prison: { spentTimeInPrison: 'no' } };
+          const json = { ...JSON.parse(JSON.stringify(validJsonPrisonWelsh)), prison: false };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, welshLangauge);
+          assert.deepEqual(claimObjectValue, json);
+        });
       });
     });
   });

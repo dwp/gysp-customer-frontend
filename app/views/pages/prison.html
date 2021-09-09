@@ -1,0 +1,65 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("prison:header") }}{% endblock %}
+
+{% block content %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("prison:errors.header"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="have-you-spent-any-time-in-prison" autocomplete="off" novalidate>
+        {{ govukRadios({
+          errorMessage: errors.spentTimeInPrison,
+          classes: "govuk-radios--inline",
+          name: "spentTimeInPrison",
+          fieldset: {
+            legend: {
+              text: t("prison:fields.spentTimeInPrison.legend", {DATE: date}),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            },
+            attributes: {
+              id: "spentTimeInPrison"
+            }
+          },
+          items: [{
+            id: "spentTimeInPrison-yes",
+            value: "yes",
+            text: t("prison:fields.spentTimeInPrison.options.yes"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.prison.spentTimeInPrison", {VALUE: "yes"})
+            },
+            checked: true if details.spentTimeInPrison == 'yes' else false
+          }, {
+            id: "spentTimeInPrison-no",
+            value: "no",
+            text: t("prison:fields.spentTimeInPrison.options.no"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.prison.spentTimeInPrison", {VALUE: "no"})
+            },
+            checked: true if details.spentTimeInPrison == 'no' else false
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+
+  </div>
+{% endblock %}

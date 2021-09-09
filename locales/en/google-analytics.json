@@ -30,6 +30,9 @@
     "dob-confirmation": {
       "error": "dob-confirmation:error:dob"
     },
+    "prison": {
+      "spentTimeInPrison": "have-you-spent-any-time-in-prison:clicked-radio:{{VALUE}}"
+    },
     "lived-abroad": {
       "lived-outside": "have-you-ever-lived-outside-of-the-uk:clicked-radio:lived-outside-{{VALUE}}",
       "error": "have-you-ever-lived-outside-of-the-uk:error:radio-button"

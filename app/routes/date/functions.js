@@ -4,6 +4,9 @@ function statePensionAgeNextPage(req) {
   if (req.session.isOverseas) {
     return '/where-have-you-lived-outside-the-uk';
   }
+  if (!req.session.isBeforeSpa) {
+    return '/have-you-spent-any-time-in-prison';
+  }
   return '/have-you-ever-lived-outside-of-the-uk';
 }
 

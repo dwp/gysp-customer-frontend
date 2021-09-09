@@ -161,7 +161,7 @@ describe('Start date controller ', () => {
 
       it('should redirect to next page when called with valid data', (done) => {
         controller.postStatePensionStartDate(validFormDataAfterSpa, genericResponse);
-        assert.equal(genericResponse.address, 'have-you-ever-lived-outside-of-the-uk');
+        assert.equal(genericResponse.address, 'have-you-spent-any-time-in-prison');
         done();
       });
 
