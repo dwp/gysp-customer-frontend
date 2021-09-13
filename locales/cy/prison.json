@@ -1,5 +1,5 @@
 {
-  "header":"Ydych chi wedi treulio unrhyw amser yn y carchar ers {{DATE}}?",
+  "header":"Ydych chi wedi treulio unrhyw amser yn y carchar ers y dyddiad a ddangosir?",
   "errors": {
     "header": "Mae yna broblem"
   },

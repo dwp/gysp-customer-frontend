@@ -1,5 +1,5 @@
 {
-  "header":"Have you spent any time in prison since {{DATE}}?",
+  "header":"Have you spent any time in prison since the date shown?",
   "errors": {
     "header": "There is a problem"
   },
