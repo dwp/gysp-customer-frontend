@@ -35,7 +35,7 @@
     "nunjucks": "3.2.3",
     "passport": "0.4.1",
     "passport-verify": "2.0.1",
-    "prom-client": "13.1.0",
+    "prom-client": "13.2.0",
     "redis": "3.1.2",
     "response-time": "2.3.2",
     "serve-favicon": "2.5.0",
