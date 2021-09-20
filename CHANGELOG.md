@@ -1,3 +1,12 @@
+# [11.2.0](https://github.com/dwp/gysp-customer-frontend/compare/11.1.6...11.2.0) (2021-09-20)
+
+
+### Features
+
+* **prison:** add page if been in prison when after SPa ([9065747](https://github.com/dwp/gysp-customer-frontend/commit/906574723971aa304259573d588f300be77894b5))
+
+
+
 ## [11.1.6](https://github.com/dwp/gysp-customer-frontend/compare/11.1.5...11.1.6) (2021-09-07)
 
 
