@@ -23,7 +23,7 @@
     "gulp": "4.0.2",
     "gulp-uglify": "3.0.2",
     "helmet": "4.6.0",
-    "hmrc-frontend": "1.36.0",
+    "hmrc-frontend": "1.38.0",
     "http-status-codes": "2.1.4",
     "i18next": "20.6.1",
     "i18next-fs-backend": "1.1.1",
