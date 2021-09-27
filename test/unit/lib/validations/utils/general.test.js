@@ -350,6 +350,12 @@ describe('General Helper ', () => {
     });
   });
 
+  describe(' checkSurnameCharacters ', () => {
+    it('should return true when name is slanted aspostrophe is supplied', () => {
+      assert.isTrue(generalHelper.checkSurnameCharacters('P ’hil '));
+    });
+  });
+
   describe('checkIfValidAsciiCode32to127', () => {
     const tests = '\\!"#$%&\'()*+,-./@[]^_`{|}~:;<=>?';
     const testArray = tests.split('');
@@ -374,6 +380,7 @@ describe('General Helper ', () => {
         { args: '*' },
         { args: ' ' },
         { args: '&' },
+        { args: ' ’' },
       ],
       invalid: [
         { args: '|' },
