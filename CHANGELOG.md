@@ -1,3 +1,12 @@
+## [11.2.1](https://github.com/dwp/gysp-customer-frontend/compare/11.2.0...11.2.1) (2021-10-04)
+
+
+### Bug Fixes
+
+* added the slanted apostrophe to validations ([20b4051](https://github.com/dwp/gysp-customer-frontend/commit/20b405110003a755d22063f2e570cc92c6a12ede))
+
+
+
 # [11.2.0](https://github.com/dwp/gysp-customer-frontend/compare/11.1.6...11.2.0) (2021-09-20)
 
 
