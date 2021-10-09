@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/core": "7.15.8",
     "@babel/preset-env": "7.15.6",
-    "@commitlint/cli": "13.1.0",
+    "@commitlint/cli": "13.2.1",
     "@commitlint/travis-cli": "13.1.0",
     "@dwp/commitlint-config-base": "1.2.0",
     "@dwp/eslint-config-base": "5.0.1",
