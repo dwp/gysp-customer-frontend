@@ -1,0 +1,69 @@
+{% extends '../helpers/layout.html' %}
+
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{{ t("alt-formats:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+  {% if fieldLevelErrors %}
+    {{ govukErrorSummary({
+      titleText: t("alt-formats:errors.header"),
+      errorList: errorSummary
+    }) }}
+  {% endif %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="alt-formats" autocomplete="off" novalidate>
+        {{ govukRadios({
+          errorMessage: fieldLevelErrors.altFormat,
+          classes: "govuk-radios--inline",
+          name: "altFormats",
+          hint: {
+            text: t("alt-formats:hintText")
+          },
+          fieldset: {
+            legend: {
+              text: t("alt-formats:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            },
+            attributes: {
+              id: "altFormats"
+            }
+          },
+          items: [{
+            id: "altFormat-Yes",
+            value: "yes",
+            text: t("alt-formats:fields.yesOption"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats.alt-formats-yes")
+            },
+            checked: true if selection == 'yes' else false
+          }, {
+            id: "altFormat-No",
+            value: "no",
+            text: t("alt-formats:fields.noOption"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats.alt-formats-no")
+            },
+            checked: true if selection == 'no' else false
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+</div>
+
+
+{% endblock %}

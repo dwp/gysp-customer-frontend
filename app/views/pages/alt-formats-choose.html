@@ -1,0 +1,92 @@
+{% extends '../helpers/layout.html' %}
+
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{{ t("alt-formats-choose:header") }} - {{ t("app:service_name") }}{% endblock %}
+
+{% block content %}
+  {% if fieldLevelErrors %}
+    {{ govukErrorSummary({
+      titleText: t("alt-formats-choose:errors.header"),
+      errorList: errorSummary
+    }) }}
+  {% endif %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="alt-formats-choose" autocomplete="off" novalidate>
+        {{ govukRadios({
+          errorMessage: fieldLevelErrors.altFormatsChoice,
+          name: "altFormatsChoice",
+          hint: {
+            text: t("alt-formats-choose:hintText")
+          },
+          fieldset: {
+            legend: {
+              text: t("alt-formats-choose:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            },
+            attributes: {
+              id: "altFormatsChoice"
+            }
+          },
+          items: [{
+            id: "audioCassette",
+            value: "audioCassette",
+            text: t("alt-formats-choose:fields.audioCassette"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats-choose.altFormatsChoice", {VALUE: "audioCassette"})
+            },
+            checked: true if selection == 'audioCassette' else false
+          }, {
+            id: "audioCd",
+            value: "audioCd",
+            text: t("alt-formats-choose:fields.audioCd"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats-choose.altFormatsChoice", {VALUE: "audioCd"})
+            },
+            checked: true if selection == 'audioCd' else false
+          },{
+            id: "audioMp3",
+            value: "audioMp3",
+            text: t("alt-formats-choose:fields.audioMp3"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats-choose.altFormatsChoice", {VALUE: "audioMp3"})
+            },
+            checked: true if selection == 'audioMp3' else false
+          }, {
+            id: "braille",
+            value: "braille",
+            text: t("alt-formats-choose:fields.braille"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats-choose.altFormatsChoice", {VALUE: "braille"})
+            },
+            checked: true if selection == 'braille' else false
+          }, {
+            id: "largePrint",
+            value: "largePrint",
+            text: t("alt-formats-choose:fields.largePrint"),
+            attributes: {
+              "data-journey-click": t("google-analytics:pages.alt-formats-choose.altFormatsChoice", {VALUE: "largePrint"})
+            },
+            checked: true if selection == 'largePrint' else false
+          }]
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: "form-submit"
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+</div>
+
+
+{% endblock %}

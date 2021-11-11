@@ -45,7 +45,7 @@ describe('Contact controller ', () => {
 
     it('should return redirect when called with valid object', (done) => {
       contactController.contactDetailsPost(populatedRequest, genericResponse);
-      assert.equal(genericResponse.address, 'account-details');
+      assert.equal(genericResponse.address, 'alt-formats');
       assert.equal(populatedRequest.session['contact-details'].homeTelephoneNumber, '12345 678');
       done();
     });
@@ -59,7 +59,7 @@ describe('Contact controller ', () => {
 
     it('should filter out any post items that are not allowed', (done) => {
       contactController.contactDetailsPost(populatedRequestMoreFields, genericResponse);
-      assert.equal(genericResponse.address, 'account-details');
+      assert.equal(genericResponse.address, 'alt-formats');
       assert.isUndefined(populatedRequest.session['contact-details'].spiderman);
       assert.isUndefined(populatedRequest.session['contact-details'].spidername);
       done();

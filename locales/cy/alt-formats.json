@@ -1,0 +1,12 @@
+{
+  "header": "Hoffech chi i ni anfon llythyrau atoch mewn fformat arall?",
+  "hintText": "Er enghraifft: casét sain, CD sain, MP3 sain, braille neu brint mawr",
+  "errors": {
+    "header": "Mae yna broblem"
+  },
+  "fields": {
+    "error": "Dewiswch ie os hoffech i ni anfon llythyrau atoch mewn fformat arall",
+    "yesOption": "Ie",
+    "noOption": "Na"
+  }
+}

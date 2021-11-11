@@ -66,6 +66,8 @@ const validJsonLivedAbroad = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const martitalDetailsForm = {
@@ -114,6 +116,8 @@ const validJsonNoLivedWorkAbroadSingleBuildingNoRollNumber = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectLivedAbroad = {
@@ -161,6 +165,8 @@ const validJsonNotLivedAbroadMarried = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectNotLivedAbroadMarried = {
@@ -223,6 +229,8 @@ const validJsonCivil = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectDivorced = {
@@ -271,6 +279,8 @@ const validJsonDivorced = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectDissolved = {
@@ -319,6 +329,8 @@ const validJsonDissolved = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectWidowed = {
@@ -367,6 +379,8 @@ const validJsonWidowed = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectWelshIndicator = {
@@ -416,6 +430,8 @@ const validJsonEnglish = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'What date do you want to get your State Pension from?',
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonWelsh = {
@@ -451,6 +467,8 @@ const validJsonWelsh = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'O ba ddyddiad ydych chi eisiau cael eich Pensiwn y Wladwriaeth?',
   welshIndicator: true,
+  altFormatRequiredQ: 'Hoffech chi i ni anfon llythyrau atoch mewn fformat arall?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateAfterSpa = {
@@ -500,6 +518,8 @@ const validJsonClaimFromDateAfterSpa = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'What date do you want to get your State Pension from?',
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateSameAsDateFromAfterSpa = {
@@ -549,6 +569,8 @@ const validJsonClaimFromDateSameAsDateFromAfterSpa = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateNewSPAAfterSpa = {
@@ -598,6 +620,8 @@ const validJsonClaimFromDateNewSPAAfterSpa = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'What date do you want to get your State Pension from?',
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateSameAsNewSPAAfterSpa = {
@@ -647,6 +671,8 @@ const validJsonClaimFromDateSameAsNewSPAAfterSpa = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateBeforeSpa = {
@@ -697,6 +723,8 @@ const validJsonClaimFromDateBeforeSpa = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'What date do you want to get your State Pension?',
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateSameAsDateFromBeforeSpa = {
@@ -747,6 +775,8 @@ const validJsonClaimFromDateSameAsDateFromBeforeSpa = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateNewSPABeforeSpa = {
@@ -797,6 +827,8 @@ const validJsonClaimFromDateNewSPABeforeSpa = {
   claimFromDate: '2018-03-01T00:00:00.000Z',
   claimFromDateQ: 'What date do you want to get your State Pension?',
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectClaimFromDateSameAsNewSPABeforeSpa = {
@@ -847,6 +879,8 @@ const validJsonClaimFromDateSameAsNewSPABeforeSpa = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectOverseas = {
@@ -890,6 +924,8 @@ const validJsonOverseas = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectLivedAbroadOverseas = {
@@ -928,6 +964,8 @@ const validJsonLivedAbroadOverseas = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectPrison = {
@@ -981,6 +1019,8 @@ const validJsonPrison = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonPrisonWelsh = {
@@ -1018,6 +1058,8 @@ const validJsonPrisonWelsh = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: true,
+  altFormatRequiredQ: 'Hoffech chi i ni anfon llythyrau atoch mewn fformat arall?',
+  altFormatRequired: false,
 };
 
 const accountStatus = { result: 'Fail' };
@@ -1036,52 +1078,52 @@ describe('Claim object ', () => {
   describe(' convertor ', () => {
     it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes', async () => {
       const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroad, accountStatus);
-      assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroad));
+      assert.deepEqual(claimObjectValue, validJsonLivedAbroad);
     });
 
     it('should convert object to valid json with livedAbroad value set as false when lived abroad is no', async () => {
       const claimObjectValue = await claimObject.sessionToObject(formObjectNotLivedAbroadMarried, accountStatus);
-      assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonNotLivedAbroadMarried));
+      assert.deepEqual(claimObjectValue, validJsonNotLivedAbroadMarried);
     });
 
     it('should convert object to valid json without roll number when roll number is empty', async () => {
       const claimObjectValue = await claimObject.sessionToObject(formObjectNoLivedWorkAbroadSingleBuildingNoRollNumber, accountStatus);
-      assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonNoLivedWorkAbroadSingleBuildingNoRollNumber));
+      assert.deepEqual(claimObjectValue, validJsonNoLivedWorkAbroadSingleBuildingNoRollNumber);
     });
 
     describe(' parter status ', () => {
       it('should convert with civil status', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectCivil, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonCivil));
+        assert.deepEqual(claimObjectValue, validJsonCivil);
       });
       it('should convert with widowed status (no date)', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectWidowed, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWidowed));
+        assert.deepEqual(claimObjectValue, validJsonWidowed);
       });
       it('should convert with divorced status', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectDivorced, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonDivorced));
+        assert.deepEqual(claimObjectValue, validJsonDivorced);
       });
       it('should convert with dissolved status ', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectDissolved, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonDissolved));
+        assert.deepEqual(claimObjectValue, validJsonDissolved);
       });
     });
 
     describe(' welsh indicator ', () => {
       it('should convert welsh indicator into true when langauge is cy-GB', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectWelshIndicator, accountStatus, welshLangauge);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWelsh));
+        assert.deepEqual(claimObjectValue, validJsonWelsh);
       });
 
       it('should convert welsh indicator into false when langauge is en-GB', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectWelshIndicator, accountStatus, englishLangauge);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonEnglish));
+        assert.deepEqual(claimObjectValue, validJsonEnglish);
       });
 
       it('should convert welsh indicator into false when langauge is undefined', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectWelshIndicator, accountStatus, undefined);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonEnglish));
+        assert.deepEqual(claimObjectValue, validJsonEnglish);
       });
     });
 
@@ -1089,28 +1131,28 @@ describe('Claim object ', () => {
       describe(' after SPA ', () => {
         it('should add claim from date to object when not the same as SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateAfterSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateAfterSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateAfterSpa);
           assert.notEqual(claimObjectValue.claimFromDate, null);
           assert.notEqual(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object as null when the same as SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateSameAsDateFromAfterSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateSameAsDateFromAfterSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateSameAsDateFromAfterSpa);
           assert.equal(claimObjectValue.claimFromDate, null);
           assert.equal(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object when not the same as new SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateNewSPAAfterSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateNewSPAAfterSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateNewSPAAfterSpa);
           assert.notEqual(claimObjectValue.claimFromDate, null);
           assert.notEqual(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object as null when the same as new SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateSameAsNewSPAAfterSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateSameAsNewSPAAfterSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateSameAsNewSPAAfterSpa);
           assert.equal(claimObjectValue.claimFromDate, null);
           assert.equal(claimObjectValue.claimFromDateQ, null);
         });
@@ -1119,28 +1161,28 @@ describe('Claim object ', () => {
       describe(' before SPA ', () => {
         it('should add claim from date to object when not the same as SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateBeforeSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateBeforeSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateBeforeSpa);
           assert.notEqual(claimObjectValue.claimFromDate, null);
           assert.notEqual(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object as null when the same as SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateSameAsDateFromBeforeSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateSameAsDateFromBeforeSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateSameAsDateFromBeforeSpa);
           assert.equal(claimObjectValue.claimFromDate, null);
           assert.equal(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object when not the same as new SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateNewSPABeforeSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateNewSPABeforeSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateNewSPABeforeSpa);
           assert.notEqual(claimObjectValue.claimFromDate, null);
           assert.notEqual(claimObjectValue.claimFromDateQ, null);
         });
 
         it('should add claim from date to object as null when the same as new SPA', async () => {
           const claimObjectValue = await claimObject.sessionToObject(formObjectClaimFromDateSameAsNewSPABeforeSpa, accountStatus, englishLangauge);
-          assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonClaimFromDateSameAsNewSPABeforeSpa));
+          assert.deepEqual(claimObjectValue, validJsonClaimFromDateSameAsNewSPABeforeSpa);
           assert.equal(claimObjectValue.claimFromDate, null);
           assert.equal(claimObjectValue.claimFromDateQ, null);
         });
@@ -1150,12 +1192,12 @@ describe('Claim object ', () => {
     describe(' overseas', () => {
       it('should return overseas object with overseas questions when customer is overseas', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectOverseas, accountStatusOverseas, englishLangauge);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonOverseas));
+        assert.deepEqual(claimObjectValue, validJsonOverseas);
       });
 
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadOverseas, accountStatusOverseas);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadOverseas));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadOverseas);
       });
     });
 
@@ -1184,6 +1226,58 @@ describe('Claim object ', () => {
           const json = { ...JSON.parse(JSON.stringify(validJsonPrisonWelsh)), prison: false };
           const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, welshLangauge);
           assert.deepEqual(claimObjectValue, json);
+        });
+      });
+    });
+
+    describe('alt-formats', () => {
+      describe('english', () => {
+        it('should return valid JSON object with alt-formats question/answer', async () => {
+          const details = {
+            ...JSON.parse(JSON.stringify(formObjectNotLivedAbroadMarried)),
+            'alt-formats': 'no',
+          };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, englishLangauge);
+          assert.equal(claimObjectValue.altFormatRequired, false);
+          assert.equal(claimObjectValue.altFormatRequiredQ, 'Would you like us to send letters to you in another format?');
+        });
+
+        it('should return valid JSON object with alt-formats/alt-formats-choose question/answers', async () => {
+          const details = {
+            ...JSON.parse(JSON.stringify(formObjectNotLivedAbroadMarried)),
+            'alt-formats': 'yes',
+            'alt-formats-choose': 'braille',
+          };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, englishLangauge);
+          assert.equal(claimObjectValue.altFormatRequired, true);
+          assert.equal(claimObjectValue.altFormatRequiredQ, 'Would you like us to send letters to you in another format?');
+          assert.equal(claimObjectValue.altFormatToUse, 'Braille');
+          assert.equal(claimObjectValue.altFormatToUseQ, 'How else would you like us to send letters to you?');
+        });
+      });
+
+      describe('welsh', () => {
+        it('should return valid JSON object with alt-formats question/answer in welsh', async () => {
+          const details = {
+            ...JSON.parse(JSON.stringify(formObjectNotLivedAbroadMarried)),
+            'alt-formats': 'no',
+          };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, welshLangauge);
+          assert.equal(claimObjectValue.altFormatRequired, false);
+          assert.equal(claimObjectValue.altFormatRequiredQ, 'Hoffech chi i ni anfon llythyrau atoch mewn fformat arall?');
+        });
+
+        it('should return valid JSON object with alt-formats/alt-formats-choose questions in Welsh but answers in English', async () => {
+          const details = {
+            ...JSON.parse(JSON.stringify(formObjectNotLivedAbroadMarried)),
+            'alt-formats': 'yes',
+            'alt-formats-choose': 'audioCassette',
+          };
+          const claimObjectValue = await claimObject.sessionToObject(details, accountStatus, welshLangauge);
+          assert.equal(claimObjectValue.altFormatRequired, true);
+          assert.equal(claimObjectValue.altFormatRequiredQ, 'Hoffech chi i ni anfon llythyrau atoch mewn fformat arall?');
+          assert.equal(claimObjectValue.altFormatToUse, 'Audio cassette');
+          assert.equal(claimObjectValue.altFormatToUseQ, 'Sut arall yr hoffech i ni anfon llythyrau atoch chi?');
         });
       });
     });

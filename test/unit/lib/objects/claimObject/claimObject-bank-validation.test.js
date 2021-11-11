@@ -34,7 +34,15 @@ const validBankJson = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -51,6 +59,8 @@ const validBankJson = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectValidBank = {
@@ -78,7 +88,20 @@ const invalidBankJson = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', messages: ['Error 1', 'Error 2'], messagesQ: 'Warnings', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      messages: [
+        'Error 1',
+        'Error 2',
+      ],
+      messagesQ: 'Warnings',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -95,6 +118,8 @@ const invalidBankJson = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectInvalidBank = {
@@ -123,11 +148,11 @@ describe('Claim object ', () => {
     describe(' bank verification ', () => {
       it('should give validated/verfication object as Valid', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectValidBank, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validBankJson));
+        assert.deepEqual(claimObjectValue, validBankJson);
       });
       it('should give validated as valid verfication as invalid with errors', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectInvalidBank, accountStatusWithErrors);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(invalidBankJson));
+        assert.deepEqual(claimObjectValue, invalidBankJson);
       });
     });
   });

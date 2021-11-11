@@ -1,0 +1,15 @@
+{
+  "header": "Sut arall yr hoffech i ni anfon llythyrau atoch chi?",
+  "hintText": "Dewiswch un opsiwn.",
+  "errors": {
+    "header": "Mae yna broblem"
+  },
+  "fields": {
+    "error": "Dewiswch sut yr hoffech i ni anfon llythyrau atoch",
+    "audioCassette": "Casét Sain",
+    "audioCd": "CD Sain",
+    "audioMp3": "MP3 Sain",
+    "braille": "Braille",
+    "largePrint": "Print bras"
+  }
+}

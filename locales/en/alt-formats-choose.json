@@ -1,0 +1,15 @@
+{
+  "header": "How else would you like us to send letters to you?",
+  "hintText": "Select one option.",
+  "errors": {
+    "header": "There is a problem"
+  },
+  "fields": {
+    "error": "Select how you would like us to send letters to you",
+    "audioCassette": "Audio cassette",
+    "audioCd": "Audio CD",
+    "audioMp3": "Audio MP3",
+    "braille": "Braille",
+    "largePrint": "Large print"
+  }
+}

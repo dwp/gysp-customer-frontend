@@ -74,6 +74,13 @@
       "email": "contact-details:clicked-box:email",
       "error": "contact-details:error:{{FIELD}}"
     },
+    "alt-formats": {
+      "alt-formats-yes": "alt-formats:yes",
+      "alt-formats-no": "alt-formats:no"
+    },
+    "alt-formats-choose": {
+      "alt-formats-choice": "alt-formats-choose:{{VALUE}}"
+    },
     "account-details": {
       "status": "account-details:clicked-radio:account-{{VALUE}}",
       "account-holder": "account-details:clicked-box:account-name {{VALUE}}",

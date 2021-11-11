@@ -98,7 +98,15 @@ const validJsonLivedAbroadOne = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -115,6 +123,8 @@ const validJsonLivedAbroadOne = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadTwo = {
@@ -130,7 +140,15 @@ const validJsonLivedAbroadTwo = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -147,6 +165,8 @@ const validJsonLivedAbroadTwo = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadThree = {
@@ -162,7 +182,15 @@ const validJsonLivedAbroadThree = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -179,6 +207,8 @@ const validJsonLivedAbroadThree = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadFour = {
@@ -194,7 +224,15 @@ const validJsonLivedAbroadFour = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -211,6 +249,8 @@ const validJsonLivedAbroadFour = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadOneExtended = {
@@ -228,7 +268,15 @@ const validJsonLivedAbroadOneExtended = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -245,6 +293,8 @@ const validJsonLivedAbroadOneExtended = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadTwoExtended = {
@@ -264,7 +314,15 @@ const validJsonLivedAbroadTwoExtended = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -281,6 +339,8 @@ const validJsonLivedAbroadTwoExtended = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadThreeExtended = {
@@ -302,7 +362,15 @@ const validJsonLivedAbroadThreeExtended = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -319,6 +387,8 @@ const validJsonLivedAbroadThreeExtended = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonLivedAbroadFourExtended = {
@@ -342,7 +412,15 @@ const validJsonLivedAbroadFourExtended = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -359,6 +437,8 @@ const validJsonLivedAbroadFourExtended = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonWithOnly4thCountryDetail = {
@@ -376,7 +456,15 @@ const validJsonWithOnly4thCountryDetail = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -393,6 +481,8 @@ const validJsonWithOnly4thCountryDetail = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonWithOnlyThirdCountryDetail = {
@@ -410,7 +500,15 @@ const validJsonWithOnlyThirdCountryDetail = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -427,6 +525,8 @@ const validJsonWithOnlyThirdCountryDetail = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonWithOnlySecondCountryDetail = {
@@ -444,7 +544,15 @@ const validJsonWithOnlySecondCountryDetail = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -461,6 +569,8 @@ const validJsonWithOnlySecondCountryDetail = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const validJsonWithOnlyFirstCountryDetail = {
@@ -478,7 +588,15 @@ const validJsonWithOnlyFirstCountryDetail = {
   maritalStatusQ: 'What is your current marital status?',
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      validated: undefined,
     },
     bankDetailQ: 'Bank account',
     paymentMethodQ: 'How would you like to be paid?',
@@ -495,6 +613,8 @@ const validJsonWithOnlyFirstCountryDetail = {
   claimFromDate: null,
   claimFromDateQ: null,
   welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
 };
 
 const formObjectLivedAbroadOne = {
@@ -660,53 +780,53 @@ describe('Claim object ', () => {
     describe(' lived abroad countries ', () => {
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 1', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadOne, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadOne));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadOne);
       });
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 2', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadTwo, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadTwo));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadTwo);
       });
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 3', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadThree, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadThree));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadThree);
       });
       it('should convert object to valid json with livedAbroad value set as true when lived abroad is yes and countries set as 4', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadFour, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadFour));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadFour);
       });
     });
     describe(' lived abroad countries with extended details', () => {
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadOneExtended, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadOneExtended));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadOneExtended);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 2', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadTwoExtended, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadTwoExtended));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadTwoExtended);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 3', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadThreeExtended, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadThreeExtended));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadThreeExtended);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 4', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadFourExtended, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonLivedAbroadFourExtended));
+        assert.deepEqual(claimObjectValue, validJsonLivedAbroadFourExtended);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the forth position', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadFourExtendedButOnlyOneCountry, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnly4thCountryDetail));
+        assert.deepEqual(claimObjectValue, validJsonWithOnly4thCountryDetail);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the third position', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadThirdExtendedButOnlyOneCountry, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlyThirdCountryDetail));
+        assert.deepEqual(claimObjectValue, validJsonWithOnlyThirdCountryDetail);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the second position', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadSecondExtendedButOnlyOneCountry, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlySecondCountryDetail));
+        assert.deepEqual(claimObjectValue, validJsonWithOnlySecondCountryDetail);
       });
       it('should convert object to valid json with livedAbroad value set as true and extended countries details when lived abroad is yes and countries set as 1 but in the first position', async () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectLivedAbroadFourExtendedButOnlyOneFirstCountry, accountStatus);
-        assert.equal(JSON.stringify(claimObjectValue), JSON.stringify(validJsonWithOnlyFirstCountryDetail));
+        assert.deepEqual(claimObjectValue, validJsonWithOnlyFirstCountryDetail);
       });
     });
   });

@@ -28,7 +28,7 @@ function contactDetailsPost(req, res) {
     if (editMode) {
       res.redirect('check-your-details');
     } else {
-      res.redirect('account-details');
+      res.redirect('alt-formats');
     }
   }
 }
