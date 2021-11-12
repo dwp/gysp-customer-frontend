@@ -17,3 +17,4 @@ services:
       - /home/node/customer-frontend/node_modules/
     ports:
       - 3001:3001
+      - 9229:9229
