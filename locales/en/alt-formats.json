@@ -7,6 +7,7 @@
   "fields": {
     "error": "Select yes if you would like us to send letters to you in another format",
     "yesOption": "Yes",
-    "noOption": "No"
+    "noOption": "No",
+    "noOptionAsNone": "None"
   }
 }
