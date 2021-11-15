@@ -1,3 +1,12 @@
+# [11.3.0](https://github.com/dwp/gysp-customer-frontend/compare/11.2.3...11.3.0) (2021-11-15)
+
+
+### Features
+
+* **alt-formats:** Added alt formats pages ([fe604a9](https://github.com/dwp/gysp-customer-frontend/commit/fe604a91395f0d13401075dae1e15063c0ed804f))
+
+
+
 ## [11.2.3](https://github.com/dwp/gysp-customer-frontend/compare/11.2.2...11.2.3) (2021-11-02)
 
 
