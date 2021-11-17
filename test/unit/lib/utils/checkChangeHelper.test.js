@@ -518,6 +518,9 @@ const workedAbroadYesWithDetailsWelshResult = [{
 
 const maritalStatusSingleDetails = { 'marital-select': { maritalStatus: 'single' }, ...baseDetails };
 
+const altFormatDetails = { 'alt-formats': 'yes', 'alt-formats-choose': 'audioCassette', ...baseDetails };
+const altFormatDetailsNo = { 'alt-formats': 'no', ...baseDetails };
+
 const maritalStatusSingleResult = [{
   key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/1953'] },
@@ -953,6 +956,22 @@ describe('Check Change Helper ', () => {
       });
     });
 
+    describe(' alt-formats ', () => {
+      describe(' filled in ', () => {
+        it('should return alt formats section when one of the alt formats option is selected', async () => {
+          const result = await checkChangeHelper.requestFilter(altFormatDetails, englishLangauge);
+          assert.equal(result.length, 4);
+          assert.equal(result[3].value.html, 'Audio cassette');
+        });
+
+        it('should return alt formats section with "None" when answer to alt-formats question is no', async () => {
+          const result = await checkChangeHelper.requestFilter(altFormatDetailsNo, englishLangauge);
+          assert.equal(result.length, 4);
+          assert.equal(result[3].value.html, 'None');
+        });
+      });
+    });
+
     describe(' maritalStatus ', () => {
       describe(' single ', () => {
         it('should return a array that contains maritalStatus as Single when single marital status are supplied', async () => {
@@ -1126,6 +1145,13 @@ describe('Check Change Helper ', () => {
     it('should return errors when show section errors is present in session and edit section is marital-select', async () => {
       const response = checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'marital-select', lang: 'en' } });
       assert.lengthOf(Object.keys(response), 2);
+    });
+
+    it('should return errors when show section errors is present in session and edit section is alt-formats', async () => {
+      const response = checkChangeHelper.setupDataAndShowErrorsMessages({ session: { editSectionShowError: true, editSection: 'alt-formats', lang: 'en' } });
+      assert.lengthOf(Object.keys(response), 2);
+      assert.equal(response.errorSummary.length, 1);
+      assert.deepEqual(response.fieldLevelErrors.altFormat, { text: 'Select yes if you would like us to send letters to you in another format', href: '#altFormat-Yes' });
     });
   });
 

@@ -4,9 +4,11 @@ const checkChangeHelper = require('../../../lib/utils/checkChangeHelper');
 
 const get = (req, res) => {
   checkChangeHelper.checkAndSetEditMode(req, 'alt-formats');
+  const errors = checkChangeHelper.setupDataAndShowErrorsMessages(req);
   const selection = dataStore.get(req, 'alt-formats');
   res.render('pages/alt-formats.html', {
     selection,
+    ...errors,
   });
 };
 
@@ -22,7 +24,7 @@ const post = (req, res) => {
     });
   } else {
     const editMode = checkChangeHelper.isEditMode(req, 'alt-formats');
-    dataStore.save(req, 'alt-formats', selection);
+    dataStore.checkAndSave(req, 'alt-formats', selection, editMode);
     if (selection === 'yes') {
       res.redirect('alt-formats-choose');
     } else if (editMode) {

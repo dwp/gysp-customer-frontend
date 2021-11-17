@@ -51,6 +51,19 @@ describe('check change middleware', () => {
     checkChange('/customerfrontend/')(request, genericResponse, nextFunction.next);
     assert.equal(genericResponse.address, '');
   });
+
+  it('should redirect when session has a changed alt-formats edit section and path is not allowed', () => {
+    const request = { session: { editSection: 'alt-formats', editSectionChanged: true }, path: '/customerfrontend/check-details' };
+    checkChange('/customerfrontend/')(request, genericResponse, nextFunction.next);
+    assert.equal(genericResponse.address, '/alt-formats');
+  });
+
+  it('should not redirect when session has a changed contact-details edit section as it is a single page change', () => {
+    const request = { session: { editSection: 'contact-details', editSectionChanged: true }, path: '/customerfrontend/check-details' };
+    checkChange('/customerfrontend/')(request, genericResponse, nextFunction.next);
+    assert.equal(genericResponse.address, '');
+  });
+
   it('should do nothing as protected section does not match', () => {
     const request = { session: { editSection: 'bob', editSectionChanged: true }, path: '/customerfrontend/check-details' };
     checkChange('/customerfrontend/')(request, genericResponse, nextFunction.next);

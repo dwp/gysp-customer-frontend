@@ -45,6 +45,12 @@ function allowedPaths(key, path, mountUrl) {
     return matches.length > 0;
   }
 
+  if (key === 'alt-formats') {
+    return defaultPaths.concat([
+      '/alt-formats',
+      '/alt-formats-choose']).includes(pathNoMountUrl);
+  }
+
   return false;
 }
 
@@ -55,6 +61,8 @@ function protectedSection(section) {
     case 'lived-abroad':
       return true;
     case 'worked-abroad':
+      return true;
+    case 'alt-formats':
       return true;
     default:
       return false;
@@ -72,6 +80,21 @@ function detectSectionChangedAndDisallowedRoute(req, mountUrl) {
 }
 
 module.exports = (mountUrl) => (req, res, next) => {
+  // NB: When you navigate up to check-your-details page filling in mandatory/non-mandatory fields,
+  //     then
+  //     - click on any of the "Change" links in that page and then get to a section,
+  //     - but not fill in relevant data in that section (especially in multi-page sub-sections,
+  //       like marital-status, alt-formats)
+  //     - and then try to navigate back using browser back button to get to check-your-details page.
+  //     the user should be stopped from leaving data in session inconsistent (i.e partial data).
+  //
+  //     This middleware stops that by,
+  //     - checking if the user has come from check-your-details page,
+  //     - and edited any part of multi-page journey (like saying married in marital
+  //       status but not filling in spouse details and clicking back button)
+  //     - then it clears the session details for that sub-section and redirects user to the start
+  //       of that sub-section with data required error. When data is cleared the empty session details
+  //       are validated as well, so that data required errors could be manufactured on the fly.
   if (detectSectionChangedAndDisallowedRoute(req, mountUrl)) {
     req.session.editSectionShowError = true;
     const redirectUri = redirectHelper.redirectBasedOnEditSection(req.session.editSection);
