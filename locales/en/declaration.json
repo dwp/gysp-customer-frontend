@@ -4,16 +4,10 @@
   "p1": "By submitting this application, you agree:",
   "li1": "the information you've given is complete and correct",
   "li2": {
-    "gb": "to tell the Department for Work and Pensions (DWP) straight away if your address, bank details, or marital status change",
-    "ni": "to tell the Department for Communities (DfC) straight away if your address, bank details, or marital status change"
+    "gb": "to tell the Department for Work and Pensions (DWP) straight away if your circumstances change, such as your address, bank details or marital status",
+    "ni": "to tell the Department for Communities (DfC) straight away if your circumstances change, such as your address, bank details or marital status"
   },
-  "li3": {
-    "gb": "DWP can ask you to pay back any recoverable overpayment of State Pension",
-    "ni": "DfC can ask you to pay back any recoverable overpayment of State Pension"
-  },
-  "p2": {
-    "gb": "You may be prosecuted or have to pay a penalty if you give wrong or incomplete information, or if you don't report changes straight away.",
-    "ni": "You could be prosecuted or have to pay a penalty if you give the wrong or incomplete information or don’t report changes."
-  },
+  "li3": "to pay back any State Pension if you are paid too much",
+  "p2": "You may be prosecuted or have to pay a financial penalty if you give wrong or incomplete information, or if you don't report any changes straight away",
   "button": "I agree - send application"
 }

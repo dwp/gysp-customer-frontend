@@ -18,24 +18,16 @@
                   <li>{{ t("declaration:li1") }}</li>
                   {% if isNorthernIreland %}
                     <li>{{ t("declaration:li2.ni") }}</li>
-                    <li>{{ t("declaration:li3.ni") }}</li>
                   {% else %}
                     <li>{{ t("declaration:li2.gb") }}</li>
-                    <li>{{ t("declaration:li3.gb") }}</li>
                   {% endif %}
+                  <li>{{ t("declaration:li3") }}</li>
                 </ul>
 
-                {% if isNorthernIreland %}
-                   {{ govukWarningText({
-                    text: t("declaration:p2.ni"),
-                    iconFallbackText: "Warning"
-                  }) }}
-                {% else %}
-                  {{ govukWarningText({
-                    text: t("declaration:p2.gb"),
-                    iconFallbackText: "Warning"
-                  }) }}
-                {% endif %}
+                {{ govukWarningText({
+                  text: t("declaration:p2"),
+                  iconFallbackText: "Warning"
+                }) }}
 
                 <div class="gysp-button-group">
                   {{ govukButton({

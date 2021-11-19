@@ -1,19 +1,13 @@
 {
   "header": "Datganiad",
   "h1": "Datganiad",
-  "p1": "Drwy anfon y cais hwn, rydych yn cytuno:",
-  "li1": "bod y wybodaeth rydych wedi'i roi yn gywir a chyflawn",
+  "p1": "Trwy gyflwyno'r cais hwn, rydych yn cytuno:",
+  "li1": "mae'r wybodaeth rydych wedi'i rhoi yn gyflawn ac yn gywir",
   "li2": {
-    "gb": "i ddweud wrth yr Adran Gwaith a Phensiynau (DWP) yn syth os yw eich cyfeiriad, manylion banc neu statws priodasol yn newid",
-    "ni": "i ddweud wrth yr Adran dros Gymunedau (DfC) yn syth os yw eich cyfeiriad, manylion banc neu statws priodasol yn newid"
+    "gb": "dweud wrth yr Adran Gwaith a Phensiynau (DWP) ar unwaith os bydd eich amgylchiadau'n newid, fel eich cyfeiriad, manylion banc neu statws priodasol",
+    "ni": "dweud wrth y Department for Communities (DfC) ar unwaith os bydd eich amgylchiadau'n newid, fel eich cyfeiriad, manylion banc neu statws priodasol"
   },
-  "li3": {
-    "gb": "gall yr Adran Gwaith a Phensiynau ofyn i chi dalu'n ôl unrhyw or-daliad adferiadwy o Bensiwn y Wladwriaeth",
-    "ni": "gall DfC ofyn i chi dalu'n ôl unrhyw or-daliad adferiadwy o Bensiwn y Wladwriaeth"
-  },
-  "p2": {
-    "gb": "Efallai y cewch eich erlyn neu orfod talu cosb os byddwch yn rhoi gwybodaeth anghywir neu anghyflawn, neu os na fyddwch yn dweud am newidiadau'n syth.",
-    "ni": "Efallai y cewch eich erlyn neu orfod talu cosb os byddwch yn rhoi gwybodaeth anghywir neu anghyflawn neu os na fyddwch yn dweud am newidiadau."
-  },
+  "li3": "i dalu nôl unrhyw Bensiwn y Wladwriaeth os cewch eich talu gormod ",
+  "p2": "Efallai y cewch eich erlyn neu y bydd yn rhaid i chi dalu cosb ariannol os rhowch wybodaeth anghywir neu anghyflawn, neu os na fyddwch yn rhoi gwybod am unrhyw newidiadau ar unwaith",
   "button": "Rwyf yn cytuno - anfon cais"
 }
