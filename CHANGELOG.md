@@ -1,3 +1,12 @@
+# [11.4.0](https://github.com/dwp/gysp-customer-frontend/compare/11.3.1...11.4.0) (2021-11-30)
+
+
+### Features
+
+* **declaration:** update declaration in online service ([f8a0499](https://github.com/dwp/gysp-customer-frontend/commit/f8a0499f23d9da48aca899206b1cdda58eef6e9d))
+
+
+
 ## [11.3.1](https://github.com/dwp/gysp-customer-frontend/compare/11.3.0...11.3.1) (2021-11-18)
 
 
