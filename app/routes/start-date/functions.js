@@ -1,3 +1,4 @@
+const moment = require('moment');
 const dateFormatter = require('../../../lib/helpers/dateFormatter');
 const validation = require('../../../lib/validations/startDateValidation');
 
@@ -19,6 +20,14 @@ function checkBeforeOrAfterSpa(req) {
     return 'beforeSpa';
   }
   return 'afterSpa';
+}
+
+function whichDateToUse(statePensionDate) {
+  const todayDateMinusYear = moment().startOf('day').subtract(1, 'year');
+  if (statePensionDate > todayDateMinusYear.toDate().getTime()) {
+    return statePensionDate;
+  }
+  return todayDateMinusYear;
 }
 
 function currentStatePensionDate(req) {
@@ -51,10 +60,13 @@ function statePensionStartDateRedirect(req, editMode) {
 function getStatePensionStartDate(req, res) {
   checkChangeHelper.checkAndSetEditMode(req, 'claim-from-date');
   const statePensionDateToUse = currentStatePensionDate(req);
-  const statePensionDate = dateFormatter.statePensionDate(statePensionDateToUse, req.session.lang);
+  let statePensionDate = dateFormatter.statePensionDate(statePensionDateToUse, req.session.lang);
   const details = dataStore.get(req, 'claimFromDate');
   const beforeOrAfterSpa = checkBeforeOrAfterSpa(req);
   const displayText = textToDisplay(req);
+  if (!req.session.beforeSpa && displayText === 'system') {
+    statePensionDate = dateFormatter.statePensionDate(whichDateToUse(statePensionDateToUse), req.session.lang);
+  }
   res.render('pages/state-pension-start-date.html', {
     details, statePensionDate, displayText, beforeOrAfterSpa,
   });
@@ -66,7 +78,10 @@ function postStatePensionStartDate(req, res) {
   const displayText = textToDisplay(req);
   const errors = validation.claimFromDateValidation(req.body, statePensionDateToUse, beforeOrAfterSpa, req.session.lang);
   if (Object.keys(errors).length > 0) {
-    const statePensionDate = dateFormatter.statePensionDate(statePensionDateToUse, req.session.lang);
+    let statePensionDate = dateFormatter.statePensionDate(statePensionDateToUse, req.session.lang);
+    if (!req.session.beforeSpa && displayText === 'system') {
+      statePensionDate = dateFormatter.statePensionDate(whichDateToUse(statePensionDateToUse), req.session.lang);
+    }
     res.render('pages/state-pension-start-date.html', {
       errors, details: req.body, statePensionDate, displayText, beforeOrAfterSpa,
     });

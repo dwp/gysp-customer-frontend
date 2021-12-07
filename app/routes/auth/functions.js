@@ -15,6 +15,8 @@ const deleteSession = require('../../../lib/deleteSession.js');
 
 const { getInviteKeyRequest } = require('../../../lib/helpers/keyServiceHelper');
 
+const redirectWhenDoYouWantPensionFromFullURL = 'when-do-you-want-your-state-pension';
+
 let redirectSuccessFullURL = 'your-state-pension-date';
 
 try {
@@ -78,11 +80,14 @@ function redirectToNextStep(req, res, customerDetails, matchDetails) {
     req.session.isNorthernIreland = locationHelper.isNorthernIreland(customerDetails.residentialAddress.postCode);
   }
   req.session.isBeforeSpa = true;
-  if (dateHelper.isDateBeforeToday(customerDetails.statePensionDate)) {
-    req.session.isBeforeSpa = false;
-  }
   req.session.isInviteCodeLogin = true;
-  res.redirect(redirectSuccessFullURL);
+
+  if (dateHelper.isDateBeforeToday(customerDetails.statePensionDate) && customerDetails.dobVerification === 'V') {
+    req.session.isBeforeSpa = false;
+    res.redirect(redirectWhenDoYouWantPensionFromFullURL);
+  } else {
+    res.redirect(redirectSuccessFullURL);
+  }
 }
 
 function resetErrorState(req) {

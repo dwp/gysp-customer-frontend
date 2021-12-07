@@ -28,7 +28,7 @@
   },
   "afterSpa": {
     "p1": {
-      "system": "Your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
       "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
@@ -43,7 +43,8 @@
         "errors": {
           "empty": "Enter a date that you want to get your State Pension.",
           "format": "Enter a real date.",
-          "before": "Date cannot be before your State Pension date."
+          "before": "Date cannot be before your State Pension date.",
+          "beforeoneyear": "Date cannot be more than 12 months before today."
         }
       }
     }

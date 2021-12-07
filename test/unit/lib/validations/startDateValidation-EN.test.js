@@ -36,6 +36,12 @@ const futureDateObject = {
   dateYear: moment(dateNextYear).format('YYYY'),
 };
 
+const dateMoreThanOneYearInPast = {
+  dateDay: moment(dateToday).format('DD'),
+  dateMonth: moment(dateToday).add(1, 'month').format('MM'),
+  dateYear: moment(dateToday).add(-2, 'year').format('YYYY'),
+};
+
 const oneHundredYearsAgo = {
   dateDay: dateNextYear.getDate(),
   dateMonth: moment(dateNextYear).format('MM'),
@@ -62,6 +68,7 @@ const trippleDigitYear = {
 
 const beforeSpaDate = moment().add(1, 'month').format('YYYY-MM-DD');
 const afterSpaDate = moment().subtract(1, 'month').format('YYYY-MM-DD');
+const oldAfterSpaDate = moment().subtract(3, 'year').format('YYYY-MM-DD');
 
 const beforeSpaKey = 'beforeSpa';
 const afterSpaKey = 'afterSpa';
@@ -181,6 +188,11 @@ describe('start date validation - EN', () => {
       const validationResponse = validation.claimFromDateValidation(futureDateObject, afterSpaDate, afterSpaKey, 'en');
       assert.isUndefined(validationResponse.date);
       assert.isUndefined(validationResponse.errorSummary);
+    });
+    it('should return error if date is after spa date and more than 12 months from today', () => {
+      const validationResponse = validation.claimFromDateValidation(dateMoreThanOneYearInPast, oldAfterSpaDate, afterSpaKey, 'en');
+      assert.equal(validationResponse.date.text, 'Date cannot be more than 12 months before today.');
+      assert.equal(validationResponse.errorSummary[0].text, 'Date cannot be more than 12 months before today.');
     });
   });
 });

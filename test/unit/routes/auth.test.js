@@ -143,6 +143,24 @@ describe('Auth controller ', () => {
         assert.equal(validPostObject.session.isNorthernIreland, false);
       });
 
+      it('should redirect to when do you want your state pension page when claiming after spa and dob is verified', async () => {
+        genericResponse = responseHelper.genericResponse();
+        nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
+        nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, { statePensionDate: '1631145600000', dobVerification: 'V' });
+        await authController.authPageProcess(validPostObject, genericResponse);
+        assert.equal(genericResponse.viewName, '');
+        assert.equal(genericResponse.address, 'when-do-you-want-your-state-pension');
+      });
+
+      it('should redirect to date of birth page page when claiming after spa and dob is not verified', async () => {
+        genericResponse = responseHelper.genericResponse();
+        nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});
+        nock('http://test-url').get(`${customerAPI}/${validPostObject.body.inviteKey}`).reply(200, { statePensionDate: '1631145600000', dobVerification: 'NV' });
+        await authController.authPageProcess(validPostObject, genericResponse);
+        assert.equal(genericResponse.viewName, '');
+        assert.equal(genericResponse.address, 'date-of-birth');
+      });
+
       it('should redirect to next step when both successful call\'s are received and session should be set as North Ireland', async () => {
         genericResponse = responseHelper.genericResponse();
         nock('http://test-url').get(`${keyAPI}/${validPostObject.body.inviteKey}`).reply(200, {});

@@ -1,6 +1,7 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const mockdate = require('mockdate');
+const moment = require('moment');
 
 chai.use(chaiAsPromised);
 
@@ -28,16 +29,20 @@ const invalidDateBeforeStatePensionDateBeforeSpa = { session: { customerDetails:
 const validDateMoreThan4MonthBeforeSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: true }, body: { dateDay: '02', dateMonth: '07', dateYear: '2018' } };
 
 const sessonStoreAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '', dateMonth: '', dateYear: '' } };
+const sessionStoreAfterSpaDateBeforeMockDate = { session: { customerDetails: { statePensionDate: 1459862400000 }, isBeforeSpa: false }, body: { dateDay: '', dateMonth: '', dateYear: '' } };
 const validFormDataAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '01', dateMonth: '04', dateYear: '2018' } };
 const validFormDataAfterSpaEdit = { session: { editSection: 'claim-from-date', customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '01', dateMonth: '04', dateYear: '2018' } };
 const emptyFormDataAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '', dateMonth: '', dateYear: '' } };
 const invalidFormatDataAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '10', dateMonth: '18', dateYear: '2019' } };
 const invalidDateBeforeStatePensionDateAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '29', dateMonth: '03', dateYear: '2018' } };
+const invalidDateMoreThan12MonthsBeforeTodayAfterSpa = { session: { customerDetails: { statePensionDate: 1409862400000 }, isBeforeSpa: false }, body: { dateDay: '29', dateMonth: '03', dateYear: '2016' } };
 const validDateMoreThan4MonthAfterSpa = { session: { customerDetails: { statePensionDate: 1522398310000 }, isBeforeSpa: false }, body: { dateDay: '02', dateMonth: '07', dateYear: '2018' } };
 
 const validStatePensionStartDateErrorRequest = { session: {} };
 const validStatePensionStartDateErrorNVRequest = { session: { userDateOfBirthInfo: { newStatePensionDate: 1522398310000 } } };
 const validStatePensionStartDateErrorRequestEdit = { session: { editSection: 'claim-from-date' } };
+
+const mockDateMinus12Months = moment(new Date('2018-03-01')).locale('en').subtract(1, 'year').format('D MMMM YYYY');
 
 describe('Start date controller ', () => {
   before(async () => {
@@ -123,6 +128,13 @@ describe('Start date controller ', () => {
         assert.equal(genericResponse.data.displayText, 'system');
         done();
       });
+      it('should return view when called with todays date minus 12 months if spa is more than 12 months ago', (done) => {
+        controller.getStatePensionStartDate(sessionStoreAfterSpaDateBeforeMockDate, genericResponse);
+        assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
+        assert.equal(genericResponse.data.statePensionDate, mockDateMinus12Months);
+        assert.equal(genericResponse.data.displayText, 'system');
+        done();
+      });
     });
 
     describe('postStatePensionStartDate function (post /when-do-you-want-your-state-pension)', () => {
@@ -149,6 +161,14 @@ describe('Start date controller ', () => {
         assert.equal(genericResponse.data.errors.date.text, 'Date cannot be before your State Pension date.');
         assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.statePensionDate, '30 March 2018');
+        assert.equal(genericResponse.data.displayText, 'system');
+        done();
+      });
+
+      it('should return view with validation errors when called with date more than 12 months ago', (done) => {
+        controller.postStatePensionStartDate(invalidDateMoreThan12MonthsBeforeTodayAfterSpa, genericResponse);
+        assert.equal(genericResponse.data.errors.date.text, 'Date cannot be more than 12 months before today.');
+        assert.equal(genericResponse.viewName, 'pages/state-pension-start-date.html');
         assert.equal(genericResponse.data.displayText, 'system');
         done();
       });
