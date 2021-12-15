@@ -28,7 +28,7 @@
   },
   "afterSpa": {
     "p1": {
-      "system": "Dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
+      "system": "Y dyddiad cynharaf y gallwch gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
       "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
@@ -43,7 +43,8 @@
         "errors": {
           "empty": "Rhowch ddyddiad yr hoffech gael eich Pensiwn y Wladwriaeth.",
           "format": "Rhowch ddyddiad go iawn.",
-          "before": "Ni all y dyddiad fod cyn eich dyddiad Pensiwn y Wladwriaeth."
+          "before": "Ni all y dyddiad fod cyn eich dyddiad Pensiwn y Wladwriaeth.",
+          "beforeoneyear": "Ni all y dyddiad fod yn fwy na 12 mis cyn heddiw"
         }
       }
     }
