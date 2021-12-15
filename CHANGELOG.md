@@ -1,3 +1,12 @@
+# [11.6.0](https://github.com/dwp/gysp-customer-frontend/compare/11.5.0...11.6.0) (2021-12-15)
+
+
+### Features
+
+* welsh content changes for before spa ([e34a3b4](https://github.com/dwp/gysp-customer-frontend/commit/e34a3b4f99326b7b8c0a2304b00f8790a50f7b92))
+
+
+
 # [11.5.0](https://github.com/dwp/gysp-customer-frontend/compare/11.4.0...11.5.0) (2021-12-15)
 
 
