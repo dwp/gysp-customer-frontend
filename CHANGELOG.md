@@ -1,3 +1,12 @@
+# [11.5.0](https://github.com/dwp/gysp-customer-frontend/compare/11.4.0...11.5.0) (2021-12-15)
+
+
+### Features
+
+* 12 months before spa rules and changes ([2757480](https://github.com/dwp/gysp-customer-frontend/commit/27574804ec9895dcc98c671122da56213b9bcce6))
+
+
+
 # [11.4.0](https://github.com/dwp/gysp-customer-frontend/compare/11.3.1...11.4.0) (2021-11-30)
 
 
