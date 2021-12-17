@@ -1,6 +1,9 @@
 const userObject = require('../../../lib/objects/userObject');
 const dataStore = require('../../../lib/dataStore');
 const validation = require('../../../lib/validations/verifyYourDetailsValidation');
+const dateHelper = require('../../../lib/helpers/dateHelper');
+
+const redirectWhenDoYouWantPensionFromFullURL = '/when-do-you-want-your-state-pension';
 
 const redirectSuccessFullURL = '/your-state-pension-date';
 
@@ -20,6 +23,10 @@ function postVerifyDetails(req, res) {
     dataStore.save(req, 'verify-details', details);
     if (details.address === 'no') {
       res.redirect('/verify/auth-error-address');
+    } else if (req.session.customerDetails && dateHelper.isDateBeforeToday(req.session.customerDetails.statePensionDate)
+        && req.session.customerDetails.dobVerification === 'V') {
+      req.session.isBeforeSpa = false;
+      res.redirect(redirectWhenDoYouWantPensionFromFullURL);
     } else {
       res.redirect(redirectSuccessFullURL);
     }

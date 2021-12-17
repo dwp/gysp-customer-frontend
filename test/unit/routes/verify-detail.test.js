@@ -33,6 +33,27 @@ const validUserRequest = {
   },
 };
 
+const validUserRequestWithCustomer = {
+  session: {
+    'verify-details': {
+      test: 'test-data',
+    },
+    lang: 'en',
+    customerDetails: { statePensionDate: '1631145600000', dobVerification: 'V' },
+  },
+  user: {
+    firstName: 'John',
+    surname: 'Smith',
+    dob: '1950-01-01',
+    residentialAddress: {
+      buildingNumber: '1',
+      thoroughfareName: 'Thoroughfare Name',
+      postTown: 'Town',
+      postCode: 'NE1 1AA',
+    },
+  },
+};
+
 const formattedUser = {
   name: 'John Smith',
   dob: '1 January 1950',
@@ -47,6 +68,7 @@ const formattedUser = {
 const invalidPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'test' } };
 const emptyPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { } };
 const validYesPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'yes' } };
+const validYesPostRequestWithCustomer = { ...JSON.parse(JSON.stringify(validUserRequestWithCustomer)), body: { address: 'yes' } };
 const validNoPostRequest = { ...JSON.parse(JSON.stringify(validUserRequest)), body: { address: 'no' } };
 
 const invalidAddressError = {
@@ -117,7 +139,12 @@ describe('Verify detail controller ', () => {
       assert.equal(genericResponse.address, '/your-state-pension-date');
       done();
     });
-
+    it('should return redirect to when-do-you-want-your-state-pension when with valid request and address is yes and customer is after spa', (done) => {
+      verifyDetailController.postVerifyDetails(validYesPostRequestWithCustomer, genericResponse);
+      assert.deepEqual(validYesPostRequest.session['verify-details'], { address: 'yes' });
+      assert.equal(genericResponse.address, '/when-do-you-want-your-state-pension');
+      done();
+    });
     it('should return redirect to /verify/auth-error-address when with valid request and address is no', (done) => {
       verifyDetailController.postVerifyDetails(validNoPostRequest, genericResponse);
       assert.deepEqual(validNoPostRequest.session['verify-details'], { address: 'no' });
