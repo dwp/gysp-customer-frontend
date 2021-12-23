@@ -84,6 +84,10 @@ async function dobConfirmRedirect(req, res) {
       dataStore.checkAndSave(req, 'dob-details', filteredRequest);
       const compare = validation.dobCompare(req.body, req.session.customerDetails.dob);
       if (compare) {
+        req.session.isBeforeSpa = true;
+        if (dateHelper.isDateBeforeToday(req.session.customerDetails.statePensionDate)) {
+          req.session.isBeforeSpa = false;
+        }
         req.session.userDateOfBirthInfo = {
           newDobVerification: dobStatusVerified,
           newStatePensionDate: req.session.customerDetails.statePensionDate,

@@ -146,6 +146,13 @@ describe('DOB controller ', () => {
       await controller.dobConfirmRedirect(sessonStoreEdit, genericResponse);
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
+
+    it('should set "isBeforeSpa" to false when user input date of birth matches session dob and when statePensionDate is before today\'s date', () => {
+      sessonStore.session.customerDetails.dob = 968457600000;
+      sessonStore.session.customerDetails.statePensionDate = 1607731200; // Saturday, 12 December 2020
+      controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.isFalse(sessonStore.session.isBeforeSpa);
+    });
   });
 
   describe('beforePensionAgeGet function', () => {
