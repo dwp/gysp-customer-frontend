@@ -31,11 +31,11 @@ const complete = {
 };
 
 const currentMonth = moment().format('M');
-const currentYear = moment().format('gggg');
+const currentYear = moment().format('YYYY');
 
 const currentMonthPlusOne = moment().add(1, 'M').format('M');
-const currentMonthPlusOneYear = moment().add(1, 'M').format('gggg');
-const currentYearPlusOne = moment().add(1, 'y').format('gggg');
+const currentMonthPlusOneYear = moment().add(1, 'M').format('YYYY');
+const currentYearPlusOne = moment().add(1, 'y').format('YYYY');
 
 const currentDates = {
   dateToMonth: currentMonth, dateToYear: currentYear, dateFromMonth: currentMonth, dateFromYear: currentYear,
