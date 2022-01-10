@@ -1,3 +1,13 @@
+## [11.6.1](https://github.com/dwp/gysp-customer-frontend/compare/11.6.0...11.6.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* **dob:** prison question for DOB non-verified ([5dfed47](https://github.com/dwp/gysp-customer-frontend/commit/5dfed4752c2268f74e0b9f8e25daa919ef403507))
+* show when pension date page if after spa on verify journey ([3f890e7](https://github.com/dwp/gysp-customer-frontend/commit/3f890e76a13889b15ee1b147b17fe38a01edc894))
+
+
+
 # [11.6.0](https://github.com/dwp/gysp-customer-frontend/compare/11.5.0...11.6.0) (2021-12-15)
 
 
