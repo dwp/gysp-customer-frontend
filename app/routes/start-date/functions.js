@@ -64,7 +64,7 @@ function getStatePensionStartDate(req, res) {
   const details = dataStore.get(req, 'claimFromDate');
   const beforeOrAfterSpa = checkBeforeOrAfterSpa(req);
   const displayText = textToDisplay(req);
-  if (!req.session.beforeSpa && displayText === 'system') {
+  if (!req.session.beforeSpa) {
     statePensionDate = dateFormatter.statePensionDate(whichDateToUse(statePensionDateToUse), req.session.lang);
   }
   res.render('pages/state-pension-start-date.html', {
@@ -79,7 +79,7 @@ function postStatePensionStartDate(req, res) {
   const errors = validation.claimFromDateValidation(req.body, statePensionDateToUse, beforeOrAfterSpa, req.session.lang);
   if (Object.keys(errors).length > 0) {
     let statePensionDate = dateFormatter.statePensionDate(statePensionDateToUse, req.session.lang);
-    if (!req.session.beforeSpa && displayText === 'system') {
+    if (!req.session.beforeSpa) {
       statePensionDate = dateFormatter.statePensionDate(whichDateToUse(statePensionDateToUse), req.session.lang);
     }
     res.render('pages/state-pension-start-date.html', {

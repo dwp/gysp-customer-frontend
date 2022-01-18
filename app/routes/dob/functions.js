@@ -13,6 +13,7 @@ const checkChangeHelper = require('../../../lib/utils/checkChangeHelper');
 
 const redirectSuccessFullURL = 'your-state-pension-date';
 const revisedStatePensionURL = 'revised-your-state-pension-date';
+const redirectWhenDoYouWantPensionURL = 'when-do-you-want-your-state-pension';
 const redirectTooEarly = 'you-are-too-early-to-get-your-state-pension';
 const redirectBefore = 'call-us-to-get-your-state-pension';
 const redirectCheckAndChange = 'check-your-details';
@@ -49,6 +50,8 @@ function getNewStatePensionDate(req, res) {
         url = redirectBefore;
       } else if (body.message === claimStatus.PRE_MATURE_CLAIM) {
         url = redirectTooEarly;
+      } else if (dateHelper.isDateBeforeToday(body.spaDate)) {
+        url = redirectWhenDoYouWantPensionURL;
       }
       resolve({ redirectURL: url, statePensionDate: body.spaDate });
     }).catch((err) => {

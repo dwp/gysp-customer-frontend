@@ -29,7 +29,7 @@
   "afterSpa": {
     "p1": {
       "system": "Y dyddiad cynharaf y gallwch gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
-      "user": "Yn ôl y wybodaeth rydych wedi'i roi i ni, dyddiad eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
+      "user": "Yn ôl y wybodaeth rydych wedi'i rhoi i ni, y dyddiad cynharaf y gallwch gael eich Pensiwn y Wladwriaeth yw <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {

@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
+const moment = require('moment');
 
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
@@ -24,6 +25,7 @@ const statePensionAPI = '/api/customer/recalculateSpaDate';
 let sessonStore = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 2000, dateMonth: 9, dateDay: 9 } };
 const noData = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: '', dateMonth: '', dateDay: '' } };
 const sessonStoreEdit = { session: { editSection: 'dob-details', customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 2000, dateMonth: 9, dateDay: 9 } };
+const datePlus2Months = moment().add(2, 'months').toDate().getTime();
 
 const messages = {
   NSP_CLAIM: 'Non state pension customer',
@@ -53,8 +55,12 @@ describe('DOB controller ', () => {
 
   describe(' getNewStatePensionDate function ', () => {
     it('should redirect to State Pension date page when date of doesn\'t match but is within a valid range and store details in session', () => {
+      nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: datePlus2Months });
+      return assert.becomes(controller.getNewStatePensionDate(sessonStore, genericResponse), { redirectURL: 'revised-your-state-pension-date', statePensionDate: datePlus2Months });
+    });
+    it('should redirect When do you want your pension page when date birth of doesn\'t match and is afterSpa and store details in session', () => {
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: -483235200000 });
-      return assert.becomes(controller.getNewStatePensionDate(sessonStore, genericResponse), { redirectURL: 'revised-your-state-pension-date', statePensionDate: -483235200000 });
+      return assert.becomes(controller.getNewStatePensionDate(sessonStore, genericResponse), { redirectURL: 'when-do-you-want-your-state-pension', statePensionDate: -483235200000 });
     });
 
     it('should redirect to too early page when date of birth doesn\'t match and is too early (before 4 months)', () => {
@@ -96,11 +102,19 @@ describe('DOB controller ', () => {
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
 
-    it('should set new state pension date session object and redirect when user input has a state pension date and status code is OK', async () => {
+    it('should set new state pension date session object and redirect when user input has a state pension date in the past and status code is OK', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
       nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: -483235200000 });
       await controller.dobConfirmRedirect(sessonStore, genericResponse);
       assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, -483235200000);
+      assert.equal(genericResponse.address, 'when-do-you-want-your-state-pension');
+    });
+
+    it('should set new state pension date session object and redirect when user input has a state pension date in the future and status code is OK', async () => {
+      sessonStore.session.customerDetails.dob = 946684800;
+      nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: datePlus2Months });
+      await controller.dobConfirmRedirect(sessonStore, genericResponse);
+      assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, datePlus2Months);
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');
     });
 
@@ -141,7 +155,7 @@ describe('DOB controller ', () => {
 
     it('should redirect to state pension date when in edit mode and data has changed and new date is a mature date', async () => {
       sessonStore.session.customerDetails.dob = 946684800;
-      nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: -483235200000 });
+      nock('http://test-url').post(statePensionAPI).reply(200, { message: messages.MATURE_CLAIM, spaDate: datePlus2Months });
       sessonStoreEdit.session['dob-details'] = { dateYear: 2000, dateMonth: 9, dateDay: 10 };
       await controller.dobConfirmRedirect(sessonStoreEdit, genericResponse);
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');

@@ -29,7 +29,7 @@
   "afterSpa": {
     "p1": {
       "system": "The earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>.",
-      "user": "According to the information you have given us, your State Pension date is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
+      "user": "According to the information you have given us, the earliest date you can get your State Pension is <strong class='bold-small' id='state-pension-date'>{{statePensionDate}}</strong>."
     },
     "fields": {
       "claimFromDate": {
