@@ -23,6 +23,7 @@ let genericResponse = {};
 const statePensionAPI = '/api/customer/recalculateSpaDate';
 
 let sessonStore = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 2000, dateMonth: 9, dateDay: 9 } };
+const sessonStoreDobInPast = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 1955, dateMonth: 9, dateDay: 9 } };
 const noData = { session: { customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: '', dateMonth: '', dateDay: '' } };
 const sessonStoreEdit = { session: { editSection: 'dob-details', customerDetails: { gender: 'Male' }, userDateOfBirthInfo: {} }, body: { dateYear: 2000, dateMonth: 9, dateDay: 9 } };
 const datePlus2Months = moment().add(2, 'months').toDate().getTime();
@@ -100,6 +101,14 @@ describe('DOB controller ', () => {
       assert.equal(sessonStore.session.userDateOfBirthInfo.newDobVerification, 'V');
       assert.equal(sessonStore.session.userDateOfBirthInfo.newStatePensionDate, sessonStore.session.customerDetails.statePensionDate);
       assert.equal(genericResponse.address, 'revised-your-state-pension-date');
+    });
+
+    it('should redirect to when do you want pension page when session date of birth matches user input and is before today', () => {
+      sessonStoreDobInPast.session.customerDetails.dob = -451663754000;
+      sessonStoreDobInPast.session.customerDetails.statePensionDate = -483235200000;
+      controller.dobConfirmRedirect(sessonStoreDobInPast, genericResponse);
+      assert.equal(sessonStoreDobInPast.session.userDateOfBirthInfo.newDobVerification, 'V');
+      assert.equal(genericResponse.address, 'when-do-you-want-your-state-pension');
     });
 
     it('should set new state pension date session object and redirect when user input has a state pension date in the past and status code is OK', async () => {

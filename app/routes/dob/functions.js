@@ -74,6 +74,7 @@ function dobConfirm(req, res) {
 
 async function dobConfirmRedirect(req, res) {
   const errors = validation.dobValidator(req.body, req.session.lang);
+  let url = revisedStatePensionURL;
   if (Object.keys(errors).length > 0) {
     res.render('pages/dob-confirm', { errors, details: req.body });
   } else {
@@ -90,12 +91,13 @@ async function dobConfirmRedirect(req, res) {
         req.session.isBeforeSpa = true;
         if (dateHelper.isDateBeforeToday(req.session.customerDetails.statePensionDate)) {
           req.session.isBeforeSpa = false;
+          url = redirectWhenDoYouWantPensionURL;
         }
         req.session.userDateOfBirthInfo = {
           newDobVerification: dobStatusVerified,
           newStatePensionDate: req.session.customerDetails.statePensionDate,
         };
-        res.redirect(revisedStatePensionURL);
+        res.redirect(url);
       } else {
         try {
           const nspDateResponse = await getNewStatePensionDate(req, res);
