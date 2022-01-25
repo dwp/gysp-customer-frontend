@@ -1,3 +1,12 @@
+# [11.7.0](https://github.com/dwp/gysp-customer-frontend/compare/11.6.1...11.7.0) (2022-01-25)
+
+
+### Features
+
+* Content and pages to display for NV journey when ([17d92f0](https://github.com/dwp/gysp-customer-frontend/commit/17d92f0156e70e77fdcc450016b7c213af4dbd00))
+
+
+
 ## [11.6.1](https://github.com/dwp/gysp-customer-frontend/compare/11.6.0...11.6.1) (2022-01-10)
 
 
