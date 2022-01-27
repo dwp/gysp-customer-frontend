@@ -50,7 +50,7 @@
     "@dwp/commitlint-config-base": "1.2.0",
     "@dwp/eslint-config-base": "5.0.1",
     "@dwp/eslint-config-mocha": "1.2.1",
-    "chai": "4.3.4",
+    "chai": "4.3.6",
     "chai-as-promised": "7.1.1",
     "conventional-changelog-cli": "2.1.1",
     "del": "6.0.0",
