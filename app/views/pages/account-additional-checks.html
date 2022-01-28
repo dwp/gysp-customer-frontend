@@ -1,0 +1,30 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %} 
+{{ t("account-additional-checks:header") }} 
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="account-additional-checks" autocomplete="off" novalidate>
+        <h1 class="govuk-heading-xl">{{ t("account-additional-checks:header") }}</h1>
+        <p class="govuk-body">{{ t("account-additional-checks:msg1") }}</p>
+        <p class="govuk-body">{{ t("account-additional-checks:msg2") }}</p>
+        <p class="govuk-body">{{ t("account-additional-checks:msg3") }}</p>
+        <div class="gysp-button-group">
+          {{ govukButton({
+            text: t("app:button.continue"),
+            classes: "govuk-!-margin-bottom-0",
+            attributes: {
+            id: "form-submit",
+            "data-double-submit-protect": true
+            }
+          }) }}
+        </div>
+      </form>
+    </div>
+
+{% endblock %}

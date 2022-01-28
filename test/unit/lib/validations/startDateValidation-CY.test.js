@@ -15,6 +15,8 @@ const blankObject = {
 };
 
 const dateToday = new Date();
+const dateMoreThanYearAgo = moment().subtract('2', 'years');
+
 const badDayFormObject = {
   dateDay: 50,
   dateMonth: (dateToday.getMonth() + 1),
@@ -22,9 +24,9 @@ const badDayFormObject = {
 };
 
 const dateMoreThanOneYearInPast = {
-  dateDay: moment(dateToday).format('DD'),
-  dateMonth: moment(dateToday).add(1, 'month').format('MM'),
-  dateYear: moment(dateToday).add(-2, 'year').format('YYYY'),
+  dateDay: dateMoreThanYearAgo.format('DD'),
+  dateMonth: dateMoreThanYearAgo.format('MM'),
+  dateYear: dateMoreThanYearAgo.format('YYYY'),
 };
 
 const todayDateObject = {

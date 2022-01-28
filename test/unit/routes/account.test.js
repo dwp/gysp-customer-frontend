@@ -1,4 +1,8 @@
 const { assert } = require('chai');
+const i18next = require('i18next');
+const i18nextFsBackend = require('i18next-fs-backend');
+
+const i18nextConfig = require('../../../config/i18next');
 
 const accountController = require('../../../app/routes/account/functions');
 const responseHelper = require('../../lib/responseHelper');
@@ -48,6 +52,12 @@ const populatedOverseasRequestMoreFields = {
 };
 
 describe('Account controller ', () => {
+  before(async () => {
+    await i18next
+      .use(i18nextFsBackend)
+      .init(i18nextConfig);
+  });
+
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
   });
@@ -70,42 +80,37 @@ describe('Account controller ', () => {
     });
 
     describe(' accountPagePost function (POST /account-details)', () => {
-      it('should return default view name when called with empty object', (done) => {
-        accountController.accountPagePost(emptyRequest, genericResponse);
+      it('should return default view name when called with empty object', async () => {
+        await accountController.accountPagePost(emptyRequest, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details');
-        done();
       });
 
-      it('should return redirect when called with valid object and set validation to disabled when bank account is used', (done) => {
-        accountController.accountPagePost(populatedRequest, genericResponse);
+      it('should return redirect when called with valid object and set validation to disabled when bank account is used', async () => {
+        await accountController.accountPagePost(populatedRequest, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(Object.keys(populatedRequest.session['account-details']).length, 6);
-        done();
       });
 
-      it('should return redirect to DOB proof when called with valid object and set validation to disabled when bank account is used', (done) => {
-        accountController.accountPagePost(populatedNonVerifiedRequest, genericResponse);
+      it('should return redirect to DOB proof when called with valid object and set validation to disabled when bank account is used', async () => {
+        await accountController.accountPagePost(populatedNonVerifiedRequest, genericResponse);
         assert.equal(genericResponse.address, 'you-need-to-send-proof-of-your-date-of-birth');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(Object.keys(populatedRequest.session['account-details']).length, 6);
-        done();
       });
 
-      it('should return redirect when called with valid object and validation is not set when building soc is used', (done) => {
-        accountController.accountPagePost(populatedRequestBuilding, genericResponse);
+      it('should return redirect when called with valid object and validation is not set when building soc is used', async () => {
+        await accountController.accountPagePost(populatedRequestBuilding, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedRequestBuilding.session['account-details'].buildingAccountNumber, '12345678');
         assert.equal(populatedRequestBuilding.session['account-details'].validated, undefined);
-        done();
       });
 
-      it('should filter out any post items that are not allowed', (done) => {
-        accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+      it('should filter out any post items that are not allowed', async () => {
+        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.isUndefined(populatedRequestMoreFields.session['account-details'].batman);
         assert.isUndefined(populatedRequestMoreFields.session['account-details'].batname);
-        done();
       });
     });
   });
@@ -128,34 +133,30 @@ describe('Account controller ', () => {
     });
 
     describe(' accountPagePost function (POST /account-details)', () => {
-      it('should return default view name when called with empty object', (done) => {
-        accountController.accountPagePost(overseasSessionRequest, genericResponse);
+      it('should return default view name when called with empty object', async () => {
+        await accountController.accountPagePost(overseasSessionRequest, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details-overseas');
-        done();
       });
 
-      it('should return redirect to declaration when called with valid verified DOB object', (done) => {
-        accountController.accountPagePost(populatedOverseasRequest, genericResponse);
+      it('should return redirect to declaration when called with valid verified DOB object', async () => {
+        await accountController.accountPagePost(populatedOverseasRequest, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedOverseasRequest.session['account-details-overseas'].accountNumber, 'Test accountNumber');
         assert.equal(Object.keys(populatedOverseasRequest.session['account-details-overseas']).length, 3);
-        done();
       });
 
-      it('should return redirect to dob proof when called with valid non verified DOB object', (done) => {
-        accountController.accountPagePost(populatedNonVerifiedOverseasRequest, genericResponse);
+      it('should return redirect to dob proof when called with valid non verified DOB object', async () => {
+        await accountController.accountPagePost(populatedNonVerifiedOverseasRequest, genericResponse);
         assert.equal(genericResponse.address, 'you-need-to-send-proof-of-your-date-of-birth');
         assert.equal(populatedNonVerifiedOverseasRequest.session['account-details-overseas'].accountNumber, 'Test accountNumber');
         assert.equal(Object.keys(populatedNonVerifiedOverseasRequest.session['account-details-overseas']).length, 3);
-        done();
       });
 
-      it('should filter out any post items that are not allowed', (done) => {
-        accountController.accountPagePost(populatedOverseasRequestMoreFields, genericResponse);
+      it('should filter out any post items that are not allowed', async () => {
+        await accountController.accountPagePost(populatedOverseasRequestMoreFields, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.isUndefined(populatedOverseasRequestMoreFields.session['account-details-overseas'].spiderman);
         assert.isUndefined(populatedOverseasRequestMoreFields.session['account-details-overseas'].shouldBeRemoved);
-        done();
       });
     });
   });

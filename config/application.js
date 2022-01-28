@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-require('dotenv').config();
 
 module.exports = {
   env: process.env.NODE_ENV || 'local',
@@ -43,12 +42,12 @@ module.exports = {
       level: process.env.LOG_LEVEL || 'info',
     },
     feature: {
-      bankFeature: (process.env.FEATURE_BANK === 'true') || true,
       dateConfirmation: (process.env.FEATURE_DATE_CONFIRMATION === 'true') || true,
       verify: (process.env.FEATURE_VERIFY === 'true') || true,
       language: (process.env.FEATURE_LANGUAGE === 'true') || true,
       auditFeature: (!process.env.NODE_ENV || process.env.FEATURE_AUDIT === 'true') || false,
       auditLocalLogFeature: (process.env.FEATURE_AUDIT_LOCAL_LOG === 'true') || false,
+      bankValidationUsingKBV: (process.env.FEATURE_BANK_VALIDATION_USING_KBV === 'true') || false,
     },
     redis: {
       hosts: process.env.REDIS_HOSTS || null,

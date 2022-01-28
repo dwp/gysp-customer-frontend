@@ -2,6 +2,8 @@ const dataStore = require('../../../lib/dataStore');
 const filterRequest = require('../../../lib/utils/requestHelper');
 const validation = require('../../../lib/validations/accountValidation');
 const validationOverseas = require('../../../lib/validations/accountOverseasValidation');
+const { application } = require('../../../config/application');
+const { verifyAccountDetails } = require('../../../lib/validations/transunion/bank-validation');
 
 function checked(data, value) {
   if (data === value) {
@@ -43,7 +45,7 @@ function accountPageOverseasPost(req, res) {
   }
 }
 
-function accountPagePost(req, res) {
+const accountPagePost = async (req, res) => {
   if (req.session.isOverseas) {
     accountPageOverseasPost(req, res);
   } else {
@@ -51,12 +53,20 @@ function accountPagePost(req, res) {
     if (Object.keys(errors).length === 0) {
       const filteredRequest = filterRequest.requestFilter(filterRequest.paymentDetails(), req.body);
       const details = dataStore.filterAccountDetails(filteredRequest);
+      if (application.feature.bankValidationUsingKBV) {
+        const accountStatus = await verifyAccountDetails(req, res, details, req.session.customerDetails);
+        const { result } = accountStatus;
+        if (result.toLowerCase() === 'additionalchecks') {
+          res.redirect('pages/account-additional-checks');
+        }
+        req.session.accountStatus = accountStatus;
+      }
       saveDetailsAndRedirect(req, res, details, 'account-details');
     } else {
       res.render('pages/account-details', { details: req.body, errors, checked });
     }
   }
-}
+};
 
 module.exports.accountPageGet = accountPageGet;
 module.exports.accountPagePost = accountPagePost;
