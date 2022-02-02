@@ -1,4 +1,4 @@
-FROM node:12.22.7-alpine3.11@sha256:88656c98cc43bafa6a517dfdb7b4945693c47ff7d0d24da2254a3174d308f93e
+FROM node:16.13.2-alpine3.14@sha256:d5ff6716e21e03983f8522b6e84f15f50a56e183085553e96d2801fc45dc3c74
 
 LABEL application="gysp/customer-frontend"
 LABEL maintainer="Get your State Pension Team"
@@ -11,7 +11,7 @@ ARG HARDEN_FOLDER=/opt/harden/
 # Need to use internal package repository for apks
 # hadolint ignore=DL3018
 RUN sed -i "s|http://dl-cdn.alpinelinux.org|https://nexus.nonprod.dwpcloud.uk/repository|" /etc/apk/repositories &&\
-  apk add --no-cache tzdata curl
+  apk add --no-cache tzdata curl python2
 
 # Default ENV
 ENV TZ=Europe/London

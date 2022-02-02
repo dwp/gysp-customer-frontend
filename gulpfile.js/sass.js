@@ -1,5 +1,5 @@
 const { series, src, dest } = require('gulp');
-const sass = require('gulp-sass'); // eslint-disable-line import/no-extraneous-dependencies
+const sass = require('gulp-sass')(require('sass')); // eslint-disable-line import/no-extraneous-dependencies
 const cleanCSS = require('gulp-clean-css'); // eslint-disable-line import/no-extraneous-dependencies
 const plumber = require('gulp-plumber'); // eslint-disable-line import/no-extraneous-dependencies
 const sassLint = require('./sass-lint');

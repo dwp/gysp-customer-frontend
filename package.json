@@ -60,7 +60,7 @@
     "gulp-clean-css": "4.3.0",
     "gulp-nodemon": "2.5.0",
     "gulp-plumber": "1.2.1",
-    "gulp-sass": "4.1.1",
+    "gulp-sass": "5.1.0",
     "gulp-sass-lint": "1.4.0",
     "html5shiv": "3.7.3",
     "husky": "6.0.0",
@@ -75,12 +75,13 @@
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
+    "sass": "1.49.4",
     "sinon": "12.0.1",
     "snyk": "1.842.0"
   },
   "engines": {
-    "node": ">=12.0.0",
-    "npm": "6.14.15"
+    "node": ">=16.0.0",
+    "npm": "8.1.2"
   },
   "scripts": {
     "postinstall": "husky install",
