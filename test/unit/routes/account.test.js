@@ -1,11 +1,15 @@
 const { assert } = require('chai');
+const sinon = require('sinon');
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
+const { application } = require('../../../config/application.js');
+const bankValidation = require('../../../lib/validations/transunion/bank-validation');
 const i18nextConfig = require('../../../config/i18next');
 
 const accountController = require('../../../app/routes/account/functions');
 const responseHelper = require('../../lib/responseHelper');
+const { additionChecksRequired } = require('../../../lib/helpers/bankVerificationStatus');
 
 let genericResponse = {};
 const populatedSessionGet = { session: { 'account-details': true } };
@@ -111,6 +115,22 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'check-your-details');
         assert.isUndefined(populatedRequestMoreFields.session['account-details'].batman);
         assert.isUndefined(populatedRequestMoreFields.session['account-details'].batname);
+      });
+
+      it('should redirect user if transunion bank validation fails with additionalchecks required', async () => {
+        const configStub = sinon.stub(application, 'feature');
+        configStub.value({ bankValidationUsingKBV: true });
+
+        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        verifyAccountDetailsStub.returns(Promise.resolve({
+          result: additionChecksRequired(),
+        }));
+
+        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        assert.equal(genericResponse.address, 'extra-checks');
+
+        configStub.restore();
+        verifyAccountDetailsStub.restore();
       });
     });
   });

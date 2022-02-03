@@ -1,7 +1,12 @@
 {
-  "header": "We need to perform additional checks",
-  "msg1": "We still cannot confirm your identity.",
-  "msg2": "We will now ask you 3 multiple choice questions based on your credit record.",
-  "msg3": "This will not affect your credit score.",
+  "header": "We need to do some extra checks",
+  "msg1": "We will ask you 3 multiple choice questions based on your credit record.",
+  "msg2": {
+    "start": "This is to:",
+    "list1": "confirm your identity",
+    "list2": "protect you from fraud",
+    "list3": "make sure we pay your State Pension into the correct account"
+  },
+  "msg3": "These checks will not affect your credit score.",
   "button": "Continue"
 }

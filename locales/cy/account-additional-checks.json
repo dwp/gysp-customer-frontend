@@ -1,7 +1,12 @@
 {
-  "header": "We need to perform additional checks [NEEDS TRANSLATION]",
-  "msg1": "We still cannot confirm your identity. [NEEDS TRANSLATION]",
-  "msg2": "We will now ask you 3 multiple choice questions based on your credit record. [NEEDS TRANSLATION]",
-  "msg3": "This will not affect your credit score. [NEEDS TRANSLATION]",
-  "button": "Continue [NEEDS TRANSLATION]"
+  "header": "Mae angen i ni wneud rhai gwiriadau ychwanegol",
+  "msg1": "Byddwn yn gofyn 3 chwestiwn amlddewis i chi yn seiliedig ar eich cofnod credyd.",
+  "msg2": {
+    "start": "Mae hyn i:",
+    "list1": "gadarnhau pwy ydych",
+    "list2": "eich amddiffyn rhag twyll",
+    "list3": "gwneud yn siŵr ein bod yn talu eich Pensiwn y Wladwriaeth i'r cyfrif cywir"
+  },
+  "msg3": "Ni fydd y gwiriadau hyn yn effeithio ar eich sgôr credyd.",
+  "button": "Continue"
 }

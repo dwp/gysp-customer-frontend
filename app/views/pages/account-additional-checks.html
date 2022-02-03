@@ -1,6 +1,5 @@
 {% extends '../helpers/layout.html' %}
 {% import 'helpers/help-side.html' as help %}
-{% import 'helpers/help-side.html' as help %}
 
 {% block pageTitle %} 
 {{ t("account-additional-checks:header") }} 
@@ -12,7 +11,20 @@
       <form method="post" action="account-additional-checks" autocomplete="off" novalidate>
         <h1 class="govuk-heading-xl">{{ t("account-additional-checks:header") }}</h1>
         <p class="govuk-body">{{ t("account-additional-checks:msg1") }}</p>
-        <p class="govuk-body">{{ t("account-additional-checks:msg2") }}</p>
+        <p class="govuk-body">
+          {{ t("account-additional-checks:msg2.start") }}
+          <ul class="govuk-list govuk-list--bullet">
+            <li>
+              {{ t("account-additional-checks:msg2.list1") }}
+            </li>
+            <li>
+              {{ t("account-additional-checks:msg2.list2") }}
+            </li>
+            <li>
+              {{ t("account-additional-checks:msg2.list3") }}
+            </li>
+          </ul>
+        </p>
         <p class="govuk-body">{{ t("account-additional-checks:msg3") }}</p>
         <div class="gysp-button-group">
           {{ govukButton({
@@ -26,5 +38,7 @@
         </div>
       </form>
     </div>
+    {{ help.sideBar(t, isNorthernIreland, isOverseas, false) }}
+  </div>
 
 {% endblock %}

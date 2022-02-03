@@ -93,6 +93,7 @@ const personalData = require('./app/routes/personal-data/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const sessionRoutes = require('./app/routes/session/routes.js');
+const accountAdditionalChecks = require('./app/routes/account-additional-checks/routes.js');
 
 if (config.env !== 'production') {
   app.use(config.mountUrl, overseasStub);
@@ -263,6 +264,7 @@ app.use(config.mountUrl, declarationRoutes);
 app.use(config.mountUrl, accountRoutes);
 app.use(config.mountUrl, verifyDetailRoutes);
 app.use(config.mountUrl, checkChange);
+app.use(config.mountUrl, accountAdditionalChecks);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
