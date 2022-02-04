@@ -132,6 +132,18 @@ describe('Account controller ', () => {
         configStub.restore();
         verifyAccountDetailsStub.restore();
       });
+
+      it('for overseas customer it should set accountStatus to "Not checked - Resident abroad" if KBV feature is enabled', async () => {
+        const configStub = sinon.stub(application, 'feature');
+        const clonedReq = JSON.parse(JSON.stringify(populatedOverseasRequestMoreFields));
+        configStub.value({ bankValidationUsingKBV: true });
+
+        await accountController.accountPagePost(clonedReq, genericResponse);
+        assert.equal(genericResponse.address, 'check-your-details');
+        assert.deepEqual(clonedReq.session.accountStatus, { result: 'Not checked - Resident abroad' });
+
+        configStub.restore();
+      });
     });
   });
 

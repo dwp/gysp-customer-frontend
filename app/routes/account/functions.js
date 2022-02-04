@@ -4,6 +4,7 @@ const validation = require('../../../lib/validations/accountValidation');
 const validationOverseas = require('../../../lib/validations/accountOverseasValidation');
 const { application } = require('../../../config/application');
 const transUnionValidation = require('../../../lib/validations/transunion/bank-validation');
+const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
 
 function checked(data, value) {
   if (data === value) {
@@ -39,6 +40,11 @@ function accountPageOverseasPost(req, res) {
   const errors = validationOverseas.accountValidator(req.body, req.session.lang);
   if (Object.keys(errors).length === 0) {
     const details = filterRequest.requestFilter(filterRequest.overseasPaymentDetails(), req.body);
+    if (application.feature.bankValidationUsingKBV) {
+      req.session.accountStatus = {
+        result: bankVerificationStatus.featureOverseas(),
+      };
+    }
     return saveDetailsAndRedirect(req, res, details, 'account-details-overseas');
   }
   return res.render('pages/account-details-overseas', { details: req.body, errors });
