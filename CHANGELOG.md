@@ -1,3 +1,14 @@
+# [11.8.0](https://github.com/dwp/gysp-customer-frontend/compare/11.7.0...11.8.0) (2022-02-07)
+
+
+### Features
+
+* **kbv:** Set accountStatus for overseas KBV enabled journey ([aee8c4d](https://github.com/dwp/gysp-customer-frontend/commit/aee8c4d8e3f71fce9fb14197affaab91399a9030))
+* **kbv:** Updated eng/welsh content + refactor ([db8faa7](https://github.com/dwp/gysp-customer-frontend/commit/db8faa7262ab0de31426dc0d64d5dbc3a4b99435))
+* **transunion-kbv:** moved back bank validation call ([6f22894](https://github.com/dwp/gysp-customer-frontend/commit/6f2289400af899a5d6b53598cc2d5d8987129f41))
+
+
+
 # [11.7.0](https://github.com/dwp/gysp-customer-frontend/compare/11.6.1...11.7.0) (2022-01-25)
 
 
