@@ -77,7 +77,7 @@
     "rollup-plugin-node-resolve": "5.2.0",
     "sass": "1.49.4",
     "sinon": "12.0.1",
-    "snyk": "1.849.0"
+    "snyk": "1.851.0"
   },
   "engines": {
     "node": ">=16.0.0",
