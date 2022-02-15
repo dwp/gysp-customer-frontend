@@ -14,15 +14,18 @@ const validDateJson = '1990-01-01T00:00:00.000Z';
 const claimFromDate = { dateDay: '01', dateMonth: '03', dateYear: '2018' };
 
 const claimFromDateSameAsSPA = { dateDay: '01', dateMonth: '02', dateYear: '2018' };
+const accountObjectCommon = {
+  paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
+};
 
 const accountObject = {
-  paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33', validated: 'Invalid',
+  ...accountObjectCommon,
+  validated: 'Invalid',
 };
 const accountObjectBuilding = {
-  paymentMethod: 'building', buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33', buildingRoll: '12',
-};
-const accountObjectBuildingNoRoll = {
-  paymentMethod: 'building', buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33',
+  ...accountObjectCommon,
+  paymentMethod: 'building',
+  buildingRoll: '12',
 };
 const accountOverseasObject = {
   accountHolder: 'Mr Joe Bloggs', accountNumber: '12345678', accountCode: '12345678', validated: 'Invalid',
@@ -75,49 +78,6 @@ const martitalDetailsForm = {
 };
 const martitalDetailsFormOther = {
   firstName: 'first', otherName: 'Other', surname: 'last', dobDay: '01', dobMonth: '01', dobYear: '1990',
-};
-
-const formObjectNoLivedWorkAbroadSingleBuildingNoRollNumber = {
-  'lived-abroad': { livedAbroad: 'no' },
-  'worked-abroad': { workedAbroad: 'no' },
-  'contact-details': { homeTelephoneNumber: '1234', workTelephoneNumber: '', email: '' },
-  'marital-select': { maritalStatus: 'single' },
-  'account-details': accountObjectBuildingNoRoll,
-  userDateOfBirthInfo: customerDetailsObject,
-  customerDetails: customerDetailsObject,
-  inviteKey,
-};
-
-const validJsonNoLivedWorkAbroadSingleBuildingNoRollNumber = {
-  livedAbroad: false,
-  livedAbroadQ: 'Have you ever lived outside of the UK?',
-  workedAbroad: false,
-  workedAbroadQ: 'Have you worked outside of the UK?',
-  contactDetail: { homeTelephoneNumber: '1234', homeTelephoneNumberQ: 'Home phone number' },
-  contactDetailQ: 'How would you like to be contacted?',
-  maritalStatus: 'Single',
-  maritalStatusQ: 'What is your current marital status?',
-  accountDetail: {
-    buildingSocietyDetail: {
-      result: 'Fail', resultQ: 'Bank Authentication result', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Account holder name', accountNumber: '12345678', accountNumberQ: 'Account number', sortCode: '112233', sortCodeQ: 'Sort code',
-    },
-    buildingSocietyDetailQ: 'Building society account',
-    paymentMethodQ: 'How would you like to be paid?',
-  },
-  accountDetailQ: 'How would you like to be paid?',
-  inviteKey: '1234567',
-  inviteKeyQ: 'What is your invitation code?',
-  confirmedAddress: true,
-  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
-  declaration: true,
-  declarationQ: 'Declaration',
-  dobVerification: 'V',
-  dobVerificationQ: 'Date of birth verification status',
-  claimFromDate: null,
-  claimFromDateQ: null,
-  welshIndicator: false,
-  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
-  altFormatRequired: false,
 };
 
 const formObjectLivedAbroad = {
@@ -1084,11 +1044,6 @@ describe('Claim object ', () => {
     it('should convert object to valid json with livedAbroad value set as false when lived abroad is no', async () => {
       const claimObjectValue = await claimObject.sessionToObject(formObjectNotLivedAbroadMarried, accountStatus);
       assert.deepEqual(claimObjectValue, validJsonNotLivedAbroadMarried);
-    });
-
-    it('should convert object to valid json without roll number when roll number is empty', async () => {
-      const claimObjectValue = await claimObject.sessionToObject(formObjectNoLivedWorkAbroadSingleBuildingNoRollNumber, accountStatus);
-      assert.deepEqual(claimObjectValue, validJsonNoLivedWorkAbroadSingleBuildingNoRollNumber);
     });
 
     describe(' parter status ', () => {

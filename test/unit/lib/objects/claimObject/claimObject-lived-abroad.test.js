@@ -8,7 +8,7 @@ const i18nextConfig = require('../../../../../config/i18next');
 const claimObject = require('../../../../../lib/objects/claimObject');
 
 const accountObject = {
-  paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
+  paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
 };
 const customerDetailsObject = { dobVerification: 'V' };
 

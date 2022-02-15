@@ -1,0 +1,74 @@
+{% extends '../helpers/layout.html' %}
+{% from 'govuk/components/summary-list/macro.njk' import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}{{ t("cannot-pay-money-to-account:header") }}{% endblock %}
+
+{% set bankDetailRows = [
+  {
+    key: {
+      text: t('cannot-pay-money-to-account:name')
+    },
+    value: {
+      text: details.bankAccountHolder
+    }
+  },
+  {
+    key: {
+      text: t('cannot-pay-money-to-account:sortCode')
+    },
+    value: {
+      text: details.bankSortCode
+    }
+  },
+  {
+    key: {
+      text: t('cannot-pay-money-to-account:accountNumber')
+    },
+    value: {
+      text: details.bankAccountNumber
+    }
+  }] %}
+
+{% if details.buildingRoll %} 
+  {% set bankDetailRows = (bankDetailRows.push({
+    key: {
+      text: t('cannot-pay-money-to-account:buildingSocietyRoll')
+    },
+    value: {
+      text: details.buildingRoll
+    }
+  }), bankDetailRows) %}
+
+{% endif %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t('cannot-pay-money-to-account:header') }}</h1>
+      {{ govukInsetText({
+        text: t('cannot-pay-money-to-account:hintText'),
+        id: 'hintText'
+      }) }}
+
+      {{ govukSummaryList({
+        rows: bankDetailRows
+      }) }}
+
+      {{ govukButton({
+        text: t('cannot-pay-money-to-account:button'),
+        attributes: {
+          id: 'changeDetailsButton',
+          'data-ga-check': 'cannot-pay-money-to-account-page'
+        },
+        href: '/account-details'
+      }) }}
+
+    </div>
+    {{ help.sideBar(t, isNorthernIreland, isOverseas, false) }}
+  </div>
+
+{% endblock %}

@@ -9,11 +9,6 @@ describe('Data store filter ', () => {
     beforeEach(() => {
       data = {
         paymentMethod: 'bank',
-        buildingAccountHolder: true,
-        buildingAccountNumber: true,
-        buildingSortCodeField1: true,
-        buildingSortCodeField2: true,
-        buildingSortCodeField3: true,
         buildingRoll: true,
         bankAccountHolder: true,
         bankAccountNumber: true,
@@ -25,22 +20,18 @@ describe('Data store filter ', () => {
 
     it('should delete building details when bank is supplied', () => {
       const dataSet = dataStore.filterAccountDetails(data);
-      assert.isUndefined(dataSet.buildingAccountHolder);
-      assert.isUndefined(dataSet.buildingAccountNumber);
-      assert.isUndefined(dataSet.buildingSortCodeField1);
-      assert.isUndefined(dataSet.buildingSortCodeField2);
-      assert.isUndefined(dataSet.buildingSortCodeField3);
       assert.isUndefined(dataSet.buildingRoll);
     });
 
-    it('should delete banking details when bank is supplied', () => {
+    it('should have building soc rollnumber when building is supplied', () => {
       data.paymentMethod = 'building';
       const dataSet = dataStore.filterAccountDetails(data);
-      assert.isUndefined(dataSet.bankAccountHolder);
-      assert.isUndefined(dataSet.bankAccountNumber);
-      assert.isUndefined(dataSet.bankSortCodeField1);
-      assert.isUndefined(dataSet.bankSortCodeField2);
-      assert.isUndefined(dataSet.bankSortCodeField3);
+      assert.isDefined(dataSet.bankAccountHolder);
+      assert.isDefined(dataSet.bankAccountNumber);
+      assert.isDefined(dataSet.bankSortCodeField1);
+      assert.isDefined(dataSet.bankSortCodeField2);
+      assert.isDefined(dataSet.bankSortCodeField3);
+      assert.isDefined(dataSet.buildingRoll);
     });
   });
 

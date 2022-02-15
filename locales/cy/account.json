@@ -1,6 +1,8 @@
 {
-  "header":"Sut hoffech gael eich talu?",
+  "header": "Ble hoffech i ni dalu eich Pensiwn y Wladwriaeth?",
   "p": "Dim ond i'ch cyfrif banc neu gymdeithas adeiladu personol neu ar y cyd y gallwn dalu eich Pensiwn y Wladwriaeth.",
+  "previousHeader": "Sut hoffech gael eich talu?",
+  "hintText": "Os nad yw'r cyfrif yn eich enw chi, bydd angen i ni wneud gwiriadau pellach.",
   "errors": {
       "header": "Mae yna broblem"
     },
@@ -8,53 +10,51 @@
       "result": "Canlyniad Dilysu Banc",
       "messages": "Rhybuddion",
       "paymentMethod": {
-        "fieldset": "Sut hoffech gael eich talu?",
-        "label-display": "Sut hoffech gael eich talu?",
         "options": {
           "bank": "Cyfrif banc",
           "building": "Cyfrif cymdeithas adeiladu"
-        },
-        "errors": {
-          "required": "Dewiswch os hoffech gael eich talu i gyfrif banc neu gymdeithas adeiladu."
         }
       },
       "accountHolder": {
-        "label": "Enw deilydd y cyfrif",
+        "label": "Enw ar y cyfrif",
+        "previousLabel": "Enw deilydd y cyfrif",
         "label-display": "Enw deilydd y cyfrif",
         "errors": {
-          "required": "Rhowch enw deiliad y cyfrif.",
-          "format": "Mae'n rhaid i'r enw ddechrau gyda llythyren a dim ond llythrennau a i z, cysylltnodau, collnodau, atalnodau llawn, gofodau ac ampersand.",
-          "length": "Mae'n rhaid i'r enw fod yn 70 nod neu lai."
+          "required": "Rhowch yr enw sydd ar y cyfrif",
+          "format": "Mae’n rhaid i'r enw sydd ar y cyfrif ddechrau gyda llythyren a chynnwys llythrennau, cysylltnodau, collnodau, atalnodau llawn, bylchau ac ampersandau yn unig",
+          "length": "Mae’n rhaid i'r enw sydd ar y cyfrif fod yn 70 nod neu lai"
         }
       },
       "accountNumber": {
         "label": "Rhif y cyfrif",
+        "hint": "Rhaid bod yn 8 digid o hyd",
         "label-display": "Rhif y cyfrif",
         "errors": {
-          "required": "Rhowch rif cyfrif.",
-          "length": "Mae'n rhaid i rif y cyfrif fod yn 8 rhif.",
-          "format": "Mae'n rhaid i rif y cyfrif fod yn 8 rhif."
+          "required": "Rhowch rif cyfrif",
+          "length": "Mae'n rhaid i rif y cyfrif fod yn 8 rhif",
+          "format": "Mae’n rhaid i’r rif cyfrif gynnwys rhifau yn unig",
+          "transunionInvalid": "Nid yw rhif y cyfrif yn bodoli - gwiriwch ef a rhoi cynnig arall arni"
         }
       },
       "sortCode": {
         "label": "Cod didoli",
+        "hint": "Mae rhaid iddo fod yn 6 digid o hyd",
         "label-display": "Cod didoli",
-        "label-1": "2 ddigid cyntaf",
-        "label-2": "Yr ail 2 ddigid",
-        "label-3": "Y 2 ddigid olaf",
         "errors": {
           "required": "Rhowch god didoli.",
-          "format": "Rhowch god didoli yn y fformat cywir, fel 11 22 33.",
-          "length": "Rhowch god didoli yn y fformat cywir, fel 11 22 33."
+          "format": "Rhowch god didoli yn y fformat cywir, fel 11 22 33",
+          "length": "Rhowch god didoli yn y fformat cywir, fel 11 22 33",
+          "transunionInvalid": "Nid yw'r cod didoli yn bodoli - gwiriwch ef a rhoi cynnig arall arni"
         }
       },
       "buildingRoll": {
-        "label": "Rhif rol neu gyfeirnod cymdeithas adeiladu",
-        "label-display": "Os yw'ch cymdeithas adeiladu yn defnyddio rhif rhôl neu rif cyfeirnod, mae angen i chi ei ddarparu. Dewch o hyd iddo ar eich paslyfr.",
-        "hint": "Os yw'ch cymdeithas adeiladu yn defnyddio rhif rhôl neu rif cyfeirnod, mae angen i chi ei ddarparu. Dewch o hyd iddo ar eich paslyfr.",
+        "label": "Rhif rôl cymdeithas adeiladu (os oes gennych un)",
+        "previousLabel": "Rhif rol neu gyfeirnod cymdeithas adeiladu",
+        "label-display":  "Rhif rôl cymdeithas adeiladu (os oes gennych un)",
+        "hint": "Gallwch ddod o hyd iddo ar eich cerdyn, cyfriflen neu lyfr pasbort",
         "errors": {
-          "format": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod gynnwys rhifau 0 i 9 yn unig, llythrennau a i z, cysylltnodau, atalnodau llawn, gofodau, atalnodau, slaes, collnodau, serennau, ampersand a chromfachau.",
-          "length": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod fod yn 18 nod neu lai."
+          "format": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod gynnwys rhifau 0 i 9 yn unig, llythrennau a i z, cysylltnodau, atalnodau llawn, gofodau, atalnodau, slaes, collnodau, serennau, ampersand a chromfachau",
+          "length": "Mae'n rhaid i'r rif rhôl neu'r cyfeirnod fod yn 18 nod neu lai"
         }
       }
     }

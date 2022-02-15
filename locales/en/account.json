@@ -1,61 +1,61 @@
 {
-  "header":"How would you like to be paid?",
+  "header":"Where would you like us to pay your State Pension?",
   "p": "We can only pay your State Pension into your personal or joint bank or building society account.",
+  "previousHeader": "How would you like to be paid?",
+  "hintText": "If the account is not in your name, we will need to make further checks.",
   "errors": {
-      "header": "There is a problem"
+    "header": "There is a problem"
+  },
+  "fields": {
+    "result": "Bank Authentication result",
+    "messages": "Warnings",
+    "paymentMethod": {
+      "options": {
+        "bank": "Bank account",
+        "building": "Building society account"
+      }
     },
-    "fields": {
-      "result": "Bank Authentication result",
-      "messages": "Warnings",
-      "paymentMethod": {
-        "fieldset": "How would you like to be paid?",
-        "label-display": "How would you like to be paid?",
-        "options": {
-          "bank": "Bank account",
-          "building": "Building society account"
-        },
-        "errors": {
-          "required": "Select whether you would like to be paid into a bank or a building society account."
-        }
-      },
-      "accountHolder": {
-        "label": "Account holder name",
-        "label-display": "Account holder name",
-        "errors": {
-          "required": "Enter the account holder’s name.",
-          "format": "Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.",
-          "length": "Name must be 70 characters or less."
-        }
-      },
-      "accountNumber": {
-        "label": "Account number",
-        "label-display": "Account number",
-        "errors": {
-          "required": "Enter an account number.",
-          "length": "Account number must be 8 numbers.",
-          "format": "Account number must be 8 numbers."
-        }
-      },
-      "sortCode": {
-        "label": "Sort code",
-        "label-display": "Sort code",
-        "label-1": "First 2 digits",
-        "label-2": "Second 2 digits",
-        "label-3": "Last 2 digits",
-        "errors": {
-          "required": "Enter a sort code.",
-          "format": "Enter a sort code in the correct format, like 11 22 33.",
-          "length": "Enter a sort code in the correct format, like 11 22 33."
-        }
-      },
-      "buildingRoll": {
-        "label": "Building society roll or reference number",
-        "label-display": "If your building society uses a roll or reference number, you need to provide it. You will find it on your passbook.",
-        "hint": "If your building society uses a roll or reference number, you need to provide it. You will find it on your passbook.",
-        "errors": {
-          "format": "Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.",
-          "length": "Roll or reference number must be 18 characters or less."
-        }
+    "accountHolder": {
+      "label": "Name on the account",
+      "previousLabel": "Account holder name",
+      "label-display": "Name on the account",
+      "errors": {
+        "required": "Enter the name on the account",
+        "format": "Name on the account must start with a letter and only include letters, hyphens, apostrophes, full stops, spaces and ampersands",
+        "length": "Name on the account must be 70 characters or less"
+      }
+    },
+    "accountNumber": {
+      "label": "Account number",
+      "hint": "Must be 8 digits long",
+      "label-display": "Account number",
+      "errors": {
+        "required": "Enter an account number",
+        "length": "Account number must be 8 digits",
+        "format": "Account number must contain numbers only",
+        "transunionInvalid": "The account number does not exist - check it and try again"
+      }
+    },
+    "sortCode": {
+      "label": "Sort code",
+      "hint": "Must be 6 digits long",
+      "label-display": "Sort code",
+      "errors": {
+        "required": "Enter a sort code",
+        "format": "Enter a sort code in the correct format, like 11 22 33",
+        "length": "Enter a sort code in the correct format, like 11 22 33",
+        "transunionInvalid": "The sort code does not exist - check it and try again"
+      }
+    },
+    "buildingRoll": {
+      "label": "Building society roll number (if you have one)",
+      "previousLabel": "Building society roll or reference number",
+      "label-display": "Building society roll number (if you have one)",
+      "hint": "You can find it on your card, statement or passbook",
+      "errors": {
+        "format": "Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets",
+        "length": "Roll or reference number must be 18 characters or less"
       }
     }
+  }
   }

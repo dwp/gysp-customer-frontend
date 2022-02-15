@@ -3,7 +3,8 @@ const filterRequest = require('../../../lib/utils/requestHelper');
 const validation = require('../../../lib/validations/accountValidation');
 const validationOverseas = require('../../../lib/validations/accountOverseasValidation');
 const { application } = require('../../../config/application');
-const transUnionValidation = require('../../../lib/validations/transunion/bank-validation');
+const { buildTransunionValidationError } = require('../../../lib/validations/transunion/bank-validation.js');
+const transUnionValidation = require('../../../lib/validations/transunion/bank-validation.js');
 const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
 
 function checked(data, value) {
@@ -55,15 +56,28 @@ const accountPagePost = async (req, res) => {
     return accountPageOverseasPost(req, res);
   }
 
-  const errors = validation.accountValidator(req.body, req.session.lang);
+  const postRequestBody = Object.assign(Object.create(null), req.body);
+  postRequestBody.paymentMethod = postRequestBody.buildingRoll ? 'building' : 'bank';
+  const errors = validation.accountValidator(postRequestBody, req.session.lang);
+
   if (Object.keys(errors).length === 0) {
-    const filteredRequest = filterRequest.requestFilter(filterRequest.paymentDetails(), req.body);
+    const filteredRequest = filterRequest.requestFilter(filterRequest.paymentDetails(), postRequestBody);
     const details = dataStore.filterAccountDetails(filteredRequest);
     if (application.feature.bankValidationUsingKBV) {
       const accountStatus = await transUnionValidation.verifyAccountDetails(
         req, res, details, req.session.customerDetails,
       );
-      const { result } = accountStatus;
+      const { result, messages } = accountStatus;
+
+      const transunionError = buildTransunionValidationError(messages);
+      if (transunionError.bothSortCodeAndAccNumberInvalid()) {
+        dataStore.save(req, 'account-details', details);
+        return res.redirect('cannot-pay-money-to-account');
+      }
+
+      if (transunionError.eitherSortCodeOrAccNumberInvalid()) {
+        return res.render('pages/account-details', { details: postRequestBody, errors: transunionError.errors, checked });
+      }
 
       if (result.toLowerCase() === 'additionalchecks') {
         dataStore.save(req, 'account-details', details);
@@ -73,7 +87,7 @@ const accountPagePost = async (req, res) => {
     }
     return saveDetailsAndRedirect(req, res, details, 'account-details');
   }
-  return res.render('pages/account-details', { details: req.body, errors, checked });
+  return res.render('pages/account-details', { details: postRequestBody, errors, checked });
 };
 
 module.exports.accountPageGet = accountPageGet;

@@ -5,42 +5,46 @@ const i18nextFsBackend = require('i18next-fs-backend');
 
 const { application } = require('../../../config/application.js');
 const bankValidation = require('../../../lib/validations/transunion/bank-validation');
+const { SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG } = require('../../../lib/validations/transunion/bank-validation');
 const i18nextConfig = require('../../../config/i18next');
 
 const accountController = require('../../../app/routes/account/functions');
 const responseHelper = require('../../lib/responseHelper');
-const { additionChecksRequired } = require('../../../lib/helpers/bankVerificationStatus');
+const { additionChecksRequired, badRequest } = require('../../../lib/helpers/bankVerificationStatus');
 
 let genericResponse = {};
 const populatedSessionGet = { session: { 'account-details': true } };
 const emptyRequest = {
   session: {},
   body: {
-    paymentMethod: '', bankAccountHolder: '', bankAccountNumber: '', bankSortCodeField1: '', bankSortCodeField2: '', bankSortCodeField3: '',
+    bankAccountHolder: '', bankAccountNumber: '', bankSortCode: '',
   },
 };
 const populatedRequest = {
   session: { customerDetails: {}, userDateOfBirthInfo: { newStatePensionDate: 'Yes', newDobVerification: 'V' } },
   body: {
-    paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
   },
 };
 const populatedNonVerifiedRequest = {
   session: { customerDetails: {}, userDateOfBirthInfo: { newStatePensionDate: 'Yes', newDobVerification: 'NV' } },
   body: {
-    paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
   },
 };
 const populatedRequestBuilding = {
   session: { customerDetails: {}, userDateOfBirthInfo: { newStatePensionDate: 'Yes', newDobVerification: 'V' } },
   body: {
-    paymentMethod: 'building', buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33', buildingRoll: 'Test',
+    bankAccountHolder: 'Mr Joe Bloggs',
+    bankAccountNumber: '12345678',
+    bankSortCode: '112233',
+    buildingRoll: 'Test',
   },
 };
 const populatedRequestMoreFields = {
   session: { customerDetails: {}, userDateOfBirthInfo: { newStatePensionDate: 'Yes', newDobVerification: 'V' } },
   body: {
-    batman: true, batname: 'Jim', paymentMethod: 'bank', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
+    batman: true, batname: 'Jim', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
   },
 };
 
@@ -93,20 +97,20 @@ describe('Account controller ', () => {
         await accountController.accountPagePost(populatedRequest, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
-        assert.equal(Object.keys(populatedRequest.session['account-details']).length, 6);
+        assert.equal(Object.keys(populatedRequest.session['account-details']).length, 4);
       });
 
       it('should return redirect to DOB proof when called with valid object and set validation to disabled when bank account is used', async () => {
         await accountController.accountPagePost(populatedNonVerifiedRequest, genericResponse);
         assert.equal(genericResponse.address, 'you-need-to-send-proof-of-your-date-of-birth');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
-        assert.equal(Object.keys(populatedRequest.session['account-details']).length, 6);
+        assert.equal(Object.keys(populatedRequest.session['account-details']).length, 4);
       });
 
       it('should return redirect when called with valid object and validation is not set when building soc is used', async () => {
         await accountController.accountPagePost(populatedRequestBuilding, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
-        assert.equal(populatedRequestBuilding.session['account-details'].buildingAccountNumber, '12345678');
+        assert.equal(populatedRequestBuilding.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(populatedRequestBuilding.session['account-details'].validated, undefined);
       });
 
@@ -128,6 +132,61 @@ describe('Account controller ', () => {
 
         await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
         assert.equal(genericResponse.address, 'extra-checks');
+
+        configStub.restore();
+        verifyAccountDetailsStub.restore();
+      });
+
+      it('should redirect user to cannot-pay-money-to-account if transunion bank validation fails for sort code AND account number errors', async () => {
+        const configStub = sinon.stub(application, 'feature');
+        configStub.value({ bankValidationUsingKBV: true });
+
+        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        verifyAccountDetailsStub.returns(Promise.resolve({
+          result: badRequest(),
+          messages: [SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG],
+        }));
+
+        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        assert.equal(genericResponse.address, 'cannot-pay-money-to-account');
+
+        configStub.restore();
+        verifyAccountDetailsStub.restore();
+      });
+
+      it('should redirect user to account details page with transunion errors if transunion bank validation fails for sort code OR account number error', async () => {
+        const configStub = sinon.stub(application, 'feature');
+        configStub.value({ bankValidationUsingKBV: true });
+
+        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        verifyAccountDetailsStub.returns(Promise.resolve({
+          result: badRequest(),
+          messages: [SORT_CODE_INVALID_MSG],
+        }));
+
+        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        assert.equal(genericResponse.viewName, 'pages/account-details');
+        assert.deepEqual(genericResponse.data.details, {
+          bankSortCode: '112233',
+          bankAccountNumber: '12345678',
+          bankAccountHolder: 'Mr Joe Bloggs',
+          batman: true,
+          batname: 'Jim',
+          paymentMethod: 'bank',
+        });
+        assert.deepEqual(genericResponse.data.errors, {
+          bankSortCode: {
+            text: 'The sort code does not exist - check it and try again',
+            visuallyHiddenText: 'Error',
+          },
+          errorSummary: [{
+            attributes: {
+              'data-journey': 'account-details:error:bank-sort-code',
+            },
+            href: '#bankSortCode',
+            text: 'The sort code does not exist - check it and try again',
+          }],
+        });
 
         configStub.restore();
         verifyAccountDetailsStub.restore();

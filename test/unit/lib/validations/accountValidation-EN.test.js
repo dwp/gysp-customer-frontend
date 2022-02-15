@@ -6,38 +6,37 @@ const i18nextFsBackend = require('i18next-fs-backend');
 const i18nextConfig = require('../../../../config/i18next');
 
 const validation = require('../../../../lib/validations/accountValidation');
-
-const errorBankSummaryResponse = [
-  { href: '#bankAccountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
-  { href: '#bankSortCodeField1', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
-  { href: '#bankAccountNumber', text: 'Enter an account number.', attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
-];
-
-const errorBuildingSummaryResponse = [
-  { href: '#buildingAccountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details:error:building-account-holder' } },
-  { href: '#buildingSortCodeField1', text: 'Enter a sort code.', attributes: { 'data-journey': 'account-details:error:building-sort-code' } },
-  { href: '#buildingAccountNumber', text: 'Enter an account number.', attributes: { 'data-journey': 'account-details:error:building-account-number' } },
-];
+const { fields: translatedErr } = require('../../../../locales/en/account.json');
+const { 'error-message': { visuallyHiddenText: errMsg } } = require('../../../../locales/en/app.json');
 
 /* Objects */
 const bankObjects = {
   emptyObject: {
-    bankAccountHolder: '', bankAccountNumber: '', bankSortCodeField1: '', bankSortCodeField2: '', bankSortCodeField3: '',
+    bankAccountHolder: '', bankAccountNumber: '', bankSortCode: '',
   },
   longTextObject: {
-    bankAccountHolder: 'qwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiowe', bankAccountNumber: '', bankSortCodeField1: '', bankSortCodeField2: '', bankSortCodeField3: '',
+    bankAccountHolder: 'qwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiowe', bankAccountNumber: '', bankSortCode: '',
   },
   validObject: {
-    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCodeField1: '11', bankSortCodeField2: '22', bankSortCodeField3: '33',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
   },
   shortAccount: {
-    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '1234567', bankSortCodeField1: '1', bankSortCodeField2: '2', bankSortCodeField3: '3',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '1234567', bankSortCode: '112233',
+  },
+  shortSortCode: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '1234567', bankSortCode: '1122',
   },
   longAccount: {
-    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '123456789', bankSortCodeField1: '111', bankSortCodeField2: '222', bankSortCodeField3: '333',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '123456789', bankSortCode: '111222',
+  },
+  longSortCode: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '123456789', bankSortCode: '11223344',
   },
   textAccount: {
-    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: 'AAnereo', bankSortCodeField1: 'a', bankSortCodeField2: 'b', bankSortCodeField3: 'c',
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: 'AAnereo', bankSortCode: '112233',
+  },
+  textSortCode: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: 'AAnereo', bankSortCode: 'a',
   },
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
@@ -45,96 +44,57 @@ const bankObjects = {
   dashAccountNumberAndSortCode: {
     bankAccountHolder: ' Space Mistake',
     bankAccountNumber: '-1234567',
-    bankSortCodeField1: '-1',
-    bankSortCodeField2: '-2',
-    bankSortCodeField3: '-3',
+    bankSortCode: '-1',
   },
   fullStopAccountNumber: {
     bankAccountHolder: ' Space Mistake',
     bankAccountNumber: '.1234567',
-    bankSortCodeField1: '11',
-    bankSortCodeField2: '22',
-    bankSortCodeField3: '33',
+    bankSortCode: '112233',
   },
   dashAndFullStopAccountNumber: {
     bankAccountHolder: ' Space Mistake',
     bankAccountNumber: '-.123456',
-    bankSortCodeField1: '11',
-    bankSortCodeField2: '22',
-    bankSortCodeField3: '33',
+    bankSortCode: '112233',
+  },
+  validObjectWithBuildingSociety: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233', buildingRoll: 'CXJ-K6 897/98X',
+  },
+  longBuildingSociety: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233', buildingRoll: 'CXJAAAAAAAAAAAAAAAAAA',
+  },
+  blankBuildingSociety: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233', buildingRoll: '',
+  },
+  invalidBuildingSociety: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233', buildingRoll: '$$roll',
   },
 };
-
-const paymentMethodBank = { paymentMethod: 'bank' };
-const paymentMethodBuilding = { paymentMethod: 'building' };
-const paymentMethodEmpty = { paymentMethod: '' };
 
 const paymentMethodBankEmpty = {
-  paymentMethod: 'bank', bankAccountHolder: '', bankAccountNumber: '', bankSortCodeField1: '', bankSortCodeField2: '', bankSortCodeField3: '',
-};
-const paymentMethodBuildingEmpty = {
-  paymentMethod: 'building', buildingAccountHolder: '', buildingAccountNumber: '', buildingSortCodeField1: '', buildingSortCodeField2: '', buildingSortCodeField3: '', buildingRoll: '',
+  paymentMethod: 'bank', bankAccountHolder: '', bankAccountNumber: '', bankSortCode: '',
 };
 
-const buildingObjects = {
-  emptyObject: {
-    buildingAccountHolder: '', buildingAccountNumber: '', buildingSortCodeField1: '', buildingSortCodeField2: '', buildingSortCodeField3: '', buildingRoll: '',
-  },
-  validObject: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33', buildingRoll: 'CXJ-K6 897/98X',
-  },
-  validObjectNoRoll: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33', buildingRoll: '',
-  },
-  longTextObject: {
-    buildingAccountHolder: 'qwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiowe', buildingAccountNumber: '12345678', buildingSortCodeField1: '11', buildingSortCodeField2: '22', buildingSortCodeField3: '33', buildingRoll: 'CXJ-K6 897/98X',
-  },
-  shortAccount: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '1234567', buildingSortCodeField1: '1', buildingSortCodeField2: '2', buildingSortCodeField3: '3', buildingRoll: '',
-  },
-  longAccount: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: '123456789', buildingSortCodeField1: '111', buildingSortCodeField2: '222', buildingSortCodeField3: '333', buildingRoll: '',
-  },
-  textAccount: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: 'AAnereo', buildingSortCodeField1: 'a', buildingSortCodeField2: 'b', buildingSortCodeField3: 'c', buildingRoll: '',
-  },
-  validRoll: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: 'AAnereo', buildingSortCodeField1: 'a', buildingSortCodeField2: 'b', buildingSortCodeField3: 'c', buildingRoll: '342',
-  },
-  invalidRoll: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: 'AAnereo', buildingSortCodeField1: 'a', buildingSortCodeField2: 'b', buildingSortCodeField3: 'c', buildingRoll: '$$roll',
-  },
-  longRoll: {
-    buildingAccountHolder: 'Mr Joe Bloggs', buildingAccountNumber: 'AAnereo', buildingSortCodeField1: 'a', buildingSortCodeField2: 'b', buildingSortCodeField3: 'c', buildingRoll: 'qwertyqwertyqwertyq',
-  },
-  nonAlphaName: { buildingAccountHolder: '££', buildingAccountNumber: '123456789', buildingRoll: '' },
-  includesAnd: { buildingAccountHolder: 'One && Two', buildingAccountNumber: '123456789', buildingRoll: '' },
-  startNotAlphaName: { buildingAccountHolder: ' Space Mistake', buildingAccountNumber: '123456789', buildingRoll: '' },
-  dashAccountNumberAndSortCode: {
-    buildingAccountHolder: 'Mr Joe Bloggs',
-    buildingAccountNumber: '-1234567',
-    buildingSortCodeField1: '11',
-    buildingSortCodeField2: '22',
-    buildingSortCodeField3: '33',
-    buildingRoll: 'CXJ-K6 897/98X',
-  },
-  fullStopAccountNumber: {
-    buildingAccountHolder: 'Mr Joe Bloggs',
-    buildingAccountNumber: '.1234567',
-    buildingSortCodeField1: '11',
-    buildingSortCodeField2: '22',
-    buildingSortCodeField3: '33',
-    buildingRoll: 'CXJ-K6 897/98X',
-  },
-  dashAndFullStopAccountNumber: {
-    buildingAccountHolder: 'Mr Joe Bloggs',
-    buildingAccountNumber: '.-123456',
-    buildingSortCodeField1: '11',
-    buildingSortCodeField2: '22',
-    buildingSortCodeField3: '33',
-    buildingRoll: 'CXJ-K6 897/98X',
-  },
+const ACC_NUM_ERR = {
+  ...translatedErr.accountNumber.errors,
 };
+
+const SORT_CODE_ERR = {
+  ...translatedErr.sortCode.errors,
+};
+
+const ACC_HOLDER_ERR = {
+  ...translatedErr.accountHolder.errors,
+};
+
+const BUILDING_SOC_ROLL_ERR = {
+  ...translatedErr.buildingRoll.errors,
+};
+
+const errorBankSummaryResponse = [
+  { href: '#bankAccountHolder', text: ACC_HOLDER_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
+  { href: '#bankSortCode', text: SORT_CODE_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
+  { href: '#bankAccountNumber', text: ACC_NUM_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
+];
 
 describe('accountValidator - EN', () => {
   before(async () => {
@@ -149,31 +109,6 @@ describe('accountValidator - EN', () => {
       assert.lengthOf(Object.keys(accountValidationResponse), 4);
       assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBankSummaryResponse));
     });
-
-    it('should return building errors when called with building as a select', () => {
-      const accountValidationResponse = validation.accountValidator(paymentMethodBuildingEmpty, 'en');
-      assert.lengthOf(Object.keys(accountValidationResponse), 4);
-      assert.equal(JSON.stringify(accountValidationResponse.errorSummary), JSON.stringify(errorBuildingSummaryResponse));
-    });
-  });
-
-  describe('payment validator', () => {
-    it('should return no error when bank is supplied ', () => {
-      const accountValidationResponse = validation.paymentValidator(paymentMethodBank);
-      assert.lengthOf(Object.keys(accountValidationResponse), 0);
-    });
-
-    it('should return no error when building is supplied ', () => {
-      const accountValidationResponse = validation.paymentValidator(paymentMethodBuilding);
-      assert.lengthOf(Object.keys(accountValidationResponse), 0);
-    });
-
-    it('should return error when nothing is supplied', () => {
-      const accountValidationResponse = validation.paymentValidator(paymentMethodEmpty);
-      assert.equal(accountValidationResponse.paymentMethod.visuallyHiddenText, 'Error');
-      assert.equal(accountValidationResponse.paymentMethod.text, 'Select whether you would like to be paid into a bank or a building society account.');
-      assert.equal(accountValidationResponse.errorSummary[0].text, 'Select whether you would like to be paid into a bank or a building society account.');
-    });
   });
 
   describe('bank validator', () => {
@@ -185,27 +120,27 @@ describe('accountValidator - EN', () => {
     describe('accountName', () => {
       it('should return error if empty ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Enter the account holder’s name.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter the account holder’s name.');
+        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountHolder.text, ACC_HOLDER_ERR.required);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_HOLDER_ERR.required);
       });
       it('should return error if to long (greater then 70 characters) ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longTextObject);
-        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must be 70 characters or less.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must be 70 characters or less.');
+        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountHolder.text, ACC_HOLDER_ERR.length);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_HOLDER_ERR.length);
       });
       it('should return error if text includes none alpha ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.nonAlphaName);
-        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountHolder.text, ACC_HOLDER_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_HOLDER_ERR.format);
       });
       it('should return error if text does not start with alpha ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.startNotAlphaName);
-        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
+        assert.equal(accountValidationResponse.bankAccountHolder.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountHolder.text, ACC_HOLDER_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_HOLDER_ERR.format);
       });
       it('should return no error if text includes a & ', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.includesAnd);
@@ -216,236 +151,112 @@ describe('accountValidator - EN', () => {
     describe('account number', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Enter an account number.');
-        assert.equal(accountValidationResponse.errorSummary[2].text, 'Enter an account number.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.required);
+        assert.equal(accountValidationResponse.errorSummary[2].text, ACC_NUM_ERR.required);
       });
       it('should return error if less then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.length);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_NUM_ERR.length);
       });
 
       it('should return error if more then 8 numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.length);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_NUM_ERR.length);
       });
 
       it('should return error if incorrect format', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_NUM_ERR.format);
       });
 
       it('should return error if incorrect format dash and numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[2].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, ACC_HOLDER_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[1].text, SORT_CODE_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[2].text, ACC_NUM_ERR.format);
       });
 
       it('should return error if incorrect format full stop and numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.fullStopAccountNumber);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[1].text, ACC_NUM_ERR.format);
       });
 
       it('should return error if incorrect format full stop, dash and numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.dashAndFullStopAccountNumber);
-        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
+        assert.equal(accountValidationResponse.bankAccountNumber.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankAccountNumber.text, ACC_NUM_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[1].text, ACC_NUM_ERR.format);
       });
     });
 
     describe('sort code', () => {
       it('should return error if empty', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.emptyObject);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.required);
+        assert.equal(accountValidationResponse.errorSummary[1].text, SORT_CODE_ERR.required);
       });
 
       it('should return error if not numbers', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.textAccount);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
+        const accountValidationResponse = validation.bankValidation(bankObjects.textSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, SORT_CODE_ERR.format);
       });
 
       it('should return error if one numbers', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.shortAccount);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
+        const accountValidationResponse = validation.bankValidation(bankObjects.shortSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, SORT_CODE_ERR.format);
       });
 
       it('should return error if incorrect format dash and numbers', () => {
         const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code in the correct format, like 11 22 33.');
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[1].text, SORT_CODE_ERR.format);
       });
 
-      it('should return error if length greater then 2', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.longAccount);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
-      });
-    });
-  });
-
-  describe('building validator', () => {
-    it('should return no error when valid object supplied ', () => {
-      const accountValidationResponse = validation.buildingValidation(buildingObjects.validObject);
-      assert.lengthOf(Object.keys(accountValidationResponse), 0);
-    });
-
-    it('should return no error when valid object with empty roll number is supplied ', () => {
-      const accountValidationResponse = validation.buildingValidation(buildingObjects.validObjectNoRoll);
-      assert.lengthOf(Object.keys(accountValidationResponse), 0);
-    });
-
-    describe('accountName', () => {
-      it('should return error if empty ', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Enter the account holder’s name.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter the account holder’s name.');
-      });
-      it('should return error if to long (greater then 70 characters) ', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.longTextObject);
-        assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must be 70 characters or less.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must be 70 characters or less.');
-      });
-      it('should return error if text includes none alpha ', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.nonAlphaName);
-        assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-      });
-      it('should return no error if text includes a & ', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.includesAnd);
-        assert.equal(accountValidationResponse.buildingAccountHolder, undefined);
-      });
-      it('should return error if text does not start with alpha ', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.startNotAlphaName);
-        assert.equal(accountValidationResponse.buildingAccountHolder.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountHolder.text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Name must start with a letter and only include letters a to z, hyphens, apostrophes, full stops, spaces and ampersands.');
-      });
-    });
-
-    describe('account number', () => {
-      it('should return error if empty', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Enter an account number.');
-        assert.equal(accountValidationResponse.errorSummary[2].text, 'Enter an account number.');
-      });
-      it('should return error if contains text', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
-      });
-
-      it('should return error if less then 8 numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
-      });
-
-      it('should return error if more then 8 numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Account number must be 8 numbers.');
-      });
-
-      it('should return error if incorrect format dash and numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAccountNumberAndSortCode);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
-      });
-
-      it('should return error if incorrect format full stop and numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.fullStopAccountNumber);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
-      });
-
-      it('should return error if incorrect format full stop, dash and numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.dashAndFullStopAccountNumber);
-        assert.equal(accountValidationResponse.buildingAccountNumber.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingAccountNumber.text, 'Account number must be 8 numbers.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Account number must be 8 numbers.');
-      });
-    });
-
-    describe('sort code', () => {
-      it('should return error if empty', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.emptyObject);
-        assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code.');
-      });
-
-      it('should return error if not numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.textAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
-      });
-
-      it('should return error if incorrect format dash and numbers', () => {
-        const accountValidationResponse = validation.bankValidation(bankObjects.dashAccountNumberAndSortCode);
-        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.bankSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[1].text, 'Enter a sort code in the correct format, like 11 22 33.');
-      });
-
-      it('should return error if one numbers', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.shortAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
-      });
-
-      it('should return error if length greater then 2', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.longAccount);
-        assert.equal(accountValidationResponse.buildingSortCode.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingSortCode.text, 'Enter a sort code in the correct format, like 11 22 33.');
-        assert.equal(accountValidationResponse.errorSummary[0].text, 'Enter a sort code in the correct format, like 11 22 33.');
+      it('should return error if length greater than 6', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.longSortCode);
+        assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, SORT_CODE_ERR.format);
       });
     });
 
     describe('buildingRoll', () => {
+      it('should return no error if roll is empty', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.blankBuildingSociety);
+        assert.lengthOf(Object.keys(accountValidationResponse), 0);
+      });
       it('should return no error if roll is valid', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.validRoll);
-        assert.equal(accountValidationResponse.buildingRoll, undefined);
+        const accountValidationResponse = validation.bankValidation(bankObjects.validObjectWithBuildingSociety);
+        assert.lengthOf(Object.keys(accountValidationResponse), 0);
       });
       it('should return error if contains $$', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.invalidRoll);
-        assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingRoll.text, 'Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
-        assert.equal(accountValidationResponse.errorSummary[2].text, 'Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets.');
+        const accountValidationResponse = validation.bankValidation(bankObjects.invalidBuildingSociety);
+        assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.buildingRoll.text, BUILDING_SOC_ROLL_ERR.format);
+        assert.equal(accountValidationResponse.errorSummary[0].text, BUILDING_SOC_ROLL_ERR.format);
       });
       it('should return error if to long', () => {
-        const accountValidationResponse = validation.buildingValidation(buildingObjects.longRoll);
-        assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, 'Error');
-        assert.equal(accountValidationResponse.buildingRoll.text, 'Roll or reference number must be 18 characters or less.');
-        assert.equal(accountValidationResponse.errorSummary[2].text, 'Roll or reference number must be 18 characters or less.');
+        const accountValidationResponse = validation.bankValidation(bankObjects.longBuildingSociety);
+        assert.equal(accountValidationResponse.buildingRoll.visuallyHiddenText, errMsg);
+        assert.equal(accountValidationResponse.buildingRoll.text, BUILDING_SOC_ROLL_ERR.length);
+        assert.equal(accountValidationResponse.errorSummary[0].text, BUILDING_SOC_ROLL_ERR.length);
       });
     });
   });

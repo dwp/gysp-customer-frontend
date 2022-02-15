@@ -1,0 +1,9 @@
+{
+  "header": "Ni allwn dalu arian i'r cyfrif hwn",
+  "hintText": "Nid yw'r cyfrif hwn yn derbyn taliadau Pensiwn y Wladwriaeth. Rhowch fanylion cyfrif gwahanol.",
+  "name": "Enw ar y cyfrif",
+  "sortCode": "Cod didoli",
+  "accountNumber": "Rhif cyfrif",
+  "buildingSocietyRoll": "Rhif rôl cymdeithas adeiladu",
+  "button": "Newid manylion cyfrif"
+}

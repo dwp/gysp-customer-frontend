@@ -78,21 +78,12 @@ describe('Request Helper ', () => {
 
     it('calling paymentDetails() should return only 6 field with valid value', () => {
       const paymentDetails = requestHelper.paymentDetails();
-      assert.ok(paymentDetails.length, 13);
+      assert.ok(paymentDetails.length, 7);
       assert.include(paymentDetails, 'paymentMethod');
-
-      assert.include(paymentDetails, 'buildingAccountHolder');
-      assert.include(paymentDetails, 'buildingAccountNumber');
-      assert.include(paymentDetails, 'buildingSortCodeField1');
-      assert.include(paymentDetails, 'buildingSortCodeField2');
-      assert.include(paymentDetails, 'buildingSortCodeField3');
       assert.include(paymentDetails, 'buildingRoll');
-
       assert.include(paymentDetails, 'bankAccountHolder');
       assert.include(paymentDetails, 'bankAccountNumber');
-      assert.include(paymentDetails, 'bankSortCodeField1');
-      assert.include(paymentDetails, 'bankSortCodeField2');
-      assert.include(paymentDetails, 'bankSortCodeField3');
+      assert.include(paymentDetails, 'bankSortCode');
     });
   });
 });
