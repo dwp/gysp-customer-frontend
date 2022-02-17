@@ -410,7 +410,7 @@ const validJsonWelsh = {
   },
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Canlyniad Dilysu Banc', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Enw deilydd y cyfrif', accountNumber: '12345678', accountNumberQ: 'Rhif y cyfrif', sortCode: '112233', sortCodeQ: 'Cod didoli', validated: 'Invalid',
+      result: 'Fail', resultQ: 'Canlyniad Dilysu Banc', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Enw deilydd y cyfrif', accountNumber: '12345678', accountNumberQ: 'Rhif cyfrif', sortCode: '112233', sortCodeQ: 'Cod didoli', validated: 'Invalid',
     },
     bankDetailQ: 'Cyfrif banc',
     paymentMethodQ: 'Sut hoffech gael eich talu?',
@@ -1001,7 +1001,7 @@ const validJsonPrisonWelsh = {
   },
   accountDetail: {
     bankDetail: {
-      result: 'Fail', resultQ: 'Canlyniad Dilysu Banc', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Enw deilydd y cyfrif', accountNumber: '12345678', accountNumberQ: 'Rhif y cyfrif', sortCode: '112233', sortCodeQ: 'Cod didoli', validated: 'Invalid',
+      result: 'Fail', resultQ: 'Canlyniad Dilysu Banc', accountHolder: 'Mr Joe Bloggs', accountHolderQ: 'Enw deilydd y cyfrif', accountNumber: '12345678', accountNumberQ: 'Rhif cyfrif', sortCode: '112233', sortCodeQ: 'Cod didoli', validated: 'Invalid',
     },
     bankDetailQ: 'Cyfrif banc',
     paymentMethodQ: 'Sut hoffech gael eich talu?',
