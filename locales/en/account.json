@@ -53,8 +53,8 @@
       "label-display": "Building society roll number (if you have one)",
       "hint": "You can find it on your card, statement or passbook",
       "errors": {
-        "format": "Roll or reference number must only include numbers 0 to 9, letters a to z, hyphens, full stops, spaces, commas, slashes, apostrophes, asterisks, ampersands and brackets",
-        "length": "Roll or reference number must be 18 characters or less"
+        "format": "Building society roll number must only include letters a to z, numbers, hyphens, spaces, forward slashes and full stops",
+        "length": "Building society roll number must be between 1 and 18 characters"
       }
     }
   }

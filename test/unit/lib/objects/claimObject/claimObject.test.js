@@ -746,7 +746,7 @@ const formObjectClaimFromDateNewSPABeforeSpa = {
   'marital-select': { maritalStatus: 'widowed' },
   'marital-date-widowed': dateForm,
   'marital-partner-widowed': martitalDetailsForm,
-  'account-details': accountObject,
+  'account-details': { ...accountObject, bankSortCode: '11 22 33' },
   claimFromDate,
   userDateOfBirthInfo: { newStatePensionDate: 1517529600000, newDobVerification: 'NV' },
   customerDetails: customerDetailsObject,

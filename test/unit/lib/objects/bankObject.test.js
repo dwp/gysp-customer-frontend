@@ -11,7 +11,7 @@ const validJson = {
 };
 
 const bankObject = {
-  bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
+  bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '11 22 33',
 };
 
 const customerDetails = {

@@ -38,6 +38,9 @@ const bankObjects = {
   textSortCode: {
     bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: 'AAnereo', bankSortCode: 'a',
   },
+  spacesAndHyphensSortCode: {
+    bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '11-2 23-3',
+  },
   nonAlphaName: { bankAccountHolder: '££', bankAccountNumber: '123456789' },
   includesAnd: { bankAccountHolder: 'One && Two', bankAccountNumber: '123456789' },
   startNotAlphaName: { bankAccountHolder: ' Space Mistake', bankAccountNumber: '123456789' },
@@ -234,6 +237,12 @@ describe('accountValidator - EN', () => {
         assert.equal(accountValidationResponse.bankSortCode.visuallyHiddenText, errMsg);
         assert.equal(accountValidationResponse.bankSortCode.text, SORT_CODE_ERR.format);
         assert.equal(accountValidationResponse.errorSummary[0].text, SORT_CODE_ERR.format);
+      });
+
+      it('should NOT return an error when sort code has spaces and hyphens', () => {
+        const accountValidationResponse = validation.bankValidation(bankObjects.spacesAndHyphensSortCode);
+        assert.equal(accountValidationResponse.bankSortCode, undefined);
+        assert.equal(accountValidationResponse.errorSummary, undefined);
       });
     });
 
