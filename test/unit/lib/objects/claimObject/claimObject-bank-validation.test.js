@@ -19,6 +19,11 @@ const livedAbroadOneCountries = {
   'country-name[0]': 'Country 1', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
 };
 
+const accountObjectValidThroughKbv = {
+  ...accountObjectValid,
+  kbvFlag: true,
+};
+
 const inviteKey = '1234567';
 
 const validBankJson = {
@@ -63,6 +68,49 @@ const validBankJson = {
   altFormatRequired: false,
 };
 
+const validBankJsonThroughKbv = {
+  livedAbroad: true,
+  livedAbroadQ: 'Have you ever lived outside of the UK?',
+  livedPeriodsAbroad: [{ countryQ: 'Country name', country: 'Country 1' }],
+  livedPeriodsAbroadQ: 'What countries have you lived in?',
+  workedAbroad: false,
+  workedAbroadQ: 'Have you worked outside of the UK?',
+  contactDetail: { mobileTelephoneNumber: '1234', mobileTelephoneNumberQ: 'Mobile phone number' },
+  contactDetailQ: 'How would you like to be contacted?',
+  maritalStatus: 'Single',
+  maritalStatusQ: 'What is your current marital status?',
+  accountDetail: {
+    bankDetail: {
+      result: 'Fail',
+      resultQ: 'Bank Authentication result',
+      accountHolder: 'Mr Joe Bloggs',
+      accountHolderQ: 'Account holder name',
+      accountNumber: '12345678',
+      accountNumberQ: 'Account number',
+      sortCode: '112233',
+      sortCodeQ: 'Sort code',
+      kbvFlag: true,
+      validated: undefined,
+    },
+    bankDetailQ: 'Bank account',
+    paymentMethodQ: 'How would you like to be paid?',
+  },
+  accountDetailQ: 'How would you like to be paid?',
+  inviteKey: '1234567',
+  inviteKeyQ: 'What is your invitation code?',
+  confirmedAddress: true,
+  confirmedAddressQ: 'Are you living at the address we sent your invitation letter to?',
+  declaration: true,
+  declarationQ: 'Declaration',
+  dobVerification: 'V',
+  dobVerificationQ: 'Date of birth verification status',
+  claimFromDate: null,
+  claimFromDateQ: null,
+  welshIndicator: false,
+  altFormatRequiredQ: 'Would you like us to send letters to you in another format?',
+  altFormatRequired: false,
+};
+
 const formObjectValidBank = {
   'lived-abroad': { livedAbroad: 'yes' },
   'lived-abroad-countries': livedAbroadOneCountries,
@@ -70,6 +118,18 @@ const formObjectValidBank = {
   'contact-details': { mobileTelephoneNumber: '1234', additionalTelephoneNumber: '', email: '' },
   'marital-select': { maritalStatus: 'single' },
   'account-details': accountObjectValid,
+  inviteKey,
+  userDateOfBirthInfo: customerDetailsObject,
+  customerDetails: customerDetailsObject,
+};
+
+const formObjectValidBankThroughKbv = {
+  'lived-abroad': { livedAbroad: 'yes' },
+  'lived-abroad-countries': livedAbroadOneCountries,
+  'worked-abroad': { workedAbroad: 'no' },
+  'contact-details': { mobileTelephoneNumber: '1234', additionalTelephoneNumber: '', email: '' },
+  'marital-select': { maritalStatus: 'single' },
+  'account-details': accountObjectValidThroughKbv,
   inviteKey,
   userDateOfBirthInfo: customerDetailsObject,
   customerDetails: customerDetailsObject,
@@ -154,6 +214,13 @@ describe('Claim object ', () => {
         const claimObjectValue = await claimObject.sessionToObject(formObjectInvalidBank, accountStatusWithErrors);
         assert.deepEqual(claimObjectValue, invalidBankJson);
       });
+    });
+  });
+
+  describe(' account details through KBV journey ', () => {
+    it('should create the account object with kbvFlag populated when user has been through KBV journey', async () => {
+      const claimObjectValue = await claimObject.sessionToObject(formObjectValidBankThroughKbv, accountStatus);
+      assert.deepEqual(claimObjectValue, validBankJsonThroughKbv);
     });
   });
 });

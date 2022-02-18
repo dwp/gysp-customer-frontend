@@ -94,6 +94,7 @@ const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const sessionRoutes = require('./app/routes/session/routes.js');
 const accountAdditionalChecks = require('./app/routes/account-additional-checks/routes.js');
+const kbvQuestionRoutes = require('./app/routes/transunion-kbv/routes.js');
 
 if (config.env !== 'production') {
   app.use(config.mountUrl, overseasStub);
@@ -265,6 +266,7 @@ app.use(config.mountUrl, accountRoutes);
 app.use(config.mountUrl, verifyDetailRoutes);
 app.use(config.mountUrl, checkChange);
 app.use(config.mountUrl, accountAdditionalChecks);
+app.use(config.mountUrl, kbvQuestionRoutes);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

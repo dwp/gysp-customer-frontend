@@ -1,0 +1,44 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ questionText }}{% endblock %}
+
+{% block content %}
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: t("transunion-kbv-questions:errors.header"),
+    errorList: errors.errorSummary
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" action="security-question-{{ questionNum }}" autocomplete="off" novalidate>
+     {{ govukRadios({
+      errorMessage: errors.notSelected,
+      idPrefix: "securityQuestion" + questionNum,
+      name: "securityQuestion" + questionNum,
+      fieldset: {
+        legend: {
+        html: "<span id='caption' class='govuk-caption-l'>" + caption + "</span>" + "<span id='header'>" + questionText + "</span>",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: options
+    }) }}   
+
+    {{ govukButton({
+      text: t("transunion-kbv-questions:confirm"),
+      attributes: {
+        id: 'form-submit'
+      }
+    }) }}
+    </form>
+  </div>
+  {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+</div>
+
+{% endblock %}

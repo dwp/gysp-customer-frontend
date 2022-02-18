@@ -27,6 +27,7 @@ const accountObjectBuilding = {
   paymentMethod: 'building',
   buildingRoll: '12',
 };
+
 const accountOverseasObject = {
   accountHolder: 'Mr Joe Bloggs', accountNumber: '12345678', accountCode: '12345678', validated: 'Invalid',
 };

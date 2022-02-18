@@ -6,8 +6,8 @@ router.get('/extra-checks', (_req, res) => {
   res.render('pages/account-additional-checks');
 });
 
-router.post('/extra-checks', () => {
-  throw new Error('Additional checks for bank validation not implemented yet');
+router.post('/extra-checks', (_req, res) => {
+  res.redirect('security-question-1');
 });
 
 module.exports = router;

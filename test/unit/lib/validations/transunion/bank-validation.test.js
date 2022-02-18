@@ -10,7 +10,7 @@ const i18nextFsBackend = require('i18next-fs-backend');
 const i18nextConfig = require('../../../../../config/i18next.js');
 const responseHelper = require('../../../../lib/responseHelper.js');
 const {
-  verifyAccountDetails, buildTransunionValidationError, SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG,
+  verifyAccountDetails, buildTransunionValidationError, generateKBV, SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG,
 } = require('../../../../../lib/validations/transunion/bank-validation.js');
 
 const { fields: translatedErr } = require('../../../../../locales/en/account.json');
@@ -267,6 +267,54 @@ describe('Transunion bank validation', () => {
             text: translatedErr.accountNumber.errors.transunionInvalid,
           }],
       });
+    });
+  });
+
+  describe('generateKBV function', () => {
+    it('should return the questions correctly', async () => {
+      nock('http://test-url').post('/api/bankvalidate/generateKBV').reply(200, {
+        questions: [
+          {
+            category: 'KBV26',
+            options: [
+              {
+                correct: false,
+                text: 'Less than 1 year ago',
+              },
+              {
+                correct: false,
+                text: 'Between 1 and up to 3 years ago',
+              },
+              {
+                correct: true,
+                text: 'Over 3 and up to 5 years ago',
+              },
+              {
+                correct: false,
+                text: 'Over 5 years and up to 7 years ago',
+              },
+              {
+                correct: false,
+                text: 'Over 7 years ago',
+              },
+            ],
+            questionText: 'When did you last open a personal current account?',
+          },
+        ],
+      });
+      const req = populatedRequest;
+      const kbvQuestions = await generateKBV(req, genericResponse, accountObject, customerDetails);
+      assert.equal(kbvQuestions.questions.length, 1);
+    });
+
+    it('should throw an error when generateKBV call fails', async () => {
+      nock('http://test-url').post('/api/bankvalidate/generateKBV').reply(502);
+      try {
+        const req = populatedRequest;
+        await generateKBV(req, genericResponse, accountObject, customerDetails);
+      } catch (err) {
+        assert.isDefined(err);
+      }
     });
   });
 });

@@ -1,0 +1,22 @@
+{% extends '../helpers/layout.html' %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}
+{{ t("transunion-kbv-check-passed:header") }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t("transunion-kbv-check-passed:header") }}</h1>
+      <p class="govuk-body">{{ t("transunion-kbv-check-passed:bodyText") }}</p>
+
+      {{ govukButton({
+        href: redirectUrl,
+        text: t('app:button.continue')
+      }) }}
+    </div>
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

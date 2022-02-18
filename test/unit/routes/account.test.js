@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const sinon = require('sinon');
+const sandbox = require('sinon').createSandbox();
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
@@ -11,6 +11,7 @@ const i18nextConfig = require('../../../config/i18next');
 const accountController = require('../../../app/routes/account/functions');
 const responseHelper = require('../../lib/responseHelper');
 const { additionChecksRequired, badRequest } = require('../../../lib/helpers/bankVerificationStatus');
+const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
 
 let genericResponse = {};
 const populatedSessionGet = { session: { 'account-details': true } };
@@ -41,12 +42,12 @@ const populatedRequestBuilding = {
     buildingRoll: 'Test',
   },
 };
-const populatedRequestMoreFields = {
+const populatedRequestMoreFields = () => ({
   session: { customerDetails: {}, userDateOfBirthInfo: { newStatePensionDate: 'Yes', newDobVerification: 'V' } },
   body: {
     batman: true, batname: 'Jim', bankAccountHolder: 'Mr Joe Bloggs', bankAccountNumber: '12345678', bankSortCode: '112233',
   },
-};
+});
 
 const overseasSessionRequest = { session: { isOverseas: true }, body: { accountHolder: '', accountNumber: '', accountCode: '' } };
 const populatedOverseasSessionGet = { session: { 'account-details-overseas': true, isOverseas: true } };
@@ -68,6 +69,10 @@ describe('Account controller ', () => {
 
   beforeEach(() => {
     genericResponse = responseHelper.genericResponse();
+  });
+
+  afterEach(() => {
+    sandbox.restore();
   });
 
   describe(' UK/NI customer ', () => {
@@ -115,39 +120,100 @@ describe('Account controller ', () => {
       });
 
       it('should filter out any post items that are not allowed', async () => {
-        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        const req = populatedRequestMoreFields();
+        await accountController.accountPagePost(req, genericResponse);
         assert.equal(genericResponse.address, 'check-your-details');
-        assert.isUndefined(populatedRequestMoreFields.session['account-details'].batman);
-        assert.isUndefined(populatedRequestMoreFields.session['account-details'].batname);
+        assert.isUndefined(req.session['account-details'].batman);
+        assert.isUndefined(req.session['account-details'].batname);
       });
 
-      it('should redirect user if transunion bank validation fails with additionalchecks required', async () => {
-        const configStub = sinon.stub(application, 'feature');
+      it('should redirect user to "extra-checks" page if transunion bank validation fails with additionalchecks required and generateKBV call succeeds', async () => {
+        const configStub = sandbox.stub(application, 'feature');
         configStub.value({ bankValidationUsingKBV: true });
 
-        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        const generateKBVStub = sandbox.stub(bankValidation, 'generateKBV');
+        generateKBVStub.returns(Promise.resolve({
+          questions: [
+            {
+              category: 'KBV18',
+              questionText: 'You took out a mobile phone contract in May 2005, which provider was it with?',
+              options: [{
+                text: 'T-MOBILE',
+                correct: false,
+              },
+              {
+                text: 'EE',
+                correct: false,
+              },
+              {
+                text: 'THREE',
+                correct: false,
+              },
+              {
+                text: 'ORANGE',
+                correct: false,
+              },
+              {
+                text: 'O2',
+                correct: true,
+              },
+              ],
+            },
+          ],
+        }));
+
+        const verifyAccountDetailsStub = sandbox.stub(bankValidation, 'verifyAccountDetails');
         verifyAccountDetailsStub.returns(Promise.resolve({
           result: additionChecksRequired(),
         }));
 
-        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        const req = populatedRequestMoreFields();
+        await accountController.accountPagePost(req, genericResponse);
         assert.equal(genericResponse.address, 'extra-checks');
+        assert.equal(req.session.kbvQuestions.length, 1);
+        assert.equal(req.session.translatedKbvQuestions.length, 1);
 
         configStub.restore();
         verifyAccountDetailsStub.restore();
+        generateKBVStub.restore();
+      });
+
+      it('should redirect user to "check-your-details" page if transunion bank validation fails with additionalchecks required and generateKBV call fails', async () => {
+        const configStub = sandbox.stub(application, 'feature');
+        configStub.value({ bankValidationUsingKBV: true });
+
+        const generateKBVStub = sandbox.stub(bankValidation, 'generateKBV');
+        generateKBVStub.throws(new Error('dummy conn error'));
+
+        const verifyAccountDetailsStub = sandbox.stub(bankValidation, 'verifyAccountDetails');
+        verifyAccountDetailsStub.returns(Promise.resolve({
+          result: additionChecksRequired(),
+        }));
+
+        const req = populatedRequestMoreFields();
+        await accountController.accountPagePost(req, genericResponse);
+        assert.equal(genericResponse.address, 'check-your-details');
+        assert.isUndefined(req.session.kbvQuestions);
+        assert.isUndefined(req.session.translatedKbvQuestions);
+        assert.equal(req.session.accountStatus.result, bankVerificationStatus.badRequest());
+
+        configStub.restore();
+        verifyAccountDetailsStub.restore();
+        generateKBVStub.restore();
       });
 
       it('should take user back to account details page if transunion bank validation fails for sort code AND account number errors', async () => {
-        const configStub = sinon.stub(application, 'feature');
+        const configStub = sandbox.stub(application, 'feature');
         configStub.value({ bankValidationUsingKBV: true });
 
-        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        const verifyAccountDetailsStub = sandbox.stub(bankValidation, 'verifyAccountDetails');
         verifyAccountDetailsStub.returns(Promise.resolve({
           result: badRequest(),
           messages: [SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG],
         }));
 
-        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        const req = populatedRequestMoreFields();
+        await accountController.accountPagePost(req, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details');
         assert.deepEqual(genericResponse.data.details, {
           bankSortCode: '112233',
@@ -188,16 +254,17 @@ describe('Account controller ', () => {
       });
 
       it('should redirect user to account details page with transunion errors if transunion bank validation fails for sort code OR account number error', async () => {
-        const configStub = sinon.stub(application, 'feature');
+        const configStub = sandbox.stub(application, 'feature');
+        const req = populatedRequestMoreFields();
         configStub.value({ bankValidationUsingKBV: true });
 
-        const verifyAccountDetailsStub = sinon.stub(bankValidation, 'verifyAccountDetails');
+        const verifyAccountDetailsStub = sandbox.stub(bankValidation, 'verifyAccountDetails');
         verifyAccountDetailsStub.returns(Promise.resolve({
           result: badRequest(),
           messages: [SORT_CODE_INVALID_MSG],
         }));
 
-        await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
+        await accountController.accountPagePost(req, genericResponse);
         assert.equal(genericResponse.viewName, 'pages/account-details');
         assert.deepEqual(genericResponse.data.details, {
           bankSortCode: '112233',
@@ -226,7 +293,7 @@ describe('Account controller ', () => {
       });
 
       it('for overseas customer it should set accountStatus to "Not checked - Resident abroad" if KBV feature is enabled', async () => {
-        const configStub = sinon.stub(application, 'feature');
+        const configStub = sandbox.stub(application, 'feature');
         const clonedReq = JSON.parse(JSON.stringify(populatedOverseasRequestMoreFields));
         configStub.value({ bankValidationUsingKBV: true });
 

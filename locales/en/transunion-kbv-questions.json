@@ -1,0 +1,11 @@
+{
+  "errors": {
+    "header": "There is a problem"
+  },
+  "caption": {
+    "question": "Question",
+    "of": "of"
+  },
+  "confirm": "Confirm",
+  "or": "or"
+}

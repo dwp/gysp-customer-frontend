@@ -7,6 +7,14 @@ const { buildTransunionValidationError } = require('../../../lib/validations/tra
 const transUnionValidation = require('../../../lib/validations/transunion/bank-validation.js');
 const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
 
+// eslint-disable-next-line no-unused-vars
+const stubTranslation = (question) => ({
+  question: question.questionText,
+  orBeforeLastOption: true,
+  options: question.options,
+  error: 'Select one of the options below - GENERIC ERROR',
+});
+
 function checked(data, value) {
   if (data === value) {
     return true;
@@ -51,6 +59,22 @@ function accountPageOverseasPost(req, res) {
   return res.render('pages/account-details-overseas', { details: req.body, errors });
 }
 
+const prepareForKBVJourney = async (req, res, details, customerDetails, accountStatus) => {
+  try {
+    const { questions: allQuestions } = await transUnionValidation.generateKBV(req, res, details, customerDetails);
+    const translated = allQuestions.map((question) => stubTranslation(question));
+    dataStore.save(req, 'kbvQuestions', allQuestions);
+    dataStore.save(req, 'translatedKbvQuestions', translated);
+    return res.redirect('extra-checks');
+  } catch (err) {
+    const failedAccountStatus = Object.assign(Object.create(null),
+      accountStatus,
+      { result: bankVerificationStatus.badRequest() });
+    dataStore.save(req, 'accountStatus', failedAccountStatus);
+    return saveDetailsAndRedirect(req, res, details, 'account-details');
+  }
+};
+
 const accountPagePost = async (req, res) => {
   if (req.session.isOverseas) {
     return accountPageOverseasPost(req, res);
@@ -63,10 +87,14 @@ const accountPagePost = async (req, res) => {
   if (Object.keys(errors).length === 0) {
     const filteredRequest = filterRequest.requestFilter(filterRequest.paymentDetails(), postRequestBody);
     const details = dataStore.filterAccountDetails(filteredRequest);
+
     if (application.feature.bankValidationUsingKBV) {
+      const { customerDetails } = req.session;
       const accountStatus = await transUnionValidation.verifyAccountDetails(
-        req, res, details, req.session.customerDetails,
+        req, res, details, customerDetails,
       );
+
+      dataStore.save(req, 'accountStatus', accountStatus);
       const { result, messages } = accountStatus;
 
       const transunionError = buildTransunionValidationError(messages);
@@ -76,9 +104,8 @@ const accountPagePost = async (req, res) => {
 
       if (result.toLowerCase() === 'additionalchecks') {
         dataStore.save(req, 'account-details', details);
-        return res.redirect('extra-checks');
+        return prepareForKBVJourney(req, res, details, customerDetails, accountStatus);
       }
-      req.session.accountStatus = accountStatus;
     }
     return saveDetailsAndRedirect(req, res, details, 'account-details');
   }
