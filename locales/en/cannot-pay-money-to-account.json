@@ -1,9 +1,0 @@
-{
-  "header": "We cannot pay money to this account",
-  "hintText": "This account does not accept State Pension payments. Enter details for a different account.",
-  "name": "Name on the account",
-  "sortCode": "Sort code",
-  "accountNumber": "Account number",
-  "buildingSocietyRoll": "Building society roll number",
-  "button": "Change account details"
-}

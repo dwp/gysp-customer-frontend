@@ -70,12 +70,7 @@ const accountPagePost = async (req, res) => {
       const { result, messages } = accountStatus;
 
       const transunionError = buildTransunionValidationError(messages);
-      if (transunionError.bothSortCodeAndAccNumberInvalid()) {
-        dataStore.save(req, 'account-details', details);
-        return res.redirect('cannot-pay-money-to-account');
-      }
-
-      if (transunionError.eitherSortCodeOrAccNumberInvalid()) {
+      if (transunionError.hasAtleastSingleError()) {
         return res.render('pages/account-details', { details: postRequestBody, errors: transunionError.errors, checked });
       }
 

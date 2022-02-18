@@ -236,5 +236,37 @@ describe('Transunion bank validation', () => {
         }],
       });
     });
+
+    it('should return error messages for acc number and sort code when both are invalid', () => {
+      const messages = ['SOME_OTHER_ERROR_1', ACC_NUMBER_INVALID_MSG, SORT_CODE_INVALID_MSG, 'SOME_OTHER_ERROR_2'];
+      const transunionErr = buildTransunionValidationError(messages);
+      assert.isTrue(transunionErr.isAccNumberInvalid);
+      assert.isTrue(transunionErr.bothSortCodeAndAccNumberInvalid());
+      assert.deepEqual(transunionErr.errors, {
+        bankAccountNumber: {
+          text: translatedErr.accountNumber.errors.transunionInvalid,
+          visuallyHiddenText: errMsg,
+        },
+        bankSortCode: {
+          text: translatedErr.sortCode.errors.transunionInvalid,
+          visuallyHiddenText: errMsg,
+        },
+        errorSummary: [
+          {
+            attributes: {
+              'data-journey': 'account-details:error:bank-sort-code',
+            },
+            href: '#bankSortCode',
+            text: translatedErr.sortCode.errors.transunionInvalid,
+          },
+          {
+            attributes: {
+              'data-journey': 'account-details:error:bank-account-number',
+            },
+            href: '#bankAccountNumber',
+            text: translatedErr.accountNumber.errors.transunionInvalid,
+          }],
+      });
+    });
   });
 });

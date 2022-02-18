@@ -137,7 +137,7 @@ describe('Account controller ', () => {
         verifyAccountDetailsStub.restore();
       });
 
-      it('should redirect user to cannot-pay-money-to-account if transunion bank validation fails for sort code AND account number errors', async () => {
+      it('should take user back to account details page if transunion bank validation fails for sort code AND account number errors', async () => {
         const configStub = sinon.stub(application, 'feature');
         configStub.value({ bankValidationUsingKBV: true });
 
@@ -148,7 +148,40 @@ describe('Account controller ', () => {
         }));
 
         await accountController.accountPagePost(populatedRequestMoreFields, genericResponse);
-        assert.equal(genericResponse.address, 'cannot-pay-money-to-account');
+        assert.equal(genericResponse.viewName, 'pages/account-details');
+        assert.deepEqual(genericResponse.data.details, {
+          bankSortCode: '112233',
+          bankAccountNumber: '12345678',
+          bankAccountHolder: 'Mr Joe Bloggs',
+          batman: true,
+          batname: 'Jim',
+          paymentMethod: 'bank',
+        });
+        assert.deepEqual(genericResponse.data.errors, {
+          bankSortCode: {
+            text: 'The sort code does not exist - check it and try again',
+            visuallyHiddenText: 'Error',
+          },
+          bankAccountNumber: {
+            text: 'The account number does not exist - check it and try again',
+            visuallyHiddenText: 'Error',
+          },
+          errorSummary: [
+            {
+              attributes: {
+                'data-journey': 'account-details:error:bank-sort-code',
+              },
+              href: '#bankSortCode',
+              text: 'The sort code does not exist - check it and try again',
+            },
+            {
+              attributes: {
+                'data-journey': 'account-details:error:bank-account-number',
+              },
+              href: '#bankAccountNumber',
+              text: 'The account number does not exist - check it and try again',
+            }],
+        });
 
         configStub.restore();
         verifyAccountDetailsStub.restore();
