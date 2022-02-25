@@ -1,0 +1,166 @@
+{
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "money": {
+    "lessThan": "Less than {{ FROM_AMOUNT }}",
+    "between": "Between {{ FROM_AMOUNT }} and {{ TO_AMOUNT }}",
+    "moreThan": "{{ FROM_AMOUNT }} or more"
+  },
+  "years": {
+    "lessThan": "Less than {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}",
+    "between": "Between {{FROM_YEAR}} and {{TO_YEAR}} years{{SUFFIX}}",
+    "moreThan": "More than {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}"
+  },
+  "answers": {
+    "yes": "Yes",
+    "no": "No",
+    "year": "year",
+    "years": "years",
+    "ago": "ago"
+  },
+  "KBV1": {
+    "question": "Have you taken out a credit card or store card in the last 12 months?",
+    "error": "Select yes if you have taken out a credit card or store card in the last 12 months"
+  },
+  "KBV2": {
+    "question": "You opened a current account in {{MONTH_YEAR}} - is this a joint account?",
+    "error": "Select yes if this is a joint account"
+  },
+  "KBV3": {
+    "question": "You took out a loan in {{MONTH_YEAR}} - what is the current outstanding balance?",
+    "error": "Select the current outstanding balance"
+  },
+  "KBV5": {
+    "question": "Do you currently have a personal loan (not including student loans)?",
+    "error": "Select yes if you currently have a personal loan"
+  },
+  "KBV6": {
+    "question": "How long have you had a personal mobile phone contract with your current provider?",
+    "error": "Select how long you have had a personal mobile phone contract with your current provider",
+    "answers": {
+      "never": "I don't have a personal mobile phone contract"
+    }
+  },
+  "KBV7": {
+    "question": "Do you have a personal mobile phone contract registered to your current address?",
+    "error": "Select yes if you have a personal mobile phone contract registered to your current address"
+  },
+  "KBV8": {
+    "question": "What is the current outstanding balance of your most recent mortgage?",
+    "error": "Select the current outstanding balance",
+    "answers": {
+      "never": "I don't have a mortgage"
+    }
+  },
+  "KBV9": {
+    "question": "You took out a mortgage in {{MONTH_YEAR}} - what is the current outstanding balance?",
+    "error": "Select the current outstanding balance"
+  },
+  "KBV10": {
+    "question": "Do you currently have a personal mortgage?",
+    "error": "Select yes if you currently have a personal mortgage"
+  },
+  "KBV11": {
+    "question": "Which one of these addresses have you been associated with?",
+    "error": "Select the address you have been associated with",
+    "answers": {
+      "none": "None of these addresses"
+    }
+  },
+  "KBV12": {
+    "question": "How long have you lived at your current address?",
+    "error": "Select how long you have lived at your current address"
+  },
+  "KBV13": {
+    "question": "You took out a credit card or store card in {{MONTH_YEAR}} - which bank or shop was it with?",
+    "error": "Select the correct bank or shop"
+  },
+  "KBV14": {
+    "question": "You opened a current account in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV15": {
+    "question": "You took out a hire purchase agreement in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV16": {
+    "question": "You took out a personal loan in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV17": {
+    "question": "You opened a mail order account in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV18": {
+    "question": "You started a mobile phone contract in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV19": {
+    "question": "You took out a mortgage in {{MONTH_YEAR}} - who was it with?",
+    "error": "Select the correct issuer"
+  },
+  "KBV20": {
+    "question": "Which one of these addresses have you been associated with?",
+    "error": "Select the address you have been associated with"
+  },
+  "KBV21": {
+    "question": "What was your year of birth?",
+    "error": "Select your year of birth"
+  },
+  "KBV22": {
+    "question": "What is your month of birth?",
+    "error": "Select your month of birth"
+  },
+  "KBV29": {
+    "question": "When did you last take out a personal loan?",
+    "error": "Select when you last took out a personal loan"
+  },
+  "KBV30": {
+    "question": "When did you last take out a personal mobile phone contract?",
+    "error": "Select when you last took out a personal mobile phone contract"
+  },
+  "KBV31": {
+    "question": "When did you last take out a personal mortgage?",
+    "error": "Select when you last took out a personal mortgage"
+  },
+  "KBV32": {
+    "question": "When did you last take out a personal credit card?",
+    "error": "Select when you last took out a personal credit card"
+  },
+  "KBV33": {
+    "question": "When did you last open a personal current account?",
+    "error": "Select when you last took out a personal current account"
+  },
+  "KBV34": {
+    "question": "When did you last take out a hire purchase agreement?",
+    "error": "Select when you last took out a hire purchase agreement"
+  },
+  "KBV35": {
+    "question": "When did you last open a mail order account with a credit facility?",
+    "error": "Select when you last took out a mail order account"
+  },
+  "KBV36": {
+    "question": "What was your month and year of birth?",
+    "error": "Select your month and year of birth"
+  },
+  "KBV37": {
+    "question": "You opened a current account in {{MONTH_YEAR}} - what was the overdraft limit on {{DATE}}?",
+    "error": "Select the correct credit limit on your credit card"
+  },
+  "KBV38": {
+    "question": "You opened a current account in {{MONTH_YEAR}} - what was the overdraft limit on {{DATE}}?",
+    "error": "Select the correct overdraft limit on your current account"
+  }
+}

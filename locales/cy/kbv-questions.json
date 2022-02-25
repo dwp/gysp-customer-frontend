@@ -1,0 +1,166 @@
+{
+  "months": {
+    "january": "Ionawr",
+    "february": "Chwefror",
+    "march": "Mawrth",
+    "april": "Ebrill",
+    "may": "Ebrill",
+    "june": "Mehefin",
+    "july": "Gorffennaf",
+    "august": "Awst",
+    "september": "Medi",
+    "october": "Hydref",
+    "november": "Tachwedd",
+    "december": "Rhagfyr"
+  },
+  "money": {
+    "lessThan": "Llai nag {{ FROM_AMOUNT }}",
+    "between": "Rhwng {{ FROM_AMOUNT }} a {{ TO_AMOUNT }}",
+    "moreThan": "{{ FROM_AMOUNT }} neu fwy"
+  },
+  "years": {
+    "lessThan": "Llai nag {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}",
+    "between": "Rhwng {{FROM_YEAR}} a {{TO_YEAR}} years{{SUFFIX}}",
+    "moreThan": "Mwy na {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}"
+  },
+  "answers": {
+    "yes": "Ydy",
+    "no": "Na",
+    "year": "flwyddyn",
+    "years": "blynedd",
+    "ago": "ôl"
+  },
+  "KBV1": {
+    "question": "A ydych wedi cael cerdyn credyd neu siop yn ystod y 12 mis diwethaf?",
+    "error": "Dewiswch ydy os ydych wedi cael cerdyn credyd neu siop yn ystod y 12 mis diwethafs"
+  },
+  "KBV2": {
+    "question": "Gwnaethoch agor cyfrif cyfredol ym mis {{MONTH_YEAR}} - a yw hwn yn gyfrif ar y cyd?",
+    "error": "Dewiswch ydy os yw hwn yn gyfrif ar y cyd"
+  },
+  "KBV3": {
+    "question": "Gwnaethoch gymryd benthyciad ym mis {{MONTH_YEAR}} - beth yw'r balans sy'n weddill ar hyn o bryd?",
+    "error": "Dewiswch y balans sy'n weddill"
+  },
+  "KBV5": {
+    "question": "A oes gennych fenthyciad personol ar hyn o bryd (heb gynnwys benthyciadau myfyrwyr)?",
+    "error": "Dewiswch oes os oes gennych fenthyciad personol ar hyn o bryd"
+  },
+  "KBV6": {
+    "question": "Ers pryd rydych wedi cael contract ffôn symudol personol â'ch darparwr presennol?",
+    "error": "Dewiswch pa mor hir rydych wedi cael contract ffôn symudol personol â'ch darparwr presennol",
+    "answers": {
+      "never": "Nid oes gennyf gontract ffôn symudol personol"
+    }
+  },
+  "KBV7": {
+    "question": "A oes gennych gontract ffôn symudol personol sydd wedi ei gofrestru i'ch cyfeiriad presennol?",
+    "error": "Dewiswch oes os oes gennych contract ffôn symudol personol sydd wedi ei gofrestru i'ch cyferiad presennol"
+  },
+  "KBV8": {
+    "question": "Beth yw balans cyfredol sy'n ddyledus ar eich morgais diweddaraf?",
+    "error": "Dewiswch y balans sy'n weddill",
+    "answers": {
+      "never": "Nid oes gennyf forgais"
+    }
+  },
+  "KBV9": {
+    "question": "Gwnaethoch gymryd morgais ym mis {{MONTH_YEAR}} - beth yw'r balans sy'n weddill ar hyn o bryd?",
+    "error": "Dewiswch y balans sy'n weddill"
+  },
+  "KBV10": {
+    "question": "A oes gennych forgais personol ar hyn o bryd?",
+    "error": "Dewiswch oes os oes gennych forgais personol ar hyn o bryd"
+  },
+  "KBV11": {
+    "question": "Pa un o'r cyfeiriadau hyn rydych wedi bod yn gysylltiedig ag ef?",
+    "error": "Dewiswch y cyfeiriad rydych wedi bod yn gysylltiedig ag ef",
+    "answers": {
+      "none": "Dim un o'r cyfeiriadau hyn"
+    }
+  },
+  "KBV12": {
+    "question": "Pa mor hir rydych wedi byw yn eich cyfeiriad presennol?",
+    "error": "Dewiswch pa mor hir rydych wedi byw yn eich cyfeiriad presennol"
+  },
+  "KBV13": {
+    "question": "Gwnaethoch gael cerdyn credyd neu siop ym mis {{MONTH_YEAR}} - â pha fanc neu siop roedd ef?",
+    "error": "Dewiswch y banc neu siop cywir"
+  },
+  "KBV14": {
+    "question": "Gwnaethoch agor cyfrif cyfredol ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV15": {
+    "question": "Gwnaethoch wneud cytundeb hurbwrcasu ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV16": {
+    "question": "Gwnaethoch gymryd benthyciad personol ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV17": {
+    "question": "Gwnaethoch agor cyfrif archebu post ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV18": {
+    "question": "Gwnaethoch ddechrau contract ffôn symudol ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV19": {
+    "question": "Gwnaethoch gymryd morgais ym mis {{MONTH_YEAR}} - â phwy roedd ef?",
+    "error": "Dewiswch y cyhoeddwr cywir"
+  },
+  "KBV20": {
+    "question": "Pa un o'r cyfeiriadau hyn rydych wedi bod yn gysylltiedig ag ef?",
+    "error": "Dewiswch y cyfeiriad rydych wedi bod yn gysylltiedig ag ef"
+  },
+  "KBV21": {
+    "question": "Pa flwyddyn cawsoch eich geni?",
+    "error": "Dewiswch y flwyddyn cawsoch eich geni"
+  },
+  "KBV22": {
+    "question": "Pa fis cawsoch eich geni?",
+    "error": "Dewiswch y mis cawsoch eich geni"
+  },
+  "KBV29": {
+    "question": "Pryd gwnaethoch gymryd benthyciad personol ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch gymryd benthyciad personol ddiwethaf"
+  },
+  "KBV30": {
+    "question": "Pryd gwnaethoch gymryd contract ffôn symudol personol ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch gymryd contract ffôn symudol personol ddiwethaf"
+  },
+  "KBV31": {
+    "question": "Pryd gwnaethoch gymryd morgais personol ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch gymryd morgais personol ddiwethaf"
+  },
+  "KBV32": {
+    "question": "Pryd gwnaethoch gael cerdyn credyd personol ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch gael cerdyn credyd personol ddiwethaf"
+  },
+  "KBV33": {
+    "question": "Pryd gwnaethoch agor cyfrif cyfredol personol ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch agor cyfrif cyfredol personol ddiwethaf"
+  },
+  "KBV34": {
+    "question": "Pryd gwnaethoch wneud cytundeb hurbwrcasu ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch wneud cytundeb hurbwrcasu ddiwethaf"
+  },
+  "KBV35": {
+    "question": "Pryd gwnaethoch agor cyfrif archebu post â chyfleustod credyd ddiwethaf?",
+    "error": "Dewiswch pryd gwnaethoch agor cyfrif archebu post ddiwethaf"
+  },
+  "KBV36": {
+    "question": "Pa fis a blwyddyn cawsoch eich geni?",
+    "error": "Dewiswch pa fis a blwyddyn cawsoch eich geni"
+  },
+  "KBV37": {
+    "question": "Gwnaethoch gael cerdyn credyd ym mis {{MONTH_YEAR}} - beth oedd y terfyn credyd ar {{DATE}}?",
+    "error": "Dewiswch y terfyn credyd cywir sydd ar eich cerdyn credyd"
+  },
+  "KBV38": {
+    "question": "Gwnaethoch agor cyfrif cyfredol ym mis {{MONTH_YEAR}} - beth oedd terfyn y gorddrafft ar {{DATE}}?",
+    "error": "Dewiswch y terfyn cywir i'r gorddrafft sydd ar eich cyfrif cyfredol"
+  }
+}
