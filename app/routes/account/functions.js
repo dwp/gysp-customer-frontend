@@ -29,9 +29,16 @@ function accountPageGet(req, res) {
   }
 }
 
+const saveAccountDetails = (req, storeKey, details) => {
+  dataStore.save(req, storeKey, details);
+  // NB: This `accountDetailsEntered` is used to check whether user is
+  //     allowed to visit account-details page again (in middleware)
+  dataStore.save(req, 'accountDetailsEntered', true);
+};
+
 function saveDetailsAndRedirect(req, res, details, storeKey) {
   let nextPage = 'check-your-details';
-  dataStore.save(req, storeKey, details);
+  saveAccountDetails(req, storeKey, details);
   if (req.session.userDateOfBirthInfo.newStatePensionDate && req.session.userDateOfBirthInfo.newDobVerification !== 'V') {
     nextPage = 'you-need-to-send-proof-of-your-date-of-birth';
   }
@@ -96,7 +103,7 @@ const accountPagePost = async (req, res) => {
       }
 
       if (result.toLowerCase() === 'additionalchecks') {
-        dataStore.save(req, 'account-details', details);
+        saveAccountDetails(req, 'account-details', details);
         return prepareForKBVJourney(req, res, details, customerDetails, accountStatus);
       }
     }

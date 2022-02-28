@@ -16,6 +16,7 @@ const i18nextMiddleware = require('./middleware/i18n/index');
 const verifyMiddleware = require('./middleware/verify/index');
 const pageMiddleware = require('./middleware/page/index');
 const cookieMiddleware = require('./middleware/cookie-message/index');
+const bankAccAndKBVChecksMiddleware = require('./middleware/bankAccountAndTransunionKBVChecks');
 
 const checkChangeRedirect = require('./middleware/checkChange');
 const overseas = require('./middleware/overseas');
@@ -220,6 +221,11 @@ app.use((req, res, next) => {
     sessionHelper.destroySessionAndRedirect(req, res);
   }
 });
+
+if (config.application.feature.bankValidationUsingKBV === true) {
+  app.use(bankAccAndKBVChecksMiddleware);
+}
+
 if (config.application.feature.verify === true) {
   app.use(config.mountUrl, personalData);
 }

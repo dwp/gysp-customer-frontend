@@ -1,0 +1,27 @@
+{% extends '../helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+{{ t("cannot-go-back-to-account-details:header") }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t("cannot-go-back-to-account-details:header") }}</h1>
+      <p class="govuk-body">{{ t("cannot-go-back-to-account-details:bodyText1") }}</p>
+      <p class="govuk-body">{{ t("cannot-go-back-to-account-details:bodyText2") }}</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>{{ t("cannot-go-back-to-account-details:listText1") }}</li>
+        <li>{{ t("cannot-go-back-to-account-details:listText2") }}</li>
+      </ul>
+
+      {{ govukButton({
+        href: 'extra-checks',
+        text: t('app:button.continue')
+      }) }}
+    </div>
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

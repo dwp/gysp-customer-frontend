@@ -43,6 +43,10 @@ const handleLastQuestionActions = (req, res) => {
   const details = dataStore.getAll(req);
   const accountDetails = details['account-details'];
   accountDetails.kbvFlag = true;
+  accountDetails.kbvPassed = atleastTwoCorrect;
+  // NB: This `kbvAnswered` flag is used in middleware to decide
+  //     if user should be allowed to return to `kbv` questions
+  dataStore.save(req, 'kbvAnswered', true);
 
   const { accountStatus } = details;
   if (atleastTwoCorrect) {
@@ -175,10 +179,32 @@ const checkFailed = showKBVDecisionPage('pages/transunion-kbv-check-failed');
 
 const checkSuccessful = showKBVDecisionPage('pages/transunion-kbv-check-passed');
 
+const findUrlBasedOnKBVSuccessOrFailure = (req) => {
+  const details = dataStore.getAll(req);
+  const accountDetails = details['account-details'];
+  if (accountDetails && accountDetails.kbvFlag && accountDetails.kbvPassed) {
+    return 'successfully-confirmed-identity';
+  }
+  return 'could-not-confirm-identity';
+};
+
+const cannotGoBackToCreditRecordQuestions = (req, res) => {
+  const redirectUrl = findUrlBasedOnKBVSuccessOrFailure(req);
+  res.render('pages/cannot-go-back-to-credit-questions', {
+    redirectUrl,
+  });
+};
+
+const cannotGoBackToAccountDetails = (_req, res) => {
+  res.render('pages/cannot-go-back-to-account-details', {});
+};
+
 module.exports = {
   questionsGet,
   questionsPost,
   checkFailed,
   checkSuccessful,
   SessionModel,
+  cannotGoBackToCreditRecordQuestions,
+  cannotGoBackToAccountDetails,
 };
