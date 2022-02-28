@@ -6,14 +6,7 @@ const { application } = require('../../../config/application');
 const { buildTransunionValidationError } = require('../../../lib/validations/transunion/bank-validation.js');
 const transUnionValidation = require('../../../lib/validations/transunion/bank-validation.js');
 const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
-
-// eslint-disable-next-line no-unused-vars
-const stubTranslation = (question) => ({
-  question: question.questionText,
-  orBeforeLastOption: true,
-  options: question.options,
-  error: 'Select one of the options below - GENERIC ERROR',
-});
+const { translateQuestion } = require('../../../lib/helpers/kbvHelper');
 
 function checked(data, value) {
   if (data === value) {
@@ -62,7 +55,7 @@ function accountPageOverseasPost(req, res) {
 const prepareForKBVJourney = async (req, res, details, customerDetails, accountStatus) => {
   try {
     const { questions: allQuestions } = await transUnionValidation.generateKBV(req, res, details, customerDetails);
-    const translated = allQuestions.map((question) => stubTranslation(question));
+    const translated = allQuestions.map((question) => translateQuestion(question, req.session.lang));
     dataStore.save(req, 'kbvQuestions', allQuestions);
     dataStore.save(req, 'translatedKbvQuestions', translated);
     return res.redirect('extra-checks');
