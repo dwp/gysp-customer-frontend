@@ -29,6 +29,8 @@ const validCurrency = [
   '1,111,999,999.51',
 ];
 
+const validMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 describe('kbv helper ', () => {
   before(async () => {
     await i18next
@@ -564,6 +566,19 @@ describe('kbv helper ', () => {
         const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
         assert.equal(helper.translateExtractYears('Less than 2 years'), i18next.getFixedT('cy')('kbv-questions:years.lessThan', { FROM_YEAR: '2', YEAR_TEXT }));
       });
+
+      it('should return less than translation with SUFFIX in english when language set to \'en\'', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.years');
+        const SUFFIX = ` ${i18next.getFixedT('en')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('Less than 3 years', null, true), i18next.getFixedT('en')('kbv-questions:years.lessThan', { FROM_YEAR: '3', YEAR_TEXT, SUFFIX }));
+      });
+
+      it('should return less than translation with SUFFIX in welsh when language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
+        const SUFFIX = ` ${i18next.getFixedT('cy')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('Less than 3 years', null, true), i18next.getFixedT('cy')('kbv-questions:years.lessThan', { FROM_YEAR: '3', YEAR_TEXT, SUFFIX }));
+      });
     });
 
     describe('between', () => {
@@ -575,18 +590,74 @@ describe('kbv helper ', () => {
         i18next.changeLanguage('cy');
         assert.equal(helper.translateExtractYears('Between 1 - 3'), i18next.getFixedT('cy')('kbv-questions:years.between', { FROM_YEAR: '1', TO_YEAR: '3' }));
       });
+
+      it('should return between translation with SUFFIX in english when language set to \'en\'', () => {
+        const SUFFIX = ` ${i18next.getFixedT('en')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('Between 1 - 3', null, true), i18next.getFixedT('en')('kbv-questions:years.between', { FROM_YEAR: '1', TO_YEAR: '3', SUFFIX }));
+      });
+
+      it('should return between translation with SUFFIX in welsh when language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        const SUFFIX = ` ${i18next.getFixedT('cy')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('Between 1 - 3', null, true), i18next.getFixedT('cy')('kbv-questions:years.between', { FROM_YEAR: '1', TO_YEAR: '3', SUFFIX }));
+      });
     });
 
     describe('more than', () => {
-      it('should return between translation in english with from and to years when string contain \'Between\', language set to \'en\'', () => {
+      it('should return more than translation in english with from and to years when string contain \'Between\', language set to \'en\'', () => {
         const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.years');
         assert.equal(helper.translateExtractYears('More than 3 years'), i18next.getFixedT('en')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT }));
       });
 
-      it('should return between translation in welsh with from and to years when string contain \'Between\', language set to \'cy\'', () => {
+      it('should return more than translation in welsh with from and to years when string contain \'Between\', language set to \'cy\'', () => {
         i18next.changeLanguage('cy');
         const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
         assert.equal(helper.translateExtractYears('More than 3 years'), i18next.getFixedT('cy')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT }));
+      });
+
+      it('should return more than translation with SUFFIX in english when language set to \'en\'', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.years');
+        const SUFFIX = ` ${i18next.getFixedT('en')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('More than 3 years', null, true), i18next.getFixedT('en')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT, SUFFIX }));
+      });
+
+      it('should return more than translation with SUFFIX in welsh when language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
+        const SUFFIX = ` ${i18next.getFixedT('cy')('kbv-questions:answers.ago')}`;
+        assert.equal(helper.translateExtractYears('More than 3 years', null, true), i18next.getFixedT('cy')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT, SUFFIX }));
+      });
+    });
+
+    describe('never', () => {
+      it('should return never translation in english when is does not match anything else and language set to \'en\'', () => {
+        assert.equal(helper.translateExtractYears('Never had a mobile phone contract', 'KBV6'), i18next.getFixedT('en')('kbv-questions:KBV6.answers.never'));
+      });
+
+      it('should return never translation in english when is does not match anything else and language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        assert.equal(helper.translateExtractYears('Never had a mobile phone contract', 'KBV6'), i18next.getFixedT('cy')('kbv-questions:KBV6.answers.never'));
+      });
+    });
+  });
+
+  describe('translateMonths', () => {
+    it('should be defined', () => {
+      assert.isDefined(helper.translateMonths);
+    });
+
+    it('should be a function', () => {
+      assert.isFunction(helper.translateMonths);
+    });
+
+    validMonths.forEach((month) => {
+      it(`should return translate months in string when language set to 'en' - ${month}`, () => {
+        assert.equal(helper.translateMonths(`The month in this string is ${month} and should be translated`), `The month in this string is ${i18next.getFixedT('en')(`kbv-questions:months.${month.toLowerCase()}`)} and should be translated`);
+      });
+
+      it(`should return translate months in when language set to 'cy' - ${month}`, () => {
+        i18next.changeLanguage('cy');
+        assert.equal(helper.translateMonths(`The month in this string is ${month} and should be translated`), `The month in this string is ${i18next.getFixedT('cy')(`kbv-questions:months.${month.toLowerCase()}`)} and should be translated`);
       });
     });
   });
