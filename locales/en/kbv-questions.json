@@ -16,7 +16,7 @@
   "money": {
     "lessThan": "Less than {{ FROM_AMOUNT }}",
     "between": "Between {{ FROM_AMOUNT }} and {{ TO_AMOUNT }}",
-    "moreThan": "{{ FROM_AMOUNT }} or more"
+    "moreThan": "More than {{ FROM_AMOUNT }}"
   },
   "years": {
     "lessThan": "Less than {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}",
@@ -24,7 +24,10 @@
     "moreThan": "More than {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}"
   },
   "answers": {
-    "yes": "Yes",
+    "yes": {
+      "v1": "Yes",
+      "v2": "Yes"
+    },
     "no": "No",
     "year": "year",
     "years": "years",
@@ -120,7 +123,7 @@
     "error": "Select your year of birth"
   },
   "KBV22": {
-    "question": "What is your month of birth?",
+    "question": "What was your month of birth?",
     "error": "Select your month of birth"
   },
   "KBV29": {
@@ -156,7 +159,7 @@
     "error": "Select your month and year of birth"
   },
   "KBV37": {
-    "question": "You opened a current account in {{MONTH_YEAR}} - what was the overdraft limit on {{DATE}}?",
+    "question": "You took out a credit card in {{MONTH_YEAR}} - what was the credit limit on {{DATE}}?",
     "error": "Select the correct credit limit on your credit card"
   },
   "KBV38": {

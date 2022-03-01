@@ -4,7 +4,7 @@
     "february": "Chwefror",
     "march": "Mawrth",
     "april": "Ebrill",
-    "may": "Ebrill",
+    "may": "Mai",
     "june": "Mehefin",
     "july": "Gorffennaf",
     "august": "Awst",
@@ -14,17 +14,20 @@
     "december": "Rhagfyr"
   },
   "money": {
-    "lessThan": "Llai nag {{ FROM_AMOUNT }}",
+    "lessThan": "Llai na {{ FROM_AMOUNT }}",
     "between": "Rhwng {{ FROM_AMOUNT }} a {{ TO_AMOUNT }}",
-    "moreThan": "{{ FROM_AMOUNT }} neu fwy"
+    "moreThan": "Mwy na {{ FROM_AMOUNT }}"
   },
   "years": {
-    "lessThan": "Llai nag {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}",
-    "between": "Rhwng {{FROM_YEAR}} a {{TO_YEAR}} years{{SUFFIX}}",
+    "lessThan": "Llai na {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}",
+    "between": "Rhwng {{FROM_YEAR}} a {{TO_YEAR}} blynedd{{SUFFIX}}",
     "moreThan": "Mwy na {{FROM_YEAR}} {{YEAR_TEXT}}{{SUFFIX}}"
   },
   "answers": {
-    "yes": "Ydy",
+    "yes": {
+      "v1": "Ydy",
+      "v2": "Oes"
+    },
     "no": "Na",
     "year": "flwyddyn",
     "years": "blynedd",
@@ -32,7 +35,7 @@
   },
   "KBV1": {
     "question": "A ydych wedi cael cerdyn credyd neu siop yn ystod y 12 mis diwethaf?",
-    "error": "Dewiswch ydy os ydych wedi cael cerdyn credyd neu siop yn ystod y 12 mis diwethafs"
+    "error": "Dewiswch ydy os ydych wedi cael cerdyn credyd neu siop yn ystod y 12 mis diwethaf"
   },
   "KBV2": {
     "question": "Gwnaethoch agor cyfrif cyfredol ym mis {{MONTH_YEAR}} - a yw hwn yn gyfrif ar y cyd?",

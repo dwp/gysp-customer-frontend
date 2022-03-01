@@ -10,11 +10,34 @@ const helper = require('../../../../lib/helpers/kbvHelper');
 const kbvTranslationRequest = require('../../../lib/kvbTranslation/kbvTranslationRequest');
 const kbvTranslationResponse = require('../../../lib/kvbTranslation/kbvTranslationResponse');
 
+const validCurrency = [
+  '0',
+  '1',
+  '0.10',
+  '1.10',
+  '1.10',
+  '11.10',
+  '999',
+  '999.51',
+  '1,999',
+  '1,999.51',
+  '11,999.51',
+  '111,999.51',
+  '1,999,999.51',
+  '11,999,999.51',
+  '111,999,999.51',
+  '1,111,999,999.51',
+];
+
 describe('kbv helper ', () => {
   before(async () => {
     await i18next
       .use(i18nextFsBackend)
       .init(i18nextConfig);
+  });
+
+  beforeEach(() => {
+    i18next.changeLanguage('en');
   });
 
   describe('translateQuestion', () => {
@@ -358,6 +381,212 @@ describe('kbv helper ', () => {
 
       it('cy', () => {
         assert.deepEqual(helper.translateQuestion(kbvTranslationRequest.KBV38Request(), 'cy'), kbvTranslationResponse.KBV38Response('cy'));
+      });
+    });
+  });
+
+  describe('extractMoneyFromString', () => {
+    it('should be defined', () => {
+      assert.isDefined(helper.extractMoneyFromString);
+    });
+
+    it('should be a function', () => {
+      assert.isFunction(helper.extractMoneyFromString);
+    });
+
+    it('should return blank array when no money in string', () => {
+      assert.lengthOf(helper.extractMoneyFromString('This is a string without money'), 0);
+    });
+
+    validCurrency.forEach((currency) => {
+      it(`should return populated array with 1 item when in format ${currency}`, () => {
+        const response = helper.extractMoneyFromString(`This is a string with ${currency} of money`);
+        assert.lengthOf(response, 1);
+        assert.deepEqual(response, [`${currency}`]);
+      });
+
+      it(`should return populated array with 1 item when in format £${currency}`, () => {
+        const response = helper.extractMoneyFromString(`This is a string has £${currency} of money`);
+        assert.lengthOf(response, 1);
+        assert.deepEqual(response, [`£${currency}`]);
+      });
+
+      it(`should return populated array with 2 items when two values in string ${currency}`, () => {
+        const response = helper.extractMoneyFromString(`This is a string has £${currency} - £${currency} of money`);
+        assert.lengthOf(response, 2);
+        assert.deepEqual(response, [`£${currency}`, `£${currency}`]);
+      });
+    });
+  });
+
+  describe('translateYesNoOption', () => {
+    it('should be defined', () => {
+      assert.isDefined(helper.translateYesNoOption);
+    });
+
+    it('should be a function', () => {
+      assert.isFunction(helper.translateYesNoOption);
+    });
+
+    it('should be translate Yes option to Yes in english when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('Yes'), i18next.getFixedT('en')('kbv-questions:answers.yes.v1'));
+    });
+
+    it('should be translate Yes option to Yes in welsh when language is set as \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateYesNoOption('Yes'), i18next.getFixedT('cy')('kbv-questions:answers.yes.v1'));
+    });
+
+    it('should be translate Yes option with spaces to Yes in welsh when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('  Yes '), i18next.getFixedT('en')('kbv-questions:answers.yes.v1'));
+    });
+
+    it('should be translate Yes option to Yes v2 in english when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('Yes', true), i18next.getFixedT('en')('kbv-questions:answers.yes.v2'));
+    });
+
+    it('should be translate Yes option to Yes v2 in welsh when language is set as \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateYesNoOption('Yes', true), i18next.getFixedT('cy')('kbv-questions:answers.yes.v2'));
+    });
+
+    it('should be translate Yes option with spaces to Yes v2 in welsh when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('  Yes ', true), i18next.getFixedT('en')('kbv-questions:answers.yes.v2'));
+    });
+
+    it('should be translate No option to No in english when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('No'), i18next.getFixedT('en')('kbv-questions:answers.no'));
+    });
+
+    it('should be translate No option to No in welsh when language is set as \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateYesNoOption('No'), i18next.getFixedT('cy')('kbv-questions:answers.no'));
+    });
+
+    it('should be translate No option with spaces to No in welsh when language is set as \'en\'', () => {
+      assert.equal(helper.translateYesNoOption('  No '), i18next.getFixedT('en')('kbv-questions:answers.no'));
+    });
+
+    it('should not translate option when there is no match', () => {
+      assert.equal(helper.translateYesNoOption('no match'), 'no match');
+    });
+  });
+
+  describe('translateExtractMoney', () => {
+    it('should be defined', () => {
+      assert.isDefined(helper.translateExtractMoney);
+    });
+
+    it('should be a function', () => {
+      assert.isFunction(helper.translateExtractMoney);
+    });
+
+    it('should return less than translation in english when string contain \'Less than\' and language set to \'en\'', () => {
+      assert.equal(helper.translateExtractMoney('Less than £1,500'), i18next.getFixedT('en')('kbv-questions:money.lessThan', { FROM_AMOUNT: '£1,500' }));
+    });
+
+    it('should return less than translation in welsh when string contain \'Less than\' and language set to \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateExtractMoney('Less than £1,500'), i18next.getFixedT('cy')('kbv-questions:money.lessThan', { FROM_AMOUNT: '£1,500' }));
+    });
+
+    it('should return more than translation in english when string contain \'More than\' and language set to \'en\'', () => {
+      assert.equal(helper.translateExtractMoney('More than £2,500'), i18next.getFixedT('en')('kbv-questions:money.moreThan', { FROM_AMOUNT: '£2,500' }));
+    });
+
+    it('should return more than translation in welsh when string contain \'More than\' and language set to \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateExtractMoney('More than £2,500'), i18next.getFixedT('cy')('kbv-questions:money.moreThan', { FROM_AMOUNT: '£2,500' }));
+    });
+
+    it('should return between than translation in english when 2 amounts are included in string and language set to \'en\'', () => {
+      assert.equal(helper.translateExtractMoney('Between £2,500 - £5,000'), i18next.getFixedT('en')('kbv-questions:money.between', { FROM_AMOUNT: '£2,500', TO_AMOUNT: '£5,000' }));
+    });
+
+    it('should return between than translation in welsh when 2 amounts are included in string and language set to \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateExtractMoney('Between £2,500 - £5,000'), i18next.getFixedT('cy')('kbv-questions:money.between', { FROM_AMOUNT: '£2,500', TO_AMOUNT: '£5,000' }));
+    });
+
+    it('should return never translation in english when I don\'t included in string and language set to \'en\'', () => {
+      assert.equal(helper.translateExtractMoney('I don\'t have an answer', 'KBV6'), i18next.getFixedT('en')('kbv-questions:KBV6.answers.never'));
+    });
+
+    it('should return never translation in welsh when  I don\'t included in string and language set to \'cy\'', () => {
+      i18next.changeLanguage('cy');
+      assert.equal(helper.translateExtractMoney('I don\'t have an answer', 'KBV6'), i18next.getFixedT('cy')('kbv-questions:KBV6.answers.never'));
+    });
+
+    it('should return raw answer when nothing matches', () => {
+      assert.equal(helper.translateExtractMoney('No translation'), 'No translation');
+    });
+  });
+
+  describe('translateExtractYears', () => {
+    it('should be defined', () => {
+      assert.isDefined(helper.translateExtractYears);
+    });
+
+    it('should be a function', () => {
+      assert.isFunction(helper.translateExtractYears);
+    });
+
+    describe('less than', () => {
+      it('should return less than translation in english when string contain \'Less than\' and language set to \'en\'', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.year');
+        assert.equal(helper.translateExtractYears('Less than 1'), i18next.getFixedT('en')('kbv-questions:years.lessThan', { FROM_YEAR: '1', YEAR_TEXT }));
+      });
+
+      it('should return less than translation in welsh when string contain \'Less than\' and language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.year');
+        assert.equal(helper.translateExtractYears('Less than 1'), i18next.getFixedT('cy')('kbv-questions:years.lessThan', { FROM_YEAR: '1', YEAR_TEXT }));
+      });
+
+      it('should return less than translation in english with year when string contain \'Less than\', language set to \'en\' and from year is 1', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.year');
+        assert.equal(helper.translateExtractYears('Less than 1 year'), i18next.getFixedT('en')('kbv-questions:years.lessThan', { FROM_YEAR: '1', YEAR_TEXT }));
+      });
+
+      it('should return less than translation in welsh with year when string contain \'Less than\', language set to \'cy\' and from year is 1', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.year');
+        assert.equal(helper.translateExtractYears('Less than 1 year'), i18next.getFixedT('cy')('kbv-questions:years.lessThan', { FROM_YEAR: '1', YEAR_TEXT }));
+      });
+
+      it('should return less than translation in english with years when string contain \'Less than\', language set to \'en\' and from year is greater than 1', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.years');
+        assert.equal(helper.translateExtractYears('Less than 2 years'), i18next.getFixedT('en')('kbv-questions:years.lessThan', { FROM_YEAR: '2', YEAR_TEXT }));
+      });
+
+      it('should return less than translation in welsh with years when string contain \'Less than\', language set to \'cy\' and from year is greater than 1', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
+        assert.equal(helper.translateExtractYears('Less than 2 years'), i18next.getFixedT('cy')('kbv-questions:years.lessThan', { FROM_YEAR: '2', YEAR_TEXT }));
+      });
+    });
+
+    describe('between', () => {
+      it('should return between translation in english with from and to years when string contain \'Between\', language set to \'en\'', () => {
+        assert.equal(helper.translateExtractYears('Between 1 - 3'), i18next.getFixedT('en')('kbv-questions:years.between', { FROM_YEAR: '1', TO_YEAR: '3' }));
+      });
+
+      it('should return between translation in welsh with from and to years when string contain \'Between\', language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        assert.equal(helper.translateExtractYears('Between 1 - 3'), i18next.getFixedT('cy')('kbv-questions:years.between', { FROM_YEAR: '1', TO_YEAR: '3' }));
+      });
+    });
+
+    describe('more than', () => {
+      it('should return between translation in english with from and to years when string contain \'Between\', language set to \'en\'', () => {
+        const YEAR_TEXT = i18next.getFixedT('en')('kbv-questions:answers.years');
+        assert.equal(helper.translateExtractYears('More than 3 years'), i18next.getFixedT('en')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT }));
+      });
+
+      it('should return between translation in welsh with from and to years when string contain \'Between\', language set to \'cy\'', () => {
+        i18next.changeLanguage('cy');
+        const YEAR_TEXT = i18next.getFixedT('cy')('kbv-questions:answers.years');
+        assert.equal(helper.translateExtractYears('More than 3 years'), i18next.getFixedT('cy')('kbv-questions:years.moreThan', { FROM_YEAR: '3', YEAR_TEXT }));
       });
     });
   });

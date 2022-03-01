@@ -5,7 +5,7 @@ module.exports = {
     question: i18n.getFixedT(lang)('kbv-questions:KBV1.question'),
     options: [{
       correct: true,
-      text: i18n.getFixedT(lang)('kbv-questions:answers.yes'),
+      text: i18n.getFixedT(lang)('kbv-questions:answers.yes.v1'),
     }, {
       correct: false,
       text: i18n.getFixedT(lang)('kbv-questions:answers.no'),
@@ -19,7 +19,7 @@ module.exports = {
     }),
     options: [{
       correct: false,
-      text: i18n.getFixedT(lang)('kbv-questions:answers.yes'),
+      text: i18n.getFixedT(lang)('kbv-questions:answers.yes.v1'),
     }, {
       correct: true,
       text: i18n.getFixedT(lang)('kbv-questions:answers.no'),
@@ -54,7 +54,7 @@ module.exports = {
     question: i18n.getFixedT(lang)('kbv-questions:KBV5.question'),
     options: [{
       correct: true,
-      text: i18n.getFixedT(lang)('kbv-questions:answers.yes'),
+      text: i18n.getFixedT(lang)('kbv-questions:answers.yes.v2'),
     }, {
       correct: false,
       text: i18n.getFixedT(lang)('kbv-questions:answers.no'),
@@ -87,7 +87,7 @@ module.exports = {
     question: i18n.getFixedT(lang)('kbv-questions:KBV7.question'),
     options: [{
       correct: true,
-      text: i18n.getFixedT(lang)('kbv-questions:answers.yes'),
+      text: i18n.getFixedT(lang)('kbv-questions:answers.yes.v2'),
     }, {
       correct: false,
       text: i18n.getFixedT(lang)('kbv-questions:answers.no'),
@@ -146,7 +146,7 @@ module.exports = {
     question: i18n.getFixedT(lang)('kbv-questions:KBV10.question'),
     options: [{
       correct: true,
-      text: i18n.getFixedT(lang)('kbv-questions:answers.yes'),
+      text: i18n.getFixedT(lang)('kbv-questions:answers.yes.v2'),
     }, {
       correct: false,
       text: i18n.getFixedT(lang)('kbv-questions:answers.no'),
@@ -179,7 +179,7 @@ module.exports = {
     question: i18n.getFixedT(lang)('kbv-questions:KBV12.question'),
     options: [{
       correct: true,
-      text: i18n.getFixedT(lang)('kbv-questions:years.lessThan', { FROM_YEAR: 1, SUFFIX: i18n.getFixedT(lang)('kbv-questions:answers.year') }),
+      text: i18n.getFixedT(lang)('kbv-questions:years.lessThan', { FROM_YEAR: 1, YEAR_TEXT: i18n.getFixedT(lang)('kbv-questions:answers.year') }),
     }, {
       correct: false,
       text: i18n.getFixedT(lang)('kbv-questions:years.between', { FROM_YEAR: 1, TO_YEAR: 3 }),
@@ -191,7 +191,7 @@ module.exports = {
       text: i18n.getFixedT(lang)('kbv-questions:years.between', { FROM_YEAR: 5, TO_YEAR: 8 }),
     }, {
       correct: false,
-      text: i18n.getFixedT(lang)('kbv-questions:years.moreThan', { FROM_YEAR: 8, SUFFIX: i18n.getFixedT(lang)('kbv-questions:answers.years') }),
+      text: i18n.getFixedT(lang)('kbv-questions:years.moreThan', { FROM_YEAR: 8, YEAR_TEXT: i18n.getFixedT(lang)('kbv-questions:answers.years') }),
     }],
     orBeforeLastOption: false,
     error: i18n.getFixedT(lang)('kbv-questions:KBV12.error'),
