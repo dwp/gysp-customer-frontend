@@ -192,7 +192,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove no session objects when lived-abroad is the same', () => {
@@ -223,7 +223,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove no session objects when lived-abroad-countries is the same', () => {
@@ -254,7 +254,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove no session objects when lived-abroad-countries-details is the same', () => {
@@ -284,7 +284,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove no session objects when worked-abroad-countries is the same', () => {
@@ -314,7 +314,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove no session objects when worked-abroad is the same', () => {
@@ -359,7 +359,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove only marital details and contact when marital select is provided', () => {
@@ -374,7 +374,7 @@ describe('Data store object', () => {
       assert.isUndefined(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove only partner details and contact when marital select is provided', () => {
@@ -389,7 +389,7 @@ describe('Data store object', () => {
       assert.isFalse(req.session['marital-date-married']);
       assert.isUndefined(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove only contact when marital parner is provided', () => {
@@ -404,7 +404,7 @@ describe('Data store object', () => {
       assert.isTrue(req.session['marital-date-married']);
       assert.isFalse(req.session['marital-partner-married']);
       assert.isUndefined(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove only account details when banking details are changed', () => {
@@ -418,7 +418,7 @@ describe('Data store object', () => {
       assert.isTrue(req.session['marital-date-married']);
       assert.isTrue(req.session['marital-partner-married']);
       assert.isFalse(req.session['contact-details']);
-      assert.isUndefined(req.session['account-details']);
+      assert.isDefined(req.session['account-details']);
     });
 
     it('should remove nothing when contact details are provided as the same', () => {

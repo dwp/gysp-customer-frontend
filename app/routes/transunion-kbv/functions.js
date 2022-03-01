@@ -42,7 +42,6 @@ const handleLastQuestionActions = (req, res) => {
   const atleastTwoCorrect = checkAtleastTwoAnswersAreCorrect(req);
   const details = dataStore.getAll(req);
   const accountDetails = details['account-details'];
-  accountDetails.kbvFlag = true;
   accountDetails.kbvPassed = atleastTwoCorrect;
   // NB: This `kbvAnswered` flag is used in middleware to decide
   //     if user should be allowed to return to `kbv` questions
@@ -182,10 +181,32 @@ const checkSuccessful = showKBVDecisionPage('pages/transunion-kbv-check-passed')
 const findUrlBasedOnKBVSuccessOrFailure = (req) => {
   const details = dataStore.getAll(req);
   const accountDetails = details['account-details'];
-  if (accountDetails && accountDetails.kbvFlag && accountDetails.kbvPassed) {
+  const isKbvNeeded = accountDetails.kbvFlag === true;
+  const isKbvSuccessful = accountDetails.kbvPassed === true;
+
+  if (accountDetails && isKbvNeeded && isKbvSuccessful) {
     return 'successfully-confirmed-identity';
   }
   return 'could-not-confirm-identity';
+};
+
+const findUrlBasedOnKBVIsNeededOrNot = (req) => {
+  const details = dataStore.getAll(req);
+  const accountDetails = details['account-details'];
+  const isKbvNeeded = (accountDetails && accountDetails.kbvFlag === true);
+  const isKbvCompleted = (accountDetails && accountDetails.kbvPassed !== undefined);
+
+  if (isKbvNeeded && !isKbvCompleted) {
+    return 'extra-checks';
+  }
+
+  if (req.session.userDateOfBirthInfo
+    && req.session.userDateOfBirthInfo.newStatePensionDate
+    && req.session.userDateOfBirthInfo.newDobVerification !== 'V') {
+    return 'you-need-to-send-proof-of-your-date-of-birth';
+  }
+
+  return 'check-your-details';
 };
 
 const cannotGoBackToCreditRecordQuestions = (req, res) => {
@@ -195,8 +216,11 @@ const cannotGoBackToCreditRecordQuestions = (req, res) => {
   });
 };
 
-const cannotGoBackToAccountDetails = (_req, res) => {
-  res.render('pages/cannot-go-back-to-account-details', {});
+const cannotGoBackToAccountDetails = (req, res) => {
+  const redirectUrl = findUrlBasedOnKBVIsNeededOrNot(req);
+  res.render('pages/cannot-go-back-to-account-details', {
+    redirectUrl,
+  });
 };
 
 module.exports = {

@@ -63,8 +63,11 @@ const prepareForKBVJourney = async (req, res, details, customerDetails, accountS
   try {
     const { questions: allQuestions } = await transUnionValidation.generateKBV(req, res, details, customerDetails);
     const translated = allQuestions.map((question) => translateQuestion(question, req.session.lang));
+    const accountDetails = dataStore.getAll(req)['account-details'];
     dataStore.save(req, 'kbvQuestions', allQuestions);
     dataStore.save(req, 'translatedKbvQuestions', translated);
+    accountDetails.kbvFlag = true;
+
     return res.redirect('extra-checks');
   } catch (err) {
     const failedAccountStatus = Object.assign(Object.create(null),

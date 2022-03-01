@@ -415,7 +415,6 @@ describe('transunion kbv journey', () => {
       assert.equal(req.session.accountStatus.result, 'Pass');
       assert.equal(req.session.accountStatus.messages.length, 1);
       assert.deepEqual(req.session.accountStatus.messages, ['foo1']);
-      assert.isTrue(req.session['account-details'].kbvFlag);
     });
 
     it('should redirect to "could-not-confirm-identity", when one of the option is selected and its the last question page (question 2) and less than 2 answers are correct', () => {
@@ -433,7 +432,6 @@ describe('transunion kbv journey', () => {
       assert.equal(req.session.accountStatus.result, 'Fail');
       assert.equal(req.session.accountStatus.messages.length, 1);
       assert.deepEqual(req.session.accountStatus.messages, ['foo1']);
-      assert.isTrue(req.session['account-details'].kbvFlag);
     });
   });
 

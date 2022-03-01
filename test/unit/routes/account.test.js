@@ -103,6 +103,7 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(Object.keys(populatedRequest.session['account-details']).length, 4);
+        assert.isTrue(populatedRequest.session.accountDetailsEntered);
       });
 
       it('should return redirect to DOB proof when called with valid object and set validation to disabled when bank account is used', async () => {
@@ -110,6 +111,7 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'you-need-to-send-proof-of-your-date-of-birth');
         assert.equal(populatedRequest.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(Object.keys(populatedRequest.session['account-details']).length, 4);
+        assert.isTrue(populatedRequest.session.accountDetailsEntered);
       });
 
       it('should return redirect when called with valid object and validation is not set when building soc is used', async () => {
@@ -117,6 +119,7 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'check-your-details');
         assert.equal(populatedRequestBuilding.session['account-details'].bankAccountNumber, '12345678');
         assert.equal(populatedRequestBuilding.session['account-details'].validated, undefined);
+        assert.isTrue(populatedRequest.session.accountDetailsEntered);
       });
 
       it('should filter out any post items that are not allowed', async () => {
@@ -172,6 +175,8 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'extra-checks');
         assert.equal(req.session.kbvQuestions.length, 1);
         assert.equal(req.session.translatedKbvQuestions.length, 1);
+        assert.isTrue(req.session.accountDetailsEntered);
+        assert.isTrue(req.session['account-details'].kbvFlag);
 
         configStub.restore();
         verifyAccountDetailsStub.restore();
@@ -195,7 +200,9 @@ describe('Account controller ', () => {
         assert.equal(genericResponse.address, 'check-your-details');
         assert.isUndefined(req.session.kbvQuestions);
         assert.isUndefined(req.session.translatedKbvQuestions);
+        assert.isUndefined(req.session.kbvFlag);
         assert.equal(req.session.accountStatus.result, bankVerificationStatus.badRequest());
+        assert.isTrue(req.session.accountDetailsEntered);
 
         configStub.restore();
         verifyAccountDetailsStub.restore();
