@@ -1,3 +1,17 @@
+# [11.9.0](https://github.com/dwp/gysp-customer-frontend/compare/11.8.0...11.9.0) (2022-03-02)
+
+
+### Features
+
+* **transunion-bank-validation:** Transunion validation related changes ([dc1a690](https://github.com/dwp/gysp-customer-frontend/commit/dc1a6903ac3b9804242deaf1778a81a27814b293))
+* **transunion-kbv:** back button refinements for account details ([b4decb2](https://github.com/dwp/gysp-customer-frontend/commit/b4decb2bfc24dc318408a0ab68cb6e9e5c69e12c))
+* **transunion-kbv:** Enable real translation for KBV ([1f00303](https://github.com/dwp/gysp-customer-frontend/commit/1f0030332c2a4f03b0741f4dbdff24c3d9ba0a5b))
+* **transunion-kbv:** KBV journey added ([65d3efb](https://github.com/dwp/gysp-customer-frontend/commit/65d3efbb3133da4a8c84b2b90ea6ac5542630908))
+* **transunion-kbv:** Restrictions to back traversal added ([6abcf6a](https://github.com/dwp/gysp-customer-frontend/commit/6abcf6a1851668d054a82968ea529ac43bb13559))
+* **transunion-kbv:** subject ([d1d2103](https://github.com/dwp/gysp-customer-frontend/commit/d1d21036fc45f0eb360752a831799695bb269e5c))
+
+
+
 # [11.8.0](https://github.com/dwp/gysp-customer-frontend/compare/11.7.0...11.8.0) (2022-02-07)
 
 
