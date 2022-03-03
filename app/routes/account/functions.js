@@ -106,6 +106,7 @@ const accountPagePost = async (req, res) => {
       }
 
       if (result.toLowerCase() === 'additionalchecks') {
+        res.locals.logger.info(`The ${req.session.inviteKey} requires KBV checks`);
         saveAccountDetails(req, 'account-details', details);
         return prepareForKBVJourney(req, res, details, customerDetails, accountStatus);
       }

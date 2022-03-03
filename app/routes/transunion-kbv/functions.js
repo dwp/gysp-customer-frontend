@@ -45,6 +45,7 @@ const handleLastQuestionActions = (req, res) => {
   accountDetails.kbvPassed = atleastTwoCorrect;
   // NB: This `kbvAnswered` flag is used in middleware to decide
   //     if user should be allowed to return to `kbv` questions
+  res.locals.logger.info(`The ${req.session.inviteKey} KBV result, passed=${atleastTwoCorrect}`);
   dataStore.save(req, 'kbvAnswered', true);
 
   const { accountStatus } = details;
@@ -135,6 +136,7 @@ const questionsGet = (req, res) => {
     if (question) {
       const { selection } = req.session[`security-question-${questionNum}`] || {};
       const model = new ViewModel(question, questionNum, maxNumQuestions, undefined, selection);
+      res.locals.logger.info(`The ${req.session.inviteKey} is seeing page, security-question-${questionNum}`);
       return res.render('pages/transunion-kbv-question', model);
     }
   }
@@ -163,6 +165,7 @@ const questionsPost = (req, res) => {
     const isLastQuestion = intQuestionNum === maxNumQuestions;
 
     if (isLastQuestion) {
+      res.locals.logger.info(`The ${req.session.inviteKey} has answered last KBV question`);
       return handleLastQuestionActions(req, res);
     }
 
