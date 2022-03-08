@@ -21,14 +21,6 @@ const baseDetails = {
 };
 
 const baseDetailResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -49,14 +41,6 @@ const baseDetailResult = [{
 const livedAbroadNoDetails = { 'lived-abroad': { livedAbroad: 'no' }, ...baseDetails };
 
 const livedAbroadNoResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -85,14 +69,6 @@ const livedAbroadNoResult = [{
 const livedAbroadYesNoCountriesDetails = { 'lived-abroad': { livedAbroad: 'yes' }, ...baseDetails };
 
 const livedAbroadYesNoCountriesResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -127,14 +103,6 @@ const livedAbroadYesNoDetailsDetails = {
 };
 
 const livedAbroadYesNoDetailsResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -185,14 +153,6 @@ const livedAbroadYesWithDetailsDetails = {
 };
 
 const livedAbroadYesWithDetailsResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -243,14 +203,6 @@ const livedAbroadYesWithDetailsOverseasDetails = {
 };
 
 const livedAbroadYesWithDetailsOverseasResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -277,14 +229,6 @@ const livedAbroadYesWithDetailsOverseasResult = [{
 }];
 
 const livedAbroadYesWithDetailsWelshResult = [{
-  key: { text: 'Dyddiad Geni', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Newid', visuallyHiddenText: 'Dyddiad Geni', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -313,14 +257,6 @@ const livedAbroadYesWithDetailsWelshResult = [{
 const workedAbroadNoDetails = { 'worked-abroad': { workedAbroad: 'no' }, ...baseDetails };
 
 const workedAbroadNoResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -349,14 +285,6 @@ const workedAbroadNoResult = [{
 const workedAbroadYesNoCountriesDetails = { 'worked-abroad': { workedAbroad: 'yes' }, ...baseDetails };
 
 const workedAbroadYesNoCountriesResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -391,14 +319,6 @@ const workedAbroadYesNoDetailsDetails = {
 };
 
 const workedAbroadYesNoDetailsResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -449,14 +369,6 @@ const workedAbroadYesWithDetailsDetails = {
 };
 
 const workedAbroadYesWithDetailsResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -483,14 +395,6 @@ const workedAbroadYesWithDetailsResult = [{
 }];
 
 const workedAbroadYesWithDetailsWelshResult = [{
-  key: { text: 'Dyddiad Geni', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Newid', visuallyHiddenText: 'Dyddiad Geni', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -522,14 +426,6 @@ const altFormatDetails = { 'alt-formats': 'yes', 'alt-formats-choose': 'audioCas
 const altFormatDetailsNo = { 'alt-formats': 'no', ...baseDetails };
 
 const maritalStatusSingleResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -565,14 +461,6 @@ const maritalStatusMarriedDetails = {
 };
 
 const maritalStatusMarriedResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -616,14 +504,6 @@ const maritalStatusCivilDetails = {
 };
 
 const maritalStatusCivilResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -667,14 +547,6 @@ const maritalStatusDivorcedDetails = {
 };
 
 const maritalStatusDivorcedResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -718,14 +590,6 @@ const maritalStatusDissolvedDetails = {
 };
 
 const maritalStatusDissolvedResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -769,14 +633,6 @@ const maritalStatusWidowedDetails = {
 };
 
 const maritalStatusWidowedResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -820,14 +676,6 @@ const claimFromDateAfterSpaDetails = {
 };
 
 const claimFromDateAfterSpaDetailResult = [{
-  key: { text: 'Date of birth', classes: 'govuk-!-width-two-thirds' },
-  value: { text: ['01/01/1953'] },
-  actions: {
-    items: [{
-      href: '/date-of-birth?edit=true', text: 'Change', visuallyHiddenText: 'Date of birth', attributes: { id: 'dateOfBirth', 'data-journey-click': 'check-your-details:clicked-link:change-date-of-birth' },
-    }],
-  },
-}, {
   key: { text: 'Date you want your State Pension from', classes: 'govuk-!-width-two-thirds' },
   value: { text: ['01/01/2018'] },
   actions: {
@@ -873,49 +721,49 @@ describe('Check Change Helper ', () => {
 
     it('should return a array when base details are supplied', async () => {
       const result = await checkChangeHelper.requestFilter(baseDetails, englishLangauge);
-      assert.equal(result.length, 3);
+      assert.equal(result.length, 2);
       assert.equal(JSON.stringify(result), JSON.stringify(baseDetailResult));
     });
 
     describe(' livedAbroad ', () => {
       it('should return a array that contains livedAbroad as No when base details are supplied with lived abroad', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadNoDetails, englishLangauge);
-        assert.equal(result.length, 4);
+        assert.equal(result.length, 3);
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadNoResult));
       });
 
       it('should return a array that contains livedAbroad as Yes when lived abroad is supplied without countires', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadYesNoCountriesDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Yes');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Yes');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesNoCountriesResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires when lived abroad and lived abroad is yes and countries are supplied without countires details', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadYesNoDetailsDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />France');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />France');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesNoDetailsResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied with english language', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadYesWithDetailsDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied with welsh language', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadYesWithDetailsDetails, welshLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsWelshResult));
       });
 
       it('should return a array that contains livedAbroad as a list of countires and to and from dates when lived abroad is yes, has countries and the dates are supplied and is an overseas customer', async () => {
         const result = await checkChangeHelper.requestFilter(livedAbroadYesWithDetailsOverseasDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001');
         assert.equal(JSON.stringify(result), JSON.stringify(livedAbroadYesWithDetailsOverseasResult));
       });
     });
@@ -923,35 +771,35 @@ describe('Check Change Helper ', () => {
     describe(' workedAbroad ', () => {
       it('should return a array that contains workedAbroad as No when base details are supplied with worked abroad', async () => {
         const result = await checkChangeHelper.requestFilter(workedAbroadNoDetails, englishLangauge);
-        assert.equal(result.length, 4);
+        assert.equal(result.length, 3);
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadNoResult));
       });
 
       it('should return a array that contains workedAbroad as Yes when worked abroad is supplied without countires', async () => {
         const result = await checkChangeHelper.requestFilter(workedAbroadYesNoCountriesDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Yes');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Yes');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesNoCountriesResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires when worked abroad and worked abroad is yes and countries are supplied without countires details', async () => {
         const result = await checkChangeHelper.requestFilter(workedAbroadYesNoDetailsDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />France');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />France');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesNoDetailsResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires and to and from dates when worked abroad is yes, has countries and the dates are supplied with english language', async () => {
         const result = await checkChangeHelper.requestFilter(workedAbroadYesWithDetailsDetails, englishLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesWithDetailsResult));
       });
 
       it('should return a array that contains workedAbroad as a list of countires and to and from dates when worked abroad is yes, has countries and the dates are supplied with welsh language', async () => {
         const result = await checkChangeHelper.requestFilter(workedAbroadYesWithDetailsDetails, welshLangauge);
-        assert.equal(result.length, 4);
-        assert.equal(result[2].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234');
+        assert.equal(result.length, 3);
+        assert.equal(result[1].value.html, 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234');
         assert.equal(JSON.stringify(result), JSON.stringify(workedAbroadYesWithDetailsWelshResult));
       });
     });
@@ -960,14 +808,14 @@ describe('Check Change Helper ', () => {
       describe(' filled in ', () => {
         it('should return alt formats section when one of the alt formats option is selected', async () => {
           const result = await checkChangeHelper.requestFilter(altFormatDetails, englishLangauge);
-          assert.equal(result.length, 4);
-          assert.equal(result[3].value.html, 'Audio cassette');
+          assert.equal(result.length, 3);
+          assert.equal(result[2].value.html, 'Audio cassette');
         });
 
         it('should return alt formats section with "None" when answer to alt-formats question is no', async () => {
           const result = await checkChangeHelper.requestFilter(altFormatDetailsNo, englishLangauge);
-          assert.equal(result.length, 4);
-          assert.equal(result[3].value.html, 'None');
+          assert.equal(result.length, 3);
+          assert.equal(result[2].value.html, 'None');
         });
       });
     });
@@ -976,8 +824,8 @@ describe('Check Change Helper ', () => {
       describe(' single ', () => {
         it('should return a array that contains maritalStatus as Single when single marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusSingleDetails, englishLangauge);
-          assert.equal(result.length, 4);
-          assert.equal(result[2].value.html, 'Never been married');
+          assert.equal(result.length, 3);
+          assert.equal(result[1].value.html, 'Never been married');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusSingleResult));
         });
       });
@@ -985,8 +833,8 @@ describe('Check Change Helper ', () => {
       describe(' married ', () => {
         it('should return a array that contains maritalStatus as Married with date when married marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusMarriedDetails, englishLangauge);
-          assert.equal(result.length, 5);
-          assert.equal(result[2].value.html, 'Married<br />01/01/1960');
+          assert.equal(result.length, 4);
+          assert.equal(result[1].value.html, 'Married<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusMarriedResult));
         });
       });
@@ -994,8 +842,8 @@ describe('Check Change Helper ', () => {
       describe(' civil ', () => {
         it('should return a array that contains maritalStatus as civil partnership with date when civil partnership marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusCivilDetails, englishLangauge);
-          assert.equal(result.length, 5);
-          assert.equal(result[2].value.html, 'Civil partnership<br />01/01/1960');
+          assert.equal(result.length, 4);
+          assert.equal(result[1].value.html, 'Civil partnership<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusCivilResult));
         });
       });
@@ -1003,8 +851,8 @@ describe('Check Change Helper ', () => {
       describe(' divorced ', () => {
         it('should return a array that contains maritalStatus as divorced with date when divorced marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusDivorcedDetails, englishLangauge);
-          assert.equal(result.length, 5);
-          assert.equal(result[2].value.html, 'Divorced<br />01/01/1960');
+          assert.equal(result.length, 4);
+          assert.equal(result[1].value.html, 'Divorced<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusDivorcedResult));
         });
       });
@@ -1012,8 +860,8 @@ describe('Check Change Helper ', () => {
       describe(' dissolved ', () => {
         it('should return a array that contains maritalStatus as dissolved with date when dissolved marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusDissolvedDetails, englishLangauge);
-          assert.equal(result.length, 5);
-          assert.equal(result[2].value.html, 'Dissolved civil partnership<br />01/01/1960');
+          assert.equal(result.length, 4);
+          assert.equal(result[1].value.html, 'Dissolved civil partnership<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusDissolvedResult));
         });
       });
@@ -1021,8 +869,8 @@ describe('Check Change Helper ', () => {
       describe(' widowed ', () => {
         it('should return a array that contains maritalStatus as widowed with date when widowed marital status are supplied', async () => {
           const result = await checkChangeHelper.requestFilter(maritalStatusWidowedDetails, englishLangauge);
-          assert.equal(result.length, 5);
-          assert.equal(result[2].value.html, 'Widowed<br />01/01/1960');
+          assert.equal(result.length, 4);
+          assert.equal(result[1].value.html, 'Widowed<br />01/01/1960');
           assert.equal(JSON.stringify(result), JSON.stringify(maritalStatusWidowedResult));
         });
       });
@@ -1031,7 +879,7 @@ describe('Check Change Helper ', () => {
     describe('claimFromDate', () => {
       it('should return a array that contains claimFromDate question as after spa when session is after spa', async () => {
         const result = await checkChangeHelper.requestFilter(claimFromDateAfterSpaDetails, englishLangauge);
-        assert.equal(result.length, 3);
+        assert.equal(result.length, 2);
         assert.equal(JSON.stringify(result), JSON.stringify(claimFromDateAfterSpaDetailResult));
       });
     });
