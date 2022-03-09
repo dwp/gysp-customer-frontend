@@ -1,3 +1,12 @@
+# [11.10.0](https://github.com/dwp/gysp-customer-frontend/compare/11.9.0...11.10.0) (2022-03-09)
+
+
+### Features
+
+* **transunion-kbv:** additional logging ([35c9c66](https://github.com/dwp/gysp-customer-frontend/commit/35c9c660be5ff9ae47d87e24e27eafc9972e6c47))
+
+
+
 # [11.9.0](https://github.com/dwp/gysp-customer-frontend/compare/11.8.0...11.9.0) (2022-03-02)
 
 
