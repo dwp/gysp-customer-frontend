@@ -90,7 +90,7 @@
     "prestart": "npm ci",
     "start": "node -r dotenv/config start | bunyan",
     "compliance": "npm run compliance:lint && npm run compliance:lint-docker",
-    "compliance:lint": "eslint .",
+    "compliance:lint": "eslint --cache .",
     "compliance:lint-docker": "docker run --rm -i hadolint/hadolint < docker/Dockerfile",
     "test": "npm run test:unit",
     "test:unit": "mocha test/unit --recursive",

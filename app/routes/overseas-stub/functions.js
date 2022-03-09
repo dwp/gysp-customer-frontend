@@ -5,7 +5,7 @@ function getActive(req, res) {
 
 function getInactive(req, res) {
   delete req.session.isOverseasStub;
-  res.redirect('/confirm-identity');
+  res.redirect('/invitation-code');
 }
 
 module.exports.getActive = getActive;

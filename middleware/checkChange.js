@@ -4,7 +4,7 @@ function allowedPaths(key, path, mountUrl) {
   const pathRegx = new RegExp(mountUrl, 'g');
   const pathNoMountUrl = path.replace(pathRegx, '/');
   const defaultPaths = [
-    '/confirm-identity',
+    '/invitation-code',
     '/cookie-policy',
   ];
 

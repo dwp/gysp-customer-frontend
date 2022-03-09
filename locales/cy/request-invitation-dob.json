@@ -1,0 +1,23 @@
+{
+  "header":"Beth yw eich dyddiad geni?",
+  "fields": {
+    "dob": {
+      "date": {
+          "day": "Diwrnod",
+          "month": "Mis",
+          "year": "Blwyddyn"
+      },
+      "hint": "Er enghraifft, 27 3 2007",
+      "errors": {
+        "empty": {
+          "all": "Rhowch eich dyddiad geni",
+          "day": "Mae'n rhaid i ddyddiad geni gynnwys Diwrnod",
+          "month": "Mae'n rhaid i ddyddiad geni gynnwys Mis",
+          "year": "Mae'n rhaid i ddyddiad geni gynnwys Blwyddyn"
+        },
+        "format": "Mae'n rhaid i ddyddiad geni fod yn ddyddiad gwirioneddol",
+        "future": "Mae'n rhaid i ddyddiad geni fod yn y gorffennol"
+      }
+    }
+  }
+}

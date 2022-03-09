@@ -3,6 +3,9 @@
   "title": {
     "error": "Error:"
   },
+  "error-summary": {
+    "header": "There is a problem"
+  },
   "error-message" : {
     "visuallyHiddenText": "Error"
   },
@@ -28,6 +31,11 @@
      "northernIreland" : {
        "privacy": "Northern Ireland Privacy"
      }
+  },
+  "section": {
+    "request-invitation": {
+      "caption": "Request an invitation code"
+    }
   },
   "help": {
     "bank": {

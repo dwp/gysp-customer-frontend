@@ -1,0 +1,70 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-name:header") }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("app:error-summary.header"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="date-of-birth" autocomplete="off" novalidate>
+        <span class="govuk-caption-xl">{{ t("app:section.request-invitation.caption") }}</span>
+        {{ govukDateInput({
+          id: "date",
+          fieldset: {
+            legend: {
+              text: t("request-invitation-dob:header"),
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-9"
+            }
+          },
+          hint: {
+            text: t("request-invitation-dob:fields.dob.hint")
+          },
+          items: [{
+            label: t("request-invitation-dob:fields.dob.date.day"),
+            id: "date-day",
+            name: "dateDay",
+            value: details.dateDay,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateDay),
+            pattern: "[0-9]*"
+          }, {
+            label: t("request-invitation-dob:fields.dob.date.month"),
+            id: "date-month",
+            name: "dateMonth",
+            value: details.dateMonth,
+            classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateMonth),
+            pattern: "[0-9]*"
+          }, {
+            label: t("request-invitation-dob:fields.dob.date.year"),
+            id: "date-year",
+            name: "dateYear",
+            value: details.dateYear,
+            classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dateYear),
+            pattern: "[0-9]*"
+          }
+          ],
+          errorMessage: errors.date
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
+    </div>
+
+     {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+
+{% endblock %}

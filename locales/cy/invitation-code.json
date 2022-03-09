@@ -1,0 +1,24 @@
+{
+  "header": "Sut hoffech chi gadarnhau pwy ydych chi?",
+  "errors": {
+    "header": "Mae yna broblem"
+  },
+  "fields": {
+    "hasInvitationCode": {
+      "legend": "Oes gennych chi god gwahoddiad?",
+      "options": {
+        "yes": {
+          "label": "Oes, mae gennyf fy ngod gwahoddiad",
+          "hint": "Gallwch ddod o hyd iddo ar eich llythyr Cael eich Pensiwn y Wladwriaeth"
+        },
+        "no": {
+          "label": "Na, nid oes gennyf fy ngod gwahoddiad",
+          "hint": "Gallwch ofyn i ni anfon eich cod gwahoddiad i'ch cyfeiriad cartref"
+        }
+      },
+      "errors": {
+        "required": "Dewiswch oes os oes gennych eich cod gwahoddiad"
+      }
+    }
+  }
+}

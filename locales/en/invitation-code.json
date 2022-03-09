@@ -1,0 +1,24 @@
+{
+  "header": "Do you have your invitation code?",
+  "errors": {
+    "header": "There is a problem"
+  },
+  "fields": {
+      "hasInvitationCode": {
+        "legend": "Do you have your invitation code?",
+        "options": {
+          "yes": {
+            "label": "Yes, I have my invitation code",
+            "hint": "You can find this on your Get your State Pension letter"
+          },
+          "no": {
+            "label": "No, I do not have my invitation code",
+            "hint": "You can ask us to send an invitation code to your home address"
+          }
+        },
+        "errors": {
+          "required": "Select yes if you have your invitation code"
+        }
+      }
+    }
+}

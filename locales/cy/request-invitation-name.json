@@ -1,0 +1,21 @@
+{
+  "header":"Beth yw eich enw?",
+  "fields": {
+    "firstName": {
+      "label": "Enw cyntaf",
+      "errors": {
+        "required": "Rhowch eich enw cyntaf",
+        "format": "Mae’n rhaid i enw cyntaf ddechrau gyda llythyren ac ond cynnwys llythrennau, cysylltnodau, collnodau, atalnodau llawn ac gofodau",
+        "length": "Mae'n rhaid i enw cyntaf fod yn 70 nod neu lai"
+      }
+    },
+    "lastName": {
+      "label": "Enw olaf",
+      "errors": {
+        "required": "Rhowch eich enw olaf",
+        "format": "Mae’n rhaid i enw olaf ddechrau gyda llythyren ac ond cynnwys llythrennau, cysylltnodau, collnodau, atalnodau llawn ac gofodau",
+        "length": "Mae'n rhaid i enw olaf fod yn 70 nod neu lai"
+      }
+    }
+  }
+  }

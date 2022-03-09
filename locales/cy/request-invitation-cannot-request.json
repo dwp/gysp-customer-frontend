@@ -1,0 +1,5 @@
+{
+  "header": "Ni allwch ofyn am eich cod gwahoddiad ar hyn o bryd",
+  "p1": "Byddwn yn postio eich cod gwahoddiad i'ch cyfeiriad cartref 3 mis cyn y byddwch yn cyrraedd oed Pensiwn y Wladwriaeth. Mae hwn yn cael ei anfon yn awtomatig.",
+  "p2": "Os nad ydych yn derbyn eich cod erbyn <strong>{{ DATE }}</strong>, dewch yn ôl a gofyn am un."
+}

@@ -2,7 +2,7 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("confirm-identity:header") }}{% endblock %}
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("invitation-code:header") }}{% endblock %}
 
 {# Remove timeout dialog #}
 {% block timeoutDialog %}{% endblock %}
@@ -13,7 +13,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         {{ govukErrorSummary({
-          titleText: t("confirm-identity:errors.header"),
+          titleText: t("invitation-code:errors.header"),
           errorList: errors.errorSummary
         }) }}
       </div>
@@ -22,45 +22,39 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form method="post" action="confirm-identity" autocomplete="off" novalidate>
+      <form method="post" action="invitation-code" autocomplete="off" novalidate>
         {{ govukRadios({
-          name: "authType",
-          errorMessage: errors.authType,
+          name: "hasInvitationCode",
+          errorMessage: errors.hasInvitationCode,
           fieldset: {
             legend: {
-              text: t("confirm-identity:header"),
+              text: t("invitation-code:fields.hasInvitationCode.legend"),
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-9"
             },
             attributes: {
-              id: "authType"
+              id: "hasInvitationCode"
             }
           },
           items: [{
-            id: "authType-invite",
-            value: "invite",
-            text: t("confirm-identity:fields.authType.options.invite.header"),
+            id: "hasInvitationCode-yes",
+            value: "yes",
+            text: t("invitation-code:fields.hasInvitationCode.options.yes.label"),
             label: {
               classes: "govuk-label--s"
             },
             hint: {
-              text: t("confirm-identity:fields.authType.options.invite.info")
-            },
-            attributes: {
-              "data-dimension-click": t("google-analytics:pages.confirm-identity.invite")
+              text: t("invitation-code:fields.hasInvitationCode.options.yes.hint")
             }
           }, {
-              id: "authType-verify",
-              value: "verify",
-              text: t("confirm-identity:fields.authType.options.verify.header"),
+              id: "hasInvitationCode-no",
+              value: "no",
+              text: t("invitation-code:fields.hasInvitationCode.options.no.label"),
               label: {
                 classes: "govuk-label--s"
               },
               hint: {
-                text: t("confirm-identity:fields.authType.options.verify.info")
-              },
-              attributes: {
-                "data-dimension-click": t("google-analytics:pages.confirm-identity.verify")
+                text: t("invitation-code:fields.hasInvitationCode.options.no.hint")
               }
           }]
         }) }}

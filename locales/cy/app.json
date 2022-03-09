@@ -3,6 +3,9 @@
   "title": {
     "error": "Gwall:"
   },
+  "error-summary": {
+    "header": "Mae yna broblem"
+  },
   "error-message" : {
     "visuallyHiddenText": "Gwall"
   },
@@ -28,6 +31,11 @@
      "northernIreland" : {
        "privacy": "Preifatrwydd Gogledd Iwerddon"
      }
+  },
+  "section": {
+    "request-invitation": {
+      "caption": "Gofyn am god gwahoddiad"
+    }
   },
   "help": {
     "bank": {

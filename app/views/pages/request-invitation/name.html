@@ -1,0 +1,54 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-name:header") }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("app:error-summary.header"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">{{ t("app:section.request-invitation.caption") }}</span>
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-name:header") }}</h1>
+
+      <form method="post" action="your-name" autocomplete="off" novalidate>
+        {{ govukInput({
+          id: "firstName",
+          name: "firstName",
+          label: {
+            text: t("request-invitation-name:fields.firstName.label")
+          },
+          value: details.firstName,
+          errorMessage: errors.firstName
+        }) }}
+
+        {{ govukInput({
+          id: "lastName",
+          name: "lastName",
+          label: {
+            text: t("request-invitation-name:fields.lastName.label")
+          },
+          value: details.lastName,
+          errorMessage: errors.lastName
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
+    </div>
+
+     {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+
+{% endblock %}

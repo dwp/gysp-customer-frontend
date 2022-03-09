@@ -13,7 +13,6 @@ const staticMiddleware = require('./middleware/static/index');
 const nunjucksMiddleware = require('./middleware/nunjucks/index');
 const sessionMiddleware = require('./middleware/session/index');
 const i18nextMiddleware = require('./middleware/i18n/index');
-const verifyMiddleware = require('./middleware/verify/index');
 const pageMiddleware = require('./middleware/page/index');
 const cookieMiddleware = require('./middleware/cookie-message/index');
 const bankAccAndKBVChecksMiddleware = require('./middleware/bankAccountAndTransunionKBVChecks');
@@ -62,10 +61,6 @@ const i18next = i18nextMiddleware(app, i18nextConfig, log);
 cookieMiddleware(app, config.cookieConcentName, config.gaTrackingId, config.gaDomain);
 
 let serviceURL = '/auth';
-if (config.application.feature.verify === true) {
-  serviceURL = '/confirm-identity';
-  verifyMiddleware(app, log, config.application.verify);
-}
 
 app.use(checkChangeRedirect(config.mountUrl));
 
@@ -73,7 +68,6 @@ app.use(checkChangeRedirect(config.mountUrl));
 const generalRoutes = require('./app/routes/general/routes.js');
 const cookiesRoutes = require('./app/routes/cookies/routes.js');
 const authRoutes = require('./app/routes/auth/routes.js');
-const verifyAuthRoutes = require('./app/routes/verify-auth/routes.js');
 const verifyDetailRoutes = require('./app/routes/verify-detail/routes.js');
 const dateRoutes = require('./app/routes/date/routes.js');
 const startDateRoutes = require('./app/routes/start-date/routes.js');
@@ -89,24 +83,23 @@ const completeRoute = require('./app/routes/complete/routes.js');
 const declarationRoutes = require('./app/routes/declaration/routes.js');
 const accountRoutes = require('./app/routes/account/routes.js');
 const actuatorRoutes = require('./app/routes/actuator/routes.js');
-const confirmIdentity = require('./app/routes/confirm-identity/routes.js');
-const personalData = require('./app/routes/personal-data/routes.js');
+const invitationCode = require('./app/routes/invitation-code/routes.js');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const sessionRoutes = require('./app/routes/session/routes.js');
 const accountAdditionalChecks = require('./app/routes/account-additional-checks/routes.js');
 const kbvQuestionRoutes = require('./app/routes/transunion-kbv/routes.js');
+const requestInvitation = require('./app/routes/request-invitation/routes.js');
 
 if (config.env !== 'production') {
   app.use(config.mountUrl, overseasStub);
 }
 // Overseas middleware
 app.use(overseas());
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
+  serviceURL = '/invitation-code';
   if (req.session.isOverseas) {
     serviceURL = '/auth';
-  } else {
-    serviceURL = '/confirm-identity';
   }
   next();
 });
@@ -205,16 +198,11 @@ if (config.env === 'local') {
 app.use(config.mountUrl, generalRoutes);
 app.use(config.mountUrl, cookiesRoutes);
 app.use(config.mountUrl, sessionRoutes);
-if (config.application.feature.verify === false) {
-  app.use(config.mountUrl, authRoutes);
-}
-if (config.application.feature.verify === true) {
-  app.use(config.mountUrl, confirmIdentity);
-  app.use(config.mountUrl, verifyAuthRoutes);
-}
+app.use(config.mountUrl, invitationCode);
 app.use(config.mountUrl, authRoutes);
+
 app.use((req, res, next) => {
-  if (domain.extract(req.headers.referer) === req.hostname || req.path.includes('/verify/your-details')) {
+  if (domain.extract(req.headers.referer) === req.hostname) {
     next();
   } else {
     log.info(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
@@ -222,12 +210,10 @@ app.use((req, res, next) => {
   }
 });
 
+app.use(config.mountUrl, requestInvitation);
+
 if (config.application.feature.bankValidationUsingKBV === true) {
   app.use(bankAccAndKBVChecksMiddleware);
-}
-
-if (config.application.feature.verify === true) {
-  app.use(config.mountUrl, personalData);
 }
 
 function checkInSessionAndCompletedAndNotOnCompletePage(req) {

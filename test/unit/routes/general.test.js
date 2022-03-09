@@ -31,7 +31,7 @@ describe('General controller ', () => {
   describe('redirectToStart function (GET /)', () => {
     it('should redirect when called with any response data', (done) => {
       generalController.redirectToStart(emptyRequest, genericResponse);
-      assert.equal(genericResponse.address, '/confirm-identity');
+      assert.equal(genericResponse.address, '/invitation-code');
       done();
     });
   });

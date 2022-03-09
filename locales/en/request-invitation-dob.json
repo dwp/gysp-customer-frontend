@@ -1,0 +1,27 @@
+{
+  "header":"What is your date of birth?",
+  "errors": {
+    "header": "There is a problem"
+  },
+  "fields": {
+    "dob": {
+      "date": {
+          "day": "Day",
+          "month": "Month",
+          "year": "Year"
+      },
+      "hint": "For example, 27 3 2007",
+      "label": "Your date of birth",
+      "errors": {
+        "empty": {
+          "all": "Enter your date of birth",
+          "day": "Date of birth must include a Day",
+          "month": "Date of birth must include a Month",
+          "year": "Date of birth must include a Year"
+        },
+        "format": "Date of birth must be a real date",
+        "future": "Date of birth must be in the past"
+      }
+    }
+  }
+}

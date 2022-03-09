@@ -1,0 +1,21 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}{{ t("request-invitation-cannot-request:header") }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">{{ t("app:section.request-invitation.caption") }}</span>
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-cannot-request:header") }}</h1>
+
+      <p class="govuk-body">{{ t('request-invitation-cannot-request:p1') }}</p>
+
+      {% if date %}
+        <p class="govuk-body">{{ t('request-invitation-cannot-request:p2', { DATE: date }) | safe }}</p>
+      {% endif %}
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

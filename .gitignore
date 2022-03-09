@@ -10,3 +10,4 @@ public/
 .project
 npm-debug.log
 .vim*
+.eslintcache

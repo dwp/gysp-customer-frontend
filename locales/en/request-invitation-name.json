@@ -1,0 +1,21 @@
+{
+  "header":"What is your name?",
+  "fields": {
+    "firstName": {
+      "label": "First name",
+      "errors": {
+        "required": "Enter your first name",
+        "format": "First name must start with a letter and only include letters, hyphens, apostrophes, full stops and spaces",
+        "length": "First name must be 70 characters or less"
+      }
+    },
+    "lastName": {
+      "label": "Last name",
+      "errors": {
+        "required": "Enter your last name",
+        "format": "Last name must start with a letter and only include letters, hyphens, apostrophes, full stops and spaces",
+        "length": "Last name must be 70 characters or less"
+      }
+    }
+  }
+  }

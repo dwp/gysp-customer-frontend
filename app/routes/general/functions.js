@@ -4,7 +4,7 @@ function signOut(req, res) {
 }
 
 function redirectToStart(req, res) {
-  res.redirect('/confirm-identity');
+  res.redirect('/invitation-code');
 }
 
 function accessibilityStatement(req, res) {

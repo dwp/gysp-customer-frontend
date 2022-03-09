@@ -1,0 +1,11 @@
+{
+  "header": "Request an invitation code",
+  "p1": "To protect you from fraud we need to send an invitation code by post to your home address.",
+  "list1": {
+    "p": "You can request a code if you:",
+    "li1": "will reach State Pension age in the next 3 months",
+    "li2": "have not received your code or have lost it"
+  },
+  "p2": "You should receive your invitation code within 5 days of requesting it. You can then return to GOV.UK to get your State Pension.",
+  "button": "Request an invitation code"
+}

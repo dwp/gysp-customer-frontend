@@ -1,0 +1,5 @@
+{
+  "header": "You cannot request an invitation code yet",
+  "p1": "We will post your invitation code to your home address 3 months before you reach State Pension age. This is sent automatically.",
+  "p2": "If you do not receive your code by <strong>{{ DATE }}</strong>, come back and request one."
+}
