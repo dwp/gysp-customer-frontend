@@ -108,7 +108,7 @@ function postStatePensionStartDate(req, res) {
 
 function getStatePensionStartDateError(req, res) {
   const editMode = checkChangeHelper.isEditMode(req, 'claim-from-date');
-  let startPensionDatePage = '/your-state-pension-date';
+  let startPensionDatePage = '/when-do-you-want-your-state-pension';
   if (req.session.userDateOfBirthInfo && req.session.userDateOfBirthInfo.newStatePensionDate) {
     startPensionDatePage = '/revised-your-state-pension-date';
   }

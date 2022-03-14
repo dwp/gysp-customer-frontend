@@ -197,7 +197,7 @@ describe('Start date controller ', () => {
     it('should return view when called with start pension link as your-state-pension-date', (done) => {
       controller.getStatePensionStartDateError(validStatePensionStartDateErrorRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/state-pension-start-date-error.html');
-      assert.equal(genericResponse.data.startPensionDatePage, '/your-state-pension-date');
+      assert.equal(genericResponse.data.startPensionDatePage, '/when-do-you-want-your-state-pension');
       done();
     });
     it('should return view when called with start pension link as revised-your-state-pension-date', (done) => {
