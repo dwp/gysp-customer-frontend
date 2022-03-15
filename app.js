@@ -58,7 +58,7 @@ pageMiddleware(app);
 
 const i18next = i18nextMiddleware(app, i18nextConfig, log);
 
-cookieMiddleware(app, config.cookieConcentName, config.gaTrackingId, config.gaDomain);
+cookieMiddleware(app, config.cookieConcentName, config.gtmContainerId);
 
 let serviceURL = '/auth';
 
@@ -94,6 +94,7 @@ const requestInvitation = require('./app/routes/request-invitation/routes.js');
 if (config.env !== 'production') {
   app.use(config.mountUrl, overseasStub);
 }
+
 // Overseas middleware
 app.use(overseas());
 app.use((req, _res, next) => {

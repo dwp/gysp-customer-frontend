@@ -30,9 +30,8 @@ function handleConcent(consent) {
 }
 
 function handleAcceptClick(event) {
-  var googleAnalyticsTrackingID = banner.getAttribute('data-ga-id');
-  var googleAnalyticsDomain = banner.getAttribute('data-ga-domain');
-  initGoogleAnalytics(googleAnalyticsTrackingID, googleAnalyticsDomain);
+  var gtmContainerId = banner.getAttribute('data-gtm-container-id');
+  initGoogleTagManager(gtmContainerId);
   handleConcent('yes');
   event.preventDefault();
 }
@@ -47,15 +46,12 @@ function handleHideClick(event) {
   event.preventDefault();
 }
 
-function initGoogleAnalytics(gaTrackingId, gaDomain) {
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', gaTrackingId, gaDomain);
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-  ga('set', 'nonInteraction', true);
+function initGoogleTagManager(gtmContainerId) {
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer', gtmContainerId);
 }
 
 function init() {

@@ -1,5 +1,5 @@
 const cookieMessage = require('./cookie-message');
 
-module.exports = (app, consentCookieName, gaTrackingId, gaDomain) => {
-  cookieMessage(app, consentCookieName, gaTrackingId, gaDomain);
+module.exports = (app, consentCookieName, gtmContainerId) => {
+  cookieMessage(app, consentCookieName, gtmContainerId);
 };

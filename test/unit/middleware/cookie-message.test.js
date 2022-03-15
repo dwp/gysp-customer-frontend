@@ -23,27 +23,26 @@ describe('cookie message middleware', () => {
   });
 
   it('should set all default locales options when no cookies set', () => {
-    cookieMessage(app({ cookies: { } }, genericResponse, nextFunction.next), 'test', 'trackingId', '.dwp.gov.uk');
+    cookieMessage(app({ cookies: { } }, genericResponse, nextFunction.next), 'test', 'gtmContainerId');
     assert.equal(genericResponse.locals.consentCookieName, 'test');
-    assert.equal(genericResponse.locals.gaTrackingId, 'trackingId');
-    assert.equal(genericResponse.locals.gaDomain, '.dwp.gov.uk');
+    assert.equal(genericResponse.locals.GTM_CONTAINER_ID, 'gtmContainerId');
   });
 
   it('should set consentCookieValue local when cookie is set', () => {
-    cookieMessage(app({ cookies: { test: 'foo' } }, genericResponse, nextFunction.next), 'test', 'trackingId', '.dwp.gov.uk');
+    cookieMessage(app({ cookies: { test: 'foo' } }, genericResponse, nextFunction.next), 'test', 'gtmContainerId');
     assert.equal(genericResponse.locals.consentCookieValue, 'foo');
   });
 
   it('should set cookieChoiceMade local when session cookieChoiceMade is set', () => {
     const req = { session: { cookieChoiceMade: true }, cookies: { } };
-    cookieMessage(app(req, genericResponse, nextFunction.next), 'test', 'trackingId', '.dwp.gov.uk');
+    cookieMessage(app(req, genericResponse, nextFunction.next), 'test', 'gtmContainerId');
     assert.isTrue(genericResponse.locals.cookieChoiceMade);
     assert.isUndefined(req.session.cookieChoiceMade);
   });
 
   it('should call next', () => {
     const req = { session: { cookieChoiceMade: true }, cookies: { } };
-    cookieMessage(app(req, genericResponse, nextFunction.next), 'test', 'trackingId', '.dwp.gov.uk');
+    cookieMessage(app(req, genericResponse, nextFunction.next), 'test', 'gtmContainerId');
     assert.equal(nextFunction.nextValue, 'foo');
   });
 });

@@ -79,9 +79,6 @@ const invalidAddressError = {
   errorSummary: [{
     href: '#address-yes',
     text: 'Select Yes if this is your current address.',
-    attributes: {
-      'data-journey': undefined,
-    },
   }],
 };
 

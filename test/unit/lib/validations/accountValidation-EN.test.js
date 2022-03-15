@@ -94,9 +94,9 @@ const BUILDING_SOC_ROLL_ERR = {
 };
 
 const errorBankSummaryResponse = [
-  { href: '#bankAccountHolder', text: ACC_HOLDER_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-account-holder' } },
-  { href: '#bankSortCode', text: SORT_CODE_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-sort-code' } },
-  { href: '#bankAccountNumber', text: ACC_NUM_ERR.required, attributes: { 'data-journey': 'account-details:error:bank-account-number' } },
+  { href: '#bankAccountHolder', text: ACC_HOLDER_ERR.required },
+  { href: '#bankSortCode', text: SORT_CODE_ERR.required },
+  { href: '#bankAccountNumber', text: ACC_NUM_ERR.required },
 ];
 
 describe('accountValidator - EN', () => {

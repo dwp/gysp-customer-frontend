@@ -8,7 +8,7 @@
     {% if errorText %} <p class="govuk-body">{{ errorText }}</p> {% endif %}
       <ul class="error-summary-list">
         {% for error in errorList %}
-          <li><a href="#{{error.link}}-form"{% if error.dataJourney %} data-journey-events="{{error.dataJourney}}"{% endif %}>{{ error.text }}</a></li>
+          <li><a href="#{{error.link}}-form">{{ error.text }}</a></li>
          {% endfor %}
         </ul>
     </div>
@@ -27,7 +27,7 @@
           {% if hint %}<span class="form-hint">{{hint}}</span>{% endif %}
         </label>
         {% if error %}<span class="error-message">{{error}}</span> {% endif %}
-        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}}"{% endif %} />
+        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" />
     </div>
 {% endmacro %}
 
@@ -35,10 +35,10 @@
     <div id="{{id}}-form" class="form-group {{cssOptions.fromGroup}} {% if not cssOptions.formErrorDisabled %} {% if error %} form-group-error{% else %} {{cssOptions.errorElse}} {% endif %} {% endif %}">
         <label class="{% if cssOptions.labelClass %}{{cssOptions.labelClass}}{% else %}form-label-bold{% endif %}" for="{{ id }}">{{ label }}
           {% if hint %}<span class="form-hint">{{hint}}</span>{% endif %}
-          {% if hintLink %}<span class="form-hint"><a href="{{ hintLink.url }}" {% if hintLink.dataJourneyClick %} data-journey-click="{{ hintLink.dataJourneyClick }}"{% endif %}>{{ hintLink.text }}</a></span>{% endif %}
+          {% if hintLink %}<span class="form-hint"><a href="{{ hintLink.url }}">{{ hintLink.text }}</a></span>{% endif %}
         </label>
         {% if error %}<span class="error-message">{{error}}</span> {% endif %}
-        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}}"{% endif %} />
+        <input type="text" class="form-control{% if error %} form-control-error {% endif %}{% if compound %}{%if compoundError %} {% else %} no-error {% endif %}{% endif %}{% if cssOptions.inputClass %} {{cssOptions.inputClass}}{% endif %}" id="{{ id }}" name="{{name}}" value="{{value}}" />
     </div>
 {% endmacro %}
 
@@ -56,17 +56,17 @@
 
           <div class="form-group form-group-day">
             <label for="{{name}}-day">{{ label.day }}</label>
-            <input class="form-control{%if fieldErrors.day %} {% else %} no-error {% endif %}" id="{{id}}-day" name="{{name}}Day" value="{{value.day}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} day"{% endif %} />
+            <input class="form-control{%if fieldErrors.day %} {% else %} no-error {% endif %}" id="{{id}}-day" name="{{name}}Day" value="{{value.day}}" type="text" maxlength="2" />
           </div>
 
           <div class="form-group form-group-month">
             <label for="{{name}}-month">{{ label.month }}</label>
-            <input class="form-control{%if fieldErrors.month %} {% else %} no-error {% endif %}" id="{{id}}-month" name="{{name}}Month" value="{{value.month}}" type="text" maxlength="2" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} month"{% endif %} />
+            <input class="form-control{%if fieldErrors.month %} {% else %} no-error {% endif %}" id="{{id}}-month" name="{{name}}Month" value="{{value.month}}" type="text" maxlength="2" />
           </div>
 
           <div class="form-group form-group-year">
             <label for="{{name}}-year">{{ label.year }}</label>
-            <input class="form-control{%if fieldErrors.year %} {% else %} no-error {% endif %}" id="{{id}}-year" name="{{name}}Year" value="{{value.year}}" type="text" maxlength="4" {% if dataJourneyClick %} data-journey-click="{{dataJourneyClick}} year"{% endif %} />
+            <input class="form-control{%if fieldErrors.year %} {% else %} no-error {% endif %}" id="{{id}}-year" name="{{name}}Year" value="{{value.year}}" type="text" maxlength="4" />
           </div>
         </div>
 
@@ -103,7 +103,7 @@
           {% if error %}<span class="error-message">{{error}}</span> {% endif %}
           {% if hint %}<p class="form-hint">{{hint}}</p>{% endif %}
                         {% for radio in radioButtons %}
-                          <div class="multiple-choice"{% if radio.dataTarget %} data-target="{{radio.dataTarget}}"{% endif %}{% if radio.dataJourneyClick %} data-journey-click="{{radio.dataJourneyClick}}"{% endif %}{% if radio.dataDimensionClick %} data-dimension-click="{{radio.dataDimensionClick}}"{% endif %}>
+                          <div class="multiple-choice"{% if radio.dataTarget %} data-target="{{radio.dataTarget}}"{% endif %}
                             <input id="{{id}}-{{radio.id}}" type="radio" name="{{name}}" value="{{radio.value}}" {% if value == radio.value %} checked{% endif %} />
                             <label for="{{id}}-{{radio.id}}">
                               {% if radio.label.header %}

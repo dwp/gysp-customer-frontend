@@ -45,20 +45,14 @@
         name: "dateFromMonth",
         value: details.dateFromMonth,
         classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateFrom),
-        pattern: "[0-9]*",
-        attributes: {
-          'data-journey-click': t("google-analytics:pages.country-details.date-from", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
-        }
+        pattern: "[0-9]*"
       }, {
         label: t("lived-abroad-country:fields.dateFrom.label-year"),
         id: "dateFrom-year",
         name: "dateFromYear",
         value: details.dateFromYear,
         classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dateFrom),
-        pattern: "[0-9]*",
-        attributes: {
-          'data-journey-click': t("google-analytics:pages.country-details.date-from", {URL: "/when-did-you-live-in-" + country.url}) + ' year'
-        }
+        pattern: "[0-9]*"
       }
       ],
       errorMessage: errors.dateFrom
@@ -83,22 +77,15 @@
           name: "dateToMonth",
           value: details.dateToMonth,
           classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
-          pattern: "[0-9]*",
-          attributes: {
-            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
-          }
+          pattern: "[0-9]*"
         }, {
           label: t("lived-abroad-country:fields.dateTo.label-year"),
           id: "dateTo-year",
           name: "dateToYear",
           value: details.dateToYear,
           classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
-          pattern: "[0-9]*",
-          attributes: {
-            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
-          }
-        }
-        ],
+          pattern: "[0-9]*"
+        }],
         errorMessage: errors.dateTo
       }) }}
     {% else %}
@@ -117,20 +104,14 @@
           name: "dateToMonth",
           value: details.dateToMonth,
           classes: "govuk-input--width-2"  + (" govuk-input--error" if errors.dateTo),
-          pattern: "[0-9]*",
-          attributes: {
-            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url}) + ' month'
-          }
+          pattern: "[0-9]*"
         }, {
           label: t("lived-abroad-country:fields.dateTo.label-year"),
           id: "dateTo-year",
           name: "dateToYear",
           value: details.dateToYear,
           classes: "govuk-input--width-4"  + (" govuk-input--error" if errors.dateTo),
-          pattern: "[0-9]*",
-          attributes: {
-            'data-journey-click': t("google-analytics:pages.country-details.date-to", {URL: "/when-did-you-live-in-" + country.url})  + ' year'
-          }
+          pattern: "[0-9]*"
         }
         ],
         errorMessage: errors.dateTo

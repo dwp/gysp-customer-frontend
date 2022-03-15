@@ -35,17 +35,11 @@
             id: "spentTimeInPrison-yes",
             value: "yes",
             text: t("prison:fields.spentTimeInPrison.options.yes"),
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.prison.spentTimeInPrison", {VALUE: "yes"})
-            },
             checked: true if details.spentTimeInPrison == 'yes' else false
           }, {
             id: "spentTimeInPrison-no",
             value: "no",
             text: t("prison:fields.spentTimeInPrison.options.no"),
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.prison.spentTimeInPrison", {VALUE: "no"})
-            },
             checked: true if details.spentTimeInPrison == 'no' else false
           }]
         }) }}

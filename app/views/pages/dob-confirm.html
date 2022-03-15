@@ -52,30 +52,21 @@
             name: "dateDay",
             value: details.dateDay,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' day'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("dob-confirmation:fields.dob.date.month"),
             id: "date-month",
             name: "dateMonth",
             value: details.dateMonth,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' month'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("dob-confirmation:fields.dob.date.year"),
             id: "date-year",
             name: "dateYear",
             value: details.dateYear,
             classes: "govuk-input--width-4" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.dob-confirm.date", {URL: formURL}) + ' year'
-            }
+            pattern: "[0-9]*"
           }
           ],
           errorMessage: errors.date

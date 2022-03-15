@@ -5,8 +5,7 @@ module.exports = {
   secret: process.env.CUSTOMER_FRONTEND_SECRET || 'thisIsASecret',
   mountUrl: process.env.CONTEXT_PATH || '/',
   cookieConcentName: process.env.COOKIE_CONCENT_NAME || 'seen_cookie_banner',
-  gaTrackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || null,
-  gaDomain: process.env.GOOGLE_ANALYTICS_DOMAIN || 'localhost',
+  gtmContainerId: process.env.GTM_CONTAINER_ID || 'GTM-KGWRXPV',
   application: {
     port: process.env.PORT ? parseInt(process.env.PORT, 10) : null,
     tls: {

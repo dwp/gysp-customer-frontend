@@ -19,7 +19,7 @@ const validYes = { spentTimeInPrison: 'yes' };
 const validNo = { spentTimeInPrison: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#spentTimeInPrison-yes', text: `Dewiswch ydw os ydych wedi treulio unrhyw amser yn y carchar ers ${statePensionDate}`, attributes: {} },
+  { href: '#spentTimeInPrison-yes', text: `Dewiswch ydw os ydych wedi treulio unrhyw amser yn y carchar ers ${statePensionDate}` },
 ];
 
 describe('prison validator - CY', () => {

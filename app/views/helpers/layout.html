@@ -11,7 +11,7 @@
     <!--[if !IE 8]><!--><link href="{{ assetPath }}/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
     <!--[if IE 8]><link href="{{ assetPath }}/stylesheets/application-ie8.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
     {% block pageCSS %}{% endblock %}
-    {% include '../includes/ga-script.html' %}
+    {% include '../includes/gtm-script.html' %}
 
     {% block timeoutDialog %}
       {# Session timeout dialog #}
@@ -33,7 +33,6 @@
 
 {% block bodyEnd %}
     <script src="{{ assetPath }}/javascripts/vendor/jquery-1.11.3.min.js"></script>
-    <script src="{{ assetPath }}/javascripts/vendor/stageprompt.js"></script>
     <script src="{{ assetPath }}/javascripts/cookieBanner.js"></script>
     <script src="{{ assetPath }}/javascripts/application.js"></script>
     <script src="{{ assetPath }}/all.js"></script>
@@ -60,6 +59,7 @@
 {% endblock %}
 
 {% block header %}
+  {% include '../includes/gtm-noscript.html' %}
   {{ govukHeader({
     homepageUrl: homepageUrl,
     serviceName: t('app:service_name'),
@@ -102,8 +102,7 @@
       text: t('app:navigation.privacy'),
       attributes: {
         id: 'privacy-policy',
-        rel: 'external',
-        'data-journey-click': t('google-analytics:footer.privacy')
+        rel: 'external'
       }
     }), footerMetaItems) %}
   {% elif isNorthernIreland === true %}
@@ -112,8 +111,7 @@
       text: t('app:navigation.northernIreland.privacy'),
       attributes: {
         id: 'privacy-policy--northern-ireland',
-        rel: 'external',
-        'data-journey-click': t('google-analytics:footer.ni-privacy')
+        rel: 'external'
       }
     }), footerMetaItems) %}
   {% else %}
@@ -122,16 +120,14 @@
       text: t('app:navigation.privacy'),
       attributes: {
         id: 'privacy-policy',
-        rel: 'external',
-        'data-journey-click': t('google-analytics:footer.privacy')
+        rel: 'external'
       }
     }, {
       href: 'https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-work-health-supporting-people.pdf',
       text: t('app:navigation.northernIreland.privacy'),
       attributes: {
         id: 'privacy-policy--northern-ireland',
-        rel: 'external',
-        'data-journey-click': t('google-analytics:footer.ni-privacy')
+        rel: 'external'
       }
     }), footerMetaItems) %}
   {% endif %}

@@ -18,7 +18,7 @@ const validYes = { cookieConsent: 'yes' };
 const validNo = { cookieConsent: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#cookieConsent', text: 'Select Yes if we can use cookies to help us improve the service.', attributes: {} },
+  { href: '#cookieConsent', text: 'Select Yes if we can use cookies to help us improve the service.' },
 ];
 
 describe('cookie validation - EN', () => {

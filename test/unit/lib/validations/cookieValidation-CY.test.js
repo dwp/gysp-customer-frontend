@@ -18,7 +18,7 @@ const validYes = { cookieConsent: 'yes' };
 const validNo = { cookieConsent: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#cookieConsent', text: 'Dewiswch gallwch os gallwn ddefnyddio cwcis i\'n helpu i wella\'r gwasanaeth.', attributes: {} },
+  { href: '#cookieConsent', text: 'Dewiswch gallwch os gallwn ddefnyddio cwcis i\'n helpu i wella\'r gwasanaeth.' },
 ];
 
 describe('cookie validation - EN', () => {

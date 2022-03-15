@@ -32,9 +32,6 @@
             label: {
               text: t("account:fields.accountHolder.label")
             },
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "bank"})
-            },
             value: details.bankAccountHolder,
             errorMessage: errors.bankAccountHolder
           }) }}
@@ -50,9 +47,6 @@
             label: {
               text: t("account:fields.sortCode.label")
             },
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.account-details.sort-code", {VALUE: "bank"})
-            },
             value: details.bankSortCode,
             errorMessage: errors.bankSortCode
           }) }}
@@ -67,9 +61,6 @@
             classes: "govuk-input--width-10",
             label: {
               text: t("account:fields.accountNumber.label")
-            },
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.account-details.account-number", {VALUE: "bank"})
             },
             value: details.bankAccountNumber,
             errorMessage: errors.bankAccountNumber
@@ -88,9 +79,6 @@
             },
             hint: {
               text: t("account:fields.buildingRoll.hint")
-            },
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.account-details.building-society-number")
             },
             value: details.buildingRoll,
             errorMessage: errors.buildingRoll

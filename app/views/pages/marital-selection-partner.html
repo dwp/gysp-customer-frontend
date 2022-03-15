@@ -29,9 +29,6 @@
             id: "firstName",
             name: "firstName",
             classes: "govuk-!-width-one-half",
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.martial-details.first-name", {URL: formURL})
-            },
             value: details.firstName,
             errorMessage: errors.firstName
           }) }}
@@ -44,9 +41,6 @@
             id: "surname",
             name: "surname",
             classes: "govuk-!-width-one-half",
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.martial-details.last-name", {URL: formURL})
-            },
             value: details.surname,
             errorMessage: errors.surname
           }) }}
@@ -62,9 +56,6 @@
             id: "otherName",
             name: "otherName",
             classes: "govuk-!-width-one-half",
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.martial-details.other-name", {URL: formURL})
-            },
             value: details.otherName,
             errorMessage: errors.otherName
           }) }}
@@ -87,30 +78,21 @@
             name: "dobDay",
             value: details.dobDay,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dob),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' day'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("marital-details:fields.dob.month"),
             id: "dob-month",
             name: "dobMonth",
             value: details.dobMonth,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dob),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' month'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("marital-details:fields.dob.year"),
             id: "dob-year",
             name: "dobYear",
             value: details.dobYear,
             classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dob),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date-of-birth", {URL: formURL}) + ' year'
-            }
+            pattern: "[0-9]*"
           }
           ],
           errorMessage: errors.dob

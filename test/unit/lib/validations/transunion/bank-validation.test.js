@@ -207,9 +207,6 @@ describe('Transunion bank validation', () => {
           visuallyHiddenText: errMsg,
         },
         errorSummary: [{
-          attributes: {
-            'data-journey': 'account-details:error:bank-account-number',
-          },
           href: '#bankAccountNumber',
           text: translatedErr.accountNumber.errors.transunionInvalid,
         }],
@@ -228,9 +225,6 @@ describe('Transunion bank validation', () => {
           visuallyHiddenText: errMsg,
         },
         errorSummary: [{
-          attributes: {
-            'data-journey': 'account-details:error:bank-sort-code',
-          },
           href: '#bankSortCode',
           text: translatedErr.sortCode.errors.transunionInvalid,
         }],
@@ -253,16 +247,10 @@ describe('Transunion bank validation', () => {
         },
         errorSummary: [
           {
-            attributes: {
-              'data-journey': 'account-details:error:bank-sort-code',
-            },
             href: '#bankSortCode',
             text: translatedErr.sortCode.errors.transunionInvalid,
           },
           {
-            attributes: {
-              'data-journey': 'account-details:error:bank-account-number',
-            },
             href: '#bankAccountNumber',
             text: translatedErr.accountNumber.errors.transunionInvalid,
           }],

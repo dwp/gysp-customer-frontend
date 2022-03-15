@@ -17,7 +17,7 @@ const populatedSessionRequest = [{
   value: { html: 'Home phone<br />000000000' },
   actions: {
     items: [{
-      href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'Contact details', attributes: { id: 'contactDetails', 'data-journey-click': 'check-your-details:clicked-link:change-contact-details' },
+      href: '/contact-details?edit=true', text: 'Change', visuallyHiddenText: 'Contact details', attributes: { id: 'contactDetails' },
     }],
   },
 }];

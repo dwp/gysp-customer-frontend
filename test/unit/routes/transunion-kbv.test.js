@@ -345,9 +345,6 @@ describe('transunion kbv journey', () => {
         errors: {
           errorSummary: [
             {
-              attributes: {
-                'data-journey': 'kbv-journey',
-              },
               href: '#securityQuestion1',
               text: 'Select when you last took out a personal current account',
             },

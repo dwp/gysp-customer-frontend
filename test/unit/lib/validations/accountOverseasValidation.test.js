@@ -8,9 +8,9 @@ const i18nextConfig = require('../../../../config/i18next');
 const validation = require('../../../../lib/validations/accountOverseasValidation');
 
 const errorEmptySummaryResponse = [
-  { href: '#accountHolder', text: 'Enter the account holder’s name.', attributes: { 'data-journey': 'account-details-overseas:error:account-name-overseas' } },
-  { href: '#accountNumber', text: 'Enter an account number.', attributes: { 'data-journey': 'account-details-overseas:error:account-number-overseas' } },
-  { href: '#accountCode', text: 'Enter the bank or branch code.', attributes: { 'data-journey': 'account-details-overseas:error:bank-or-branch-overseas' } },
+  { href: '#accountHolder', text: 'Enter the account holder’s name.' },
+  { href: '#accountNumber', text: 'Enter an account number.' },
+  { href: '#accountCode', text: 'Enter the bank or branch code.' },
 ];
 
 const longString = 'qwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiopasdfghjklzqwertyuiowe';

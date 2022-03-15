@@ -37,32 +37,22 @@
             name: "dateDay",
             value: details.dateDay,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' day'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("marital-date:fields.date.month"),
             id: "date-month",
             name: "dateMonth",
             value: details.dateMonth,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' month'
-            }
+            pattern: "[0-9]*"
           }, {
             label: t("lived-abroad-country:fields.dateFrom.label-year"),
             id: "date-year",
             name: "dateYear",
             value: details.dateYear,
             classes: "govuk-input--width-4" + (" govuk-input--error" if errors.date),
-            pattern: "[0-9]*",
-            attributes: {
-              'data-journey-click': t("google-analytics:pages.martial-details.date", {URL: formURL}) + ' year'
-            }
-          }
-          ],
+            pattern: "[0-9]*"
+          }],
           errorMessage: errors.date
         }) }}
 

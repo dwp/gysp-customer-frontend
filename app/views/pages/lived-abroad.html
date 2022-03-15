@@ -46,17 +46,11 @@
             id: "livedAbroad-yes",
             value: "yes",
             text: t("lived-abroad:fields.livedAbroad.options.yes"),
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.lived-abroad.lived-outside", {VALUE: "yes"})
-            },
             checked: true if details.livedAbroad == 'yes' else false
           }, {
             id: "livedAbroad-no",
             value: "no",
             text: t("lived-abroad:fields.livedAbroad.options.no"),
-            attributes: {
-              "data-journey-click": t("google-analytics:pages.lived-abroad.lived-outside", {VALUE: "no"})
-            },
             checked: true if details.livedAbroad == 'no' else false
           }]
         }) }}

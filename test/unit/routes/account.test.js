@@ -241,16 +241,10 @@ describe('Account controller ', () => {
           },
           errorSummary: [
             {
-              attributes: {
-                'data-journey': 'account-details:error:bank-sort-code',
-              },
               href: '#bankSortCode',
               text: 'The sort code does not exist - check it and try again',
             },
             {
-              attributes: {
-                'data-journey': 'account-details:error:bank-account-number',
-              },
               href: '#bankAccountNumber',
               text: 'The account number does not exist - check it and try again',
             }],
@@ -287,9 +281,6 @@ describe('Account controller ', () => {
             visuallyHiddenText: 'Error',
           },
           errorSummary: [{
-            attributes: {
-              'data-journey': 'account-details:error:bank-sort-code',
-            },
             href: '#bankSortCode',
             text: 'The sort code does not exist - check it and try again',
           }],

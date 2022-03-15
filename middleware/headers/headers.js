@@ -16,10 +16,26 @@ module.exports = (app) => {
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ['\'self\''],
-        scriptSrc: ['\'self\'', '\'unsafe-inline\'', 'www.google-analytics.com'],
-        connectSrc: ['\'self\'', 'www.google-analytics.com'],
-        imgSrc: ['\'self\'', 'www.google-analytics.com', 'data: blob:'],
+        scriptSrc: [
+          '\'self\'',
+          '\'unsafe-inline\'',
+          'www.google-analytics.com',
+          'https://www.googletagmanager.com',
+          'https://tagmanager.google.com',
+        ],
+        connectSrc: [
+          '\'self\'',
+          'www.google-analytics.com',
+          'https://www.googletagmanager.com',
+        ],
+        imgSrc: [
+          '\'self\'',
+          'www.google-analytics.com',
+          'data: blob:',
+          'https://www.googletagmanager.com',
+        ],
         fontSrc: ['\'self\'', 'data: blob:'],
+        frameSrc: ['\'self\'', 'https://www.googletagmanager.com'],
       },
       reportOnly: false,
     },

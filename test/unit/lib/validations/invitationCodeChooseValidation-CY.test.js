@@ -18,7 +18,7 @@ const validInvite = { hasInvitationCode: 'yes' };
 const validVerify = { hasInvitationCode: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#hasInvitationCode-yes', text: 'Dewiswch oes os oes gennych eich cod gwahoddiad', attributes: {} },
+  { href: '#hasInvitationCode-yes', text: 'Dewiswch oes os oes gennych eich cod gwahoddiad' },
 ];
 
 describe('confirm identity validator - CY', () => {

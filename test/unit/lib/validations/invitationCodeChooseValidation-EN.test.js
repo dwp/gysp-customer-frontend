@@ -18,7 +18,7 @@ const validInvite = { hasInvitationCode: 'yes' };
 const validVerify = { hasInvitationCode: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#hasInvitationCode-yes', text: 'Select yes if you have your invitation code', attributes: {} },
+  { href: '#hasInvitationCode-yes', text: 'Select yes if you have your invitation code' },
 ];
 
 describe('confirm identity validator - EN', () => {

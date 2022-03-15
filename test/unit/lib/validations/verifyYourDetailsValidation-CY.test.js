@@ -18,7 +18,7 @@ const validYes = { address: 'yes' };
 const validNo = { address: 'no' };
 
 const errorSummaryResponse = [
-  { href: '#address-yes', text: 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.', attributes: {} },
+  { href: '#address-yes', text: 'Dewiswch Ie os mai dyma\'ch cyfeiriad presennol.' },
 ];
 
 describe('verify your details - EN', () => {

@@ -135,16 +135,16 @@ describe('cookie controller', () => {
 
     it('should remove ga cookies if consent is no', (done) => {
       controller.postCookiePage(cookieValidNoPostRequest, genericResponse);
-      assert.deepEqual(genericResponse.clearCookieData[0], { name: '_gat', options: { domain: 'localhost', path: '/' } });
-      assert.deepEqual(genericResponse.clearCookieData[1], { name: '_ga', options: { domain: 'localhost', path: '/' } });
-      assert.deepEqual(genericResponse.clearCookieData[2], { name: '_gid', options: { domain: 'localhost', path: '/' } });
+      assert.deepEqual(genericResponse.clearCookieData[0], { name: '_gat', options: { path: '/' } });
+      assert.deepEqual(genericResponse.clearCookieData[1], { name: '_ga', options: { path: '/' } });
+      assert.deepEqual(genericResponse.clearCookieData[2], { name: '_gid', options: { path: '/' } });
       done();
     });
 
     it('should remove ga _gat cookies with dynamic name if consent is no', (done) => {
       cookieValidNoPostRequest.headers.cookie = 'test=test; _gat_UA-1234567-1=1;';
       controller.postCookiePage(cookieValidNoPostRequest, genericResponse);
-      assert.deepEqual(genericResponse.clearCookieData[0], { name: '_gat_UA-1234567-1', options: { domain: 'localhost', path: '/' } });
+      assert.deepEqual(genericResponse.clearCookieData[0], { name: '_gat_UA-1234567-1', options: { path: '/' } });
       done();
     });
   });
