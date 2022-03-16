@@ -216,8 +216,8 @@ container-deploy-branch:
   stage: deploy
   extends: .toolbox-aws-codedeploy
   variables:
-    APPLICATION_NAME: gysp-agentfrontend-dev
-    GROUP_NAME: dev-gysp-gysp-agentfrontend-group
+    APPLICATION_NAME: gysp-customerfrontend-dev
+    GROUP_NAME: dev-gysp-gysp-customerfrontend-group
     REVISION: "revisionType=S3,s3Location={bucket=dev-ecs-cluster-codedeploy-releases,bundleType=JSON,key=gysp/dev/gysp-customerfrontend/appspec.json}"
     DOCKER_TLS_CERTDIR: "/certs/${JOB_ID}"
   only:
