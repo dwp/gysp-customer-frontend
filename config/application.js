@@ -31,6 +31,7 @@ module.exports = {
       claimServiceApiGateway: process.env.CLAIM_SERVICE_API_GATEWAY,
       customerServiceApiGateway: process.env.CUSTOMER_SERVICE_API_GATEWAY,
       bankValidateServiceApiGateway: process.env.BANK_VALIDATE_SERVICE_API_GATEWAY,
+      addressServiceApiGateway: process.env.ADDRESS_SERVICE_API_GATEWAY,
       keyServiceApiKey: process.env.KEY_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',
       claimServiceApiKey: process.env.CLAIM_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',
       customerServiceApiKey: process.env.CUSTOMER_SERVICE_API_KEY || 'U2FsdGVkX1+4PfQWxvxWovXkwGkw8zDfVCsUpP1J0gmegC+bIGKV7SjHygSmYupm',

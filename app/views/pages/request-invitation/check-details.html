@@ -1,0 +1,15 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}{{ t("request-invitation-check-details:header") }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-check-details:header") }}</h1>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

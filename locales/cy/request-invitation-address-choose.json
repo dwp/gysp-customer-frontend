@@ -1,0 +1,12 @@
+{
+  "header":"Cadarnhewch eich cyfeiriad llawn",
+  "fields": {
+    "uprn": {
+      "manual": "Rwyf am nodi fy nghyfeiriad â llaw",
+      "or": "neu",
+      "errors": {
+        "required": "Dewiswch eich cyfeiriad llawn"
+      }
+    }
+  }
+}

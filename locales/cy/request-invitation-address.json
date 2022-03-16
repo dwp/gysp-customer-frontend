@@ -1,3 +1,20 @@
 {
-  "header":"Beth yw eich cyfeiriad?"
+  "header":"Beth yw eich cyfeiriad?",
+  "fields": {
+    "nameNumber": {
+      "label": "Rhif neu enw eiddo",
+      "errors": {
+        "required": "Rhowch rif neu enw eiddo",
+        "format": "Rhaid i rif neu enw eiddo gynnwys llythrennau, rhifau, cysylltnodau, collnodau, atalnodau llawn a bylchau yn unig",
+        "length": "Rhaid i rif neu enw'r eiddo fod â 35 nod neu lai"
+      }
+    },
+    "postcode": {
+      "label": "Cod post",
+      "errors": {
+        "required": "Rhowch god post",
+        "format": "Rhowch god post yn y ffurf cywir, fel AA1 1AA"
+      }
+    }
+  }
 }

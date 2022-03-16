@@ -1,0 +1,6 @@
+{
+  "header": "No addresses found",
+  "p1": "There are no results for <strong>{{ NAME_NUMBER }}</strong> and <strong>{{ POSTCODE }}</strong>.",
+  "button": "Search again",
+  "manual-address": "Enter address manually"
+}

@@ -1,0 +1,37 @@
+{
+  "header":"What is your address?",
+  "fields": {
+    "addressLine1": {
+      "label": "Property number or name",
+      "errors": {
+        "required": "Enter a property number or name",
+        "format": "Property number or name must only include letters, numbers, hyphens, apostrophes, full stops and spaces",
+        "length": "Property number or name must have 35 characters or less"
+      }
+    },
+    "addressLine2": {
+      "label": "Street name",
+      "errors": {
+        "required": "Enter a street name",
+        "format": "Enter a street name in the correct format",
+        "length": "Street name must be 35 characters or less"
+      }
+    },
+    "addressTown": {
+      "label": "Town or city",
+      "errors": {
+        "required": "Enter a town or city",
+        "format": "Enter a town or city in the correct format",
+        "length": "Town or city must be 35 characters or less"
+      }
+    },
+    "addressPostcode": {
+      "label": "Postcode",
+      "errors": {
+        "required": "Enter a postcode",
+        "format": "Enter a postcode in the correct format, like AA1 1AA"
+      }
+    }
+  },
+  "search-address": "Search for address again"
+}

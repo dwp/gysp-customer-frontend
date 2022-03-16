@@ -1,0 +1,30 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}{{ t("request-invitation-address-not-found:header") }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-address-not-found:header") }}</h1>
+
+      <p class="govuk-body">{{ t('request-invitation-address-not-found:p1', {
+        NAME_NUMBER: nameNumber,
+        POSTCODE: postcode
+      }) | safe }}</p>
+
+      {{ govukButton({
+        text: t("request-invitation-address-not-found:button"),
+        href: "home-address",
+        attributes: {
+          id: "search-again"
+        }
+      }) }}
+
+      <p  class="govuk-body"><a href="what-is-your-address" class="govuk-link">{{ t("request-invitation-address-not-found:manual-address") }}</a></p>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+{% endblock %}

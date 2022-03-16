@@ -134,6 +134,7 @@ app.use((req, res, next) => {
   res.locals.claimServiceApiGateway = config.application.urls.claimServiceApiGateway;
   res.locals.customerServiceApiGateway = config.application.urls.customerServiceApiGateway;
   res.locals.bankValidateServiceApiGateway = config.application.urls.bankValidateServiceApiGateway;
+  res.locals.addressServiceApiGateway = config.application.urls.addressServiceApiGateway;
   res.locals.languageFeature = config.application.feature.language;
   res.locals.checked = (data, value) => data === value;
   next();

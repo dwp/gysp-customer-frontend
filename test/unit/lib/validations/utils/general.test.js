@@ -411,8 +411,169 @@ describe('General Helper ', () => {
     });
 
     tests.invalid.forEach((test) => {
-      it(`should return true for ${test.args} args`, () => {
+      it(`should return false for ${test.args} args`, () => {
         assert.isFalse(generalHelper.checkIfValidRollNumber(basicText + test.args));
+      });
+    });
+  });
+
+  describe('checkIfGreaterThenThirtyFive', () => {
+    it('should return true when string length greater than 35', () => {
+      const thirtySix = 'qwertyuiopasdfghjklzxcvbnmqwertyuiop';
+      assert.isTrue(generalHelper.checkIfGreaterThenThirtyFive(thirtySix));
+    });
+
+    it('should return false when string length is 35', () => {
+      const thirtyFive = 'qwertyuiopasdfghjklzxcvbnmqwertyuio';
+      assert.isFalse(generalHelper.checkIfGreaterThenThirtyFive(thirtyFive));
+    });
+
+    it('should return false when string length is 34', () => {
+      const thirtyFour = 'qwertyuiopasdfghjklzxcvbnmqwertyuio';
+      assert.isFalse(generalHelper.checkIfGreaterThenThirtyFive(thirtyFour));
+    });
+  });
+
+  describe('postcodeRegEx', () => {
+    // Just checking basic formatting here as RegEx used is a DWP approved pattern
+    it('should return true when postcode is valid with space', () => {
+      assert.isTrue(generalHelper.isValidUkPostcode('NE1 1ET'));
+      assert.isTrue(generalHelper.isValidUkPostcode('ne1 1et'));
+    });
+
+    it('should return true when postcode is valid with no space', () => {
+      assert.isTrue(generalHelper.isValidUkPostcode('NE11ET'));
+      assert.isTrue(generalHelper.isValidUkPostcode('ne11et'));
+    });
+
+    it('should return false when postcode is empty', () => {
+      assert.isFalse(generalHelper.isValidUkPostcode(''));
+    });
+
+    it('should return false when postcode is not a postcode', () => {
+      assert.isFalse(generalHelper.isValidUkPostcode('@'));
+    });
+  });
+
+  describe('checkIfValidBuildingNameNumber', () => {
+    const validArray = '., \u2019\'-'.split('');
+    const invalidArray = '\\!"#$%&()*+/@[]^_{|}~:;<=>?'.split('');
+
+    it('should return true when building name', () => {
+      assert.isTrue(generalHelper.checkIfValidBuildingNameNumber('The building'));
+    });
+
+    it('should return true when building number', () => {
+      assert.isTrue(generalHelper.checkIfValidBuildingNameNumber('3'));
+    });
+
+    validArray.forEach((char) => {
+      it(`should return true when a valid special character is in between (${char})`, () => {
+        assert.isTrue(generalHelper.checkIfValidBuildingNameNumber(basicText + char + basicText));
+      });
+
+      it(`should return false when a valid special character is first (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(char + basicText));
+      });
+
+      it(`should return false when a valid special character is last (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(basicText + char));
+      });
+
+      it(`should return false when repeating valid special characters are between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(basicText + char + char + basicText));
+      });
+
+      it(`should return false when valid special character only (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(char));
+      });
+    });
+
+    invalidArray.forEach((char) => {
+      it(`should return false when a invalid special character is in between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(basicText + char + basicText));
+      });
+    });
+  });
+
+  describe('checkIfValidStreet', () => {
+    const validArray = '., \u2019\'-'.split('');
+    const invalidArray = '\\!"#$%&()*+/@[]^_{|}~:;<=>?'.split('');
+
+    it('should return true when letters', () => {
+      assert.isTrue(generalHelper.checkIfValidStreet('Street close'));
+    });
+
+    it('should return false when a number', () => {
+      assert.isFalse(generalHelper.checkIfValidStreet('3'));
+    });
+
+    validArray.forEach((char) => {
+      it(`should return true when a valid special character is in between (${char})`, () => {
+        assert.isTrue(generalHelper.checkIfValidStreet(basicText + char + basicText));
+      });
+
+      it(`should return false when a valid special character is first (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidStreet(char + basicText));
+      });
+
+      it(`should return false when a valid special character is last (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidStreet(basicText + char));
+      });
+
+      it(`should return false when repeating valid special characters are between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidStreet(basicText + char + char + basicText));
+      });
+
+      it(`should return false when valid special character only (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidStreet(char));
+      });
+    });
+
+    invalidArray.forEach((char) => {
+      it(`should return false when a invalid special character is in between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidStreet(basicText + char + basicText));
+      });
+    });
+  });
+
+  describe('checkIfValidTown', () => {
+    const validArray = '. \u2019\'-'.split('');
+    const invalidArray = '\\,!"#$%&()*+/@[]^_{|}~:;<=>?'.split('');
+
+    it('should return true when letters', () => {
+      assert.isTrue(generalHelper.checkIfValidTown('Street close'));
+    });
+
+    it('should return false when a number', () => {
+      assert.isFalse(generalHelper.checkIfValidTown('3'));
+    });
+
+    validArray.forEach((char) => {
+      it(`should return true when a valid special character is in between (${char})`, () => {
+        assert.isTrue(generalHelper.checkIfValidTown(basicText + char + basicText));
+      });
+
+      it(`should return false when a valid special character is first (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidTown(char + basicText));
+      });
+
+      it(`should return false when a valid special character is last (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidTown(basicText + char));
+      });
+
+      it(`should return false when repeating valid special characters are between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidTown(basicText + char + char + basicText));
+      });
+
+      it(`should return false when valid special character only (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidTown(char));
+      });
+    });
+
+    invalidArray.forEach((char) => {
+      it(`should return false when a invalid special character is in between (${char})`, () => {
+        assert.isFalse(generalHelper.checkIfValidTown(basicText + char + basicText));
       });
     });
   });

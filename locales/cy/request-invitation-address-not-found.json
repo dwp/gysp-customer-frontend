@@ -1,0 +1,6 @@
+{
+  "header": "Ni ddarganfyddwyd cyfeiriad",
+  "p1": "Nid oes canlyniadau ar gyfer <strong>{{ NAME_NUMBER }}</strong> a <strong>{{ POSTCODE }}</strong>.",
+  "button": "Chwilio eto",
+  "manual-address": "Rhowch y cyfeiriad i mewn â llaw"
+}

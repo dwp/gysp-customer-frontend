@@ -1,0 +1,12 @@
+{
+  "header":"Confirm your full address",
+  "fields": {
+    "uprn": {
+      "manual": "I want to enter my address manually",
+      "or": "or",
+      "errors": {
+        "required": "Select your full address"
+      }
+    }
+  }
+}

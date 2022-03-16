@@ -1,3 +1,20 @@
 {
-  "header":"What is your address?"
+  "header":"What is your address?",
+  "fields": {
+    "nameNumber": {
+      "label": "Property number or name",
+      "errors": {
+        "required": "Enter a property number or name",
+        "format": "Property number or name must only include letters, numbers, hyphens, apostrophes, full stops and spaces",
+        "length": "Property number or name must have 35 characters or less"
+      }
+    },
+    "postcode": {
+      "label": "Postcode",
+      "errors": {
+        "required": "Enter a postcode",
+        "format": "Enter a postcode in the correct format, like AA1 1AA"
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@ module.exports = {
         claimServiceApiGateway: 'http://test-url/api',
         customerServiceApiGateway: 'http://test-url/api',
         bankValidateServiceApiGateway: 'http://test-url/api',
+        addressServiceApiGateway: 'http://test-url/api',
         traceID: '',
         logMessage: '',
         logger: {

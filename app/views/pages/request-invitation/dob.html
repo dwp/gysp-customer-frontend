@@ -3,7 +3,7 @@
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-name:header") }}{% endblock %}
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-dob:header") }}{% endblock %}
 
 {% block content %}
   {% if errors %}
@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post" action="date-of-birth" autocomplete="off" novalidate>
-        <span class="govuk-caption-xl">{{ t("app:section.request-invitation.caption") }}</span>
+        <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
         {{ govukDateInput({
           id: "date",
           fieldset: {
@@ -35,21 +35,24 @@
             name: "dateDay",
             value: details.dateDay,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateDay),
-            pattern: "[0-9]*"
+            pattern: "[0-9]*",
+            attributes: { maxlength: '2' }
           }, {
             label: t("request-invitation-dob:fields.dob.date.month"),
             id: "date-month",
             name: "dateMonth",
             value: details.dateMonth,
             classes: "govuk-input--width-2" + (" govuk-input--error" if errors.dateMonth),
-            pattern: "[0-9]*"
+            pattern: "[0-9]*",
+            attributes: { maxlength: '2' }
           }, {
             label: t("request-invitation-dob:fields.dob.date.year"),
             id: "date-year",
             name: "dateYear",
             value: details.dateYear,
             classes: "govuk-input--width-4" + (" govuk-input--error" if errors.dateYear),
-            pattern: "[0-9]*"
+            pattern: "[0-9]*",
+            attributes: { maxlength: '4' }
           }
           ],
           errorMessage: errors.date

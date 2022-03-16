@@ -1,0 +1,44 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-address-choose:header") }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("app:error-summary.header"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="confirm-full-address" autocomplete="off" novalidate>
+        <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
+        {{ govukRadios({
+          name: "uprn",
+          fieldset: {
+            legend: {
+              text: t("request-invitation-address-choose:header"),
+              classes: 'govuk-fieldset__legend--xl govuk-!-margin-bottom-7'
+            }
+          },
+          items: addressList,
+          errorMessage: errors.uprn
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
+    </div>
+
+    {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+
+{% endblock %}

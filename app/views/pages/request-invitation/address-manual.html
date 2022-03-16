@@ -1,0 +1,82 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}{% if errors %}{{ t("app:title.error") }} {% endif %}{{ t("request-invitation-address-manual:header") }}{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: t("app:error-summary.header"),
+      errorList: errors.errorSummary
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-address-manual:header") }}</h1>
+
+      <form method="post" action="what-is-your-address" autocomplete="off" novalidate>
+        {{ govukInput({
+          id: "addressLine1",
+          name: "addressLine1",
+          label: {
+            text: t("request-invitation-address-manual:fields.addressLine1.label")
+          },
+          value: details.addressLine1,
+          errorMessage: errors.addressLine1,
+          autocomplete: "address-line1"
+        }) }}
+
+        {{ govukInput({
+          id: "addressLine2",
+          name: "addressLine2",
+          label: {
+            text: t("request-invitation-address-manual:fields.addressLine2.label")
+          },
+          value: details.addressLine2,
+          errorMessage: errors.addressLine2,
+          autocomplete: "address-line2"
+        }) }}
+
+        {{ govukInput({
+          id: "addressTown",
+          name: "addressTown",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: t("request-invitation-address-manual:fields.addressTown.label")
+          },
+          value: details.addressTown,
+          errorMessage: errors.addressTown,
+          autocomplete: "address-level2"
+        }) }}
+
+        {{ govukInput({
+          id: "addressPostcode",
+          name: "addressPostcode",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: t("request-invitation-address-manual:fields.addressPostcode.label")
+          },
+          value: details.addressPostcode,
+          errorMessage: errors.addressPostcode,
+          autocomplete: "address-level2"
+        }) }}
+
+        {{ govukButton({
+          text: t("app:button.continue"),
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
+
+      <p  class="govuk-body"><a href="home-address" class="govuk-link">{{ t("request-invitation-address-manual:search-address") }}</a></p>
+    </div>
+
+     {{ help.sideBar(t, isNorthernIreland, isOverseas) }}
+  </div>
+
+{% endblock %}

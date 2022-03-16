@@ -1,0 +1,37 @@
+{
+  "header":"Beth yw eich cyfeiriad?",
+  "fields": {
+    "addressLine1": {
+      "label": "Rhif neu enw eiddo",
+      "errors": {
+        "required": "Rhowch enw neu rif eiddo",
+        "format": "Rhaid i rif neu enw eiddo gynnwys llythrennau, rhifau, cysylltnodau, collnodau, atalnodau llawn a bylchau yn unig",
+        "length": "Rhaid i rif neu enw'r eiddo fod â 35 nod neu lai"
+      }
+    },
+    "addressLine2": {
+      "label": "Enw’r stryd",
+      "errors": {
+        "required": "Rhowch enw stryd",
+        "format": "Rhowch enw stryd yn y ffurf cywir",
+        "length": "Mae'n rhaid i enw stryd fod yn 35 nod neu lai"
+      }
+    },
+    "addressTown": {
+      "label": "Tref neu ddinas",
+      "errors": {
+        "required": "Rhowch dref neu ddinas",
+        "format": "Rhowch dref neu ddinas yn y ffurf cywir",
+        "length": "Mae'n rhaid i dref neu ddinas fod yn 35 nod neu lai"
+      }
+    },
+    "addressPostcode": {
+      "label": "Cod post",
+      "errors": {
+        "required": "Rhowch god post",
+        "format": "Rhowch god post yn y ffurf cywir, fel AA1 1AA"
+      }
+    }
+  },
+  "search-address": "Chwiliwch am y cyfeiriad eto"
+}
