@@ -1,7 +1,7 @@
 version: "3"
 services:
   redis:
-    image: redis@sha256:2f900fcbb6853b629cd4ae095ecab4a739151a5cf329141fc8d0c02f5c26018e
+    image: redis@sha256:e9adb216ca87fcea1e6fb5dc67d7f90db75b63eaf32ef65ef8cb24cf875b9e49
     command: redis-server --requirepass password
     expose:
       - 6379
