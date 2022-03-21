@@ -4,7 +4,7 @@ const { requestFilter, address } = require('../../../../lib/utils/requestHelper'
 const { get: getData, save, checkAndSave } = require('../../../../lib/dataStore');
 const { validator } = require('../../../../lib/validations/request-invitation/addressValidation');
 const { getPostCodeAddressLookup } = require('../../../../lib/helpers/addressServiceHelper');
-const { isCrownDependency } = require('../../../../lib/helpers/locationHelper');
+const { isCrownDependency, isNorthernIreland } = require('../../../../lib/helpers/locationHelper');
 
 const get = (req, res) => {
   const details = getData(req, 'request-invitation-address');
@@ -21,9 +21,10 @@ const post = async (req, res) => {
     try {
       const { data: addressLookup } = await getPostCodeAddressLookup(res, nameNumber, postcode, true);
 
-      // save form data
+      // save data
       const filteredRequest = requestFilter(address(), details);
       checkAndSave(req, 'request-invitation-address', filteredRequest);
+      save(req, 'isNorthernIreland', isNorthernIreland(postcode));
 
       if (addressLookup.length === 0) {
         res.redirect('no-addresses-found');

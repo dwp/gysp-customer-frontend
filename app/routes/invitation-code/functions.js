@@ -5,7 +5,7 @@ const deleteSession = require('../../../lib/deleteSession');
 const languageHelper = require('../../../lib/helpers/languageHelper');
 
 const getInvitationCodeChoose = (req, res) => {
-  deleteSession.afterKey(req, 'invitation-request');
+  deleteSession.destroySessionExcludingLanguage(req);
   res.render('pages/invitation-code');
 };
 

@@ -1,0 +1,11 @@
+{
+  "header":"Invitation code requested",
+  "header-ref": "We'll send your code by post to your home address",
+  "addtional": {
+    "header": "Your invitation code has been requested",
+    "p": "Your State Pension invitation code has been requested and you don’t need to do anything else."
+  },
+  "h2": "What happens next",
+  "p1": "You should receive your invitation code by post within the next 5 days.",
+  "p2": "Once you receive your invitation code, you can get your State Pension."
+}

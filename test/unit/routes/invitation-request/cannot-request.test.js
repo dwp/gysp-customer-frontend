@@ -22,7 +22,7 @@ describe('request invitation cannot request controller', () => {
     it('should return view name when called with newStatePensionDate request', () => {
       controller.get(statePensionRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/request-invitation/cannot-request');
-      assert.equal(genericResponse.data.date, '11 April 2022');
+      assert.equal(genericResponse.data.date, '11 January 2022');
     });
   });
 });

@@ -33,7 +33,7 @@ const getNewStatePensionDate = (req, res) => new Promise((resolve, reject) => {
     resolve({ redirectURL, statePensionDate: body.spaDate });
   }).catch((err) => {
     const traceID = requestHelper.getTraceID(err);
-    requestHelper.infoLoggingHelper(err, '/api/customer/recalculateSpaDate', traceID, res.locals.logger, 'NONE');
+    requestHelper.infoLoggingHelper(err, '/api/customer/recalculateSpaDate', traceID, res.locals.logger, 'INVITE-REQUEST');
     reject(err);
   });
 });

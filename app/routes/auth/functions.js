@@ -127,7 +127,7 @@ function authPageGet(req, res) {
     const pageValues = resetErrorState(req);
     res.render('pages/auth-page', pageValues);
   } else {
-    deleteSession.destroySessionExcludingLangauge(req);
+    deleteSession.destroySessionExcludingLanguage(req);
     res.redirect('auth');
   }
 }

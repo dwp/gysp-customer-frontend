@@ -1,13 +1,28 @@
 {% extends 'helpers/layout.html' %}
 {% import 'helpers/help-side.html' as help %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% block pageTitle %}{{ t("request-invitation-check-details:header") }}{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
-      <h1 class="govuk-heading-xl">{{ t("request-invitation-check-details:header") }}</h1>
+      <form method="post" action="check-details" autocomplete="off" novalidate>
+        <span class="govuk-caption-l">{{ t("app:section.request-invitation.caption") }}</span>
+        <h1 class="govuk-heading-xl">{{ t("request-invitation-check-details:header") }}</h1>
+
+        <h2 class="govuk-heading-l">{{ t("request-invitation-check-details:h2") }}</h2>
+        {{ govukSummaryList({
+          rows: details
+        }) }}
+
+        {{ govukButton({
+          text: t("request-invitation-check-details:button"),
+          attributes: {
+            id: 'form-submit'
+          }
+        }) }}
+      </form>
     </div>
 
     {{ help.sideBar(t, isNorthernIreland, isOverseas) }}

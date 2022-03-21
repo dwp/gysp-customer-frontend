@@ -1,0 +1,10 @@
+{
+  "header":"Edrychwch dros eich manylion",
+  "h2": "Eich manylion",
+  "keys": {
+    "name": "Enw",
+    "dob": "Dyddiad geni",
+    "address": "Cyfeiriad"
+  },
+  "button": "Gofyn am god gwahoddiad"
+}

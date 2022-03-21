@@ -481,7 +481,7 @@ describe('General Helper ', () => {
       });
 
       it(`should return false when repeating valid special characters are between (${char})`, () => {
-        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(basicText + char + char + basicText));
+        assert.isFalse(generalHelper.checkIfValidBuildingNameNumber(basicText + char + char + char + basicText));
       });
 
       it(`should return false when valid special character only (${char})`, () => {
@@ -497,7 +497,7 @@ describe('General Helper ', () => {
   });
 
   describe('checkIfValidStreet', () => {
-    const validArray = '., \u2019\'-'.split('');
+    const validArray = '. \u2019\'-'.split('');
     const invalidArray = '\\!"#$%&()*+/@[]^_{|}~:;<=>?'.split('');
 
     it('should return true when letters', () => {

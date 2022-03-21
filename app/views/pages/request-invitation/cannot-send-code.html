@@ -1,0 +1,47 @@
+{% extends 'helpers/layout.html' %}
+{% import 'helpers/help-side.html' as help %}
+
+{% block pageTitle %}{{ t("request-invitation-cannot-send-code:header") }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ t("request-invitation-cannot-send-code:header") }}</h1>
+
+      <p class="govuk-body">{{ t('request-invitation-cannot-send-code:p1') }}</p>
+
+      <h2 class="govuk-heading-m">{{ t("request-invitation-cannot-send-code:h2-1") }}</h2>
+      <p class="govuk-body">{{ t("request-invitation-cannot-send-code:p2")}}</p>
+
+      <h3 class="govuk-heading-s">{{ t("request-invitation-cannot-send-code:h3-1") }}</h3>
+      {% if isNorthernIreland %}
+        <ul class="govuk-list govuk-!-font-weight-bold">
+          <li>{{ t("request-invitation-cannot-send-code:telephone-label") }} {{ t("request-invitation-cannot-send-code:telephone-number.ni") }}</li>
+          <li>{{ t("request-invitation-cannot-send-code:textphone-label") }} {{ t("request-invitation-cannot-send-code:textphone-number.ni") }}</li>
+        </ul>
+        <p class="govuk-body">{{ t("request-invitation-cannot-send-code:open-times.ni")}}</p>
+      {% else %}
+        <ul class="govuk-list govuk-!-font-weight-bold">
+          <li>{{ t("request-invitation-cannot-send-code:telephone-label") }} {{ t("request-invitation-cannot-send-code:telephone-number.gb") }}</li>
+          <li>{{ t("request-invitation-cannot-send-code:textphone-label") }} {{ t("request-invitation-cannot-send-code:textphone-number.gb") }}</li>
+        </ul>
+        <p class="govuk-body">{{ t("request-invitation-cannot-send-code:open-times.gb")}}</p>
+      {% endif %}
+
+      <h3 class="govuk-heading-m">{{ t("request-invitation-cannot-send-code:h2-2") }}</h3>
+
+      {% if isNorthernIreland %}
+        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-1", { URL: 'https://dwpnistatepensionenquiries.signvideo.net/' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-2", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-3", { URL: 'https://www.youtube.com/watch?v=MSN79HlU7XE' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.ni.opening-times") }}</p>
+      {% else %}
+        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-1", { URL: 'https://www.relayuk.bt.com/' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-2", { URL: 'https://dwpstatepensionth.signvideo.net/' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-3", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
+        <p class="govuk-body">{{ t("app:alternative-contact.gb.opening-times") }}</p>
+      {% endif %}
+
+    </div>
+  </div>
+{% endblock %}

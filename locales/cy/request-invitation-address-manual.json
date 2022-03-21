@@ -5,7 +5,7 @@
       "label": "Rhif neu enw eiddo",
       "errors": {
         "required": "Rhowch enw neu rif eiddo",
-        "format": "Rhaid i rif neu enw eiddo gynnwys llythrennau, rhifau, cysylltnodau, collnodau, atalnodau llawn a bylchau yn unig",
+        "format": "Mae’n rhaid i rif neu enw eiddo gynnwys llythrennau, rhifau, cysylltnodau, collnodau, atalnodau llawn, atalnodau a bylchau yn unig",
         "length": "Rhaid i rif neu enw'r eiddo fod â 35 nod neu lai"
       }
     },
@@ -13,7 +13,7 @@
       "label": "Enw’r stryd",
       "errors": {
         "required": "Rhowch enw stryd",
-        "format": "Rhowch enw stryd yn y ffurf cywir",
+        "format": "Mae’n rhaid i enw stryd gynnwys llythrennau, cysylltnodau, collnodau a bylchau yn unig",
         "length": "Mae'n rhaid i enw stryd fod yn 35 nod neu lai"
       }
     },

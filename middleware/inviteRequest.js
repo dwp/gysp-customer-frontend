@@ -4,7 +4,10 @@ const middleware = (req, _res, next) => {
     Object.keys(req.body).forEach((key) => {
       const value = req.body[key];
       if (typeof value === 'string') {
-        sanitisedBody[key] = value.trim();
+        // Trim and replace curly apostrophes with straight
+        sanitisedBody[key] = value
+          .trim()
+          .replace(/\u2019/g, '\'');
       } else {
         sanitisedBody[key] = value;
       }

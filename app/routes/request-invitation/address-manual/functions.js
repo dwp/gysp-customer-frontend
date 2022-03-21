@@ -1,7 +1,7 @@
 const { requestFilter, addressManual } = require('../../../../lib/utils/requestHelper');
-const { get: getData, checkAndSave } = require('../../../../lib/dataStore');
+const { get: getData, checkAndSave, save } = require('../../../../lib/dataStore');
 const { validator } = require('../../../../lib/validations/request-invitation/addressManualValidation');
-const { isCrownDependency } = require('../../../../lib/helpers/locationHelper');
+const { isCrownDependency, isNorthernIreland } = require('../../../../lib/helpers/locationHelper');
 
 const get = (req, res) => {
   const details = getData(req, 'request-invitation-address-manual');
@@ -16,6 +16,7 @@ const post = async (req, res) => {
   } else {
     const filteredRequest = requestFilter(addressManual(), details);
     checkAndSave(req, 'request-invitation-address-manual', filteredRequest);
+    save(req, 'isNorthernIreland', isNorthernIreland(filteredRequest.addressPostcode));
     if (isCrownDependency(details.addressPostcode)) {
       // Next iteration: this will redirect to a page on our service
       res.redirect('https://www.gov.uk/state-pension-if-you-retire-abroad');

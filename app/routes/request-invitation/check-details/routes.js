@@ -1,8 +1,10 @@
 const express = require('express');
 
 const router = new express.Router();
-const { get } = require('./functions');
+const { get, post } = require('./functions');
 
-router.get('/check-details', get);
+router.route('/check-details')
+  .get(get)
+  .post(post);
 
 module.exports = router;

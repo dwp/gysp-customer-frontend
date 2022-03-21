@@ -78,6 +78,20 @@
       "p": "Yn ystod argyfwng coronafeirws (COVID-19), mae llinellau ffôn yn brysurach na'r arfer ac ar agor llai o oriau."
     }
   },
+  "alternative-contact": {
+    "gb": {
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 169 0154",
+      "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' ar SignVideo (agor mewn tab newydd)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
+      "opening-times": "Dydd Llun i ddydd Gwener, 9:30am i 3:30pm (ar gau ar wyliau cyhoeddus)"
+    },
+    "ni": {
+      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain neu Iwerddon <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo ar SignVideo (sy’n agor mewn tab newydd)</a>.",
+      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (sy’n agor mewn tab newydd)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (sy’n agor mewn tab newydd)</a>.",
+      "opening-times": "Dydd Llun i ddydd Gwener, 9am i 4pm (ar gau ar wyliau cyhoeddus)"
+    }
+  },
   "error": {
     "404": {
       "heading": "Tudalen heb ei darganfod",
@@ -98,6 +112,13 @@
       "heading": "Mae rhywbeth wedi mynd o'i le",
       "p1": "Ni allwch ddefnyddio'r gwasanaeth hwn ar hyn o bryd. Bydd y broblem yn cael ei datrys cyn gynted â phosibl ",
       "p2": "Rhowch gynnig arall yn nes ymlaen."
+    },
+    "general": {
+      "heading": "Mae'n ddrwg gennym, mae problem gyda'r gwasanaeth",
+      "p1": "Rhowch gynnig yn nes ymlaen.",
+      "p2": "Nid ydym wedi arbed eich atebion. Pan fydd y gwasanaeth ar gael bydd yn rhaid i chi ddechrau eto.",
+      "h2-1": "Os ydych angen gwneud cais am eich Pensiwn y Wladwriaeth ar frys",
+      "p3": "Os na allwch ddisgwyl i roi cynnig yn nes ymlaen, gallwch wneud cais dros y ffôn am Bensiwn y Wladwriaeth."
     },
     "call_centres": {
       "uk": {

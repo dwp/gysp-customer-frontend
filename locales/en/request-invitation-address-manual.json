@@ -5,7 +5,7 @@
       "label": "Property number or name",
       "errors": {
         "required": "Enter a property number or name",
-        "format": "Property number or name must only include letters, numbers, hyphens, apostrophes, full stops and spaces",
+        "format": "Property number or name must only include letters, numbers, hyphens, apostrophes, full stops, commas and spaces",
         "length": "Property number or name must have 35 characters or less"
       }
     },
@@ -13,7 +13,7 @@
       "label": "Street name",
       "errors": {
         "required": "Enter a street name",
-        "format": "Enter a street name in the correct format",
+        "format": "Street name must only include letters, hyphens, apostrophes and spaces",
         "length": "Street name must be 35 characters or less"
       }
     },

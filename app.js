@@ -84,6 +84,7 @@ const declarationRoutes = require('./app/routes/declaration/routes.js');
 const accountRoutes = require('./app/routes/account/routes.js');
 const actuatorRoutes = require('./app/routes/actuator/routes.js');
 const invitationCode = require('./app/routes/invitation-code/routes.js');
+const requestInvitationIndex = require('./app/routes/request-invitation/index/routes');
 const overseasStub = require('./app/routes/overseas-stub/routes.js');
 const checkChange = require('./app/routes/check-change/routes.js');
 const sessionRoutes = require('./app/routes/session/routes.js');
@@ -202,6 +203,7 @@ app.use(config.mountUrl, cookiesRoutes);
 app.use(config.mountUrl, sessionRoutes);
 app.use(config.mountUrl, invitationCode);
 app.use(config.mountUrl, authRoutes);
+app.use(config.mountUrl, requestInvitationIndex);
 
 app.use((req, res, next) => {
   if (domain.extract(req.headers.referer) === req.hostname) {
@@ -209,6 +211,20 @@ app.use((req, res, next) => {
   } else {
     log.info(`Security redirect - user agent failed to match - ${req.method} ${req.path}`);
     sessionHelper.destroySessionAndRedirect(req, res);
+  }
+});
+
+app.use((req, res, next) => {
+  if (req.session.userHasCompletedInviteRequest === true
+    && !req.path.includes('/code-requested')
+    && !req.path.includes('/cannot-send-code')
+    && !req.path.includes('/problem-with-the-service')) {
+    req.session.redirectComplete = true;
+    const redirectUrl = req.session.userHasCompletedInviteRequestRedirectUrl;
+    log.info('user has already completed invite code request');
+    res.redirect(redirectUrl);
+  } else {
+    next();
   }
 });
 

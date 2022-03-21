@@ -1,3 +1,10 @@
 {
-  "header": "Check your details"
+  "header":"Check your details",
+  "h2": "Your details",
+  "keys": {
+    "name": "Name",
+    "dob": "Date of birth",
+    "address": "Address"
+  },
+  "button": "Request an invitation code"
 }
