@@ -31,7 +31,7 @@
     "itemid": "1.1.0",
     "lodash": "4.17.21",
     "moment": "2.29.1",
-    "nocache": "3.0.1",
+    "nocache": "3.0.2",
     "nunjucks": "3.2.3",
     "passport": "0.5.2",
     "passport-verify": "2.0.1",
