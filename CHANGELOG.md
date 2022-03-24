@@ -1,3 +1,29 @@
+# [12.0.0](https://github.com/dwp/gysp-customer-frontend/compare/11.10.0...12.0.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* **start-date:** Fix URL for 'I want to get my state pension sooner' link ([eae2215](https://github.com/dwp/gysp-customer-frontend/commit/eae22158d6f67239664ce2cc7f4062b28a78431a))
+
+
+### Features
+
+* **gtm:** Enable GTM ([f927605](https://github.com/dwp/gysp-customer-frontend/commit/f927605ff44fcdc688214bf4a9207bd3a4143f83))
+* **invitation-code:** check details and submit claim ([36b3102](https://github.com/dwp/gysp-customer-frontend/commit/36b310293d5ba89503dfffc0e5351639693cf57d))
+* **invitation-request:** address lookup and manual entry ([78572fa](https://github.com/dwp/gysp-customer-frontend/commit/78572fa25b84ab2e95c61c9cf5516a03a45dcba6))
+* **request-invite:** introduce request invite ([53e1090](https://github.com/dwp/gysp-customer-frontend/commit/53e1090f573a6efbc30709768da754a5ebd94451))
+
+
+### BREAKING CHANGES
+
+* **request-invite:** change start url
+
+Jira SA-4894
+
+Signed-off-by: Malcolm Hire <malcolm.hire@engineering.digital.dwp.gov.uk>
+
+
+
 # [11.10.0](https://github.com/dwp/gysp-customer-frontend/compare/11.9.0...11.10.0) (2022-03-09)
 
 
