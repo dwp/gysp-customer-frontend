@@ -80,10 +80,10 @@
   },
   "alternative-contact": {
     "gb": {
-      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 169 0154",
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 731 7898",
       "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' ar SignVideo (agor mewn tab newydd)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
-      "opening-times": "Dydd Llun i ddydd Gwener, 9:30am i 3:30pm (ar gau ar wyliau cyhoeddus)"
+      "opening-times": "Dydd Llun i ddydd Gwener, 8am i 6pm (ar gau ar wyliau cyhoeddus)"
     },
     "ni": {
       "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain neu Iwerddon <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo ar SignVideo (sy’n agor mewn tab newydd)</a>.",

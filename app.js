@@ -303,7 +303,11 @@ app.use((err, req, res, next) => {
     status = 'generic';
   }
 
-  res.render('pages/error', {
+  let errorPage = 'pages/error';
+  if (req.path && req.path.includes('/request-invitation-code')) {
+    errorPage = 'pages/request-invitation/error';
+  }
+  res.render(errorPage, {
     status,
   });
   next();
