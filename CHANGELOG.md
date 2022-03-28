@@ -1,3 +1,12 @@
+## [12.0.1](https://github.com/dwp/gysp-customer-frontend/compare/12.0.0...12.0.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* **content:** fix telephone numbers on drop out pages ([dd2abe5](https://github.com/dwp/gysp-customer-frontend/commit/dd2abe5ac77f6aa01ecda8fe61cb8a5dc798a4ec))
+
+
+
 # [12.0.0](https://github.com/dwp/gysp-customer-frontend/compare/11.10.0...12.0.0) (2022-03-24)
 
 
