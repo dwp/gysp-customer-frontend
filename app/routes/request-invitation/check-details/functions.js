@@ -9,7 +9,7 @@ const inviteRequestObject = require('../../../../lib/objects/inviteRequestObject
 const { postRequestInvitation } = require('../../../services/customer/customerService');
 
 const clearSessionAndSetAsCompleteAndRedirect = (req, res, redirectUrl) => {
-  deleteSession.destroyInviteRequestSessionExcludingLanguage(req);
+  deleteSession.deleteInviteRequestFormData(req);
   dataStore.save(req, 'userHasCompletedInviteRequest', true);
   dataStore.save(req, 'userHasCompletedInviteRequestRedirectUrl', redirectUrl);
   res.redirect(redirectUrl);

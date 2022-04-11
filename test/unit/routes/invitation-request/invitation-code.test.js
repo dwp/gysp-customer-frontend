@@ -18,4 +18,12 @@ describe('request invitation controller', () => {
       assert.isUndefined(genericResponse.data);
     });
   });
+
+  describe('post function (POST /request-invitation)', () => {
+    it('should save session and redirect when ', () => {
+      controller.post(emptyRequest, genericResponse);
+      assert.isTrue(emptyRequest.session.userInInviteRequest);
+      assert.equal(genericResponse.address, 'request-invitation-code/your-name');
+    });
+  });
 });

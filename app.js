@@ -165,7 +165,7 @@ app.use((req, res, next) => {
 
 app.use(`${config.mountUrl}actuator`, actuatorRoutes);
 
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
   let err = '';
   if (config.application.urls.keyServiceApiGateway === '' || config.application.urls.keyServiceApiGateway === undefined) {
     err = new Error('No key service URL supplied');

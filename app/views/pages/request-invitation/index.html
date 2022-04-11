@@ -18,13 +18,14 @@
 
       <p class="govuk-body">{{ t('request-invitation:p2') }}</p>
 
-      {{ govukButton({
-        text: t("request-invitation:button"),
-        href: "request-invitation-code/your-name",
-        attributes: {
-          id: "continue"
-        }
-      }) }}
+      <form method="post" action="request-invitation-code" autocomplete="off" novalidate>
+        {{ govukButton({
+          text: t("request-invitation:button"),
+          attributes: {
+            id: "continue"
+          }
+        }) }}
+      </form>
     </div>
 
     {{ help.sideBar(t, isNorthernIreland, isOverseas) }}

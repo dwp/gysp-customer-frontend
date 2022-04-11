@@ -1,4 +1,9 @@
-const middleware = (req, _res, next) => {
+const middleware = (req, res, next) => {
+  if (!req.session.userInInviteRequest) {
+    res.locals.logger.info(`Security redirect - not in session - ${req.method} ${req.path}`);
+    return res.redirect(res.locals.timeoutDialog.timeoutUrl);
+  }
+
   const sanitisedBody = Object.create(null);
   if (req.body && typeof req.body === 'object') {
     Object.keys(req.body).forEach((key) => {

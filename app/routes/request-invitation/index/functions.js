@@ -1,9 +1,15 @@
 const languageHelper = require('../../../../lib/helpers/languageHelper');
 const deleteSession = require('../../../../lib/deleteSession');
+const { save } = require('../../../../lib/dataStore');
 
 const get = (req, res) => {
   deleteSession.destroyInviteRequestSessionExcludingLanguage(req);
   res.render('pages/request-invitation/index');
+};
+
+const post = (req, res) => {
+  save(req, 'userInInviteRequest', true);
+  res.redirect('request-invitation-code/your-name');
 };
 
 const getLanguage = (req, res) => {
@@ -15,5 +21,6 @@ const getLanguage = (req, res) => {
 
 module.exports = {
   get,
+  post,
   getLanguage,
 };
