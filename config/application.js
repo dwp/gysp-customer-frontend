@@ -48,6 +48,7 @@ module.exports = {
       auditFeature: (!process.env.NODE_ENV || process.env.FEATURE_AUDIT === 'true') || false,
       auditLocalLogFeature: (process.env.FEATURE_AUDIT_LOCAL_LOG === 'true') || false,
       bankValidationUsingKBV: (process.env.FEATURE_BANK_VALIDATION_USING_KBV === 'true') || false,
+      videoRelayDate: process.env.FEATURE_VIDEO_RELAY_DATE || '2022-05-09',
     },
     redis: {
       hosts: process.env.REDIS_HOSTS || null,

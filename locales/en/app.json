@@ -88,7 +88,7 @@
       "p": "During the coronavirus (COVID-19) outbreak, phone lines are busier than usual and open shorter hours."
     }
   },
-  "alternative-contact": {
+  "alternative-contact-old": {
     "gb": {
       "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (opens in a new tab)</a>: dial 18001 then 0800 731 7898",
       "option-2": "British Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">contact DWP using the video relay service on SignVideo (opens in a new tab).</a>",
@@ -99,6 +99,21 @@
       "option-1": "British or Irish Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">contact DfC using the video relay service on SignVideo (opens in a new tab)</a>.",
       "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Check how to use the video relay service in ISL (opens in a new tab)</a>.",
+      "opening-times": "Monday to Friday, 9am to 4pm (closed on public holidays)"
+    }
+  },
+  "alternative-contact": {
+    "gb": {
+      "option-1": "<a href=\"{{URL}} \" rel=\"noreferrer noopener\" target=\"_blank\" class=\"govuk-link\">Relay UK (opens in a new tab)</a>: dial 18001 then 0800 731 7898",
+      "option-2": "British Sign Language users can <a href=\"{{URL}} \" rel=\"noreferrer noopener\" target=\"_blank\" class=\"govuk-link\">contact DWP using the video relay service (opens in a new tab)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
+      "opening-times": "Monday to Friday, 8am to 6pm (closed on public holidays)"
+    },
+    "ni": {
+      "option-1": "British Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">contact DfC using the video relay service (opens in a new tab)</a>.",
+      "option-2": "Irish Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">contact DfC using the video relay service (opens in a new tab)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
+      "option-4": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in ISL (opens in a new tab)</a>.",
       "opening-times": "Monday to Friday, 9am to 4pm (closed on public holidays)"
     }
   },

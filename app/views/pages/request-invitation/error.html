@@ -32,17 +32,7 @@
 
       <h3 class="govuk-heading-s">{{ t("request-invitation-cannot-send-code:h2-2") }}</h3>
 
-      {% if isNorthernIreland %}
-        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-1", { URL: 'https://dwpnistatepensionenquiries.signvideo.net/' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-2", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.ni.option-3", { URL: 'https://www.youtube.com/watch?v=MSN79HlU7XE' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.ni.opening-times") }}</p>
-      {% else %}
-        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-1", { URL: 'https://www.relayuk.bt.com/' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-2", { URL: 'https://dwpstatepensionth.signvideo.net/' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.gb.option-3", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
-        <p class="govuk-body">{{ t("app:alternative-contact.gb.opening-times") }}</p>
-      {% endif %}
+      {% include '../../includes/request-invitation-help.html' %}
 
     </div>
   </div>

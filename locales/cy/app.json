@@ -80,15 +80,30 @@
   },
   "alternative-contact": {
     "gb": {
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 731 7898",
+      "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
+      "opening-times": "Dydd Llun i ddydd Gwener, 8am i 6pm (ar gau ar wyliau cyhoeddus)"
+    },
+    "ni": {
+      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
+      "option-2": "Gall defnyddwyr Iaith Arwyddion Iwerddon <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
+      "option-4": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (agor mewn tab newydd)</a>.",
+      "opening-times": "Dydd Llun i ddydd Gwener, 9am i 4pm (ar gau ar wyliau cyhoeddus)"
+    }
+  },
+  "alternative-contact-old": {
+    "gb": {
       "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 731 7898",
       "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' ar SignVideo (agor mewn tab newydd)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
       "opening-times": "Dydd Llun i ddydd Gwener, 8am i 6pm (ar gau ar wyliau cyhoeddus)"
     },
     "ni": {
-      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain neu Iwerddon <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo ar SignVideo (sy’n agor mewn tab newydd)</a>.",
-      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (sy’n agor mewn tab newydd)</a>.",
-      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (sy’n agor mewn tab newydd)</a>.",
+      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain neu Iwerddon <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo ar SignVideo (agor mewn tab newydd)</a>.",
+      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
+      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (agor mewn tab newydd)</a>.",
       "opening-times": "Dydd Llun i ddydd Gwener, 9am i 4pm (ar gau ar wyliau cyhoeddus)"
     }
   },

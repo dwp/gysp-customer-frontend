@@ -6,6 +6,7 @@ const { StatusCodes } = require('http-status-codes');
 
 const domain = require('./lib/urlExtract');
 const sessionHelper = require('./lib/helpers/sessionHelper');
+const { isDateSameOrAfterToday } = require('./lib/helpers/dateHelper');
 
 // Middleware
 const headersMiddleware = require('./middleware/headers/index');
@@ -137,6 +138,7 @@ app.use((req, res, next) => {
   res.locals.bankValidateServiceApiGateway = config.application.urls.bankValidateServiceApiGateway;
   res.locals.addressServiceApiGateway = config.application.urls.addressServiceApiGateway;
   res.locals.languageFeature = config.application.feature.language;
+  res.locals.videoRelaySwitchLinks = isDateSameOrAfterToday(config.application.feature.videoRelayDate);
   res.locals.checked = (data, value) => data === value;
   next();
 });
