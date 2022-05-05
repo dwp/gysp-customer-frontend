@@ -1,3 +1,17 @@
+# [12.1.0](https://github.com/dwp/gysp-customer-frontend/compare/12.0.2...12.1.0) (2022-05-05)
+
+
+### Bug Fixes
+
+* **session:** expire session when navigating away from session ([54a4142](https://github.com/dwp/gysp-customer-frontend/commit/54a4142d79855e876519f024fbb70ae309d81684))
+
+
+### Features
+
+* add to content on show phone number for dropout ([abc0902](https://github.com/dwp/gysp-customer-frontend/commit/abc090267331ee6e2e7a27ff18128c72c88090c2))
+
+
+
 ## [12.0.2](https://github.com/dwp/gysp-customer-frontend/compare/12.0.1...12.0.2) (2022-04-05)
 
 
