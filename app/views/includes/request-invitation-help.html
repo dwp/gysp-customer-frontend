@@ -1,26 +1,12 @@
-{% if videoRelaySwitchLinks %}
-  {% if isNorthernIreland %}
-    <p class="govuk-body">{{ t("app:alternative-contact.ni.option-1", { URL: 'https://portal.starleaf.com/webrtc?name=DWP&target=DWP@interpreterslive.call.sl' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.ni.option-2", { URL: 'https://portal.starleaf.com/webrtc?name=DfCNIDWP&target=DfCNIDWP%40interpreterslive.call.sl' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.ni.option-3", { URL: 'https://www.dalanguages.co.uk/dwp-bsl/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.ni.option-4", { URL: 'https://www.youtube.com/watch?v=9XnB8pMZZ6k' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.ni.opening-times") }}</p>
-  {% else %}
-    <p class="govuk-body">{{ t("app:alternative-contact.gb.option-1", { URL: 'https://www.relayuk.bt.com/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.gb.option-2", { URL: 'https://portal.starleaf.com/webrtc?name=DWP&target=DWP@interpreterslive.call.sl' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.gb.option-3", { URL: 'https://www.dalanguages.co.uk/dwp-bsl/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact.gb.opening-times") }}</p>
-  {% endif %}
+{% if isNorthernIreland %}
+  <p class="govuk-body">{{ t("app:alternative-contact.ni.option-1", { URL: 'https://portal.starleaf.com/webrtc?name=DWP&target=DWP@interpreterslive.call.sl' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.ni.option-2", { URL: 'https://portal.starleaf.com/webrtc?name=DfCNIDWP&target=DfCNIDWP%40interpreterslive.call.sl' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.ni.option-3", { URL: 'https://www.dalanguages.co.uk/dwp-bsl/' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.ni.option-4", { URL: 'https://www.youtube.com/watch?v=9XnB8pMZZ6k' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.ni.opening-times") }}</p>
 {% else %}
-  {% if isNorthernIreland %}
-    <p class="govuk-body">{{ t("app:alternative-contact-old.ni.option-1", { URL: 'https://dwpnistatepensionenquiries.signvideo.net/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.ni.option-2", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.ni.option-3", { URL: 'https://www.youtube.com/watch?v=MSN79HlU7XE' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.ni.opening-times") }}</p>
-  {% else %}
-    <p class="govuk-body">{{ t("app:alternative-contact-old.gb.option-1", { URL: 'https://www.relayuk.bt.com/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.gb.option-2", { URL: 'https://dwpstatepensionth.signvideo.net/' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.gb.option-3", { URL: 'https://www.youtube.com/watch?v=Osx7FFxFpNY' }) | safe }}</p>
-    <p class="govuk-body">{{ t("app:alternative-contact-old.gb.opening-times") }}</p>
-  {% endif %}
+  <p class="govuk-body">{{ t("app:alternative-contact.gb.option-1", { URL: 'https://www.relayuk.bt.com/' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.gb.option-2", { URL: 'https://portal.starleaf.com/webrtc?name=DWP&target=DWP@interpreterslive.call.sl' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.gb.option-3", { URL: 'https://www.dalanguages.co.uk/dwp-bsl/' }) | safe }}</p>
+  <p class="govuk-body">{{ t("app:alternative-contact.gb.opening-times") }}</p>
 {% endif %}
