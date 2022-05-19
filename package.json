@@ -76,7 +76,7 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "sass": "1.50.0",
-    "sinon": "13.0.1",
+    "sinon": "14.0.0",
     "snyk": "1.904.0"
   },
   "engines": {
