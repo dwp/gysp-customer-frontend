@@ -6,7 +6,7 @@ const { StatusCodes } = require('http-status-codes');
 const {
   questionsGet, SessionModel, questionsPost, checkSuccessful, checkFailed,
 } = require('../../../app/routes/transunion-kbv/functions');
-const responseHelper = require('../../lib/responseHelper.js');
+const responseHelper = require('../../lib/responseHelper');
 
 const i18nextConfig = require('../../../config/i18next');
 
@@ -221,7 +221,8 @@ describe('transunion kbv journey', () => {
       sandbox.stub(req, 'get').returns('extra-checks');
       questionsGet(req, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/transunion-kbv-question');
-      assert.deepEqual(genericResponse.data,
+      assert.deepEqual(
+        genericResponse.data,
         {
           caption: 'Question 1 of 1',
           options: [
@@ -256,7 +257,8 @@ describe('transunion kbv journey', () => {
           ],
           questionNum: '1',
           questionText: 'When did you last open a personal current account?',
-        });
+        },
+      );
     });
 
     it('should return error page if requested questionNum is greater than num questions in session', () => {

@@ -6,7 +6,7 @@ const i18nextFsBackend = require('i18next-fs-backend');
 
 const i18nextConfig = require('../../../../config/i18next');
 
-const validation = require('../../../../lib/validations/dobValidation.js');
+const validation = require('../../../../lib/validations/dobValidation');
 
 const dateToday = new Date();
 const badDayFormObject = {

@@ -6,8 +6,8 @@ const claim = require('../../../lib/objects/claimObject');
 const claimCheck = require('../../../lib/validations/claimCheck');
 const deleteSession = require('../../../lib/deleteSession');
 
-const { verifyAccountDetails } = require('../../../lib/validations/transunion/bank-validation.js');
-const { application } = require('../../../config/application.js');
+const { verifyAccountDetails } = require('../../../lib/validations/transunion/bank-validation');
+const { application } = require('../../../config/application');
 
 const statusCode500 = 500;
 const statusCodeErrorWrap = 200;

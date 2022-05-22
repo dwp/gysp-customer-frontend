@@ -1,6 +1,6 @@
 const https = require('https');
 const config = require('./config/application');
-const app = require('./app.js');
+const app = require('./app');
 
 const { port, tls } = config.application;
 let httpsServer;

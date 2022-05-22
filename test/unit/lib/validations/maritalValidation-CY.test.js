@@ -6,8 +6,8 @@ const i18nextFsBackend = require('i18next-fs-backend');
 
 const i18nextConfig = require('../../../../config/i18next');
 
-const validation = require('../../../../lib/validations/maritalValidation.js');
-const dataObjectGenerator = require('../../../lib/dataObjectGenerator.js');
+const validation = require('../../../../lib/validations/maritalValidation');
+const dataObjectGenerator = require('../../../lib/dataObjectGenerator');
 
 const stringLength71 = 'qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopa';
 

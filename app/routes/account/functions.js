@@ -3,8 +3,8 @@ const filterRequest = require('../../../lib/utils/requestHelper');
 const validation = require('../../../lib/validations/accountValidation');
 const validationOverseas = require('../../../lib/validations/accountOverseasValidation');
 const { application } = require('../../../config/application');
-const { buildTransunionValidationError } = require('../../../lib/validations/transunion/bank-validation.js');
-const transUnionValidation = require('../../../lib/validations/transunion/bank-validation.js');
+const { buildTransunionValidationError } = require('../../../lib/validations/transunion/bank-validation');
+const transUnionValidation = require('../../../lib/validations/transunion/bank-validation');
 const bankVerificationStatus = require('../../../lib/helpers/bankVerificationStatus');
 const { translateQuestion } = require('../../../lib/helpers/kbvHelper');
 
@@ -70,9 +70,11 @@ const prepareForKBVJourney = async (req, res, details, customerDetails, accountS
 
     return res.redirect('extra-checks');
   } catch (err) {
-    const failedAccountStatus = Object.assign(Object.create(null),
+    const failedAccountStatus = Object.assign(
+      Object.create(null),
       accountStatus,
-      { result: bankVerificationStatus.badRequest() });
+      { result: bankVerificationStatus.badRequest() },
+    );
     dataStore.save(req, 'accountStatus', failedAccountStatus);
     return saveDetailsAndRedirect(req, res, details, 'account-details');
   }
@@ -93,9 +95,7 @@ const accountPagePost = async (req, res) => {
 
     if (application.feature.bankValidationUsingKBV) {
       const { customerDetails } = req.session;
-      const accountStatus = await transUnionValidation.verifyAccountDetails(
-        req, res, details, customerDetails,
-      );
+      const accountStatus = await transUnionValidation.verifyAccountDetails(req, res, details, customerDetails);
 
       dataStore.save(req, 'accountStatus', accountStatus);
       const { result, messages } = accountStatus;

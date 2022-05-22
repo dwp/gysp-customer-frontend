@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const bank = require('../../../../lib/helpers/bankVerificationStatus.js');
+const bank = require('../../../../lib/helpers/bankVerificationStatus');
 
 describe('Bank Validation helper ', () => {
   describe('status  ', () => {

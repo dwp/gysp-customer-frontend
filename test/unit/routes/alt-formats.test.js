@@ -1,8 +1,8 @@
 const { assert } = require('chai');
 const sinon = require('sinon');
-const validator = require('../../../lib/validations/altFormats.js');
+const validator = require('../../../lib/validations/altFormats');
 
-const { get, post } = require('../../../app/routes/alt-formats/functions.js');
+const { get, post } = require('../../../app/routes/alt-formats/functions');
 const responseHelper = require('../../lib/responseHelper');
 
 describe('Alt formats controller', () => {

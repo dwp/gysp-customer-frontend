@@ -3,7 +3,7 @@ const sandbox = require('sinon').createSandbox();
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
-const { application } = require('../../../config/application.js');
+const { application } = require('../../../config/application');
 const bankValidation = require('../../../lib/validations/transunion/bank-validation');
 const { SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG } = require('../../../lib/validations/transunion/bank-validation');
 const i18nextConfig = require('../../../config/i18next');

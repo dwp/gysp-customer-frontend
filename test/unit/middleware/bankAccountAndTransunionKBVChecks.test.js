@@ -1,7 +1,7 @@
 const sandbox = require('sinon').createSandbox();
 const { assert } = require('chai');
 const responseHelper = require('../../lib/responseHelper');
-const middleware = require('../../../middleware/bankAccountAndTransunionKBVChecks.js');
+const middleware = require('../../../middleware/bankAccountAndTransunionKBVChecks');
 
 let genericResponse;
 const req = (kbvAnswered, accountDetailsEntered, path) => ({

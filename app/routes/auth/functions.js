@@ -11,7 +11,7 @@ const requestHelper = require('../../../lib/helpers/requestHelper');
 const locationHelper = require('../../../lib/helpers/locationHelper');
 const languageHelper = require('../../../lib/helpers/languageHelper');
 const dateHelper = require('../../../lib/helpers/dateHelper');
-const deleteSession = require('../../../lib/deleteSession.js');
+const deleteSession = require('../../../lib/deleteSession');
 
 const { getInviteKeyRequest } = require('../../../lib/helpers/keyServiceHelper');
 

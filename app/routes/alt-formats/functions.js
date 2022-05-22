@@ -1,5 +1,5 @@
-const dataStore = require('../../../lib/dataStore.js');
-const validator = require('../../../lib/validations/altFormats.js');
+const dataStore = require('../../../lib/dataStore');
+const validator = require('../../../lib/validations/altFormats');
 const checkChangeHelper = require('../../../lib/utils/checkChangeHelper');
 
 const get = (req, res) => {

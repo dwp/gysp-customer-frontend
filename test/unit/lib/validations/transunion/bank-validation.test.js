@@ -7,11 +7,11 @@ const { assert } = require('chai');
 const nock = require('nock');
 const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
-const i18nextConfig = require('../../../../../config/i18next.js');
-const responseHelper = require('../../../../lib/responseHelper.js');
+const i18nextConfig = require('../../../../../config/i18next');
+const responseHelper = require('../../../../lib/responseHelper');
 const {
   verifyAccountDetails, buildTransunionValidationError, generateKBV, SORT_CODE_INVALID_MSG, ACC_NUMBER_INVALID_MSG,
-} = require('../../../../../lib/validations/transunion/bank-validation.js');
+} = require('../../../../../lib/validations/transunion/bank-validation');
 
 const { fields: translatedErr } = require('../../../../../locales/en/account.json');
 const { 'error-message': { visuallyHiddenText: errMsg } } = require('../../../../../locales/en/app.json');

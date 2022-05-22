@@ -83,8 +83,10 @@ const getRedirectUrlBasedOnDateOfBirthVerificationStatus = (req) => {
   };
 };
 
-const showKBVDecisionPage = (viewName) => (req, res) => res.render(viewName,
-  getRedirectUrlBasedOnDateOfBirthVerificationStatus(req));
+const showKBVDecisionPage = (viewName) => (req, res) => res.render(
+  viewName,
+  getRedirectUrlBasedOnDateOfBirthVerificationStatus(req),
+);
 
 class ViewModel {
   constructor(question, questionNumString, maxNumQuestions, error, selected) {
@@ -96,10 +98,12 @@ class ViewModel {
     this.questionNum = questionNumString;
     this.caption = `${q} ${questionNumString} ${of} ${maxNumQuestions}`;
     if (error) {
-      const globalErrorMessage = generateGlobalErrorGenericField('kbvQuestion',
+      const globalErrorMessage = generateGlobalErrorGenericField(
+        'kbvQuestion',
         `securityQuestion${questionNumString}`,
         error,
-        'kbv-journey');
+        'kbv-journey',
+      );
       this.errors = {
         errorSummary: [globalErrorMessage],
         notSelected: {
@@ -160,8 +164,11 @@ const questionsPost = (req, res) => {
       return res.render('pages/transunion-kbv-question', model);
     }
 
-    dataStore.save(req, `security-question-${questionNum}`,
-      new SessionModel(selection, intQuestionNum, translated));
+    dataStore.save(
+      req,
+      `security-question-${questionNum}`,
+      new SessionModel(selection, intQuestionNum, translated),
+    );
     const isLastQuestion = intQuestionNum === maxNumQuestions;
 
     if (isLastQuestion) {

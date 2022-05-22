@@ -10,8 +10,13 @@ const build = (outcome, req) => {
   } else if (claimData === 'SUBMITTED') {
     throw new Error('Could not build event E0900001. Claim has already been submitted.');
   }
-  return new AuditEventE0900001(outcome, 'CITIZEN', ip, undefined,
-    { sessionId: session.id, userAgent: headers['user-agent'], claimData });
+  return new AuditEventE0900001(
+    outcome,
+    'CITIZEN',
+    ip,
+    undefined,
+    { sessionId: session.id, userAgent: headers['user-agent'], claimData },
+  );
 };
 
 module.exports = {

@@ -1,6 +1,6 @@
-const dataStore = require('../../../lib/dataStore.js');
+const dataStore = require('../../../lib/dataStore');
 const checkChangeHelper = require('../../../lib/utils/checkChangeHelper');
-const validator = require('../../../lib/validations/altFormatsChoose.js');
+const validator = require('../../../lib/validations/altFormatsChoose');
 
 const get = (req, res) => {
   const selection = dataStore.get(req, 'alt-formats-choose');

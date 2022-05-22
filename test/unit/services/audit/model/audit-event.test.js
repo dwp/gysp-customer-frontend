@@ -5,47 +5,94 @@ const AuditEventAttributeValue = require('../../../../../app/services/audit/mode
 
 describe('model: audit-event', () => {
   it('test locationAddress validation null', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      null, 'location name', []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      null,
+      'location name',
+      [],
+    );
     assert.equal(typeof auditEvent1.locationAddress, 'undefined');
   });
 
   it('test locationAddress validation below min', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '123456', 'location name', []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '123456',
+      'location name',
+      [],
+    );
     assert.equal(typeof auditEvent1.locationAddress, 'undefined');
   });
 
   it('test locationAddress validation above max', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '1234567890123456789012345678901234567890', 'location name', []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '1234567890123456789012345678901234567890',
+      'location name',
+      [],
+    );
     assert.equal(auditEvent1.locationAddress, '123456789012345678901234567890123456789');
   });
 
   it('test locationName validation null', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '1234567', null, []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '1234567',
+      null,
+      [],
+    );
     assert.equal(typeof auditEvent1.locationName, 'undefined');
   });
 
   it('test locationName validation below min', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '1234567', '1', []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '1234567',
+      '1',
+      [],
+    );
     assert.equal(typeof auditEvent1.locationName, 'undefined');
   });
 
   it('test locationName validation above max', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '1234567', '12345678901234567890123456789012345678901234567890123456789012345', []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '1234567',
+      '12345678901234567890123456789012345678901234567890123456789012345',
+      [],
+    );
     assert.equal(auditEvent1.locationName, '1234567890123456789012345678901234567890123456789012345678901234');
   });
 
   it('test getters and setters not covered elsewhere', async () => {
-    const auditEvent1 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '192.0.0.1', null, []);
+    const auditEvent1 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '192.0.0.1',
+      null,
+      [],
+    );
 
-    const auditEvent2 = new AuditEvent('E0900001', 'SUCCESSFUL_EVENT', 'USER1',
-      '192.0.0.1', null);
+    const auditEvent2 = new AuditEvent(
+      'E0900001',
+      'SUCCESSFUL_EVENT',
+      'USER1',
+      '192.0.0.1',
+      null,
+    );
     auditEvent2.setNino('NINO2');
     auditEvent2.setAgentId('AGENT2');
     auditEvent2.setLocationAddress('1234567');

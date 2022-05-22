@@ -3,7 +3,7 @@ const i18next = require('i18next');
 const i18nextFsBackend = require('i18next-fs-backend');
 
 const i18nextConfig = require('../../../../config/i18next');
-const { validate, ALLOWED_ALT_FORMATS } = require('../../../../lib/validations/altFormatsChoose.js');
+const { validate, ALLOWED_ALT_FORMATS } = require('../../../../lib/validations/altFormatsChoose');
 
 const lang = 'cy';
 
