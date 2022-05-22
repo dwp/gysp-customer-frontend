@@ -22,7 +22,7 @@
     "govuk-frontend": "4.1.0",
     "gulp": "4.0.2",
     "gulp-uglify": "3.0.2",
-    "helmet": "4.6.0",
+    "helmet": "5.1.0",
     "hmrc-frontend": "1.38.0",
     "http-status-codes": "2.2.0",
     "i18next": "20.6.1",
