@@ -1,16 +1,16 @@
 {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 
 {% set html %}
-  <p>{{ t('app:cookies.canWeUseCookies.p1') }}</p>
-  <p>{{ t('app:cookies.canWeUseCookies.p2') }}</p>
+  <p class="govuk-body">{{ t('app:cookies.canWeUseCookies.p1') }}</p>
+  <p class="govuk-body">{{ t('app:cookies.canWeUseCookies.p2') }}</p>
 {% endset %}
 
 {% set acceptHtml %}
-  <p>{{ t('app:cookies.acceptCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
+  <p class="govuk-body">{{ t('app:cookies.acceptCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
 {% endset %}
 
 {% set rejectHtml %}
-  <p>{{ t('app:cookies.rejectCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
+  <p class="govuk-body">{{ t('app:cookies.rejectCookies.p', { cookieSettingUrl: '/cookie-policy' }) | safe }}</p>
 {% endset %}
 
 {{ govukCookieBanner({

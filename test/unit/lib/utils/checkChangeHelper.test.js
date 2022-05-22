@@ -21,7 +21,7 @@ const baseDetails = {
 };
 
 const baseDetailResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -29,7 +29,7 @@ const baseDetailResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -41,7 +41,7 @@ const baseDetailResult = [{
 const livedAbroadNoDetails = { 'lived-abroad': { livedAbroad: 'no' }, ...baseDetails };
 
 const livedAbroadNoResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -49,7 +49,7 @@ const livedAbroadNoResult = [{
     }],
   },
 }, {
-  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'No' },
   actions: {
     items: [{
@@ -57,7 +57,7 @@ const livedAbroadNoResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -69,7 +69,7 @@ const livedAbroadNoResult = [{
 const livedAbroadYesNoCountriesDetails = { 'lived-abroad': { livedAbroad: 'yes' }, ...baseDetails };
 
 const livedAbroadYesNoCountriesResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -77,7 +77,7 @@ const livedAbroadYesNoCountriesResult = [{
     }],
   },
 }, {
-  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Yes' },
   actions: {
     items: [{
@@ -85,7 +85,7 @@ const livedAbroadYesNoCountriesResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -103,7 +103,7 @@ const livedAbroadYesNoDetailsDetails = {
 };
 
 const livedAbroadYesNoDetailsResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -111,7 +111,7 @@ const livedAbroadYesNoDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />France' },
   actions: {
     items: [{
@@ -119,7 +119,7 @@ const livedAbroadYesNoDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -153,7 +153,7 @@ const livedAbroadYesWithDetailsDetails = {
 };
 
 const livedAbroadYesWithDetailsResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -161,7 +161,7 @@ const livedAbroadYesWithDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Lived outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' },
   actions: {
     items: [{
@@ -169,7 +169,7 @@ const livedAbroadYesWithDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -203,7 +203,7 @@ const livedAbroadYesWithDetailsOverseasDetails = {
 };
 
 const livedAbroadYesWithDetailsOverseasResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -211,7 +211,7 @@ const livedAbroadYesWithDetailsOverseasResult = [{
     }],
   },
 }, {
-  key: { text: 'Where you lived outside the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Where you lived outside the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />France<br />Jan 2001 - Dec 2001' },
   actions: {
     items: [{
@@ -219,7 +219,7 @@ const livedAbroadYesWithDetailsOverseasResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -229,7 +229,7 @@ const livedAbroadYesWithDetailsOverseasResult = [{
 }];
 
 const livedAbroadYesWithDetailsWelshResult = [{
-  key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -237,7 +237,7 @@ const livedAbroadYesWithDetailsWelshResult = [{
     }],
   },
 }, {
-  key: { text: "Wedi byw y tu allan i'r DU", classes: 'govuk-!-width-two-thirds' },
+  key: { text: "Wedi byw y tu allan i'r DU", classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />France<br />Ion 2001 - Rhag 2001' },
   actions: {
     items: [{
@@ -245,7 +245,7 @@ const livedAbroadYesWithDetailsWelshResult = [{
     }],
   },
 }, {
-  key: { text: 'Manylion Cyswllt', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Manylion Cyswllt', classes: 'govuk-!-width-one-third' },
   value: { html: 'Ffôn cartref<br />00000 000000<br />Ffôn symudol<br />22222 222222<br />Ffôn gwaith<br />11111 111111<br />Cyfeiriad e-bost<br />a@b.com' },
   actions: {
     items: [{
@@ -257,7 +257,7 @@ const livedAbroadYesWithDetailsWelshResult = [{
 const workedAbroadNoDetails = { 'worked-abroad': { workedAbroad: 'no' }, ...baseDetails };
 
 const workedAbroadNoResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -265,7 +265,7 @@ const workedAbroadNoResult = [{
     }],
   },
 }, {
-  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'No' },
   actions: {
     items: [{
@@ -273,7 +273,7 @@ const workedAbroadNoResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -285,7 +285,7 @@ const workedAbroadNoResult = [{
 const workedAbroadYesNoCountriesDetails = { 'worked-abroad': { workedAbroad: 'yes' }, ...baseDetails };
 
 const workedAbroadYesNoCountriesResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -293,7 +293,7 @@ const workedAbroadYesNoCountriesResult = [{
     }],
   },
 }, {
-  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Yes' },
   actions: {
     items: [{
@@ -301,7 +301,7 @@ const workedAbroadYesNoCountriesResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -319,7 +319,7 @@ const workedAbroadYesNoDetailsDetails = {
 };
 
 const workedAbroadYesNoDetailsResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -327,7 +327,7 @@ const workedAbroadYesNoDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />France' },
   actions: {
     items: [{
@@ -335,7 +335,7 @@ const workedAbroadYesNoDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -369,7 +369,7 @@ const workedAbroadYesWithDetailsDetails = {
 };
 
 const workedAbroadYesWithDetailsResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -377,7 +377,7 @@ const workedAbroadYesWithDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Worked outside of the UK', classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />Jan 2000 - Dec 2000<br />SPAIN1234<br />France<br />Jan 2001 - Dec 2001<br />FRANCE1234' },
   actions: {
     items: [{
@@ -385,7 +385,7 @@ const workedAbroadYesWithDetailsResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -395,7 +395,7 @@ const workedAbroadYesWithDetailsResult = [{
 }];
 
 const workedAbroadYesWithDetailsWelshResult = [{
-  key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Dyddiad rydych am gael eich Pensiwn y Wladwriaeth', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -403,7 +403,7 @@ const workedAbroadYesWithDetailsWelshResult = [{
     }],
   },
 }, {
-  key: { text: "Wedi gweithio y tu allan i'r DU", classes: 'govuk-!-width-two-thirds' },
+  key: { text: "Wedi gweithio y tu allan i'r DU", classes: 'govuk-!-width-one-third' },
   value: { html: 'Spain<br />Ion 2000 - Rhag 2000<br />SPAIN1234<br />France<br />Ion 2001 - Rhag 2001<br />FRANCE1234' },
   actions: {
     items: [{
@@ -411,7 +411,7 @@ const workedAbroadYesWithDetailsWelshResult = [{
     }],
   },
 }, {
-  key: { text: 'Manylion Cyswllt', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Manylion Cyswllt', classes: 'govuk-!-width-one-third' },
   value: { html: 'Ffôn cartref<br />00000 000000<br />Ffôn symudol<br />22222 222222<br />Ffôn gwaith<br />11111 111111<br />Cyfeiriad e-bost<br />a@b.com' },
   actions: {
     items: [{
@@ -426,7 +426,7 @@ const altFormatDetails = { 'alt-formats': 'yes', 'alt-formats-choose': 'audioCas
 const altFormatDetailsNo = { 'alt-formats': 'no', ...baseDetails };
 
 const maritalStatusSingleResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -434,7 +434,7 @@ const maritalStatusSingleResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Never been married' },
   actions: {
     items: [{
@@ -442,7 +442,7 @@ const maritalStatusSingleResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -461,7 +461,7 @@ const maritalStatusMarriedDetails = {
 };
 
 const maritalStatusMarriedResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -469,7 +469,7 @@ const maritalStatusMarriedResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Married<br />01/01/1960' },
   actions: {
     items: [{
@@ -477,7 +477,7 @@ const maritalStatusMarriedResult = [{
     }],
   },
 }, {
-  key: { text: 'About your spouse', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'About your spouse', classes: 'govuk-!-width-one-third' },
   value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
   actions: {
     items: [{
@@ -485,7 +485,7 @@ const maritalStatusMarriedResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -504,7 +504,7 @@ const maritalStatusCivilDetails = {
 };
 
 const maritalStatusCivilResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -512,7 +512,7 @@ const maritalStatusCivilResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Civil partnership<br />01/01/1960' },
   actions: {
     items: [{
@@ -520,7 +520,7 @@ const maritalStatusCivilResult = [{
     }],
   },
 }, {
-  key: { text: 'About your civil partner', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'About your civil partner', classes: 'govuk-!-width-one-third' },
   value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
   actions: {
     items: [{
@@ -528,7 +528,7 @@ const maritalStatusCivilResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -547,7 +547,7 @@ const maritalStatusDivorcedDetails = {
 };
 
 const maritalStatusDivorcedResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -555,7 +555,7 @@ const maritalStatusDivorcedResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Divorced<br />01/01/1960' },
   actions: {
     items: [{
@@ -563,7 +563,7 @@ const maritalStatusDivorcedResult = [{
     }],
   },
 }, {
-  key: { text: 'About your ex-spouse', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'About your ex-spouse', classes: 'govuk-!-width-one-third' },
   value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
   actions: {
     items: [{
@@ -571,7 +571,7 @@ const maritalStatusDivorcedResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -590,7 +590,7 @@ const maritalStatusDissolvedDetails = {
 };
 
 const maritalStatusDissolvedResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -598,7 +598,7 @@ const maritalStatusDissolvedResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Dissolved civil partnership<br />01/01/1960' },
   actions: {
     items: [{
@@ -606,7 +606,7 @@ const maritalStatusDissolvedResult = [{
     }],
   },
 }, {
-  key: { text: 'About your ex-partner', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'About your ex-partner', classes: 'govuk-!-width-one-third' },
   value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
   actions: {
     items: [{
@@ -614,7 +614,7 @@ const maritalStatusDissolvedResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -633,7 +633,7 @@ const maritalStatusWidowedDetails = {
 };
 
 const maritalStatusWidowedResult = [{
-  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -641,7 +641,7 @@ const maritalStatusWidowedResult = [{
     }],
   },
 }, {
-  key: { text: 'Current marital status', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Current marital status', classes: 'govuk-!-width-one-third' },
   value: { html: 'Widowed<br />01/01/1960' },
   actions: {
     items: [{
@@ -649,7 +649,7 @@ const maritalStatusWidowedResult = [{
     }],
   },
 }, {
-  key: { text: 'About your late spouse', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'About your late spouse', classes: 'govuk-!-width-one-third' },
   value: { html: 'Joanne Bloggs<br />Other Name<br />01/01/1940' },
   actions: {
     items: [{
@@ -657,7 +657,7 @@ const maritalStatusWidowedResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{
@@ -676,7 +676,7 @@ const claimFromDateAfterSpaDetails = {
 };
 
 const claimFromDateAfterSpaDetailResult = [{
-  key: { text: 'Date you want your State Pension from', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Date you want your State Pension from', classes: 'govuk-!-width-one-third' },
   value: { text: ['01/01/2018'] },
   actions: {
     items: [{
@@ -684,7 +684,7 @@ const claimFromDateAfterSpaDetailResult = [{
     }],
   },
 }, {
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />00000 000000<br />Mobile phone<br />22222 222222<br />Work phone<br />11111 111111<br />Email address<br />a@b.com' },
   actions: {
     items: [{

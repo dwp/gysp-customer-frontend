@@ -203,13 +203,13 @@
       }
     },
     "acceptCookies": {
-      "p": "You’ve accepted analytics cookies. You can <a href=\"{{cookieSettingUrl}}\">change your cookie settings</a> at any time.",
+      "p": "You’ve accepted analytics cookies. You can <a href=\"{{cookieSettingUrl}}\" class=\"govuk-link\">change your cookie settings</a> at any time.",
       "actions": {
         "hide": "Hide this message"
       }
     },
     "rejectCookies": {
-      "p": "You’ve rejected analytics cookies. You can <a href=\"{{cookieSettingUrl}}\">change your cookie settings</a> at any time.",
+      "p": "You’ve rejected analytics cookies. You can <a href=\"{{cookieSettingUrl}}\" class=\"govuk-link\">change your cookie settings</a> at any time.",
       "actions": {
         "hide": "Hide this message"
       }

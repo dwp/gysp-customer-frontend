@@ -13,7 +13,7 @@ const populatedSessionGet = { session: { 'contact-details': { homeTelephoneNumbe
 const emptyRequest = { session: {} };
 
 const populatedSessionRequest = [{
-  key: { text: 'Contact details', classes: 'govuk-!-width-two-thirds' },
+  key: { text: 'Contact details', classes: 'govuk-!-width-one-third' },
   value: { html: 'Home phone<br />000000000' },
   actions: {
     items: [{
