@@ -16,6 +16,9 @@ module.exports = {
   preload: ['en', 'cy'],
   ns: getNamespaces(['en', 'cy']),
   defaultNS: 'app',
+  interpolation: {
+    skipOnVariables: false,
+  },
   backend: {
     loadPath: './locales/{{lng}}/{{ns}}.json',
     addPath: './locales/{{lng}}/{{ns}}.missing.json',
