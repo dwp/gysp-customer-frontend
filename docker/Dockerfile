@@ -1,4 +1,4 @@
-FROM node:16.13.2-alpine3.14@sha256:d5ff6716e21e03983f8522b6e84f15f50a56e183085553e96d2801fc45dc3c74
+FROM node:16.15.0-alpine3.14@sha256:53a5c087654e75f8b12475fe143c5ab8b5f33254a37dc87743d066a57e67b4de
 
 LABEL application="gysp/customer-frontend"
 LABEL maintainer="Get your State Pension Team"
