@@ -80,8 +80,8 @@
     "snyk": "1.904.0"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": "^16.15.0",
+    "npm": "^8.5.5"
   },
   "scripts": {
     "postinstall": "husky install",

@@ -14,15 +14,15 @@ const emptyDetails = {};
 
 const resultTemplate = (name, dob, address, lang) => [
   {
-    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.name'), classes: 'govuk-!-width-two-thirds' },
+    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.name'), classes: 'govuk-!-width-one-third' },
     value: { text: name, html: undefined },
   },
   {
-    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.dob'), classes: 'govuk-!-width-two-thirds' },
+    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.dob'), classes: 'govuk-!-width-one-third' },
     value: { text: dob, html: undefined },
   },
   {
-    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.address'), classes: 'govuk-!-width-two-thirds' },
+    key: { text: i18next.getFixedT(lang)('request-invitation-check-details:keys.address'), classes: 'govuk-!-width-one-third' },
     value: { text: null, html: address },
   },
 ];
