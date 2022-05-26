@@ -36,6 +36,7 @@ module.exports = (app) => {
         ],
         fontSrc: ['\'self\'', 'data: blob:'],
         frameSrc: ['\'self\'', 'https://www.googletagmanager.com'],
+        formAction: ['\'self\'', 'https://www.gov.uk'],
       },
       reportOnly: false,
     },

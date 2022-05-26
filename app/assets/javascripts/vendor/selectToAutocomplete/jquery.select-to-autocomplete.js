@@ -49,7 +49,7 @@ THE SOFTWARE.
       return $select_field.hide();
     },
     insert_text_field: function( context ) {
-      var $text_field = $( '<input type="text" onclick="application.countryEvent();"></input>' );
+      var $text_field = $( '<input type="text"></input>' );
       if ( settings['copy-attributes-to-text-field'] ) {
         var attrs = {};
         var raw_attrs = context.$select_field[0].attributes;
