@@ -38,73 +38,63 @@
     }
   },
   "help": {
-    "bank": {
-        "h2": "Safe and secure",
-        "details": "This is a safe site. Your personal information is protected."
-    },
-    "h2": "Get help",
     "telephone": {
-      "label": "Telephone:",
-      "number": "0800 169 0154"
+      "label": "Telephone:"
     },
     "textphone": {
-      "label": "Textphone:",
-      "number": "0800 169 0254"
+      "label": "Textphone:"
     },
-    "hours": {
-      "line1": "Monday to Friday",
-      "line2": "Closed public holidays"
+    "bank": {
+      "h2": "Safe and secure",
+      "details": "This is a safe site. Your personal information is protected."
+    },
+    "h2": "Get help with your claim",
+    "gb": {
+      "header": "England, Scotland and Wales",
+      "telephone": {
+        "number": "0800 169 0154"
+      },
+      "textphone": {
+        "number": "0800 169 0254"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 9:30am to 3:30pm (closed on public holidays)"
+      }
+    },
+    "ni": {
+      "header" : "Northern Ireland",
+      "telephone": {
+        "number": "0800 587 0892"
+      },
+      "textphone": {
+        "number": "0808 100 2198"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 9am to 4pm (closed on public holidays)"
+      }
+    },
+    "how-to-video-relay": {
+      "header": "How to use the video relay service",
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
+      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in ISL (opens in a new tab)</a>."
+    },
+    "overseas": {
+      "telephone": {
+        "label": "Overseas:",
+        "number": "+44 (0) 191 216 2516"
+      },
+      "hours": {
+        "line1": "Monday to Friday, 9:30am to 3:30pm UK time (closed on UK public holidays)"
+      }
     },
     "outside": {
       "start": "How to claim is different if you claim from",
       "url_text": "Northern Ireland"
-    },
-    "northernIreland": {
-      "summaryText" : "There's a different number for Northern Ireland",
-      "telephone": {
-        "label": "Telephone:",
-        "number": "0800 587 0892"
-      },
-      "textphone": {
-        "label": "Textphone:",
-        "number": "0808 100 2198"
-      },
-      "hours": {
-        "line1": "Monday to Friday",
-        "line2": "Closed public holidays"
-      }
-    },
-    "overseas": {
-      "telephone": {
-        "label": "Telephone:",
-        "number": "+44 (0) 191 216 2516"
-      },
-      "hours": {
-        "line1": "Monday to Friday",
-        "line2": "Closed UK public holidays"
-      }
-    },
-    "covid-19": {
-      "p": "During the coronavirus (COVID-19) outbreak, phone lines are busier than usual and open shorter hours."
-    }
-  },
-  "alternative-contact-old": {
-    "gb": {
-      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (opens in a new tab)</a>: dial 18001 then 0800 731 7898",
-      "option-2": "British Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">contact DWP using the video relay service on SignVideo (opens in a new tab).</a>",
-      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Check how to use the video relay service (opens in a new tab)</a>.",
-      "opening-times": "Monday to Friday, 8am to 6pm (closed on public holidays)"
-    },
-    "ni": {
-      "option-1": "British or Irish Sign Language users can <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">contact DfC using the video relay service on SignVideo (opens in a new tab)</a>.",
-      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
-      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Check how to use the video relay service in ISL (opens in a new tab)</a>.",
-      "opening-times": "Monday to Friday, 9am to 4pm (closed on public holidays)"
     }
   },
   "alternative-contact": {
     "gb": {
-      "option-1": "<a href=\"{{URL}} \" rel=\"noreferrer noopener\" target=\"_blank\" class=\"govuk-link\">Relay UK (opens in a new tab)</a>: dial 18001 then 0800 731 7898",
+      "option-1": "<a href=\"{{URL}} \" rel=\"noreferrer noopener\" target=\"_blank\" class=\"govuk-link\">Relay UK (opens in a new tab)</a>: dial 18001 then {{TELEPHONE}}",
       "option-2": "British Sign Language users can <a href=\"{{URL}} \" rel=\"noreferrer noopener\" target=\"_blank\" class=\"govuk-link\">contact DWP using the video relay service (opens in a new tab)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Check how to use the video relay service in BSL (opens in a new tab)</a>.",
       "opening-times": "Monday to Friday, 8am to 6pm (closed on public holidays)"

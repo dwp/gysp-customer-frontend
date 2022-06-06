@@ -4,7 +4,11 @@ const { save } = require('../../../../lib/dataStore');
 
 const get = (req, res) => {
   deleteSession.destroyInviteRequestSessionExcludingLanguage(req);
-  res.render('pages/request-invitation/index');
+  const isNorthernIreland = 'neither';
+  save(req, 'isNorthernIreland', isNorthernIreland);
+  res.render('pages/request-invitation/index', {
+    isNorthernIreland,
+  });
 };
 
 const post = (req, res) => {

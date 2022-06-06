@@ -15,7 +15,8 @@ describe('request invitation controller', () => {
     it('should return view name when called with unpopulated response data when session is not populated', () => {
       controller.get(emptyRequest, genericResponse);
       assert.equal(genericResponse.viewName, 'pages/request-invitation/index');
-      assert.isUndefined(genericResponse.data);
+      assert.equal(emptyRequest.session.isNorthernIreland, 'neither');
+      assert.equal(genericResponse.data.isNorthernIreland, 'neither');
     });
   });
 

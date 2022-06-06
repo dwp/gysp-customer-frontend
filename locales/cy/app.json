@@ -38,72 +38,72 @@
     }
   },
   "help": {
-    "bank": {
-        "h2": "Saff a diogel",
-        "details": "Mae hwn yn safle diogel. Mae eich gwybodaeth bersonol wedi'i ddiogelu."
-    },
-    "h2": "Cael help",
     "telephone": {
-      "label": "Ffôn:",
-      "number": "0800 169 0253"
+      "label": "Ffôn:"
     },
     "textphone": {
-      "label": "Ffôn testun:",
-      "number": "0800 169 0203"
+      "label": "Ffôn testun:"
     },
-    "hours": {
-      "line1": "Dydd Llun i ddydd Gwener",
-      "line2": "Ar gau ar wyliau cyhoeddus"
+    "bank": {
+      "h2": "Saff a diogel",
+      "details": "Mae hwn yn safle diogel. Mae eich gwybodaeth bersonol wedi'i ddiogelu."
+    },
+    "h2": "Cael help gyda’ch cais",
+    "gb": {
+      "header": "Cymru, Lloegr a’r Alban",
+      "telephone": {
+        "number": "0800 169 0253"
+      },
+      "textphone": {
+        "number": "0800 169 0203"
+      },
+      "hours": {
+        "line1": "Dydd Llun i ddydd Gwener, 9:30am i 3:30pm (ar gau ar wyliau cyhoeddus)"
+      }
+    },
+    "ni": {
+      "header" : "Gogledd Iwerddon",
+      "telephone": {
+        "number": "0800 587 0892"
+      },
+      "textphone": {
+        "number": "0808 100 2198"
+      },
+      "hours": {
+        "line1": "Dydd Llun i ddydd Gwener, 9:30am i 4pm (ar gau ar wyliau cyhoeddus)"
+      }
+    },
+    "how-to-video-relay": {
+      "header": "Sut i ddefnyddio'r gwasanaeth cyfnewid fideo",
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
+      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (agor mewn tab newydd)</a>."
+    },
+    "overseas": {
+      "telephone": {
+        "label": "Tramor:",
+        "number": "+44 (0) 191 216 2516"
+      },
+      "hours": {
+        "line1": "Dydd Llun i ddydd Gwener, 9:30am i 3:30pm (ar gau ar wyliau cyhoeddus)"
+      }
     },
     "outside": {
       "start": "Mae sut i wneud cais yn wahanol os ydych yn gwneud cais o",
       "url_text": "Ogledd Iwerddon"
-    },
-    "northernIreland": {
-      "summaryText" : "Mae yna rif gwahanol ar gyfer Gogledd Iwerddon",
-      "telephone": {
-        "label": "Ffôn:",
-        "number": "0800 587 0892"
-      },
-      "textphone": {
-        "label": "Ffôn testun:",
-        "number": "0808 100 2198"
-      },
-      "hours": {
-        "line1": "Dydd Llun i ddydd Gwener, 9am i 5pm",
-        "line2": "Ar gau ar wyliau cyhoeddus"
-      }
-    },
-    "covid-19": {
-      "p": "Yn ystod argyfwng coronafeirws (COVID-19), mae llinellau ffôn yn brysurach na'r arfer ac ar agor llai o oriau."
     }
   },
   "alternative-contact": {
     "gb": {
-      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 731 7898",
-      "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
+      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> deilawch 18001 yna {{TELEPHONE}}",
+      "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio’r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
       "opening-times": "Dydd Llun i ddydd Gwener, 8am i 6pm (ar gau ar wyliau cyhoeddus)"
     },
     "ni": {
-      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
-      "option-2": "Gall defnyddwyr Iaith Arwyddion Iwerddon <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
+      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC drwy ddefnyddio’r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
+      "option-2": "Gall defnyddwyr Iaith Arwyddion Wyddelig <a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">gysylltu â DfC drwy ddefnyddio’r gwasanaeth cyfnewid fideo (agor mewn tab newydd)</a>.",
       "option-3": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
       "option-4": "<a href=\"{{URL}} \" target=\"_blank\" rel=\"noreferrer noopener\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (agor mewn tab newydd)</a>.",
-      "opening-times": "Dydd Llun i ddydd Gwener, 9am i 4pm (ar gau ar wyliau cyhoeddus)"
-    }
-  },
-  "alternative-contact-old": {
-    "gb": {
-      "option-1": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Relay UK (agor mewn tab newydd):</a> ffoniwch 18001 yna 0800 731 7898",
-      "option-2": "Gall defnyddwyr Iaith Arwyddion Prydain <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DWP drwy ddefnyddio'r gwasanaeth 'video relay' ar SignVideo (agor mewn tab newydd)</a>.",
-      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth 'video relay' (agor mewn tab newydd)</a>.",
-      "opening-times": "Dydd Llun i ddydd Gwener, 8am i 6pm (ar gau ar wyliau cyhoeddus)"
-    },
-    "ni": {
-      "option-1": "Gall defnyddwyr Iaith Arwyddion Prydain neu Iwerddon <a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">gysylltu â DfC gan ddefnyddio'r gwasanaeth cyfnewid fideo ar SignVideo (agor mewn tab newydd)</a>.",
-      "option-2": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn BSL (agor mewn tab newydd)</a>.",
-      "option-3": "<a href=\"{{URL}} \" target=\"_blank\" class=\"govuk-link\">Gwiriwch sut i ddefnyddio'r gwasanaeth cyfnewid fideo yn ISL (agor mewn tab newydd)</a>.",
       "opening-times": "Dydd Llun i ddydd Gwener, 9am i 4pm (ar gau ar wyliau cyhoeddus)"
     }
   },
