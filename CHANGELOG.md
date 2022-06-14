@@ -1,3 +1,12 @@
+# [12.2.0](https://github.com/dwp/gysp-customer-frontend/compare/12.1.2...12.2.0) (2022-06-14)
+
+
+### Features
+
+* **content:** new sidebar content ([887ca1c](https://github.com/dwp/gysp-customer-frontend/commit/887ca1c474eded2a486bcb9cb0f1e2694f124729))
+
+
+
 ## [12.1.2](https://github.com/dwp/gysp-customer-frontend/compare/12.1.1...12.1.2) (2022-05-26)
 
 
