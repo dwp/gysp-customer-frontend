@@ -1,7 +1,3 @@
 {
-  "extends": ["gitlab>dwp/engineering/renovate//shared-configs/renovate-auto-merge"],
-  "timezone": "Europe/London",
-  "schedule": [
-    "after 7am and before 6pm every weekday"
-  ]
+  "extends": ["gitlab>dwp/engineering/renovate//shared-configs/renovate-auto-merge"]
 }
