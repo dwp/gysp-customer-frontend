@@ -13,7 +13,13 @@ const populatedRequestEmpty = {
   },
 };
 const populatedRequestValid = {
-  session: {},
+  session: { isBeforeSpa: true },
+  body: {
+    'country-name[0]': 'Australia', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
+  },
+};
+const populatedRequestValidPostSpa = {
+  session: { isBeforeSpa: false },
   body: {
     'country-name[0]': 'Australia', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -25,7 +31,7 @@ const populatedRequestValidWithInsurance = {
   },
 };
 const populatedRequestValidWithoutInsuranceEdit = {
-  session: { editSection: 'worked-abroad' },
+  session: { editSection: 'worked-abroad', isBeforeSpa: true },
   body: {
     'country-name[0]': 'Afghanistan', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -37,7 +43,7 @@ const populatedRequestInvalid = {
   },
 };
 const populatedRequestMoreFields = {
-  session: {},
+  session: { isBeforeSpa: true },
   body: {
     hats: true, 'country-name[0]': 'Australia', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -119,6 +125,13 @@ describe('Overseas controller ', () => {
       overseasController.whatCountriesHaveYouWorkedInPost(populatedRequestValid, genericResponse, countryList);
       assert.equal(genericResponse.address, 'what-is-your-current-marital-status');
       assert.equal(populatedRequestValid.session['worked-abroad-countries']['country-name[0]'], 'Australia');
+      done();
+    });
+
+    it('should return redirect to when did you work in country page when non insurance country and post spa', (done) => {
+      overseasController.whatCountriesHaveYouWorkedInPost(populatedRequestValidPostSpa, genericResponse, countryList);
+      assert.equal(genericResponse.address, '/when-did-you-work-in-australia');
+      assert.equal(populatedRequestValidPostSpa.session['worked-abroad-countries']['country-name[0]'], 'Australia');
       done();
     });
 

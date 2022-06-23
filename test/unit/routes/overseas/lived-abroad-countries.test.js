@@ -19,14 +19,20 @@ const populatedRequestValid = {
     'country-name[0]': 'France', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
 };
+const populatedRequestValidNoneResPostSpa = {
+  session: { isBeforeSpa: false },
+  body: {
+    'country-name[0]': 'Afghanistan', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
+  },
+};
 const populatedRequestValidNoneRes = {
-  session: {},
+  session: { isBeforeSpa: true },
   body: {
     'country-name[0]': 'Afghanistan', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
 };
 const populatedRequestValidNoneResEdit = {
-  session: { editSection: 'lived-abroad' },
+  session: { editSection: 'lived-abroad', isBeforeSpa: true },
   body: {
     'country-name[0]': 'Afghanistan', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -38,7 +44,7 @@ const populatedRequestInvalid = {
   },
 };
 const populatedRequestMoreFields = {
-  session: {},
+  session: { isBeforeSpa: true },
   body: {
     hats: true, 'country-name[0]': 'France', 'country-name[1]': '', 'country-name[2]': '', 'country-name[3]': '',
   },
@@ -116,14 +122,21 @@ describe('Overseas controller ', () => {
       done();
     });
 
-    it('should return redirect to worked when a single country is selected and is not insurance or res', (done) => {
+    it('should return redirect to worked when a single country is selected and is not insurance or res and is before spa', (done) => {
       overseasController.whatCountriesHaveYouLivedInPost(populatedRequestValidNoneRes, genericResponse, countryList);
       assert.equal(genericResponse.address, '/have-you-worked-outside-of-the-uk');
       assert.equal(populatedRequestValid.session['lived-abroad-countries']['country-name[0]'], 'France');
       done();
     });
 
-    it('should return redirect to check and change when a single country is selected and is not insurance or res and in edit mode', (done) => {
+    it('should return redirect to when did you live in when not insurance or res and is post spa', (done) => {
+      overseasController.whatCountriesHaveYouLivedInPost(populatedRequestValidNoneResPostSpa, genericResponse, countryList);
+      assert.equal(genericResponse.address, '/when-did-you-live-in-afghanistan');
+      assert.equal(populatedRequestValidNoneResPostSpa.session['lived-abroad-countries']['country-name[0]'], 'Afghanistan');
+      done();
+    });
+
+    it('should return redirect to check and change when a single country is selected and is not insurance or res and in edit mode and is before spa', (done) => {
       overseasController.whatCountriesHaveYouLivedInPost(populatedRequestValidNoneResEdit, genericResponse, countryList);
       assert.equal(genericResponse.address, '/check-your-details');
       assert.equal(populatedRequestValid.session['lived-abroad-countries']['country-name[0]'], 'France');

@@ -72,7 +72,7 @@ function whatCountriesHaveYouWorkedInPost(req, res, countriesList) {
     const editMode = checkChangeHelper.isEditMode(req, 'worked-abroad');
     const filteredRequest = filterRequest.requestFilter(filterRequest.countries(), req.body);
     dataStore.checkAndSave(req, 'worked-abroad-countries', filteredRequest, editMode);
-    const countryDetails = countryHelper.returnFilteredListInsuranceCountries(filteredRequest, countriesList);
+    const countryDetails = countryHelper.returnFilteredListInsuranceCountries(filteredRequest, countriesList, req.session.isBeforeSpa);
     dataStore.checkAndSaveCountryList(req, 'worked-abroad-countries-details', countryDetails, editMode);
 
     if (countryDetails.length > 0) {

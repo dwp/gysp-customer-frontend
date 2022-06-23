@@ -47,12 +47,12 @@ describe('Countries Helper ', () => {
     const countryListWithFourCountry = countryHelper.returnFilteredListOfCountries(countrySet4, countryListFull);
     assert.lengthOf(countryListWithFourCountry, 4);
   });
-  it('should filter out none redidancey/insurance based countries when passed', () => {
-    const emptyCountryList = countryHelper.returnFilteredListOfCountries(countrySet5, countryListFull);
+  it('should filter out none redidancey/insurance based countries when passed if before spa', () => {
+    const emptyCountryList = countryHelper.returnFilteredListOfCountries(countrySet5, countryListFull, true);
     assert.lengthOf(emptyCountryList, 0);
   });
-  it('should filter out none insurance based countries when passed', () => {
-    const countryList = countryHelper.returnFilteredListInsuranceCountries(countrySet6, countryListFull);
+  it('should filter out none insurance based countries when passed if before spa', () => {
+    const countryList = countryHelper.returnFilteredListInsuranceCountries(countrySet6, countryListFull, true);
     assert.lengthOf(countryList, 1);
   });
 });

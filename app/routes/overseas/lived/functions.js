@@ -83,7 +83,7 @@ function whatCountriesHaveYouLivedInPost(req, res, countriesList) {
   } else {
     const filteredRequest = filterRequest.requestFilter(filterRequest.countries(), req.body);
     dataStore.checkAndSave(req, 'lived-abroad-countries', filteredRequest, editMode);
-    const countryDetails = countryHelper.returnFilteredListOfCountries(filteredRequest, countriesList);
+    const countryDetails = countryHelper.returnFilteredListOfCountries(filteredRequest, countriesList, req.session.isBeforeSpa);
     dataStore.checkAndSaveCountryList(req, 'lived-abroad-countries-details', countryDetails, editMode);
 
     if (countryDetails.length > 0) {
